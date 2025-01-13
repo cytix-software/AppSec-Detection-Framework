@@ -13,7 +13,7 @@ tests/
 |        ├── config.json     # The config file used by the deployment framework
 |        ├── Dockerfile      # The dockerfile
 |        └── index.lang      # The vulnerable code
-└── CWE-1
+└── cwe-1
     └── php
         ├── config.json
         ├── Dockerfile
