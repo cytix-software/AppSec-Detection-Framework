@@ -20,7 +20,7 @@ tests/
         └── index.php
 ```
 
-The config file defines the information required by the deployment framework. This should be structured
+The `config.json` file defines the information required by the deployment framework. This should be structured
 
 ```json
 {
