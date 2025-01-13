@@ -9,15 +9,17 @@ The `tests` folder contains all of the definitions for each of the vulnerabiliti
 ```bash
 tests/
 ├── cwe-id/                 # The CWE ID of the vulnerability
-|    └── language/           # The language the vulnerability was written in
-|        ├── config.json     # The config file used by the deployment framework
-|        ├── Dockerfile      # The dockerfile
-|        └── index.lang      # The vulnerable code
+|    └── language/          # The language the vulnerability was written in
+|        └── version        # The version of the specific test
+|            ├── config.json    # The config file used by the deployment framework
+|            ├── Dockerfile     # The dockerfile
+|            └── index.lang     # The vulnerable code
 └── cwe-1
     └── php
-        ├── config.json
-        ├── Dockerfile
-        └── index.php
+        └── 1
+            ├── config.json
+            ├── Dockerfile
+            └── index.php
 ```
 
 The `config.json` file defines the information required by the deployment framework. This should be structured
