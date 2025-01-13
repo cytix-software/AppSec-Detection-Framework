@@ -35,10 +35,5 @@ The config file defines the information required by the deployment framework. Th
 
 | OWASP Category | CWE | Name | Language | Version | 
 | - | - | - | - | - |
-| A03:2021 - Injection | | | | |
-| | CWE-80 | Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) | | |
-| | | | PHP | |
-| | | | | [1](tests/cwe-80/php/1/) |
-| | CWE-78 | Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') | | | 
-| | | | PHP | |
-| | | | | [1](tests/cwe-78/php/1/) |
+| A03:2021 - Injection | CWE-78 | Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') | PHP | [1](tests/cwe-78/php/1/) |
+| | CWE-80 | Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) | PHP | [1](tests/cwe-80/php/1/) |
