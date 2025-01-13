@@ -1,0 +1,10 @@
+{
+    "tags" : [
+            "php", 
+            "apache", 
+            "cwe-83",
+            "a03:2021",
+            "injection"
+    ],
+    "endpoint" : "http://localhost:8080"
+}
