@@ -1,0 +1,10 @@
+{
+    "tags" : [
+            "php", 
+            "apache", 
+            "cwe-352",
+            "a01:2021",
+            "broken acess control"
+    ],
+    "endpoint" : "http://localhost:8080"
+}
