@@ -230,13 +230,3 @@ The `config.json` file defines the information required by the deployment framew
 | A09:2021       | Security Logging and Monitoring Failures   | 532     | Insertion of Sensitive Information into Log File                                                                       |              |
 | A09:2021       | Security Logging and Monitoring Failures   | 778     | Insufficient Logging                                                                                                   |              |
 | A10:2021       | Server-Side Request Forgergy (SSRF)        | 918     | Server-Side Request Forgery (SSRF)                                                                                     |              |
-
-
-| OWASP Category | CWE | Name | Language | Version | 
-| - | - | - | - | - |
-| A01:2021 - Broken Access Control | CWE-23 | Relative Path Traversal | PHP | [1](tests/cwe-23/php/1/) |
-| A03:2021 - Injection | CWE-78 | Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') | PHP | [1](tests/cwe-78/php/1/) |
-| | CWE-80 | Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) | PHP | [1](tests/cwe-80/php/1/) |
-| | CWE-83 | Improper Neutralization of Script in Attributes in a Web Page | PHP | [1](tests/cwe-83/php/1/) |
-| A04:2021 - Insecure Design | CWE-434 | Unrestricted Upload of File with Dangerous Type | PHP | [1](tests/cwe-434/php/1/) |
-| A08:2021 - Software and Data Integrity Failures | CWE-502 | Deserialization of Untrusted Data | PHP | [1](tests/cwe-502/php/1/) |
