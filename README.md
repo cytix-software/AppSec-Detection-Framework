@@ -35,7 +35,7 @@ The `config.json` file defines the information required by the deployment framew
 
 | **OWASP Code** | **Group**                                  | **CWE** | **Title**                                                                                                              | Tests        |
 | -------------- | ------------------------------------------ | ------- | ---------------------------------------------------------------------------------------------------------------------- | ------------ |
-| A01:2021       | Broken Access Control                      | 22      | Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')                                         | [cwe-23-php-1](tests/cwe-23/php/1/) |
+| A01:2021       | Broken Access Control                      | 22      | Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')                                         | see cwe-23 |
 | A01:2021       | Broken Access Control                      | 23      | Relative Path Traversal                                                                                                | [cwe-23-php-1](tests/cwe-23/php/1/) |
 | A01:2021       | Broken Access Control                      | 35      | Path Traversal: '.../...//'                                                                                            |              |
 | A01:2021       | Broken Access Control                      | 59      | Improper Link Resolution Before File Access ('Link Following')                                                         |              |
