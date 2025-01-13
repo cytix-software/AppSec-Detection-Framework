@@ -6,5 +6,5 @@
             "a03:2021",
             "injection"
     ],
-    "endpoint" : "http://localhost:8080"
+    "endpoint" : "http://localhost:8080/?image=1.png"
 }
