@@ -59,7 +59,7 @@ services:
     volumes:
       - .\tests\cwe-352\php\1:/var/www/html
     ports:
-      - "80352:80"
+      - "8352:80"
     profiles:
       - PHP
       - A01
