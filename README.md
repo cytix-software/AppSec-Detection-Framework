@@ -37,4 +37,4 @@ The config file defines the information required by the deployment framework. Th
 | - | - | - | - | - |
 | A03:2021 - Injection | CWE-78 | Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') | PHP | [1](tests/cwe-78/php/1/) |
 | | CWE-80 | Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) | PHP | [1](tests/cwe-80/php/1/) |
-| A08:2021 - Software and Data Integrity Failures | CWE-78 | Deserialization of Untrusted Data | PHP | [1](tests/cwe-502/php/1/) |
+| A08:2021 - Software and Data Integrity Failures | CWE-502 | Deserialization of Untrusted Data | PHP | [1](tests/cwe-502/php/1/) |
