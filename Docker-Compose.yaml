@@ -1,0 +1,82 @@
+services:
+  cwe_23:
+    image: cwe_23:latest
+    build: 
+      context: tests\cwe-23\php\1\
+      dockerfile: Dockerfile
+    volumes:
+      - .\tests\cwe-23\php\1:/var/www/html
+    ports:
+      - "8023:80"
+    profiles:
+      - A01
+      - PHP
+
+  cwe_78:
+    image: cwe_78:latest
+    build: 
+      context: tests\cwe-78\php\1\
+      dockerfile: Dockerfile
+    volumes:
+      - .\tests\cwe-78\php\1:/var/www/html
+    ports:
+      - "8078:80"
+    profiles:
+      - A03
+      - PHP
+
+  cwe_80:
+    image: cwe_80:latest
+    build:
+      context: tests\cwe-80\php\1\
+      dockerfile: Dockerfile
+    volumes:
+      - .\tests\cwe-80\php\1:/var/www/html
+    ports:
+      - "8080:80"
+    profiles:
+      - A03
+      - PHP
+
+  cwe_83:
+    image: cwe_83:latest
+    build:
+      context: tests\cwe-83\php\1\
+      dockerfile: Dockerfile
+    volumes:
+      - .\tests\cwe-83\php\1:/var/www/html
+    ports:
+      - "8083:80"
+    profiles:
+      - PHP
+      - A03
+
+  cwe_434:
+    image: cwe_434:latest
+    build:
+      context: tests\cwe-434\php\1\
+      dockerfile: Dockerfile
+    volumes:
+      - .\tests\cwe-434\php\1:/var/www/html
+    ports:
+      - "8434:80"
+    profiles:
+      - PHP
+      - A04
+
+  cwe_502:
+    image: cwe_502:latest
+    build:
+      context: tests\cwe-502\php\1\
+      dockerfile: Dockerfile
+    volumes:
+      - .\tests\cwe-502\php\1:/var/www/html
+    ports:
+      - "8502:80"
+    profiles:
+     - PHP
+     - A08
+
+
+
+
