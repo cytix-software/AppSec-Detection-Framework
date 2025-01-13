@@ -6,3 +6,4 @@ A framework for understanding the capabilities of automated detection methods at
 | OWASP Category | CWE | Name | Language | 
 | - | - | - | - |
 | A03:2021 - Injection | CWE-80 | Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) | PHP |
+| | CWE-78 | Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') | PHP |
