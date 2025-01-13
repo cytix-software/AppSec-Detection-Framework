@@ -1,9 +1,44 @@
 # AppSec Vulnerability Detection Framework (ASVDF)
+
 A framework for understanding the capabilities of automated detection methods at identifying classes of application security vulnerabilities.
+
+# Vulnerability Specifications
+
+The `tests` folder contains all of the definitions for each of the vulnerabilities. The structure of this folder should be
+
+```bash
+tests/
+├── cwe-id/                 # The CWE ID of the vulnerability
+|    └── language/           # The language the vulnerability was written in
+|        ├── config.json     # The config file used by the deployment framework
+|        ├── Dockerfile      # The dockerfile
+|        └── index.lang      # The vulnerable code
+└── CWE-1
+    └── php
+        ├── config.json
+        ├── Dockerfile
+        └── index.php
+```
+
+The config file defines the information required by the deployment framework. This should be structured
+
+```json
+{
+    "tags" : [
+            "example"
+    ],
+    "endpoint" : "http://localhost:8080"
+}
+```
 
 ## Vulnerability Inventory
 
-| OWASP Category | CWE | Name | Language | 
-| - | - | - | - |
-| A03:2021 - Injection | CWE-80 | Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) | PHP |
-| | CWE-78 | Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') | PHP |
+| OWASP Category | CWE | Name | Language | Version | 
+| - | - | - | - | - |
+| A03:2021 - Injection | | | | |
+| | CWE-80 | Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) | | |
+| | | | PHP | |
+| | | | | [1](tests/cwe-80/php/1/) |
+| | CWE-78 | Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') | | | 
+| | | | PHP | |
+| | | | | [1](tests/cwe-78/php/1/) |
