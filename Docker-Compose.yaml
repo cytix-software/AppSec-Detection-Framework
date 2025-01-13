@@ -51,6 +51,19 @@ services:
       - PHP
       - A03
 
+  cwe_352:
+    image: cwe_352:latest
+    build:
+      context: tests\cwe-352\php\1\
+      dockerfile: Dockerfile
+    volumes:
+      - .\tests\cwe-352\php\1:/var/www/html
+    ports:
+      - "80352:80"
+    profiles:
+      - PHP
+      - A01
+
   cwe_434:
     image: cwe_434:latest
     build:
