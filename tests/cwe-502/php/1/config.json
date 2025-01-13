@@ -1,0 +1,10 @@
+{
+    "tags" : [
+            "php", 
+            "apache", 
+            "cwe-502",
+            "a08:2021",
+            "software and data integrity failures"
+    ],
+    "endpoint" : "http://localhost:8080"
+}
