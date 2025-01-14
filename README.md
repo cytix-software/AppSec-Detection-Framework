@@ -2,7 +2,9 @@
 
 A framework for understanding the capabilities of automated detection methods at identifying classes of application security vulnerabilities.
 
-## Vulnerability Specifications
+## Project Structure
+
+### Tests
 
 The `tests` folder contains all of the definitions for each of the vulnerabilities. The structure of this folder should be:
 
