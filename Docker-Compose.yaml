@@ -2,7 +2,7 @@ services:
   test_1_v1:
     image: test_1_v1:latest
     build: 
-      context: tests\test-1\v1\
+      context: tests/test-1/v1/
       dockerfile: Dockerfile
     ports:
       - "8011:80"
@@ -16,20 +16,20 @@ services:
   test_2_v1:
     image: test_2_v1:latest
     build: 
-      context: tests\test-2\v1\
+      context: tests/test-2/v1/
       dockerfile: Dockerfile
     ports:
       - "8021:80"
     profiles:
       - php
       - apache
-      - cwe078
+      - cwe-78
       - a03:2021
 
   test_3_v1:
     image: test_3_v1:latest
     build:
-      context: tests\test-3\v1\
+      context: tests/test-3/v1/
       dockerfile: Dockerfile
     ports:
       - "8031:80"
@@ -42,7 +42,7 @@ services:
   test_4_v1:
     image: test_4_v1:latest
     build:
-      context: tests\test-4\v1\
+      context: tests/test-4/v1/
       dockerfile: Dockerfile
     ports:
       - "8041:80"
@@ -55,7 +55,7 @@ services:
   test_5_v1:
     image: test_5_v1:latest
     build:
-      context: tests\test-5\v1\
+      context: tests/test-5/v1/
       dockerfile: Dockerfile
     ports:
       - "8051:80"
@@ -68,7 +68,7 @@ services:
   test_6_v1:
     image: test_6_v1:latest
     build:
-      context: tests\test-6\v1\
+      context: tests/test-6/v1/
       dockerfile: Dockerfile
     ports:
       - "8061:80"
@@ -81,7 +81,7 @@ services:
   test_7_v1:
     image: test_7_v1:latest
     build:
-      context: tests\test-7\v1\
+      context: tests/test-7/v1/
       dockerfile: Dockerfile
     ports:
       - "8071:80"
@@ -94,7 +94,7 @@ services:
   test_8_v1:
     image: test_8_v1:latest
     build:
-      context: tests\test-8\v1\
+      context: tests/test-8/v1/
       dockerfile: Dockerfile
     ports:
       - "8081:80"
