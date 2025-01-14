@@ -2,9 +2,11 @@
 
 A framework for understanding the capabilities of automated detection methods at identifying classes of application security vulnerabilities.
 
-## Vulnerability Specifications
+## Project Structure
 
-The `tests` folder contains all of the definitions for each of the vulnerabilities. The structure of this folder should be
+### Tests
+
+The `tests` folder contains all of the definitions for each of the vulnerabilities. The structure of this folder should be:
 
 ```bash
 tests/
@@ -15,12 +17,15 @@ tests/
 |            ├── Dockerfile     # The dockerfile
 |            └── index.lang     # The vulnerable code
 └── cwe-1
-    └── php
-        └── 1
-            ├── config.json
-            ├── Dockerfile
-            └── index.php
+|   └── php
+|       └── 1
+|           ├── config.json
+|           ├── Dockerfile
+|           └── index.php
+Docker-Compose.yaml
 ```
+
+### config.json
 
 The `config.json` file defines the information required by the deployment framework. This should be structured
 
@@ -32,6 +37,30 @@ The `config.json` file defines the information required by the deployment framew
     "endpoint" : "http://localhost:8080"
 }
 ```
+
+`Tags` should be added to describe key details related to the vulnerability. At a minimum this should include
+
+- The language the vulnerability was written in
+- The webserver technology in use
+- CWE IDs associated witht he vulnerability
+- The OWASP Top 10 category code
+- The OWASP Top 10 category name
+
+`Endpoint` should be the URL at which the vulnerability can be reached within the container.
+
+### Dockerfile
+
+The `Dockerfile` is responsible for deploying the vulnerable code. It should be configured to ensure the vulnerability is externally reachable via an unreserved (above 1024) that follows the convention `8 {CWE ID}` (e.g. CWE-01 would be on port `8001`, CWE-123 would be on port `8123`, etc.)
+
+### index.lang
+
+The `index` file is simply there as an example of where the vulnerable code should live. This can actually be multiple files if required. 
+
+The vulnerable code should be brief, easily readable, and should avoid any unnecessary styling or other details that do not directly contribute to introducing the vulnerability or making it exploitable.
+
+### Docker-Compose.yaml
+
+The `Docker-Compose.yaml` file should be used to manage the deployment of groups of containers that match the defined profiles.
 
 ## Vulnerability Inventory
 
