@@ -10,11 +10,11 @@ The `tests` folder contains all of the definitions for each of the vulnerabiliti
 
 ```bash
 tests/
-├── test-id/                 # The test ID of the vulnerability (increments)
-|   └── version        # The version of the specific test
-|       ├── config.json    # The config file used by the deployment framework
-|       ├── Dockerfile     # The dockerfile
-|       └── index.lang     # The vulnerable code
+├── test-id/                # The test ID of the vulnerability (increments)
+|   └── version             # The version of the specific test
+|       ├── config.json     # The config file used by the deployment framework
+|       ├── Dockerfile      # The dockerfile
+|       └── index.lang      # The vulnerable code
 └── test-1
 |   └── v1
 |       ├── config.json
@@ -64,8 +64,8 @@ The `Docker-Compose.yaml` file should be used to manage the deployment of groups
 
 | **OWASP Code** | **Group**                                  | **CWE** | **Title**                                                                                                              | Tests        |
 | -------------- | ------------------------------------------ | ------- | ---------------------------------------------------------------------------------------------------------------------- | ------------ |
-| A01:2021       | Broken Access Control                      | 22      | Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')                                         | see cwe-23 |
-| A01:2021       | Broken Access Control                      | 23      | Relative Path Traversal                                                                                                | [cwe-23-php-1](tests/cwe-23/php/1/) |
+| A01:2021       | Broken Access Control                      | 22      | Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')                                         | [test-1-v1](tests/test-1/v1/) |
+| A01:2021       | Broken Access Control                      | 23      | Relative Path Traversal                                                                                                | [test-1-v1](tests/test-1/v1/) |
 | A01:2021       | Broken Access Control                      | 35      | Path Traversal: '.../...//'                                                                                            |              |
 | A01:2021       | Broken Access Control                      | 59      | Improper Link Resolution Before File Access ('Link Following')                                                         |              |
 | A01:2021       | Broken Access Control                      | 200     | Exposure of Sensitive Information to an Unauthorized Actor                                                             | n/a          |
@@ -76,7 +76,7 @@ The `Docker-Compose.yaml` file should be used to manage the deployment of groups
 | A01:2021       | Broken Access Control                      | 276     | Incorrect Default Permissions                                                                                          |              |
 | A01:2021       | Broken Access Control                      | 284     | Improper Access Control                                                                                                | n/a          |
 | A01:2021       | Broken Access Control                      | 285     | Improper Authorization                                                                                                 | n/a          |
-| A01:2021       | Broken Access Control                      | 352     | Cross-Site Request Forgery (CSRF)                                                                                      | [cwe-352-php-1](tests/cwe-352/php/1/) |
+| A01:2021       | Broken Access Control                      | 352     | Cross-Site Request Forgery (CSRF)                                                                                      | [test-3-v1](tests/test-3/v1/) |
 | A01:2021       | Broken Access Control                      | 359     | Exposure of Private Personal Information to an Unauthorized Actor                                                      |              |
 | A01:2021       | Broken Access Control                      | 377     | Insecure Temporary File                                                                                                |              |
 | A01:2021       | Broken Access Control                      | 402     | Transmission of Private Resources into a New Sphere ('Resource Leak')                                                  |              |
@@ -131,10 +131,10 @@ The `Docker-Compose.yaml` file should be used to manage the deployment of groups
 | A03:2021       | Injection                                  | 74      | Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')                     |              |
 | A03:2021       | Injection                                  | 75      | Failure to Sanitize Special Elements into a Different Plane (Special Element Injection)                                |              |
 | A03:2021       | Injection                                  | 77      | Improper Neutralization of Special Elements used in a Command ('Command Injection')                                    |              |
-| A03:2021       | Injection                                  | 78      | Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')                             | [cwe-78-php-1](tests/cwe-78/php/1/)          |
+| A03:2021       | Injection                                  | 78      | Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')                             | [test-2-v1](tests/test-2/v1/)          |
 | A03:2021       | Injection                                  | 79      | Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')                                   |              |
-| A03:2021       | Injection                                  | 80      | Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)                                          | [cwe-80-php-1](tests/cwe-80/php/1/)          |
-| A03:2021       | Injection                                  | 83      | Improper Neutralization of Script in Attributes in a Web Page                                                          | [cwe-83-php-1](tests/cwe-83/php/1/)          |
+| A03:2021       | Injection                                  | 80      | Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)                                          | [test-4-v1](tests/test-4/v1/)          |
+| A03:2021       | Injection                                  | 83      | Improper Neutralization of Script in Attributes in a Web Page                                                          | [test-5-v1](tests/test-5/v1/)          |
 | A03:2021       | Injection                                  | 87      | Improper Neutralization of Alternate XSS Syntax                                                                        |              |
 | A03:2021       | Injection                                  | 88      | Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')                                     |              |
 | A03:2021       | Injection                                  | 89      | Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')                                   |              |
@@ -175,7 +175,7 @@ The `Docker-Compose.yaml` file should be used to manage the deployment of groups
 | A04:2021       | Insecure Design                            | 316     | Cleartext Storage of Sensitive Information in Memory                                                                   |              |
 | A04:2021       | Insecure Design                            | 419     | Unprotected Primary Channel                                                                                            |              |
 | A04:2021       | Insecure Design                            | 430     | Deployment of Wrong Handler                                                                                            |              |
-| A04:2021       | Insecure Design                            | 434     | Unrestricted Upload of File with Dangerous Type                                                                        | [cwe-434-php-1](tests/cwe-434/php/1/)          |
+| A04:2021       | Insecure Design                            | 434     | Unrestricted Upload of File with Dangerous Type                                                                        | [test-6-v1](tests/test-6/v1/)          |
 | A04:2021       | Insecure Design                            | 444     | Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')                                       |              |
 | A04:2021       | Insecure Design                            | 451     | User Interface (UI) Misrepresentation of Critical Information                                                          |              |
 | A04:2021       | Insecure Design                            | 472     | External Control of Assumed-Immutable Web Parameter                                                                    |              |
@@ -216,7 +216,7 @@ The `Docker-Compose.yaml` file should be used to manage the deployment of groups
 | A05:2021       | Security Misconfiguration                  | 756     | Missing Custom Error Page                                                                                              |              |
 | A05:2021       | Security Misconfiguration                  | 776     | Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')                                   |              |
 | A05:2021       | Security Misconfiguration                  | 942     | Permissive Cross-domain Policy with Untrusted Domains                                                                  |              |
-| A05:2021       | Security Misconfiguration                  | 1004    | Sensitive Cookie Without 'HttpOnly' Flag                                                                               |              |
+| A05:2021       | Security Misconfiguration                  | 1004    | Sensitive Cookie Without 'HttpOnly' Flag                                                                               | [test-8-v1](tests/test-8/v1/) |
 | A05:2021       | Security Misconfiguration                  | 1032    | OWASP Top Ten 2017 Category A6 - Security Misconfiguration                                                             | n/a          |
 | A05:2021       | Security Misconfiguration                  | 1174    | [ASP.NET](http://ASP.NET) Misconfiguration: Improper Model Validation                                                  |              |
 | A06:2021       | Vulnerable and Outdated Components         | 937     | OWASP Top Ten 2013 Category A9 - Using Components with Known Vulnerabilities                                           | n/a          |
@@ -248,7 +248,7 @@ The `Docker-Compose.yaml` file should be used to manage the deployment of groups
 | A08:2021       | Software and Data Integrity Failures       | 353     | Missing Support for Integrity Check                                                                                    |              |
 | A08:2021       | Software and Data Integrity Failures       | 426     | Untrusted Search Path                                                                                                  |              |
 | A08:2021       | Software and Data Integrity Failures       | 494     | Download of Code Without Integrity Check                                                                               |              |
-| A08:2021       | Software and Data Integrity Failures       | 502     | Deserialization of Untrusted Data                                                                                      | [cwe-502-php-1](tests/cwe-502/php/1/)          |
+| A08:2021       | Software and Data Integrity Failures       | 502     | Deserialization of Untrusted Data                                                                                      | [test-7-v1](tests/test-7/v1/)          |
 | A08:2021       | Software and Data Integrity Failures       | 565     | Reliance on Cookies without Validation and Integrity Checking                                                          |              |
 | A08:2021       | Software and Data Integrity Failures       | 784     | Reliance on Cookies without Validation and Integrity Checking in a Security Decision                                   |              |
 | A08:2021       | Software and Data Integrity Failures       | 829     | Inclusion of Functionality from Untrusted Control Sphere                                                               |              |
