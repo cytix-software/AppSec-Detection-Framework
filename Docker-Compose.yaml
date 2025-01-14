@@ -1,42 +1,56 @@
 services:
-  cwe_23:
-    image: cwe_23:latest
+  test_1_v1:
+    image: test_1_v1:latest
     build: 
-      context: tests\cwe-23\php\1\
+      context: tests\test-1\v1\
       dockerfile: Dockerfile
-    volumes:
-      - .\tests\cwe-23\php\1:/var/www/html
     ports:
-      - "8023:80"
+      - "8011:80"
     profiles:
-      - A01
-      - PHP
+      - a01:2021
+      - php
+      - apache
+      - cwe-23
+      - cwe-22
 
-  cwe_78:
-    image: cwe_78:latest
+  test_2_v1:
+    image: test_2_v1:latest
     build: 
-      context: tests\cwe-78\php\1\
+      context: tests\test-2\v1\
       dockerfile: Dockerfile
-    volumes:
-      - .\tests\cwe-78\php\1:/var/www/html
     ports:
-      - "8078:80"
+      - "8021:80"
     profiles:
-      - A03
-      - PHP
+      - php
+      - apache
+      - cwe078
+      - a03:2021
 
-  cwe_80:
-    image: cwe_80:latest
+  test_3_v1:
+    image: test_3_v1:latest
     build:
-      context: tests\cwe-80\php\1\
+      context: tests\test-3\v1\
       dockerfile: Dockerfile
-    volumes:
-      - .\tests\cwe-80\php\1:/var/www/html
     ports:
-      - "8080:80"
+      - "8031:80"
     profiles:
-      - A03
-      - PHP
+      - php
+      - apache
+      - cwe-352
+      - a01:2021
+
+  test_4_v1:
+    image: test_4_v1:latest
+    build:
+      context: tests\test-4\v1\
+      dockerfile: Dockerfile
+    ports:
+      - "8041:80"
+    profiles:
+      - php
+      - apache
+      - cwe-80
+      - a03:2021
 
   cwe_83:
     image: cwe_83:latest
@@ -50,19 +64,6 @@ services:
     profiles:
       - PHP
       - A03
-
-  cwe_352:
-    image: cwe_352:latest
-    build:
-      context: tests\cwe-352\php\1\
-      dockerfile: Dockerfile
-    volumes:
-      - .\tests\cwe-352\php\1:/var/www/html
-    ports:
-      - "8352:80"
-    profiles:
-      - PHP
-      - A01
 
   cwe_434:
     image: cwe_434:latest
