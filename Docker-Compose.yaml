@@ -90,6 +90,19 @@ services:
      - PHP
      - A08
 
+  cwe_1004:
+    image: cwe_1004:latest
+    build:
+      context: tests\cwe-1004\php\1\
+      dockerfile: Dockerfile
+    volumes:
+      - .\tests\cwe-1004\php\1:/var/www/html
+    ports:
+      - "9004:80"
+    profiles:
+    - PHP
+    - A05
+
 
 
 

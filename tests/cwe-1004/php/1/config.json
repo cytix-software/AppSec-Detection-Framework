@@ -1,0 +1,10 @@
+{
+    "tags" : [
+            "php", 
+            "apache", 
+            "cwe-1004",
+            "a05:2021",
+            "security misconfiguration"
+    ],
+    "endpoint" : "http://localhost:8080"
+}
