@@ -23,7 +23,7 @@ Docker-Compose.yaml
 
 ### Dockerfile
 
-The `Dockerfile` is responsible for deploying the vulnerable code. It should be configured to ensure the vulnerability is externally reachable via an unreserved (above 1024) port that follows the convention `8 {test ID} {version number}` (e.g. test 1 v1 would be on port `8011`, test 2 v1 would be on port `8021`, etc.)
+The `Dockerfile` is responsible for deploying the vulnerable code. 
 
 ### index.lang
 
@@ -33,14 +33,35 @@ The vulnerable code should be brief, easily readable, and should avoid any unnec
 
 ### Docker-Compose.yaml
 
-The `Docker-Compose.yaml` file should be used to manage the deployment of groups of containers that match the defined profiles. 
+The `Docker-Compose.yaml` file should be used to manage the deployment of groups of containers.
 
-In order to do this, the `profiles` should be defined for each service to include
+The container should port forward from a local port on the host. It should use an unreserved (above 1024) port, following the convention `8 {test ID} {version number}` (e.g. test 1 v1 would use port `8011`, test 2 v1 would use port `8021`).
+
+The `profiles` should be defined for each service to include:
 
 - The language the vulnerability was written in
 - The webserver technology in use
 - CWE IDs associated with the vulnerability
 - The OWASP Top 10 2021 category code
+
+An example entry can be seen below:
+
+```yaml
+services:
+  test_1_v1:
+    image: test_1_v1:latest
+    build: 
+      context: tests/test-1/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8011:80"
+    profiles:
+      - a01:2021
+      - php
+      - apache
+      - cwe-23
+      - cwe-22
+```
 
 ## Vulnerability Inventory
 
