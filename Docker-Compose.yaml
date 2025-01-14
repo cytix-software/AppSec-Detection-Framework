@@ -103,7 +103,3 @@ services:
       - apache 
       - cwe-1004
       - a05:2021
-
-
-
-
