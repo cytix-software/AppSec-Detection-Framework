@@ -52,57 +52,57 @@ services:
       - cwe-80
       - a03:2021
 
-  cwe_83:
-    image: cwe_83:latest
+  test_5_v1:
+    image: test_5_v1:latest
     build:
-      context: tests\cwe-83\php\1\
+      context: tests\test-5\v1\
       dockerfile: Dockerfile
-    volumes:
-      - .\tests\cwe-83\php\1:/var/www/html
     ports:
-      - "8083:80"
+      - "8051:80"
     profiles:
-      - PHP
-      - A03
+      - php
+      - apache
+      - cwe-83
+      - a03:2021
 
-  cwe_434:
-    image: cwe_434:latest
+  test_6_v1:
+    image: test_6_v1:latest
     build:
-      context: tests\cwe-434\php\1\
+      context: tests\test-6\v1\
       dockerfile: Dockerfile
-    volumes:
-      - .\tests\cwe-434\php\1:/var/www/html
     ports:
-      - "8434:80"
+      - "8061:80"
     profiles:
-      - PHP
-      - A04
+      - php 
+      - apache
+      - cwe-434
+      - a04:2021
 
-  cwe_502:
-    image: cwe_502:latest
+  test_7_v1:
+    image: test_7_v1:latest
     build:
-      context: tests\cwe-502\php\1\
+      context: tests\test-7\v1\
       dockerfile: Dockerfile
-    volumes:
-      - .\tests\cwe-502\php\1:/var/www/html
     ports:
-      - "8502:80"
+      - "8071:80"
     profiles:
-     - PHP
-     - A08
+      - php 
+      - apache
+      - cwe-502
+      - a08:2021
 
-  cwe_1004:
-    image: cwe_1004:latest
+  test_8_v1:
+    image: test_8_v1:latest
     build:
-      context: tests\cwe-1004\php\1\
+      context: tests\test-8\v1\
       dockerfile: Dockerfile
-    volumes:
-      - .\tests\cwe-1004\php\1:/var/www/html
     ports:
-      - "9004:80"
+      - "8081:80"
     profiles:
-    - PHP
-    - A05
+      - php 
+      - apache 
+      - cwe-1004
+      - a05:2021
 
 
 
