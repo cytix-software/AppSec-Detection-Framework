@@ -11,17 +11,15 @@ The `tests` folder contains all of the definitions for each of the vulnerabiliti
 ```bash
 tests/
 ├── test-id/                 # The test ID of the vulnerability (increments)
-|    └── language/          # The language the vulnerability was written in
-|        └── version        # The version of the specific test
-|            ├── config.json    # The config file used by the deployment framework
-|            ├── Dockerfile     # The dockerfile
-|            └── index.lang     # The vulnerable code
+|   └── version        # The version of the specific test
+|       ├── config.json    # The config file used by the deployment framework
+|       ├── Dockerfile     # The dockerfile
+|       └── index.lang     # The vulnerable code
 └── test-1
-|   └── php
-|       └── v1
-|           ├── config.json
-|           ├── Dockerfile
-|           └── index.php
+|   └── v1
+|       ├── config.json
+|       ├── Dockerfile
+|       └── index.php
 Docker-Compose.yaml
 ```
 
