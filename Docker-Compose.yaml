@@ -111,8 +111,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8091:80"
-    volumes:
-      - ./tests/test-9/v1:/var/www/html
     profiles:
       - php 
       - apache 
