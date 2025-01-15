@@ -103,3 +103,21 @@ services:
       - apache 
       - cwe-1004
       - a05:2021
+  
+  test_9_v1:
+    image: test_9_v1:latest
+    build:
+      context: tests/test-9/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8091:80"
+    volumes:
+      - test9_data:/var/www/html
+    profiles:
+      - php 
+      - apache 
+      - cwe-35
+      - a01:2021
+volumes:
+  test9_data:
+    driver: local
