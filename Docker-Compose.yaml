@@ -116,3 +116,16 @@ services:
       - apache 
       - cwe-35
       - a01:2021
+
+  test_10_v1:
+    image: test_10_v1:latest
+    build:
+      context: tests/test-10/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8101:80"
+    profiles:
+      - php 
+      - apache 
+      - cwe-276
+      - a01:2021
