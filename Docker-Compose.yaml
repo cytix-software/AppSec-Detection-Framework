@@ -112,12 +112,9 @@ services:
     ports:
       - "8091:80"
     volumes:
-      - test9_data:/var/www/html
+      - ./tests/test-9/v1:/var/www/html
     profiles:
       - php 
       - apache 
       - cwe-35
       - a01:2021
-volumes:
-  test9_data:
-    driver: local
