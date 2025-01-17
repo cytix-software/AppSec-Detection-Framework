@@ -76,7 +76,7 @@ services:
 | A01:2021       | Broken Access Control                      | 219     | Storage of File with Sensitive Data Under Web Root                                                                     |              |
 | A01:2021       | Broken Access Control                      | 264     | Permissions, Privileges, and Access Controls                                                                           | n/a          |
 | A01:2021       | Broken Access Control                      | 275     | Permission Issues                                                                                                      | n/a          |
-| A01:2021       | Broken Access Control                      | 276     | Incorrect Default Permissions                                                                                          |              |
+| A01:2021       | Broken Access Control                      | 276     | Incorrect Default Permissions                                                                                          | [test-10-v1 (PHP)](tests/test-10/v1/) |
 | A01:2021       | Broken Access Control                      | 284     | Improper Access Control                                                                                                | n/a          |
 | A01:2021       | Broken Access Control                      | 285     | Improper Authorization                                                                                                 | n/a          |
 | A01:2021       | Broken Access Control                      | 352     | Cross-Site Request Forgery (CSRF)                                                                                      | [test-3-v1 (PHP)](tests/test-3/v1/) |
