@@ -103,3 +103,16 @@ services:
       - apache 
       - cwe-1004
       - a05:2021
+
+  test_11_v1:
+    image: test_11_v1:latest
+    build:
+      context: tests/test-11/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8111:80"
+    profiles:
+      - php
+      - apache 
+      - cwe-219
+      - a01:2021
