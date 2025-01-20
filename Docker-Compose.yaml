@@ -115,4 +115,5 @@ services:
       - php 
       - apache 
       - cwe-35
+      - cwe-22
       - a01:2021
