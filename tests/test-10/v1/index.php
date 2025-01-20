@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
-    $uploadDirectory = '/var/www/html/uploads/';
+    $uploadDirectory = '/var/www/html/';
     $fileName = $_FILES['file']['name'];
     $filePath = $uploadDirectory . $fileName;
 
