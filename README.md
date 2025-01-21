@@ -67,9 +67,9 @@ services:
 
 | **OWASP Code** | **Group**                                  | **CWE** | **Title**                                                                                                              | Tests        |
 | -------------- | ------------------------------------------ | ------- | ---------------------------------------------------------------------------------------------------------------------- | ------------ |
-| A01:2021       | Broken Access Control                      | 22      | Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')                                         | [test-1-v1 (PHP)](tests/test-1/v1/) |
+| A01:2021       | Broken Access Control                      | 22      | Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')                                         | [test-1-v1 (PHP)](tests/test-1/v1/) [test-9-v1 (PHP)](tests/test-9/v1/) |
 | A01:2021       | Broken Access Control                      | 23      | Relative Path Traversal                                                                                                | [test-1-v1 (PHP)](tests/test-1/v1/) |
-| A01:2021       | Broken Access Control                      | 35      | Path Traversal: '.../...//'                                                                                            |              |
+| A01:2021       | Broken Access Control                      | 35      | Path Traversal: '.../...//'                                                                                            | [test-9-v1 (PHP)](tests/test-9/v1/) |
 | A01:2021       | Broken Access Control                      | 59      | Improper Link Resolution Before File Access ('Link Following')                                                         |              |
 | A01:2021       | Broken Access Control                      | 200     | Exposure of Sensitive Information to an Unauthorized Actor                                                             | n/a          |
 | A01:2021       | Broken Access Control                      | 201     | Insertion of Sensitive Information Into Sent Data                                                                      |              |
