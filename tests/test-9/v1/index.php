@@ -1,4 +1,4 @@
-: <form action="" method="post">
+<form action="" method="post">
     <input type="text" name="input" id="input" value="readme.txt">
     <input type="submit" value="Submit">
 </form>
