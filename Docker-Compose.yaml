@@ -130,3 +130,16 @@ services:
       - apache 
       - cwe-276
       - a01:2021
+
+  test_12_v1:
+    image: test_12_v1:latest
+    build:
+      context: tests/test-12/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8121:80"
+    profiles:
+      - php 
+      - apache 
+      - cwe-377
+      - a01:2021
