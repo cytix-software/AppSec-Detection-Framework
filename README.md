@@ -81,7 +81,7 @@ services:
 | A01:2021       | Broken Access Control                      | 285     | Improper Authorization                                                                                                 | n/a          |
 | A01:2021       | Broken Access Control                      | 352     | Cross-Site Request Forgery (CSRF)                                                                                      | [test-3-v1 (PHP)](tests/test-3/v1/) |
 | A01:2021       | Broken Access Control                      | 359     | Exposure of Private Personal Information to an Unauthorized Actor                                                      |              |
-| A01:2021       | Broken Access Control                      | 377     | Insecure Temporary File                                                                                                |              |
+| A01:2021       | Broken Access Control                      | 377     | Insecure Temporary File                                                                                                |    [test-12-v1 (PHP)](tests/test-12/v1/)            |
 | A01:2021       | Broken Access Control                      | 402     | Transmission of Private Resources into a New Sphere ('Resource Leak')                                                  |              |
 | A01:2021       | Broken Access Control                      | 425     | Direct Request ('Forced Browsing')                                                                                     |              |
 | A01:2021       | Broken Access Control                      | 441     | Unintended Proxy or Intermediary ('Confused Deputy')                                                                   |              |

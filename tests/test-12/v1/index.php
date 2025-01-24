@@ -1,23 +1,32 @@
 <?php
-// Create a temporary file in the system's temp directory
-$tempFile = tempnam(sys_get_temp_dir(), 'tmp_');
+// Insecure temporary file creation
+$temp_filename = tempnam("/tmp", "vulnerable_");
 
-// Write some sample content to the temporary file
-file_put_contents($tempFile, "File flavour.\n");
+if ($temp_filename) {
+    echo "Temporary file created at: " . $temp_filename . "\n";
+    chmod($temp_filename, 0644); // Insecure Permissions.
 
-// Output the temporary file path
-echo "Temporary file created at: $tempFile<br>";
-echo "Data written to the temporary file.<br>";
+    // Write Data to file.
+    $file = fopen($temp_filename, 'wb');
+    if ($file) {
+        $data = "Sensitive data flavour.";
+        fwrite($file, $data);
+        fclose($file); 
 
-// Simulate processing by keeping the file for 1 minute
-echo "Processing... The temporary file will be deleted in 1 minute.<br>";
-sleep(60); // Wait for 60 seconds
+        // Wait to simulate process.
+        sleep(10); 
 
-// Delete the temporary file after processing
-if (file_exists($tempFile)) {
-    unlink($tempFile);
-    echo "Temporary file deleted.<br>";
+        // Delete file.
+        if (file_exists($temp_filename)) {
+            unlink($temp_filename);
+            echo "Temporary file deleted.";
+        } else {
+            echo "Temporary file does not exist when attempting to delete.\n";
+        }
+    } else {
+        echo "Failed to open temporary file for writing.\n";
+    }
 } else {
-    echo "Temporary file not found for deletion.<br>";
+    echo "Failed to create temporary file.\n";
 }
 ?>
