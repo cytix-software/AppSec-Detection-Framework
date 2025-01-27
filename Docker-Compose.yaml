@@ -130,3 +130,18 @@ services:
       - apache 
       - cwe-276
       - a01:2021
+
+  test_15_v1:
+    image: test_15_v1:latest
+    build:
+      context: tests/test-15/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8151:80"
+    profiles:
+      - php 
+      - apache 
+      - cwe-328
+      - cwe-327 #Use of a broken cryptographic algorithm
+      - cwe-759 #Use of a one-way hash without a salt.
+      - a02:2021
