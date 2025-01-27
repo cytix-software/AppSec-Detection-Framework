@@ -96,7 +96,7 @@ services:
 | A01:2021       | Broken Access Control                      | 651     | Exposure of WSDL File Containing Sensitive Information                                                                 |              |
 | A01:2021       | Broken Access Control                      | 668     | Exposure of Resource to Wrong Sphere                                                                                   |              |
 | A01:2021       | Broken Access Control                      | 706     | Use of Incorrectly-Resolved Name or Reference                                                                          |              |
-| A01:2021       | Broken Access Control                      | 862     | Missing Authorization                                                                                                  |              |
+| A01:2021       | Broken Access Control                      | 862     | Missing Authorization                                                                                                  |   [test-13-v1 (PHP)](tests/test-13/v1/)           |
 | A01:2021       | Broken Access Control                      | 863     | Incorrect Authorization                                                                                                |              |
 | A01:2021       | Broken Access Control                      | 913     | Improper Control of Dynamically-Managed Code Resources                                                                 |              |
 | A01:2021       | Broken Access Control                      | 922     | Insecure Storage of Sensitive Information                                                                              |              |

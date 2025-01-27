@@ -141,3 +141,5 @@ services:
     profiles:
       - php 
       - apache 
+      - cwe-862
+      - a01:2021
