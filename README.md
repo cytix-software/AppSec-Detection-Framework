@@ -243,7 +243,7 @@ services:
 | A07:2021       | Identification and Authentication Failures | 521     | Weak Password Requirements                                                                                             |              |
 | A07:2021       | Identification and Authentication Failures | 613     | Insufficient Session Expiration                                                                                        |              |
 | A07:2021       | Identification and Authentication Failures | 620     | Unverified Password Change                                                                                             |              |
-| A07:2021       | Identification and Authentication Failures | 640     | Weak Password Recovery Mechanism for Forgotten Password                                                                |              |
+| A07:2021       | Identification and Authentication Failures | 640     | Weak Password Recovery Mechanism for Forgotten Password                                                                | [test-15-v1 (PHP)](tests/test-15/v1/) |
 | A07:2021       | Identification and Authentication Failures | 798     | Use of Hard-coded Credentials                                                                                          |              |
 | A07:2021       | Identification and Authentication Failures | 940     | Improper Verification of Source of a Communication Channel                                                             |              |
 | A07:2021       | Identification and Authentication Failures | 1216    | Lockout Mechanism Errors                                                                                               |              |
