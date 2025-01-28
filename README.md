@@ -111,8 +111,8 @@ services:
 | A02:2021       | Cryptographic Failures                     | 324     | Use of a Key Past its Expiration Date                                                                                  |              |
 | A02:2021       | Cryptographic Failures                     | 325     | Missing Cryptographic Step                                                                                             |              |
 | A02:2021       | Cryptographic Failures                     | 326     | Inadequate Encryption Strength                                                                                         |              |
-| A02:2021       | Cryptographic Failures                     | 327     | Use of a Broken or Risky Cryptographic Algorithm                                                                       |              |
-| A02:2021       | Cryptographic Failures                     | 328     | Use of Weak Hash                                                                                                       |              |
+| A02:2021       | Cryptographic Failures                     | 327     | Use of a Broken or Risky Cryptographic Algorithm                                                                       |     [test-15-v1 (PHP)](tests/test-15/v1/)         |
+| A02:2021       | Cryptographic Failures                     | 328     | Use of Weak Hash                                                                                                       |   [test-15-v1 (PHP)](tests/test-15/v1/)           |
 | A02:2021       | Cryptographic Failures                     | 329     | Generation of Predictable IV with CBC Mode                                                                             |              |
 | A02:2021       | Cryptographic Failures                     | 330     | Use of Insufficiently Random Values                                                                                    |              |
 | A02:2021       | Cryptographic Failures                     | 331     | Insufficient Entropy                                                                                                   |              |
@@ -125,11 +125,11 @@ services:
 | A02:2021       | Cryptographic Failures                     | 523     | Unprotected Transport of Credentials                                                                                   |              |
 | A02:2021       | Cryptographic Failures                     | 720     | OWASP Top Ten 2007 Category A9 - Insecure Communications                                                               | n/a          |
 | A02:2021       | Cryptographic Failures                     | 757     | Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')                                          |              |
-| A02:2021       | Cryptographic Failures                     | 759     | Use of a One-Way Hash without a Salt                                                                                   |              |
+| A02:2021       | Cryptographic Failures                     | 759     | Use of a One-Way Hash without a Salt                                                                                   |   [test-15-v1 (PHP)](tests/test-15/v1/)           |
 | A02:2021       | Cryptographic Failures                     | 760     | Use of a One-Way Hash with a Predictable Salt                                                                          |              |
 | A02:2021       | Cryptographic Failures                     | 780     | Use of RSA Algorithm without OAEP                                                                                      |              |
 | A02:2021       | Cryptographic Failures                     | 818     | OWASP Top Ten 2010 Category A9 - Insufficient Transport Layer Protection                                               | n/a          |
-| A02:2021       | Cryptographic Failures                     | 916     | Use of Password Hash With Insufficient Computational Effort                                                            |              |
+| A02:2021       | Cryptographic Failures                     | 916     | Use of Password Hash With Insufficient Computational Effort                                                            |     [test-15-v1 (PHP)](tests/test-15/v1/)            |
 | A03:2021       | Injection                                  | 20      | Improper Input Validation                                                                                              | n/a          |
 | A03:2021       | Injection                                  | 74      | Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')                     |              |
 | A03:2021       | Injection                                  | 75      | Failure to Sanitize Special Elements into a Different Plane (Special Element Injection)                                |              |
@@ -207,7 +207,7 @@ services:
 | A05:2021       | Security Misconfiguration                  | 13      | [ASP.NET](http://ASP.NET) Misconfiguration: Password in Configuration File                                             |              |
 | A05:2021       | Security Misconfiguration                  | 15      | External Control of System or Configuration Setting                                                                    |              |
 | A05:2021       | Security Misconfiguration                  | 16      | Configuration                                                                                                          |              |
-| A05:2021       | Security Misconfiguration                  | 260     | Password in Configuration File                                                                                         |              |
+| A05:2021       | Security Misconfiguration                  | 260     | Password in Configuration File                                                                                         | [test-11-v1 (PHP)](tests/test-11/v1/) |
 | A05:2021       | Security Misconfiguration                  | 315     | Cleartext Storage of Sensitive Information in a Cookie                                                                 |              |
 | A05:2021       | Security Misconfiguration                  | 520     | .NET Misconfiguration: Use of Impersonation                                                                            |              |
 | A05:2021       | Security Misconfiguration                  | 526     | Cleartext Storage of Sensitive Information in an Environment Variable                                                  |              |
@@ -226,7 +226,7 @@ services:
 | A06:2021       | Vulnerable and Outdated Components         | 1035    | OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities                                           | n/a          |
 | A06:2021       | Vulnerable and Outdated Components         | 1104    | Use of Unmaintained Third Party Components                                                                             |              |
 | A07:2021       | Identification and Authentication Failures | 255     | Credentials Management Errors                                                                                          |              |
-| A07:2021       | Identification and Authentication Failures | 259     | Use of Hard-coded Password                                                                                             |              |
+| A07:2021       | Identification and Authentication Failures | 259     | Use of Hard-coded Password                                                                                             | [test-15-v1 (PHP)](tests/test-15/v1/)  |
 | A07:2021       | Identification and Authentication Failures | 287     | Improper Authentication                                                                                                |              |
 | A07:2021       | Identification and Authentication Failures | 288     | Authentication Bypass Using an Alternate Path or Channel                                                               |              |
 | A07:2021       | Identification and Authentication Failures | 290     | Authentication Bypass by Spoofing                                                                                      |              |
