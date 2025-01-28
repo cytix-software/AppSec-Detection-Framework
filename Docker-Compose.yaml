@@ -104,6 +104,33 @@ services:
       - cwe-1004
       - a05:2021
 
+  test_9_v1:
+      image: test_9_v1:latest
+      build:
+        context: tests/test-9/v1/
+        dockerfile: Dockerfile
+      ports:
+        - "8091:80"
+      profiles:
+        - php 
+        - apache 
+        - cwe-35
+        - cwe-22
+        - a01:2021
+      
+  test_10_v1:
+    image: test_10_v1:latest
+    build:
+      context: tests/test-10/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8101:80"
+    profiles:
+      - php 
+      - apache 
+      - cwe-276
+      - a01:2021
+
   test_11_v1:
     image: test_11_v1:latest
     build:
