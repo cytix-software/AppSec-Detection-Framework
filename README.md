@@ -207,7 +207,7 @@ services:
 | A05:2021       | Security Misconfiguration                  | 13      | [ASP.NET](http://ASP.NET) Misconfiguration: Password in Configuration File                                             |              |
 | A05:2021       | Security Misconfiguration                  | 15      | External Control of System or Configuration Setting                                                                    |              |
 | A05:2021       | Security Misconfiguration                  | 16      | Configuration                                                                                                          |              |
-| A05:2021       | Security Misconfiguration                  | 260     | Password in Configuration File                                                                                         |              |
+| A05:2021       | Security Misconfiguration                  | 260     | Password in Configuration File                                                                                         | [test-11-v1 (PHP)](tests/test-11/v1/) |
 | A05:2021       | Security Misconfiguration                  | 315     | Cleartext Storage of Sensitive Information in a Cookie                                                                 |              |
 | A05:2021       | Security Misconfiguration                  | 520     | .NET Misconfiguration: Use of Impersonation                                                                            |              |
 | A05:2021       | Security Misconfiguration                  | 526     | Cleartext Storage of Sensitive Information in an Environment Variable                                                  |              |
