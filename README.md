@@ -134,7 +134,7 @@ services:
 | A03:2021       | Injection                                  | 74      | Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')                     |              |
 | A03:2021       | Injection                                  | 75      | Failure to Sanitize Special Elements into a Different Plane (Special Element Injection)                                |              |
 | A03:2021       | Injection                                  | 77      | Improper Neutralization of Special Elements used in a Command ('Command Injection')                                    |              |
-| A03:2021       | Injection                                  | 78      | Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')                             | [test-2-v1 (PHP)](tests/test-2/v1/)          |
+| A03:2021       | Injection                                  | 78      | Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')                             | [test-2-v1 (PHP)](tests/test-2/v1/) [test-16-v1 (PHP)](tests/test-16/v1/)          |
 | A03:2021       | Injection                                  | 79      | Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')                                   |              |
 | A03:2021       | Injection                                  | 80      | Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)                                          | [test-4-v1 (PHP)](tests/test-4/v1/)          |
 | A03:2021       | Injection                                  | 83      | Improper Neutralization of Script in Attributes in a Web Page                                                          | [test-5-v1 (PHP)](tests/test-5/v1/)          |
@@ -261,4 +261,4 @@ services:
 | A09:2021       | Security Logging and Monitoring Failures   | 223     | Omission of Security-relevant Information                                                                              |              |
 | A09:2021       | Security Logging and Monitoring Failures   | 532     | Insertion of Sensitive Information into Log File                                                                       |              |
 | A09:2021       | Security Logging and Monitoring Failures   | 778     | Insufficient Logging                                                                                                   |              |
-| A10:2021       | Server-Side Request Forgergy (SSRF)        | 918     | Server-Side Request Forgery (SSRF)                                                                                     |              |
+| A10:2021       | Server-Side Request Forgergy (SSRF)        | 918     | Server-Side Request Forgery (SSRF)                                                                                     | [test-16-v1 (PHP)](tests/test-16/v1/) |
