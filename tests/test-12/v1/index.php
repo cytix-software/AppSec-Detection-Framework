@@ -3,7 +3,7 @@
 $temp_filename = tempnam("/tmp", "vulnerable_");
 
 if ($temp_filename) {
-    echo "Temporary file created at: " . $temp_filename . "\n";
+    echo "Temporary file created at: " . $temp_filename . "<br /><br />";
     chmod($temp_filename, 0644); // Insecure Permissions.
 
     // Write Data to file.
@@ -13,8 +13,10 @@ if ($temp_filename) {
         fwrite($file, $data);
         fclose($file); 
 
-        // Wait to simulate process.
-        sleep(10); 
+        // Reads file.
+        echo "File contents: ";
+        include($temp_filename);
+        echo "<br /><br />"; 
 
         // Delete file.
         if (file_exists($temp_filename)) {
