@@ -172,3 +172,16 @@ services:
       - apache 
       - cwe-862
       - a01:2021
+
+  test_14_v1:
+    image: test_14_v1:latest
+    build:
+      context: tests/test-14/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8141:80"
+    profiles:
+      - php
+      - apache
+      - cwe-863
+      - a01:2021
