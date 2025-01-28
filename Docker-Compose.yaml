@@ -142,6 +142,7 @@ services:
       - php 
       - apache 
       - cwe-328
-      - cwe-327 #Use of a broken cryptographic algorithm
-      - cwe-759 #Use of a one-way hash without a salt.
+      - cwe-327 
+      - cwe-759 
+      - cwe-916
       - a02:2021
