@@ -73,7 +73,7 @@ services:
 | A01:2021       | Broken Access Control                      | 59      | Improper Link Resolution Before File Access ('Link Following')                                                         |              |
 | A01:2021       | Broken Access Control                      | 200     | Exposure of Sensitive Information to an Unauthorized Actor                                                             | n/a          |
 | A01:2021       | Broken Access Control                      | 201     | Insertion of Sensitive Information Into Sent Data                                                                      |              |
-| A01:2021       | Broken Access Control                      | 219     | Storage of File with Sensitive Data Under Web Root                                                                     |              |
+| A01:2021       | Broken Access Control                      | 219     | Storage of File with Sensitive Data Under Web Root                                                                     |   [test-11-v1 (PHP)](tests/test-11/v1/)           |
 | A01:2021       | Broken Access Control                      | 264     | Permissions, Privileges, and Access Controls                                                                           | n/a          |
 | A01:2021       | Broken Access Control                      | 275     | Permission Issues                                                                                                      | n/a          |
 | A01:2021       | Broken Access Control                      | 276     | Incorrect Default Permissions                                                                                          | [test-10-v1 (PHP)](tests/test-10/v1/) |
@@ -89,7 +89,7 @@ services:
 | A01:2021       | Broken Access Control                      | 538     | Insertion of Sensitive Information into Externally-Accessible File or Directory                                        |              |
 | A01:2021       | Broken Access Control                      | 540     | Inclusion of Sensitive Information in Source Code                                                                      |              |
 | A01:2021       | Broken Access Control                      | 548     | Exposure of Information Through Directory Listing                                                                      |              |
-| A01:2021       | Broken Access Control                      | 552     | Files or Directories Accessible to External Parties                                                                    |              |
+| A01:2021       | Broken Access Control                      | 552     | Files or Directories Accessible to External Parties                                                                    |    [test-11-v1 (PHP)](tests/test-11/v1/)            |
 | A01:2021       | Broken Access Control                      | 566     | Authorization Bypass Through User-Controlled SQL Primary Key                                                           |              |
 | A01:2021       | Broken Access Control                      | 601     | URL Redirection to Untrusted Site ('Open Redirect')                                                                    |              |
 | A01:2021       | Broken Access Control                      | 639     | Authorization Bypass Through User-Controlled Key                                                                       |              |
@@ -167,7 +167,7 @@ services:
 | A04:2021       | Insecure Design                            | 209     | Generation of Error Message Containing Sensitive Information                                                           |              |
 | A04:2021       | Insecure Design                            | 213     | Exposure of Sensitive Information Due to Incompatible Policies                                                         |              |
 | A04:2021       | Insecure Design                            | 235     | Improper Handling of Extra Parameters                                                                                  |              |
-| A04:2021       | Insecure Design                            | 256     | Plaintext Storage of a Password                                                                                        |              |
+| A04:2021       | Insecure Design                            | 256     | Plaintext Storage of a Password                                                                                        |   [test-11-v1 (PHP)](tests/test-11/v1/)         |
 | A04:2021       | Insecure Design                            | 257     | Storing Passwords in a Recoverable Format                                                                              |              |
 | A04:2021       | Insecure Design                            | 266     | Incorrect Privilege Assignment                                                                                         |              |
 | A04:2021       | Insecure Design                            | 269     | Improper Privilege Management                                                                                          |              |
