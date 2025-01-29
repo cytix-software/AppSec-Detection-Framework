@@ -247,4 +247,5 @@ services:
       - php
       - apache
       - cwe-116
+      - cwe-117
       - cwe-644
