@@ -1,21 +1,23 @@
 <?php
-// Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $val = $_POST['val']; // Get user input without encoding
-
+    $val = $_POST['val']; 
     try {
-        $value = (int) $val; // Attempt to parse as integer
+        if (!is_numeric($val)) {
+            throw new Exception("Invalid number");
+        }
+        $value = (int) $val; 
     } catch (Exception $e) {
-        // CWE-117: Log Injection (Improper Output Neutralization for Logs)
-        $logEntry = "ERROR: Failed to parse val = $val\n"; // Vulnerable log entry
-        file_put_contents("app.log", $logEntry, FILE_APPEND); // Logging without sanitization
+        // CWE-117: Log Injection 
+        $decoded = urldecode($val);
+        $logEntry = "INFO: Failed to parse val = $decoded\n"; 
+        file_put_contents("app.log", $logEntry, FILE_APPEND); 
     }
     
-    // CWE-644: HTTP Header Injection (Response Splitting)
-    header("X-Custom-Header: $val"); // Vulnerable header output
+    // CWE-644: HTTP Header Injection 
+    header("X-Custom-Header: $val"); 
     
     // CWE-116: XSS Vulnerability
-    echo "<p>Value entered: $val</p>"; // Reflecting user input without escaping
+    echo "<p>Value entered: $val</p>";
 } else {
     $val = "";
 }

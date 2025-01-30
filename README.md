@@ -151,7 +151,7 @@ services:
 | A03:2021       | Injection                                  | 98      | Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')                |              |
 | A03:2021       | Injection                                  | 99      | Improper Control of Resource Identifiers ('Resource Injection')                                                        |              |
 | A03:2021       | Injection                                  | 113     | Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')                          |              |
-| A03:2021       | Injection                                  | 116     | Improper Encoding or Escaping of Output                                                                                |              |
+| A03:2021       | Injection                                  | 116     | Improper Encoding or Escaping of Output                                                                                |  [test-18-v1 (PHP)](tests/test-18/v1/)             |
 | A03:2021       | Injection                                  | 138     | Improper Neutralization of Special Elements                                                                            |              |
 | A03:2021       | Injection                                  | 184     | Incomplete List of Disallowed Inputs                                                                                   |              |
 | A03:2021       | Injection                                  | 470     | Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')                                     |              |
@@ -159,7 +159,7 @@ services:
 | A03:2021       | Injection                                  | 564     | SQL Injection: Hibernate                                                                                               |              |
 | A03:2021       | Injection                                  | 610     | Externally Controlled Reference to a Resource in Another Sphere                                                        |              |
 | A03:2021       | Injection                                  | 643     | Improper Neutralization of Data within XPath Expressions ('XPath Injection')                                           |              |
-| A03:2021       | Injection                                  | 644     | Improper Neutralization of HTTP Headers for Scripting Syntax                                                           |              |
+| A03:2021       | Injection                                  | 644     | Improper Neutralization of HTTP Headers for Scripting Syntax                                                           |  [test-18-v1 (PHP)](tests/test-18/v1/)              |
 | A03:2021       | Injection                                  | 652     | Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')                                         |              |
 | A03:2021       | Injection                                  | 917     | Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection') |              |
 | A04:2021       | Insecure Design                            | 73      | External Control of File Name or Path                                                                                  |              |
@@ -259,7 +259,7 @@ services:
 | A08:2021       | Software and Data Integrity Failures       | 829     | Inclusion of Functionality from Untrusted Control Sphere                                                               |              |
 | A08:2021       | Software and Data Integrity Failures       | 830     | Inclusion of Web Functionality from an Untrusted Source                                                                |              |
 | A08:2021       | Software and Data Integrity Failures       | 915     | Improperly Controlled Modification of Dynamically-Determined Object Attributes                                         |              |
-| A09:2021       | Security Logging and Monitoring Failures   | 117     | Improper Output Neutralization for Logs                                                                                |              |
+| A09:2021       | Security Logging and Monitoring Failures   | 117     | Improper Output Neutralization for Logs                                                                                |    [test-18-v1 (PHP)](tests/test-18/v1/)            |
 | A09:2021       | Security Logging and Monitoring Failures   | 223     | Omission of Security-relevant Information                                                                              |              |
 | A09:2021       | Security Logging and Monitoring Failures   | 532     | Insertion of Sensitive Information into Log File                                                                       |              |
 | A09:2021       | Security Logging and Monitoring Failures   | 778     | Insufficient Logging                                                                                                   |              |
