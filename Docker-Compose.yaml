@@ -236,3 +236,21 @@ services:
       - a02:2021
       - a07:2021
       
+  test_19_v1:
+    image: test_19_v1:latest
+    build:
+      context: tests/test-19/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8191:80"
+    profiles:
+      - php
+      - apache
+      - cwe-501
+      - cwe-384 
+      - cwe-287 
+      - cwe-613 
+      - cwe-79
+      - A03:2021
+      - A04:2021
+      - A07:2021
