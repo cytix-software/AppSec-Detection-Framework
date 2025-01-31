@@ -227,7 +227,7 @@ services:
 | A06:2021       | Vulnerable and Outdated Components         | 1104    | Use of Unmaintained Third Party Components                                                                             |              |
 | A07:2021       | Identification and Authentication Failures | 255     | Credentials Management Errors                                                                                          |              |
 | A07:2021       | Identification and Authentication Failures | 259     | Use of Hard-coded Password                                                                                             | [test-15-v1 (PHP)](tests/test-15/v1/)  |
-| A07:2021       | Identification and Authentication Failures | 287     | Improper Authentication                                                                                                |              |
+| A07:2021       | Identification and Authentication Failures | 287     | Improper Authentication                                                                                                | [test-14-v1 (PHP)](test/test-14/v1/) |
 | A07:2021       | Identification and Authentication Failures | 288     | Authentication Bypass Using an Alternate Path or Channel                                                               |              |
 | A07:2021       | Identification and Authentication Failures | 290     | Authentication Bypass by Spoofing                                                                                      |              |
 | A07:2021       | Identification and Authentication Failures | 294     | Authentication Bypass by Capture-replay                                                                                |              |
