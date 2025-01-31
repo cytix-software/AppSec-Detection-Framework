@@ -50,6 +50,7 @@ services:
       - php
       - apache
       - cwe-80
+      - cwe-116      
       - a03:2021
 
   test_5_v1:
