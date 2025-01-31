@@ -235,4 +235,17 @@ services:
       - cwe-798 
       - a02:2021
       - a07:2021
-      
+
+  test_21_v1:
+    image: test_21_v1:latest
+    build:
+      context: tests/test-21/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8211:80"
+    profiles:
+      - php
+      - apache
+      - cwe-117
+      - A09:2021
+
