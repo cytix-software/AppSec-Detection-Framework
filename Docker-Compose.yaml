@@ -49,6 +49,7 @@ services:
     profiles:
       - php
       - apache
+      - cwe-79
       - cwe-80
       - cwe-116      
       - a03:2021
@@ -247,6 +248,8 @@ services:
     profiles:
       - php
       - apache
+      - cwe-79
+      - cwe-80
       - cwe-116
       - cwe-117
       - cwe-644
