@@ -195,7 +195,7 @@ services:
 | A04:2021       | Insecure Design                            | 653     | Improper Isolation or Compartmentalization                                                                             |              |
 | A04:2021       | Insecure Design                            | 656     | Reliance on Security Through Obscurity                                                                                 |              |
 | A04:2021       | Insecure Design                            | 657     | Violation of Secure Design Principles                                                                                  | n/a          |
-| A04:2021       | Insecure Design                            | 799     | Improper Control of Interaction Frequency                                                                              |              |
+| A04:2021       | Insecure Design                            | 799     | Improper Control of Interaction Frequency                                                                             |      [test-20-v1 (PHP)](tests/test-20/v1/)        |
 | A04:2021       | Insecure Design                            | 807     | Reliance on Untrusted Inputs in a Security Decision                                                                    |              |
 | A04:2021       | Insecure Design                            | 840     | Business Logic Errors                                                                                                  |              |
 | A04:2021       | Insecure Design                            | 841     | Improper Enforcement of Behavioral Workflow                                                                            |              |
@@ -237,7 +237,7 @@ services:
 | A07:2021       | Identification and Authentication Failures | 302     | Authentication Bypass by Assumed-Immutable Data                                                                        |              |
 | A07:2021       | Identification and Authentication Failures | 304     | Missing Critical Step in Authentication                                                                                |              |
 | A07:2021       | Identification and Authentication Failures | 306     | Missing Authentication for Critical Function                                                                           |              |
-| A07:2021       | Identification and Authentication Failures | 307     | Improper Restriction of Excessive Authentication Attempts                                                              |              |
+| A07:2021       | Identification and Authentication Failures | 307     | Improper Restriction of Excessive Authentication Attempts                                                              |   [test-20-v1 (PHP)](tests/test-20/v1/)              |
 | A07:2021       | Identification and Authentication Failures | 346     | Origin Validation Error                                                                                                |              |
 | A07:2021       | Identification and Authentication Failures | 384     | Session Fixation                                                                                                       |              |
 | A07:2021       | Identification and Authentication Failures | 521     | Weak Password Requirements                                                                                             |              |
@@ -260,7 +260,7 @@ services:
 | A08:2021       | Software and Data Integrity Failures       | 830     | Inclusion of Web Functionality from an Untrusted Source                                                                |              |
 | A08:2021       | Software and Data Integrity Failures       | 915     | Improperly Controlled Modification of Dynamically-Determined Object Attributes                                         |              |
 | A09:2021       | Security Logging and Monitoring Failures   | 117     | Improper Output Neutralization for Logs                                                                                |              |
-| A09:2021       | Security Logging and Monitoring Failures   | 223     | Omission of Security-relevant Information                                                                              |              |
+| A09:2021       | Security Logging and Monitoring Failures   | 223     | Omission of Security-relevant Information                                                                              |   [test-20-v1 (PHP)](tests/test-20/v1/)           |
 | A09:2021       | Security Logging and Monitoring Failures   | 532     | Insertion of Sensitive Information into Log File                                                                       |              |
-| A09:2021       | Security Logging and Monitoring Failures   | 778     | Insufficient Logging                                                                                                   |              |
+| A09:2021       | Security Logging and Monitoring Failures   | 778     | Insufficient Logging                                                                                                   |  [test-20-v1 (PHP)](tests/test-20/v1/)            |
 | A10:2021       | Server-Side Request Forgergy (SSRF)        | 918     | Server-Side Request Forgery (SSRF)                                                                                     | [test-16-v1 (PHP)](tests/test-16/v1/) |
