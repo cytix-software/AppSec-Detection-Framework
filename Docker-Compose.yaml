@@ -251,7 +251,6 @@ services:
       - cwe-79
       - cwe-80
       - cwe-116
-      - cwe-117
       - cwe-644
       - A03:2021
       - A09:2021 
