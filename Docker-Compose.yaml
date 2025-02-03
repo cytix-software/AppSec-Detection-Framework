@@ -49,7 +49,9 @@ services:
     profiles:
       - php
       - apache
+      - cwe-79
       - cwe-80
+      - cwe-116      
       - a03:2021
 
   test_5_v1:
@@ -236,3 +238,19 @@ services:
       - a02:2021
       - a07:2021
       
+  test_18_v1:
+    image: test_18_v1:latest
+    build:
+      context: tests/test-18/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8181:80"
+    profiles:
+      - php
+      - apache
+      - cwe-79
+      - cwe-80
+      - cwe-116
+      - cwe-644
+      - A03:2021
+      - A09:2021 
