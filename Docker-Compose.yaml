@@ -246,6 +246,7 @@ services:
     profiles:
       - php
       - apache
-      - cwe-760 
+      - cwe-384 
+      - a07:2021
 
       

@@ -239,7 +239,7 @@ services:
 | A07:2021       | Identification and Authentication Failures | 306     | Missing Authentication for Critical Function                                                                           |              |
 | A07:2021       | Identification and Authentication Failures | 307     | Improper Restriction of Excessive Authentication Attempts                                                              |              |
 | A07:2021       | Identification and Authentication Failures | 346     | Origin Validation Error                                                                                                |              |
-| A07:2021       | Identification and Authentication Failures | 384     | Session Fixation                                                                                                       |              |
+| A07:2021       | Identification and Authentication Failures | 384     | Session Fixation                                                                                                       |    [test-23-v1 (PHP)](tests/test-23/v1/)          |
 | A07:2021       | Identification and Authentication Failures | 521     | Weak Password Requirements                                                                                             |              |
 | A07:2021       | Identification and Authentication Failures | 613     | Insufficient Session Expiration                                                                                        |              |
 | A07:2021       | Identification and Authentication Failures | 620     | Unverified Password Change                                                                                             |              |
