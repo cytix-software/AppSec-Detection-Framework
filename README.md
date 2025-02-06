@@ -80,7 +80,7 @@ services:
 | A01:2021       | Broken Access Control                      | 284     | Improper Access Control                                                                                                | n/a          |
 | A01:2021       | Broken Access Control                      | 285     | Improper Authorization                                                                                                 | n/a          |
 | A01:2021       | Broken Access Control                      | 352     | Cross-Site Request Forgery (CSRF)                                                                                      | [test-3-v1 (PHP)](tests/test-3/v1/) |
-| A01:2021       | Broken Access Control                      | 359     | Exposure of Private Personal Information to an Unauthorized Actor                                                      |              |
+| A01:2021       | Broken Access Control                      | 359     | Exposure of Private Personal Information to an Unauthorized Actor                                                      |   [test-24-v1 (PHP)](tests/test-24/v1/)            |
 | A01:2021       | Broken Access Control                      | 377     | Insecure Temporary File                                                                                                |    [test-12-v1 (PHP)](tests/test-12/v1/)            |
 | A01:2021       | Broken Access Control                      | 402     | Transmission of Private Resources into a New Sphere ('Resource Leak')                                                  |              |
 | A01:2021       | Broken Access Control                      | 425     | Direct Request ('Forced Browsing')                                                                                     |              |
@@ -183,7 +183,7 @@ services:
 | A04:2021       | Insecure Design                            | 451     | User Interface (UI) Misrepresentation of Critical Information                                                          |              |
 | A04:2021       | Insecure Design                            | 472     | External Control of Assumed-Immutable Web Parameter                                                                    |              |
 | A04:2021       | Insecure Design                            | 501     | Trust Boundary Violation                                                                                               |              |
-| A04:2021       | Insecure Design                            | 522     | Insufficiently Protected Credentials                                                                                   |              |
+| A04:2021       | Insecure Design                            | 522     | Insufficiently Protected Credentials                                                                                   |     [test-24-v1 (PHP)](tests/test-24/v1/)          |
 | A04:2021       | Insecure Design                            | 525     | Use of Web Browser Cache Containing Sensitive Information                                                              |              |
 | A04:2021       | Insecure Design                            | 539     | Use of Persistent Cookies Containing Sensitive Information                                                             |              |
 | A04:2021       | Insecure Design                            | 579     | J2EE Bad Practices: Non-serializable Object Stored in Session                                                          |              |
@@ -261,6 +261,6 @@ services:
 | A08:2021       | Software and Data Integrity Failures       | 915     | Improperly Controlled Modification of Dynamically-Determined Object Attributes                                         |              |
 | A09:2021       | Security Logging and Monitoring Failures   | 117     | Improper Output Neutralization for Logs                                                                                |              |
 | A09:2021       | Security Logging and Monitoring Failures   | 223     | Omission of Security-relevant Information                                                                              |              |
-| A09:2021       | Security Logging and Monitoring Failures   | 532     | Insertion of Sensitive Information into Log File                                                                       |              |
+| A09:2021       | Security Logging and Monitoring Failures   | 532     | Insertion of Sensitive Information into Log File                                                                       |     [test-24-v1 (PHP)](tests/test-24/v1/)          |
 | A09:2021       | Security Logging and Monitoring Failures   | 778     | Insufficient Logging                                                                                                   |              |
 | A10:2021       | Server-Side Request Forgergy (SSRF)        | 918     | Server-Side Request Forgery (SSRF)                                                                                     | [test-16-v1 (PHP)](tests/test-16/v1/) |
