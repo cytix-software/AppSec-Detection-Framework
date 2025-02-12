@@ -185,7 +185,12 @@ services:
       - php
       - apache
       - cwe-863
+      - cwe-287
+      - cwe-784
+      - cwe-565
       - a01:2021
+      - a07:2021
+      - a08:2021
 
   test_15_v1:
     image: test_15_v1:latest
