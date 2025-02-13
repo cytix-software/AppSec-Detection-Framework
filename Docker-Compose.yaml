@@ -347,3 +347,19 @@ services:
       - a01:2021
       - a03:2021
       - A08:2021
+
+  test_26_v1:
+    image: test_26_v1:latest
+    build:
+      context: tests/test-26/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8261:80"
+    profiles:
+      - test-26
+      - php
+      - apache
+      - cwe-646
+      - cwe-345
+      - a04:2021
+      - a08:2021

@@ -190,7 +190,7 @@ services:
 | A04:2021       | Insecure Design                            | 598     | Use of GET Request Method With Sensitive Query Strings                                                                 |              |
 | A04:2021       | Insecure Design                            | 602     | Client-Side Enforcement of Server-Side Security                                                                        |              |
 | A04:2021       | Insecure Design                            | 642     | External Control of Critical State Data                                                                                |              |
-| A04:2021       | Insecure Design                            | 646     | Reliance on File Name or Extension of Externally-Supplied File                                                         |              |
+| A04:2021       | Insecure Design                            | 646     | Reliance on File Name or Extension of Externally-Supplied File                                                         |   [test-26-v1 (PHP)](tests/test-26/v1/)           |
 | A04:2021       | Insecure Design                            | 650     | Trusting HTTP Permission Methods on the Server Side                                                                    |              |
 | A04:2021       | Insecure Design                            | 653     | Improper Isolation or Compartmentalization                                                                             |              |
 | A04:2021       | Insecure Design                            | 656     | Reliance on Security Through Obscurity                                                                                 |              |
@@ -247,7 +247,7 @@ services:
 | A07:2021       | Identification and Authentication Failures | 798     | Use of Hard-coded Credentials                                                                                          |    [test-17-v1 (PHP)](tests/test-17/v1/)           |
 | A07:2021       | Identification and Authentication Failures | 940     | Improper Verification of Source of a Communication Channel                                                             |              |
 | A07:2021       | Identification and Authentication Failures | 1216    | Lockout Mechanism Errors                                                                                               |              |
-| A08:2021       | Software and Data Integrity Failures       | 345     | Insufficient Verification of Data Authenticity                                                                         |              |
+| A08:2021       | Software and Data Integrity Failures       | 345     | Insufficient Verification of Data Authenticity                                                                         |   [test-26-v1 (PHP)](tests/test-26/v1/)              |
 | A08:2021       | Software and Data Integrity Failures       | 353     | Missing Support for Integrity Check                                                                                    |              |
 | A08:2021       | Software and Data Integrity Failures       | 426     | Untrusted Search Path                                                                                                  |      [test-25-v1 (PHP)](tests/test-25/v1/)          |
 | A08:2021       | Software and Data Integrity Failures       | 494     | Download of Code Without Integrity Check                                                                               |              |
