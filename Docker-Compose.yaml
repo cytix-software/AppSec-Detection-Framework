@@ -299,3 +299,16 @@ services:
       - apache
       - cwe-613
       - a07:2021
+
+  test_23_v1:
+    image: test_23_v1:latest
+    build:
+      context: tests/test-23/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8231:80"
+    profiles:
+      - php
+      - apache
+      - cwe-384 
+      - a07:2021
