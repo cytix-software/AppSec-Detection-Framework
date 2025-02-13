@@ -312,3 +312,20 @@ services:
       - apache
       - cwe-384 
       - a07:2021
+
+  test_24_v1:
+    image: test_24_v1:latest
+    build:
+      context: tests/test-24/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8241:80"
+    profiles:
+      - php
+      - apache
+      - cwe-359
+      - cwe-522
+      - cwe-532
+      - a01:2021
+      - a04:2021
+      - a09:2021
