@@ -378,3 +378,18 @@ services:
       - cwe-353
       - cwe-345
       - a08:2021
+
+  test_28_v1:
+    image: test_28_v1:latest
+    build:
+      context: tests/test-28/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8281:80"
+    profiles:
+      - test-28
+      - php
+      - apache
+      - cwe-494
+      - cwe-345
+      - a08:2021
