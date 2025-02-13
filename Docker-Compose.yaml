@@ -240,7 +240,7 @@ services:
       - cwe-798 
       - a02:2021
       - a07:2021
-      
+  
   test_19_v1:
     image: test_19_v1:latest
     build:
@@ -393,3 +393,20 @@ services:
       - cwe-494
       - cwe-345
       - a08:2021
+
+  test_29_v1:
+    image: test_29_v1:latest
+    build:
+      context: tests/test-29/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8291:80"
+    profiles:
+      - test-29
+      - php
+      - apache
+      - cwe-830
+      - cwe-829
+      - cwe-79
+      - a08:2021
+      - a03:2021
