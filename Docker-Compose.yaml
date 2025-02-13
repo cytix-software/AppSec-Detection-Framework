@@ -7,6 +7,7 @@ services:
     ports:
       - "8011:80"
     profiles:
+      - test-1
       - a01:2021
       - php
       - apache
@@ -21,6 +22,7 @@ services:
     ports:
       - "8021:80"
     profiles:
+      - test-2
       - php
       - apache
       - cwe-78
@@ -34,6 +36,7 @@ services:
     ports:
       - "8031:80"
     profiles:
+      - test-3
       - php
       - apache
       - cwe-352
@@ -47,6 +50,7 @@ services:
     ports:
       - "8041:80"
     profiles:
+      - test-4
       - php
       - apache
       - cwe-80
@@ -60,6 +64,7 @@ services:
     ports:
       - "8051:80"
     profiles:
+      - test-5
       - php
       - apache
       - cwe-83
@@ -73,6 +78,7 @@ services:
     ports:
       - "8061:80"
     profiles:
+      - test-6
       - php 
       - apache
       - cwe-434
@@ -86,6 +92,7 @@ services:
     ports:
       - "8071:80"
     profiles:
+      - test-7
       - php 
       - apache
       - cwe-502
@@ -99,6 +106,7 @@ services:
     ports:
       - "8081:80"
     profiles:
+      - test-8
       - php 
       - apache 
       - cwe-1004
@@ -112,6 +120,7 @@ services:
       ports:
         - "8091:80"
       profiles:
+        - test-9
         - php 
         - apache 
         - cwe-35
@@ -126,6 +135,7 @@ services:
     ports:
       - "8101:80"
     profiles:
+      - test-10
       - php 
       - apache 
       - cwe-276
@@ -140,6 +150,7 @@ services:
     ports:
       - "8111:80"
     profiles:
+      - test-11
       - php
       - apache 
       - cwe-219
@@ -156,6 +167,7 @@ services:
     ports:
       - "8121:80"
     profiles:
+      - test-12
       - php 
       - apache 
       - cwe-377
@@ -169,6 +181,7 @@ services:
     ports:
       - "8131:80"
     profiles:
+      - test-13
       - php 
       - apache 
       - cwe-862
@@ -182,6 +195,7 @@ services:
     ports:
       - "8141:80"
     profiles:
+      - test-14
       - php
       - apache
       - cwe-863
@@ -200,6 +214,7 @@ services:
     ports:
       - "8151:80"
     profiles:
+      - test-15
       - php 
       - apache 
       - cwe-328
@@ -216,6 +231,7 @@ services:
     ports:
       - "8161:80"
     profiles:
+      - test-16
       - php
       - apache
       - a10:2021
@@ -230,6 +246,7 @@ services:
     ports:
       - "8171:80"
     profiles:
+      - test-17
       - php
       - apache
       - cwe-760 
@@ -249,6 +266,7 @@ services:
     ports:
       - "8191:80"
     profiles:
+      - test-19
       - php
       - apache
       - cwe-501
@@ -264,6 +282,7 @@ services:
     ports:
       - "8201:80"
     profiles:
+      - test-20
       - php
       - apache
       - cwe-778
@@ -282,6 +301,7 @@ services:
     ports:
       - "8211:80"
     profiles:
+      - test-21
       - php
       - apache
       - cwe-117
@@ -295,6 +315,7 @@ services:
     ports:
       - "8122:80"
     profiles:
+      - test-22
       - php
       - apache
       - cwe-613
@@ -308,6 +329,7 @@ services:
     ports:
       - "8231:80"
     profiles:
+      - test-23
       - php
       - apache
       - cwe-384 
@@ -321,6 +343,7 @@ services:
     ports:
       - "8241:80"
     profiles:
+      - test-24
       - php
       - apache
       - cwe-359
@@ -338,6 +361,7 @@ services:
     ports:
       - "8251:80"
     profiles:
+      - test-25
       - php
       - apache
       - cwe-98
