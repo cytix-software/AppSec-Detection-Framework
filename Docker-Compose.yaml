@@ -287,3 +287,15 @@ services:
       - cwe-117
       - A09:2021
 
+  test_22_v1:
+    image: test_22_v1:latest
+    build:
+      context: tests/test-22/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8122:80"
+    profiles:
+      - php
+      - apache
+      - cwe-613
+      - a07:2021
