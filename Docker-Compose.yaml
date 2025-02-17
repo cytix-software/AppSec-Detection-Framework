@@ -434,3 +434,19 @@ services:
       - cwe-79
       - a08:2021
       - a03:2021
+
+  test_30_v1:
+    image: test_30_v1:latest
+    build:
+      context: tests/test-30/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8301:80"
+    profiles:
+      - test-30
+      - php
+      - apache
+      - cwe-915
+      - cwe-913
+      - a08:2021
+      - ao1:2021
