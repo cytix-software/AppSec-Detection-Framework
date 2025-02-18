@@ -450,3 +450,18 @@ services:
       - cwe-913
       - a08:2021
       - ao1:2021
+
+  test_33_v1:
+    image: test_33_v1:latest
+    build:
+      context: tests/test-33/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8331:80"
+    profiles:
+      - test-33
+      - apache
+      - php
+      - cwe-620
+      - cwe-352
+      - cwe-598 
