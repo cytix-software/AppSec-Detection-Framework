@@ -4,6 +4,20 @@ A framework for understanding the capabilities of automated detection methods at
 
 ## Project Structure
 
+### Requirements
+
+ - [Bun](https://bun.sh)
+ - [Docker](https://www.docker.com)
+
+### Running
+
+In order to test a new DAST scanner or set of exploits, you will need to test against the proofs of concept in this repository, this is done with Pocman.
+Pocman is an application that orchestrates the proof of concepts in this repository so that exploits can be tested in batches. You can run it with `bun install && ./pocman.ts`.
+Pocman deploys proofs of concept in batches, so as not to exceed resource constraints. By default it uses batches of 15 images. You can navigate to the next batch by entering 'next' into the command prompt that appears.
+By default the index of proof of concepts will be hosted on `localhost:3000`, and this is where you should point your DAST scanner, so that it can crawl all the available PoCs.
+
+For further information you can use the command `bun install && ./pocman.ts --help`
+
 ### Tests
 
 The `tests` folder contains all of the definitions for each of the vulnerabilities. The structure of this folder should be:
@@ -23,11 +37,11 @@ Docker-Compose.yaml
 
 ### Dockerfile
 
-The `Dockerfile` is responsible for deploying the vulnerable code. 
+The `Dockerfile` is responsible for deploying the vulnerable code.
 
 ### index.lang
 
-The `index` file is simply there as an example of where the vulnerable code should live. This can actually be multiple files if required. 
+The `index` file is simply there as an example of where the vulnerable code should live. This can actually be multiple files if required.
 
 The vulnerable code should be brief, easily readable, and should avoid any unnecessary styling or other details that do not directly contribute to introducing the vulnerability or making it exploitable.
 
@@ -50,7 +64,7 @@ An example entry can be seen below:
 services:
   test_1_v1:
     image: test_1_v1:latest
-    build: 
+    build:
       context: tests/test-1/v1/
       dockerfile: Dockerfile
     ports:
