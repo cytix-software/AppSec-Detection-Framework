@@ -450,7 +450,7 @@ services:
       - cwe-913
       - a08:2021
       - ao1:2021
-
+      
   test_31_v1:
     image: test_31_v1:latest
     build:
