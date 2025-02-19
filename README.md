@@ -4,6 +4,20 @@ A framework for understanding the capabilities of automated detection methods at
 
 ## Project Structure
 
+### Requirements
+
+ - [Bun](https://bun.sh)
+ - [Docker](https://www.docker.com)
+
+### Running
+
+In order to test a new DAST scanner or set of exploits, you will need to test against the proofs of concept in this repository, this is done with Pocman.
+Pocman is an application that orchestrates the proof of concepts in this repository so that exploits can be tested in batches. You can run it with `bun install && ./pocman.ts`.
+Pocman deploys proofs of concept in batches, so as not to exceed resource constraints. By default it uses batches of 15 images. You can navigate to the next batch by entering 'next' into the command prompt that appears.
+By default the index of proof of concepts will be hosted on `localhost:3000`, and this is where you should point your DAST scanner, so that it can crawl all the available PoCs.
+
+For further information you can use the command `bun install && ./pocman.ts --help`
+
 ### Tests
 
 The `tests` folder contains all of the definitions for each of the vulnerabilities. The structure of this folder should be:
@@ -23,11 +37,11 @@ Docker-Compose.yaml
 
 ### Dockerfile
 
-The `Dockerfile` is responsible for deploying the vulnerable code. 
+The `Dockerfile` is responsible for deploying the vulnerable code.
 
 ### index.lang
 
-The `index` file is simply there as an example of where the vulnerable code should live. This can actually be multiple files if required. 
+The `index` file is simply there as an example of where the vulnerable code should live. This can actually be multiple files if required.
 
 The vulnerable code should be brief, easily readable, and should avoid any unnecessary styling or other details that do not directly contribute to introducing the vulnerability or making it exploitable.
 
@@ -50,7 +64,7 @@ An example entry can be seen below:
 services:
   test_1_v1:
     image: test_1_v1:latest
-    build: 
+    build:
       context: tests/test-1/v1/
       dockerfile: Dockerfile
     ports:
@@ -79,7 +93,7 @@ services:
 | A01:2021       | Broken Access Control                      | 276     | Incorrect Default Permissions                                                                                          | [test-10-v1 (PHP)](tests/test-10/v1/) |
 | A01:2021       | Broken Access Control                      | 284     | Improper Access Control                                                                                                | n/a          |
 | A01:2021       | Broken Access Control                      | 285     | Improper Authorization                                                                                                 | n/a          |
-| A01:2021       | Broken Access Control                      | 352     | Cross-Site Request Forgery (CSRF)                                                                                      | [test-3-v1 (PHP)](tests/test-3/v1/) |
+| A01:2021       | Broken Access Control                      | 352     | Cross-Site Request Forgery (CSRF)                                                                                      | [test-3-v1 (PHP)](tests/test-3/v1/)  [test-31-v1 (PHP)](tests/test-31/v1/)  |
 | A01:2021       | Broken Access Control                      | 359     | Exposure of Private Personal Information to an Unauthorized Actor                                                      |   [test-24-v1 (PHP)](tests/test-24/v1/)            |
 | A01:2021       | Broken Access Control                      | 377     | Insecure Temporary File                                                                                                |    [test-12-v1 (PHP)](tests/test-12/v1/)            |
 | A01:2021       | Broken Access Control                      | 402     | Transmission of Private Resources into a New Sphere ('Resource Leak')                                                  |              |
@@ -98,7 +112,7 @@ services:
 | A01:2021       | Broken Access Control                      | 706     | Use of Incorrectly-Resolved Name or Reference                                                                          |     [test-25-v1 (PHP)](tests/test-25/v1/)           |
 | A01:2021       | Broken Access Control                      | 862     | Missing Authorization                                                                                                  |   [test-13-v1 (PHP)](tests/test-13/v1/)           |
 | A01:2021       | Broken Access Control                      | 863     | Incorrect Authorization                                                                                                |   [test-14-v1 (PHP)](tests/test-14/v1/)           |
-| A01:2021       | Broken Access Control                      | 913     | Improper Control of Dynamically-Managed Code Resources                                                                 |              |
+| A01:2021       | Broken Access Control                      | 913     | Improper Control of Dynamically-Managed Code Resources                                                                 |   [test-30-v1 (PHP)](tests/test-30/v1/)            |
 | A01:2021       | Broken Access Control                      | 922     | Insecure Storage of Sensitive Information                                                                              |              |
 | A01:2021       | Broken Access Control                      | 1275    | Sensitive Cookie with Improper SameSite Attribute                                                                      |              |
 | A02:2021       | Cryptographic Failures                     | 261     | Weak Encoding for Password                                                                                             |              |
@@ -238,14 +252,14 @@ services:
 | A07:2021       | Identification and Authentication Failures | 304     | Missing Critical Step in Authentication                                                                                |              |
 | A07:2021       | Identification and Authentication Failures | 306     | Missing Authentication for Critical Function                                                                           |              |
 | A07:2021       | Identification and Authentication Failures | 307     | Improper Restriction of Excessive Authentication Attempts                                                              |   [test-20-v1 (PHP)](tests/test-20/v1/)  [test-32-v1 (PHP)](tests/test-32/v1/)             |
-| A07:2021       | Identification and Authentication Failures | 346     | Origin Validation Error                                                                                                |              |
+| A07:2021       | Identification and Authentication Failures | 346     | Origin Validation Error                                                                                                |     [test-31-v1 (PHP)](tests/test-31/v1/)            |
 | A07:2021       | Identification and Authentication Failures | 384     | Session Fixation                                                                                                       |    [test-23-v1 (PHP)](tests/test-23/v1/)          |
 | A07:2021       | Identification and Authentication Failures | 521     | Weak Password Requirements                                                                                             |              |
 | A07:2021       | Identification and Authentication Failures | 613     | Insufficient Session Expiration                                                                                        |   [test-22-v1 (PHP)](tests/test-22/v1/)           |
 | A07:2021       | Identification and Authentication Failures | 620     | Unverified Password Change                                                                                             |              |
 | A07:2021       | Identification and Authentication Failures | 640     | Weak Password Recovery Mechanism for Forgotten Password                                                                |  [test-32-v1 (PHP)](tests/test-32/v1/)            |
 | A07:2021       | Identification and Authentication Failures | 798     | Use of Hard-coded Credentials                                                                                          |    [test-17-v1 (PHP)](tests/test-17/v1/) [test-32-v1 (PHP)](tests/test-32/v1/)            |
-| A07:2021       | Identification and Authentication Failures | 940     | Improper Verification of Source of a Communication Channel                                                             |              |
+| A07:2021       | Identification and Authentication Failures | 940     | Improper Verification of Source of a Communication Channel                                                             | [test-31-v1 (PHP)](tests/test-31/v1/)              |
 | A07:2021       | Identification and Authentication Failures | 1216    | Lockout Mechanism Errors                                                                                               |              |
 | A08:2021       | Software and Data Integrity Failures       | 345     | Insufficient Verification of Data Authenticity                                                                         |   [test-26-v1 (PHP)](tests/test-26/v1/)  [test-27-v1 (PHP)](tests/test-27/v1/)     [test-28-v1 (PHP)](tests/test-28/v1/)           |
 | A08:2021       | Software and Data Integrity Failures       | 353     | Missing Support for Integrity Check                                                                                    |   [test-27-v1 (PHP)](tests/test-27/v1/)             |
@@ -256,7 +270,7 @@ services:
 | A08:2021       | Software and Data Integrity Failures       | 784     | Reliance on Cookies without Validation and Integrity Checking in a Security Decision                                   |  [test-14-v1 (PHP)](tests/test-14/v1/)  [test-29-v1 (PHP)](tests/test-29/v1/)                 |
 | A08:2021       | Software and Data Integrity Failures       | 829     | Inclusion of Functionality from Untrusted Control Sphere                                                               |  [test-25-v1 (PHP)](tests/test-25/v1/) [test-29-v1 (PHP)](tests/test-29/v1/)                 |
 | A08:2021       | Software and Data Integrity Failures       | 830     | Inclusion of Web Functionality from an Untrusted Source                                                                |              |
-| A08:2021       | Software and Data Integrity Failures       | 915     | Improperly Controlled Modification of Dynamically-Determined Object Attributes                                         |              |
+| A08:2021       | Software and Data Integrity Failures       | 915     | Improperly Controlled Modification of Dynamically-Determined Object Attributes                                         |   [test-30-v1 (PHP)](tests/test-30/v1/)            |
 | A09:2021       | Security Logging and Monitoring Failures   | 117     | Improper Output Neutralization for Logs                                                                                |   [test-21-v1 (PHP)](tests/test-21/v1/)             |
 | A09:2021       | Security Logging and Monitoring Failures   | 223     | Omission of Security-relevant Information                                                                              |   [test-20-v1 (PHP)](tests/test-20/v1/)           |
 | A09:2021       | Security Logging and Monitoring Failures   | 532     | Insertion of Sensitive Information into Log File                                                                       |     [test-24-v1 (PHP)](tests/test-24/v1/)           |
