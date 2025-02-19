@@ -463,5 +463,9 @@ services:
       - apache
       - php
       - cwe-620
+      - cwe-306
       - cwe-352
       - cwe-598 
+      - a07:2021
+      - a04:2021
+      - a01:2021
