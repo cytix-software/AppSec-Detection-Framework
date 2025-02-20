@@ -520,4 +520,22 @@ services:
       - cwe-521
       - a07:2021
 
-
+  test_35_v1:
+    image: test_35_v1:latest
+    build:
+      context: tests/test-35/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8351:80"
+    profiles:
+      - test-35
+      - apache
+      - php
+      - cwe-302
+      - cwe-807
+      - cwe-287 
+      - cwe-784 
+      - cwe-565 
+      - a07:2021
+      - a04:2021
+      - a08:2021
