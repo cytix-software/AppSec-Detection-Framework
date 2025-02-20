@@ -505,3 +505,19 @@ services:
       - a07:2021
       - a04:2021
       - a01:2021
+
+  test_34_v1:
+    image: test_34_v1:latest
+    build:
+      context: tests/test-34/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8341:80"
+    profiles:
+      - test-34
+      - apache
+      - php
+      - cwe-521
+      - a07:2021
+
+
