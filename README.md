@@ -32,22 +32,24 @@ tests/
 |   └── v1
 |       ├── Dockerfile
 |       └── index.php
-Docker-Compose.yaml
+docker-compose.yml
+data.json
 ```
 
-### Dockerfile
+### data.json
+This is the file that contains our test data and the OWASP top 10 CWEs. When a new test is performed, a new item should be added to the `"recordedTests"` array, with the following values:
+```
+{
+  "dast": <the name of the dast being tested, including the version number as a string>,
+  "test": <the name of the docker container of the test, this should be a string>,
+  "detected": <a boolean representing whether the vulnerability was detected>,
+  "updatedAt": <the unix timestamp of when the test occured, this should be a number>
+}
+```
 
-The `Dockerfile` is responsible for deploying the vulnerable code.
+### docker-compose.yml
 
-### index.lang
-
-The `index` file is simply there as an example of where the vulnerable code should live. This can actually be multiple files if required.
-
-The vulnerable code should be brief, easily readable, and should avoid any unnecessary styling or other details that do not directly contribute to introducing the vulnerability or making it exploitable.
-
-### Docker-Compose.yaml
-
-The `Docker-Compose.yaml` file should be used to manage the deployment of groups of containers.
+The `docker-compose.yml` file should be used to manage the deployment of groups of containers.
 
 The container should port forward from a local port on the host. It should use an unreserved (above 1024) port, following the convention `8 {test ID} {version number}` (e.g. test 1 v1 would use port `8011`, test 2 v1 would use port `8021`).
 
@@ -76,6 +78,17 @@ services:
       - cwe-23
       - cwe-22
 ```
+
+### Dockerfile
+
+The `Dockerfile` is responsible for deploying the vulnerable code.
+
+### index.lang
+
+The `index` file is simply there as an example of where the vulnerable code should live. This can actually be multiple files if required.
+
+The vulnerable code should be brief, easily readable, and should avoid any unnecessary styling or other details that do not directly contribute to introducing the vulnerability or making it exploitable.
+
 
 ## Vulnerability Inventory
 

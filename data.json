@@ -1,0 +1,436 @@
+{
+  "vulnerabilities": [
+    {
+      "OWASP": "A01:2021",
+      "CWE": [22, 23, 35, 59, 200, 201, 219, 264, 275, 276, 284, 285, 352, 359, 377, 402, 425, 441, 497, 538, 540, 548, 552, 566, 601, 639, 651, 668, 706, 862, 863, 913, 922, 1275]
+    },
+    {
+      "OWASP": "A02:2021",
+      "CWE": [261, 296, 310, 319, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 335, 336, 337, 338, 340, 347, 523, 720, 757, 759, 760, 780, 818, 916]
+    },
+    {
+      "OWASP": "A03:2021",
+      "CWE": [20, 74, 75, 77, 78, 79, 80, 83, 87, 88, 89, 90, 91, 93, 94, 95, 96, 97, 98, 99, 113, 116, 138, 184, 470, 471, 564, 610, 643, 644, 652, 917]
+    },
+    {
+      "OWASP": "A04:2021",
+      "CWE": [73, 183, 209, 213, 235, 256, 257, 266, 269, 280, 311, 312, 313, 316, 419, 430, 434, 444, 451, 472, 501, 522, 525, 539, 579, 598, 602, 642, 646, 650, 653, 656, 657, 799, 807, 840, 841, 927, 1021, 1173]
+    },
+    {
+      "OWASP": "A05:2021",
+      "CWE": [2, 11, 13, 15, 16, 260, 315, 520, 526, 537, 541, 547, 611, 614, 756, 776, 942, 1004, 1032, 1174]
+    },
+    {
+      "OWASP": "A06:2021",
+      "CWE": [937, 1035, 1104]
+    },
+    {
+      "OWASP": "A07:2021",
+      "CWE": [255, 259, 287, 288, 290, 294, 295, 297, 300, 302, 304, 306, 307, 346, 384, 521, 613, 620, 640, 798, 940, 1216]
+    },
+    {
+      "OWASP": "A08:2021",
+      "CWE": [345, 353, 426, 494, 502, 565, 784, 829, 830, 915]
+    },
+    {
+      "OWASP": "A09:2021",
+      "CWE": [117, 223, 532, 778]
+    },
+    {
+      "OWASP": "A10:2021",
+      "CWE": [918]
+    }
+  ],
+  "recordedTests": [
+    {
+      "dast": "FakeSecureScan",
+      "test": "test_1_v1",
+      "detected": true,
+      "updatedAt": 1739891000
+    },
+    {
+      "dast": "FakeVulnFinder",
+      "test": "test_1_v1",
+      "detected": false,
+      "updatedAt": 1739891500
+    },
+    {
+      "dast": "FakeNetInspector",
+      "test": "test_1_v1",
+      "detected": true,
+      "updatedAt": 1739891800
+    },
+    {
+      "dast": "FakeScanPro",
+      "test": "test_2_v1",
+      "detected": false,
+      "updatedAt": 1739892000
+    },
+    {
+      "dast": "FakeCyberSleuth",
+      "test": "test_2_v1",
+      "detected": true,
+      "updatedAt": 1739892500
+    },
+    {
+      "dast": "FakeBugBuster",
+      "test": "test_3_v1",
+      "detected": true,
+      "updatedAt": 1739893000
+    },
+    {
+      "dast": "FakeDastAlpha",
+      "test": "test_3_v1",
+      "detected": false,
+      "updatedAt": 1739893500
+    },
+    {
+      "dast": "FakeDastBeta",
+      "test": "test_4_v1",
+      "detected": true,
+      "updatedAt": 1739894000
+    },
+    {
+      "dast": "FakeDastGamma",
+      "test": "test_4_v1",
+      "detected": false,
+      "updatedAt": 1739894500
+    },
+    {
+      "dast": "FakeIntruderCheck",
+      "test": "test_5_v1",
+      "detected": true,
+      "updatedAt": 1739895000
+    },
+    {
+      "dast": "FakeVulnHunter",
+      "test": "test_5_v1",
+      "detected": false,
+      "updatedAt": 1739895500
+    },
+    {
+      "dast": "FakeShieldScan",
+      "test": "test_5_v1",
+      "detected": true,
+      "updatedAt": 1739895800
+    },
+    {
+      "dast": "FakeSafeGuard",
+      "test": "test_6_v1",
+      "detected": false,
+      "updatedAt": 1739896000
+    },
+    {
+      "dast": "FakeRiskAssessor",
+      "test": "test_6_v1",
+      "detected": true,
+      "updatedAt": 1739896500
+    },
+    {
+      "dast": "FakeSecureScan",
+      "test": "test_7_v1",
+      "detected": true,
+      "updatedAt": 1739897000
+    },
+    {
+      "dast": "FakeVulnFinder",
+      "test": "test_7_v1",
+      "detected": false,
+      "updatedAt": 1739897500
+    },
+    {
+      "dast": "FakeNetInspector",
+      "test": "test_8_v1",
+      "detected": false,
+      "updatedAt": 1739898000
+    },
+    {
+      "dast": "FakeScanPro",
+      "test": "test_8_v1",
+      "detected": true,
+      "updatedAt": 1739898500
+    },
+    {
+      "dast": "FakeCyberSleuth",
+      "test": "test_9_v1",
+      "detected": true,
+      "updatedAt": 1739899000
+    },
+    {
+      "dast": "FakeBugBuster",
+      "test": "test_9_v1",
+      "detected": false,
+      "updatedAt": 1739899500
+    },
+    {
+      "dast": "FakeDastAlpha",
+      "test": "test_10_v1",
+      "detected": true,
+      "updatedAt": 1739900000
+    },
+    {
+      "dast": "FakeDastBeta",
+      "test": "test_10_v1",
+      "detected": false,
+      "updatedAt": 1739900500
+    },
+    {
+      "dast": "FakeDastGamma",
+      "test": "test_10_v1",
+      "detected": true,
+      "updatedAt": 1739900800
+    },
+    {
+      "dast": "FakeIntruderCheck",
+      "test": "test_11_v1",
+      "detected": false,
+      "updatedAt": 1739901000
+    },
+    {
+      "dast": "FakeVulnHunter",
+      "test": "test_11_v1",
+      "detected": true,
+      "updatedAt": 1739901500
+    },
+    {
+      "dast": "FakeShieldScan",
+      "test": "test_12_v1",
+      "detected": true,
+      "updatedAt": 1739902000
+    },
+    {
+      "dast": "FakeSafeGuard",
+      "test": "test_12_v1",
+      "detected": false,
+      "updatedAt": 1739902500
+    },
+    {
+      "dast": "FakeRiskAssessor",
+      "test": "test_13_v1",
+      "detected": true,
+      "updatedAt": 1739903000
+    },
+    {
+      "dast": "FakeSecureScan",
+      "test": "test_13_v1",
+      "detected": false,
+      "updatedAt": 1739903500
+    },
+    {
+      "dast": "FakeVulnFinder",
+      "test": "test_14_v1",
+      "detected": true,
+      "updatedAt": 1739904000
+    },
+    {
+      "dast": "FakeNetInspector",
+      "test": "test_14_v1",
+      "detected": false,
+      "updatedAt": 1739904500
+    },
+    {
+      "dast": "FakeScanPro",
+      "test": "test_15_v1",
+      "detected": true,
+      "updatedAt": 1739905000
+    },
+    {
+      "dast": "FakeCyberSleuth",
+      "test": "test_15_v1",
+      "detected": false,
+      "updatedAt": 1739905500
+    },
+    {
+      "dast": "FakeBugBuster",
+      "test": "test_15_v1",
+      "detected": true,
+      "updatedAt": 1739905800
+    },
+    {
+      "dast": "FakeDastAlpha",
+      "test": "test_16_v1",
+      "detected": false,
+      "updatedAt": 1739906000
+    },
+    {
+      "dast": "FakeDastBeta",
+      "test": "test_16_v1",
+      "detected": true,
+      "updatedAt": 1739906500
+    },
+    {
+      "dast": "FakeDastGamma",
+      "test": "test_17_v1",
+      "detected": true,
+      "updatedAt": 1739907000
+    },
+    {
+      "dast": "FakeIntruderCheck",
+      "test": "test_17_v1",
+      "detected": false,
+      "updatedAt": 1739907500
+    },
+    {
+      "dast": "FakeVulnHunter",
+      "test": "test_19_v1",
+      "detected": false,
+      "updatedAt": 1739908000
+    },
+    {
+      "dast": "FakeShieldScan",
+      "test": "test_19_v1",
+      "detected": true,
+      "updatedAt": 1739908500
+    },
+    {
+      "dast": "FakeSafeGuard",
+      "test": "test_20_v1",
+      "detected": true,
+      "updatedAt": 1739909000
+    },
+    {
+      "dast": "FakeRiskAssessor",
+      "test": "test_20_v1",
+      "detected": false,
+      "updatedAt": 1739909500
+    },
+    {
+      "dast": "FakeSecureScan",
+      "test": "test_20_v1",
+      "detected": true,
+      "updatedAt": 1739909800
+    },
+    {
+      "dast": "FakeVulnFinder",
+      "test": "test_21_v1",
+      "detected": true,
+      "updatedAt": 1739910000
+    },
+    {
+      "dast": "FakeNetInspector",
+      "test": "test_21_v1",
+      "detected": false,
+      "updatedAt": 1739910500
+    },
+    {
+      "dast": "FakeScanPro",
+      "test": "test_22_v1",
+      "detected": false,
+      "updatedAt": 1739911000
+    },
+    {
+      "dast": "FakeCyberSleuth",
+      "test": "test_22_v1",
+      "detected": true,
+      "updatedAt": 1739911500
+    },
+    {
+      "dast": "FakeBugBuster",
+      "test": "test_23_v1",
+      "detected": true,
+      "updatedAt": 1739912000
+    },
+    {
+      "dast": "FakeDastAlpha",
+      "test": "test_23_v1",
+      "detected": false,
+      "updatedAt": 1739912500
+    },
+    {
+      "dast": "FakeDastBeta",
+      "test": "test_24_v1",
+      "detected": true,
+      "updatedAt": 1739913000
+    },
+    {
+      "dast": "FakeDastGamma",
+      "test": "test_24_v1",
+      "detected": false,
+      "updatedAt": 1739913500
+    },
+    {
+      "dast": "FakeIntruderCheck",
+      "test": "test_25_v1",
+      "detected": true,
+      "updatedAt": 1739914000
+    },
+    {
+      "dast": "FakeVulnHunter",
+      "test": "test_25_v1",
+      "detected": false,
+      "updatedAt": 1739914500
+    },
+    {
+      "dast": "FakeShieldScan",
+      "test": "test_25_v1",
+      "detected": true,
+      "updatedAt": 1739914800
+    },
+    {
+      "dast": "FakeSafeGuard",
+      "test": "test_26_v1",
+      "detected": false,
+      "updatedAt": 1739915000
+    },
+    {
+      "dast": "FakeRiskAssessor",
+      "test": "test_26_v1",
+      "detected": true,
+      "updatedAt": 1739915500
+    },
+    {
+      "dast": "FakeSecureScan",
+      "test": "test_27_v1",
+      "detected": true,
+      "updatedAt": 1739916000
+    },
+    {
+      "dast": "FakeVulnFinder",
+      "test": "test_27_v1",
+      "detected": false,
+      "updatedAt": 1739916500
+    },
+    {
+      "dast": "FakeNetInspector",
+      "test": "test_28_v1",
+      "detected": false,
+      "updatedAt": 1739917000
+    },
+    {
+      "dast": "FakeScanPro",
+      "test": "test_28_v1",
+      "detected": true,
+      "updatedAt": 1739917500
+    },
+    {
+      "dast": "FakeCyberSleuth",
+      "test": "test_29_v1",
+      "detected": true,
+      "updatedAt": 1739918000
+    },
+    {
+      "dast": "FakeBugBuster",
+      "test": "test_29_v1",
+      "detected": false,
+      "updatedAt": 1739918500
+    },
+    {
+      "dast": "FakeDastAlpha",
+      "test": "test_30_v1",
+      "detected": true,
+      "updatedAt": 1739919000
+    },
+    {
+      "dast": "FakeDastBeta",
+      "test": "test_30_v1",
+      "detected": false,
+      "updatedAt": 1739919500
+    },
+    {
+      "dast": "FakeDastGamma",
+      "test": "test_30_v1",
+      "detected": true,
+      "updatedAt": 1739919800
+    }
+  ]
+}
