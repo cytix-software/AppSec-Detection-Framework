@@ -518,3 +518,6 @@ services:
       - apache
       - php
       - cwe-521
+      - a07:2021
+
+
