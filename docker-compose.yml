@@ -450,3 +450,92 @@ services:
       - cwe-913
       - a08:2021
       - ao1:2021
+      
+  test_31_v1:
+    image: test_31_v1:latest
+    build:
+      context: tests/test-31/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8311:80"
+    profiles:
+      - test-31
+      - php
+      - apache
+      - cwe-940
+      - cwe-346
+      - cwe-352
+      - a07:2021
+      - a01:2021
+
+  test_32_v1:
+    image: test_32_v1:latest
+    build:
+      context: tests/test-32/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8321:80"
+    profiles:
+      - test-32
+      - php
+      - apache
+      - cwe-640
+      - cwe-257
+      - cwe-256
+      - cwe-798
+      - cwe-307
+      - a07:2021
+      - a04:2021
+
+  test_33_v1:
+    image: test_33_v1:latest
+    build:
+      context: tests/test-33/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8331:80"
+    profiles:
+      - test-33
+      - apache
+      - php
+      - cwe-620
+      - cwe-306
+      - cwe-352
+      - cwe-598 
+      - a07:2021
+      - a04:2021
+      - a01:2021
+
+  test_34_v1:
+    image: test_34_v1:latest
+    build:
+      context: tests/test-34/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8341:80"
+    profiles:
+      - test-34
+      - apache
+      - php
+      - cwe-521
+      - a07:2021
+
+  test_35_v1:
+    image: test_35_v1:latest
+    build:
+      context: tests/test-35/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8351:80"
+    profiles:
+      - test-35
+      - apache
+      - php
+      - cwe-302
+      - cwe-807
+      - cwe-287 
+      - cwe-784 
+      - cwe-565 
+      - a07:2021
+      - a04:2021
+      - a08:2021
