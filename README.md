@@ -32,6 +32,7 @@ tests/
 |   └── v1
 |       ├── Dockerfile
 |       └── index.php
+visualizer/
 docker-compose.yml
 data.json
 ```
@@ -78,6 +79,9 @@ services:
       - cwe-23
       - cwe-22
 ```
+
+### visualizer/
+Visualizer is the data visualizer for the data, it provides various search tools and graphs to understand the data. See [the README](visualizer/README.md) for more information.
 
 ### Dockerfile
 
