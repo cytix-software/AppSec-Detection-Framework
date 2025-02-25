@@ -554,3 +554,18 @@ services:
       - cwe-297
       - cwe-295
       - a07:2021
+
+  test_37_v1:
+    image: test_37_v1:latest
+    build:
+      context: tests/test-37/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8371:80"
+    profiles:
+      - test-37
+      - apache
+      - php
+      - cwe-294
+      - cwe-798 
+      - a07:2021
