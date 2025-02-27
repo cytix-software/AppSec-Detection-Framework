@@ -628,6 +628,5 @@ services:
       - test-41
       - apache
       - php
-      - cwe-541
       - cwe-315
       - a05:2021
