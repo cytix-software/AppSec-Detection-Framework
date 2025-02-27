@@ -586,3 +586,17 @@ services:
       - cwe-602
       - a04:2021
       - a07:2021
+
+  test_39_v1:
+    image: test_39_v1:latest
+    build:
+      context: tests/test-39/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8391:80"
+    profiles:
+      - test-39
+      - apache
+      - php
+      - cwe-614
+      - a05:2021
