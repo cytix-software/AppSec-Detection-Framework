@@ -600,3 +600,19 @@ services:
       - php
       - cwe-614
       - a05:2021
+
+  test_40_v1:
+    image: test_40_v1:latest
+    build:
+      context: tests/test-40/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8401:80"
+    profiles:
+      - test-40
+      - apache
+      - php
+      - cwe-611
+      - cwe-610
+      - a05:2021
+      - a03:2021
