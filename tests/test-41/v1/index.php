@@ -1,4 +1,5 @@
 <?php
+// Vulnerable code demonstrating CWE-315
 // Simulate a login (user's ID in plain text is set)
 $userID = "user123"; 
 // Store the user ID in a cookie in cleartext
