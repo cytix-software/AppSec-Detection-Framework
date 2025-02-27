@@ -616,3 +616,17 @@ services:
       - cwe-610
       - a05:2021
       - a03:2021
+
+  test_41_v1:
+    image: test_41_v1:latest
+    build:
+      context: tests/test-41/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8411:80"
+    profiles:
+      - test-41
+      - apache
+      - php
+      - cwe-315
+      - a05:2021
