@@ -45,392 +45,457 @@
     {
       "dast": "FakeSecureScan",
       "test": "test_1_v1",
-      "detected": true,
-      "updatedAt": 1739891000
+      "updatedAt": 1739891000,
+      "detectedCWEs": [22],
+      "undetectedCWEs": [23]
     },
     {
       "dast": "FakeVulnFinder",
       "test": "test_1_v1",
-      "detected": false,
-      "updatedAt": 1739891500
+      "updatedAt": 1739891500,
+      "detectedCWEs": [23],
+      "undetectedCWEs": [22]
     },
     {
       "dast": "FakeNetInspector",
       "test": "test_1_v1",
-      "detected": true,
-      "updatedAt": 1739891800
+      "updatedAt": 1739891800,
+      "detectedCWEs": [22],
+      "undetectedCWEs": [23]
     },
     {
       "dast": "FakeScanPro",
       "test": "test_2_v1",
-      "detected": false,
-      "updatedAt": 1739892000
+      "updatedAt": 1739892000,
+      "detectedCWEs": [],
+      "undetectedCWEs": [78]
     },
     {
       "dast": "FakeCyberSleuth",
       "test": "test_2_v1",
-      "detected": true,
-      "updatedAt": 1739892500
+      "updatedAt": 1739892500,
+      "detectedCWEs": [78],
+      "undetectedCWEs": []
     },
     {
       "dast": "FakeBugBuster",
       "test": "test_3_v1",
-      "detected": true,
-      "updatedAt": 1739893000
+      "updatedAt": 1739893000,
+      "detectedCWEs": [],
+      "undetectedCWEs": [352]
     },
     {
       "dast": "FakeDastAlpha",
       "test": "test_3_v1",
-      "detected": false,
-      "updatedAt": 1739893500
+      "updatedAt": 1739893500,
+      "detectedCWEs": [],
+      "undetectedCWEs": [352]
     },
     {
       "dast": "FakeDastBeta",
       "test": "test_4_v1",
-      "detected": true,
-      "updatedAt": 1739894000
+      "updatedAt": 1739894000,
+      "detectedCWEs": [80],
+      "undetectedCWEs": []
     },
     {
       "dast": "FakeDastGamma",
       "test": "test_4_v1",
-      "detected": false,
-      "updatedAt": 1739894500
+      "updatedAt": 1739894500,
+      "detectedCWEs": [],
+      "undetectedCWEs": [80]
     },
     {
       "dast": "FakeIntruderCheck",
       "test": "test_5_v1",
-      "detected": true,
-      "updatedAt": 1739895000
+      "updatedAt": 1739895000,
+      "detectedCWEs": [83],
+      "undetectedCWEs": []
     },
     {
       "dast": "FakeVulnHunter",
       "test": "test_5_v1",
-      "detected": false,
-      "updatedAt": 1739895500
+      "updatedAt": 1739895500,
+      "detectedCWEs": [],
+      "undetectedCWEs": [83]
     },
     {
       "dast": "FakeShieldScan",
       "test": "test_5_v1",
-      "detected": true,
-      "updatedAt": 1739895800
+      "updatedAt": 1739895800,
+      "detectedCWEs": [83],
+      "undetectedCWEs": []
     },
     {
       "dast": "FakeSafeGuard",
       "test": "test_6_v1",
-      "detected": false,
-      "updatedAt": 1739896000
+      "updatedAt": 1739896000,
+      "detectedCWEs": [],
+      "undetectedCWEs": [434]
     },
     {
       "dast": "FakeRiskAssessor",
       "test": "test_6_v1",
-      "detected": true,
-      "updatedAt": 1739896500
+      "updatedAt": 1739896500,
+      "detectedCWEs": [434],
+      "undetectedCWEs": []
     },
     {
       "dast": "FakeSecureScan",
       "test": "test_7_v1",
-      "detected": true,
-      "updatedAt": 1739897000
+      "updatedAt": 1739897000,
+      "detectedCWEs": [502],
+      "undetectedCWEs": []
     },
     {
       "dast": "FakeVulnFinder",
       "test": "test_7_v1",
-      "detected": false,
-      "updatedAt": 1739897500
+      "updatedAt": 1739897500,
+      "detectedCWEs": [],
+      "undetectedCWEs": [502]
     },
     {
       "dast": "FakeNetInspector",
       "test": "test_8_v1",
-      "detected": false,
-      "updatedAt": 1739898000
+      "updatedAt": 1739898000,
+      "detectedCWEs": [],
+      "undetectedCWEs": [1004]
     },
     {
       "dast": "FakeScanPro",
       "test": "test_8_v1",
-      "detected": true,
-      "updatedAt": 1739898500
+      "updatedAt": 1739898500,
+      "detectedCWEs": [1004],
+      "undetectedCWEs": []
     },
     {
       "dast": "FakeCyberSleuth",
       "test": "test_9_v1",
-      "detected": true,
-      "updatedAt": 1739899000
+      "updatedAt": 1739899000,
+      "detectedCWEs": [22],
+      "undetectedCWEs": [35]
     },
     {
       "dast": "FakeBugBuster",
       "test": "test_9_v1",
-      "detected": false,
-      "updatedAt": 1739899500
+      "updatedAt": 1739899500,
+      "detectedCWEs": [35],
+      "undetectedCWEs": [22]
     },
     {
       "dast": "FakeDastAlpha",
       "test": "test_10_v1",
-      "detected": true,
-      "updatedAt": 1739900000
+      "updatedAt": 1739900000,
+      "detectedCWEs": [276],
+      "undetectedCWEs": []
     },
     {
       "dast": "FakeDastBeta",
       "test": "test_10_v1",
-      "detected": false,
-      "updatedAt": 1739900500
+      "updatedAt": 1739900500,
+      "detectedCWEs": [],
+      "undetectedCWEs": [276]
     },
     {
       "dast": "FakeDastGamma",
       "test": "test_10_v1",
-      "detected": true,
-      "updatedAt": 1739900800
+      "updatedAt": 1739900800,
+      "detectedCWEs": [276],
+      "undetectedCWEs": []
     },
     {
       "dast": "FakeIntruderCheck",
       "test": "test_11_v1",
-      "detected": false,
-      "updatedAt": 1739901000
+      "updatedAt": 1739901000,
+      "detectedCWEs": [552],
+      "undetectedCWEs": [219, 256]
     },
     {
       "dast": "FakeVulnHunter",
       "test": "test_11_v1",
-      "detected": true,
-      "updatedAt": 1739901500
+      "updatedAt": 1739901500,
+      "detectedCWEs": [219, 256],
+      "undetectedCWEs": [552]
     },
     {
       "dast": "FakeShieldScan",
       "test": "test_12_v1",
-      "detected": true,
-      "updatedAt": 1739902000
+      "updatedAt": 1739902000,
+      "detectedCWEs": [377],
+      "undetectedCWEs": []
     },
     {
       "dast": "FakeSafeGuard",
       "test": "test_12_v1",
-      "detected": false,
-      "updatedAt": 1739902500
+      "updatedAt": 1739902500,
+      "detectedCWEs": [],
+      "undetectedCWEs": [377]
     },
     {
       "dast": "FakeRiskAssessor",
       "test": "test_13_v1",
-      "detected": true,
-      "updatedAt": 1739903000
+      "updatedAt": 1739903000,
+      "detectedCWEs": [862],
+      "undetectedCWEs": []
     },
     {
       "dast": "FakeSecureScan",
       "test": "test_13_v1",
-      "detected": false,
-      "updatedAt": 1739903500
+      "updatedAt": 1739903500,
+      "detectedCWEs": [],
+      "undetectedCWEs": [862]
     },
     {
       "dast": "FakeVulnFinder",
       "test": "test_14_v1",
-      "detected": true,
-      "updatedAt": 1739904000
+      "updatedAt": 1739904000,
+      "detectedCWEs": [287, 565],
+      "undetectedCWEs": [784, 863]
     },
     {
       "dast": "FakeNetInspector",
       "test": "test_14_v1",
-      "detected": false,
-      "updatedAt": 1739904500
+      "updatedAt": 1739904500,
+      "detectedCWEs": [784, 863],
+      "undetectedCWEs": [287, 565]
     },
     {
       "dast": "FakeScanPro",
       "test": "test_15_v1",
-      "detected": true,
-      "updatedAt": 1739905000
+      "updatedAt": 1739905000,
+      "detectedCWEs": [327, 328],
+      "undetectedCWEs": [759, 916]
     },
     {
       "dast": "FakeCyberSleuth",
       "test": "test_15_v1",
-      "detected": false,
-      "updatedAt": 1739905500
+      "updatedAt": 1739905500,
+      "detectedCWEs": [759, 916],
+      "undetectedCWEs": [327, 328]
     },
     {
       "dast": "FakeBugBuster",
       "test": "test_15_v1",
-      "detected": true,
-      "updatedAt": 1739905800
+      "updatedAt": 1739905800,
+      "detectedCWEs": [327, 328],
+      "undetectedCWEs": [759, 916]
     },
     {
       "dast": "FakeDastAlpha",
       "test": "test_16_v1",
-      "detected": false,
-      "updatedAt": 1739906000
+      "updatedAt": 1739906000,
+      "detectedCWEs": [78],
+      "undetectedCWEs": [918]
     },
     {
       "dast": "FakeDastBeta",
       "test": "test_16_v1",
-      "detected": true,
-      "updatedAt": 1739906500
+      "updatedAt": 1739906500,
+      "detectedCWEs": [918],
+      "undetectedCWEs": [78]
     },
     {
       "dast": "FakeDastGamma",
       "test": "test_17_v1",
-      "detected": true,
-      "updatedAt": 1739907000
+      "updatedAt": 1739907000,
+      "detectedCWEs": [321, 327, 328],
+      "undetectedCWEs": [760, 798, 916]
     },
     {
       "dast": "FakeIntruderCheck",
       "test": "test_17_v1",
-      "detected": false,
-      "updatedAt": 1739907500
+      "updatedAt": 1739907500,
+      "detectedCWEs": [760, 798, 916],
+      "undetectedCWEs": [321, 327, 328]
     },
     {
       "dast": "FakeVulnHunter",
       "test": "test_19_v1",
-      "detected": false,
-      "updatedAt": 1739908000
+      "updatedAt": 1739908000,
+      "detectedCWEs": [287],
+      "undetectedCWEs": [501]
     },
     {
       "dast": "FakeShieldScan",
       "test": "test_19_v1",
-      "detected": true,
-      "updatedAt": 1739908500
+      "updatedAt": 1739908500,
+      "detectedCWEs": [501],
+      "undetectedCWEs": [287]
     },
     {
       "dast": "FakeSafeGuard",
       "test": "test_20_v1",
-      "detected": true,
-      "updatedAt": 1739909000
+      "updatedAt": 1739909000,
+      "detectedCWEs": [223, 307],
+      "undetectedCWEs": [778, 799]
     },
     {
       "dast": "FakeRiskAssessor",
       "test": "test_20_v1",
-      "detected": false,
-      "updatedAt": 1739909500
+      "updatedAt": 1739909500,
+      "detectedCWEs": [778, 799],
+      "undetectedCWEs": [223, 307]
     },
     {
       "dast": "FakeSecureScan",
       "test": "test_20_v1",
-      "detected": true,
-      "updatedAt": 1739909800
+      "updatedAt": 1739909800,
+      "detectedCWEs": [778, 799],
+      "undetectedCWEs": [223, 307]
     },
     {
       "dast": "FakeVulnFinder",
       "test": "test_21_v1",
-      "detected": true,
-      "updatedAt": 1739910000
+      "updatedAt": 1739910000,
+      "detectedCWEs": [117],
+      "undetectedCWEs": []
     },
     {
       "dast": "FakeNetInspector",
       "test": "test_21_v1",
-      "detected": false,
-      "updatedAt": 1739910500
+      "updatedAt": 1739910500,
+      "detectedCWEs": [],
+      "undetectedCWEs": [117]
     },
     {
       "dast": "FakeScanPro",
       "test": "test_22_v1",
-      "detected": false,
-      "updatedAt": 1739911000
+      "updatedAt": 1739911000,
+      "detectedCWEs": [],
+      "undetectedCWEs": [613]
     },
     {
       "dast": "FakeCyberSleuth",
       "test": "test_22_v1",
-      "detected": true,
-      "updatedAt": 1739911500
+      "updatedAt": 1739911500,
+      "detectedCWEs": [613],
+      "undetectedCWEs": []
     },
     {
       "dast": "FakeBugBuster",
       "test": "test_23_v1",
-      "detected": true,
-      "updatedAt": 1739912000
+      "updatedAt": 1739912000,
+      "detectedCWEs": [384],
+      "undetectedCWEs": []
     },
     {
       "dast": "FakeDastAlpha",
       "test": "test_23_v1",
-      "detected": false,
-      "updatedAt": 1739912500
+      "updatedAt": 1739912500,
+      "detectedCWEs": [],
+      "undetectedCWEs": [384]
     },
     {
       "dast": "FakeDastBeta",
       "test": "test_24_v1",
-      "detected": true,
-      "updatedAt": 1739913000
+      "updatedAt": 1739913000,
+      "detectedCWEs": [359, 522],
+      "undetectedCWEs": [532]
     },
     {
       "dast": "FakeDastGamma",
       "test": "test_24_v1",
-      "detected": false,
-      "updatedAt": 1739913500
+      "updatedAt": 1739913500,
+      "detectedCWEs": [532],
+      "undetectedCWEs": [359, 522]
     },
     {
       "dast": "FakeIntruderCheck",
       "test": "test_25_v1",
-      "detected": true,
-      "updatedAt": 1739914000
+      "updatedAt": 1739914000,
+      "detectedCWEs": [98, 426],
+      "undetectedCWEs": [706, 829]
     },
     {
       "dast": "FakeVulnHunter",
       "test": "test_25_v1",
-      "detected": false,
-      "updatedAt": 1739914500
+      "updatedAt": 1739914500,
+      "detectedCWEs": [706, 829],
+      "undetectedCWEs": [98, 426]
     },
     {
       "dast": "FakeShieldScan",
       "test": "test_25_v1",
-      "detected": true,
-      "updatedAt": 1739914800
+      "updatedAt": 1739914800,
+      "detectedCWEs": [706, 829],
+      "undetectedCWEs": [98, 426]
     },
     {
       "dast": "FakeSafeGuard",
       "test": "test_26_v1",
-      "detected": false,
-      "updatedAt": 1739915000
+      "updatedAt": 1739915000,
+      "detectedCWEs": [345],
+      "undetectedCWEs": [646]
     },
     {
       "dast": "FakeRiskAssessor",
       "test": "test_26_v1",
-      "detected": true,
-      "updatedAt": 1739915500
+      "updatedAt": 1739915500,
+      "detectedCWEs": [646],
+      "undetectedCWEs": [345]
     },
     {
       "dast": "FakeSecureScan",
       "test": "test_27_v1",
-      "detected": true,
-      "updatedAt": 1739916000
+      "updatedAt": 1739916000,
+      "detectedCWEs": [345],
+      "undetectedCWEs": [353]
     },
     {
       "dast": "FakeVulnFinder",
       "test": "test_27_v1",
-      "detected": false,
-      "updatedAt": 1739916500
+      "updatedAt": 1739916500,
+      "detectedCWEs": [353],
+      "undetectedCWEs": [345]
     },
     {
       "dast": "FakeNetInspector",
       "test": "test_28_v1",
-      "detected": false,
-      "updatedAt": 1739917000
+      "updatedAt": 1739917000,
+      "detectedCWEs": [345],
+      "undetectedCWEs": [494]
     },
     {
       "dast": "FakeScanPro",
       "test": "test_28_v1",
-      "detected": true,
-      "updatedAt": 1739917500
+      "updatedAt": 1739917500,
+      "detectedCWEs": [494],
+      "undetectedCWEs": [345]
     },
     {
       "dast": "FakeCyberSleuth",
       "test": "test_29_v1",
-      "detected": true,
-      "updatedAt": 1739918000
+      "updatedAt": 1739918000,
+      "detectedCWEs": [79, 829],
+      "undetectedCWEs": [830]
     },
     {
       "dast": "FakeBugBuster",
       "test": "test_29_v1",
-      "detected": false,
-      "updatedAt": 1739918500
+      "updatedAt": 1739918500,
+      "detectedCWEs": [830, 829],
+      "undetectedCWEs": [79]
     },
     {
       "dast": "FakeDastAlpha",
       "test": "test_30_v1",
-      "detected": true,
-      "updatedAt": 1739919000
+      "updatedAt": 1739919000,
+      "detectedCWEs": [913],
+      "undetectedCWEs": [915]
     },
     {
       "dast": "FakeDastBeta",
       "test": "test_30_v1",
-      "detected": false,
-      "updatedAt": 1739919500
+      "updatedAt": 1739919500,
+      "detectedCWEs": [915],
+      "undetectedCWEs": [913]
     },
     {
       "dast": "FakeDastGamma",
       "test": "test_30_v1",
-      "detected": true,
-      "updatedAt": 1739919800
+      "updatedAt": 1739919800,
+      "detectedCWEs": [915],
+      "undetectedCWEs": [913]
     }
   ]
 }

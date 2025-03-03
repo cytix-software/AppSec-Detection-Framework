@@ -39,7 +39,7 @@
 <script setup lang="ts">
 import { ref, computed, h } from 'vue';
 import { NCard } from 'naive-ui';
-import { groupBy, filter, find, some, includes } from 'lodash-es';
+import { groupBy, filter, find, some, includes, flatten, map } from 'lodash-es';
 import { loadData } from './data';
 import type { HydratedTest } from './types';
 import ChartControls from './ChartControls.vue';
@@ -76,12 +76,17 @@ const heatmapData = computed(() => vulnerabilities.flatMap(({ OWASP, CWE }) => {
       (!selectedTechnology.value || includes(t.profiles, selectedTechnology.value))
   ));
   const groupedByDast = groupBy(cweTests, 'dast');
-  return Object.entries(groupedByDast).map(([dast, tests]) => ({
-    dast,
-    OWASP,
-    detectedCount: filter(tests, 'detected').length,
-    totalCount: tests.length
-  }));
+  return Object.entries(groupedByDast).map(([dast, tests]) => {
+    const detectedCWEs = flatten(map(tests, 'detectedCWEs')).length;
+    const undetectedCWEs = flatten(map(tests, 'undetectedCWEs')).length;
+    const totalCount = detectedCWEs+undetectedCWEs;
+    return ({
+      dast,
+      OWASP,
+      detectedCWEs,
+      totalCount
+    });
+  });
 }));
 
 const heatmapSeries = computed(() => {
@@ -90,7 +95,7 @@ const heatmapSeries = computed(() => {
     name: dast,
     data: vulnerabilities.map(({ OWASP }) => {
       const entry = find(heatmapData.value, { dast, OWASP });
-      return { x: OWASP, y: entry ? Math.round((entry.detectedCount / entry.totalCount) * 100) : 0 };
+      return { x: OWASP, y: entry ? Math.round((entry.detectedCWEs / entry.totalCount) * 100) : 0 };
     })
   }));
 });
@@ -113,7 +118,10 @@ const calculateWeightedScores = () => {
         sum + (1 / (techCounts[tech]?.length || 1)), 0) / relevantTechs.length;
 
       totalWeight += weight;
-      if (test.detected) detectedWeight += weight;
+      //we should calculate this depending on the number of CWEs identified
+      //we may want to also validate whether the CWEs are actually part of the test or if additional CWEs were identified (false positive detection)
+      const weightContribution = weight/(test.detectedCWEs.length+test.undetectedCWEs.length)*test.detectedCWEs.length;
+      detectedWeight += weightContribution;
     });
 
     return {
