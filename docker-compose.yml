@@ -313,7 +313,7 @@ services:
       context: tests/test-22/v1/
       dockerfile: Dockerfile
     ports:
-      - "8122:80"
+      - "8221:80"
     profiles:
       - test-22
       - php
