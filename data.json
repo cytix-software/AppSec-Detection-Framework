@@ -42,7 +42,336 @@
     }
   ],
   "recordedTests": [
-    {
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_1_v1",
+        "detected": [20,693,200,1021],
+        "undetected": [23,22],
+        "updatedAt": 1740999692
+      },
+  
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_2_v1",
+        "detected": [693,1021,200,693],
+        "undetected": [78],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_3_v1",
+        "detected": [693,1021,200],
+        "undetected": [352],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_4_v1",
+        "detected": [693,1021,200],
+        "undetected": [80],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_5_v1",
+        "detected": [693,1021,200],
+        "undetected": [83],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_6_v1",
+        "detected": [693,1021,200,20],
+        "undetected": [434],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_7_v1",
+        "detected": [693,1021,200,20],
+        "undetected": [502],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_8_v1",
+        "detected": [693,1021,1004,200,565],
+        "undetected": [],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_9_v1",
+        "detected": [693,1021,200,20],
+        "undetected": [22,35],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_10_v1",
+        "detected": [693,1021,200],
+        "undetected": [276],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_11_v1",
+        "detected": [693,1021,200],
+        "undetected": [219,256,552],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_12_v1",
+        "detected": [693,1021,200],
+        "undetected": [377],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_13_v1",
+        "detected": [693,1021,200],
+        "undetected": [862],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_14_v1",
+        "detected": [693,1021,1004,200,565],
+        "undetected": [863,287,784],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_15_v1",
+        "detected": [352,693,1021,200],
+        "undetected": [328,327,759,916],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_16_v1",
+        "detected": [693,1021,200],
+        "undetected": [918,78],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_17_v1",
+        "detected": [352,693,1021,200],
+        "undetected": [760,327,328,916,321,798],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_19_v1",
+        "detected": [693,1021,1004,1275,200,565],
+        "undetected": [501,287],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_20_v1",
+        "detected": [352,693,1021,1004,1275,200,565],
+        "undetected": [778,799,223,307],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_21_v1",
+        "detected": [352,693,1021,200],
+        "undetected": [117],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_22_v1",
+        "detected": [693,1021,1004,1275,200,565],
+        "undetected": [613],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_23_v1",
+        "detected": [352,693,1021,1004,1275,200,565],
+        "undetected": [384],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_24_v1",
+        "detected": [352,693,1021,200],
+        "undetected": [359,522,532],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_25_v1",
+        "detected": [693,1021,200],
+        "undetected": [98,706,829,426],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_26_v1",
+        "detected": [352,200,693,1021,200],
+        "undetected" :[646,345],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_27_v1",
+        "detected": [352,693,1021,200],
+        "undetected": [353,345],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_28_v1",
+        "detected": [693,1021,200],
+        "undetected": [494,345],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_29_v1",
+        "detected": [693,1021,829],
+        "undetected": [830,79],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_30_v1",
+        "detected": [352,693,1021,200],
+        "undetected": [915,913],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_31_v1",
+        "detected": [693,1021,1004,1275,565],
+        "undetected": [940,346,352],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_32_v1",
+        "detected": [352,693,1021,200,20],
+        "undetected": [640,257,256,798,307],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_33_v1",
+        "detected": [693,1021,200],
+        "undetected": [620,306,352,598],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_34_v1",
+        "detected": [693,1021,200],
+        "undetected": [521],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_35_v1",
+        "detected": [693,1021,200],
+        "undetected": [302,807,287,784,565],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_36_v1",
+        "detected": [693,1021,200],
+        "undetected": [297,295],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_37_v1",
+        "detected": [693,1021,1004,1275,200,565],
+        "undetected" :[294,798],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_38_v1",
+        "detected": [693,1021],
+        "undetected": [290,287,602,200],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_39_v1",
+        "detected": [693,1021,1004,1275,200,565],
+        "undetected": [614],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_40_v1",
+        "detected": [352,693,1021,200],
+        "undetected": [610,611],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_41_v1",
+        "detected": [693,1021,1004,1275,200,565],
+        "undetected": [315],
+        "updatedAt": 1740999692
+      },
+
+      {
+        "dast": "zap_v2.16.0",
+        "test": "test_42_v1",
+        "detected": [693,1021,200],
+        "undetected": [526,312],
+        "updatedAt": 1740999692
+      },
+
+
+      {
       "dast": "FakeSecureScan",
       "test": "test_1_v1",
       "updatedAt": 1739891000,

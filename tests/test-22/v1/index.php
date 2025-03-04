@@ -1,7 +1,7 @@
 <?php
-// CWE-613: Insufficient Session Expiration
-ini_set('session.gc_maxlifetime', 2147483647);
-ini_set('session.cookie_lifetime', 2147483647);
+// Insufficient Session Expiration
+ini_set('session.gc_maxlifetime', 21474836);
+ini_set('session.cookie_lifetime', 21474836);
 
 session_start();
 ?>
