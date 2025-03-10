@@ -646,4 +646,18 @@ services:
       - cwe-312
       - a05:2021
       - a04:2021
+
+  test_44_v1:
+    image: test_44_v1:latest
+    build:
+      context: tests/test-44/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8441:80"
+    profiles:
+      - test-44
+      - apache
+      - php
+      - cwe-1104
+      - a06:2021
   
