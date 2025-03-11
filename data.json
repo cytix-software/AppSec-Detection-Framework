@@ -368,7 +368,7 @@
         "detectedCWEs": [693,1021,200],
         "undetectedCWEs": [526,312],
         "updatedAt": 1740999692
-      }
+      },
 
       {
         "dast": "zap_v2.16.0",
