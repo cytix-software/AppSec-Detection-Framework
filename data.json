@@ -376,6 +376,357 @@
         "detectedCWEs": [693,1021,829,497],
         "undetectedCWEs": [1104],
         "updatedAt": 1741601554
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_1_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_2_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_3_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_4_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_5_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_6_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_7_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_8_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_9_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_10_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_11_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_12_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_13_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_14_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_15_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_16_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_17_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_18_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_19_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_20_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_21_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_22_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+      {
+        "dast": "semgrep",
+        "test": "test_23_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_24_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_25_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_26_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_27_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_28_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_29_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_30_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_31_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_32_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_33_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_34_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_35_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_36_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_37_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_38_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_39_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_40_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_41_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_42_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_43_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
+      },
+
+      {
+        "dast": "semgrep",
+        "test": "test_44_v1",
+        "detectedCWEs": [],
+        "undetectedCWEs": [],
+        "updatedAt": 1741955443
       }
   ]
 }
