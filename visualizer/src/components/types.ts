@@ -1,42 +1,41 @@
 export interface DockerService {
-  image: string;
+  image: string
   build: {
-    context: string;
-    dockerfile: string;
-  };
-  ports: string[];
-  profiles: string[];
+    context: string
+    dockerfile: string
+  }
+  ports: string[]
+  profiles: string[]
 }
 
 export interface Vulnerability {
-  OWASP: string;
-  CWE: number[];
+  OWASP: string
+  CWE: number[]
 }
 
 export interface RecordedTest {
-  dast: string;
-  CWE: number;
-  test: string;
-  detected: boolean;
-  updatedAt: number;
+  dast: string
+  detectedCWEs: number[]
+  test: string
+  updatedAt: number
 }
 
 export interface HydratedTest extends RecordedTest {
-  profiles: string[];
+  profiles: string[]
 }
 
 export interface DockerCompose {
   services: {
-    [key: string]: DockerService;
-  };
+    [key: string]: DockerService
+  }
 }
 
 export interface VulnerabilitiesData {
-  vulnerabilities: Vulnerability[];
-  recordedTests: RecordedTest[];
+  vulnerabilities: Vulnerability[]
+  recordedTests: RecordedTest[]
 }
 
 export interface WeightedScore {
-  dast: string;
-  score: number;
+  dast: string
+  score: number
 }
