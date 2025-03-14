@@ -42,23 +42,23 @@
 </template>
 
 <script setup lang="ts">
-import { NDataTable, NInput, NSelect, NTag } from 'naive-ui';
-import { computed, reactive, h } from 'vue';
-import { filter as lodashFilter, includes, every, some, toLower } from 'lodash-es';
-import type { HydratedTest } from './types';
+import { NDataTable, NInput, NSelect, NTag } from 'naive-ui'
+import { computed, reactive, h } from 'vue'
+import { filter as lodashFilter, includes, every, some, toLower } from 'lodash-es'
+import type { HydratedTest } from './types'
 
-const columns = [
+const columns = computed(() => [
   { title: 'DAST Tool', key: 'dast' },
   { title: 'Test Name', key: 'test' },
   {
     title: 'Detected',
     key: 'detected',
-    render: (row: HydratedTest) => row.detected ? '✅' : '❌'
+    render: (row: HydratedTest) => (row.detectedCWEs.length > 0 ? '✅' : '❌'),
   },
   {
     title: 'Last Updated',
     key: 'updatedAt',
-    render: (row: HydratedTest) => new Date(row.updatedAt * 1000).toLocaleDateString()
+    render: (row: HydratedTest) => new Date(row.updatedAt * 1000).toLocaleDateString(),
   },
   {
     title: 'Profiles',
@@ -68,41 +68,47 @@ const columns = [
       h(
         'div',
         { class: 'profiles-cell' },
-        row.profiles.map(p =>
-          h(NTag, { type: 'info' }, p)
-        )
-      )
-  }
-];
+        row.profiles.map((p) => h(NTag, { type: 'info' }, { default: () => p })),
+      ),
+  },
+])
 
 const props = defineProps({
   data: { type: Array as () => HydratedTest[], required: true },
-  pagination: { type: Object, required: true }
-});
+  pagination: { type: Object, required: true },
+})
+
+interface FilterState {
+  dast: string
+  test: string
+  detected: boolean | null
+  updatedAt: string
+  profiles: string[]
+}
 
 // Define filter state for each column
-const filters = reactive({
+const filters = reactive<FilterState>({
   dast: '',
   test: '',
-  detected: null as boolean | null,
+  detected: null,
   updatedAt: '',
-  profiles: [] as string[]
-});
+  profiles: [],
+})
 
 // Generate profile options from unique values in data
 const profileOptions = computed(() => {
-  const allProfiles = props.data.flatMap(test => test.profiles);
-  return [...new Set(allProfiles)].map(profile => ({
+  const allProfiles = props.data.flatMap((test) => test.profiles)
+  return [...new Set(allProfiles)].map((profile) => ({
     label: profile,
-    value: profile
-  }));
-});
+    value: profile,
+  }))
+})
 
 // Boolean options for detected column
 const detectedOptions = [
   { label: 'Detected ✅', value: true },
-  { label: 'Not Detected ❌', value: false }
-];
+  { label: 'Not Detected ❌', value: false },
+]
 
 const filteredData = computed(() => {
   return lodashFilter(props.data, (row) => {
@@ -114,22 +120,18 @@ const filteredData = computed(() => {
       !filters.test || includes(toLower(row.test), toLower(filters.test)),
 
       // Detected filter
-      filters.detected === null || row.detected === filters.detected,
+      filters.detected === null || !!row.detectedCWEs === filters.detected,
 
       // Last Updated filter (matches date string)
-      !filters.updatedAt || includes(
-        new Date(row.updatedAt * 1000).toLocaleDateString(),
-        filters.updatedAt
-      ),
+      !filters.updatedAt ||
+        includes(new Date(row.updatedAt * 1000).toLocaleDateString(), filters.updatedAt),
 
       // Profiles filter (must include all selected)
-      filters.profiles.length === 0 || every(
-        filters.profiles,
-        profile => includes(row.profiles, profile)
-      )
-    ]);
-  });
-});
+      filters.profiles.length === 0 ||
+        every(filters.profiles, (profile) => includes(row.profiles, profile)),
+    ])
+  })
+})
 </script>
 
 <style scoped>
@@ -155,20 +157,20 @@ const filteredData = computed(() => {
 }
 
 .results-table :deep(.n-data-table-th) {
-  background: #0E1E33 !important;
-  color: #FFFFFF !important;
+  background: #0e1e33 !important;
+  color: #ffffff !important;
   font-size: 12px !important;
 }
 
 .results-table :deep(.n-tag) {
-  background: #216FED !important;
-  color: #FFFFFF !important;
+  background: #216fed !important;
+  color: #ffffff !important;
   border-radius: 20px !important;
   margin: 0.2rem;
 }
 
 /* Style the multi-select tags */
 .results-table :deep(.n-base-selection-tag__content) {
-  background: #1A4D8F !important;
+  background: #1a4d8f !important;
 }
 </style>
