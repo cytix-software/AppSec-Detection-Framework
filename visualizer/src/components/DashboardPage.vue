@@ -22,7 +22,7 @@
       </n-card>
 
       <n-card title="Dataset" class="data-table-wrapper">
-        <DataTable :columns="columns" :data="hydratedTests" :pagination="pagination" />
+        <DataTable :data="hydratedTests" :pagination="pagination" />
       </n-card>
     </div>
   </div>
