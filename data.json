@@ -381,16 +381,16 @@
       {
         "dast": "semgrep",
         "test": "test_1_v1",
-        "detectedCWEs": [],
-        "undetectedCWEs": [22,23],
+        "detectedCWEs": [22],
+        "undetectedCWEs": [23],
         "updatedAt": 1741955443
       },
 
       {
         "dast": "semgrep",
         "test": "test_2_v1",
-        "detectedCWEs": [],
-        "undetectedCWEs": [78],
+        "detectedCWEs": [78],
+        "undetectedCWEs": [],
         "updatedAt": 1741955443
       },
 
@@ -429,8 +429,8 @@
       {
         "dast": "semgrep",
         "test": "test_7_v1",
-        "detectedCWEs": [],
-        "undetectedCWEs": [502],
+        "detectedCWEs": [502],
+        "undetectedCWEs": [],
         "updatedAt": 1741955443
       },
 
@@ -469,8 +469,8 @@
       {
         "dast": "semgrep",
         "test": "test_12_v1",
-        "detectedCWEs": [],
-        "undetectedCWEs": [377],
+        "detectedCWEs": [377],
+        "undetectedCWEs": [],
         "updatedAt": 1741955443
       },
 
@@ -501,8 +501,8 @@
       {
         "dast": "semgrep",
         "test": "test_16_v1",
-        "detectedCWEs": [],
-        "undetectedCWEs": [918,78],
+        "detectedCWEs": [78],
+        "undetectedCWEs": [918],
         "updatedAt": 1741955443
       },
 
@@ -564,8 +564,8 @@
       {
         "dast": "semgrep",
         "test": "test_25_v1",
-        "detectedCWEs": [],
-        "undetectedCWEs": [98,706,829,426],
+        "detectedCWEs": [98,706,829],
+        "undetectedCWEs": [426],
         "updatedAt": 1741955443
       },
 
