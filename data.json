@@ -2,23 +2,41 @@
   "vulnerabilities": [
     {
       "OWASP": "A01:2021",
-      "CWE": [22, 23, 35, 59, 200, 201, 219, 264, 275, 276, 284, 285, 352, 359, 377, 402, 425, 441, 497, 538, 540, 548, 552, 566, 601, 639, 651, 668, 706, 862, 863, 913, 922, 1275]
+      "CWE": [
+        22, 23, 35, 59, 200, 201, 219, 264, 275, 276, 284, 285, 352, 359, 377,
+        402, 425, 441, 497, 538, 540, 548, 552, 566, 601, 639, 651, 668, 706,
+        862, 863, 913, 922, 1275
+      ]
     },
     {
       "OWASP": "A02:2021",
-      "CWE": [261, 296, 310, 319, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 335, 336, 337, 338, 340, 347, 523, 720, 757, 759, 760, 780, 818, 916]
+      "CWE": [
+        261, 296, 310, 319, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330,
+        331, 335, 336, 337, 338, 340, 347, 523, 720, 757, 759, 760, 780, 818,
+        916
+      ]
     },
     {
       "OWASP": "A03:2021",
-      "CWE": [20, 74, 75, 77, 78, 79, 80, 83, 87, 88, 89, 90, 91, 93, 94, 95, 96, 97, 98, 99, 113, 116, 138, 184, 470, 471, 564, 610, 643, 644, 652, 917]
+      "CWE": [
+        20, 74, 75, 77, 78, 79, 80, 83, 87, 88, 89, 90, 91, 93, 94, 95, 96, 97,
+        98, 99, 113, 116, 138, 184, 470, 471, 564, 610, 643, 644, 652, 917
+      ]
     },
     {
       "OWASP": "A04:2021",
-      "CWE": [73, 183, 209, 213, 235, 256, 257, 266, 269, 280, 311, 312, 313, 316, 419, 430, 434, 444, 451, 472, 501, 522, 525, 539, 579, 598, 602, 642, 646, 650, 653, 656, 657, 799, 807, 840, 841, 927, 1021, 1173]
+      "CWE": [
+        73, 183, 209, 213, 235, 256, 257, 266, 269, 280, 311, 312, 313, 316,
+        419, 430, 434, 444, 451, 472, 501, 522, 525, 539, 579, 598, 602, 642,
+        646, 650, 653, 656, 657, 799, 807, 840, 841, 927, 1021, 1173
+      ]
     },
     {
       "OWASP": "A05:2021",
-      "CWE": [2, 11, 13, 15, 16, 260, 315, 520, 526, 537, 541, 547, 611, 614, 756, 776, 942, 1004, 1032, 1174]
+      "CWE": [
+        2, 11, 13, 15, 16, 260, 315, 520, 526, 537, 541, 547, 611, 614, 756,
+        776, 942, 1004, 1032, 1174
+      ]
     },
     {
       "OWASP": "A06:2021",
@@ -26,7 +44,10 @@
     },
     {
       "OWASP": "A07:2021",
-      "CWE": [255, 259, 287, 288, 290, 294, 295, 297, 300, 302, 304, 306, 307, 346, 384, 521, 613, 620, 640, 798, 940, 1216]
+      "CWE": [
+        255, 259, 287, 288, 290, 294, 295, 297, 300, 302, 304, 306, 307, 346,
+        384, 521, 613, 620, 640, 798, 940, 1216
+      ]
     },
     {
       "OWASP": "A08:2021",
@@ -42,326 +63,333 @@
     }
   ],
   "recordedTests": [
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_1_v1",
-        "detectedCWEs": [20,693,200,1021],
-        "undetectedCWEs": [23,22],
-        "updatedAt": 1740999692
-      },
-  
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_2_v1",
-        "detectedCWEs": [693,1021,200,693],
-        "undetectedCWEs": [78],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_1_v1",
+      "detectedCWEs": [20, 693, 200, 1021],
+      "undetectedCWEs": [23, 22],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_3_v1",
-        "detectedCWEs": [693,1021,200],
-        "undetectedCWEs": [352],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_2_v1",
+      "detectedCWEs": [693, 1021, 200, 693],
+      "undetectedCWEs": [78],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_4_v1",
-        "detectedCWEs": [693,1021,200],
-        "undetectedCWEs": [80],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_3_v1",
+      "detectedCWEs": [693, 1021, 200],
+      "undetectedCWEs": [352],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_5_v1",
-        "detectedCWEs": [693,1021,200],
-        "undetectedCWEs": [83],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_4_v1",
+      "detectedCWEs": [693, 1021, 200],
+      "undetectedCWEs": [80],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_6_v1",
-        "detectedCWEs": [693,1021,200,20],
-        "undetectedCWEs": [434],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_5_v1",
+      "detectedCWEs": [693, 1021, 200],
+      "undetectedCWEs": [83],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_7_v1",
-        "detectedCWEs": [693,1021,200,20],
-        "undetectedCWEs": [502],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_6_v1",
+      "detectedCWEs": [693, 1021, 200, 20],
+      "undetectedCWEs": [434],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_8_v1",
-        "detectedCWEs": [693,1021,1004,200,565],
-        "undetectedCWEs": [],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_7_v1",
+      "detectedCWEs": [693, 1021, 200, 20],
+      "undetectedCWEs": [502],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_9_v1",
-        "detectedCWEs": [693,1021,200,20],
-        "undetectedCWEs": [22,35],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_8_v1",
+      "detectedCWEs": [693, 1021, 1004, 200, 565],
+      "undetectedCWEs": [],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_10_v1",
-        "detectedCWEs": [693,1021,200],
-        "undetectedCWEs": [276],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_9_v1",
+      "detectedCWEs": [693, 1021, 200, 20],
+      "undetectedCWEs": [22, 35],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_11_v1",
-        "detectedCWEs": [693,1021,200],
-        "undetectedCWEs": [219,256,552],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_10_v1",
+      "detectedCWEs": [693, 1021, 200],
+      "undetectedCWEs": [276],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_12_v1",
-        "detectedCWEs": [693,1021,200],
-        "undetectedCWEs": [377],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_11_v1",
+      "detectedCWEs": [693, 1021, 200],
+      "undetectedCWEs": [219, 256, 552],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_13_v1",
-        "detectedCWEs": [693,1021,200],
-        "undetectedCWEs": [862],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_12_v1",
+      "detectedCWEs": [693, 1021, 200],
+      "undetectedCWEs": [377],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_14_v1",
-        "detectedCWEs": [693,1021,1004,200,565],
-        "undetectedCWEs": [863,287,784],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_13_v1",
+      "detectedCWEs": [693, 1021, 200],
+      "undetectedCWEs": [862],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_15_v1",
-        "detectedCWEs": [352,693,1021,200],
-        "undetectedCWEs": [328,327,759,916],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_14_v1",
+      "detectedCWEs": [693, 1021, 1004, 200, 565],
+      "undetectedCWEs": [863, 287, 784],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_16_v1",
-        "detectedCWEs": [693,1021,200],
-        "undetectedCWEs": [918,78],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_15_v1",
+      "detectedCWEs": [352, 693, 1021, 200],
+      "undetectedCWEs": [328, 327, 759, 916],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_17_v1",
-        "detectedCWEs": [352,693,1021,200],
-        "undetectedCWEs": [760,327,328,916,321,798],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_16_v1",
+      "detectedCWEs": [693, 1021, 200],
+      "undetectedCWEs": [918, 78],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_19_v1",
-        "detectedCWEs": [693,1021,1004,1275,200,565],
-        "undetectedCWEs": [501,287],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_17_v1",
+      "detectedCWEs": [352, 693, 1021, 200],
+      "undetectedCWEs": [760, 327, 328, 916, 321, 798],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_20_v1",
-        "detectedCWEs": [352,693,1021,1004,1275,200,565],
-        "undetectedCWEs": [778,799,223,307],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_19_v1",
+      "detectedCWEs": [693, 1021, 1004, 1275, 200, 565],
+      "undetectedCWEs": [501, 287],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_21_v1",
-        "detectedCWEs": [352,693,1021,200],
-        "undetectedCWEs": [117],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_20_v1",
+      "detectedCWEs": [352, 693, 1021, 1004, 1275, 200, 565],
+      "undetectedCWEs": [778, 799, 223, 307],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_22_v1",
-        "detectedCWEs": [693,1021,1004,1275,200,565],
-        "undetectedCWEs": [613],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_21_v1",
+      "detectedCWEs": [352, 693, 1021, 200],
+      "undetectedCWEs": [117],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_23_v1",
-        "detectedCWEs": [352,693,1021,1004,1275,200,565],
-        "undetectedCWEs": [384],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_22_v1",
+      "detectedCWEs": [693, 1021, 1004, 1275, 200, 565],
+      "undetectedCWEs": [613],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_24_v1",
-        "detectedCWEs": [352,693,1021,200],
-        "undetectedCWEs": [359,522,532],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_23_v1",
+      "detectedCWEs": [352, 693, 1021, 1004, 1275, 200, 565],
+      "undetectedCWEs": [384],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_25_v1",
-        "detectedCWEs": [693,1021,200],
-        "undetectedCWEs": [98,706,829,426],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_24_v1",
+      "detectedCWEs": [352, 693, 1021, 200],
+      "undetectedCWEs": [359, 522, 532],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_26_v1",
-        "detectedCWEs": [352,200,693,1021,200],
-        "undetectedCWEs" :[646,345],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_25_v1",
+      "detectedCWEs": [693, 1021, 200],
+      "undetectedCWEs": [98, 706, 829, 426],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_27_v1",
-        "detectedCWEs": [352,693,1021,200],
-        "undetectedCWEs": [353,345],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_26_v1",
+      "detectedCWEs": [352, 200, 693, 1021, 200],
+      "undetectedCWEs": [646, 345],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_28_v1",
-        "detectedCWEs": [693,1021,200],
-        "undetectedCWEs": [494,345],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_27_v1",
+      "detectedCWEs": [352, 693, 1021, 200],
+      "undetectedCWEs": [353, 345],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_29_v1",
-        "detectedCWEs": [693,1021,829],
-        "undetectedCWEs": [830,79],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_28_v1",
+      "detectedCWEs": [693, 1021, 200],
+      "undetectedCWEs": [494, 345],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_30_v1",
-        "detectedCWEs": [352,693,1021,200],
-        "undetectedCWEs": [915,913],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_29_v1",
+      "detectedCWEs": [693, 1021, 829],
+      "undetectedCWEs": [830, 79],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_31_v1",
-        "detectedCWEs": [693,1021,1004,1275,565],
-        "undetectedCWEs": [940,346,352],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_30_v1",
+      "detectedCWEs": [352, 693, 1021, 200],
+      "undetectedCWEs": [915, 913],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_32_v1",
-        "detectedCWEs": [352,693,1021,200,20],
-        "undetectedCWEs": [640,257,256,798,307],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_31_v1",
+      "detectedCWEs": [693, 1021, 1004, 1275, 565],
+      "undetectedCWEs": [940, 346, 352],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_33_v1",
-        "detectedCWEs": [693,1021,200],
-        "undetectedCWEs": [620,306,352,598],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_32_v1",
+      "detectedCWEs": [352, 693, 1021, 200, 20],
+      "undetectedCWEs": [640, 257, 256, 798, 307],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_34_v1",
-        "detectedCWEs": [693,1021,200],
-        "undetectedCWEs": [521],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_33_v1",
+      "detectedCWEs": [693, 1021, 200],
+      "undetectedCWEs": [620, 306, 352, 598],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_35_v1",
-        "detectedCWEs": [693,1021,200],
-        "undetectedCWEs": [302,807,287,784,565],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_34_v1",
+      "detectedCWEs": [693, 1021, 200],
+      "undetectedCWEs": [521],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_36_v1",
-        "detectedCWEs": [693,1021,200],
-        "undetectedCWEs": [297,295],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_35_v1",
+      "detectedCWEs": [693, 1021, 200],
+      "undetectedCWEs": [302, 807, 287, 784, 565],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_37_v1",
-        "detectedCWEs": [693,1021,1004,1275,200,565],
-        "undetectedCWEs" :[294,798],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_36_v1",
+      "detectedCWEs": [693, 1021, 200],
+      "undetectedCWEs": [297, 295],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_38_v1",
-        "detectedCWEs": [693,1021],
-        "undetectedCWEs": [290,287,602,200],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_37_v1",
+      "detectedCWEs": [693, 1021, 1004, 1275, 200, 565],
+      "undetectedCWEs": [294, 798],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_39_v1",
-        "detectedCWEs": [693,1021,1004,1275,200,565],
-        "undetectedCWEs": [614],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_38_v1",
+      "detectedCWEs": [693, 1021],
+      "undetectedCWEs": [290, 287, 602, 200],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_40_v1",
-        "detectedCWEs": [352,693,1021,200],
-        "undetectedCWEs": [610,611],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_39_v1",
+      "detectedCWEs": [693, 1021, 1004, 1275, 200, 565],
+      "undetectedCWEs": [614],
+      "updatedAt": 1740999692
+    },
 
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_41_v1",
-        "detectedCWEs": [693,1021,1004,1275,200,565],
-        "undetectedCWEs": [315],
-        "updatedAt": 1740999692
-      },
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_40_v1",
+      "detectedCWEs": [352, 693, 1021, 200],
+      "undetectedCWEs": [610, 611],
+      "updatedAt": 1740999692
+    },
 
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_41_v1",
+      "detectedCWEs": [693, 1021, 1004, 1275, 200, 565],
+      "undetectedCWEs": [315],
+      "updatedAt": 1740999692
+    },
+
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_42_v1",
+      "detectedCWEs": [693, 1021, 200],
+      "undetectedCWEs": [526, 312],
+      "updatedAt": 1740999692
+    },
       {
         "dast": "zap_v2.16.0",
         "test": "test_42_v1",
@@ -370,6 +398,13 @@
         "updatedAt": 1740999692
       },
 
+    {
+      "dast": "zap_v2.16.0",
+      "test": "test_44_v1",
+      "detectedCWEs": [693, 1021, 829, 497],
+      "undetectedCWEs": [1104],
+      "updatedAt": 1741601554
+    }
       {
         "dast": "zap_v2.16.0",
         "test": "test_44_v1",
