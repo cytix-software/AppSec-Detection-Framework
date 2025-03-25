@@ -13,7 +13,20 @@ services:
       - apache
       - cwe-23
       - cwe-22
-
+  test_1_v2:
+    image: test_1_v2:latest
+    build: 
+      context: tests/test-1/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8012:80"
+    profiles:
+      - test-1
+      - a01:2021
+      - python
+      - flask
+      - cwe-23
+      - cwe-22
   test_2_v1:
     image: test_2_v1:latest
     build: 

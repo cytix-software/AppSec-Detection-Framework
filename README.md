@@ -83,10 +83,6 @@ services:
       - cwe-22
 ```
 
-### visualizer/
-
-Visualizer is the data visualizer for the data, it provides various search tools and graphs to understand the data. See [the README](visualizer/README.md) for more information.
-
 ### Dockerfile
 
 The `Dockerfile` is responsible for deploying the vulnerable code.
@@ -97,14 +93,37 @@ The `index` file is simply there as an example of where the vulnerable code shou
 
 The vulnerable code should be brief, easily readable, and should avoid any unnecessary styling or other details that do not directly contribute to introducing the vulnerability or making it exploitable.
 
+## Data Visualization (ASDFviz)
+
+The `visualizer` directory contains a visualization page built using Vue for ASDF. It pulls data from the `docker-compose.yml` and `data.json` at the top level of the repository, and provides various graphs and search tools for navigating the data.
+
+### Project Setup
+*Ensure you are in the visualizer directory.*
+
+```sh
+bun install -D
+```
+
+### Compile
+
+```sh
+bun dev
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+bun lint
+```
+
 ## Vulnerability Inventory
 
 This data also exists in the `visualizer/cweData.json` file.
 
 | **OWASP Code** | **Group**                                  | **CWE** | **Title**                                                                                                              | Tests        |
 | -------------- | ------------------------------------------ | ------- | ---------------------------------------------------------------------------------------------------------------------- | ------------ |
-| A01:2021       | Broken Access Control                      | 22      | Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')                                         | [test-1-v1 (PHP)](tests/test-1/v1/) [test-9-v1 (PHP)](tests/test-9/v1/) |
-| A01:2021       | Broken Access Control                      | 23      | Relative Path Traversal                                                                                                | [test-1-v1 (PHP)](tests/test-1/v1/) |
+| A01:2021       | Broken Access Control                      | 22      | Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')                                         | [test-1-v1 (PHP)](tests/test-1/v1/) [test-1-v2 (python)](tests/test-1/v2/) [test-9-v1 (PHP)](tests/test-9/v1/) |
+| A01:2021       | Broken Access Control                      | 23      | Relative Path Traversal                                                                                                | [test-1-v1 (PHP)](tests/test-1/v1/) [test-1-v2 (python)](tests/test-1/v2/) |
 | A01:2021       | Broken Access Control                      | 35      | Path Traversal: '.../...//'                                                                                            | [test-9-v1 (PHP)](tests/test-9/v1/) |
 | A01:2021       | Broken Access Control                      | 59      | Improper Link Resolution Before File Access ('Link Following')                                                         |              |
 | A01:2021       | Broken Access Control                      | 200     | Exposure of Sensitive Information to an Unauthorized Actor                                                             | n/a          |

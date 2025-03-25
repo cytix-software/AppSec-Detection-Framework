@@ -390,13 +390,6 @@
       "undetectedCWEs": [526, 312],
       "updatedAt": 1740999692
     },
-      {
-        "dast": "zap_v2.16.0",
-        "test": "test_42_v1",
-        "detectedCWEs": [693,1021,200],
-        "undetectedCWEs": [526,312],
-        "updatedAt": 1740999692
-      },
 
     {
       "dast": "zap_v2.16.0",
@@ -405,21 +398,14 @@
       "undetectedCWEs": [1104],
       "updatedAt": 1741601554
     },
-    {
-      "dast": "zap_v2.16.0",
-      "test": "test_44_v1",
-      "detectedCWEs": [693,1021,829,497],
-      "undetectedCWEs": [1104],
-      "updatedAt": 1741601554
-    },
 
-      {
+    {
         "dast": "semgrep",
         "test": "test_1_v1",
         "detectedCWEs": [22,23],
         "undetectedCWEs": [],
         "updatedAt": 1741955443
-      },
+    },
 
     {
       "dast": "semgrep",
