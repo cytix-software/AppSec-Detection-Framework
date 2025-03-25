@@ -83,10 +83,6 @@ services:
       - cwe-22
 ```
 
-### visualizer/
-
-Visualizer is the data visualizer for the data, it provides various search tools and graphs to understand the data. See [the README](visualizer/README.md) for more information.
-
 ### Dockerfile
 
 The `Dockerfile` is responsible for deploying the vulnerable code.
@@ -96,6 +92,29 @@ The `Dockerfile` is responsible for deploying the vulnerable code.
 The `index` file is simply there as an example of where the vulnerable code should live. This can actually be multiple files if required.
 
 The vulnerable code should be brief, easily readable, and should avoid any unnecessary styling or other details that do not directly contribute to introducing the vulnerability or making it exploitable.
+
+## Data Visualization (ASDFviz)
+
+The `visualizer` directory contains a visualization page built using Vue for ASDF. It pulls data from the `docker-compose.yml` and `data.json` at the top level of the repository, and provides various graphs and search tools for navigating the data.
+
+### Project Setup
+*Ensure you are in the visualizer directory.*
+
+```sh
+bun install -D
+```
+
+### Compile
+
+```sh
+bun dev
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+bun lint
+```
 
 ## Vulnerability Inventory
 
