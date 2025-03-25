@@ -591,8 +591,8 @@
     {
       "dast": "semgrep",
       "test": "test_24_v1",
-      "detectedCWEs": [],
-      "undetectedCWEs": [359,522,532],
+      "detectedCWEs": [532],
+      "undetectedCWEs": [359,522],
       "updatedAt": 1741955443
     },
 
@@ -647,8 +647,8 @@
     {
       "dast": "semgrep",
       "test": "test_31_v1",
-      "detectedCWEs": [],
-      "undetectedCWEs": [940,346,352],
+      "detectedCWEs": [940,346,352],
+      "undetectedCWEs": [],
       "updatedAt": 1741955443
     },
 
