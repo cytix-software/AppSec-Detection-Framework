@@ -1,17 +1,39 @@
 {
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "allowJs": true,
+    "strict": true,
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "moduleResolution": "Node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
     "baseUrl": ".",
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "noEmit": true,
     "paths": {
-      "@data/*": ["../*"]
-    }
-  },
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
+      "@/*": ["src/*"]
     },
-    {
-      "path": "./tsconfig.app.json"
-    }
-  ]
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "outDir": "dist"
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "interfaces/src/*.ts",
+    "components.d.ts",
+    "auto-imports.d.ts",
+    "vite.config.ts"
+  ],
+  "exclude": ["node_modules"]
 }
