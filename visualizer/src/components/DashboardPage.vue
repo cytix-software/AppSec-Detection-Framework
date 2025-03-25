@@ -4,6 +4,7 @@
     <h1>AppSec Detection Framework Visualizer</h1>
 
     <div class="main-content">
+      <!-- Chart View -->
       <n-card title="Chart View" class="chart-wrapper">
         <ChartControls
           v-model:selected-chart="selectedChart"
@@ -12,8 +13,10 @@
           :technology-options="technologyOptions"
         />
 
+        <!-- Bar Chart -->
         <BarChart v-if="selectedChart === 'bar'" :options="barOptions" :series="barSeries" />
 
+        <!-- Heatmap Chart -->
         <HeatmapChart
           v-else-if="selectedChart === 'heatmap'"
           :options="heatmapOptions"
@@ -21,6 +24,7 @@
         />
       </n-card>
 
+      <!-- Dataset Table -->
       <n-card title="Dataset" class="data-table-wrapper">
         <DataTable :data="hydratedTests" />
       </n-card>
@@ -29,33 +33,37 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+// -----------------------------------------------------------------------------
+// Imports
+// -----------------------------------------------------------------------------
 import { NCard } from 'naive-ui'
 import { groupBy, filter, find, some, includes, flatten, map } from 'lodash-es'
 import { loadData } from './data'
-import ChartControls from './ChartControls.vue'
-import BarChart from './BarChart.vue'
-import HeatmapChart from './HeatmapChart.vue'
-import DataTable from './DataTable.vue'
 
+const { hydratedTests, hydratedHeatmapTests, vulnerabilities } = loadData()
+
+// Used for filtering or selecting tech
+const selectedChart = ref('bar')
+const selectedTechnology = ref<string | null>(null)
+const technologies = ['php', 'nodejs']
+
+// Chart dropdowns
 const chartTypes = [
   { label: 'DAST Performance (Bar)', value: 'bar' },
   { label: 'OWASP Coverage (Heatmap)', value: 'heatmap' },
 ]
-
-const { hydratedTests, hydratedHeatmapTests, vulnerabilities } = loadData()
-const selectedChart = ref('bar')
-const selectedTechnology = ref<string | null>(null)
-const technologies = ['php', 'nodejs']
 
 const technologyOptions = computed(() => [
   { label: 'All Technologies', value: null },
   ...technologies.map((tech) => ({ label: tech.toUpperCase(), value: tech })),
 ])
 
-// Heatmap calculations
+// -----------------------------------------------------------------------------
+// forHeatMap (Heatmap Chart Logic)
+// -----------------------------------------------------------------------------
 const heatmapData = computed(() =>
   vulnerabilities.flatMap(({ OWASP, CWE }) => {
+    // find all tests that match each CWE (and optionally the selected tech)
     const cweTests = CWE.flatMap((cwe) =>
       filter(
         hydratedHeatmapTests,
@@ -64,11 +72,13 @@ const heatmapData = computed(() =>
           (!selectedTechnology.value || includes(t.profiles, selectedTechnology.value)),
       ),
     )
+
     const groupedByDast = groupBy(cweTests, 'dast')
     return Object.entries(groupedByDast).map(([dast, tests]) => {
       const detectedCWEs = flatten(map(tests, 'detectedCWEs')).length
       const undetectedCWEs = flatten(map(tests, 'undetectedCWEs')).length
       const totalCount = detectedCWEs + undetectedCWEs
+
       return {
         dast,
         OWASP,
@@ -79,23 +89,88 @@ const heatmapData = computed(() =>
   }),
 )
 
+// Example snippet inside heatmapSeries computed
 const heatmapSeries = computed(() => {
   const dasts = [...new Set(hydratedHeatmapTests.map((t) => t.dast))]
-  return dasts.map((dast) => ({
-    name: dast,
-    data: vulnerabilities.map(({ OWASP }) => {
+
+  return dasts.map((dast) => {
+    const data = vulnerabilities.map(({ OWASP }) => {
+      // Suppose you’ve computed “heatmapData” with detectedCWEs / totalCount
       const entry = find(heatmapData.value, { dast, OWASP })
-      return { x: OWASP, y: entry ? Math.round((entry.detectedCWEs / entry.totalCount) * 100) : 0 }
-    }),
-  }))
+
+      // If no test coverage at all, treat as “No Data”
+      const isNoData = !entry || entry.totalCount === 0
+      const percentage = isNoData ? 0 : Math.round((entry.detectedCWEs / entry.totalCount) * 100)
+
+      // Decide label color
+      // - “No Data” or ≤25% => black
+      // - else => white
+      const labelColor = isNoData || percentage <= 25 ? '#000' : '#fff'
+
+      return {
+        x: OWASP,
+        y: percentage,
+        isNoData,
+        // Per data point override for text styling
+        dataLabels: {
+          enabled: true,
+          style: {
+            colors: [labelColor],
+          },
+        },
+      }
+    })
+
+    return { name: dast, data }
+  })
 })
 
-// Bar chart calculations
-const calculateWeightedScores = () => {
+const heatmapOptions = computed(() => ({
+  chart: { type: 'heatmap' },
+  plotOptions: {
+    heatmap: {
+      shadeIntensity: 0.5,
+      colorScale: {
+        ranges: [
+          { from: 0, to: 0, color: '#E5E7EB' },
+          { from: 1, to: 25, color: '#93C5FD' },
+          { from: 26, to: 50, color: '#216FED' },
+          { from: 51, to: 75, color: '#1A4D8F' },
+          { from: 76, to: 100, color: '#0E1E33' },
+        ],
+      },
+    },
+  },
+
+  // 1) Data labels in each cell
+  dataLabels: {
+    enabled: true,
+    formatter(val: number, opts: any) {
+      // Access the data object
+      const point = opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex]
+      return point.isNoData ? 'No Data' : `${val}%`
+    },
+  },
+
+  // 2) Tooltip
+  tooltip: {
+    y: {
+      formatter(val: number, opts: any) {
+        const point = opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex]
+        return point.isNoData ? 'No Data' : `${val}%`
+      },
+    },
+  },
+}))
+
+// -----------------------------------------------------------------------------
+// forPerformance (Bar Chart Logic)
+// -----------------------------------------------------------------------------
+function calculateWeightedScores() {
   const grouped = groupBy(hydratedHeatmapTests, 'dast')
 
   return Object.entries(grouped).map(([dast, tests]) => {
-    // Group all technologies for these tests
+    // group all technologies for these tests
     const techCounts = groupBy(
       tests.flatMap((t) => t.profiles.filter((p) => includes(technologies, p))),
       (tech) => tech,
@@ -105,35 +180,27 @@ const calculateWeightedScores = () => {
     let detectedWeight = 0
 
     tests.forEach((test) => {
+      // relevant techs for each test
       const relevantTechs = test.profiles.filter((p) => includes(technologies, p))
       if (!relevantTechs.length) return // skip if no relevant technologies
 
-      // Count how many times each relevant tech appears in these tests
-      // e.g. sum of (1 / numberOfTestsUsingThisTech)
+      // weighting for these techs
       const weight =
-        relevantTechs.reduce((sum, tech) => {
-          return sum + 1 / (techCounts[tech]?.length || 1)
-        }, 0) / relevantTechs.length
+        relevantTechs.reduce((sum, tech) => sum + 1 / (techCounts[tech]?.length || 1), 0) /
+        relevantTechs.length
 
       totalWeight += weight
 
-      // Avoid dividing by zero
+      // avoid dividing by zero
       const cweCount = (test.detectedCWEs?.length || 0) + (test.undetectedCWEs?.length || 0)
-
       if (cweCount > 0) {
         const weightContribution = (weight / cweCount) * test.detectedCWEs.length
         detectedWeight += weightContribution
       }
     })
 
-    // If totalWeight is 0, score = 0
-    // Otherwise (detectedWeight / totalWeight) * 100
     const score = totalWeight ? Number(((detectedWeight / totalWeight) * 100).toFixed(2)) : 0
-
-    return {
-      dast,
-      score,
-    }
+    return { dast, score }
   })
 }
 
@@ -156,32 +223,6 @@ const barOptions = computed(() => ({
   },
   colors: ['#216FED'],
 }))
-
-const heatmapOptions = computed(() => ({
-  chart: { type: 'heatmap' },
-  dataLabels: { enabled: true, formatter: (val: number) => (val === 0 ? 'No Data' : `${val}%`) },
-  colors: ['#216FED'],
-  xaxis: { type: 'category' },
-  plotOptions: {
-    heatmap: {
-      shadeIntensity: 0.5,
-      colorScale: {
-        ranges: [
-          { from: 0, to: 0, color: '#E5E7EB' },
-          { from: 1, to: 25, color: '#93C5FD' },
-          { from: 26, to: 50, color: '#216FED' },
-          { from: 51, to: 75, color: '#1A4D8F' },
-          { from: 76, to: 100, color: '#0E1E33' },
-        ],
-      },
-    },
-  },
-  tooltip: {
-    y: {
-      formatter: (val: number) => (val === 0 ? 'No Data' : `${val}%`),
-    },
-  },
-}))
 </script>
 
 <style>
@@ -197,6 +238,7 @@ const heatmapOptions = computed(() => ({
   margin-top: 2rem;
 }
 
+/* Example apexcharts custom styling */
 .apexcharts-tooltip {
   background: #ffffff !important;
   border: 2px solid #8181ac !important;
