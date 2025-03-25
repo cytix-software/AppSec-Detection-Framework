@@ -16,6 +16,7 @@ export interface Vulnerability {
 export interface RecordedTest {
   dast: string
   detectedCWEs: number[]
+  undetectedCWEs: number[]
   test: string
   updatedAt: number
 }
