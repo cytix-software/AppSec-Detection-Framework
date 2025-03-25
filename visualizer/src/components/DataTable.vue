@@ -65,7 +65,7 @@ const columns = [
   {
     title: 'Detections',
     key: 'detections',
-    width: 'auto',
+    width: 275,
     render: (row: any) => {
       return (
         <div style="display: flex; flex-direction: row; gap: 0.5rem; flex-wrap: wrap;">
