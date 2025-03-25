@@ -6,8 +6,8 @@ A framework for understanding the capabilities of automated detection methods at
 
 ### Requirements
 
- - [Bun](https://bun.sh)
- - [Docker](https://www.docker.com)
+- [Bun](https://bun.sh)
+- [Docker](https://www.docker.com)
 
 ### Running
 
@@ -38,12 +38,15 @@ data.json
 ```
 
 ### data.json
+
 This is the file that contains our test data and the OWASP top 10 CWEs. When a new test is performed, a new item should be added to the `"recordedTests"` array, with the following values:
+
 ```
 {
   "dast": <the name of the dast being tested, including the version number as a string>,
   "test": <the name of the docker container of the test, this should be a string>,
-  "detected": <a boolean representing whether the vulnerability was detected>,
+  "detectedCWEs": <an array of CWE ID, where each ID represents the vulnerability detected>,
+  "undetectedCWEs" <an array of CWE ID, where each ID represents the vulnerability not detected>,
   "updatedAt": <the unix timestamp of when the test occured, this should be a number>
 }
 ```
@@ -81,6 +84,7 @@ services:
 ```
 
 ### visualizer/
+
 Visualizer is the data visualizer for the data, it provides various search tools and graphs to understand the data. See [the README](visualizer/README.md) for more information.
 
 ### Dockerfile
@@ -93,8 +97,9 @@ The `index` file is simply there as an example of where the vulnerable code shou
 
 The vulnerable code should be brief, easily readable, and should avoid any unnecessary styling or other details that do not directly contribute to introducing the vulnerability or making it exploitable.
 
-
 ## Vulnerability Inventory
+
+This data also exists in the `visualizer/cweData.json` file.
 
 | **OWASP Code** | **Group**                                  | **CWE** | **Title**                                                                                                              | Tests        |
 | -------------- | ------------------------------------------ | ------- | ---------------------------------------------------------------------------------------------------------------------- | ------------ |
