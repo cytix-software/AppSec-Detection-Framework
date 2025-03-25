@@ -93,33 +93,46 @@ const heatmapSeries = computed(() => {
 // Bar chart calculations
 const calculateWeightedScores = () => {
   const grouped = groupBy(hydratedHeatmapTests, 'dast')
+
   return Object.entries(grouped).map(([dast, tests]) => {
+    // Group all technologies for these tests
     const techCounts = groupBy(
       tests.flatMap((t) => t.profiles.filter((p) => includes(technologies, p))),
       (tech) => tech,
     )
-    let [totalWeight, detectedWeight] = [0, 0]
+
+    let totalWeight = 0
+    let detectedWeight = 0
 
     tests.forEach((test) => {
       const relevantTechs = test.profiles.filter((p) => includes(technologies, p))
-      if (!relevantTechs.length) return
+      if (!relevantTechs.length) return // skip if no relevant technologies
 
+      // Count how many times each relevant tech appears in these tests
+      // e.g. sum of (1 / numberOfTestsUsingThisTech)
       const weight =
-        relevantTechs.reduce((sum, tech) => sum + 1 / (techCounts[tech]?.length || 1), 0) /
-        relevantTechs.length
+        relevantTechs.reduce((sum, tech) => {
+          return sum + 1 / (techCounts[tech]?.length || 1)
+        }, 0) / relevantTechs.length
 
       totalWeight += weight
-      //we should calculate this depending on the number of CWEs identified
-      //we may want to also validate whether the CWEs are actually part of the test or if additional CWEs were identified (false positive detection)
-      const weightContribution =
-        (weight / (test.detectedCWEs.length + test.undetectedCWEs.length)) *
-        test.detectedCWEs.length
-      detectedWeight += weightContribution
+
+      // Avoid dividing by zero
+      const cweCount = (test.detectedCWEs?.length || 0) + (test.undetectedCWEs?.length || 0)
+
+      if (cweCount > 0) {
+        const weightContribution = (weight / cweCount) * test.detectedCWEs.length
+        detectedWeight += weightContribution
+      }
     })
+
+    // If totalWeight is 0, score = 0
+    // Otherwise (detectedWeight / totalWeight) * 100
+    const score = totalWeight ? Number(((detectedWeight / totalWeight) * 100).toFixed(2)) : 0
 
     return {
       dast,
-      score: totalWeight ? Number(((detectedWeight / totalWeight) * 100).toFixed(2)) : 0,
+      score,
     }
   })
 }

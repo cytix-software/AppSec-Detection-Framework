@@ -46,7 +46,6 @@
 </template>
 
 <script setup lang="tsx">
-import { defineProps, withDefaults, computed, reactive } from 'vue'
 import { NDataTable, NButton, NInput, NSelect, NPopover } from 'naive-ui'
 import { filter as lodashFilter, includes, every, toLower } from 'lodash-es'
 import type { HydratedTest } from './types'
@@ -67,33 +66,39 @@ const columns = [
     key: 'detections',
     width: 275,
     render: (row: any) => {
-      return (
-        <div style="display: flex; flex-direction: row; gap: 0.5rem; flex-wrap: wrap;">
-          {row.detections.map((detection: any, index: number) => (
-            <NPopover trigger="hover" flip key={index}>
-              {{
-                trigger: () => (
-                  <NButton round size="small" type="info">
-                    {{
-                      default: () => (
-                        <span class="flex gap-1">
-                          {detection.detected ? '✅' : '❌'} {detection.dast}
-                        </span>
-                      ),
-                    }}
-                  </NButton>
+      return h(
+        'div',
+        {
+          style: 'display: flex; flex-direction: row; gap: 0.5rem; flex-wrap: wrap;',
+        },
+        row.detections.map((detection: any, index: number) => {
+          return h(
+            NPopover,
+            { trigger: 'hover', flip: true, key: index },
+            {
+              trigger: () =>
+                h(
+                  NButton,
+                  { round: true, size: 'small', type: 'info' },
+                  {
+                    default: () =>
+                      h('span', { class: 'flex gap-1' }, [
+                        detection.detected ? '✅' : '❌',
+                        ' ',
+                        detection.dast,
+                      ]),
+                  },
                 ),
-                default: () => (
-                  <div>
-                    {detection.profiles.map((profile: string) => (
-                      <div key={profile}>{profile}</div>
-                    ))}
-                  </div>
+
+              default: () =>
+                h(
+                  'div',
+                  null,
+                  detection.profiles.map((profile: string) => h('div', { key: profile }, profile)),
                 ),
-              }}
-            </NPopover>
-          ))}
-        </div>
+            },
+          )
+        }),
       )
     },
   },
