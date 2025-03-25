@@ -35,47 +35,107 @@
     <n-data-table
       :columns="columns"
       :data="filteredData"
-      :pagination="pagination"
+      :pagination="{ pageSize: pagination }"
       class="results-table"
     />
   </div>
 </template>
 
-<script setup lang="ts">
-import { NDataTable, NInput, NSelect, NTag } from 'naive-ui'
-import { computed, reactive, h } from 'vue'
+<script setup lang="tsx">
+import { NDataTable, NButton, NInput, NSelect, NPopover } from 'naive-ui'
+import { computed, reactive } from 'vue'
 import { filter as lodashFilter, includes, every, some, toLower } from 'lodash-es'
 import type { HydratedTest } from './types'
 
+// const columns = computed(() => [
+//   { title: 'DAST Tool', key: 'dast' },
+//   { title: 'Test Name', key: 'test' },
+//   {
+//     title: 'Detected',
+//     key: 'detected',
+//     render: (row: HydratedTest) => (row.detectedCWEs.length > 0 ? '✅' : '❌'),
+//   },
+//   {
+//     title: 'Last Updated',
+//     key: 'updatedAt',
+//     render: (row: HydratedTest) => new Date(row.updatedAt * 1000).toLocaleDateString(),
+//   },
+//   {
+//     title: 'Profiles',
+//     key: 'profiles',
+//     width: 200, // limit the column width
+//     render: (row: HydratedTest) =>
+//       h(
+//         'div',
+//         { class: 'profiles-cell' },
+//         row.profiles.map((p) => h(NTag, { type: 'info' }, { default: () => p })),
+//       ),
+//   },
+// ])
 const columns = computed(() => [
-  { title: 'DAST Tool', key: 'dast' },
-  { title: 'Test Name', key: 'test' },
+  { title: 'OWASP Code & Group', key: 'owasp' },
   {
-    title: 'Detected',
-    key: 'detected',
-    render: (row: HydratedTest) => (row.detectedCWEs.length > 0 ? '✅' : '❌'),
+    title: 'CWE ID',
+    key: 'cwe',
+    render: (row: any) => `CWE-${row.cwe}`,
   },
+  { title: 'Test', key: 'test' },
   {
-    title: 'Last Updated',
-    key: 'updatedAt',
-    render: (row: HydratedTest) => new Date(row.updatedAt * 1000).toLocaleDateString(),
+    title: 'Detections',
+    key: 'detections',
+    width: 250,
+    render: (row: any) => {
+      return (
+        <div style="display: flex; gap: 0.5rem;">
+          {row.detections.map((detection: any) => (
+            <NPopover trigger="hover" flip>
+              {{
+                trigger: () => (
+                  <NButton size="small" type="info">
+                    {{
+                      default: () => (
+                        <span class="flex gap-1">
+                          {detection.detected ? '✅' : '❌'} {detection.dast}
+                        </span>
+                      ),
+                    }}
+                  </NButton>
+                ),
+                default: () => (
+                  <div>
+                    {detection.profiles.map((profile: string) => (
+                      <div>{profile}</div>
+                    ))}
+                  </div>
+                ),
+              }}
+            </NPopover>
+          ))}
+        </div>
+      )
+    },
   },
-  {
-    title: 'Profiles',
-    key: 'profiles',
-    width: 200, // limit the column width
-    render: (row: HydratedTest) =>
-      h(
-        'div',
-        { class: 'profiles-cell' },
-        row.profiles.map((p) => h(NTag, { type: 'info' }, { default: () => p })),
-      ),
-  },
+  // {
+  //   title: 'Detected',
+  //   key: 'detected',
+  //   render: (row: HydratedTest) => (row.detectedCWEs.length > 0 ? '✅' : '❌'),
+  // },
+  // {
+  //   title: 'Profiles',
+  //   key: 'profiles',
+  //   width: 200, // limit the column width
+  //   render: (row: HydratedTest) =>
+  //     h(
+  //       'div',
+  //       { class: 'profiles-cell' },
+  //       row.profiles.map((p) => h(NTag, { type: 'info' }, { default: () => p })),
+  //     ),
+  // },
 ])
 
-const props = defineProps({
-  data: { type: Array as () => HydratedTest[], required: true },
-  pagination: { type: Object, required: true },
+const props = withDefaults(defineProps<{ data: HydratedTest[]; pagination?: number }>(), {
+  data: () => [],
+  pagination: 10,
 })
 
 interface FilterState {
@@ -135,10 +195,6 @@ const filteredData = computed(() => {
 </script>
 
 <style scoped>
-.n-tag {
-  margin: 0.5rem;
-}
-
 .data-table-container {
   display: flex;
   flex-direction: column;

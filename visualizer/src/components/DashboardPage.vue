@@ -22,18 +22,17 @@
       </n-card>
 
       <n-card title="Dataset" class="data-table-wrapper">
-        <DataTable :data="hydratedTests" :pagination="pagination" />
+        <DataTable :data="hydratedTests" />
       </n-card>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, h } from 'vue'
+import { ref, computed } from 'vue'
 import { NCard } from 'naive-ui'
 import { groupBy, filter, find, some, includes, flatten, map } from 'lodash-es'
 import { loadData } from './data'
-import type { HydratedTest } from './types'
 import ChartControls from './ChartControls.vue'
 import BarChart from './BarChart.vue'
 import HeatmapChart from './HeatmapChart.vue'
@@ -44,7 +43,7 @@ const chartTypes = [
   { label: 'OWASP Coverage (Heatmap)', value: 'heatmap' },
 ]
 
-const { hydratedTests, vulnerabilities } = loadData()
+const { hydratedTests, hydratedHeatmapTests, vulnerabilities } = loadData()
 const selectedChart = ref('bar')
 const selectedTechnology = ref<string | null>(null)
 const technologies = ['php', 'nodejs']
@@ -54,18 +53,12 @@ const technologyOptions = computed(() => [
   ...technologies.map((tech) => ({ label: tech.toUpperCase(), value: tech })),
 ])
 
-const filteredTests = computed(() =>
-  selectedTechnology.value
-    ? filter(hydratedTests, (t) => includes(t.profiles, selectedTechnology.value))
-    : hydratedTests,
-)
-
 // Heatmap calculations
 const heatmapData = computed(() =>
   vulnerabilities.flatMap(({ OWASP, CWE }) => {
     const cweTests = CWE.flatMap((cwe) =>
       filter(
-        hydratedTests,
+        hydratedHeatmapTests,
         (t) =>
           some(t.profiles, (p) => p === `cwe-${cwe}`) &&
           (!selectedTechnology.value || includes(t.profiles, selectedTechnology.value)),
@@ -87,7 +80,7 @@ const heatmapData = computed(() =>
 )
 
 const heatmapSeries = computed(() => {
-  const dasts = [...new Set(hydratedTests.map((t) => t.dast))]
+  const dasts = [...new Set(hydratedHeatmapTests.map((t) => t.dast))]
   return dasts.map((dast) => ({
     name: dast,
     data: vulnerabilities.map(({ OWASP }) => {
@@ -99,7 +92,7 @@ const heatmapSeries = computed(() => {
 
 // Bar chart calculations
 const calculateWeightedScores = () => {
-  const grouped = groupBy(hydratedTests, 'dast')
+  const grouped = groupBy(hydratedHeatmapTests, 'dast')
   return Object.entries(grouped).map(([dast, tests]) => {
     const techCounts = groupBy(
       tests.flatMap((t) => t.profiles.filter((p) => includes(technologies, p))),
@@ -176,8 +169,6 @@ const heatmapOptions = computed(() => ({
     },
   },
 }))
-
-const pagination = { pageSize: 5 }
 </script>
 
 <style>

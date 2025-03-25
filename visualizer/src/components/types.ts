@@ -20,8 +20,19 @@ export interface RecordedTest {
   updatedAt: number
 }
 
-export interface HydratedTest extends RecordedTest {
+export interface HydratedHeatmapTest extends RecordedTest {
   profiles: string[]
+}
+
+export interface HydratedTest {
+  owasp: string
+  cwe: number
+  test: string
+  detections: {
+    dast: string
+    detected: boolean
+    profiles: string[]
+  }[]
 }
 
 export interface DockerCompose {
