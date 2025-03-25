@@ -6,7 +6,7 @@ This directory contains a visualization page built using Vue for ASDF. It pulls 
 *Ensure you are in the visualiser directory.
 
 ```sh
-bun install
+bun install -D
 ```
 
 ### Compile
