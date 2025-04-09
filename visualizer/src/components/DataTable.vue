@@ -72,6 +72,12 @@ const columns = [
     ellipsis: true
   },
   {
+    title: 'Test',
+    key: 'testColumn',
+    width: 100,
+    render: (row: any) => row.test
+  },
+  {
     title: 'Detections',
     key: 'detections',
     width: 275,
