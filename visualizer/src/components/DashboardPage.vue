@@ -4,25 +4,21 @@
     <h1>AppSec Detection Framework Visualizer</h1>
 
     <div class="main-content">
-      <!-- Chart View -->
-      <n-card title="Chart View" class="chart-wrapper">
-        <ChartControls
-          v-model:selected-chart="selectedChart"
-          v-model:selected-technology="selectedTechnology"
-          :chart-types="chartTypes"
-          :technology-options="technologyOptions"
-        />
+      <!-- Charts Section -->
+      <div class="charts-section">
+        <!-- Heatmap Chart -->
+        <n-card title="OWASP Coverage (Heatmap)" class="chart-wrapper">
+          <HeatmapChart
+            :options="heatmapOptions"
+            :series="heatmapSeries"
+          />
+        </n-card>
 
         <!-- Bar Chart -->
-        <BarChart v-if="selectedChart === 'bar'" :options="barOptions" :series="barSeries" />
-
-        <!-- Heatmap Chart -->
-        <HeatmapChart
-          v-else-if="selectedChart === 'heatmap'"
-          :options="heatmapOptions"
-          :series="heatmapSeries"
-        />
-      </n-card>
+        <n-card title="DAST Performance (Bar)" class="chart-wrapper">
+          <BarChart :options="barOptions" :series="barSeries" />
+        </n-card>
+      </div>
 
       <!-- Dataset Table -->
       <n-card title="Dataset" class="data-table-wrapper">
@@ -42,21 +38,8 @@ import { loadData } from './data'
 
 const { hydratedTests, hydratedHeatmapTests, vulnerabilities } = loadData()
 
-// Used for filtering or selecting tech
-const selectedChart = ref('bar')
-const selectedTechnology = ref<string | null>(null)
+// Technologies used for bar chart calculations
 const technologies = ['php', 'nodejs']
-
-// Chart dropdowns
-const chartTypes = [
-  { label: 'DAST Performance (Bar)', value: 'bar' },
-  { label: 'OWASP Coverage (Heatmap)', value: 'heatmap' },
-]
-
-const technologyOptions = computed(() => [
-  { label: 'All Technologies', value: null },
-  ...technologies.map((tech) => ({ label: tech.toUpperCase(), value: tech })),
-])
 
 // -----------------------------------------------------------------------------
 // forHeatMap (Heatmap Chart Logic)
@@ -66,9 +49,7 @@ const heatmapData = computed(() =>
     // First, find all unique tests that match any CWE in this OWASP category
     const uniqueTests = filter(
       hydratedHeatmapTests,
-      (t) =>
-        some(t.profiles, (p) => CWE.includes(parseInt(p.replace('cwe-', '')))) &&
-        (!selectedTechnology.value || includes(t.profiles, selectedTechnology.value))
+      (t) => some(t.profiles, (p) => CWE.includes(parseInt(p.replace('cwe-', ''))))
     )
 
     const groupedByDast = groupBy(uniqueTests, 'dast')
@@ -250,15 +231,31 @@ const barOptions = computed(() => ({
 
 <style>
 .dashboard-container {
-  padding: 2rem;
+  padding: 1rem;
   margin: 0 auto;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.charts-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.chart-wrapper {
+  overflow: hidden;
+}
+
+.data-table-wrapper {
+  overflow-x: auto;
 }
 
 /* Example apexcharts custom styling */
@@ -278,5 +275,11 @@ const barOptions = computed(() => ({
 
 .apexcharts-tooltip-series-group {
   padding: 8px 12px !important;
+}
+
+@media (max-width: 1200px) {
+  .charts-section {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

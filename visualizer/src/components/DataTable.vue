@@ -72,12 +72,6 @@ const columns = [
     ellipsis: true
   },
   {
-    title: 'Test',
-    key: 'testColumn',
-    width: 100,
-    render: (row: any) => row.test
-  },
-  {
     title: 'Detections',
     key: 'detections',
     width: 275,
@@ -135,7 +129,7 @@ interface FilterState {
   owasp: string
   cwe: string // store as string for easy partial matching
   test: string
-  detected: boolean | null
+  detected: string | null
   profiles: string[]
 }
 
@@ -149,8 +143,8 @@ const filters = reactive<FilterState>({
 
 // Boolean options
 const detectedOptions = [
-  { label: 'Detected ✅', value: true },
-  { label: 'Not Detected ❌', value: false },
+  { label: 'Detected ✅', value: 'true' },
+  { label: 'Not Detected ❌', value: 'false' },
 ]
 
 //
@@ -198,7 +192,7 @@ const filteredData = computed(() => {
       !filters.test || includes(toLower(row.test), toLower(filters.test)),
 
       // Detected (boolean check) - only if filters.detected is set
-      filters.detected === null || row._detected === filters.detected,
+      filters.detected === null || String(row._detected) === filters.detected,
 
       // Profiles (must contain all selected)
       filters.profiles.length === 0 ||
@@ -212,21 +206,21 @@ const filteredData = computed(() => {
 .data-table-container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   width: 100%;
   overflow-x: auto;
 }
 
 .column-filters {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
   width: 100%;
 }
 
 .filter-input {
-  min-width: 180px;
+  min-width: 150px;
   width: 100%;
 }
 
@@ -234,17 +228,20 @@ const filteredData = computed(() => {
 .results-table {
   width: 100%;
   overflow-x: auto;
+  font-size: 0.9rem;
 }
 
 .results-table :deep(.n-data-table-th) {
   background: #0e1e33 !important;
   color: #ffffff !important;
-  font-size: 12px !important;
+  font-size: 11px !important;
   white-space: nowrap;
+  padding: 6px 8px !important;
 }
 
 .results-table :deep(.n-data-table-td) {
   white-space: nowrap;
+  padding: 6px 8px !important;
 }
 
 @media (max-width: 768px) {
