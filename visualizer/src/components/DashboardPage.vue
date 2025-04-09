@@ -75,8 +75,13 @@ const heatmapData = computed(() =>
 
     const groupedByDast = groupBy(cweTests, 'dast')
     return Object.entries(groupedByDast).map(([dast, tests]) => {
-      const detectedCWEs = flatten(map(tests, 'detectedCWEs')).length
-      const undetectedCWEs = flatten(map(tests, 'undetectedCWEs')).length
+      // Only count CWEs that belong to this OWASP category
+      const detectedCWEs = flatten(map(tests, 'detectedCWEs'))
+        .filter(cwe => CWE.includes(cwe))
+        .length
+      const undetectedCWEs = flatten(map(tests, 'undetectedCWEs'))
+        .filter(cwe => CWE.includes(cwe))
+        .length
       const totalCount = detectedCWEs + undetectedCWEs
 
       return {
@@ -95,15 +100,15 @@ const heatmapSeries = computed(() => {
 
   return dasts.map((dast) => {
     const data = vulnerabilities.map(({ OWASP }) => {
-      // Suppose you’ve computed “heatmapData” with detectedCWEs / totalCount
+      // Suppose you've computed "heatmapData" with detectedCWEs / totalCount
       const entry = find(heatmapData.value, { dast, OWASP })
 
-      // If no test coverage at all, treat as “No Data”
+      // If no test coverage at all, treat as "No Data"
       const isNoData = !entry || entry.totalCount === 0
       const percentage = isNoData ? 0 : Math.round((entry.detectedCWEs / entry.totalCount) * 100)
 
       // Decide label color
-      // - “No Data” or ≤25% => black
+      // - "No Data" or ≤25% => black
       // - else => white
       const labelColor = isNoData || percentage <= 25 ? '#000' : '#fff'
 
@@ -157,7 +162,19 @@ const heatmapOptions = computed(() => ({
     y: {
       formatter(val: number, opts: any) {
         const point = opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex]
-        return point.isNoData ? 'No Data' : `${val}%`
+        if (point.isNoData) return 'No Data'
+        
+        // Find the entry in heatmapData to get the actual counts
+        const entry = find(heatmapData.value, { 
+          dast: opts.w.config.series[opts.seriesIndex].name, 
+          OWASP: point.x 
+        })
+        
+        if (entry) {
+          return `${entry.detectedCWEs}/${entry.totalCount} (${val}%)`
+        }
+        
+        return `${val}%`
       },
     },
   },
