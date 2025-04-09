@@ -4,7 +4,12 @@ const dockerCompose: DockerCompose = (await import('../../../docker-compose.yml'
 const dataJson: VulnerabilitiesData = (await import('../../../data.json')).default
 
 export const loadData = () => {
-  const hydratedHeatmapTests: HydratedHeatmapTest[] = dataJson.recordedTests.map((test) => ({
+  // Flatten the recordedTests object into an array with scanner information
+  const flattenedTests = Object.entries(dataJson.recordedTests).flatMap(([scanner, tests]) =>
+    tests.map(test => ({ ...test, scanner }))
+  )
+
+  const hydratedHeatmapTests: HydratedHeatmapTest[] = flattenedTests.map((test) => ({
     ...test,
     profiles: dockerCompose.services[test.test]?.profiles || [],
   }))
@@ -14,7 +19,7 @@ export const loadData = () => {
   dataJson.vulnerabilities.forEach((vul) => {
     vul.CWEDetails.forEach((cweDetail) => {
       const cwe = cweDetail.id
-      dataJson.recordedTests.forEach((rt) => {
+      flattenedTests.forEach((rt) => {
         if (rt.detectedCWEs.includes(cwe) || rt.undetectedCWEs?.includes(cwe)) {
           // Build "A01:2021 Broken Access Control" using the group from the vulnerability level
           const owaspWithGroup = `${vul.OWASP} ${vul.group}`

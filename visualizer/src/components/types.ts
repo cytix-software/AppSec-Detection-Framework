@@ -20,16 +20,14 @@ export interface Vulnerability {
 }
 
 export interface RecordedTest {
-  scanner: string
+  test: string
   detectedCWEs: number[]
   undetectedCWEs: number[]
-  detectedCWEDetails: CWEDetail[]
-  undetectedCWEDetails: CWEDetail[]
-  test: string
   updatedAt: number
 }
 
 export interface HydratedHeatmapTest extends RecordedTest {
+  scanner: string
   profiles: string[]
 }
 
@@ -52,7 +50,9 @@ export interface DockerCompose {
 
 export interface VulnerabilitiesData {
   vulnerabilities: Vulnerability[]
-  recordedTests: RecordedTest[]
+  recordedTests: {
+    [scanner: string]: RecordedTest[]
+  }
 }
 
 export interface WeightedScore {

@@ -149,12 +149,14 @@ import {
 } from 'naive-ui'
 import { loadData, getDetailsByCwe } from './data'
 import { groupBy, uniq, difference } from 'lodash-es'
+import type { VulnerabilitiesData } from './types'
 
+const dataJson: VulnerabilitiesData = (await import('../../../data.json')).default
 const { hydratedHeatmapTests, vulnerabilities } = loadData()
 
 // Get unique DAST tools
 const scannerTools = computed(() => {
-  return [...new Set(hydratedHeatmapTests.map(test => test.scanner))]
+  return Object.keys(dataJson.recordedTests)
 })
 
 // Create options for the select component
