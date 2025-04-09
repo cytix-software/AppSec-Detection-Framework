@@ -51,7 +51,10 @@ export interface DockerCompose {
 export interface VulnerabilitiesData {
   vulnerabilities: Vulnerability[]
   recordedTests: {
-    [scanner: string]: RecordedTest[]
+    [scanner: string]: {
+      scanProfile: string
+      tests: RecordedTest[]
+    }
   }
 }
 
