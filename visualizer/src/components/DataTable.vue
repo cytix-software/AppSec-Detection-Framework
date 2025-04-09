@@ -54,13 +54,23 @@ import type { HydratedTest } from './types'
 // 1. Define exactly the columns you want displayed.
 //
 const columns = [
-  { title: 'OWASP Code & Group', key: 'owasp', width: 300 },
+  { 
+    title: 'OWASP Code & Group', 
+    key: 'owasp', 
+    width: 300,
+    ellipsis: true
+  },
   {
     title: 'CWE ID',
     key: 'cwe',
+    width: 100,
     render: (row: any) => `CWE-${row.cwe}`,
   },
-  { title: 'Test', key: 'test' },
+  { 
+    title: 'Test', 
+    key: 'test',
+    ellipsis: true
+  },
   {
     title: 'Detections',
     key: 'detections',
@@ -144,7 +154,7 @@ const processedData = computed(() => {
   return props.data.map((row) => {
     // Flatten all the profiles across detections
     const allProfiles = row.detections.flatMap((d) => d.profiles)
-    // Example logic: row is considered “detected” if ANY detection is true
+    // Example logic: row is considered "detected" if ANY detection is true
     const isDetected = row.detections.some((d) => d.detected)
 
     return {
@@ -197,23 +207,47 @@ const filteredData = computed(() => {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .column-filters {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
   margin-bottom: 1.5rem;
+  width: 100%;
 }
 
 .filter-input {
-  min-width: 200px;
+  min-width: 180px;
+  width: 100%;
 }
 
 /* Example styling */
+.results-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .results-table :deep(.n-data-table-th) {
   background: #0e1e33 !important;
   color: #ffffff !important;
   font-size: 12px !important;
+  white-space: nowrap;
+}
+
+.results-table :deep(.n-data-table-td) {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .column-filters {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-input {
+    min-width: 100%;
+  }
 }
 </style>
