@@ -4,25 +4,37 @@
     <h1>AppSec Detection Framework Visualizer</h1>
 
     <div class="main-content">
+      <!-- Coverage Gap Analysis -->
+      <n-card class="coverage-gap-wrapper">
+        <ToolCoverageGap @tools-selected="handleToolsSelected" />
+      </n-card>
+      
       <!-- Charts Section -->
       <div class="charts-section">
-        <!-- Heatmap Chart -->
-        <n-card title="OWASP Coverage (Heatmap)" class="chart-wrapper">
-          <HeatmapChart
-            :options="heatmapOptions"
-            :series="heatmapSeries"
-          />
+        <!-- Heatmap and Radar Charts in Tabs -->
+        <n-card class="chart-wrapper">
+          <n-tabs type="line" animated>
+            <n-tab-pane name="heatmap" tab="OWASP Coverage (Heatmap)">
+              <HeatmapChart
+                :options="heatmapOptions"
+                :series="filteredHeatmapSeries"
+              />
+            </n-tab-pane>
+            <n-tab-pane name="radar" tab="Tool Comparison">
+              <RadarChart :options="radarOptions" :series="filteredRadarSeries" />
+            </n-tab-pane>
+          </n-tabs>
         </n-card>
 
         <!-- Bar Chart -->
-        <n-card title="DAST Performance (Bar)" class="chart-wrapper">
-          <BarChart :options="barOptions" :series="barSeries" />
+        <n-card title="Tool Performance (Bar)" class="chart-wrapper">
+          <BarChart :options="filteredBarOptions" :series="filteredBarSeries" />
         </n-card>
       </div>
 
       <!-- Dataset Table -->
       <n-card title="Dataset" class="data-table-wrapper">
-        <DataTable :data="hydratedTests" />
+        <DataTable :data="filteredHydratedTests" />
       </n-card>
     </div>
   </div>
@@ -32,14 +44,51 @@
 // -----------------------------------------------------------------------------
 // Imports
 // -----------------------------------------------------------------------------
-import { NCard } from 'naive-ui'
+import { NCard, NTabs, NTabPane } from 'naive-ui'
 import { groupBy, filter, find, some, includes, flatten, map } from 'lodash-es'
 import { loadData } from './data'
+import RadarChart from './RadarChart.vue'
+import BarChart from './BarChart.vue'
+import HeatmapChart from './HeatmapChart.vue'
+import DataTable from './DataTable.vue'
+import ToolCoverageGap from './ToolCoverageGap.vue'
+import { computed, ref } from 'vue'
 
 const { hydratedTests, hydratedHeatmapTests, vulnerabilities } = loadData()
 
 // Technologies used for bar chart calculations
 const technologies = ['php', 'nodejs']
+
+// Selected tools state
+const selectedTools = ref<string[]>([])
+
+// Handle tools selected from ToolCoverageGap
+function handleToolsSelected(tools: string[]) {
+  selectedTools.value = tools
+}
+
+// Filter hydrated tests based on selected tools
+const filteredHydratedTests = computed(() => {
+  if (selectedTools.value.length === 0) return hydratedTests
+  
+  return hydratedTests.filter(test => 
+    test.detections.some(detection => selectedTools.value.includes(detection.dast))
+  ).map(test => ({
+    ...test,
+    detections: test.detections.filter(detection => 
+      selectedTools.value.includes(detection.dast)
+    )
+  }))
+})
+
+// Filter hydrated heatmap tests based on selected tools
+const filteredHydratedHeatmapTests = computed(() => {
+  if (selectedTools.value.length === 0) return hydratedHeatmapTests
+  
+  return hydratedHeatmapTests.filter(test => 
+    selectedTools.value.includes(test.dast)
+  )
+})
 
 // -----------------------------------------------------------------------------
 // forHeatMap (Heatmap Chart Logic)
@@ -48,7 +97,7 @@ const heatmapData = computed(() =>
   vulnerabilities.flatMap(({ OWASP, CWE }) => {
     // First, find all unique tests that match any CWE in this OWASP category
     const uniqueTests = filter(
-      hydratedHeatmapTests,
+      filteredHydratedHeatmapTests.value,
       (t) => some(t.profiles, (p) => CWE.includes(parseInt(p.replace('cwe-', ''))))
     )
 
@@ -117,6 +166,15 @@ const heatmapSeries = computed(() => {
   })
 })
 
+// Filtered heatmap series based on selected tools
+const filteredHeatmapSeries = computed(() => {
+  if (selectedTools.value.length === 0) return heatmapSeries.value
+  
+  return heatmapSeries.value.filter(series => 
+    selectedTools.value.includes(series.name)
+  )
+})
+
 const heatmapOptions = computed(() => ({
   chart: { type: 'heatmap' },
   plotOptions: {
@@ -171,7 +229,7 @@ const heatmapOptions = computed(() => ({
 // forPerformance (Bar Chart Logic)
 // -----------------------------------------------------------------------------
 function calculateWeightedScores() {
-  const grouped = groupBy(hydratedHeatmapTests, 'dast')
+  const grouped = groupBy(filteredHydratedHeatmapTests.value, 'dast')
 
   return Object.entries(grouped).map(([dast, tests]) => {
     // group all technologies for these tests
@@ -215,17 +273,124 @@ const barSeries = computed(() => [
   },
 ])
 
+// Filtered bar series based on selected tools
+const filteredBarSeries = computed(() => {
+  if (selectedTools.value.length === 0) return barSeries.value
+  
+  const scores = calculateWeightedScores()
+  const filteredScores = scores.filter(score => 
+    selectedTools.value.includes(score.dast)
+  )
+  
+  return [{
+    name: 'Weighted Detection Score',
+    data: filteredScores.map((d) => d.score),
+  }]
+})
+
 const barOptions = computed(() => ({
   chart: { type: 'bar' },
   xaxis: {
     categories: calculateWeightedScores().map((d) => d.dast),
-    title: { text: 'DAST Tools' },
+    title: { text: 'Tools' },
   },
   yaxis: {
     title: { text: 'Weighted Detection Score (%)' },
     max: 100,
   },
   colors: ['#216FED'],
+}))
+
+// Filtered bar options based on selected tools
+const filteredBarOptions = computed(() => {
+  if (selectedTools.value.length === 0) return barOptions.value
+  
+  const scores = calculateWeightedScores()
+  const filteredScores = scores.filter(score => 
+    selectedTools.value.includes(score.dast)
+  )
+  
+  return {
+    ...barOptions.value,
+    xaxis: {
+      ...barOptions.value.xaxis,
+      categories: filteredScores.map((d) => d.dast),
+    }
+  }
+})
+
+// -----------------------------------------------------------------------------
+// Radar Chart Logic
+// -----------------------------------------------------------------------------
+const radarData = computed(() => {
+  const dasts = [...new Set(filteredHydratedHeatmapTests.value.map((t) => t.dast))]
+  
+  return dasts.map(dast => {
+    const data = vulnerabilities.map(({ OWASP }) => {
+      const entry = find(heatmapData.value, { dast, OWASP })
+      if (!entry || entry.totalCount === 0) return 0
+      return Math.round((entry.detectedCWEs / entry.totalCount) * 100)
+    })
+
+    return {
+      name: dast,
+      data
+    }
+  })
+})
+
+const radarSeries = computed(() => radarData.value)
+
+// Filtered radar series based on selected tools
+const filteredRadarSeries = computed(() => {
+  if (selectedTools.value.length === 0) return radarSeries.value
+  
+  return radarSeries.value.filter(series => 
+    selectedTools.value.includes(series.name)
+  )
+})
+
+const radarOptions = computed(() => ({
+  chart: {
+    type: 'radar',
+    toolbar: {
+      show: false
+    }
+  },
+  xaxis: {
+    categories: vulnerabilities.map(v => v.OWASP)
+  },
+  yaxis: {
+    show: false,
+    min: 0,
+    max: 100
+  },
+  plotOptions: {
+    radar: {
+      size: 140,
+      polygons: {
+        strokeColors: '#e9e9e9',
+        fill: {
+          colors: ['#f8f8f8', '#fff']
+        }
+      }
+    }
+  },
+  colors: ['#216FED', '#93C5FD'],
+  stroke: {
+    width: 2
+  },
+  fill: {
+    opacity: 0.1
+  },
+  markers: {
+    size: 0
+  },
+  tooltip: {
+    y: {
+      formatter: (val: number) => `${val}%`
+    }
+  }
 }))
 </script>
 
@@ -254,6 +419,10 @@ const barOptions = computed(() => ({
   overflow: hidden;
 }
 
+.coverage-gap-wrapper {
+  width: 100%;
+}
+
 .data-table-wrapper {
   overflow-x: auto;
 }
@@ -277,9 +446,17 @@ const barOptions = computed(() => ({
   padding: 8px 12px !important;
 }
 
+.radar-chart {
+  grid-column: 1 / -1;
+}
+
 @media (max-width: 1200px) {
   .charts-section {
     grid-template-columns: 1fr;
+  }
+  
+  .radar-chart {
+    grid-column: auto;
   }
 }
 </style>

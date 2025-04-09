@@ -8,7 +8,7 @@
       :series="series"
     />
     <p class="chart-description">
-      This chart shows a detection score percentage that indicates how effective a DAST scanner is at identifying vulnerabilities overall. This score is adjusted to account for tests done for the same vulnerability across multiple tech stacks.
+      This chart shows a detection score percentage that indicates how effective a scanner is at identifying vulnerabilities overall. This score is adjusted to account for tests done for the same vulnerability across multiple tech stacks.
     </p>
   </div>
 </template>

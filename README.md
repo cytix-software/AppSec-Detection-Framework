@@ -11,10 +11,10 @@ A framework for understanding the capabilities of automated detection methods at
 
 ### Running
 
-In order to test a new DAST scanner or set of exploits, you will need to test against the proofs of concept in this repository, this is done with Pocman.
+In order to test a new scanner or set of exploits, you will need to test against the proofs of concept in this repository, this is done with Pocman.
 Pocman is an application that orchestrates the proof of concepts in this repository so that exploits can be tested in batches. You can run it with `bun install && ./pocman.ts`.
 Pocman deploys proofs of concept in batches, so as not to exceed resource constraints. By default it uses batches of 15 images. You can navigate to the next batch by entering 'next' into the command prompt that appears.
-By default the index of proof of concepts will be hosted on `localhost:3000`, and this is where you should point your DAST scanner, so that it can crawl all the available PoCs.
+By default the index of proof of concepts will be hosted on `localhost:3000`, and this is where you should point your scanner, so that it can crawl all the available PoCs.
 
 For further information you can use the command `bun install && ./pocman.ts --help`
 
@@ -43,7 +43,7 @@ This is the file that contains our test data and the OWASP top 10 CWEs. When a n
 
 ```
 {
-  "dast": <the name of the dast being tested, including the version number as a string>,
+  "dast": <the name of the scanner being tested, including the version number as a string>,
   "test": <the name of the docker container of the test, this should be a string>,
   "detectedCWEs": <an array of CWE ID, where each ID represents the vulnerability detected>,
   "undetectedCWEs" <an array of CWE ID, where each ID represents the vulnerability not detected>,
