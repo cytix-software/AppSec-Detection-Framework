@@ -8,20 +8,26 @@ export interface DockerService {
   profiles: string[]
 }
 
+export interface CWEDetail {
+  id: number
+  title: string
+}
+
 export interface Vulnerability {
   OWASP: string
-  CWE: number[]
+  CWEDetails: CWEDetail[]
+  group: string
 }
 
 export interface RecordedTest {
-  dast: string
+  test: string
   detectedCWEs: number[]
   undetectedCWEs: number[]
-  test: string
   updatedAt: number
 }
 
 export interface HydratedHeatmapTest extends RecordedTest {
+  scanner: string
   profiles: string[]
 }
 
@@ -30,7 +36,7 @@ export interface HydratedTest {
   cwe: number
   test: string
   detections: {
-    dast: string
+    scanner: string
     detected: boolean
     profiles: string[]
   }[]
@@ -44,10 +50,12 @@ export interface DockerCompose {
 
 export interface VulnerabilitiesData {
   vulnerabilities: Vulnerability[]
-  recordedTests: RecordedTest[]
+  recordedTests: {
+    [scanner: string]: RecordedTest[]
+  }
 }
 
 export interface WeightedScore {
-  dast: string
+  scanner: string
   score: number
 }

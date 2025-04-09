@@ -11,6 +11,39 @@
           style="width: 100%"
         />
         
+        <n-grid v-if="coverageGaps.length > 0" cols="3" :x-gap="12" :y-gap="8">
+          <n-gi>
+            <n-statistic label="Total CWEs with Detection Gaps">
+              <n-number-animation
+                ref="numberAnimationInstRef"
+                :from="0"
+                :to="coverageGaps.length"
+              />
+            </n-statistic>
+          </n-gi>
+          <n-gi>
+            <n-statistic label="OWASP Categories Affected">
+              <n-number-animation
+                ref="numberAnimationInstRef"
+                :from="0"
+                :to="affectedOwaspCategories"
+              />
+            </n-statistic>
+          </n-gi>
+          <n-gi>
+            <n-statistic label="Critical Gaps (0% Detection)">
+              <template #prefix>
+                <n-tag type="error" size="small">Critical</n-tag>
+              </template>
+              <n-number-animation
+                ref="numberAnimationInstRef"
+                :from="0"
+                :to="criticalGapsCount"
+              />
+            </n-statistic>
+          </n-gi>
+        </n-grid>
+        
         <n-collapse v-if="coverageGaps.length > 0" class="results-section">
           <n-collapse-item title="Coverage Gaps" name="gaps">
             <n-tabs type="line" animated>
@@ -33,6 +66,8 @@
                                 :color="getProgressColor(rate.rate)"
                                 :indicator-placement="'inside'"
                                 :height="16"
+                                :rail-color="rate.rate === 0 ? '#d03050' : undefined"
+                                :show-indicator="true"
                               >
                                 {{ rate.detected }}/{{ rate.total }} ({{ rate.rate }}%)
                               </n-progress>
@@ -64,6 +99,8 @@
                                 :color="getProgressColor(rate.rate)"
                                 :indicator-placement="'inside'"
                                 :height="16"
+                                :rail-color="rate.rate === 0 ? '#d03050' : undefined"
+                                :show-indicator="true"
                               >
                                 {{ rate.detected }}/{{ rate.total }} ({{ rate.rate }}%)
                               </n-progress>
@@ -102,21 +139,29 @@ import {
   NEmpty,
   NCollapse,
   NCollapseItem,
-  NProgress
+  NProgress,
+  NStatistic,
+  NNumberAnimation,
+  NGrid,
+  NGi,
+  NIcon,
+  NTag
 } from 'naive-ui'
 import { loadData, getDetailsByCwe } from './data'
 import { groupBy, uniq, difference } from 'lodash-es'
+import type { VulnerabilitiesData } from './types'
 
+const dataJson: VulnerabilitiesData = (await import('../../../data.json')).default
 const { hydratedHeatmapTests, vulnerabilities } = loadData()
 
 // Get unique DAST tools
-const dastTools = computed(() => {
-  return [...new Set(hydratedHeatmapTests.map(test => test.dast))]
+const scannerTools = computed(() => {
+  return Object.keys(dataJson.recordedTests)
 })
 
 // Create options for the select component
 const toolOptions = computed(() => {
-  return dastTools.value.map(tool => ({
+  return scannerTools.value.map(tool => ({
     label: tool,
     value: tool
   }))
@@ -137,19 +182,19 @@ const cweGaps = computed(() => {
   
   return coverageGaps.value.map(gap => {
     const cweDetails = getDetailsByCwe(gap.cwe)
-    
-    // Calculate detection rates by tool for this CWE
-    const toolDetectionRates = calculateToolDetectionRates(gap.cwe)
+    const vulnerability = vulnerabilities.find(v => 
+      v.CWEDetails.some(detail => detail.id === gap.cwe)
+    )
     
     return {
       id: gap.cwe,
       name: cweDetails?.title || 'Unknown',
-      description: cweDetails?.group || 'No description available',
-      owasp: cweDetails?.owasp || 'Unknown',
+      description: vulnerability?.group || 'No description available',
+      owasp: vulnerability?.OWASP || 'Unknown',
       detectionRate: gap.detectionRate,
       detectionCount: gap.detectionCount,
       totalCount: gap.totalCount,
-      toolDetectionRates
+      toolDetectionRates: gap.toolDetectionRates
     }
   }).sort((a, b) => a.id - b.id) // Sort by CWE ID
 })
@@ -188,75 +233,34 @@ const owaspGaps = computed(() => {
 })
 
 // Calculate detection rate for an OWASP category
-function calculateOwaspDetectionRate(owaspCategory: string) {
-  // Get all CWEs in this OWASP category
+const calculateOwaspDetectionRate = (owasp: string) => {
   const cwesInCategory = vulnerabilities
-    .filter(v => v.OWASP === owaspCategory)
-    .flatMap(v => v.CWE)
+    .filter(v => v.OWASP === owasp)
+    .flatMap(v => v.CWEDetails.map(detail => detail.id))
   
-  // Initialize counters
   let detected = 0
   let total = 0
   
-  // Process all tests for selected tools
-  selectedTools.value.forEach(tool => {
-    const toolTests = hydratedHeatmapTests.filter(test => test.dast === tool)
-    
-    toolTests.forEach(test => {
-      // Count detections for CWEs in this category
+  // Process tests for selected tools
+  hydratedHeatmapTests.forEach(test => {
+    if (selectedTools.value.includes(test.scanner)) {
+      const testCwes = [...test.detectedCWEs, ...test.undetectedCWEs]
       cwesInCategory.forEach(cwe => {
-        const wasDetected = test.detectedCWEs.includes(cwe)
-        const wasUndetected = test.undetectedCWEs && test.undetectedCWEs.includes(cwe)
-        
-        if (wasDetected || wasUndetected) {
+        if (testCwes.includes(cwe)) {
           total++
-          if (wasDetected) {
+          if (test.detectedCWEs.includes(cwe)) {
             detected++
           }
         }
       })
-    })
+    }
   })
   
   return {
     detected,
     total,
-    rate: total > 0 ? Math.round((detected / total) * 100) : 0
+    rate: total > 0 ? (detected / total) * 100 : 0
   }
-}
-
-// Calculate detection rates by tool for a specific CWE
-function calculateToolDetectionRates(cwe: number) {
-  const toolRates: Record<string, { detected: number, total: number, rate: number }> = {}
-  
-  // Initialize rates for each selected tool
-  selectedTools.value.forEach(tool => {
-    toolRates[tool] = { detected: 0, total: 0, rate: 0 }
-  })
-  
-  // Process all tests for selected tools
-  selectedTools.value.forEach(tool => {
-    const toolTests = hydratedHeatmapTests.filter(test => test.dast === tool)
-    
-    toolTests.forEach(test => {
-      const wasDetected = test.detectedCWEs.includes(cwe)
-      const wasUndetected = test.undetectedCWEs && test.undetectedCWEs.includes(cwe)
-      
-      if (wasDetected || wasUndetected) {
-        toolRates[tool].total++
-        if (wasDetected) {
-          toolRates[tool].detected++
-        }
-      }
-    })
-    
-    // Calculate rate for this tool
-    toolRates[tool].rate = toolRates[tool].total > 0 
-      ? Math.round((toolRates[tool].detected / toolRates[tool].total) * 100) 
-      : 0
-  })
-  
-  return toolRates
 }
 
 // Calculate detection rates by tool for an OWASP category
@@ -264,9 +268,9 @@ function calculateOwaspToolDetectionRates(owaspCategory: string) {
   // Get all CWEs in this OWASP category
   const cwesInCategory = vulnerabilities
     .filter(v => v.OWASP === owaspCategory)
-    .flatMap(v => v.CWE)
+    .flatMap(v => v.CWEDetails.map(detail => detail.id))
   
-  const toolRates: Record<string, { detected: number, total: number, rate: number }> = {}
+  const toolRates: Record<string, { detected: number; total: number; rate: number }> = {}
   
   // Initialize rates for each selected tool
   selectedTools.value.forEach(tool => {
@@ -275,7 +279,7 @@ function calculateOwaspToolDetectionRates(owaspCategory: string) {
   
   // Process all tests for selected tools
   selectedTools.value.forEach(tool => {
-    const toolTests = hydratedHeatmapTests.filter(test => test.dast === tool)
+    const toolTests = hydratedHeatmapTests.filter(test => test.scanner === tool)
     
     toolTests.forEach(test => {
       // Count detections for CWEs in this category
@@ -293,9 +297,9 @@ function calculateOwaspToolDetectionRates(owaspCategory: string) {
     })
     
     // Calculate rate for this tool
-    toolRates[tool].rate = toolRates[tool].total > 0 
-      ? Math.round((toolRates[tool].detected / toolRates[tool].total) * 100) 
-      : 0
+    if (toolRates[tool].total > 0) {
+      toolRates[tool].rate = Math.round((toolRates[tool].detected / toolRates[tool].total) * 100)
+    }
   })
   
   return toolRates
@@ -316,9 +320,12 @@ function analyzeCoverageGaps() {
   const detectedCwes = new Map<number, number>() // CWE -> count of detections
   const totalTests = new Map<number, number>() // CWE -> total tests
   
+  // Track detection rates by tool for each CWE
+  const toolDetectionRates = new Map<number, Record<string, { detected: number, total: number, rate: number }>>()
+  
   // Process all tests for selected tools
   selectedTools.value.forEach(tool => {
-    const toolTests = hydratedHeatmapTests.filter(test => test.dast === tool)
+    const toolTests = hydratedHeatmapTests.filter(test => test.scanner === tool)
     
     toolTests.forEach(test => {
       // Process detected CWEs
@@ -326,6 +333,20 @@ function analyzeCoverageGaps() {
         allTestedCwes.add(cwe)
         detectedCwes.set(cwe, (detectedCwes.get(cwe) || 0) + 1)
         totalTests.set(cwe, (totalTests.get(cwe) || 0) + 1)
+        
+        // Initialize tool detection rates for this CWE if needed
+        if (!toolDetectionRates.has(cwe)) {
+          toolDetectionRates.set(cwe, {})
+        }
+        
+        // Initialize tool detection rates for this tool if needed
+        if (!toolDetectionRates.get(cwe)![tool]) {
+          toolDetectionRates.get(cwe)![tool] = { detected: 0, total: 0, rate: 0 }
+        }
+        
+        // Update tool detection rates
+        toolDetectionRates.get(cwe)![tool].detected++
+        toolDetectionRates.get(cwe)![tool].total++
       })
       
       // Process undetected CWEs
@@ -333,41 +354,91 @@ function analyzeCoverageGaps() {
         test.undetectedCWEs.forEach(cwe => {
           allTestedCwes.add(cwe)
           totalTests.set(cwe, (totalTests.get(cwe) || 0) + 1)
+          
+          // Initialize tool detection rates for this CWE if needed
+          if (!toolDetectionRates.has(cwe)) {
+            toolDetectionRates.set(cwe, {})
+          }
+          
+          // Initialize tool detection rates for this tool if needed
+          if (!toolDetectionRates.get(cwe)![tool]) {
+            toolDetectionRates.get(cwe)![tool] = { detected: 0, total: 0, rate: 0 }
+          }
+          
+          // Update tool detection rates
+          toolDetectionRates.get(cwe)![tool].total++
         })
+      }
+    })
+    
+    // Calculate rates for each tool
+    toolDetectionRates.forEach((toolRates, cwe) => {
+      if (toolRates[tool]) {
+        toolRates[tool].rate = toolRates[tool].total > 0 
+          ? Math.round((toolRates[tool].detected / toolRates[tool].total) * 100) 
+          : 0
       }
     })
   })
   
-  // Find CWEs that were tested but not detected 100% of the time
+  // Find CWEs that were tested but not detected 100% of the time by any tool
   const gaps = Array.from(allTestedCwes)
     .filter(cwe => {
-      const detected = detectedCwes.get(cwe) || 0
-      const total = totalTests.get(cwe) || 0
-      return detected < total // Include if not 100% detected
+      // Check if any tool has 100% detection rate for this CWE
+      const hasPerfectDetection = selectedTools.value.some(tool => {
+        const toolRate = toolDetectionRates.get(cwe)?.[tool]
+        return toolRate && toolRate.total > 0 && toolRate.rate === 100
+      })
+      
+      // Only include if no tool has 100% detection rate
+      return !hasPerfectDetection
     })
     .map(cwe => {
-      const vuln = vulnerabilities.find(v => v.CWE.includes(cwe))
+      const vuln = vulnerabilities.find(v => v.CWEDetails.some(detail => detail.id === cwe))
       return {
         cwe,
         owasp: vuln?.OWASP || 'Unknown',
         detectionCount: detectedCwes.get(cwe) || 0,
         totalCount: totalTests.get(cwe) || 0,
-        detectionRate: Math.round(((detectedCwes.get(cwe) || 0) / (totalTests.get(cwe) || 1)) * 100)
+        detectionRate: Math.round(((detectedCwes.get(cwe) || 0) / (totalTests.get(cwe) || 1)) * 100),
+        toolDetectionRates: toolDetectionRates.get(cwe) || {}
       }
     })
   
-  // Sort by detection rate (ascending) to show worst performers first
-  gaps.sort((a, b) => a.detectionRate - b.detectionRate)
+  // Sort by CWE ID
+  gaps.sort((a, b) => a.cwe - b.cwe)
   
   coverageGaps.value = gaps
 }
 
 // Get color for progress bar based on detection rate
 function getProgressColor(rate: number) {
-  if (rate >= 80) return '#18a058' // Green for high detection rate
-  if (rate >= 50) return '#f0a020' // Yellow for medium detection rate
-  return '#d03050' // Red for low detection rate
+  if (rate === 0) return '#d03050' // Brightest red for 0% detection rate
+  if (rate < 25) return '#e88080' // Light red for very low detection rate
+  if (rate < 50) return '#f0a020' // Yellow for low detection rate
+  if (rate < 75) return '#70c0e8' // Light blue for medium detection rate
+  if (rate < 100) return '#18a058' // Green for high detection rate
+  return '#2080f0' // Blue for 100% detection rate
 }
+
+// Calculate average detection rate
+const averageDetectionRate = computed(() => {
+  if (coverageGaps.value.length === 0) return 0
+  const sum = coverageGaps.value.reduce((acc, gap) => acc + gap.detectionRate, 0)
+  return Number((sum / coverageGaps.value.length).toFixed(1))
+})
+
+// Calculate number of affected OWASP categories
+const affectedOwaspCategories = computed(() => {
+  if (coverageGaps.value.length === 0) return 0
+  return new Set(coverageGaps.value.map(gap => gap.owasp)).size
+})
+
+// Calculate number of critical gaps (0% detection rate)
+const criticalGapsCount = computed(() => {
+  if (coverageGaps.value.length === 0) return 0
+  return coverageGaps.value.filter(gap => gap.detectionRate === 0).length
+})
 
 // Watch for changes to selectedTools and automatically analyze
 watch(selectedTools, () => {

@@ -95,7 +95,7 @@ const columns = [
                       h('span', { class: 'flex gap-1' }, [
                         detection.detected ? '✅' : '❌',
                         ' ',
-                        detection.dast,
+                        detection.scanner,
                       ]),
                   },
                 ),
