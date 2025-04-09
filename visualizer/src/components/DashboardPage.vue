@@ -63,35 +63,41 @@ const technologyOptions = computed(() => [
 // -----------------------------------------------------------------------------
 const heatmapData = computed(() =>
   vulnerabilities.flatMap(({ OWASP, CWE }) => {
-    // find all tests that match each CWE (and optionally the selected tech)
-    const cweTests = CWE.flatMap((cwe) =>
-      filter(
-        hydratedHeatmapTests,
-        (t) =>
-          some(t.profiles, (p) => p === `cwe-${cwe}`) &&
-          (!selectedTechnology.value || includes(t.profiles, selectedTechnology.value)),
-      ),
+    // First, find all unique tests that match any CWE in this OWASP category
+    const uniqueTests = filter(
+      hydratedHeatmapTests,
+      (t) =>
+        some(t.profiles, (p) => CWE.includes(parseInt(p.replace('cwe-', '')))) &&
+        (!selectedTechnology.value || includes(t.profiles, selectedTechnology.value))
     )
 
-    const groupedByDast = groupBy(cweTests, 'dast')
+    const groupedByDast = groupBy(uniqueTests, 'dast')
     return Object.entries(groupedByDast).map(([dast, tests]) => {
-      // Only count CWEs that belong to this OWASP category
-      const detectedCWEs = flatten(map(tests, 'detectedCWEs'))
-        .filter(cwe => CWE.includes(cwe))
-        .length
-      const undetectedCWEs = flatten(map(tests, 'undetectedCWEs'))
-        .filter(cwe => CWE.includes(cwe))
-        .length
-      const totalCount = detectedCWEs + undetectedCWEs
+      // For each test, count how many CWEs from this OWASP category were detected/undetected
+      let detectedCount = 0
+      let totalCount = 0
+
+      tests.forEach(test => {
+        // Count detected CWEs that belong to this OWASP category
+        const detectedInCategory = test.detectedCWEs.filter(cwe => CWE.includes(cwe))
+        detectedCount += detectedInCategory.length
+
+        // Count total CWEs that belong to this OWASP category
+        const totalInCategory = [
+          ...test.detectedCWEs,
+          ...(test.undetectedCWEs || [])
+        ].filter(cwe => CWE.includes(cwe))
+        totalCount += totalInCategory.length
+      })
 
       return {
         dast,
         OWASP,
-        detectedCWEs,
-        totalCount,
+        detectedCWEs: detectedCount,
+        totalCount
       }
     })
-  }),
+  })
 )
 
 // Example snippet inside heatmapSeries computed
