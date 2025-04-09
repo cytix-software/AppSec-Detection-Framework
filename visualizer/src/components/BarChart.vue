@@ -14,14 +14,19 @@
 </template>
 
 <script setup lang="ts">
-import VueApexCharts from 'vue3-apexcharts';
+import { defineComponent } from 'vue'
+import VueApexCharts from 'vue3-apexcharts'
+
+defineComponent({
+  components: {
+    apexchart: VueApexCharts
+  }
+})
 
 defineProps({
   options: { type: Object, required: true },
   series: { type: Array, required: true }
-});
-
-const apexchart = VueApexCharts;
+})
 </script>
 
 <style scoped>

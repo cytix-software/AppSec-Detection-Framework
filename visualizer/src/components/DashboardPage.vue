@@ -94,11 +94,11 @@ const filteredHydratedHeatmapTests = computed(() => {
 // forHeatMap (Heatmap Chart Logic)
 // -----------------------------------------------------------------------------
 const heatmapData = computed(() =>
-  vulnerabilities.flatMap(({ OWASP, CWE }) => {
+  vulnerabilities.flatMap(({ OWASP, CWEDetails }) => {
     // First, find all unique tests that match any CWE in this OWASP category
     const uniqueTests = filter(
       filteredHydratedHeatmapTests.value,
-      (t) => some(t.profiles, (p) => CWE.includes(parseInt(p.replace('cwe-', ''))))
+      (t) => some(t.profiles, (p) => CWEDetails.some(detail => detail.id === parseInt(p.replace('cwe-', ''))))
     )
 
     const groupedByDast = groupBy(uniqueTests, 'dast')
@@ -109,14 +109,16 @@ const heatmapData = computed(() =>
 
       tests.forEach(test => {
         // Count detected CWEs that belong to this OWASP category
-        const detectedInCategory = test.detectedCWEs.filter(cwe => CWE.includes(cwe))
+        const detectedInCategory = test.detectedCWEs.filter(cwe => 
+          CWEDetails.some(detail => detail.id === cwe)
+        )
         detectedCount += detectedInCategory.length
 
         // Count total CWEs that belong to this OWASP category
         const totalInCategory = [
           ...test.detectedCWEs,
           ...(test.undetectedCWEs || [])
-        ].filter(cwe => CWE.includes(cwe))
+        ].filter(cwe => CWEDetails.some(detail => detail.id === cwe))
         totalCount += totalInCategory.length
       })
 

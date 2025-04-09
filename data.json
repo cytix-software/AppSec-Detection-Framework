@@ -2,736 +2,3430 @@
   "vulnerabilities": [
     {
       "OWASP": "A01:2021",
-      "CWE": [
-        22, 23, 35, 59, 200, 201, 219, 264, 275, 276, 284, 285, 352, 359, 377,
-        402, 425, 441, 497, 538, 540, 548, 552, 566, 601, 639, 651, 668, 706,
-        862, 863, 913, 922, 1275
-      ]
+      "CWEDetails": [
+        {
+          "id": 22,
+          "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+        },
+        {
+          "id": 23,
+          "title": "Relative Path Traversal"
+        },
+        {
+          "id": 35,
+          "title": "Path Traversal: '.../...//'"
+        },
+        {
+          "id": 59,
+          "title": "Improper Link Resolution Before File Access ('Link Following')"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        },
+        {
+          "id": 201,
+          "title": "Insertion of Sensitive Information Into Sent Data"
+        },
+        {
+          "id": 219,
+          "title": "Storage of File with Sensitive Data Under Web Root"
+        },
+        {
+          "id": 264,
+          "title": "Permissions, Privileges, and Access Controls"
+        },
+        {
+          "id": 275,
+          "title": "Permission Issues"
+        },
+        {
+          "id": 276,
+          "title": "Incorrect Default Permissions"
+        },
+        {
+          "id": 284,
+          "title": "Improper Access Control"
+        },
+        {
+          "id": 285,
+          "title": "Improper Authorization"
+        },
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        },
+        {
+          "id": 359,
+          "title": "Exposure of Private Personal Information to an Unauthorized Actor"
+        },
+        {
+          "id": 377,
+          "title": "Insecure Temporary File"
+        },
+        {
+          "id": 402,
+          "title": "Transmission of Private Resources into a New Sphere ('Resource Leak')"
+        },
+        {
+          "id": 425,
+          "title": "Direct Request ('Forced Browsing')"
+        },
+        {
+          "id": 441,
+          "title": "Unintended Proxy or Intermediary ('Confused Deputy')"
+        },
+        {
+          "id": 497,
+          "title": "Exposure of Sensitive System Information to an Unauthorized Control Sphere"
+        },
+        {
+          "id": 538,
+          "title": "Insertion of Sensitive Information into Externally-Accessible File or Directory"
+        },
+        {
+          "id": 540,
+          "title": "Inclusion of Sensitive Information in Source Code"
+        },
+        {
+          "id": 548,
+          "title": "Exposure of Information Through Directory Listing"
+        },
+        {
+          "id": 552,
+          "title": "Files or Directories Accessible to External Parties"
+        },
+        {
+          "id": 566,
+          "title": "Authorization Bypass Through User-Controlled SQL Primary Key"
+        },
+        {
+          "id": 601,
+          "title": "URL Redirection to Untrusted Site ('Open Redirect')"
+        },
+        {
+          "id": 639,
+          "title": "Authorization Bypass Through User-Controlled Key"
+        },
+        {
+          "id": 651,
+          "title": "Exposure of WSDL File Containing Sensitive Information"
+        },
+        {
+          "id": 668,
+          "title": "Exposure of Resource to Wrong Sphere"
+        },
+        {
+          "id": 706,
+          "title": "Use of Incorrectly-Resolved Name or Reference"
+        },
+        {
+          "id": 862,
+          "title": "Missing Authorization"
+        },
+        {
+          "id": 863,
+          "title": "Incorrect Authorization"
+        },
+        {
+          "id": 913,
+          "title": "Improper Control of Dynamically-Managed Code Resources"
+        },
+        {
+          "id": 922,
+          "title": "Insecure Storage of Sensitive Information"
+        },
+        {
+          "id": 1275,
+          "title": "Sensitive Cookie with Improper SameSite Attribute"
+        }
+      ],
+      "group": "Broken Access Control"
     },
     {
       "OWASP": "A02:2021",
-      "CWE": [
-        261, 296, 310, 319, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330,
-        331, 335, 336, 337, 338, 340, 347, 523, 720, 757, 759, 760, 780, 818,
-        916
-      ]
+      "CWEDetails": [
+        {
+          "id": 261,
+          "title": "Weak Encoding for Password"
+        },
+        {
+          "id": 296,
+          "title": "Improper Following of a Certificate's Chain of Trust"
+        },
+        {
+          "id": 310,
+          "title": "Cryptographic Issues"
+        },
+        {
+          "id": 319,
+          "title": "Cleartext Transmission of Sensitive Information"
+        },
+        {
+          "id": 321,
+          "title": "Use of Hard-coded Cryptographic Key"
+        },
+        {
+          "id": 322,
+          "title": "Key Exchange without Entity Authentication"
+        },
+        {
+          "id": 323,
+          "title": "Reusing a Nonce, Key Pair in Encryption"
+        },
+        {
+          "id": 324,
+          "title": "Use of a Key Past its Expiration Date"
+        },
+        {
+          "id": 325,
+          "title": "Missing Cryptographic Step"
+        },
+        {
+          "id": 326,
+          "title": "Inadequate Encryption Strength"
+        },
+        {
+          "id": 327,
+          "title": "Use of a Broken or Risky Cryptographic Algorithm"
+        },
+        {
+          "id": 328,
+          "title": "Use of Weak Hash"
+        },
+        {
+          "id": 329,
+          "title": "Generation of Predictable IV with CBC Mode"
+        },
+        {
+          "id": 330,
+          "title": "Use of Insufficiently Random Values"
+        },
+        {
+          "id": 331,
+          "title": "Insufficient Entropy"
+        },
+        {
+          "id": 335,
+          "title": "Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG)"
+        },
+        {
+          "id": 336,
+          "title": "Same Seed in Pseudo-Random Number Generator (PRNG)"
+        },
+        {
+          "id": 337,
+          "title": "Predictable Seed in Pseudo-Random Number Generator (PRNG)"
+        },
+        {
+          "id": 338,
+          "title": "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)"
+        },
+        {
+          "id": 340,
+          "title": "Generation of Predictable Numbers or Identifiers"
+        },
+        {
+          "id": 347,
+          "title": "Improper Verification of Cryptographic Signature"
+        },
+        {
+          "id": 523,
+          "title": "Unprotected Transport of Credentials"
+        },
+        {
+          "id": 720,
+          "title": "OWASP Top Ten 2007 Category A9 - Insecure Communications"
+        },
+        {
+          "id": 757,
+          "title": "Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')"
+        },
+        {
+          "id": 759,
+          "title": "Use of a One-Way Hash without a Salt"
+        },
+        {
+          "id": 760,
+          "title": "Use of a One-Way Hash with a Predictable Salt"
+        },
+        {
+          "id": 780,
+          "title": "Use of RSA Algorithm without OAEP"
+        },
+        {
+          "id": 818,
+          "title": "OWASP Top Ten 2010 Category A9 - Insufficient Transport Layer Protection"
+        },
+        {
+          "id": 916,
+          "title": "Use of Password Hash With Insufficient Computational Effort"
+        }
+      ],
+      "group": "Cryptographic Failures"
     },
     {
       "OWASP": "A03:2021",
-      "CWE": [
-        20, 74, 75, 77, 78, 79, 80, 83, 87, 88, 89, 90, 91, 93, 94, 95, 96, 97,
-        98, 99, 113, 116, 138, 184, 470, 471, 564, 610, 643, 644, 652, 917
-      ]
+      "CWEDetails": [
+        {
+          "id": 20,
+          "title": "Improper Input Validation"
+        },
+        {
+          "id": 74,
+          "title": "Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')"
+        },
+        {
+          "id": 75,
+          "title": "Failure to Sanitize Special Elements into a Different Plane (Special Element Injection)"
+        },
+        {
+          "id": 77,
+          "title": "Improper Neutralization of Special Elements used in a Command ('Command Injection')"
+        },
+        {
+          "id": 78,
+          "title": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+        },
+        {
+          "id": 79,
+          "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+        },
+        {
+          "id": 80,
+          "title": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)"
+        },
+        {
+          "id": 83,
+          "title": "Improper Neutralization of Script in Attributes in a Web Page"
+        },
+        {
+          "id": 87,
+          "title": "Improper Neutralization of Alternate XSS Syntax"
+        },
+        {
+          "id": 88,
+          "title": "Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')"
+        },
+        {
+          "id": 89,
+          "title": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+        },
+        {
+          "id": 90,
+          "title": "Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')"
+        },
+        {
+          "id": 91,
+          "title": "XML Injection (aka Blind XPath Injection)"
+        },
+        {
+          "id": 93,
+          "title": "Improper Neutralization of CRLF Sequences ('CRLF Injection')"
+        },
+        {
+          "id": 94,
+          "title": "Improper Control of Generation of Code ('Code Injection')"
+        },
+        {
+          "id": 95,
+          "title": "Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')"
+        },
+        {
+          "id": 96,
+          "title": "Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')"
+        },
+        {
+          "id": 97,
+          "title": "Improper Neutralization of Server-Side Includes (SSI) Within a Web Page"
+        },
+        {
+          "id": 98,
+          "title": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')"
+        },
+        {
+          "id": 99,
+          "title": "Improper Control of Resource Identifiers ('Resource Injection')"
+        },
+        {
+          "id": 113,
+          "title": "Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')"
+        },
+        {
+          "id": 116,
+          "title": "Improper Encoding or Escaping of Output"
+        },
+        {
+          "id": 138,
+          "title": "Improper Neutralization of Special Elements"
+        },
+        {
+          "id": 184,
+          "title": "Incomplete List of Disallowed Inputs"
+        },
+        {
+          "id": 470,
+          "title": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')"
+        },
+        {
+          "id": 471,
+          "title": "Modification of Assumed-Immutable Data (MAID)"
+        },
+        {
+          "id": 564,
+          "title": "SQL Injection: Hibernate"
+        },
+        {
+          "id": 610,
+          "title": "Externally Controlled Reference to a Resource in Another Sphere"
+        },
+        {
+          "id": 643,
+          "title": "Improper Neutralization of Data within XPath Expressions ('XPath Injection')"
+        },
+        {
+          "id": 644,
+          "title": "Improper Neutralization of HTTP Headers for Scripting Syntax"
+        },
+        {
+          "id": 652,
+          "title": "Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')"
+        },
+        {
+          "id": 917,
+          "title": "Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')"
+        }
+      ],
+      "group": "Injection"
     },
     {
       "OWASP": "A04:2021",
-      "CWE": [
-        73, 183, 209, 213, 235, 256, 257, 266, 269, 280, 311, 312, 313, 316,
-        419, 430, 434, 444, 451, 472, 501, 522, 525, 539, 579, 598, 602, 642,
-        646, 650, 653, 656, 657, 799, 807, 840, 841, 927, 1021, 1173
-      ]
+      "CWEDetails": [
+        {
+          "id": 73,
+          "title": "External Control of File Name or Path"
+        },
+        {
+          "id": 183,
+          "title": "Permissive List of Allowed Inputs"
+        },
+        {
+          "id": 209,
+          "title": "Generation of Error Message Containing Sensitive Information"
+        },
+        {
+          "id": 213,
+          "title": "Exposure of Sensitive Information Due to Incompatible Policies"
+        },
+        {
+          "id": 235,
+          "title": "Improper Handling of Extra Parameters"
+        },
+        {
+          "id": 256,
+          "title": "Plaintext Storage of a Password"
+        },
+        {
+          "id": 257,
+          "title": "Storing Passwords in a Recoverable Format"
+        },
+        {
+          "id": 266,
+          "title": "Incorrect Privilege Assignment"
+        },
+        {
+          "id": 269,
+          "title": "Improper Privilege Management"
+        },
+        {
+          "id": 280,
+          "title": "Improper Handling of Insufficient Permissions or Privileges"
+        },
+        {
+          "id": 311,
+          "title": "Missing Encryption of Sensitive Data"
+        },
+        {
+          "id": 312,
+          "title": "Cleartext Storage of Sensitive Information"
+        },
+        {
+          "id": 313,
+          "title": "Cleartext Storage in a File or on Disk"
+        },
+        {
+          "id": 316,
+          "title": "Cleartext Storage of Sensitive Information in Memory"
+        },
+        {
+          "id": 419,
+          "title": "Unprotected Primary Channel"
+        },
+        {
+          "id": 430,
+          "title": "Deployment of Wrong Handler"
+        },
+        {
+          "id": 434,
+          "title": "Unrestricted Upload of File with Dangerous Type"
+        },
+        {
+          "id": 444,
+          "title": "Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')"
+        },
+        {
+          "id": 451,
+          "title": "User Interface (UI) Misrepresentation of Critical Information"
+        },
+        {
+          "id": 472,
+          "title": "External Control of Assumed-Immutable Web Parameter"
+        },
+        {
+          "id": 501,
+          "title": "Trust Boundary Violation"
+        },
+        {
+          "id": 522,
+          "title": "Insufficiently Protected Credentials"
+        },
+        {
+          "id": 525,
+          "title": "Use of Web Browser Cache Containing Sensitive Information"
+        },
+        {
+          "id": 539,
+          "title": "Use of Persistent Cookies Containing Sensitive Information"
+        },
+        {
+          "id": 579,
+          "title": "J2EE Bad Practices: Non-serializable Object Stored in Session"
+        },
+        {
+          "id": 598,
+          "title": "Use of GET Request Method With Sensitive Query Strings"
+        },
+        {
+          "id": 602,
+          "title": "Client-Side Enforcement of Server-Side Security"
+        },
+        {
+          "id": 642,
+          "title": "External Control of Critical State Data"
+        },
+        {
+          "id": 646,
+          "title": "Reliance on File Name or Extension of Externally-Supplied File"
+        },
+        {
+          "id": 650,
+          "title": "Trusting HTTP Permission Methods on the Server Side"
+        },
+        {
+          "id": 653,
+          "title": "Improper Isolation or Compartmentalization"
+        },
+        {
+          "id": 656,
+          "title": "Reliance on Security Through Obscurity"
+        },
+        {
+          "id": 657,
+          "title": "Violation of Secure Design Principles"
+        },
+        {
+          "id": 799,
+          "title": "Improper Control of Interaction Frequency"
+        },
+        {
+          "id": 807,
+          "title": "Reliance on Untrusted Inputs in a Security Decision"
+        },
+        {
+          "id": 840,
+          "title": "Business Logic Errors"
+        },
+        {
+          "id": 841,
+          "title": "Improper Enforcement of Behavioral Workflow"
+        },
+        {
+          "id": 927,
+          "title": "Use of Implicit Intent for Sensitive Communication"
+        },
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 1173,
+          "title": "Improper Use of Validation Framework"
+        }
+      ],
+      "group": "Insecure Design"
     },
     {
       "OWASP": "A05:2021",
-      "CWE": [
-        2, 11, 13, 15, 16, 260, 315, 520, 526, 537, 541, 547, 611, 614, 756,
-        776, 942, 1004, 1032, 1174
-      ]
+      "CWEDetails": [
+        {
+          "id": 2,
+          "title": "7PK - Environment"
+        },
+        {
+          "id": 11,
+          "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Creating Debug Binary"
+        },
+        {
+          "id": 13,
+          "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Password in Configuration File"
+        },
+        {
+          "id": 15,
+          "title": "External Control of System or Configuration Setting"
+        },
+        {
+          "id": 16,
+          "title": "Configuration"
+        },
+        {
+          "id": 260,
+          "title": "Password in Configuration File"
+        },
+        {
+          "id": 315,
+          "title": "Cleartext Storage of Sensitive Information in a Cookie"
+        },
+        {
+          "id": 520,
+          "title": ".NET Misconfiguration: Use of Impersonation"
+        },
+        {
+          "id": 526,
+          "title": "Cleartext Storage of Sensitive Information in an Environment Variable"
+        },
+        {
+          "id": 537,
+          "title": "Java Runtime Error Message Containing Sensitive Information"
+        },
+        {
+          "id": 541,
+          "title": "Inclusion of Sensitive Information in an Include File"
+        },
+        {
+          "id": 547,
+          "title": "Use of Hard-coded, Security-relevant Constants"
+        },
+        {
+          "id": 611,
+          "title": "Improper Restriction of XML External Entity Reference"
+        },
+        {
+          "id": 614,
+          "title": "Sensitive Cookie in HTTPS Session Without 'Secure' Attribute"
+        },
+        {
+          "id": 756,
+          "title": "Missing Custom Error Page"
+        },
+        {
+          "id": 776,
+          "title": "Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')"
+        },
+        {
+          "id": 942,
+          "title": "Permissive Cross-domain Policy with Untrusted Domains"
+        },
+        {
+          "id": 1004,
+          "title": "Sensitive Cookie Without 'HttpOnly' Flag"
+        },
+        {
+          "id": 1032,
+          "title": "OWASP Top Ten 2017 Category A6 - Security Misconfiguration"
+        },
+        {
+          "id": 1174,
+          "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Improper Model Validation"
+        }
+      ],
+      "group": "Security Misconfiguration"
     },
     {
       "OWASP": "A06:2021",
-      "CWE": [937, 1035, 1104]
+      "CWEDetails": [
+        {
+          "id": 937,
+          "title": "OWASP Top Ten 2013 Category A9 - Using Components with Known Vulnerabilities"
+        },
+        {
+          "id": 1035,
+          "title": "OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities"
+        },
+        {
+          "id": 1104,
+          "title": "Use of Unmaintained Third Party Components"
+        }
+      ],
+      "group": "Vulnerable and Outdated Components"
     },
     {
       "OWASP": "A07:2021",
-      "CWE": [
-        255, 259, 287, 288, 290, 294, 295, 297, 300, 302, 304, 306, 307, 346,
-        384, 521, 613, 620, 640, 798, 940, 1216
-      ]
+      "CWEDetails": [
+        {
+          "id": 255,
+          "title": "Credentials Management Errors"
+        },
+        {
+          "id": 259,
+          "title": "Use of Hard-coded Password"
+        },
+        {
+          "id": 287,
+          "title": "Improper Authentication"
+        },
+        {
+          "id": 288,
+          "title": "Authentication Bypass Using an Alternate Path or Channel"
+        },
+        {
+          "id": 290,
+          "title": "Authentication Bypass by Spoofing"
+        },
+        {
+          "id": 294,
+          "title": "Authentication Bypass by Capture-replay"
+        },
+        {
+          "id": 295,
+          "title": "Improper Certificate Validation"
+        },
+        {
+          "id": 297,
+          "title": "Improper Validation of Certificate with Host Mismatch"
+        },
+        {
+          "id": 300,
+          "title": "Channel Accessible by Non-Endpoint"
+        },
+        {
+          "id": 302,
+          "title": "Authentication Bypass by Assumed-Immutable Data"
+        },
+        {
+          "id": 304,
+          "title": "Missing Critical Step in Authentication"
+        },
+        {
+          "id": 306,
+          "title": "Missing Authentication for Critical Function"
+        },
+        {
+          "id": 307,
+          "title": "Improper Restriction of Excessive Authentication Attempts"
+        },
+        {
+          "id": 346,
+          "title": "Origin Validation Error"
+        },
+        {
+          "id": 384,
+          "title": "Session Fixation"
+        },
+        {
+          "id": 521,
+          "title": "Weak Password Requirements"
+        },
+        {
+          "id": 613,
+          "title": "Insufficient Session Expiration"
+        },
+        {
+          "id": 620,
+          "title": "Unverified Password Change"
+        },
+        {
+          "id": 640,
+          "title": "Weak Password Recovery Mechanism for Forgotten Password"
+        },
+        {
+          "id": 798,
+          "title": "Use of Hard-coded Credentials"
+        },
+        {
+          "id": 940,
+          "title": "Improper Verification of Source of a Communication Channel"
+        },
+        {
+          "id": 1216,
+          "title": "Lockout Mechanism Errors"
+        }
+      ],
+      "group": "Identification and Authentication Failures"
     },
     {
       "OWASP": "A08:2021",
-      "CWE": [345, 353, 426, 494, 502, 565, 784, 829, 830, 915]
+      "CWEDetails": [
+        {
+          "id": 345,
+          "title": "Insufficient Verification of Data Authenticity"
+        },
+        {
+          "id": 353,
+          "title": "Missing Support for Integrity Check"
+        },
+        {
+          "id": 426,
+          "title": "Untrusted Search Path"
+        },
+        {
+          "id": 494,
+          "title": "Download of Code Without Integrity Check"
+        },
+        {
+          "id": 502,
+          "title": "Deserialization of Untrusted Data"
+        },
+        {
+          "id": 565,
+          "title": "Reliance on Cookies without Validation and Integrity Checking"
+        },
+        {
+          "id": 784,
+          "title": "Reliance on Cookies without Validation and Integrity Checking in a Security Decision"
+        },
+        {
+          "id": 829,
+          "title": "Inclusion of Functionality from Untrusted Control Sphere"
+        },
+        {
+          "id": 830,
+          "title": "Inclusion of Web Functionality from an Untrusted Source"
+        },
+        {
+          "id": 915,
+          "title": "Improperly Controlled Modification of Dynamically-Determined Object Attributes"
+        }
+      ],
+      "group": "Software and Data Integrity Failures"
     },
     {
       "OWASP": "A09:2021",
-      "CWE": [117, 223, 532, 778]
+      "CWEDetails": [
+        {
+          "id": 117,
+          "title": "Improper Output Neutralization for Logs"
+        },
+        {
+          "id": 223,
+          "title": "Omission of Security-relevant Information"
+        },
+        {
+          "id": 532,
+          "title": "Insertion of Sensitive Information into Log File"
+        },
+        {
+          "id": 778,
+          "title": "Insufficient Logging"
+        }
+      ],
+      "group": "Security Logging and Monitoring Failures"
     },
     {
       "OWASP": "A10:2021",
-      "CWE": [918]
+      "CWEDetails": [
+        {
+          "id": 918,
+          "title": "Server-Side Request Forgery (SSRF)"
+        }
+      ],
+      "group": "Server-Side Request Forgergy (SSRF)"
     }
   ],
   "recordedTests": [
     {
       "dast": "zap_v2.16.0",
       "test": "test_1_v1",
-      "detectedCWEs": [20, 693, 200, 1021],
-      "undetectedCWEs": [23, 22],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        20,
+        693,
+        200,
+        1021
+      ],
+      "undetectedCWEs": [
+        23,
+        22
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 20,
+          "title": "Improper Input Validation"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        },
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 23,
+          "title": "Relative Path Traversal"
+        },
+        {
+          "id": 22,
+          "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_2_v1",
-      "detectedCWEs": [693, 1021, 200, 693],
-      "undetectedCWEs": [78],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200,
+        693
+      ],
+      "undetectedCWEs": [
+        78
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 78,
+          "title": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_3_v1",
-      "detectedCWEs": [693, 1021, 200],
-      "undetectedCWEs": [352],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        352
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_4_v1",
-      "detectedCWEs": [693, 1021, 200],
-      "undetectedCWEs": [80],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        80
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 80,
+          "title": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_5_v1",
-      "detectedCWEs": [693, 1021, 200],
-      "undetectedCWEs": [83],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        83
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 83,
+          "title": "Improper Neutralization of Script in Attributes in a Web Page"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_6_v1",
-      "detectedCWEs": [693, 1021, 200, 20],
-      "undetectedCWEs": [434],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200,
+        20
+      ],
+      "undetectedCWEs": [
+        434
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        },
+        {
+          "id": 20,
+          "title": "Improper Input Validation"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 434,
+          "title": "Unrestricted Upload of File with Dangerous Type"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_7_v1",
-      "detectedCWEs": [693, 1021, 200, 20],
-      "undetectedCWEs": [502],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200,
+        20
+      ],
+      "undetectedCWEs": [
+        502
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        },
+        {
+          "id": 20,
+          "title": "Improper Input Validation"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 502,
+          "title": "Deserialization of Untrusted Data"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_8_v1",
-      "detectedCWEs": [693, 1021, 1004, 200, 565],
+      "detectedCWEs": [
+        693,
+        1021,
+        1004,
+        200,
+        565
+      ],
       "undetectedCWEs": [],
-      "updatedAt": 1740999692
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 1004,
+          "title": "Sensitive Cookie Without 'HttpOnly' Flag"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        },
+        {
+          "id": 565,
+          "title": "Reliance on Cookies without Validation and Integrity Checking"
+        }
+      ],
+      "undetectedCWEDetails": []
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_9_v1",
-      "detectedCWEs": [693, 1021, 200, 20],
-      "undetectedCWEs": [22, 35],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200,
+        20
+      ],
+      "undetectedCWEs": [
+        22,
+        35
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        },
+        {
+          "id": 20,
+          "title": "Improper Input Validation"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 22,
+          "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+        },
+        {
+          "id": 35,
+          "title": "Path Traversal: '.../...//'"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_10_v1",
-      "detectedCWEs": [693, 1021, 200],
-      "undetectedCWEs": [276],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        276
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 276,
+          "title": "Incorrect Default Permissions"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_11_v1",
-      "detectedCWEs": [693, 1021, 200],
-      "undetectedCWEs": [219, 256, 552],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        219,
+        256,
+        552
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 219,
+          "title": "Storage of File with Sensitive Data Under Web Root"
+        },
+        {
+          "id": 256,
+          "title": "Plaintext Storage of a Password"
+        },
+        {
+          "id": 552,
+          "title": "Files or Directories Accessible to External Parties"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_12_v1",
-      "detectedCWEs": [693, 1021, 200],
-      "undetectedCWEs": [377],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        377
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 377,
+          "title": "Insecure Temporary File"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_13_v1",
-      "detectedCWEs": [693, 1021, 200],
-      "undetectedCWEs": [862],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        862
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 862,
+          "title": "Missing Authorization"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_14_v1",
-      "detectedCWEs": [693, 1021, 1004, 200, 565],
-      "undetectedCWEs": [863, 287, 784],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        1004,
+        200,
+        565
+      ],
+      "undetectedCWEs": [
+        863,
+        287,
+        784
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 1004,
+          "title": "Sensitive Cookie Without 'HttpOnly' Flag"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        },
+        {
+          "id": 565,
+          "title": "Reliance on Cookies without Validation and Integrity Checking"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 863,
+          "title": "Incorrect Authorization"
+        },
+        {
+          "id": 287,
+          "title": "Improper Authentication"
+        },
+        {
+          "id": 784,
+          "title": "Reliance on Cookies without Validation and Integrity Checking in a Security Decision"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_15_v1",
-      "detectedCWEs": [352, 693, 1021, 200],
-      "undetectedCWEs": [328, 327, 759, 916],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        352,
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        328,
+        327,
+        759,
+        916
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        },
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 328,
+          "title": "Use of Weak Hash"
+        },
+        {
+          "id": 327,
+          "title": "Use of a Broken or Risky Cryptographic Algorithm"
+        },
+        {
+          "id": 759,
+          "title": "Use of a One-Way Hash without a Salt"
+        },
+        {
+          "id": 916,
+          "title": "Use of Password Hash With Insufficient Computational Effort"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_16_v1",
-      "detectedCWEs": [693, 1021, 200],
-      "undetectedCWEs": [918, 78],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        918,
+        78
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 918,
+          "title": "Server-Side Request Forgery (SSRF)"
+        },
+        {
+          "id": 78,
+          "title": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_17_v1",
-      "detectedCWEs": [352, 693, 1021, 200],
-      "undetectedCWEs": [760, 327, 328, 916, 321, 798],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        352,
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        760,
+        327,
+        328,
+        916,
+        321,
+        798
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        },
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 760,
+          "title": "Use of a One-Way Hash with a Predictable Salt"
+        },
+        {
+          "id": 327,
+          "title": "Use of a Broken or Risky Cryptographic Algorithm"
+        },
+        {
+          "id": 328,
+          "title": "Use of Weak Hash"
+        },
+        {
+          "id": 916,
+          "title": "Use of Password Hash With Insufficient Computational Effort"
+        },
+        {
+          "id": 321,
+          "title": "Use of Hard-coded Cryptographic Key"
+        },
+        {
+          "id": 798,
+          "title": "Use of Hard-coded Credentials"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_19_v1",
-      "detectedCWEs": [693, 1021, 1004, 1275, 200, 565],
-      "undetectedCWEs": [501, 287],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        1004,
+        1275,
+        200,
+        565
+      ],
+      "undetectedCWEs": [
+        501,
+        287
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 1004,
+          "title": "Sensitive Cookie Without 'HttpOnly' Flag"
+        },
+        {
+          "id": 1275,
+          "title": "Sensitive Cookie with Improper SameSite Attribute"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        },
+        {
+          "id": 565,
+          "title": "Reliance on Cookies without Validation and Integrity Checking"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 501,
+          "title": "Trust Boundary Violation"
+        },
+        {
+          "id": 287,
+          "title": "Improper Authentication"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_20_v1",
-      "detectedCWEs": [352, 693, 1021, 1004, 1275, 200, 565],
-      "undetectedCWEs": [778, 799, 223, 307],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        352,
+        693,
+        1021,
+        1004,
+        1275,
+        200,
+        565
+      ],
+      "undetectedCWEs": [
+        778,
+        799,
+        223,
+        307
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        },
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 1004,
+          "title": "Sensitive Cookie Without 'HttpOnly' Flag"
+        },
+        {
+          "id": 1275,
+          "title": "Sensitive Cookie with Improper SameSite Attribute"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        },
+        {
+          "id": 565,
+          "title": "Reliance on Cookies without Validation and Integrity Checking"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 778,
+          "title": "Insufficient Logging"
+        },
+        {
+          "id": 799,
+          "title": "Improper Control of Interaction Frequency"
+        },
+        {
+          "id": 223,
+          "title": "Omission of Security-relevant Information"
+        },
+        {
+          "id": 307,
+          "title": "Improper Restriction of Excessive Authentication Attempts"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_21_v1",
-      "detectedCWEs": [352, 693, 1021, 200],
-      "undetectedCWEs": [117],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        352,
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        117
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        },
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 117,
+          "title": "Improper Output Neutralization for Logs"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_22_v1",
-      "detectedCWEs": [693, 1021, 1004, 1275, 200, 565],
-      "undetectedCWEs": [613],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        1004,
+        1275,
+        200,
+        565
+      ],
+      "undetectedCWEs": [
+        613
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 1004,
+          "title": "Sensitive Cookie Without 'HttpOnly' Flag"
+        },
+        {
+          "id": 1275,
+          "title": "Sensitive Cookie with Improper SameSite Attribute"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        },
+        {
+          "id": 565,
+          "title": "Reliance on Cookies without Validation and Integrity Checking"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 613,
+          "title": "Insufficient Session Expiration"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_23_v1",
-      "detectedCWEs": [352, 693, 1021, 1004, 1275, 200, 565],
-      "undetectedCWEs": [384],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        352,
+        693,
+        1021,
+        1004,
+        1275,
+        200,
+        565
+      ],
+      "undetectedCWEs": [
+        384
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        },
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 1004,
+          "title": "Sensitive Cookie Without 'HttpOnly' Flag"
+        },
+        {
+          "id": 1275,
+          "title": "Sensitive Cookie with Improper SameSite Attribute"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        },
+        {
+          "id": 565,
+          "title": "Reliance on Cookies without Validation and Integrity Checking"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 384,
+          "title": "Session Fixation"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_24_v1",
-      "detectedCWEs": [352, 693, 1021, 200],
-      "undetectedCWEs": [359, 522, 532],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        352,
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        359,
+        522,
+        532
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        },
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 359,
+          "title": "Exposure of Private Personal Information to an Unauthorized Actor"
+        },
+        {
+          "id": 522,
+          "title": "Insufficiently Protected Credentials"
+        },
+        {
+          "id": 532,
+          "title": "Insertion of Sensitive Information into Log File"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_25_v1",
-      "detectedCWEs": [693, 1021, 200],
-      "undetectedCWEs": [98, 706, 829, 426],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        98,
+        706,
+        829,
+        426
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 98,
+          "title": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')"
+        },
+        {
+          "id": 706,
+          "title": "Use of Incorrectly-Resolved Name or Reference"
+        },
+        {
+          "id": 829,
+          "title": "Inclusion of Functionality from Untrusted Control Sphere"
+        },
+        {
+          "id": 426,
+          "title": "Untrusted Search Path"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_26_v1",
-      "detectedCWEs": [352, 200, 693, 1021, 200],
-      "undetectedCWEs": [646, 345],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        352,
+        200,
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        646,
+        345
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        },
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 646,
+          "title": "Reliance on File Name or Extension of Externally-Supplied File"
+        },
+        {
+          "id": 345,
+          "title": "Insufficient Verification of Data Authenticity"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_27_v1",
-      "detectedCWEs": [352, 693, 1021, 200],
-      "undetectedCWEs": [353, 345],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        352,
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        353,
+        345
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        },
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 353,
+          "title": "Missing Support for Integrity Check"
+        },
+        {
+          "id": 345,
+          "title": "Insufficient Verification of Data Authenticity"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_28_v1",
-      "detectedCWEs": [693, 1021, 200],
-      "undetectedCWEs": [494, 345],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        494,
+        345
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 494,
+          "title": "Download of Code Without Integrity Check"
+        },
+        {
+          "id": 345,
+          "title": "Insufficient Verification of Data Authenticity"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_29_v1",
-      "detectedCWEs": [693, 1021, 829],
-      "undetectedCWEs": [830, 79],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        829
+      ],
+      "undetectedCWEs": [
+        830,
+        79
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 829,
+          "title": "Inclusion of Functionality from Untrusted Control Sphere"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 830,
+          "title": "Inclusion of Web Functionality from an Untrusted Source"
+        },
+        {
+          "id": 79,
+          "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_30_v1",
-      "detectedCWEs": [352, 693, 1021, 200],
-      "undetectedCWEs": [915, 913],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        352,
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        915,
+        913
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        },
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 915,
+          "title": "Improperly Controlled Modification of Dynamically-Determined Object Attributes"
+        },
+        {
+          "id": 913,
+          "title": "Improper Control of Dynamically-Managed Code Resources"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_31_v1",
-      "detectedCWEs": [693, 1021, 1004, 1275, 565],
-      "undetectedCWEs": [940, 346, 352],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        1004,
+        1275,
+        565
+      ],
+      "undetectedCWEs": [
+        940,
+        346,
+        352
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 1004,
+          "title": "Sensitive Cookie Without 'HttpOnly' Flag"
+        },
+        {
+          "id": 1275,
+          "title": "Sensitive Cookie with Improper SameSite Attribute"
+        },
+        {
+          "id": 565,
+          "title": "Reliance on Cookies without Validation and Integrity Checking"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 940,
+          "title": "Improper Verification of Source of a Communication Channel"
+        },
+        {
+          "id": 346,
+          "title": "Origin Validation Error"
+        },
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_32_v1",
-      "detectedCWEs": [352, 693, 1021, 200, 20],
-      "undetectedCWEs": [640, 257, 256, 798, 307],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        352,
+        693,
+        1021,
+        200,
+        20
+      ],
+      "undetectedCWEs": [
+        640,
+        257,
+        256,
+        798,
+        307
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        },
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        },
+        {
+          "id": 20,
+          "title": "Improper Input Validation"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 640,
+          "title": "Weak Password Recovery Mechanism for Forgotten Password"
+        },
+        {
+          "id": 257,
+          "title": "Storing Passwords in a Recoverable Format"
+        },
+        {
+          "id": 256,
+          "title": "Plaintext Storage of a Password"
+        },
+        {
+          "id": 798,
+          "title": "Use of Hard-coded Credentials"
+        },
+        {
+          "id": 307,
+          "title": "Improper Restriction of Excessive Authentication Attempts"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_33_v1",
-      "detectedCWEs": [693, 1021, 200],
-      "undetectedCWEs": [620, 306, 352, 598],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        620,
+        306,
+        352,
+        598
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 620,
+          "title": "Unverified Password Change"
+        },
+        {
+          "id": 306,
+          "title": "Missing Authentication for Critical Function"
+        },
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        },
+        {
+          "id": 598,
+          "title": "Use of GET Request Method With Sensitive Query Strings"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_34_v1",
-      "detectedCWEs": [693, 1021, 200],
-      "undetectedCWEs": [521],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        521
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 521,
+          "title": "Weak Password Requirements"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_35_v1",
-      "detectedCWEs": [693, 1021, 200],
-      "undetectedCWEs": [302, 807, 287, 784, 565],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        302,
+        807,
+        287,
+        784,
+        565
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 302,
+          "title": "Authentication Bypass by Assumed-Immutable Data"
+        },
+        {
+          "id": 807,
+          "title": "Reliance on Untrusted Inputs in a Security Decision"
+        },
+        {
+          "id": 287,
+          "title": "Improper Authentication"
+        },
+        {
+          "id": 784,
+          "title": "Reliance on Cookies without Validation and Integrity Checking in a Security Decision"
+        },
+        {
+          "id": 565,
+          "title": "Reliance on Cookies without Validation and Integrity Checking"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_36_v1",
-      "detectedCWEs": [693, 1021, 200],
-      "undetectedCWEs": [297, 295],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        297,
+        295
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 297,
+          "title": "Improper Validation of Certificate with Host Mismatch"
+        },
+        {
+          "id": 295,
+          "title": "Improper Certificate Validation"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_37_v1",
-      "detectedCWEs": [693, 1021, 1004, 1275, 200, 565],
-      "undetectedCWEs": [294, 798],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        1004,
+        1275,
+        200,
+        565
+      ],
+      "undetectedCWEs": [
+        294,
+        798
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 1004,
+          "title": "Sensitive Cookie Without 'HttpOnly' Flag"
+        },
+        {
+          "id": 1275,
+          "title": "Sensitive Cookie with Improper SameSite Attribute"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        },
+        {
+          "id": 565,
+          "title": "Reliance on Cookies without Validation and Integrity Checking"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 294,
+          "title": "Authentication Bypass by Capture-replay"
+        },
+        {
+          "id": 798,
+          "title": "Use of Hard-coded Credentials"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_38_v1",
-      "detectedCWEs": [693, 1021],
-      "undetectedCWEs": [290, 287, 602, 200],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021
+      ],
+      "undetectedCWEs": [
+        290,
+        287,
+        602,
+        200
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 290,
+          "title": "Authentication Bypass by Spoofing"
+        },
+        {
+          "id": 287,
+          "title": "Improper Authentication"
+        },
+        {
+          "id": 602,
+          "title": "Client-Side Enforcement of Server-Side Security"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_39_v1",
-      "detectedCWEs": [693, 1021, 1004, 1275, 200, 565],
-      "undetectedCWEs": [614],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        1004,
+        1275,
+        200,
+        565
+      ],
+      "undetectedCWEs": [
+        614
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 1004,
+          "title": "Sensitive Cookie Without 'HttpOnly' Flag"
+        },
+        {
+          "id": 1275,
+          "title": "Sensitive Cookie with Improper SameSite Attribute"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        },
+        {
+          "id": 565,
+          "title": "Reliance on Cookies without Validation and Integrity Checking"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 614,
+          "title": "Sensitive Cookie in HTTPS Session Without 'Secure' Attribute"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_40_v1",
-      "detectedCWEs": [352, 693, 1021, 200],
-      "undetectedCWEs": [610, 611],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        352,
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        610,
+        611
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        },
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 610,
+          "title": "Externally Controlled Reference to a Resource in Another Sphere"
+        },
+        {
+          "id": 611,
+          "title": "Improper Restriction of XML External Entity Reference"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_41_v1",
-      "detectedCWEs": [693, 1021, 1004, 1275, 200, 565],
-      "undetectedCWEs": [315],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        1004,
+        1275,
+        200,
+        565
+      ],
+      "undetectedCWEs": [
+        315
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 1004,
+          "title": "Sensitive Cookie Without 'HttpOnly' Flag"
+        },
+        {
+          "id": 1275,
+          "title": "Sensitive Cookie with Improper SameSite Attribute"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        },
+        {
+          "id": 565,
+          "title": "Reliance on Cookies without Validation and Integrity Checking"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 315,
+          "title": "Cleartext Storage of Sensitive Information in a Cookie"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_42_v1",
-      "detectedCWEs": [693, 1021, 200],
-      "undetectedCWEs": [526, 312],
-      "updatedAt": 1740999692
+      "detectedCWEs": [
+        693,
+        1021,
+        200
+      ],
+      "undetectedCWEs": [
+        526,
+        312
+      ],
+      "updatedAt": 1740999692,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 200,
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 526,
+          "title": "Cleartext Storage of Sensitive Information in an Environment Variable"
+        },
+        {
+          "id": 312,
+          "title": "Cleartext Storage of Sensitive Information"
+        }
+      ]
     },
-
     {
       "dast": "zap_v2.16.0",
       "test": "test_44_v1",
-      "detectedCWEs": [693, 1021, 829, 497],
-      "undetectedCWEs": [1104],
-      "updatedAt": 1741601554
+      "detectedCWEs": [
+        693,
+        1021,
+        829,
+        497
+      ],
+      "undetectedCWEs": [
+        1104
+      ],
+      "updatedAt": 1741601554,
+      "detectedCWEDetails": [
+        {
+          "id": 1021,
+          "title": "Improper Restriction of Rendered UI Layers or Frames"
+        },
+        {
+          "id": 829,
+          "title": "Inclusion of Functionality from Untrusted Control Sphere"
+        },
+        {
+          "id": 497,
+          "title": "Exposure of Sensitive System Information to an Unauthorized Control Sphere"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 1104,
+          "title": "Use of Unmaintained Third Party Components"
+        }
+      ]
     },
-
     {
-        "dast": "semgrep",
-        "test": "test_1_v1",
-        "detectedCWEs": [22,23],
-        "undetectedCWEs": [],
-        "updatedAt": 1741955443
+      "dast": "semgrep",
+      "test": "test_1_v1",
+      "detectedCWEs": [
+        22,
+        23
+      ],
+      "undetectedCWEs": [],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [
+        {
+          "id": 22,
+          "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+        },
+        {
+          "id": 23,
+          "title": "Relative Path Traversal"
+        }
+      ],
+      "undetectedCWEDetails": []
     },
-
     {
       "dast": "semgrep",
       "test": "test_2_v1",
-      "detectedCWEs": [78],
+      "detectedCWEs": [
+        78
+      ],
       "undetectedCWEs": [],
-      "updatedAt": 1741955443
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [
+        {
+          "id": 78,
+          "title": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+        }
+      ],
+      "undetectedCWEDetails": []
     },
-
     {
       "dast": "semgrep",
       "test": "test_3_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [352],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        352
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        }
+      ]
     },
-
-      {
-        "dast": "semgrep",
-        "test": "test_4_v1",
-        "detectedCWEs": [80],
-        "undetectedCWEs": [],
-        "updatedAt": 1741955443
-      },
-
+    {
+      "dast": "semgrep",
+      "test": "test_4_v1",
+      "detectedCWEs": [
+        80
+      ],
+      "undetectedCWEs": [],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [
+        {
+          "id": 80,
+          "title": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)"
+        }
+      ],
+      "undetectedCWEDetails": []
+    },
     {
       "dast": "semgrep",
       "test": "test_5_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [83],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        83
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 83,
+          "title": "Improper Neutralization of Script in Attributes in a Web Page"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_6_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [434],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        434
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 434,
+          "title": "Unrestricted Upload of File with Dangerous Type"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_7_v1",
-      "detectedCWEs": [502],
+      "detectedCWEs": [
+        502
+      ],
       "undetectedCWEs": [],
-      "updatedAt": 1741955443
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [
+        {
+          "id": 502,
+          "title": "Deserialization of Untrusted Data"
+        }
+      ],
+      "undetectedCWEDetails": []
     },
-
     {
       "dast": "semgrep",
       "test": "test_8_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [1004],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        1004
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 1004,
+          "title": "Sensitive Cookie Without 'HttpOnly' Flag"
+        }
+      ]
     },
-
-      {
-        "dast": "semgrep",
-        "test": "test_9_v1",
-        "detectedCWEs": [35,22],
-        "undetectedCWEs": [],
-        "updatedAt": 1741955443
-      },
-
+    {
+      "dast": "semgrep",
+      "test": "test_9_v1",
+      "detectedCWEs": [
+        35,
+        22
+      ],
+      "undetectedCWEs": [],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [
+        {
+          "id": 35,
+          "title": "Path Traversal: '.../...//'"
+        },
+        {
+          "id": 22,
+          "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+        }
+      ],
+      "undetectedCWEDetails": []
+    },
     {
       "dast": "semgrep",
       "test": "test_10_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [276],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        276
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 276,
+          "title": "Incorrect Default Permissions"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_11_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [219,552,256],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        219,
+        552,
+        256
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 219,
+          "title": "Storage of File with Sensitive Data Under Web Root"
+        },
+        {
+          "id": 552,
+          "title": "Files or Directories Accessible to External Parties"
+        },
+        {
+          "id": 256,
+          "title": "Plaintext Storage of a Password"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_12_v1",
-      "detectedCWEs": [377],
+      "detectedCWEs": [
+        377
+      ],
       "undetectedCWEs": [],
-      "updatedAt": 1741955443
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [
+        {
+          "id": 377,
+          "title": "Insecure Temporary File"
+        }
+      ],
+      "undetectedCWEDetails": []
     },
-
-      {
-        "dast": "semgrep",
-        "test": "test_13_v1",
-        "detectedCWEs": [862],
-        "undetectedCWEs": [],
-        "updatedAt": 1741955443
-      },
-
+    {
+      "dast": "semgrep",
+      "test": "test_13_v1",
+      "detectedCWEs": [
+        862
+      ],
+      "undetectedCWEs": [],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [
+        {
+          "id": 862,
+          "title": "Missing Authorization"
+        }
+      ],
+      "undetectedCWEDetails": []
+    },
     {
       "dast": "semgrep",
       "test": "test_14_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [],
-      "updatedAt": 1741955443
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": []
     },
-
-      {
-        "dast": "semgrep",
-        "test": "test_15_v1",
-        "detectedCWEs": [328],
-        "undetectedCWEs": [327,759,916],
-        "updatedAt": 1741955443
-      },
-
-      {
-        "dast": "semgrep",
-        "test": "test_16_v1",
-        "detectedCWEs": [78,918],
-        "undetectedCWEs": [],
-        "updatedAt": 1741955443
-      },
-
-      {
-        "dast": "semgrep",
-        "test": "test_17_v1",
-        "detectedCWEs": [328],
-        "undetectedCWEs": [327,760,916,321,798],
-        "updatedAt": 1741955443
-      },
-
+    {
+      "dast": "semgrep",
+      "test": "test_15_v1",
+      "detectedCWEs": [
+        328
+      ],
+      "undetectedCWEs": [
+        327,
+        759,
+        916
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [
+        {
+          "id": 328,
+          "title": "Use of Weak Hash"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 327,
+          "title": "Use of a Broken or Risky Cryptographic Algorithm"
+        },
+        {
+          "id": 759,
+          "title": "Use of a One-Way Hash without a Salt"
+        },
+        {
+          "id": 916,
+          "title": "Use of Password Hash With Insufficient Computational Effort"
+        }
+      ]
+    },
+    {
+      "dast": "semgrep",
+      "test": "test_16_v1",
+      "detectedCWEs": [
+        78,
+        918
+      ],
+      "undetectedCWEs": [],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [
+        {
+          "id": 78,
+          "title": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+        },
+        {
+          "id": 918,
+          "title": "Server-Side Request Forgery (SSRF)"
+        }
+      ],
+      "undetectedCWEDetails": []
+    },
+    {
+      "dast": "semgrep",
+      "test": "test_17_v1",
+      "detectedCWEs": [
+        328
+      ],
+      "undetectedCWEs": [
+        327,
+        760,
+        916,
+        321,
+        798
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [
+        {
+          "id": 328,
+          "title": "Use of Weak Hash"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 327,
+          "title": "Use of a Broken or Risky Cryptographic Algorithm"
+        },
+        {
+          "id": 760,
+          "title": "Use of a One-Way Hash with a Predictable Salt"
+        },
+        {
+          "id": 916,
+          "title": "Use of Password Hash With Insufficient Computational Effort"
+        },
+        {
+          "id": 321,
+          "title": "Use of Hard-coded Cryptographic Key"
+        },
+        {
+          "id": 798,
+          "title": "Use of Hard-coded Credentials"
+        }
+      ]
+    },
     {
       "dast": "semgrep",
       "test": "test_19_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [501,287],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        501,
+        287
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 501,
+          "title": "Trust Boundary Violation"
+        },
+        {
+          "id": 287,
+          "title": "Improper Authentication"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_20_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [778,799,223,307],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        778,
+        799,
+        223,
+        307
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 778,
+          "title": "Insufficient Logging"
+        },
+        {
+          "id": 799,
+          "title": "Improper Control of Interaction Frequency"
+        },
+        {
+          "id": 223,
+          "title": "Omission of Security-relevant Information"
+        },
+        {
+          "id": 307,
+          "title": "Improper Restriction of Excessive Authentication Attempts"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_21_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [117],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        117
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 117,
+          "title": "Improper Output Neutralization for Logs"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_22_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [613],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        613
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 613,
+          "title": "Insufficient Session Expiration"
+        }
+      ]
     },
     {
       "dast": "semgrep",
       "test": "test_23_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [384],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        384
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 384,
+          "title": "Session Fixation"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_24_v1",
-      "detectedCWEs": [532],
-      "undetectedCWEs": [359,522],
-      "updatedAt": 1741955443
+      "detectedCWEs": [
+        532
+      ],
+      "undetectedCWEs": [
+        359,
+        522
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [
+        {
+          "id": 532,
+          "title": "Insertion of Sensitive Information into Log File"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 359,
+          "title": "Exposure of Private Personal Information to an Unauthorized Actor"
+        },
+        {
+          "id": 522,
+          "title": "Insufficiently Protected Credentials"
+        }
+      ]
     },
-
-      {
-        "dast": "semgrep",
-        "test": "test_25_v1",
-        "detectedCWEs": [98,706,829,426],
-        "undetectedCWEs": [],
-        "updatedAt": 1741955443
-      },
-
+    {
+      "dast": "semgrep",
+      "test": "test_25_v1",
+      "detectedCWEs": [
+        98,
+        706,
+        829,
+        426
+      ],
+      "undetectedCWEs": [],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [
+        {
+          "id": 98,
+          "title": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')"
+        },
+        {
+          "id": 706,
+          "title": "Use of Incorrectly-Resolved Name or Reference"
+        },
+        {
+          "id": 829,
+          "title": "Inclusion of Functionality from Untrusted Control Sphere"
+        },
+        {
+          "id": 426,
+          "title": "Untrusted Search Path"
+        }
+      ],
+      "undetectedCWEDetails": []
+    },
     {
       "dast": "semgrep",
       "test": "test_26_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [646,345],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        646,
+        345
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 646,
+          "title": "Reliance on File Name or Extension of Externally-Supplied File"
+        },
+        {
+          "id": 345,
+          "title": "Insufficient Verification of Data Authenticity"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_27_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [353,345],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        353,
+        345
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 353,
+          "title": "Missing Support for Integrity Check"
+        },
+        {
+          "id": 345,
+          "title": "Insufficient Verification of Data Authenticity"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_28_v1",
-      "detectedCWEs": [494],
-      "undetectedCWEs": [345],
-      "updatedAt": 1741955443
+      "detectedCWEs": [
+        494
+      ],
+      "undetectedCWEs": [
+        345
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [
+        {
+          "id": 494,
+          "title": "Download of Code Without Integrity Check"
+        }
+      ],
+      "undetectedCWEDetails": [
+        {
+          "id": 345,
+          "title": "Insufficient Verification of Data Authenticity"
+        }
+      ]
     },
-
-      {
-        "dast": "semgrep",
-        "test": "test_29_v1",
-        "detectedCWEs": [830,829,79],
-        "undetectedCWEs": [],
-        "updatedAt": 1741955443
-      },
-
+    {
+      "dast": "semgrep",
+      "test": "test_29_v1",
+      "detectedCWEs": [
+        830,
+        829,
+        79
+      ],
+      "undetectedCWEs": [],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [
+        {
+          "id": 830,
+          "title": "Inclusion of Web Functionality from an Untrusted Source"
+        },
+        {
+          "id": 829,
+          "title": "Inclusion of Functionality from Untrusted Control Sphere"
+        },
+        {
+          "id": 79,
+          "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+        }
+      ],
+      "undetectedCWEDetails": []
+    },
     {
       "dast": "semgrep",
       "test": "test_30_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [915,913],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        915,
+        913
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 915,
+          "title": "Improperly Controlled Modification of Dynamically-Determined Object Attributes"
+        },
+        {
+          "id": 913,
+          "title": "Improper Control of Dynamically-Managed Code Resources"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_31_v1",
-      "detectedCWEs": [940,346,352],
+      "detectedCWEs": [
+        940,
+        346,
+        352
+      ],
       "undetectedCWEs": [],
-      "updatedAt": 1741955443
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [
+        {
+          "id": 940,
+          "title": "Improper Verification of Source of a Communication Channel"
+        },
+        {
+          "id": 346,
+          "title": "Origin Validation Error"
+        },
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        }
+      ],
+      "undetectedCWEDetails": []
     },
-
     {
       "dast": "semgrep",
       "test": "test_32_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [640,257,256,798,307],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        640,
+        257,
+        256,
+        798,
+        307
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 640,
+          "title": "Weak Password Recovery Mechanism for Forgotten Password"
+        },
+        {
+          "id": 257,
+          "title": "Storing Passwords in a Recoverable Format"
+        },
+        {
+          "id": 256,
+          "title": "Plaintext Storage of a Password"
+        },
+        {
+          "id": 798,
+          "title": "Use of Hard-coded Credentials"
+        },
+        {
+          "id": 307,
+          "title": "Improper Restriction of Excessive Authentication Attempts"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_33_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [620,306,352,598],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        620,
+        306,
+        352,
+        598
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 620,
+          "title": "Unverified Password Change"
+        },
+        {
+          "id": 306,
+          "title": "Missing Authentication for Critical Function"
+        },
+        {
+          "id": 352,
+          "title": "Cross-Site Request Forgery (CSRF)"
+        },
+        {
+          "id": 598,
+          "title": "Use of GET Request Method With Sensitive Query Strings"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_34_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [521],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        521
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 521,
+          "title": "Weak Password Requirements"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_35_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [302,807,287,784,565],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        302,
+        807,
+        287,
+        784,
+        565
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 302,
+          "title": "Authentication Bypass by Assumed-Immutable Data"
+        },
+        {
+          "id": 807,
+          "title": "Reliance on Untrusted Inputs in a Security Decision"
+        },
+        {
+          "id": 287,
+          "title": "Improper Authentication"
+        },
+        {
+          "id": 784,
+          "title": "Reliance on Cookies without Validation and Integrity Checking in a Security Decision"
+        },
+        {
+          "id": 565,
+          "title": "Reliance on Cookies without Validation and Integrity Checking"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_36_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [297,295],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        297,
+        295
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 297,
+          "title": "Improper Validation of Certificate with Host Mismatch"
+        },
+        {
+          "id": 295,
+          "title": "Improper Certificate Validation"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_37_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [294,798],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        294,
+        798
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 294,
+          "title": "Authentication Bypass by Capture-replay"
+        },
+        {
+          "id": 798,
+          "title": "Use of Hard-coded Credentials"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_38_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [290,287,602],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        290,
+        287,
+        602
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 290,
+          "title": "Authentication Bypass by Spoofing"
+        },
+        {
+          "id": 287,
+          "title": "Improper Authentication"
+        },
+        {
+          "id": 602,
+          "title": "Client-Side Enforcement of Server-Side Security"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_39_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [614],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        614
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 614,
+          "title": "Sensitive Cookie in HTTPS Session Without 'Secure' Attribute"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_40_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [611,610],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        611,
+        610
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 611,
+          "title": "Improper Restriction of XML External Entity Reference"
+        },
+        {
+          "id": 610,
+          "title": "Externally Controlled Reference to a Resource in Another Sphere"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_41_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [315],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        315
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 315,
+          "title": "Cleartext Storage of Sensitive Information in a Cookie"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_42_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [526,312],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        526,
+        312
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 526,
+          "title": "Cleartext Storage of Sensitive Information in an Environment Variable"
+        },
+        {
+          "id": 312,
+          "title": "Cleartext Storage of Sensitive Information"
+        }
+      ]
     },
-
     {
       "dast": "semgrep",
       "test": "test_44_v1",
       "detectedCWEs": [],
-      "undetectedCWEs": [1104],
-      "updatedAt": 1741955443
+      "undetectedCWEs": [
+        1104
+      ],
+      "updatedAt": 1741955443,
+      "detectedCWEDetails": [],
+      "undetectedCWEDetails": [
+        {
+          "id": 1104,
+          "title": "Use of Unmaintained Third Party Components"
+        }
+      ]
     }
   ]
 }

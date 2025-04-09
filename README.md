@@ -118,7 +118,7 @@ bun lint
 
 ## Vulnerability Inventory
 
-This data also exists in the `visualizer/cweData.json` file.
+This data exists in the `data.json` file, which contains both the vulnerability mappings and CWE details.
 
 | **OWASP Code** | **Group**                                  | **CWE** | **Title**                                                                                                              | Tests        |
 | -------------- | ------------------------------------------ | ------- | ---------------------------------------------------------------------------------------------------------------------- | ------------ |

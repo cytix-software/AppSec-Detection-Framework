@@ -8,15 +8,23 @@ export interface DockerService {
   profiles: string[]
 }
 
+export interface CWEDetail {
+  id: number
+  title: string
+}
+
 export interface Vulnerability {
   OWASP: string
-  CWE: number[]
+  CWEDetails: CWEDetail[]
+  group: string
 }
 
 export interface RecordedTest {
   dast: string
   detectedCWEs: number[]
   undetectedCWEs: number[]
+  detectedCWEDetails: CWEDetail[]
+  undetectedCWEDetails: CWEDetail[]
   test: string
   updatedAt: number
 }
