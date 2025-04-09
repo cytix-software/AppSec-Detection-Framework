@@ -153,13 +153,13 @@ import { groupBy, uniq, difference } from 'lodash-es'
 const { hydratedHeatmapTests, vulnerabilities } = loadData()
 
 // Get unique DAST tools
-const dastTools = computed(() => {
-  return [...new Set(hydratedHeatmapTests.map(test => test.dast))]
+const scannerTools = computed(() => {
+  return [...new Set(hydratedHeatmapTests.map(test => test.scanner))]
 })
 
 // Create options for the select component
 const toolOptions = computed(() => {
-  return dastTools.value.map(tool => ({
+  return scannerTools.value.map(tool => ({
     label: tool,
     value: tool
   }))
@@ -241,7 +241,7 @@ const calculateOwaspDetectionRate = (owasp: string) => {
   
   // Process tests for selected tools
   hydratedHeatmapTests.forEach(test => {
-    if (selectedTools.value.includes(test.dast)) {
+    if (selectedTools.value.includes(test.scanner)) {
       const testCwes = [...test.detectedCWEs, ...test.undetectedCWEs]
       cwesInCategory.forEach(cwe => {
         if (testCwes.includes(cwe)) {
@@ -277,7 +277,7 @@ function calculateOwaspToolDetectionRates(owaspCategory: string) {
   
   // Process all tests for selected tools
   selectedTools.value.forEach(tool => {
-    const toolTests = hydratedHeatmapTests.filter(test => test.dast === tool)
+    const toolTests = hydratedHeatmapTests.filter(test => test.scanner === tool)
     
     toolTests.forEach(test => {
       // Count detections for CWEs in this category
@@ -323,7 +323,7 @@ function analyzeCoverageGaps() {
   
   // Process all tests for selected tools
   selectedTools.value.forEach(tool => {
-    const toolTests = hydratedHeatmapTests.filter(test => test.dast === tool)
+    const toolTests = hydratedHeatmapTests.filter(test => test.scanner === tool)
     
     toolTests.forEach(test => {
       // Process detected CWEs

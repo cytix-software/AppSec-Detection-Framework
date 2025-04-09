@@ -20,7 +20,7 @@ export interface Vulnerability {
 }
 
 export interface RecordedTest {
-  dast: string
+  scanner: string
   detectedCWEs: number[]
   undetectedCWEs: number[]
   detectedCWEDetails: CWEDetail[]
@@ -38,7 +38,7 @@ export interface HydratedTest {
   cwe: number
   test: string
   detections: {
-    dast: string
+    scanner: string
     detected: boolean
     profiles: string[]
   }[]
@@ -56,6 +56,6 @@ export interface VulnerabilitiesData {
 }
 
 export interface WeightedScore {
-  dast: string
+  scanner: string
   score: number
 }

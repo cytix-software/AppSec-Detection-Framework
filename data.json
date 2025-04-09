@@ -1205,7 +1205,7 @@
   ],
   "recordedTests": [
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_1_v1",
       "detectedCWEs": [
         20,
@@ -1220,7 +1220,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_2_v1",
       "detectedCWEs": [
         693,
@@ -1234,7 +1234,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_3_v1",
       "detectedCWEs": [
         693,
@@ -1247,7 +1247,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_4_v1",
       "detectedCWEs": [
         693,
@@ -1260,7 +1260,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_5_v1",
       "detectedCWEs": [
         693,
@@ -1273,7 +1273,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_6_v1",
       "detectedCWEs": [
         693,
@@ -1287,7 +1287,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_7_v1",
       "detectedCWEs": [
         693,
@@ -1301,7 +1301,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_8_v1",
       "detectedCWEs": [
         693,
@@ -1314,7 +1314,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_9_v1",
       "detectedCWEs": [
         693,
@@ -1329,7 +1329,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_10_v1",
       "detectedCWEs": [
         693,
@@ -1342,7 +1342,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_11_v1",
       "detectedCWEs": [
         693,
@@ -1357,7 +1357,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_12_v1",
       "detectedCWEs": [
         693,
@@ -1370,7 +1370,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_13_v1",
       "detectedCWEs": [
         693,
@@ -1383,7 +1383,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_14_v1",
       "detectedCWEs": [
         693,
@@ -1400,7 +1400,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_15_v1",
       "detectedCWEs": [
         352,
@@ -1417,7 +1417,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_16_v1",
       "detectedCWEs": [
         693,
@@ -1431,7 +1431,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_17_v1",
       "detectedCWEs": [
         352,
@@ -1450,7 +1450,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_19_v1",
       "detectedCWEs": [
         693,
@@ -1467,7 +1467,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_20_v1",
       "detectedCWEs": [
         352,
@@ -1487,7 +1487,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_21_v1",
       "detectedCWEs": [
         352,
@@ -1501,7 +1501,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_22_v1",
       "detectedCWEs": [
         693,
@@ -1517,7 +1517,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_23_v1",
       "detectedCWEs": [
         352,
@@ -1534,7 +1534,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_24_v1",
       "detectedCWEs": [
         352,
@@ -1550,7 +1550,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_25_v1",
       "detectedCWEs": [
         693,
@@ -1566,7 +1566,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_26_v1",
       "detectedCWEs": [
         352,
@@ -1582,7 +1582,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_27_v1",
       "detectedCWEs": [
         352,
@@ -1597,7 +1597,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_28_v1",
       "detectedCWEs": [
         693,
@@ -1611,7 +1611,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_29_v1",
       "detectedCWEs": [
         693,
@@ -1625,7 +1625,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_30_v1",
       "detectedCWEs": [
         352,
@@ -1640,7 +1640,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_31_v1",
       "detectedCWEs": [
         693,
@@ -1657,7 +1657,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_32_v1",
       "detectedCWEs": [
         352,
@@ -1676,7 +1676,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_33_v1",
       "detectedCWEs": [
         693,
@@ -1692,7 +1692,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_34_v1",
       "detectedCWEs": [
         693,
@@ -1705,7 +1705,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_35_v1",
       "detectedCWEs": [
         693,
@@ -1722,7 +1722,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_36_v1",
       "detectedCWEs": [
         693,
@@ -1736,7 +1736,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_37_v1",
       "detectedCWEs": [
         693,
@@ -1753,7 +1753,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_38_v1",
       "detectedCWEs": [
         693,
@@ -1768,7 +1768,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_39_v1",
       "detectedCWEs": [
         693,
@@ -1784,7 +1784,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_40_v1",
       "detectedCWEs": [
         352,
@@ -1799,7 +1799,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_41_v1",
       "detectedCWEs": [
         693,
@@ -1815,7 +1815,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_42_v1",
       "detectedCWEs": [
         693,
@@ -1829,7 +1829,7 @@
       "updatedAt": 1740999692
     },
     {
-      "dast": "zap_v2.16.0",
+      "scanner": "zap_v2.16.0",
       "test": "test_44_v1",
       "detectedCWEs": [
         693,
@@ -1843,7 +1843,7 @@
       "updatedAt": 1741601554
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_1_v1",
       "detectedCWEs": [
         22,
@@ -1853,7 +1853,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_2_v1",
       "detectedCWEs": [
         78
@@ -1862,7 +1862,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_3_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -1871,7 +1871,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_4_v1",
       "detectedCWEs": [
         80
@@ -1880,7 +1880,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_5_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -1889,7 +1889,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_6_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -1898,7 +1898,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_7_v1",
       "detectedCWEs": [
         502
@@ -1907,7 +1907,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_8_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -1916,7 +1916,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_9_v1",
       "detectedCWEs": [
         35,
@@ -1926,7 +1926,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_10_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -1935,7 +1935,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_11_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -1946,7 +1946,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_12_v1",
       "detectedCWEs": [
         377
@@ -1955,7 +1955,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_13_v1",
       "detectedCWEs": [
         862
@@ -1964,14 +1964,14 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_14_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [],
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_15_v1",
       "detectedCWEs": [
         328
@@ -1984,7 +1984,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_16_v1",
       "detectedCWEs": [
         78,
@@ -1994,7 +1994,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_17_v1",
       "detectedCWEs": [
         328
@@ -2009,7 +2009,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_19_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2019,7 +2019,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_20_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2031,7 +2031,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_21_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2040,7 +2040,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_22_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2049,7 +2049,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_23_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2058,7 +2058,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_24_v1",
       "detectedCWEs": [
         532
@@ -2070,7 +2070,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_25_v1",
       "detectedCWEs": [
         98,
@@ -2082,7 +2082,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_26_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2092,7 +2092,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_27_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2102,7 +2102,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_28_v1",
       "detectedCWEs": [
         494
@@ -2113,7 +2113,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_29_v1",
       "detectedCWEs": [
         830,
@@ -2124,7 +2124,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_30_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2134,7 +2134,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_31_v1",
       "detectedCWEs": [
         940,
@@ -2145,7 +2145,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_32_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2158,7 +2158,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_33_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2170,7 +2170,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_34_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2179,7 +2179,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_35_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2192,7 +2192,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_36_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2202,7 +2202,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_37_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2212,7 +2212,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_38_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2223,7 +2223,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_39_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2232,7 +2232,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_40_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2242,7 +2242,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_41_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2251,7 +2251,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_42_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [
@@ -2261,7 +2261,7 @@
       "updatedAt": 1741955443
     },
     {
-      "dast": "semgrep",
+      "scanner": "semgrep",
       "test": "test_44_v1",
       "detectedCWEs": [],
       "undetectedCWEs": [

@@ -72,11 +72,11 @@ const filteredHydratedTests = computed(() => {
   if (selectedTools.value.length === 0) return hydratedTests
   
   return hydratedTests.filter(test => 
-    test.detections.some(detection => selectedTools.value.includes(detection.dast))
+    test.detections.some(detection => selectedTools.value.includes(detection.scanner))
   ).map(test => ({
     ...test,
     detections: test.detections.filter(detection => 
-      selectedTools.value.includes(detection.dast)
+      selectedTools.value.includes(detection.scanner)
     )
   }))
 })
@@ -86,7 +86,7 @@ const filteredHydratedHeatmapTests = computed(() => {
   if (selectedTools.value.length === 0) return hydratedHeatmapTests
   
   return hydratedHeatmapTests.filter(test => 
-    selectedTools.value.includes(test.dast)
+    selectedTools.value.includes(test.scanner)
   )
 })
 
@@ -101,8 +101,8 @@ const heatmapData = computed(() =>
       (t) => some(t.profiles, (p) => CWEDetails.some(detail => detail.id === parseInt(p.replace('cwe-', ''))))
     )
 
-    const groupedByDast = groupBy(uniqueTests, 'dast')
-    return Object.entries(groupedByDast).map(([dast, tests]) => {
+    const groupedByScanner = groupBy(uniqueTests, 'scanner')
+    return Object.entries(groupedByScanner).map(([scanner, tests]) => {
       // For each test, count how many CWEs from this OWASP category were detected/undetected
       let detectedCount = 0
       let totalCount = 0
@@ -123,7 +123,7 @@ const heatmapData = computed(() =>
       })
 
       return {
-        dast,
+        scanner,
         OWASP,
         detectedCWEs: detectedCount,
         totalCount
@@ -134,12 +134,12 @@ const heatmapData = computed(() =>
 
 // Example snippet inside heatmapSeries computed
 const heatmapSeries = computed(() => {
-  const dasts = [...new Set(hydratedHeatmapTests.map((t) => t.dast))]
+  const scanners = [...new Set(hydratedHeatmapTests.map((t) => t.scanner))]
 
-  return dasts.map((dast) => {
+  return scanners.map((scanner) => {
     const data = vulnerabilities.map(({ OWASP }) => {
       // Suppose you've computed "heatmapData" with detectedCWEs / totalCount
-      const entry = find(heatmapData.value, { dast, OWASP })
+      const entry = find(heatmapData.value, { scanner, OWASP })
 
       // If no test coverage at all, treat as "No Data"
       const isNoData = !entry || entry.totalCount === 0
@@ -164,7 +164,7 @@ const heatmapSeries = computed(() => {
       }
     })
 
-    return { name: dast, data }
+    return { name: scanner, data }
   })
 })
 
@@ -213,7 +213,7 @@ const heatmapOptions = computed(() => ({
         
         // Find the entry in heatmapData to get the actual counts
         const entry = find(heatmapData.value, { 
-          dast: opts.w.config.series[opts.seriesIndex].name, 
+          scanner: opts.w.config.series[opts.seriesIndex].name, 
           OWASP: point.x 
         })
         
@@ -231,9 +231,9 @@ const heatmapOptions = computed(() => ({
 // forPerformance (Bar Chart Logic)
 // -----------------------------------------------------------------------------
 function calculateWeightedScores() {
-  const grouped = groupBy(filteredHydratedHeatmapTests.value, 'dast')
+  const grouped = groupBy(filteredHydratedHeatmapTests.value, 'scanner')
 
-  return Object.entries(grouped).map(([dast, tests]) => {
+  return Object.entries(grouped).map(([scanner, tests]) => {
     // group all technologies for these tests
     const techCounts = groupBy(
       tests.flatMap((t) => t.profiles.filter((p) => includes(technologies, p))),
@@ -264,7 +264,7 @@ function calculateWeightedScores() {
     })
 
     const score = totalWeight ? Number(((detectedWeight / totalWeight) * 100).toFixed(2)) : 0
-    return { dast, score }
+    return { scanner, score }
   })
 }
 
@@ -281,7 +281,7 @@ const filteredBarSeries = computed(() => {
   
   const scores = calculateWeightedScores()
   const filteredScores = scores.filter(score => 
-    selectedTools.value.includes(score.dast)
+    selectedTools.value.includes(score.scanner)
   )
   
   return [{
@@ -293,7 +293,7 @@ const filteredBarSeries = computed(() => {
 const barOptions = computed(() => ({
   chart: { type: 'bar' },
   xaxis: {
-    categories: calculateWeightedScores().map((d) => d.dast),
+    categories: calculateWeightedScores().map((d) => d.scanner),
     title: { text: 'Tools' },
   },
   yaxis: {
@@ -309,14 +309,14 @@ const filteredBarOptions = computed(() => {
   
   const scores = calculateWeightedScores()
   const filteredScores = scores.filter(score => 
-    selectedTools.value.includes(score.dast)
+    selectedTools.value.includes(score.scanner)
   )
   
   return {
     ...barOptions.value,
     xaxis: {
       ...barOptions.value.xaxis,
-      categories: filteredScores.map((d) => d.dast),
+      categories: filteredScores.map((d) => d.scanner),
     }
   }
 })
@@ -325,17 +325,17 @@ const filteredBarOptions = computed(() => {
 // Radar Chart Logic
 // -----------------------------------------------------------------------------
 const radarData = computed(() => {
-  const dasts = [...new Set(filteredHydratedHeatmapTests.value.map((t) => t.dast))]
+  const scanners = [...new Set(filteredHydratedHeatmapTests.value.map((t) => t.scanner))]
   
-  return dasts.map(dast => {
+  return scanners.map(scanner => {
     const data = vulnerabilities.map(({ OWASP }) => {
-      const entry = find(heatmapData.value, { dast, OWASP })
+      const entry = find(heatmapData.value, { scanner, OWASP })
       if (!entry || entry.totalCount === 0) return 0
       return Math.round((entry.detectedCWEs / entry.totalCount) * 100)
     })
 
     return {
-      name: dast,
+      name: scanner,
       data
     }
   })

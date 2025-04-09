@@ -34,7 +34,7 @@ tests/
 |       └── index.php
 visualizer/
 docker-compose.yml
-data.json
+data.json                   # The test results dataset
 ```
 
 ### data.json
@@ -43,7 +43,7 @@ This is the file that contains our test data and the OWASP top 10 CWEs. When a n
 
 ```
 {
-  "dast": <the name of the scanner being tested, including the version number as a string>,
+  "scanner": <the name of the scanner being tested, including the version number as a string>,
   "test": <the name of the docker container of the test, this should be a string>,
   "detectedCWEs": <an array of CWE ID, where each ID represents the vulnerability detected>,
   "undetectedCWEs" <an array of CWE ID, where each ID represents the vulnerability not detected>,

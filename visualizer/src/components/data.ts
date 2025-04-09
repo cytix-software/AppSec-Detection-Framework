@@ -31,7 +31,7 @@ export const loadData = () => {
           }
 
           testMap.get(key).detections.push({
-            dast: rt.dast,
+            scanner: rt.scanner,
             detected: rt.detectedCWEs.includes(cwe),
             profiles: dockerCompose.services[rt.test]?.profiles || [],
           })
