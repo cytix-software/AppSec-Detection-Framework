@@ -5,139 +5,204 @@
       "CWEDetails": [
         {
           "id": 22,
-          "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+          "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+          "tests": [
+            "test_1_v1",
+            "test_1_v2",
+            "test_9_v1"
+          ]
         },
         {
           "id": 23,
-          "title": "Relative Path Traversal"
+          "title": "Relative Path Traversal",
+          "tests": [
+            "test_1_v1",
+            "test_1_v2"
+          ]
         },
         {
           "id": 35,
-          "title": "Path Traversal: '.../...//'"
+          "title": "Path Traversal: '.../...//'",
+          "tests": [
+            "test_9_v1"
+          ]
         },
         {
           "id": 59,
-          "title": "Improper Link Resolution Before File Access ('Link Following')"
+          "title": "Improper Link Resolution Before File Access ('Link Following')",
+          "tests": []
         },
         {
           "id": 200,
-          "title": "Exposure of Sensitive Information to an Unauthorized Actor"
+          "title": "Exposure of Sensitive Information to an Unauthorized Actor",
+          "tests": []
         },
         {
           "id": 201,
-          "title": "Insertion of Sensitive Information Into Sent Data"
+          "title": "Insertion of Sensitive Information Into Sent Data",
+          "tests": []
         },
         {
           "id": 219,
-          "title": "Storage of File with Sensitive Data Under Web Root"
+          "title": "Storage of File with Sensitive Data Under Web Root",
+          "tests": [
+            "test_11_v1"
+          ]
         },
         {
           "id": 264,
-          "title": "Permissions, Privileges, and Access Controls"
+          "title": "Permissions, Privileges, and Access Controls",
+          "tests": []
         },
         {
           "id": 275,
-          "title": "Permission Issues"
+          "title": "Permission Issues",
+          "tests": []
         },
         {
           "id": 276,
-          "title": "Incorrect Default Permissions"
+          "title": "Incorrect Default Permissions",
+          "tests": [
+            "test_10_v1"
+          ]
         },
         {
           "id": 284,
-          "title": "Improper Access Control"
+          "title": "Improper Access Control",
+          "tests": []
         },
         {
           "id": 285,
-          "title": "Improper Authorization"
+          "title": "Improper Authorization",
+          "tests": []
         },
         {
           "id": 352,
-          "title": "Cross-Site Request Forgery (CSRF)"
+          "title": "Cross-Site Request Forgery (CSRF)",
+          "tests": [
+            "test_3_v1",
+            "test_31_v1",
+            "test_33_v1"
+          ]
         },
         {
           "id": 359,
-          "title": "Exposure of Private Personal Information to an Unauthorized Actor"
+          "title": "Exposure of Private Personal Information to an Unauthorized Actor",
+          "tests": [
+            "test_24_v1"
+          ]
         },
         {
           "id": 377,
-          "title": "Insecure Temporary File"
+          "title": "Insecure Temporary File",
+          "tests": [
+            "test_12_v1"
+          ]
         },
         {
           "id": 402,
-          "title": "Transmission of Private Resources into a New Sphere ('Resource Leak')"
+          "title": "Transmission of Private Resources into a New Sphere ('Resource Leak')",
+          "tests": []
         },
         {
           "id": 425,
-          "title": "Direct Request ('Forced Browsing')"
+          "title": "Direct Request ('Forced Browsing')",
+          "tests": []
         },
         {
           "id": 441,
-          "title": "Unintended Proxy or Intermediary ('Confused Deputy')"
+          "title": "Unintended Proxy or Intermediary ('Confused Deputy')",
+          "tests": []
         },
         {
           "id": 497,
-          "title": "Exposure of Sensitive System Information to an Unauthorized Control Sphere"
+          "title": "Exposure of Sensitive System Information to an Unauthorized Control Sphere",
+          "tests": []
         },
         {
           "id": 538,
-          "title": "Insertion of Sensitive Information into Externally-Accessible File or Directory"
+          "title": "Insertion of Sensitive Information into Externally-Accessible File or Directory",
+          "tests": []
         },
         {
           "id": 540,
-          "title": "Inclusion of Sensitive Information in Source Code"
+          "title": "Inclusion of Sensitive Information in Source Code",
+          "tests": []
         },
         {
           "id": 548,
-          "title": "Exposure of Information Through Directory Listing"
+          "title": "Exposure of Information Through Directory Listing",
+          "tests": []
         },
         {
           "id": 552,
-          "title": "Files or Directories Accessible to External Parties"
+          "title": "Files or Directories Accessible to External Parties",
+          "tests": [
+            "test_11_v1"
+          ]
         },
         {
           "id": 566,
-          "title": "Authorization Bypass Through User-Controlled SQL Primary Key"
+          "title": "Authorization Bypass Through User-Controlled SQL Primary Key",
+          "tests": []
         },
         {
           "id": 601,
-          "title": "URL Redirection to Untrusted Site ('Open Redirect')"
+          "title": "URL Redirection to Untrusted Site ('Open Redirect')",
+          "tests": []
         },
         {
           "id": 639,
-          "title": "Authorization Bypass Through User-Controlled Key"
+          "title": "Authorization Bypass Through User-Controlled Key",
+          "tests": []
         },
         {
           "id": 651,
-          "title": "Exposure of WSDL File Containing Sensitive Information"
+          "title": "Exposure of WSDL File Containing Sensitive Information",
+          "tests": []
         },
         {
           "id": 668,
-          "title": "Exposure of Resource to Wrong Sphere"
+          "title": "Exposure of Resource to Wrong Sphere",
+          "tests": []
         },
         {
           "id": 706,
-          "title": "Use of Incorrectly-Resolved Name or Reference"
+          "title": "Use of Incorrectly-Resolved Name or Reference",
+          "tests": [
+            "test_25_v1"
+          ]
         },
         {
           "id": 862,
-          "title": "Missing Authorization"
+          "title": "Missing Authorization",
+          "tests": [
+            "test_13_v1"
+          ]
         },
         {
           "id": 863,
-          "title": "Incorrect Authorization"
+          "title": "Incorrect Authorization",
+          "tests": [
+            "test_14_v1"
+          ]
         },
         {
           "id": 913,
-          "title": "Improper Control of Dynamically-Managed Code Resources"
+          "title": "Improper Control of Dynamically-Managed Code Resources",
+          "tests": [
+            "test_30_v1"
+          ]
         },
         {
           "id": 922,
-          "title": "Insecure Storage of Sensitive Information"
+          "title": "Insecure Storage of Sensitive Information",
+          "tests": []
         },
         {
           "id": 1275,
-          "title": "Sensitive Cookie with Improper SameSite Attribute"
+          "title": "Sensitive Cookie with Improper SameSite Attribute",
+          "tests": []
         }
       ],
       "group": "Broken Access Control"
@@ -147,119 +212,163 @@
       "CWEDetails": [
         {
           "id": 261,
-          "title": "Weak Encoding for Password"
+          "title": "Weak Encoding for Password",
+          "tests": []
         },
         {
           "id": 296,
-          "title": "Improper Following of a Certificate's Chain of Trust"
+          "title": "Improper Following of a Certificate's Chain of Trust",
+          "tests": []
         },
         {
           "id": 310,
-          "title": "Cryptographic Issues"
+          "title": "Cryptographic Issues",
+          "tests": []
         },
         {
           "id": 319,
-          "title": "Cleartext Transmission of Sensitive Information"
+          "title": "Cleartext Transmission of Sensitive Information",
+          "tests": []
         },
         {
           "id": 321,
-          "title": "Use of Hard-coded Cryptographic Key"
+          "title": "Use of Hard-coded Cryptographic Key",
+          "tests": [
+            "test_17_v1"
+          ]
         },
         {
           "id": 322,
-          "title": "Key Exchange without Entity Authentication"
+          "title": "Key Exchange without Entity Authentication",
+          "tests": []
         },
         {
           "id": 323,
-          "title": "Reusing a Nonce, Key Pair in Encryption"
+          "title": "Reusing a Nonce, Key Pair in Encryption",
+          "tests": []
         },
         {
           "id": 324,
-          "title": "Use of a Key Past its Expiration Date"
+          "title": "Use of a Key Past its Expiration Date",
+          "tests": []
         },
         {
           "id": 325,
-          "title": "Missing Cryptographic Step"
+          "title": "Missing Cryptographic Step",
+          "tests": []
         },
         {
           "id": 326,
-          "title": "Inadequate Encryption Strength"
+          "title": "Inadequate Encryption Strength",
+          "tests": []
         },
         {
           "id": 327,
-          "title": "Use of a Broken or Risky Cryptographic Algorithm"
+          "title": "Use of a Broken or Risky Cryptographic Algorithm",
+          "tests": [
+            "test_15_v1",
+            "test_17_v1"
+          ]
         },
         {
           "id": 328,
-          "title": "Use of Weak Hash"
+          "title": "Use of Weak Hash",
+          "tests": [
+            "test_15_v1",
+            "test_17_v1"
+          ]
         },
         {
           "id": 329,
-          "title": "Generation of Predictable IV with CBC Mode"
+          "title": "Generation of Predictable IV with CBC Mode",
+          "tests": []
         },
         {
           "id": 330,
-          "title": "Use of Insufficiently Random Values"
+          "title": "Use of Insufficiently Random Values",
+          "tests": []
         },
         {
           "id": 331,
-          "title": "Insufficient Entropy"
+          "title": "Insufficient Entropy",
+          "tests": []
         },
         {
           "id": 335,
-          "title": "Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG)"
+          "title": "Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG)",
+          "tests": []
         },
         {
           "id": 336,
-          "title": "Same Seed in Pseudo-Random Number Generator (PRNG)"
+          "title": "Same Seed in Pseudo-Random Number Generator (PRNG)",
+          "tests": []
         },
         {
           "id": 337,
-          "title": "Predictable Seed in Pseudo-Random Number Generator (PRNG)"
+          "title": "Predictable Seed in Pseudo-Random Number Generator (PRNG)",
+          "tests": []
         },
         {
           "id": 338,
-          "title": "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)"
+          "title": "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)",
+          "tests": []
         },
         {
           "id": 340,
-          "title": "Generation of Predictable Numbers or Identifiers"
+          "title": "Generation of Predictable Numbers or Identifiers",
+          "tests": []
         },
         {
           "id": 347,
-          "title": "Improper Verification of Cryptographic Signature"
+          "title": "Improper Verification of Cryptographic Signature",
+          "tests": []
         },
         {
           "id": 523,
-          "title": "Unprotected Transport of Credentials"
+          "title": "Unprotected Transport of Credentials",
+          "tests": []
         },
         {
           "id": 720,
-          "title": "OWASP Top Ten 2007 Category A9 - Insecure Communications"
+          "title": "OWASP Top Ten 2007 Category A9 - Insecure Communications",
+          "tests": []
         },
         {
           "id": 757,
-          "title": "Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')"
+          "title": "Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')",
+          "tests": []
         },
         {
           "id": 759,
-          "title": "Use of a One-Way Hash without a Salt"
+          "title": "Use of a One-Way Hash without a Salt",
+          "tests": [
+            "test_15_v1"
+          ]
         },
         {
           "id": 760,
-          "title": "Use of a One-Way Hash with a Predictable Salt"
+          "title": "Use of a One-Way Hash with a Predictable Salt",
+          "tests": [
+            "test_17_v1"
+          ]
         },
         {
           "id": 780,
-          "title": "Use of RSA Algorithm without OAEP"
+          "title": "Use of RSA Algorithm without OAEP",
+          "tests": []
         },
         {
           "id": 818,
-          "title": "OWASP Top Ten 2010 Category A9 - Insufficient Transport Layer Protection"
+          "title": "OWASP Top Ten 2010 Category A9 - Insufficient Transport Layer Protection",
+          "tests": []
         },
         {
           "id": 916,
-          "title": "Use of Password Hash With Insufficient Computational Effort"
+          "title": "Use of Password Hash With Insufficient Computational Effort",
+          "tests": [
+            "test_15_v1",
+            "test_17_v1"
+          ]
         }
       ],
       "group": "Cryptographic Failures"
@@ -269,131 +378,176 @@
       "CWEDetails": [
         {
           "id": 20,
-          "title": "Improper Input Validation"
+          "title": "Improper Input Validation",
+          "tests": []
         },
         {
           "id": 74,
-          "title": "Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')"
+          "title": "Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')",
+          "tests": []
         },
         {
           "id": 75,
-          "title": "Failure to Sanitize Special Elements into a Different Plane (Special Element Injection)"
+          "title": "Failure to Sanitize Special Elements into a Different Plane (Special Element Injection)",
+          "tests": []
         },
         {
           "id": 77,
-          "title": "Improper Neutralization of Special Elements used in a Command ('Command Injection')"
+          "title": "Improper Neutralization of Special Elements used in a Command ('Command Injection')",
+          "tests": []
         },
         {
           "id": 78,
-          "title": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+          "title": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')",
+          "tests": [
+            "test_2_v1",
+            "test_16_v1"
+          ]
         },
         {
           "id": 79,
-          "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+          "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+          "tests": [
+            "test_29_v1"
+          ]
         },
         {
           "id": 80,
-          "title": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)"
+          "title": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)",
+          "tests": [
+            "test_4_v1"
+          ]
         },
         {
           "id": 83,
-          "title": "Improper Neutralization of Script in Attributes in a Web Page"
+          "title": "Improper Neutralization of Script in Attributes in a Web Page",
+          "tests": [
+            "test_5_v1"
+          ]
         },
         {
           "id": 87,
-          "title": "Improper Neutralization of Alternate XSS Syntax"
+          "title": "Improper Neutralization of Alternate XSS Syntax",
+          "tests": []
         },
         {
           "id": 88,
-          "title": "Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')"
+          "title": "Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')",
+          "tests": []
         },
         {
           "id": 89,
-          "title": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+          "title": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
+          "tests": []
         },
         {
           "id": 90,
-          "title": "Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')"
+          "title": "Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')",
+          "tests": []
         },
         {
           "id": 91,
-          "title": "XML Injection (aka Blind XPath Injection)"
+          "title": "XML Injection (aka Blind XPath Injection)",
+          "tests": []
         },
         {
           "id": 93,
-          "title": "Improper Neutralization of CRLF Sequences ('CRLF Injection')"
+          "title": "Improper Neutralization of CRLF Sequences ('CRLF Injection')",
+          "tests": []
         },
         {
           "id": 94,
-          "title": "Improper Control of Generation of Code ('Code Injection')"
+          "title": "Improper Control of Generation of Code ('Code Injection')",
+          "tests": []
         },
         {
           "id": 95,
-          "title": "Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')"
+          "title": "Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')",
+          "tests": []
         },
         {
           "id": 96,
-          "title": "Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')"
+          "title": "Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')",
+          "tests": []
         },
         {
           "id": 97,
-          "title": "Improper Neutralization of Server-Side Includes (SSI) Within a Web Page"
+          "title": "Improper Neutralization of Server-Side Includes (SSI) Within a Web Page",
+          "tests": []
         },
         {
           "id": 98,
-          "title": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')"
+          "title": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')",
+          "tests": [
+            "test_25_v1"
+          ]
         },
         {
           "id": 99,
-          "title": "Improper Control of Resource Identifiers ('Resource Injection')"
+          "title": "Improper Control of Resource Identifiers ('Resource Injection')",
+          "tests": []
         },
         {
           "id": 113,
-          "title": "Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')"
+          "title": "Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')",
+          "tests": []
         },
         {
           "id": 116,
-          "title": "Improper Encoding or Escaping of Output"
+          "title": "Improper Encoding or Escaping of Output",
+          "tests": []
         },
         {
           "id": 138,
-          "title": "Improper Neutralization of Special Elements"
+          "title": "Improper Neutralization of Special Elements",
+          "tests": []
         },
         {
           "id": 184,
-          "title": "Incomplete List of Disallowed Inputs"
+          "title": "Incomplete List of Disallowed Inputs",
+          "tests": []
         },
         {
           "id": 470,
-          "title": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')"
+          "title": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')",
+          "tests": []
         },
         {
           "id": 471,
-          "title": "Modification of Assumed-Immutable Data (MAID)"
+          "title": "Modification of Assumed-Immutable Data (MAID)",
+          "tests": []
         },
         {
           "id": 564,
-          "title": "SQL Injection: Hibernate"
+          "title": "SQL Injection: Hibernate",
+          "tests": []
         },
         {
           "id": 610,
-          "title": "Externally Controlled Reference to a Resource in Another Sphere"
+          "title": "Externally Controlled Reference to a Resource in Another Sphere",
+          "tests": [
+            "test_40_v1"
+          ]
         },
         {
           "id": 643,
-          "title": "Improper Neutralization of Data within XPath Expressions ('XPath Injection')"
+          "title": "Improper Neutralization of Data within XPath Expressions ('XPath Injection')",
+          "tests": []
         },
         {
           "id": 644,
-          "title": "Improper Neutralization of HTTP Headers for Scripting Syntax"
+          "title": "Improper Neutralization of HTTP Headers for Scripting Syntax",
+          "tests": []
         },
         {
           "id": 652,
-          "title": "Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')"
+          "title": "Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')",
+          "tests": []
         },
         {
           "id": 917,
-          "title": "Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')"
+          "title": "Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')",
+          "tests": []
         }
       ],
       "group": "Injection"
@@ -403,163 +557,226 @@
       "CWEDetails": [
         {
           "id": 73,
-          "title": "External Control of File Name or Path"
+          "title": "External Control of File Name or Path",
+          "tests": []
         },
         {
           "id": 183,
-          "title": "Permissive List of Allowed Inputs"
+          "title": "Permissive List of Allowed Inputs",
+          "tests": []
         },
         {
           "id": 209,
-          "title": "Generation of Error Message Containing Sensitive Information"
+          "title": "Generation of Error Message Containing Sensitive Information",
+          "tests": []
         },
         {
           "id": 213,
-          "title": "Exposure of Sensitive Information Due to Incompatible Policies"
+          "title": "Exposure of Sensitive Information Due to Incompatible Policies",
+          "tests": []
         },
         {
           "id": 235,
-          "title": "Improper Handling of Extra Parameters"
+          "title": "Improper Handling of Extra Parameters",
+          "tests": []
         },
         {
           "id": 256,
-          "title": "Plaintext Storage of a Password"
+          "title": "Plaintext Storage of a Password",
+          "tests": [
+            "test_11_v1",
+            "test_32_v1"
+          ]
         },
         {
           "id": 257,
-          "title": "Storing Passwords in a Recoverable Format"
+          "title": "Storing Passwords in a Recoverable Format",
+          "tests": [
+            "test_32_v1"
+          ]
         },
         {
           "id": 266,
-          "title": "Incorrect Privilege Assignment"
+          "title": "Incorrect Privilege Assignment",
+          "tests": []
         },
         {
           "id": 269,
-          "title": "Improper Privilege Management"
+          "title": "Improper Privilege Management",
+          "tests": []
         },
         {
           "id": 280,
-          "title": "Improper Handling of Insufficient Permissions or Privileges"
+          "title": "Improper Handling of Insufficient Permissions or Privileges",
+          "tests": []
         },
         {
           "id": 311,
-          "title": "Missing Encryption of Sensitive Data"
+          "title": "Missing Encryption of Sensitive Data",
+          "tests": []
         },
         {
           "id": 312,
-          "title": "Cleartext Storage of Sensitive Information"
+          "title": "Cleartext Storage of Sensitive Information",
+          "tests": [
+            "test_42_v1"
+          ]
         },
         {
           "id": 313,
-          "title": "Cleartext Storage in a File or on Disk"
+          "title": "Cleartext Storage in a File or on Disk",
+          "tests": []
         },
         {
           "id": 316,
-          "title": "Cleartext Storage of Sensitive Information in Memory"
+          "title": "Cleartext Storage of Sensitive Information in Memory",
+          "tests": []
         },
         {
           "id": 419,
-          "title": "Unprotected Primary Channel"
+          "title": "Unprotected Primary Channel",
+          "tests": []
         },
         {
           "id": 430,
-          "title": "Deployment of Wrong Handler"
+          "title": "Deployment of Wrong Handler",
+          "tests": []
         },
         {
           "id": 434,
-          "title": "Unrestricted Upload of File with Dangerous Type"
+          "title": "Unrestricted Upload of File with Dangerous Type",
+          "tests": [
+            "test_6_v1"
+          ]
         },
         {
           "id": 444,
-          "title": "Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')"
+          "title": "Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')",
+          "tests": []
         },
         {
           "id": 451,
-          "title": "User Interface (UI) Misrepresentation of Critical Information"
+          "title": "User Interface (UI) Misrepresentation of Critical Information",
+          "tests": []
         },
         {
           "id": 472,
-          "title": "External Control of Assumed-Immutable Web Parameter"
+          "title": "External Control of Assumed-Immutable Web Parameter",
+          "tests": []
         },
         {
           "id": 501,
-          "title": "Trust Boundary Violation"
+          "title": "Trust Boundary Violation",
+          "tests": [
+            "test_19_v1"
+          ]
         },
         {
           "id": 522,
-          "title": "Insufficiently Protected Credentials"
+          "title": "Insufficiently Protected Credentials",
+          "tests": [
+            "test_24_v1"
+          ]
         },
         {
           "id": 525,
-          "title": "Use of Web Browser Cache Containing Sensitive Information"
+          "title": "Use of Web Browser Cache Containing Sensitive Information",
+          "tests": []
         },
         {
           "id": 539,
-          "title": "Use of Persistent Cookies Containing Sensitive Information"
+          "title": "Use of Persistent Cookies Containing Sensitive Information",
+          "tests": []
         },
         {
           "id": 579,
-          "title": "J2EE Bad Practices: Non-serializable Object Stored in Session"
+          "title": "J2EE Bad Practices: Non-serializable Object Stored in Session",
+          "tests": []
         },
         {
           "id": 598,
-          "title": "Use of GET Request Method With Sensitive Query Strings"
+          "title": "Use of GET Request Method With Sensitive Query Strings",
+          "tests": [
+            "test_33_v1"
+          ]
         },
         {
           "id": 602,
-          "title": "Client-Side Enforcement of Server-Side Security"
+          "title": "Client-Side Enforcement of Server-Side Security",
+          "tests": [
+            "test_38_v1"
+          ]
         },
         {
           "id": 642,
-          "title": "External Control of Critical State Data"
+          "title": "External Control of Critical State Data",
+          "tests": []
         },
         {
           "id": 646,
-          "title": "Reliance on File Name or Extension of Externally-Supplied File"
+          "title": "Reliance on File Name or Extension of Externally-Supplied File",
+          "tests": [
+            "test_26_v1"
+          ]
         },
         {
           "id": 650,
-          "title": "Trusting HTTP Permission Methods on the Server Side"
+          "title": "Trusting HTTP Permission Methods on the Server Side",
+          "tests": []
         },
         {
           "id": 653,
-          "title": "Improper Isolation or Compartmentalization"
+          "title": "Improper Isolation or Compartmentalization",
+          "tests": []
         },
         {
           "id": 656,
-          "title": "Reliance on Security Through Obscurity"
+          "title": "Reliance on Security Through Obscurity",
+          "tests": []
         },
         {
           "id": 657,
-          "title": "Violation of Secure Design Principles"
+          "title": "Violation of Secure Design Principles",
+          "tests": []
         },
         {
           "id": 799,
-          "title": "Improper Control of Interaction Frequency"
+          "title": "Improper Control of Interaction Frequency",
+          "tests": [
+            "test_20_v1"
+          ]
         },
         {
           "id": 807,
-          "title": "Reliance on Untrusted Inputs in a Security Decision"
+          "title": "Reliance on Untrusted Inputs in a Security Decision",
+          "tests": [
+            "test_35_v1"
+          ]
         },
         {
           "id": 840,
-          "title": "Business Logic Errors"
+          "title": "Business Logic Errors",
+          "tests": []
         },
         {
           "id": 841,
-          "title": "Improper Enforcement of Behavioral Workflow"
+          "title": "Improper Enforcement of Behavioral Workflow",
+          "tests": []
         },
         {
           "id": 927,
-          "title": "Use of Implicit Intent for Sensitive Communication"
+          "title": "Use of Implicit Intent for Sensitive Communication",
+          "tests": []
         },
         {
           "id": 1021,
-          "title": "Improper Restriction of Rendered UI Layers or Frames"
+          "title": "Improper Restriction of Rendered UI Layers or Frames",
+          "tests": []
         },
         {
           "id": 1173,
-          "title": "Improper Use of Validation Framework"
+          "title": "Improper Use of Validation Framework",
+          "tests": []
         }
       ],
       "group": "Insecure Design"
@@ -569,83 +786,113 @@
       "CWEDetails": [
         {
           "id": 2,
-          "title": "7PK - Environment"
+          "title": "7PK - Environment",
+          "tests": []
         },
         {
           "id": 11,
-          "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Creating Debug Binary"
+          "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Creating Debug Binary",
+          "tests": []
         },
         {
           "id": 13,
-          "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Password in Configuration File"
+          "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Password in Configuration File",
+          "tests": []
         },
         {
           "id": 15,
-          "title": "External Control of System or Configuration Setting"
+          "title": "External Control of System or Configuration Setting",
+          "tests": []
         },
         {
           "id": 16,
-          "title": "Configuration"
+          "title": "Configuration",
+          "tests": []
         },
         {
           "id": 260,
-          "title": "Password in Configuration File"
+          "title": "Password in Configuration File",
+          "tests": []
         },
         {
           "id": 315,
-          "title": "Cleartext Storage of Sensitive Information in a Cookie"
+          "title": "Cleartext Storage of Sensitive Information in a Cookie",
+          "tests": [
+            "test_41_v1"
+          ]
         },
         {
           "id": 520,
-          "title": ".NET Misconfiguration: Use of Impersonation"
+          "title": ".NET Misconfiguration: Use of Impersonation",
+          "tests": []
         },
         {
           "id": 526,
-          "title": "Cleartext Storage of Sensitive Information in an Environment Variable"
+          "title": "Cleartext Storage of Sensitive Information in an Environment Variable",
+          "tests": [
+            "test_42_v1"
+          ]
         },
         {
           "id": 537,
-          "title": "Java Runtime Error Message Containing Sensitive Information"
+          "title": "Java Runtime Error Message Containing Sensitive Information",
+          "tests": []
         },
         {
           "id": 541,
-          "title": "Inclusion of Sensitive Information in an Include File"
+          "title": "Inclusion of Sensitive Information in an Include File",
+          "tests": []
         },
         {
           "id": 547,
-          "title": "Use of Hard-coded, Security-relevant Constants"
+          "title": "Use of Hard-coded, Security-relevant Constants",
+          "tests": []
         },
         {
           "id": 611,
-          "title": "Improper Restriction of XML External Entity Reference"
+          "title": "Improper Restriction of XML External Entity Reference",
+          "tests": [
+            "test_40_v1"
+          ]
         },
         {
           "id": 614,
-          "title": "Sensitive Cookie in HTTPS Session Without 'Secure' Attribute"
+          "title": "Sensitive Cookie in HTTPS Session Without 'Secure' Attribute",
+          "tests": [
+            "test_39_v1"
+          ]
         },
         {
           "id": 756,
-          "title": "Missing Custom Error Page"
+          "title": "Missing Custom Error Page",
+          "tests": []
         },
         {
           "id": 776,
-          "title": "Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')"
+          "title": "Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')",
+          "tests": []
         },
         {
           "id": 942,
-          "title": "Permissive Cross-domain Policy with Untrusted Domains"
+          "title": "Permissive Cross-domain Policy with Untrusted Domains",
+          "tests": []
         },
         {
           "id": 1004,
-          "title": "Sensitive Cookie Without 'HttpOnly' Flag"
+          "title": "Sensitive Cookie Without 'HttpOnly' Flag",
+          "tests": [
+            "test_8_v1"
+          ]
         },
         {
           "id": 1032,
-          "title": "OWASP Top Ten 2017 Category A6 - Security Misconfiguration"
+          "title": "OWASP Top Ten 2017 Category A6 - Security Misconfiguration",
+          "tests": []
         },
         {
           "id": 1174,
-          "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Improper Model Validation"
+          "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Improper Model Validation",
+          "tests": []
         }
       ],
       "group": "Security Misconfiguration"
@@ -655,15 +902,20 @@
       "CWEDetails": [
         {
           "id": 937,
-          "title": "OWASP Top Ten 2013 Category A9 - Using Components with Known Vulnerabilities"
+          "title": "OWASP Top Ten 2013 Category A9 - Using Components with Known Vulnerabilities",
+          "tests": []
         },
         {
           "id": 1035,
-          "title": "OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities"
+          "title": "OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities",
+          "tests": []
         },
         {
           "id": 1104,
-          "title": "Use of Unmaintained Third Party Components"
+          "title": "Use of Unmaintained Third Party Components",
+          "tests": [
+            "test_44_v1"
+          ]
         }
       ],
       "group": "Vulnerable and Outdated Components"
@@ -673,91 +925,151 @@
       "CWEDetails": [
         {
           "id": 255,
-          "title": "Credentials Management Errors"
+          "title": "Credentials Management Errors",
+          "tests": []
         },
         {
           "id": 259,
-          "title": "Use of Hard-coded Password"
+          "title": "Use of Hard-coded Password",
+          "tests": []
         },
         {
           "id": 287,
-          "title": "Improper Authentication"
+          "title": "Improper Authentication",
+          "tests": [
+            "test_14_v1",
+            "test_19_v1",
+            "test_35_v1",
+            "test_38_v1"
+          ]
         },
         {
           "id": 288,
-          "title": "Authentication Bypass Using an Alternate Path or Channel"
+          "title": "Authentication Bypass Using an Alternate Path or Channel",
+          "tests": []
         },
         {
           "id": 290,
-          "title": "Authentication Bypass by Spoofing"
+          "title": "Authentication Bypass by Spoofing",
+          "tests": [
+            "test_38_v1"
+          ]
         },
         {
           "id": 294,
-          "title": "Authentication Bypass by Capture-replay"
+          "title": "Authentication Bypass by Capture-replay",
+          "tests": [
+            "test_37_v1"
+          ]
         },
         {
           "id": 295,
-          "title": "Improper Certificate Validation"
+          "title": "Improper Certificate Validation",
+          "tests": [
+            "test_36_v1"
+          ]
         },
         {
           "id": 297,
-          "title": "Improper Validation of Certificate with Host Mismatch"
+          "title": "Improper Validation of Certificate with Host Mismatch",
+          "tests": [
+            "test_36_v1"
+          ]
         },
         {
           "id": 300,
-          "title": "Channel Accessible by Non-Endpoint"
+          "title": "Channel Accessible by Non-Endpoint",
+          "tests": []
         },
         {
           "id": 302,
-          "title": "Authentication Bypass by Assumed-Immutable Data"
+          "title": "Authentication Bypass by Assumed-Immutable Data",
+          "tests": [
+            "test_35_v1"
+          ]
         },
         {
           "id": 304,
-          "title": "Missing Critical Step in Authentication"
+          "title": "Missing Critical Step in Authentication",
+          "tests": []
         },
         {
           "id": 306,
-          "title": "Missing Authentication for Critical Function"
+          "title": "Missing Authentication for Critical Function",
+          "tests": [
+            "test_33_v1"
+          ]
         },
         {
           "id": 307,
-          "title": "Improper Restriction of Excessive Authentication Attempts"
+          "title": "Improper Restriction of Excessive Authentication Attempts",
+          "tests": [
+            "test_20_v1",
+            "test_32_v1"
+          ]
         },
         {
           "id": 346,
-          "title": "Origin Validation Error"
+          "title": "Origin Validation Error",
+          "tests": [
+            "test_31_v1"
+          ]
         },
         {
           "id": 384,
-          "title": "Session Fixation"
+          "title": "Session Fixation",
+          "tests": [
+            "test_23_v1"
+          ]
         },
         {
           "id": 521,
-          "title": "Weak Password Requirements"
+          "title": "Weak Password Requirements",
+          "tests": [
+            "test_34_v1"
+          ]
         },
         {
           "id": 613,
-          "title": "Insufficient Session Expiration"
+          "title": "Insufficient Session Expiration",
+          "tests": [
+            "test_22_v1"
+          ]
         },
         {
           "id": 620,
-          "title": "Unverified Password Change"
+          "title": "Unverified Password Change",
+          "tests": [
+            "test_33_v1"
+          ]
         },
         {
           "id": 640,
-          "title": "Weak Password Recovery Mechanism for Forgotten Password"
+          "title": "Weak Password Recovery Mechanism for Forgotten Password",
+          "tests": [
+            "test_32_v1"
+          ]
         },
         {
           "id": 798,
-          "title": "Use of Hard-coded Credentials"
+          "title": "Use of Hard-coded Credentials",
+          "tests": [
+            "test_17_v1",
+            "test_32_v1",
+            "test_37_v1"
+          ]
         },
         {
           "id": 940,
-          "title": "Improper Verification of Source of a Communication Channel"
+          "title": "Improper Verification of Source of a Communication Channel",
+          "tests": [
+            "test_31_v1"
+          ]
         },
         {
           "id": 1216,
-          "title": "Lockout Mechanism Errors"
+          "title": "Lockout Mechanism Errors",
+          "tests": []
         }
       ],
       "group": "Identification and Authentication Failures"
@@ -767,43 +1079,78 @@
       "CWEDetails": [
         {
           "id": 345,
-          "title": "Insufficient Verification of Data Authenticity"
+          "title": "Insufficient Verification of Data Authenticity",
+          "tests": [
+            "test_26_v1",
+            "test_27_v1",
+            "test_28_v1"
+          ]
         },
         {
           "id": 353,
-          "title": "Missing Support for Integrity Check"
+          "title": "Missing Support for Integrity Check",
+          "tests": [
+            "test_27_v1"
+          ]
         },
         {
           "id": 426,
-          "title": "Untrusted Search Path"
+          "title": "Untrusted Search Path",
+          "tests": [
+            "test_25_v1"
+          ]
         },
         {
           "id": 494,
-          "title": "Download of Code Without Integrity Check"
+          "title": "Download of Code Without Integrity Check",
+          "tests": [
+            "test_28_v1"
+          ]
         },
         {
           "id": 502,
-          "title": "Deserialization of Untrusted Data"
+          "title": "Deserialization of Untrusted Data",
+          "tests": [
+            "test_7_v1"
+          ]
         },
         {
           "id": 565,
-          "title": "Reliance on Cookies without Validation and Integrity Checking"
+          "title": "Reliance on Cookies without Validation and Integrity Checking",
+          "tests": [
+            "test_14_v1",
+            "test_35_v1"
+          ]
         },
         {
           "id": 784,
-          "title": "Reliance on Cookies without Validation and Integrity Checking in a Security Decision"
+          "title": "Reliance on Cookies without Validation and Integrity Checking in a Security Decision",
+          "tests": [
+            "test_14_v1",
+            "test_35_v1"
+          ]
         },
         {
           "id": 829,
-          "title": "Inclusion of Functionality from Untrusted Control Sphere"
+          "title": "Inclusion of Functionality from Untrusted Control Sphere",
+          "tests": [
+            "test_25_v1",
+            "test_29_v1"
+          ]
         },
         {
           "id": 830,
-          "title": "Inclusion of Web Functionality from an Untrusted Source"
+          "title": "Inclusion of Web Functionality from an Untrusted Source",
+          "tests": [
+            "test_29_v1"
+          ]
         },
         {
           "id": 915,
-          "title": "Improperly Controlled Modification of Dynamically-Determined Object Attributes"
+          "title": "Improperly Controlled Modification of Dynamically-Determined Object Attributes",
+          "tests": [
+            "test_30_v1"
+          ]
         }
       ],
       "group": "Software and Data Integrity Failures"
@@ -813,19 +1160,31 @@
       "CWEDetails": [
         {
           "id": 117,
-          "title": "Improper Output Neutralization for Logs"
+          "title": "Improper Output Neutralization for Logs",
+          "tests": [
+            "test_21_v1"
+          ]
         },
         {
           "id": 223,
-          "title": "Omission of Security-relevant Information"
+          "title": "Omission of Security-relevant Information",
+          "tests": [
+            "test_20_v1"
+          ]
         },
         {
           "id": 532,
-          "title": "Insertion of Sensitive Information into Log File"
+          "title": "Insertion of Sensitive Information into Log File",
+          "tests": [
+            "test_24_v1"
+          ]
         },
         {
           "id": 778,
-          "title": "Insufficient Logging"
+          "title": "Insufficient Logging",
+          "tests": [
+            "test_20_v1"
+          ]
         }
       ],
       "group": "Security Logging and Monitoring Failures"
@@ -835,7 +1194,10 @@
       "CWEDetails": [
         {
           "id": 918,
-          "title": "Server-Side Request Forgery (SSRF)"
+          "title": "Server-Side Request Forgery (SSRF)",
+          "tests": [
+            "test_16_v1"
+          ]
         }
       ],
       "group": "Server-Side Request Forgergy (SSRF)"
