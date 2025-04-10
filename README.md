@@ -47,6 +47,19 @@ To test a new scanner or set of exploits, you'll use Pocman, which orchestrates 
    - The index of proof of concepts will be hosted on `localhost:3000`
    - Point your scanner to this URL to crawl all available PoCs
 
+#### Management Interface
+
+Pocman now includes a web-based management interface that allows you to control the test batches through a browser:
+
+1. Access the management interface at `http://localhost:3001` while Pocman is running
+2. Use the control buttons to:
+   - Navigate to the next batch
+   - Return to the previous batch
+   - Stop the current batch
+   - Start the current batch
+   - Restart the current batch
+3. View the current batch status
+
 For more information, run:
 ```sh
 bun install && ./pocman.ts --help
@@ -198,14 +211,14 @@ The `visualizer` directory contains ASDFviz, a Vue-based visualization tool for 
    ```
 
 2. Install dependencies:
-   ```sh
-   bun install -D
-   ```
+```sh
+bun install -D
+```
 
 3. Start the development server:
-   ```sh
-   bun dev
-   ```
+```sh
+bun dev
+```
 
 4. Access the visualization at `http://localhost:5173`
 

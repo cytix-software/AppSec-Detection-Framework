@@ -9,6 +9,15 @@ import _ from 'lodash';
 import minimist from 'minimist';
 import { html, safeHtml } from 'common-tags';
 
+// Add type definitions for minimist
+interface MinimistOpts {
+  string?: string[];
+  number?: string[];
+  boolean?: string[];
+  alias?: { [key: string]: string };
+  default?: { [key: string]: any };
+}
+
 const args = minimist(process.argv.slice(2), {
   string: ['compose-path', 'profiles'],
   number: ['batch-size', 'port'],
@@ -20,7 +29,7 @@ const args = minimist(process.argv.slice(2), {
     profiles: 'php',
     port: 3000
   }
-});
+} as MinimistOpts);
 
 if (args.help) {
   console.log(`
@@ -39,7 +48,7 @@ if (args.help) {
     --help          Show this help message
 
   REPL Commands:
-    next      - Activate next batch of services
+    next      - Activate next batch
     previous  - Return to previous batch
     stop      - Stop current batch containers
     start     - Start current batch containers
@@ -63,6 +72,21 @@ type ServiceBatch = {
   services: string[];
   urls: string[];
 };
+
+// Add type definitions
+interface DockerComposeConfig {
+  services: {
+    [key: string]: {
+      image: string;
+      build?: {
+        context: string;
+        dockerfile: string;
+      };
+      ports?: string[];
+      profiles?: string[];
+    };
+  };
+}
 
 const composeDirectory = path.dirname(path.resolve(args['compose-path']));
 const profiles = args.profiles.split(',');
@@ -106,7 +130,8 @@ function createBatchManager(docker = createDockerManager()) {
 
     async parseDockerCompose() {
       const content = await readFile(args['compose-path'], 'utf8');
-      return Object.entries(YAML.parse(content).services)
+      const config = YAML.parse(content) as DockerComposeConfig;
+      return Object.entries(config.services)
         .map(([name, cfg]) => ({
           name,
           profiles: cfg.profiles || [],
@@ -324,13 +349,430 @@ function showWelcome() {
   `);
 }
 
+// Add management server setup
+let batchManager: ReturnType<typeof createBatchManager>;
 
+const managementApp = new Koa();
+const managementRouter = new Router();
+
+managementRouter.get('/api/status', async (ctx) => {
+  const batch = batchManager.getCurrentBatch();
+  ctx.body = {
+    currentBatch: batch,
+    queue: batchManager.getBatchQueue()
+  };
+});
+
+managementRouter.post('/api/next', async (ctx) => {
+  const batch = await batchManager.getNextBatch();
+  ctx.body = { success: true, batch };
+});
+
+managementRouter.post('/api/previous', async (ctx) => {
+  const batch = await batchManager.getPreviousBatch();
+  ctx.body = { success: true, batch };
+});
+
+managementRouter.post('/api/stop', async (ctx) => {
+  await batchManager.stopCurrentBatch();
+  ctx.body = { success: true };
+});
+
+managementRouter.post('/api/start', async (ctx) => {
+  await batchManager.startCurrentBatch();
+  ctx.body = { success: true };
+});
+
+managementRouter.post('/api/restart', async (ctx) => {
+  await batchManager.restartCurrentBatch();
+  ctx.body = { success: true };
+});
+
+// Add a function to get service profiles
+async function getServiceProfiles(serviceName: string): Promise<string[]> {
+  try {
+    const content = await readFile(args['compose-path'], 'utf8');
+    const config = YAML.parse(content) as DockerComposeConfig;
+    return config.services[serviceName]?.profiles || [];
+  } catch (error) {
+    console.error(`Error getting profiles for ${serviceName}:`, error);
+    return [];
+  }
+}
+
+// Update the healthcheck endpoint to include profiles
+managementRouter.get('/api/healthcheck', async (ctx) => {
+  const batch = batchManager.getCurrentBatch();
+  if (!batch) {
+    ctx.body = { status: 'no_active_batch' };
+    return;
+  }
+
+  const healthResults = await Promise.all(
+    batch.urls.map(async (url, index) => {
+      const serviceName = batch.services[index];
+      const profiles = await getServiceProfiles(serviceName);
+      
+      try {
+        const response = await fetch(url);
+        return {
+          service: serviceName,
+          url,
+          status: response.ok ? 'healthy' : 'unhealthy',
+          statusCode: response.status,
+          profiles
+        };
+      } catch (error) {
+        return {
+          service: serviceName,
+          url,
+          status: 'unreachable',
+          error: error.message,
+          profiles
+        };
+      }
+    })
+  );
+
+  ctx.body = { results: healthResults };
+});
+
+managementRouter.get('/', async (ctx) => {
+  ctx.body = createManagementHtml(batchManager.getCurrentBatch());
+});
+
+managementApp.use(managementRouter.routes());
+managementApp.use(managementRouter.allowedMethods());
+
+// Update the management HTML to include profile pills
+function createManagementHtml(batch: ServiceBatch | null) {
+  return html`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Pocman Management</title>
+        <style>
+          :root {
+            --primary: #FF822E;
+            --primary-dark: #DA4100;
+            --background: #020E1E;
+            --surface: #0E1E33;
+            --text-primary: #FFFFFF;
+            --text-secondary: #8181AC;
+            --accent: #216FED;
+            --warning: #FF4D36;
+            --success: #00C853;
+            --error: #FF3D00;
+          }
+
+          body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: var(--background);
+            color: var(--text-primary);
+          }
+
+          .container {
+            max-width: 1200px;
+            margin: 0 auto;
+          }
+
+          .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+          }
+
+          .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+          }
+
+          button {
+            background: var(--surface);
+            border: 1px solid var(--primary);
+            color: var(--text-primary);
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+          }
+
+          button:hover {
+            background: var(--primary);
+          }
+
+          .status {
+            background: var(--surface);
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+          }
+
+          .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+          }
+
+          .service-card {
+            background: var(--surface);
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid var(--accent);
+          }
+
+          .service-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+          }
+
+          .service-card p {
+            margin: 5px 0;
+            color: var(--text-secondary);
+          }
+
+          .service-card a {
+            color: var(--accent);
+            text-decoration: none;
+          }
+
+          .service-card a:hover {
+            text-decoration: underline;
+          }
+
+          .health-status {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+          }
+
+          .health-status.healthy {
+            background-color: var(--success);
+          }
+
+          .health-status.unhealthy {
+            background-color: var(--warning);
+          }
+
+          .health-status.unreachable {
+            background-color: var(--error);
+          }
+
+          .health-status.unknown {
+            background-color: var(--text-secondary);
+          }
+
+          .health-details {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+          }
+
+          .refresh-button {
+            background: var(--accent);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            margin-top: 10px;
+          }
+
+          .refresh-button:hover {
+            background: var(--primary);
+          }
+
+          .profile-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+          }
+
+          .profile-pill {
+            background: var(--accent);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            white-space: nowrap;
+          }
+
+          .profile-pill.cwe {
+            background: var(--warning);
+          }
+
+          .profile-pill.owasp {
+            background: var(--primary);
+          }
+
+          .profile-pill.language {
+            background: var(--success);
+          }
+
+          .profile-pill.server {
+            background: var(--text-secondary);
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1>Pocman Management</h1>
+            <div class="controls">
+              <button onclick="executeCommand('previous')">Previous Batch</button>
+              <button onclick="executeCommand('next')">Next Batch</button>
+              <button onclick="executeCommand('stop')">Stop Current</button>
+              <button onclick="executeCommand('start')">Start Current</button>
+              <button onclick="executeCommand('restart')">Restart Current</button>
+            </div>
+          </div>
+
+          <div class="status">
+            <h2>Current Batch Status</h2>
+            <div id="currentBatch">
+              ${batch ? html`
+                <p>Profile: ${batch.profile}</p>
+                <p>Batch Index: ${batch.chunkIndex}</p>
+                <div class="service-list" id="serviceList">
+                  ${batch.services.map((service, index) => html`
+                    <div class="service-card" id="service-${index}">
+                      <h3>
+                        <span class="health-status unknown" id="health-${index}"></span>
+                        ${humanizeServiceName(service)}
+                      </h3>
+                      <p><a href="${batch.urls[index]}" target="_blank">${batch.urls[index]}</a></p>
+                      <div class="profile-pills" id="profiles-${index}">
+                        Loading profiles...
+                      </div>
+                      <div class="health-details" id="health-details-${index}">
+                        Checking health...
+                      </div>
+                    </div>
+                  `)}
+                </div>
+                <button class="refresh-button" onclick="checkHealth()">Refresh Health Status</button>
+              ` : html`<p>No active batch</p>`}
+            </div>
+          </div>
+        </div>
+
+        <script>
+          async function executeCommand(command) {
+            try {
+              const response = await fetch(\`/api/\${command}\`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              });
+              const data = await response.json();
+              if (data.success) {
+                window.location.reload();
+              }
+            } catch (error) {
+              console.error('Error executing command:', error);
+            }
+          }
+
+          function getProfileClass(profile) {
+            if (profile.startsWith('cwe-')) {
+              return 'cwe';
+            } else if (profile.startsWith('a') && profile.includes(':')) {
+              return 'owasp';
+            } else if (['php', 'python', 'js', 'java', 'go', 'ruby'].includes(profile)) {
+              return 'language';
+            } else if (['apache', 'nginx', 'flask', 'express', 'spring'].includes(profile)) {
+              return 'server';
+            }
+            return '';
+          }
+
+          async function checkHealth() {
+            try {
+              const response = await fetch('/api/healthcheck');
+              const data = await response.json();
+              
+              if (data.results) {
+                data.results.forEach((result, index) => {
+                  const healthIndicator = document.getElementById(\`health-\${index}\`);
+                  const healthDetails = document.getElementById(\`health-details-\${index}\`);
+                  const profilePills = document.getElementById(\`profiles-\${index}\`);
+                  
+                  if (healthIndicator && healthDetails) {
+                    // Update health indicator
+                    healthIndicator.className = 'health-status ' + result.status;
+                    
+                    // Update health details
+                    if (result.status === 'healthy') {
+                      healthDetails.textContent = \`Status: Healthy (HTTP \${result.statusCode})\`;
+                    } else if (result.status === 'unhealthy') {
+                      healthDetails.textContent = \`Status: Unhealthy (HTTP \${result.statusCode})\`;
+                    } else {
+                      healthDetails.textContent = \`Status: Unreachable (\${result.error || 'Connection failed'})\`;
+                    }
+                  }
+
+                  // Update profile pills
+                  if (profilePills && result.profiles) {
+                    profilePills.innerHTML = result.profiles.map(profile => 
+                      \`<span class="profile-pill \${getProfileClass(profile)}">\${profile}</span>\`
+                    ).join('');
+                  }
+                });
+              }
+            } catch (error) {
+              console.error('Error checking health:', error);
+            }
+          }
+
+          // Check health on page load
+          document.addEventListener('DOMContentLoaded', () => {
+            checkHealth();
+          });
+
+          // Auto-refresh status every 5 seconds
+          setInterval(async () => {
+            try {
+              const response = await fetch('/api/status');
+              const data = await response.json();
+              // Update UI with new status
+              // TODO: Implement status update logic
+            } catch (error) {
+              console.error('Error fetching status:', error);
+            }
+          }, 5000);
+        </script>
+      </body>
+    </html>
+  `;
+}
 
 (async function main() {
   try {
-    showWelcome();
     const docker = createDockerManager();
-    const batchManager = createBatchManager(docker);
+    batchManager = createBatchManager(docker);
+    await batchManager.initialize();
+
+    // Start the main server
+    const app = new Koa();
+    app.use(async (ctx) => {
+      ctx.body = createHtml(batchManager.getCurrentBatch());
+    });
+    app.listen(args.port);
+
+    // Start the management server
+    managementApp.listen(3001);
+
+    showWelcome();
 
     async function beforeExit() {
       const currentBatch = batchManager.getCurrentBatch();
@@ -349,25 +791,7 @@ function showWelcome() {
     process.on('SIGINT', () => process.exit());
     process.on('SIGTERM', () => process.exit());
 
-    await batchManager.initialize();
     await batchManager.getNextBatch();
-
-    const app = new Koa();
-    const router = new Router();
-
-    router.get('/', ctx => {
-      ctx.type = 'html';
-      ctx.body = createHtml(batchManager.getCurrentBatch());
-    });
-
-    app.use(router.routes());
-
-    await new Promise((resolve, reject) => {
-      app.listen(args.port, () => {
-        console.log(`Proof of concept interface is now live at http://localhost:${args.port}`);
-        resolve(null);
-      }).on('error', reject);
-    });
 
     const repl = readline.createInterface({
       input: process.stdin,
