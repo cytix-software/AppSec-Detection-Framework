@@ -10,6 +10,7 @@
             placeholder="Select tools to analyze"
             :options="toolOptions"
             style="width: 300px"
+            :render-label="renderOptionLabel"
           />
           <n-button
             v-if="coverageGaps.length > 0"
@@ -177,7 +178,8 @@ const scannerTools = computed(() => {
 const toolOptions = computed(() => {
   return scannerTools.value.map(tool => ({
     label: tool,
-    value: tool
+    value: tool,
+    tooltip: dataJson.recordedTests[tool].scanProfile
   }))
 })
 
@@ -525,6 +527,24 @@ function exportCoverageGaps() {
   document.body.appendChild(link)
   link.click()
   document.body.removeChild(link)
+}
+
+// Add the renderOptionLabel function
+function renderOptionLabel(option: any) {
+  return h(
+    'div',
+    {
+      title: option.tooltip,
+      style: {
+        cursor: 'help',
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center'
+      }
+    },
+    option.label
+  )
 }
 </script>
 
