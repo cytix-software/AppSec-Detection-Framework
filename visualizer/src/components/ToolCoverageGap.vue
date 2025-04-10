@@ -2,14 +2,26 @@
   <div class="tool-coverage-gap">
     <n-card title="Coverage Gap Analysis">
       <n-space vertical>
-        <n-select
-          v-model:value="selectedTools"
-          multiple
-          filterable
-          placeholder="Select tools to analyze"
-          :options="toolOptions"
-          style="width: 100%"
-        />
+        <n-space justify="space-between">
+          <n-select
+            v-model:value="selectedTools"
+            multiple
+            filterable
+            placeholder="Select tools to analyze"
+            :options="toolOptions"
+            style="width: 300px"
+          />
+          <n-button
+            v-if="coverageGaps.length > 0"
+            type="primary"
+            @click="exportCoverageGaps"
+          >
+            <template #icon>
+              <n-icon><download-outlined /></n-icon>
+            </template>
+            Export Coverage Gaps
+          </n-button>
+        </n-space>
         
         <n-grid v-if="coverageGaps.length > 0" cols="3" :x-gap="12" :y-gap="8">
           <n-gi>
@@ -145,11 +157,13 @@ import {
   NGrid,
   NGi,
   NIcon,
-  NTag
+  NTag,
+  NButton
 } from 'naive-ui'
 import { loadData, getDetailsByCwe } from './data'
 import { groupBy, uniq, difference } from 'lodash-es'
 import type { VulnerabilitiesData } from './types'
+import { DownloadOutlined } from '@vicons/antd'
 
 const dataJson: VulnerabilitiesData = (await import('../../../data.json')).default
 const { hydratedHeatmapTests, vulnerabilities } = loadData()
@@ -444,6 +458,74 @@ const criticalGapsCount = computed(() => {
 watch(selectedTools, () => {
   analyzeCoverageGaps()
 }, { immediate: true })
+
+// Export coverage gaps to CSV
+function exportCoverageGaps() {
+  if (coverageGaps.value.length === 0) return
+
+  // Create CSV header
+  const headers = [
+    'CWE ID',
+    'CWE Name',
+    'OWASP Category',
+    'Description',
+    'Detection Rate (%)',
+    'Detected Count',
+    'Total Count'
+  ]
+  
+  // Add tool-specific columns
+  selectedTools.value.forEach(tool => {
+    headers.push(`${tool} Detection Rate (%)`)
+    headers.push(`${tool} Detected Count`)
+    headers.push(`${tool} Total Count`)
+  })
+
+  // Create CSV rows
+  const rows = coverageGaps.value.map(gap => {
+    const cweDetails = getDetailsByCwe(gap.cwe)
+    const vulnerability = vulnerabilities.find(v => 
+      v.CWEDetails.some(detail => detail.id === gap.cwe)
+    )
+    
+    const baseRow = [
+      gap.cwe,
+      cweDetails?.title || 'Unknown',
+      gap.owasp,
+      vulnerability?.group || 'No description available',
+      gap.detectionRate,
+      gap.detectionCount,
+      gap.totalCount
+    ]
+
+    // Add tool-specific data
+    selectedTools.value.forEach(tool => {
+      const toolRate = gap.toolDetectionRates[tool] || { rate: 0, detected: 0, total: 0 }
+      baseRow.push(toolRate.rate)
+      baseRow.push(toolRate.detected)
+      baseRow.push(toolRate.total)
+    })
+
+    return baseRow
+  })
+
+  // Combine headers and rows
+  const csvContent = [
+    headers.join(','),
+    ...rows.map(row => row.join(','))
+  ].join('\n')
+
+  // Create and trigger download
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+  const link = document.createElement('a')
+  const url = URL.createObjectURL(blob)
+  link.setAttribute('href', url)
+  link.setAttribute('download', `coverage-gaps-${new Date().toISOString().split('T')[0]}.csv`)
+  link.style.visibility = 'hidden'
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
 </script>
 
 <style scoped>

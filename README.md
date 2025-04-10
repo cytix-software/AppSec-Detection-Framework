@@ -2,21 +2,57 @@
 
 A framework for understanding the capabilities of automated detection methods at identifying classes of application security vulnerabilities.
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Requirements](#requirements)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+  - [Tests](#tests)
+  - [Data Management](#data-management)
+  - [Docker Configuration](#docker-configuration)
+- [Data Visualization](#data-visualization)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Overview
+
+ASDF is designed to evaluate and compare the effectiveness of various security scanners in detecting common web application vulnerabilities. It provides a standardized set of vulnerable applications and a framework for testing security tools against them.
+
+## Requirements
+
+- [Bun](https://bun.sh) - JavaScript runtime and package manager
+- [Docker](https://www.docker.com) - Container platform
+- [Docker Compose](https://docs.docker.com/compose/) - Multi-container Docker application tool
+
+## Getting Started
+
+### Running Tests
+
+To test a new scanner or set of exploits, you'll use Pocman, which orchestrates the proof of concept applications in this repository.
+
+1. Install dependencies:
+   ```sh
+   bun install
+   ```
+
+2. Run Pocman:
+   ```sh
+   ./pocman.ts
+   ```
+
+3. Navigate through test batches:
+   - Pocman deploys proofs of concept in batches (default: 15 images) to avoid resource constraints
+   - Enter 'next' in the command prompt to navigate to the next batch
+   - The index of proof of concepts will be hosted on `localhost:3000`
+   - Point your scanner to this URL to crawl all available PoCs
+
+For more information, run:
+```sh
+bun install && ./pocman.ts --help
+```
+
 ## Project Structure
-
-### Requirements
-
-- [Bun](https://bun.sh)
-- [Docker](https://www.docker.com)
-
-### Running
-
-In order to test a new scanner or set of exploits, you will need to test against the proofs of concept in this repository, this is done with Pocman.
-Pocman is an application that orchestrates the proof of concepts in this repository so that exploits can be tested in batches. You can run it with `bun install && ./pocman.ts`.
-Pocman deploys proofs of concept in batches, so as not to exceed resource constraints. By default it uses batches of 15 images. You can navigate to the next batch by entering 'next' into the command prompt that appears.
-By default the index of proof of concepts will be hosted on `localhost:3000`, and this is where you should point your scanner, so that it can crawl all the available PoCs.
-
-For further information you can use the command `bun install && ./pocman.ts --help`
 
 ### Tests
 
@@ -24,47 +60,96 @@ The `tests` folder contains all of the definitions for each of the vulnerabiliti
 
 ```bash
 tests/
-├── test-id/                # The test ID of the vulnerability (increments)
-|   └── version             # The version of the specific test
-|       ├── Dockerfile      # The dockerfile
-|       └── index.lang      # The vulnerable code
-└── test-1
-|   └── v1
-|       ├── Dockerfile
-|       └── index.php
-visualizer/
-docker-compose.yml
-data.json                   # The test results dataset
+├── test-1/               # The test ID of the vulnerability (increments)
+│   └── v1/               # The version of the specific test
+│       ├── Dockerfile    # The dockerfile for building the test environment
+│       └── index.php     # The vulnerable code (can be any language)
+├── test-2/
+│   └── v1/
+│       ├── Dockerfile
+│       └── index.js
+└── test-3/
+    └── v1/
+        ├── Dockerfile
+        └── index.py
 ```
 
-### data.json
+Each test folder follows the pattern `test-{id}` where `id` is a sequential number. Within each test folder, there can be multiple versions (v1, v2, etc.) of the same vulnerability test.
 
-This is the file that contains our test data and the OWASP top 10 CWEs. When a new test is performed, a new item should be added to the `"recordedTests"` array, with the following values:
+### Data Management
 
-```
+#### data.json
+
+This is the file that contains our test data and the OWASP top 10 CWEs. The file has two main sections:
+
+1. `vulnerabilities`: An array of OWASP Top 10 2021 categories and their associated CWEs
+2. `recordedTests`: An object where each key is a scanner name and the value contains the scanner's profile and test results
+
+Example structure:
+
+```json
 {
-  "scanner": <the name of the scanner being tested, including the version number as a string>,
-  "test": <the name of the docker container of the test, this should be a string>,
-  "detectedCWEs": <an array of CWE ID, where each ID represents the vulnerability detected>,
-  "undetectedCWEs" <an array of CWE ID, where each ID represents the vulnerability not detected>,
-  "updatedAt": <the unix timestamp of when the test occured, this should be a number>
+  "vulnerabilities": [
+    {
+      "OWASP": "A01:2021",
+      "CWEDetails": [
+        {
+          "id": 22,
+          "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+          "tests": ["test_1_v1", "test_1_v2"]
+        }
+      ],
+      "group": "Broken Access Control"
+    }
+  ],
+  "recordedTests": {
+    "scanner_name": {
+      "scanProfile": "Description of the scanner's capabilities and purpose",
+      "tests": [
+        {
+          "test": "test_1_v1",
+          "detectedCWEs": [22, 693],
+          "undetectedCWEs": [23],
+          "updatedAt": 1740999692
+        }
+      ]
+    }
+  }
 }
 ```
 
-### docker-compose.yml
+When adding new test results:
 
-The `docker-compose.yml` file should be used to manage the deployment of groups of containers.
+1. The scanner name should include the version number (e.g., "zap_v2.16.0")
+2. The `scanProfile` should describe the scanner's configuration
+3. Each test result should include:
+   - `test`: The name of the docker container of the test
+   - `detectedCWEs`: Array of CWE IDs that were detected
+   - `undetectedCWEs`: Array of CWE IDs that were not detected
+   - `updatedAt`: Unix timestamp of when the test occurred
 
-The container should port forward from a local port on the host. It should use an unreserved (above 1024) port, following the convention `8 {test ID} {version number}` (e.g. test 1 v1 would use port `8011`, test 2 v1 would use port `8021`).
+### Docker Configuration
+
+#### docker-compose.yml
+
+The `docker-compose.yml` file manages the deployment of groups of containers.
+
+##### Port Configuration
+
+Each container should port forward from a local port on the host using an unreserved port (above 1024), following the convention `8 {test ID} {version number}`:
+- test 1 v1 would use port `8011`
+- test 2 v1 would use port `8021`
+
+##### Service Profiles
 
 The `profiles` should be defined for each service to include:
 
-- The language the vulnerability was written in
-- The webserver technology in use
-- CWE IDs associated with the vulnerability
-- The OWASP Top 10 2021 category code
+- The language the vulnerability was written in (e.g., php, js, python)
+- The webserver technology in use (e.g., apache, nginx)
+- CWE IDs associated with the vulnerability (e.g., cwe-23)
+- The OWASP Top 10 2021 category code (e.g., a01:2021)
 
-An example entry can be seen below:
+Example entry:
 
 ```yaml
 services:
@@ -83,35 +168,72 @@ services:
       - cwe-22
 ```
 
-### Dockerfile
+#### Dockerfile
 
-The `Dockerfile` is responsible for deploying the vulnerable code.
+The `Dockerfile` is responsible for deploying the vulnerable code. It should:
 
-### index.lang
+1. Set up the appropriate runtime environment
+2. Install necessary dependencies
+3. Copy the vulnerable code into the container
+4. Configure the web server to serve the application
 
-The `index` file is simply there as an example of where the vulnerable code should live. This can actually be multiple files if required.
+#### Vulnerable Code
 
-The vulnerable code should be brief, easily readable, and should avoid any unnecessary styling or other details that do not directly contribute to introducing the vulnerability or making it exploitable.
+The vulnerable code (typically named `index.php`, `index.js`, etc.) should:
 
-## Data Visualization (ASDFviz)
+- Be brief and easily readable
+- Focus solely on demonstrating the vulnerability
+- Avoid unnecessary styling or details that don't contribute to the vulnerability
+- Be properly commented to explain the vulnerability
 
-The `visualizer` directory contains a visualization page built using Vue for ASDF. It pulls data from the `docker-compose.yml` and `data.json` at the top level of the repository, and provides various graphs and search tools for navigating the data.
+## Data Visualization
 
-### Project Setup
-*Ensure you are in the visualizer directory.*
+The `visualizer` directory contains ASDFviz, a Vue-based visualization tool for analyzing the test results.
 
-```sh
-bun install -D
-```
+### Setup
 
-### Compile
+1. Navigate to the visualizer directory:
+   ```sh
+   cd visualizer
+   ```
 
-```sh
-bun dev
-```
+2. Install dependencies:
+   ```sh
+   bun install -D
+   ```
 
-### Lint with [ESLint](https://eslint.org/)
+3. Start the development server:
+   ```sh
+   bun dev
+   ```
 
+4. Access the visualization at `http://localhost:5173`
+
+### Features
+
+- Coverage gap analysis
+- Detection rate comparison
+- OWASP category analysis
+- CWE-specific analysis
+- Export functionality for test results
+
+### Linting
+
+To lint the code with ESLint:
 ```sh
 bun lint
 ```
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
