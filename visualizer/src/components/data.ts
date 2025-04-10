@@ -5,8 +5,8 @@ const dataJson: VulnerabilitiesData = (await import('../../../data.json')).defau
 
 export const loadData = () => {
   // Flatten the recordedTests object into an array with scanner information
-  const flattenedTests = Object.entries(dataJson.recordedTests).flatMap(([scanner, tests]) =>
-    tests.map(test => ({ ...test, scanner }))
+  const flattenedTests = Object.entries(dataJson.recordedTests).flatMap(([scanner, scannerData]) =>
+    scannerData.tests.map(test => ({ ...test, scanner }))
   )
 
   const hydratedHeatmapTests: HydratedHeatmapTest[] = flattenedTests.map((test) => ({

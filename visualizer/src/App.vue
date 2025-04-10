@@ -1,14 +1,24 @@
 <template>
   <div class="app-container">
     <NConfigProvider>
-      <DashboardPage />
+      <Suspense>
+        <template #default>
+          <DashboardPage />
+        </template>
+        <template #fallback>
+          <div class="loading-container">
+            <n-spin size="large" />
+            <p>Loading...</p>
+          </div>
+        </template>
+      </Suspense>
     </NConfigProvider>
   </div>
 </template>
 
 <script setup lang="ts">
 import DashboardPage from './components/DashboardPage.vue'
-import { NConfigProvider } from 'naive-ui'
+import { NConfigProvider, NSpin } from 'naive-ui'
 </script>
 
 <style>
@@ -29,6 +39,15 @@ import { NConfigProvider } from 'naive-ui'
   color: #2c3e50;
   background-color: #f8fafc;
   min-height: 100vh;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 1rem;
 }
 
 /* Global ApexCharts tooltip styling */
