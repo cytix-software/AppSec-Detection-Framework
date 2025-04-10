@@ -437,6 +437,44 @@ managementRouter.get('/api/healthcheck', async (ctx) => {
   ctx.body = { results: healthResults };
 });
 
+// Add a utility endpoint for generating recordedTests output
+managementRouter.get('/api/recorded-tests', async (ctx) => {
+  const batch = batchManager.getCurrentBatch();
+  if (!batch) {
+    ctx.body = { status: 'no_active_batch' };
+    return;
+  }
+
+  // Get all CWEs from the docker-compose.yml file
+  const content = await readFile(args['compose-path'], 'utf8');
+  const config = YAML.parse(content) as DockerComposeConfig;
+  
+  const cweMap = new Map<string, string[]>();
+  
+  // Extract CWEs from profiles
+  Object.entries(config.services).forEach(([serviceName, service]) => {
+    const cwes = service.profiles?.filter(profile => profile.startsWith('cwe-')) || [];
+    cweMap.set(serviceName, cwes);
+  });
+
+  // Generate recordedTests output
+  const recordedTests = {
+    scanner_name: "your_scanner_name",
+    scanProfile: "Description of your scanner's capabilities and purpose",
+    tests: batch.services.map(service => {
+      const cwes = cweMap.get(service) || [];
+      return {
+        test: service,
+        detectedCWEs: [],
+        undetectedCWEs: cwes.map(cwe => parseInt(cwe.replace('cwe-', ''))),
+        updatedAt: Math.floor(Date.now() / 1000)
+      };
+    })
+  };
+
+  ctx.body = { recordedTests };
+});
+
 managementRouter.get('/', async (ctx) => {
   ctx.body = createManagementHtml(batchManager.getCurrentBatch());
 });
@@ -444,7 +482,15 @@ managementRouter.get('/', async (ctx) => {
 managementApp.use(managementRouter.routes());
 managementApp.use(managementRouter.allowedMethods());
 
-// Update the management HTML to include profile pills
+// TypeScript version of humanizeServiceName
+function humanizeServiceName(serviceName: string): string {
+  return serviceName
+    .split('_')
+    .map(_.startCase)
+    .join(' ');
+}
+
+// Update the management HTML to include the recordedTests utility
 function createManagementHtml(batch: ServiceBatch | null) {
   return html`
     <!DOCTYPE html>
@@ -621,6 +667,179 @@ function createManagementHtml(batch: ServiceBatch | null) {
           .profile-pill.server {
             background: var(--text-secondary);
           }
+
+          .utility-section {
+            background: var(--surface);
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 20px;
+          }
+
+          .utility-section h2 {
+            margin-top: 0;
+            color: var(--primary);
+          }
+
+          .utility-form {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 20px;
+          }
+
+          .form-group {
+            display: grid;
+            gap: 5px;
+          }
+
+          .form-group label {
+            font-weight: bold;
+            color: var(--text-secondary);
+          }
+
+          .form-group input, .form-group textarea {
+            background: var(--background);
+            border: 1px solid var(--accent);
+            color: var(--text-primary);
+            padding: 8px;
+            border-radius: 4px;
+            font-family: inherit;
+          }
+
+          .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+          }
+
+          .json-output {
+            background: var(--background);
+            border: 1px solid var(--accent);
+            color: var(--text-primary);
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            margin-top: 15px;
+          }
+
+          .copy-button {
+            background: var(--accent);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            margin-top: 10px;
+          }
+
+          .copy-button:hover {
+            background: var(--primary);
+          }
+
+          .cwe-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+          }
+
+          .cwe-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+          }
+
+          .cwe-item input[type="checkbox"] {
+            margin: 0;
+          }
+
+          .test-cwe-selection {
+            margin-top: 15px;
+            padding: 15px;
+            background: var(--background);
+            border-radius: 4px;
+            border: 1px solid var(--accent);
+          }
+
+          .test-cwe-selection h4 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+          }
+
+          .cwe-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+          }
+
+          .cwe-column {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+          }
+
+          .cwe-column h5 {
+            margin: 0 0 5px 0;
+            color: var(--text-secondary);
+          }
+
+          .cwe-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 5px;
+            background: var(--surface);
+            border-radius: 4px;
+          }
+
+          .cwe-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px;
+            background: var(--background);
+            border-radius: 4px;
+          }
+
+          .cwe-item input[type="checkbox"] {
+            margin: 0;
+          }
+
+          .cwe-item label {
+            flex: 1;
+            cursor: pointer;
+          }
+
+          .cwe-actions {
+            display: flex;
+            gap: 5px;
+          }
+
+          .cwe-actions button {
+            padding: 2px 5px;
+            font-size: 0.8em;
+          }
+
+          .test-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: var(--surface);
+            border-radius: 4px;
+            border: 1px solid var(--accent);
+          }
+
+          .test-section h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+          }
+
+          .test-section p {
+            margin: 5px 0;
+            color: var(--text-secondary);
+          }
         </style>
       </head>
       <body>
@@ -663,9 +882,43 @@ function createManagementHtml(batch: ServiceBatch | null) {
               ` : html`<p>No active batch</p>`}
             </div>
           </div>
+
+          <div class="utility-section">
+            <h2>Recorded Tests Generator</h2>
+            <p>Use this utility to generate the recordedTests output for the current batch.</p>
+            
+            <div class="utility-form">
+              <div class="form-group">
+                <label for="scannerName">Scanner Name:</label>
+                <input type="text" id="scannerName" placeholder="e.g., zap_v2.16.0" value="your_scanner_name">
+              </div>
+              
+              <div class="form-group">
+                <label for="scanProfile">Scan Profile:</label>
+                <textarea id="scanProfile" placeholder="Description of your scanner's capabilities and purpose">Description of your scanner's capabilities and purpose</textarea>
+              </div>
+              
+              <div id="testSections">
+                Loading tests...
+              </div>
+              
+              <button onclick="generateRecordedTests()">Generate Recorded Tests</button>
+            </div>
+            
+            <div id="jsonOutput" class="json-output" style="display: none;"></div>
+            <button id="copyButton" class="copy-button" onclick="copyToClipboard()" style="display: none;">Copy to Clipboard</button>
+          </div>
         </div>
 
         <script>
+          // JavaScript version of humanizeServiceName
+          function humanizeServiceName(serviceName) {
+            return serviceName
+              .split('_')
+              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(' ');
+          }
+
           async function executeCommand(command) {
             try {
               const response = await fetch(\`/api/\${command}\`, {
@@ -734,9 +987,138 @@ function createManagementHtml(batch: ServiceBatch | null) {
             }
           }
 
+          async function loadTests() {
+            try {
+              const response = await fetch('/api/recorded-tests');
+              const data = await response.json();
+              
+              if (data.recordedTests) {
+                const testSections = document.getElementById('testSections');
+                if (testSections) {
+                  testSections.innerHTML = data.recordedTests.tests.map((test, index) => {
+                    const cweItems = test.undetectedCWEs.map(cwe => 
+                      '<div class="cwe-item">' +
+                        '<input type="checkbox" id="detected-' + index + '-' + cwe + '" name="detected-' + index + '-' + cwe + '" value="' + cwe + '" data-test-index="' + index + '" data-cwe="' + cwe + '" data-category="detected">' +
+                        '<label for="detected-' + index + '-' + cwe + '">CWE-' + cwe + '</label>' +
+                      '</div>'
+                    ).join('');
+
+                    const undetectedItems = test.undetectedCWEs.map(cwe => 
+                      '<div class="cwe-item">' +
+                        '<input type="checkbox" id="undetected-' + index + '-' + cwe + '" name="undetected-' + index + '-' + cwe + '" value="' + cwe + '" data-test-index="' + index + '" data-cwe="' + cwe + '" data-category="undetected">' +
+                        '<label for="undetected-' + index + '-' + cwe + '">CWE-' + cwe + '</label>' +
+                      '</div>'
+                    ).join('');
+
+                    return '<div class="test-section">' +
+                      '<h3>' + humanizeServiceName(test.test) + '</h3>' +
+                      '<p>Test: ' + test.test + '</p>' +
+                      '<div class="test-cwe-selection">' +
+                        '<h4>CWE Selection</h4>' +
+                        '<div class="cwe-columns">' +
+                          '<div class="cwe-column">' +
+                            '<h5>Detected CWEs</h5>' +
+                            '<div class="cwe-list" id="detected-' + index + '">' +
+                              cweItems +
+                            '</div>' +
+                          '</div>' +
+                          '<div class="cwe-column">' +
+                            '<h5>Undetected CWEs</h5>' +
+                            '<div class="cwe-list" id="undetected-' + index + '">' +
+                              undetectedItems +
+                            '</div>' +
+                          '</div>' +
+                        '</div>' +
+                      '</div>' +
+                    '</div>';
+                  }).join('');
+                  
+                  // Add event listeners after the HTML is rendered
+                  document.querySelectorAll('.cwe-item input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.addEventListener('change', function() {
+                      const testIndex = this.getAttribute('data-test-index');
+                      const cwe = this.getAttribute('data-cwe');
+                      const category = this.getAttribute('data-category');
+                      handleCweSelection(testIndex, cwe, category);
+                    });
+                  });
+                }
+              }
+            } catch (error) {
+              console.error('Error loading tests:', error);
+            }
+          }
+
+          // Function to handle CWE selection to prevent selecting in both categories
+          function handleCweSelection(testIndex, cwe, category) {
+            const detectedCheckbox = document.getElementById('detected-' + testIndex + '-' + cwe);
+            const undetectedCheckbox = document.getElementById('undetected-' + testIndex + '-' + cwe);
+            
+            if (category === 'detected' && detectedCheckbox.checked) {
+              // If checked in detected, uncheck in undetected
+              undetectedCheckbox.checked = false;
+            } else if (category === 'undetected' && undetectedCheckbox.checked) {
+              // If checked in undetected, uncheck in detected
+              detectedCheckbox.checked = false;
+            }
+          }
+
+          async function generateRecordedTests() {
+            try {
+              const scannerName = document.getElementById('scannerName').value;
+              const scanProfile = document.getElementById('scanProfile').value;
+              
+              const response = await fetch('/api/recorded-tests');
+              const data = await response.json();
+              
+              if (data.recordedTests) {
+                // Update with user input
+                data.recordedTests.scanner_name = scannerName;
+                data.recordedTests.scanProfile = scanProfile;
+                
+                // Update detected and undetected CWEs for each test
+                data.recordedTests.tests.forEach((test, index) => {
+                  const detectedCWEs = Array.from(document.querySelectorAll(\`#detected-\${index} input:checked\`))
+                    .map(input => parseInt(input.value));
+                  
+                  const undetectedCWEs = Array.from(document.querySelectorAll(\`#undetected-\${index} input:checked\`))
+                    .map(input => parseInt(input.value));
+                  
+                  test.detectedCWEs = detectedCWEs;
+                  test.undetectedCWEs = undetectedCWEs;
+                });
+                
+                // Display the JSON
+                const jsonOutput = document.getElementById('jsonOutput');
+                const copyButton = document.getElementById('copyButton');
+                
+                if (jsonOutput && copyButton) {
+                  jsonOutput.textContent = JSON.stringify(data.recordedTests, null, 2);
+                  jsonOutput.style.display = 'block';
+                  copyButton.style.display = 'inline-block';
+                }
+              }
+            } catch (error) {
+              console.error('Error generating recorded tests:', error);
+            }
+          }
+
+          function copyToClipboard() {
+            const jsonOutput = document.getElementById('jsonOutput');
+            if (jsonOutput) {
+              const text = jsonOutput.textContent;
+              navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard!');
+              }).catch(err => {
+                console.error('Failed to copy: ', err);
+              });
+            }
+          }
+
           // Check health on page load
           document.addEventListener('DOMContentLoaded', () => {
             checkHealth();
+            loadTests();
           });
 
           // Auto-refresh status every 5 seconds
@@ -876,10 +1258,3 @@ function createManagementHtml(batch: ServiceBatch | null) {
     process.exit(1);
   }
 })();
-
-function humanizeServiceName(serviceName: string): string {
-  return serviceName
-    .split('_')
-    .map(_.startCase)
-    .join(' ');
-}
