@@ -157,7 +157,9 @@ When adding new test results:
    - `undetectedCWEs`: Array of CWE IDs that were not detected
    - `updatedAt`: Unix timestamp of when the test occurred
 
-You can use the Recorded Tests Generator in the management interface to easily create this output in the correct format.
+
+> [!TIP]
+> You can use the Recorded Tests Generator in the management interface to easily create this output in the correct format.
 
 ### Docker Configuration
 
