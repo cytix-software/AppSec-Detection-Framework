@@ -26,7 +26,7 @@ const args = minimist(process.argv.slice(2), {
   default: {
     'compose-path': './docker-compose.yml',
     'batch-size': 15,
-    profiles: 'php',
+    profiles: 'all',
     port: 3000
   }
 } as MinimistOpts);
@@ -43,7 +43,7 @@ if (args.help) {
   Options:
     --compose-path  Path to docker-compose file (default: ./docker-compose.yml)
     --batch-size    Number of services per batch (default: 15)
-    --profiles      Comma-separated list of profiles to manage (default: php)
+    --profiles      Comma-separated list of profiles to manage (default: all)
     --port          Web server port (default: 3000)
     --help          Show this help message
 
