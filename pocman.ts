@@ -799,9 +799,6 @@ function createManagementHtml(batch: ServiceBatch | null) {
           .cwe-column h5 {
             margin: 0 0 5px 0;
             color: var(--text-secondary);
-            font-size: 0.9em;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
           }
 
           .cwe-list {
@@ -813,96 +810,122 @@ function createManagementHtml(batch: ServiceBatch | null) {
             padding: 5px;
             background: var(--surface);
             border-radius: 4px;
-            border: 1px solid var(--accent);
           }
 
           .cwe-item {
             display: flex;
             align-items: center;
             gap: 5px;
-            padding: 8px;
+            padding: 5px;
             background: var(--background);
             border-radius: 4px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-          }
-
-          .cwe-item:hover {
-            background: var(--surface);
-            transform: translateX(4px);
           }
 
           .cwe-item input[type="checkbox"] {
-            appearance: none;
-            -webkit-appearance: none;
-            width: 18px;
-            height: 18px;
-            border: 2px solid var(--accent);
-            border-radius: 4px;
             margin: 0;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.2s ease;
-          }
-
-          .cwe-item input[type="checkbox"]:checked {
-            background: var(--accent);
-          }
-
-          .cwe-item input[type="checkbox"]:checked::after {
-            content: '✓';
-            position: absolute;
-            color: white;
-            font-size: 12px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
           }
 
           .cwe-item label {
             flex: 1;
             cursor: pointer;
-            font-size: 0.9em;
-            color: var(--text-primary);
-          }
-
-          .cwe-item.detected {
-            border-left: 3px solid var(--success);
-          }
-
-          .cwe-item.undetected {
-            border-left: 3px solid var(--warning);
           }
 
           .cwe-actions {
             display: flex;
             gap: 5px;
-            margin-top: 10px;
-            justify-content: flex-end;
           }
 
           .cwe-actions button {
-            padding: 4px 8px;
+            padding: 2px 5px;
             font-size: 0.8em;
+          }
+
+          .test-section {
+            margin-top: 20px;
+            padding: 15px;
             background: var(--surface);
+            border-radius: 4px;
+            border: 1px solid var(--accent);
+          }
+
+          .test-section h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+          }
+
+          .test-section p {
+            margin: 5px 0;
+            color: var(--text-secondary);
+          }
+
+          .scanner-selection {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--surface);
+            border-radius: 4px;
+            border: 1px solid var(--accent);
+          }
+
+          .scanner-selection h4 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+          }
+
+          .scanner-options {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+          }
+
+          .scanner-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+          }
+
+          .scanner-option input[type="radio"] {
+            margin: 0;
+          }
+
+          .scanner-select {
+            width: 100%;
+            padding: 8px;
+            background: var(--background);
+            border: 1px solid var(--accent);
+            color: var(--text-primary);
+            border-radius: 4px;
+            font-family: inherit;
+          }
+
+          .scanner-select option {
+            background: var(--background);
+            color: var(--text-primary);
+          }
+
+          .cwe-button {
+            width: 100%;
+            padding: 8px;
+            background: var(--background);
             border: 1px solid var(--accent);
             color: var(--text-primary);
             border-radius: 4px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s;
+            text-align: left;
           }
 
-          .cwe-actions button:hover {
+          .cwe-button:hover {
             background: var(--accent);
           }
 
-          .cwe-summary {
-            margin-top: 10px;
-            padding: 8px;
-            background: var(--surface);
-            border-radius: 4px;
-            font-size: 0.9em;
-            color: var(--text-secondary);
+          .cwe-button.selected[data-category="detected"] {
+            background: #00C853;
+            border-color: #00A844;
+          }
+
+          .cwe-button.selected[data-category="undetected"] {
+            background: #FF3D00;
+            border-color: #CC3100;
           }
         </style>
       </head>
@@ -1081,16 +1104,18 @@ function createManagementHtml(batch: ServiceBatch | null) {
                 if (testSections) {
                   testSections.innerHTML = data.recordedTests.tests.map((test, index) => {
                     const cweItems = test.undetectedCWEs.map(cwe => 
-                      '<div class="cwe-item detected" id="cwe-item-detected-' + index + '-' + cwe + '">' +
-                        '<input type="checkbox" id="detected-' + index + '-' + cwe + '" name="detected-' + index + '-' + cwe + '" value="' + cwe + '" data-test-index="' + index + '" data-cwe="' + cwe + '" data-category="detected">' +
-                        '<label for="detected-' + index + '-' + cwe + '">CWE-' + cwe + '</label>' +
+                      '<div class="cwe-item">' +
+                        '<button type="button" class="cwe-button" id="detected-' + index + '-' + cwe + '" data-test-index="' + index + '" data-cwe="' + cwe + '" data-category="detected">' +
+                          'CWE-' + cwe +
+                        '</button>' +
                       '</div>'
                     ).join('');
 
                     const undetectedItems = test.undetectedCWEs.map(cwe => 
-                      '<div class="cwe-item undetected" id="cwe-item-undetected-' + index + '-' + cwe + '">' +
-                        '<input type="checkbox" id="undetected-' + index + '-' + cwe + '" name="undetected-' + index + '-' + cwe + '" value="' + cwe + '" data-test-index="' + index + '" data-cwe="' + cwe + '" data-category="undetected">' +
-                        '<label for="undetected-' + index + '-' + cwe + '">CWE-' + cwe + '</label>' +
+                      '<div class="cwe-item">' +
+                        '<button type="button" class="cwe-button" id="undetected-' + index + '-' + cwe + '" data-test-index="' + index + '" data-cwe="' + cwe + '" data-category="undetected">' +
+                          'CWE-' + cwe +
+                        '</button>' +
                       '</div>'
                     ).join('');
 
@@ -1113,16 +1138,13 @@ function createManagementHtml(batch: ServiceBatch | null) {
                             '</div>' +
                           '</div>' +
                         '</div>' +
-                        '<div class="cwe-summary" id="cwe-summary-' + index + '">' +
-                          'Select CWEs to indicate detection status'
-                        '</div>' +
                       '</div>' +
                     '</div>';
                   }).join('');
                   
                   // Add event listeners after the HTML is rendered
-                  document.querySelectorAll('.cwe-item input[type="checkbox"]').forEach(checkbox => {
-                    checkbox.addEventListener('change', function() {
+                  document.querySelectorAll('.cwe-button').forEach(button => {
+                    button.addEventListener('click', function() {
                       const testIndex = this.getAttribute('data-test-index');
                       const cwe = this.getAttribute('data-cwe');
                       const category = this.getAttribute('data-category');
@@ -1136,34 +1158,30 @@ function createManagementHtml(batch: ServiceBatch | null) {
             }
           }
 
-          // Function to handle CWE selection to prevent selecting in both categories
+          // Function to handle CWE selection
           function handleCweSelection(testIndex, cwe, category) {
-            const detectedCheckbox = document.getElementById('detected-' + testIndex + '-' + cwe);
-            const undetectedCheckbox = document.getElementById('undetected-' + testIndex + '-' + cwe);
-            const detectedItem = document.getElementById('cwe-item-detected-' + testIndex + '-' + cwe);
-            const undetectedItem = document.getElementById('cwe-item-undetected-' + testIndex + '-' + cwe);
-            const summary = document.getElementById('cwe-summary-' + testIndex);
+            const detectedButton = document.getElementById('detected-' + testIndex + '-' + cwe);
+            const undetectedButton = document.getElementById('undetected-' + testIndex + '-' + cwe);
             
-            if (category === 'detected' && detectedCheckbox.checked) {
-              // If checked in detected, uncheck in undetected
-              undetectedCheckbox.checked = false;
-              detectedItem.classList.add('selected');
-              undetectedItem.classList.remove('selected');
-            } else if (category === 'undetected' && undetectedCheckbox.checked) {
-              // If checked in undetected, uncheck in detected
-              detectedCheckbox.checked = false;
-              undetectedItem.classList.add('selected');
-              detectedItem.classList.remove('selected');
+            if (category === 'detected') {
+              if (detectedButton.classList.contains('selected')) {
+                // If already selected, unmark it
+                detectedButton.classList.remove('selected');
+              } else {
+                // If not selected, mark it and unmark the other category
+                detectedButton.classList.add('selected');
+                undetectedButton.classList.remove('selected');
+              }
             } else {
-              // If unchecked, remove selected class
-              detectedItem.classList.remove('selected');
-              undetectedItem.classList.remove('selected');
+              if (undetectedButton.classList.contains('selected')) {
+                // If already selected, unmark it
+                undetectedButton.classList.remove('selected');
+              } else {
+                // If not selected, mark it and unmark the other category
+                undetectedButton.classList.add('selected');
+                detectedButton.classList.remove('selected');
+              }
             }
-
-            // Update summary
-            const detectedCount = document.querySelectorAll('#detected-' + testIndex + ' input:checked').length;
-            const undetectedCount = document.querySelectorAll('#undetected-' + testIndex + ' input:checked').length;
-            summary.textContent = \`Selected: \${detectedCount} detected, \${undetectedCount} undetected CWEs\`;
           }
 
           // Function to load existing scanner names
@@ -1245,11 +1263,11 @@ function createManagementHtml(batch: ServiceBatch | null) {
               if (data.recordedTests) {
                 // Update detected and undetected CWEs for each test
                 data.recordedTests.tests.forEach((test, index) => {
-                  const detectedCWEs = Array.from(document.querySelectorAll('#detected-' + index + ' input:checked'))
-                    .map(input => parseInt(input.value));
+                  const detectedCWEs = Array.from(document.querySelectorAll('#detected-' + index + ' .cwe-button.selected'))
+                    .map(button => parseInt(button.getAttribute('data-cwe')));
                   
-                  const undetectedCWEs = Array.from(document.querySelectorAll('#undetected-' + index + ' input:checked'))
-                    .map(input => parseInt(input.value));
+                  const undetectedCWEs = Array.from(document.querySelectorAll('#undetected-' + index + ' .cwe-button.selected'))
+                    .map(button => parseInt(button.getAttribute('data-cwe')));
                   
                   test.detectedCWEs = detectedCWEs;
                   test.undetectedCWEs = undetectedCWEs;
