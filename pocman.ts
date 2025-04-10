@@ -459,8 +459,8 @@ managementRouter.get('/api/recorded-tests', async (ctx) => {
 
   // Generate recordedTests output
   const recordedTests = {
-    scanner_name: "your_scanner_name",
-    scanProfile: "Description of your scanner's capabilities and purpose",
+    scanner_name: "your_scanner_name_and_version",
+    scanProfile: "Description of your scanner's configuration",
     tests: batch.services.map(service => {
       const cwes = cweMap.get(service) || [];
       return {
