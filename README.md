@@ -47,6 +47,35 @@ To test a new scanner or set of exploits, you'll use Pocman, which orchestrates 
    - The index of proof of concepts will be hosted on `localhost:3000`
    - Point your scanner to this URL to crawl all available PoCs
 
+#### Management Interface
+
+Pocman now includes a web-based management interface that allows you to control the test batches through a browser:
+
+1. Access the management interface at `http://localhost:3001` while Pocman is running
+2. Use the control buttons to:
+   - Navigate to the next batch
+   - Return to the previous batch
+   - Stop the current batch
+   - Start the current batch
+   - Restart the current batch
+3. View the current batch status
+4. Generate recordedTests output for your scanner
+
+##### Recorded Tests Generator
+
+The management interface now includes a utility to help generate the `recordedTests` output for your scanner:
+
+1. Enter your scanner name (e.g., "zap_v2.16.0")
+2. Provide a description of your scanner's capabilities in the scan profile field
+3. For each test in the current batch:
+   - Select which CWEs were detected by checking the boxes in the "Detected CWEs" column
+   - Select which CWEs were not detected by checking the boxes in the "Undetected CWEs" column
+   - A CWE can only be in one category at a time (detected or undetected)
+4. Click "Generate Recorded Tests" to create the JSON output
+5. Copy the output and add it to your `data.json` file
+
+This utility makes it easy to record your scanner's test results in the correct format for the ASDF framework.
+
 For more information, run:
 ```sh
 bun install && ./pocman.ts --help
@@ -128,6 +157,10 @@ When adding new test results:
    - `undetectedCWEs`: Array of CWE IDs that were not detected
    - `updatedAt`: Unix timestamp of when the test occurred
 
+
+> [!TIP]
+> You can use the Recorded Tests Generator in the management interface to easily create this output in the correct format.
+
 ### Docker Configuration
 
 #### docker-compose.yml
@@ -198,14 +231,14 @@ The `visualizer` directory contains ASDFviz, a Vue-based visualization tool for 
    ```
 
 2. Install dependencies:
-   ```sh
-   bun install -D
-   ```
+```sh
+bun install -D
+```
 
 3. Start the development server:
-   ```sh
-   bun dev
-   ```
+```sh
+bun dev
+```
 
 4. Access the visualization at `http://localhost:5173`
 
