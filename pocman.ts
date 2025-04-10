@@ -459,8 +459,8 @@ managementRouter.get('/api/recorded-tests', async (ctx) => {
 
   // Generate recordedTests output
   const recordedTests = {
-    scanner_name: "your_scanner_name_and_version",
-    scanProfile: "Description of your scanner's configuration",
+    scanner_name: "your_scanner_name",
+    scanProfile: "Description of your scanner's capabilities and purpose",
     tests: batch.services.map(service => {
       const cwes = cweMap.get(service) || [];
       return {
@@ -473,6 +473,23 @@ managementRouter.get('/api/recorded-tests', async (ctx) => {
   };
 
   ctx.body = { recordedTests };
+});
+
+// Add an endpoint to get existing scanner results
+managementRouter.get('/api/existing-scanner-results', async (ctx) => {
+  try {
+    const dataPath = args['data-path'];
+    const content = await readFile(dataPath, 'utf8');
+    const data = JSON.parse(content);
+    
+    // Extract scanner names from recordedTests
+    const scannerNames = Object.keys(data.recordedTests || {});
+    
+    ctx.body = { scannerNames };
+  } catch (error) {
+    console.error('Error reading data.json:', error);
+    ctx.body = { error: 'Failed to read data.json' };
+  }
 });
 
 managementRouter.get('/', async (ctx) => {
@@ -782,6 +799,9 @@ function createManagementHtml(batch: ServiceBatch | null) {
           .cwe-column h5 {
             margin: 0 0 5px 0;
             color: var(--text-secondary);
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
           }
 
           .cwe-list {
@@ -793,51 +813,95 @@ function createManagementHtml(batch: ServiceBatch | null) {
             padding: 5px;
             background: var(--surface);
             border-radius: 4px;
+            border: 1px solid var(--accent);
           }
 
           .cwe-item {
             display: flex;
             align-items: center;
             gap: 5px;
-            padding: 5px;
+            padding: 8px;
             background: var(--background);
             border-radius: 4px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+          }
+
+          .cwe-item:hover {
+            background: var(--surface);
+            transform: translateX(4px);
           }
 
           .cwe-item input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--accent);
+            border-radius: 4px;
             margin: 0;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+          }
+
+          .cwe-item input[type="checkbox"]:checked {
+            background: var(--accent);
+          }
+
+          .cwe-item input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            color: white;
+            font-size: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
           }
 
           .cwe-item label {
             flex: 1;
             cursor: pointer;
+            font-size: 0.9em;
+            color: var(--text-primary);
+          }
+
+          .cwe-item.detected {
+            border-left: 3px solid var(--success);
+          }
+
+          .cwe-item.undetected {
+            border-left: 3px solid var(--warning);
           }
 
           .cwe-actions {
             display: flex;
             gap: 5px;
+            margin-top: 10px;
+            justify-content: flex-end;
           }
 
           .cwe-actions button {
-            padding: 2px 5px;
+            padding: 4px 8px;
             font-size: 0.8em;
+            background: var(--surface);
+            border: 1px solid var(--accent);
+            color: var(--text-primary);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
           }
 
-          .test-section {
-            margin-top: 20px;
-            padding: 15px;
+          .cwe-actions button:hover {
+            background: var(--accent);
+          }
+
+          .cwe-summary {
+            margin-top: 10px;
+            padding: 8px;
             background: var(--surface);
             border-radius: 4px;
-            border: 1px solid var(--accent);
-          }
-
-          .test-section h3 {
-            margin: 0 0 10px 0;
-            color: var(--primary);
-          }
-
-          .test-section p {
-            margin: 5px 0;
+            font-size: 0.9em;
             color: var(--text-secondary);
           }
         </style>
@@ -888,14 +952,34 @@ function createManagementHtml(batch: ServiceBatch | null) {
             <p>Use this utility to generate the recordedTests output for the current batch.</p>
             
             <div class="utility-form">
-              <div class="form-group">
-                <label for="scannerName">Scanner Name:</label>
-                <input type="text" id="scannerName" placeholder="e.g., zap_v2.16.0" value="your_scanner_name">
-              </div>
-              
-              <div class="form-group">
-                <label for="scanProfile">Scan Profile:</label>
-                <textarea id="scanProfile" placeholder="Description of your scanner's capabilities and purpose">Description of your scanner's capabilities and purpose</textarea>
+              <div class="scanner-selection">
+                <h4>Scanner Selection</h4>
+                <div class="scanner-options">
+                  <div class="scanner-option">
+                    <input type="radio" id="newScanner" name="scannerType" value="new" checked>
+                    <label for="newScanner">New Scanner</label>
+                  </div>
+                  <div class="scanner-option">
+                    <input type="radio" id="existingScanner" name="scannerType" value="existing">
+                    <label for="existingScanner">Existing Scanner</label>
+                  </div>
+                </div>
+                
+                <div id="newScannerFields">
+                  <div class="form-group">
+                    <label for="scannerName">Scanner Name:</label>
+                    <input type="text" id="scannerName" placeholder="e.g., zap_v2.16.0" value="your_scanner_name">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="scanProfile">Scan Profile:</label>
+                    <textarea id="scanProfile" placeholder="Description of your scanner's capabilities and purpose">Description of your scanner's capabilities and purpose</textarea>
+                  </div>
+                </div>
+                
+                <div id="existingScannerFields" style="display: none;">
+                  <p>Tests should be appended to the existing scanner in data.json</p>
+                </div>
               </div>
               
               <div id="testSections">
@@ -997,14 +1081,14 @@ function createManagementHtml(batch: ServiceBatch | null) {
                 if (testSections) {
                   testSections.innerHTML = data.recordedTests.tests.map((test, index) => {
                     const cweItems = test.undetectedCWEs.map(cwe => 
-                      '<div class="cwe-item">' +
+                      '<div class="cwe-item detected" id="cwe-item-detected-' + index + '-' + cwe + '">' +
                         '<input type="checkbox" id="detected-' + index + '-' + cwe + '" name="detected-' + index + '-' + cwe + '" value="' + cwe + '" data-test-index="' + index + '" data-cwe="' + cwe + '" data-category="detected">' +
                         '<label for="detected-' + index + '-' + cwe + '">CWE-' + cwe + '</label>' +
                       '</div>'
                     ).join('');
 
                     const undetectedItems = test.undetectedCWEs.map(cwe => 
-                      '<div class="cwe-item">' +
+                      '<div class="cwe-item undetected" id="cwe-item-undetected-' + index + '-' + cwe + '">' +
                         '<input type="checkbox" id="undetected-' + index + '-' + cwe + '" name="undetected-' + index + '-' + cwe + '" value="' + cwe + '" data-test-index="' + index + '" data-cwe="' + cwe + '" data-category="undetected">' +
                         '<label for="undetected-' + index + '-' + cwe + '">CWE-' + cwe + '</label>' +
                       '</div>'
@@ -1028,6 +1112,9 @@ function createManagementHtml(batch: ServiceBatch | null) {
                               undetectedItems +
                             '</div>' +
                           '</div>' +
+                        '</div>' +
+                        '<div class="cwe-summary" id="cwe-summary-' + index + '">' +
+                          'Select CWEs to indicate detection status'
                         '</div>' +
                       '</div>' +
                     '</div>';
@@ -1053,47 +1140,136 @@ function createManagementHtml(batch: ServiceBatch | null) {
           function handleCweSelection(testIndex, cwe, category) {
             const detectedCheckbox = document.getElementById('detected-' + testIndex + '-' + cwe);
             const undetectedCheckbox = document.getElementById('undetected-' + testIndex + '-' + cwe);
+            const detectedItem = document.getElementById('cwe-item-detected-' + testIndex + '-' + cwe);
+            const undetectedItem = document.getElementById('cwe-item-undetected-' + testIndex + '-' + cwe);
+            const summary = document.getElementById('cwe-summary-' + testIndex);
             
             if (category === 'detected' && detectedCheckbox.checked) {
               // If checked in detected, uncheck in undetected
               undetectedCheckbox.checked = false;
+              detectedItem.classList.add('selected');
+              undetectedItem.classList.remove('selected');
             } else if (category === 'undetected' && undetectedCheckbox.checked) {
               // If checked in undetected, uncheck in detected
               detectedCheckbox.checked = false;
+              undetectedItem.classList.add('selected');
+              detectedItem.classList.remove('selected');
+            } else {
+              // If unchecked, remove selected class
+              detectedItem.classList.remove('selected');
+              undetectedItem.classList.remove('selected');
+            }
+
+            // Update summary
+            const detectedCount = document.querySelectorAll('#detected-' + testIndex + ' input:checked').length;
+            const undetectedCount = document.querySelectorAll('#undetected-' + testIndex + ' input:checked').length;
+            summary.textContent = \`Selected: \${detectedCount} detected, \${undetectedCount} undetected CWEs\`;
+          }
+
+          // Function to load existing scanner names
+          async function loadExistingScanners() {
+            try {
+              const response = await fetch('/api/existing-scanner-results');
+              const data = await response.json();
+              
+              if (data.scannerNames) {
+                const select = document.getElementById('existingScannerName');
+                if (select) {
+                  select.innerHTML = '<option value="">Select a scanner</option>' +
+                    data.scannerNames.map(name => '<option value="' + name + '">' + name + '</option>').join('');
+                }
+              }
+            } catch (error) {
+              console.error('Error loading existing scanners:', error);
             }
           }
 
+          // Function to handle scanner type selection
+          function handleScannerTypeChange() {
+            const newScannerRadio = document.getElementById('newScanner');
+            const existingScannerRadio = document.getElementById('existingScanner');
+            const newScannerFields = document.getElementById('newScannerFields');
+            const existingScannerFields = document.getElementById('existingScannerFields');
+            
+            if (newScannerRadio && existingScannerRadio && newScannerFields && existingScannerFields) {
+              if (newScannerRadio.checked) {
+                newScannerFields.style.display = 'block';
+                existingScannerFields.style.display = 'none';
+              } else {
+                newScannerFields.style.display = 'none';
+                existingScannerFields.style.display = 'block';
+              }
+            }
+          }
+
+          // Add event listeners for scanner type selection
+          document.addEventListener('DOMContentLoaded', () => {
+            const newScannerRadio = document.getElementById('newScanner');
+            const existingScannerRadio = document.getElementById('existingScanner');
+            
+            if (newScannerRadio && existingScannerRadio) {
+              newScannerRadio.addEventListener('change', handleScannerTypeChange);
+              existingScannerRadio.addEventListener('change', handleScannerTypeChange);
+            }
+            
+            checkHealth();
+            loadTests();
+          });
+
           async function generateRecordedTests() {
             try {
-              const scannerName = document.getElementById('scannerName').value;
-              const scanProfile = document.getElementById('scanProfile').value;
+              const newScannerRadio = document.getElementById('newScanner');
+              const scannerNameInput = document.getElementById('scannerName');
+              const scanProfileInput = document.getElementById('scanProfile');
+              
+              if (!newScannerRadio || !scannerNameInput || !scanProfileInput) {
+                throw new Error('Required form elements not found');
+              }
+              
+              const scannerName = newScannerRadio.checked 
+                ? scannerNameInput.value
+                : '';
+              
+              const scanProfile = newScannerRadio.checked
+                ? scanProfileInput.value
+                : '';
+              
+              if (newScannerRadio.checked && !scannerName) {
+                alert('Please enter a scanner name');
+                return;
+              }
               
               const response = await fetch('/api/recorded-tests');
               const data = await response.json();
               
               if (data.recordedTests) {
-                // Update with user input
-                data.recordedTests.scanner_name = scannerName;
-                data.recordedTests.scanProfile = scanProfile;
-                
                 // Update detected and undetected CWEs for each test
                 data.recordedTests.tests.forEach((test, index) => {
-                  const detectedCWEs = Array.from(document.querySelectorAll(\`#detected-\${index} input:checked\`))
+                  const detectedCWEs = Array.from(document.querySelectorAll('#detected-' + index + ' input:checked'))
                     .map(input => parseInt(input.value));
                   
-                  const undetectedCWEs = Array.from(document.querySelectorAll(\`#undetected-\${index} input:checked\`))
+                  const undetectedCWEs = Array.from(document.querySelectorAll('#undetected-' + index + ' input:checked'))
                     .map(input => parseInt(input.value));
                   
                   test.detectedCWEs = detectedCWEs;
                   test.undetectedCWEs = undetectedCWEs;
                 });
                 
+                // If appending to existing scanner, only include the tests array
+                const output = newScannerRadio.checked
+                  ? {
+                      ...data.recordedTests,
+                      scanner_name: scannerName,
+                      scanProfile: scanProfile
+                    }
+                  : data.recordedTests.tests;
+                
                 // Display the JSON
                 const jsonOutput = document.getElementById('jsonOutput');
                 const copyButton = document.getElementById('copyButton');
                 
                 if (jsonOutput && copyButton) {
-                  jsonOutput.textContent = JSON.stringify(data.recordedTests, null, 2);
+                  jsonOutput.textContent = JSON.stringify(output, null, 2);
                   jsonOutput.style.display = 'block';
                   copyButton.style.display = 'inline-block';
                 }
