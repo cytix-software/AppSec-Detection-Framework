@@ -1262,25 +1262,29 @@ function createManagementHtml(batch: ServiceBatch | null) {
               
               if (data.recordedTests) {
                 // Update detected and undetected CWEs for each test
-                data.recordedTests.tests.forEach((test, index) => {
+                const updatedTests = data.recordedTests.tests.map((test, index) => {
                   const detectedCWEs = Array.from(document.querySelectorAll('#detected-' + index + ' .cwe-button.selected'))
                     .map(button => parseInt(button.getAttribute('data-cwe')));
                   
                   const undetectedCWEs = Array.from(document.querySelectorAll('#undetected-' + index + ' .cwe-button.selected'))
                     .map(button => parseInt(button.getAttribute('data-cwe')));
                   
-                  test.detectedCWEs = detectedCWEs;
-                  test.undetectedCWEs = undetectedCWEs;
-                });
+                  return {
+                    ...test,
+                    detectedCWEs,
+                    undetectedCWEs
+                  };
+                }).filter(test => test.detectedCWEs.length > 0 || test.undetectedCWEs.length > 0);
                 
                 // If appending to existing scanner, only include the tests array
                 const output = newScannerRadio.checked
                   ? {
                       ...data.recordedTests,
                       scanner_name: scannerName,
-                      scanProfile: scanProfile
+                      scanProfile: scanProfile,
+                      tests: updatedTests
                     }
-                  : data.recordedTests.tests;
+                  : updatedTests;
                 
                 // Display the JSON
                 const jsonOutput = document.getElementById('jsonOutput');
