@@ -1,4 +1,13 @@
 {
+  "name": "appsec-detection-framework",
+  "version": "1.0.0",
+  "description": "Framework for testing and comparing application security scanners",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "find-uncovered": "bun run utils/findUncoveredCwes.ts",
+    "find-missing": "bun run utils/findMissingTests.ts"
+  },
   "dependencies": {
     "@koa/router": "^13.1.0",
     "@types/koa-bodyparser": "^4.3.12",
@@ -9,12 +18,10 @@
     "koa-bodyparser": "^4.4.1",
     "lodash": "^4.17.21",
     "minimist": "^1.2.8",
-    "yaml": "^2.7.0"
+    "yaml": "^2.7.0",
+    "commander": "^11.1.0"
   },
   "devDependencies": {
-    "@types/bun": "^1.2.9",
-    "@types/node": "^22.14.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "@types/bun": "^1.0.0"
   }
 }

@@ -14,6 +14,7 @@ A framework for understanding the capabilities of automated detection methods at
 - [Data Visualization](#data-visualization)
 - [Contributing](#contributing)
 - [License](#license)
+- [Utilities](#utilities)
 
 ## Overview
 
@@ -157,9 +158,79 @@ When adding new test results:
    - `undetectedCWEs`: Array of CWE IDs that were not detected
    - `updatedAt`: Unix timestamp of when the test occurred
 
-
 > [!TIP]
 > You can use the Recorded Tests Generator in the management interface to easily create this output in the correct format.
+
+#### Analysis Utilities
+
+The framework includes utilities to help analyze the data.json file and identify gaps in test coverage:
+
+##### Find Missing Tests
+
+```bash
+bun run utils/findMissingTests.ts [options]
+```
+
+This utility analyzes scanner results to identify:
+- Missing tests that haven't been run by a scanner
+- Missing CWEs that should be detected but aren't
+- Incorrect CWE associations (CWEs that are reported but shouldn't be)
+
+Options:
+- `--file <path>`: Path to the data.json file (default: 'data.json')
+- `-v, --verbose`: Enable verbose output
+
+Example output:
+```
+=== Analysis for zap_v2.16.0 ===
+
+Missing Tests (1):
+  - test_1_v2
+
+No missing CWEs!
+
+Incorrect CWE Associations (167 total):
+  test_10_v1:
+    Incorrectly Detected:
+      - CWE-1021
+      - CWE-200
+      - CWE-693
+```
+
+##### Find Uncovered CWEs
+
+```bash
+bun run utils/findUncoveredCwes.ts [options]
+```
+
+This utility identifies CWEs that lack test coverage in the framework:
+- CWEs with no associated tests
+- CWEs with limited coverage (only one test)
+
+Options:
+- `--file <path>`: Path to the data.json file (default: 'data.json')
+- `-v, --verbose`: Enable verbose output
+
+Example output:
+```
+=== CWEs Without Test Coverage ===
+Found 122 uncovered CWEs:
+
+CWE-2: Environment
+  OWASP: A01:2021 – Broken Access Control
+  Group: Access Control
+
+=== CWEs With Limited Coverage ===
+Found 58 CWEs with limited coverage:
+
+CWE-79: Cross-site Scripting
+  Tests: test_14_v1
+  OWASP: A03:2021 – Injection
+  Group: Injection
+```
+
+> [!TIP]
+> Use these utilities regularly to identify gaps in test coverage and ensure your scanner results are accurate.
 
 ### Docker Configuration
 
@@ -181,6 +252,7 @@ The `profiles` should be defined for each service to include:
 - The webserver technology in use (e.g., apache, nginx)
 - CWE IDs associated with the vulnerability (e.g., cwe-23)
 - The OWASP Top 10 2021 category code (e.g., a01:2021)
+- The profile of "all" to ensure these are run by default
 
 Example entry:
 
@@ -199,6 +271,7 @@ services:
       - apache
       - cwe-23
       - cwe-22
+      - all
 ```
 
 #### Dockerfile
