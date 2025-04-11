@@ -252,6 +252,7 @@ The `profiles` should be defined for each service to include:
 - The webserver technology in use (e.g., apache, nginx)
 - CWE IDs associated with the vulnerability (e.g., cwe-23)
 - The OWASP Top 10 2021 category code (e.g., a01:2021)
+- The profile of "all" to ensure these are run by default
 
 Example entry:
 
@@ -270,6 +271,7 @@ services:
       - apache
       - cwe-23
       - cwe-22
+      - all
 ```
 
 #### Dockerfile
