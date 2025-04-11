@@ -457,6 +457,18 @@ managementRouter.get('/api/recorded-tests', async (ctx) => {
     cweMap.set(serviceName, cwes);
   });
 
+  // Read data.json to get CWE titles
+  const dataContent = await readFile('data.json', 'utf8');
+  const data = JSON.parse(dataContent);
+  const cweTitles: { [key: number]: string } = {};
+  
+  // Extract CWE titles from data.json
+  data.vulnerabilities.forEach((vuln: any) => {
+    vuln.CWEDetails.forEach((cwe: any) => {
+      cweTitles[cwe.id] = cwe.title;
+    });
+  });
+
   // Generate recordedTests output
   const recordedTests = {
     scanner_name: "your_scanner_name",
@@ -472,7 +484,7 @@ managementRouter.get('/api/recorded-tests', async (ctx) => {
     })
   };
 
-  ctx.body = { recordedTests };
+  ctx.body = { recordedTests, cweTitles };
 });
 
 // Add an endpoint to get existing scanner results
@@ -1106,7 +1118,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
                     const cweItems = test.undetectedCWEs.map(cwe => 
                       '<div class="cwe-item">' +
                         '<button type="button" class="cwe-button" id="detected-' + index + '-' + cwe + '" data-test-index="' + index + '" data-cwe="' + cwe + '" data-category="detected">' +
-                          'CWE-' + cwe +
+                          'CWE-' + cwe + ': ' + (data.cweTitles[cwe] || '') +
                         '</button>' +
                       '</div>'
                     ).join('');
@@ -1114,7 +1126,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
                     const undetectedItems = test.undetectedCWEs.map(cwe => 
                       '<div class="cwe-item">' +
                         '<button type="button" class="cwe-button" id="undetected-' + index + '-' + cwe + '" data-test-index="' + index + '" data-cwe="' + cwe + '" data-category="undetected">' +
-                          'CWE-' + cwe +
+                          'CWE-' + cwe + ': ' + (data.cweTitles[cwe] || '') +
                         '</button>' +
                       '</div>'
                     ).join('');
