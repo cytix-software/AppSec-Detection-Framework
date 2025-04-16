@@ -660,7 +660,9 @@
                 {
                     "id": 451,
                     "title": "User Interface (UI) Misrepresentation of Critical Information",
-                    "tests": []
+                    "tests": [
+                        "test_48_v1"
+                    ]
                 },
                 {
                     "id": 472,
@@ -776,7 +778,9 @@
                 {
                     "id": 1021,
                     "title": "Improper Restriction of Rendered UI Layers or Frames",
-                    "tests": []
+                    "tests": [
+                        "test_48_v1"
+                    ]
                 },
                 {
                     "id": 1173,

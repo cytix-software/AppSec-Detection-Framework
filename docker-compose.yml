@@ -765,4 +765,19 @@ services:
       - cwe-840
       - a04:2021
       - all
+
+  test_48_v1:
+    image: test_48_v1:latest
+    build:
+      context: tests/test-48/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8481:80"
+    profiles:
+      - test-48
+      - apache
+      - php
+      - cwe-1021
+      - a06:2021
+      - all
   
