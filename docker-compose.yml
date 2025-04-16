@@ -750,5 +750,19 @@ services:
       - cwe-1174
       - cwe-1173
       - a05:2021
+
+  test_47_v1:
+    image: test_47_v1:latest
+    build:
+      context: tests/test-47/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8471:80"
+    profiles:
+      - test-47
+      - apache
+      - php
+      - cwe-840
+      - a04:2021
       - all
   
