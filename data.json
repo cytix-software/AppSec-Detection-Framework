@@ -778,8 +778,9 @@
                 {
                     "id": 1173,
                     "title": "Improper Use of Validation Framework",
-                    "tests": []
-                }
+                    "tests": [
+                        "test_46_v1"
+                    ]                }
             ],
             "group": "Insecure Design"
     },

@@ -729,6 +729,7 @@ services:
       - php
       - apache
       - cwe-1275
+      - cwe-1004
       - a01:2021
       - all
 
@@ -744,6 +745,7 @@ services:
       - dotnet
       - aspnet
       - cwe-1174
+      - cwe-1173
       - a05:2021
       - all
   
