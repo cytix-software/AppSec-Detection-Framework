@@ -491,7 +491,7 @@ services:
       - cwe-915
       - cwe-913
       - a08:2021
-      - ao1:2021
+      - a01:2021
       - all
       
   test_31_v1:
@@ -666,6 +666,10 @@ services:
       - php
       - cwe-776
       - a01:2021
+      - cwe-610
+      - cwe-611
+      - a03:2021
+      - a05:2021
       - all
 
   test_41_v1:
@@ -732,6 +736,7 @@ services:
       - cwe-1275
       - cwe-1004
       - a01:2021
+      - a05:2021
       - all
 
   test_46_v1:
@@ -748,6 +753,7 @@ services:
       - cwe-1174
       - cwe-1173
       - a05:2021
+      - a04:2021
 
   test_47_v1:
     image: test_47_v1:latest
@@ -776,6 +782,7 @@ services:
       - apache
       - php
       - cwe-1021
-      - a06:2021
+      - a04:2021
+      - cwe-451
       - all
   

@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "find-uncovered": "bun run utils/findUncoveredCwes.ts",
-    "find-missing": "bun run utils/findMissingTests.ts"
+    "find-missing": "bun run utils/findMissingTests.ts",
+    "check-profiles": "bun run utils/checkProfileConsistency.ts"
   },
   "dependencies": {
     "@koa/router": "^13.1.0",
@@ -14,6 +15,7 @@
     "@types/lodash": "^4.17.15",
     "@types/minimist": "^1.2.5",
     "common-tags": "^1.8.2",
+    "js-yaml": "^4.1.0",
     "koa": "^2.15.4",
     "koa-bodyparser": "^4.4.1",
     "lodash": "^4.17.21",
@@ -22,6 +24,7 @@
     "commander": "^11.1.0"
   },
   "devDependencies": {
-    "@types/bun": "^1.0.0"
+    "@types/bun": "^1.0.0",
+    "@types/js-yaml": "^4.0.9"
   }
 }

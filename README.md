@@ -194,6 +194,23 @@ Options:
 - `--file <path>`: Path to the data.json file (default: 'data.json')
 - `-v, --verbose`: Enable verbose output
 
+##### Check Profile Consistency
+
+```bash
+bun run utils/checkProfileConsistency.ts
+```
+
+This utility verifies that the profiles in docker-compose.yml match the CWEs and OWASP categories associated with tests in data.json. It performs case-insensitive matching and identifies:
+
+- Tests in docker-compose.yml that don't exist in data.json
+- CWEs in docker-compose.yml profiles that don't exist in data.json
+- OWASP categories in docker-compose.yml profiles that don't exist in data.json
+- Tests in data.json that don't exist in docker-compose.yml
+- CWEs in data.json that aren't referenced in docker-compose.yml profiles
+- OWASP categories in data.json that aren't referenced in docker-compose.yml profiles
+
+The utility will exit with code 1 if any inconsistencies are found, making it suitable for CI/CD pipelines.
+
 > [!TIP]
 > Use these utilities regularly to identify gaps in test coverage and ensure your scanner results are accurate.
 
