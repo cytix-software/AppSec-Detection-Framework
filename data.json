@@ -410,7 +410,8 @@
                     "id": 79,
                     "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
                     "tests": [
-                        "test_29_v1"
+                        "test_29_v1",
+                        "test_44_v1"
                     ]
                 },
                 {
@@ -767,7 +768,7 @@
                 },
                 {
                     "id": 927,
-                    "title": "Use of Implicit Intent for Sensitive Communication",
+                    "title": "Use of Implicit Intent for Sensitive Communication", 
                     "tests": []
                 },
                 {
@@ -780,7 +781,8 @@
                     "title": "Improper Use of Validation Framework",
                     "tests": [
                         "test_46_v1"
-                    ]                }
+                    ]
+                }
             ],
             "group": "Insecure Design"
     },
@@ -914,7 +916,9 @@
                 {
                     "id": 1035,
                     "title": "OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities",
-                    "tests": []
+                    "tests": [
+                        "test_44_v1"
+                    ]
                 },
                 {
                     "id": 1104,
@@ -1062,7 +1066,7 @@
                     "tests": [
                         "test_17_v1",
                         "test_32_v1",
-                        "test_37_v1"
+                        "test_37_v1",
                     ]
                 },
                 {

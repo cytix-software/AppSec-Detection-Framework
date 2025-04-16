@@ -714,7 +714,10 @@ services:
       - apache
       - php
       - cwe-1104
+      - cwe-1035
+      - cwe-79
       - a06:2021
+      - a03:2021
       - all
 
   test_45_v1:
