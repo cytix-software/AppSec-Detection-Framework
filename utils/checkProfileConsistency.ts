@@ -86,6 +86,11 @@ function main() {
             continue;
         }
         
+        // Check if test has the "all" profile
+        if (!service.profiles.some(p => p.toLowerCase() === 'all')) {
+            inconsistencies.push(`Test "${serviceName}" is missing the "all" profile in docker-compose.yml`);
+        }
+        
         // Get expected CWEs and OWASP categories from data.json
         const expectedCwes = getCwesForTest(serviceName, data);
         const expectedOwasp = getOwaspForTest(serviceName, data);

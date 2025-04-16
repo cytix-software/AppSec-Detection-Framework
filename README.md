@@ -208,6 +208,7 @@ This utility verifies that the profiles in docker-compose.yml match the CWEs and
 - Tests in data.json that don't exist in docker-compose.yml
 - CWEs in data.json that aren't referenced in docker-compose.yml profiles
 - OWASP categories in data.json that aren't referenced in docker-compose.yml profiles
+- Tests that are missing the "all" profile in docker-compose.yml
 
 The utility will exit with code 1 if any inconsistencies are found, making it suitable for CI/CD pipelines.
 
