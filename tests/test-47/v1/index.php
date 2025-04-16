@@ -9,12 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         $total += $item['quantity'] * $item['price'];
     }
     
-    // Log the order
-    $logFile = __DIR__ . '/../files/orders.log';
-    $timestamp = date('Y-m-d H:i:s');
-    $orderLog = "[$timestamp] Order placed - Total: $" . number_format($total, 2) . "\n";
-    file_put_contents($logFile, $orderLog, FILE_APPEND);
-    
     // Return success response
     header('Content-Type: application/json');
     echo json_encode(['success' => true, 'total' => $total]);

@@ -759,7 +759,9 @@
                 {
                     "id": 840,
                     "title": "Business Logic Errors",
-                    "tests": []
+                    "tests": [
+                        "test_47_v1"
+                    ]
                 },
                 {
                     "id": 841,
