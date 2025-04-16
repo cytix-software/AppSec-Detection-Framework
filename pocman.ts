@@ -1060,9 +1060,9 @@ function createManagementHtml(batch: ServiceBatch | null) {
               return 'cwe';
             } else if (profile.startsWith('a') && profile.includes(':')) {
               return 'owasp';
-            } else if (['php', 'python', 'js', 'java', 'go', 'ruby'].includes(profile)) {
+            } else if (['php', 'python', 'js', 'java', 'go', 'ruby', 'dotnet'].includes(profile)) {
               return 'language';
-            } else if (['apache', 'nginx', 'flask', 'express', 'spring'].includes(profile)) {
+            } else if (['apache', 'nginx', 'flask', 'express', 'spring', 'aspnet'].includes(profile)) {
               return 'server';
             }
             return '';
