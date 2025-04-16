@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="xssApp">
+<head>
+    <title>DOM XSS Test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="XssController">
+        <input type="text" ng-model="searchQuery" placeholder="Enter payload">
+        <button ng-click="search()">Search</button>
+        <div ng-bind-html="searchResults"></div>
+    </div>
+
+    <script>
+        angular.module('xssApp', [])
+        .config(['$sceProvider', function($sceProvider) {
+            $sceProvider.enabled(false);
+        }])
+        .controller('XssController', ['$scope', function($scope) {
+            $scope.searchQuery = '';
+            $scope.searchResults = '';
+            $scope.search = function() {
+                $scope.searchResults = $scope.searchQuery;
+            };
+        }]);
+    </script>
+</body>
+</html> 
