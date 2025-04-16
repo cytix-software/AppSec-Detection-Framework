@@ -731,4 +731,19 @@ services:
       - cwe-1275
       - a01:2021
       - all
+
+  test_46_v1:
+    image: test_46_v1:latest
+    build:
+      context: tests/test-46/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8461:80"
+    profiles:
+      - test-46
+      - dotnet
+      - aspnet
+      - cwe-1174
+      - a05:2021
+      - all
   

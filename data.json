@@ -895,7 +895,9 @@
                 {
                     "id": 1174,
                     "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Improper Model Validation",
-                    "tests": []
+                    "tests": [
+                        "test_46_v1"
+                    ]
                 }
             ],
             "group": "Security Misconfiguration"
