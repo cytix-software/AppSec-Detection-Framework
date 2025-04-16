@@ -1,4 +1,5 @@
 import { program } from 'commander';
+import { Data } from './types';
 
 interface CWEDetail {
     id: number;
@@ -22,13 +23,6 @@ interface ScannerResult {
     tests: TestResult[];
 }
 
-interface Data {
-    vulnerabilities: Vulnerability[];
-    recordedTests: {
-        [key: string]: ScannerResult;
-    };
-}
-
 interface TestCWEMap {
     [key: string]: Set<string>;
 }
@@ -42,9 +36,9 @@ interface IncorrectCWEMap {
     [key: string]: IncorrectCWEs;
 }
 
-async function loadData(filePath: string): Promise<Data> {
+export async function loadData(): Promise<Data> {
     try {
-        const file = Bun.file(filePath);
+        const file = Bun.file('data.json');
         return await file.json();
     } catch (error) {
         console.error(`Error loading data file: ${error}`);
@@ -132,8 +126,33 @@ function printResults(
     missingTests: Set<string>,
     missingCWEs: TestCWEMap,
     incorrectCWEs: IncorrectCWEMap,
-    verbose: boolean = false
+    verbose: boolean = false,
+    simplified: boolean = false
 ): void {
+    if (simplified) {
+        console.log(`\n=== ${scannerName} ===`);
+        
+        // Print missing tests count
+        console.log(`Missing Tests: ${missingTests.size}`);
+        if (missingTests.size > 0) {
+            [...missingTests].sort().forEach(test => {
+                console.log(`  - ${test}`);
+            });
+        }
+        
+        // Print missing CWEs count
+        const totalMissingCWEs = Object.values(missingCWEs)
+            .reduce((sum, cwes) => sum + cwes.size, 0);
+        console.log(`\nMissing CWEs: ${totalMissingCWEs}`);
+        
+        // Print incorrect CWEs count
+        const totalIncorrectCWEs = Object.values(incorrectCWEs)
+            .reduce((sum, details) => sum + details.detected.size + details.undetected.size, 0);
+        console.log(`Incorrect CWEs: ${totalIncorrectCWEs}`);
+        
+        return;
+    }
+    
     console.log(`\n=== Analysis for ${scannerName} ===`);
 
     if (missingTests.size > 0) {
@@ -189,12 +208,13 @@ async function main(): Promise<void> {
     program
         .option('--file <path>', 'Path to the data.json file', 'data.json')
         .option('-v, --verbose', 'Enable verbose output')
+        .option('-s, --simplified', 'Enable simplified output')
         .parse(process.argv);
 
     const options = program.opts();
 
     // Load data
-    const data = await loadData(options.file);
+    const data = await loadData();
 
     // Get all tests and their CWEs
     const [allTests, testCWEs] = getAllTestsAndCWEs(data);
@@ -207,7 +227,7 @@ async function main(): Promise<void> {
             allTests,
             testCWEs
         );
-        printResults(scannerName, missingTests, missingCWEs, incorrectCWEs, options.verbose);
+        printResults(scannerName, missingTests, missingCWEs, incorrectCWEs, options.verbose, options.simplified);
     });
 }
 

@@ -180,23 +180,6 @@ Options:
 - `--file <path>`: Path to the data.json file (default: 'data.json')
 - `-v, --verbose`: Enable verbose output
 
-Example output:
-```
-=== Analysis for zap_v2.16.0 ===
-
-Missing Tests (1):
-  - test_1_v2
-
-No missing CWEs!
-
-Incorrect CWE Associations (167 total):
-  test_10_v1:
-    Incorrectly Detected:
-      - CWE-1021
-      - CWE-200
-      - CWE-693
-```
-
 ##### Find Uncovered CWEs
 
 ```bash
@@ -210,24 +193,6 @@ This utility identifies CWEs that lack test coverage in the framework:
 Options:
 - `--file <path>`: Path to the data.json file (default: 'data.json')
 - `-v, --verbose`: Enable verbose output
-
-Example output:
-```
-=== CWEs Without Test Coverage ===
-Found 122 uncovered CWEs:
-
-CWE-2: Environment
-  OWASP: A01:2021 – Broken Access Control
-  Group: Access Control
-
-=== CWEs With Limited Coverage ===
-Found 58 CWEs with limited coverage:
-
-CWE-79: Cross-site Scripting
-  Tests: test_14_v1
-  OWASP: A03:2021 – Injection
-  Group: Injection
-```
 
 > [!TIP]
 > Use these utilities regularly to identify gaps in test coverage and ensure your scanner results are accurate.
