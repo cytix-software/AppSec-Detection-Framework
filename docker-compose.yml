@@ -716,4 +716,19 @@ services:
       - cwe-1104
       - a06:2021
       - all
+
+  test_45_v1:
+    image: test_45_v1:latest
+    build:
+      context: tests/test-45/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8451:80"
+    profiles:
+      - test-45
+      - php
+      - apache
+      - cwe-1275
+      - a01:2021
+      - all
   
