@@ -202,16 +202,7 @@
                 {
                     "id": 1275,
                     "title": "Sensitive Cookie with Improper SameSite Attribute",
-                    "tests": [
-                        "test_45_v1"
-                    ]
-                },
-                {
-                    "id": 776,
-                    "title": "XML External Entity (XXE) Processing",
-                    "tests": [
-                        "test_40_v1"
-                    ]
+                    "tests": []
                 }
             ],
             "group": "Broken Access Control"
@@ -417,9 +408,7 @@
                     "id": 79,
                     "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
                     "tests": [
-                        "test_29_v1",
-                        "test_44_v1",
-                        "test_44_v2"
+                        "test_29_v1"
                     ]
                 },
                 {
@@ -668,9 +657,7 @@
                 {
                     "id": 451,
                     "title": "User Interface (UI) Misrepresentation of Critical Information",
-                    "tests": [
-                        "test_48_v1"
-                    ]
+                    "tests": []
                 },
                 {
                     "id": 472,
@@ -769,9 +756,7 @@
                 {
                     "id": 840,
                     "title": "Business Logic Errors",
-                    "tests": [
-                        "test_47_v1"
-                    ]
+                    "tests": []
                 },
                 {
                     "id": 841,
@@ -780,22 +765,18 @@
                 },
                 {
                     "id": 927,
-                    "title": "Use of Implicit Intent for Sensitive Communication", 
+                    "title": "Use of Implicit Intent for Sensitive Communication",
                     "tests": []
                 },
                 {
                     "id": 1021,
                     "title": "Improper Restriction of Rendered UI Layers or Frames",
-                    "tests": [
-                        "test_48_v1"
-                    ]
+                    "tests": []
                 },
                 {
                     "id": 1173,
                     "title": "Improper Use of Validation Framework",
-                    "tests": [
-                        "test_46_v1"
-                    ]
+                    "tests": []
                 }
             ],
             "group": "Insecure Design"
@@ -900,8 +881,7 @@
                     "id": 1004,
                     "title": "Sensitive Cookie Without 'HttpOnly' Flag",
                     "tests": [
-                        "test_8_v1",
-                        "test_45_v1"
+                        "test_8_v1"
                     ]
                 },
                 {
@@ -912,9 +892,7 @@
                 {
                     "id": 1174,
                     "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Improper Model Validation",
-                    "tests": [
-                        "test_46_v1"
-                    ]
+                    "tests": []
                 }
             ],
             "group": "Security Misconfiguration"
@@ -930,16 +908,13 @@
                 {
                     "id": 1035,
                     "title": "OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities",
-                    "tests": [
-                        "test_44_v1"
-                    ]
+                    "tests": []
                 },
                 {
                     "id": 1104,
                     "title": "Use of Unmaintained Third Party Components",
                     "tests": [
-                        "test_44_v1",
-                        "test_44_v2"
+                        "test_44_v1"
                     ]
                 }
             ],
@@ -1831,7 +1806,7 @@
             ]
     },
         "semgrep": {
-            "scanProfile": "TODO - Define the scan profile",
+            "scanProfile": "Full Scan Semgrep Registry Rule sets - bandit, comment, cwe-top-25, default, docker-compose, dockerfile, eslint, findsecbugs, flawfinder, headless-browser, javascript, owasp-top-ten, php, php-laravel, php-security-audit, phpcs-security-audit, r2c-security-audit, secure-defaults, typescript, xss.",
             "tests": [
     {
         "test": "test_1_v1",
