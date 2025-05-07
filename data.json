@@ -1831,7 +1831,7 @@
             ]
     },
         "semgrep": {
-            "scanProfile": "TODO - Define the scan profile",
+            "scanProfile": "Full Scan Semgrep (Version. February 2025) Registry Rule sets - bandit, comment, cwe-top-25, default, docker-compose, dockerfile, eslint, findsecbugs, flawfinder, headless-browser, javascript, owasp-top-ten, php, php-laravel, php-security-audit, phpcs-security-audit, r2c-security-audit, secure-defaults, typescript, xss.",
             "tests": [
     {
         "test": "test_1_v1",
