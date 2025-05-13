@@ -884,7 +884,7 @@
                 {
                     "id": 756,
                     "title": "Missing Custom Error Page",
-                    "tests": []
+                    "tests": ["test_49_v1"]
                 },
                 {
                     "id": 776,
