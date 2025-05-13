@@ -149,7 +149,9 @@
                 {
                     "id": 601,
                     "title": "URL Redirection to Untrusted Site ('Open Redirect')",
-                    "tests": []
+                    "tests": [
+                        "test_54_v1"
+                    ]
                 },
                 {
                     "id": 639,

@@ -876,3 +876,18 @@ services:
       - cwe-525
       - a04:2021
       - all
+
+  test_54_v1:
+    image: test_54_v1:latest
+    build:
+      context: tests/test-54/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8541:80"
+    profiles:
+      - test-54
+      - apache
+      - php
+      - cwe-601
+      - a01:2021
+      - all
