@@ -817,3 +817,18 @@ services:
       - cwe-756
       - a05:2021
       - all
+
+  test_50_v1:
+    image: test_50_v1:latest
+    build:
+      context: tests/test-50/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8501:80"
+    profiles:
+      - test-50
+      - apache
+      - php
+      - cwe-942
+      - a05:2021
+      - all
