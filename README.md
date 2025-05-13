@@ -325,12 +325,67 @@ bun lint
 
 ## Contributing
 
-Contributions are welcome! Please follow these steps:
+Contributions are welcome! There are two main ways to contribute to ASDF:
 
+### Adding a New Test
+
+1. Create a new test directory in `tests/` following the naming convention `test-{id}/v1/`
+2. Create a `Dockerfile` that:
+   - Sets up the appropriate runtime environment
+   - Installs necessary dependencies
+   - Copies the vulnerable code
+   - Configures the web server
+3. Create the vulnerable code file (e.g., `index.php`, `index.js`) that:
+   - Demonstrates a specific vulnerability
+   - Is brief and easily readable
+   - Includes clear comments explaining the vulnerability
+4. Update `docker-compose.yml` to include your test with appropriate:
+   - Port mapping (following the `8{test_id}{version}` convention)
+   - Service profiles (language, webserver, CWE IDs, OWASP category)
+5. Add your test to `data.json` under the appropriate OWASP category and CWE
+6. Validate your changes using the analysis utilities:
+   ```sh
+   # Check for missing tests and incorrect CWE associations
+   bun run utils/findMissingTests.ts
+   
+   # Verify CWE coverage
+   bun run utils/findUncoveredCwes.ts
+   
+   # Ensure profile consistency
+   bun run utils/checkProfileConsistency.ts
+   ```
+
+### Adding Scan Results
+
+1. Run your security scanner against the test suite using Pocman
+2. Use the Recorded Tests Generator in the management interface (`http://localhost:3001`) to:
+   - Enter your scanner name and version
+   - Provide a detailed scan profile
+   - Record which CWEs were detected/undetected for each test
+3. Add the generated JSON to `data.json` under the `recordedTests` section
+4. Ensure your scanner name includes the version number (e.g., "zap_v2.16.0")
+5. Include a detailed `scanProfile` that describes your scanner's configuration
+6. Validate your scan results:
+   ```sh
+   # Check for missing tests in your scan results
+   bun run utils/findMissingTests.ts
+   
+   # Verify that all CWEs are properly categorized
+   bun run utils/checkProfileConsistency.ts
+   ```
+
+> [!IMPORTANT]
+> Always run the validation utilities before submitting your contribution. They help ensure:
+> - All tests are properly documented in data.json
+> - CWEs are correctly associated with tests
+> - Docker profiles match the documented vulnerabilities
+> - No tests or CWEs are missing from your scan results
+
+For both types of contributions:
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create a feature branch (`git checkout -b feature/your-contribution`)
+3. Commit your changes (`git commit -m 'Add test/scan results for [description]'`)
+4. Push to the branch (`git push origin feature/your-contribution`)
 5. Open a Pull Request
 
 ## License
