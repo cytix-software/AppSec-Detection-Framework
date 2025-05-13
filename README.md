@@ -77,7 +77,7 @@ Pocman now includes a web-based management interface that allows you to control 
 The management interface now includes a utility to help generate the `recordedTests` output for your scanner:
 
 1. Enter your scanner name (e.g., "zap_v2.16.0")
-2. Provide a description of your scanner's capabilities in the scan profile field
+2. Provide a description of your scanner's configuration in the scan profile field
 3. For each test in the current batch:
    - Select which CWEs were detected by checking the boxes in the "Detected CWEs" column
    - Select which CWEs were not detected by checking the boxes in the "Undetected CWEs" column
