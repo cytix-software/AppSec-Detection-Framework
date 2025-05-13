@@ -891,3 +891,18 @@ services:
       - cwe-601
       - a01:2021
       - all
+
+  test_55_v1:
+    image: test_55_v1:latest
+    build:
+      context: tests/test-55/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8551:80"
+    profiles:
+      - test-55
+      - apache
+      - php
+      - cwe-538
+      - a01:2021
+      - all
