@@ -21,23 +21,23 @@ $wsdl = <<<XML
             <xsd:element name="UserCredentials">
                 <xsd:complexType>
                     <xsd:sequence>
-                        <xsd:element name="apiKey" type="xsd:string" default="sk_live_51HqX9K2J3L4M5N6P7Q8R9S0T1U2V3W4"/>
+                        <xsd:element name="apiKey" type="xsd:string" default="FAKE_API_KEY_1234567890"/>
                         <xsd:element name="internalEndpoint" type="xsd:string" default="https://internal-api.company.com/v1"/>
-                        <xsd:element name="databaseConnection" type="xsd:string" default="postgresql://admin:SuperSecret123@db.company.com:5432/production"/>
+                        <xsd:element name="databaseConnection" type="xsd:string" default="postgresql://admin:FAKE_PASSWORD@db.company.com:5432/production"/>
                         <xsd:element name="adminCredentials">
                             <xsd:complexType>
                                 <xsd:sequence>
                                     <xsd:element name="username" type="xsd:string" default="admin@company.com"/>
-                                    <xsd:element name="password" type="xsd:string" default="P@ssw0rd123!"/>
+                                    <xsd:element name="password" type="xsd:string" default="FAKE_PASSWORD_123!"/>
                                 </xsd:sequence>
                             </xsd:complexType>
                         </xsd:element>
                         <xsd:element name="securityConfig">
                             <xsd:complexType>
                                 <xsd:sequence>
-                                    <xsd:element name="encryptionKey" type="xsd:string" default="a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6"/>
-                                    <xsd:element name="jwtSecret" type="xsd:string" default="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ"/>
-                                    <xsd:element name="internalApiToken" type="xsd:string" default="xoxb-123456789012-345678901234-abcdefghijklmnopqrstuvwx"/>
+                                    <xsd:element name="encryptionKey" type="xsd:string" default="FAKE_ENCRYPTION_KEY_1234567890"/>
+                                    <xsd:element name="jwtSecret" type="xsd:string" default="FAKE_JWT_SECRET_1234567890"/>
+                                    <xsd:element name="internalApiToken" type="xsd:string" default="FAKE_API_TOKEN_1234567890"/>
                                 </xsd:sequence>
                             </xsd:complexType>
                         </xsd:element>
