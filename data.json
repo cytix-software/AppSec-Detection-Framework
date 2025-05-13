@@ -894,7 +894,7 @@
                 {
                     "id": 942,
                     "title": "Permissive Cross-domain Policy with Untrusted Domains",
-                    "tests": []
+                    "tests": ["test_50_v1"]
                 },
                 {
                     "id": 1004,
