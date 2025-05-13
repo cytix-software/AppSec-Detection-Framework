@@ -159,7 +159,7 @@
                 {
                     "id": 651,
                     "title": "Exposure of WSDL File Containing Sensitive Information",
-                    "tests": []
+                    "tests": ["test_51_v1"]
                 },
                 {
                     "id": 668,
