@@ -329,6 +329,10 @@ Contributions are welcome! There are two main ways to contribute to ASDF:
 
 ### Adding a New Test
 
+You can identify CWEs that we don't currently have tests for by running `bun run utils/findUncoveredCwes.ts`
+
+To add a test into the collection:
+
 1. Create a new test directory in `tests/` following the naming convention `test-{id}/v1/`
 2. Create a `Dockerfile` that:
    - Sets up the appropriate runtime environment
