@@ -335,7 +335,9 @@
                 {
                     "id": 523,
                     "title": "Unprotected Transport of Credentials",
-                    "tests": []
+                    "tests": [
+                        "test_52_v1"
+                    ]
                 },
                 {
                     "id": 720,
@@ -694,7 +696,9 @@
                 {
                     "id": 525,
                     "title": "Use of Web Browser Cache Containing Sensitive Information",
-                    "tests": []
+                    "tests": [
+                        "test_53_v1"
+                    ]
                 },
                 {
                     "id": 539,

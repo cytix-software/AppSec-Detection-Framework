@@ -847,3 +847,32 @@ services:
       - cwe-651
       - a01:2021
       - all
+
+  test_52_v1:
+    image: test_52_v1:latest
+    build:
+      context: tests/test-52/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8521:80"
+    profiles:
+      - test-52
+      - node
+      - cwe-523
+      - a02:2021
+      - all
+
+  test_53_v1:
+    image: test_53_v1:latest
+    build:
+      context: tests/test-53/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8531:80"
+    profiles:
+      - test-53
+      - apache
+      - php
+      - cwe-525
+      - a04:2021
+      - all
