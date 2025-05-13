@@ -803,4 +803,17 @@ services:
       - a04:2021
       - cwe-451
       - all
-  
+
+  test_49_v1:
+    image: test_49_v1:latest
+    build:
+      context: tests/test-49/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8491:80"
+    profiles:
+      - test-49
+      - apache
+      - cwe-756
+      - a05:2021
+      - all
