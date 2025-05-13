@@ -344,14 +344,8 @@ Contributions are welcome! There are two main ways to contribute to ASDF:
    - Service profiles (language, webserver, CWE IDs, OWASP category)
 5. Add your test to `data.json` under the appropriate OWASP category and CWE
 6. Validate your changes using the analysis utilities:
-   ```sh
-   # Check for missing tests and incorrect CWE associations
-   bun run utils/findMissingTests.ts
-   
-   # Verify CWE coverage
-   bun run utils/findUncoveredCwes.ts
-   
-   # Ensure profile consistency
+   ```sh   
+   # Ensure profile consistency across data.json and docker-compose.yml
    bun run utils/checkProfileConsistency.ts
    ```
 
@@ -369,9 +363,6 @@ Contributions are welcome! There are two main ways to contribute to ASDF:
    ```sh
    # Check for missing tests in your scan results
    bun run utils/findMissingTests.ts
-   
-   # Verify that all CWEs are properly categorized
-   bun run utils/checkProfileConsistency.ts
    ```
 
 > [!IMPORTANT]
