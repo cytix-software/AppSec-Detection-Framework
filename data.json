@@ -122,7 +122,9 @@
                 {
                     "id": 538,
                     "title": "Insertion of Sensitive Information into Externally-Accessible File or Directory",
-                    "tests": []
+                    "tests": [
+                        "test_55_v1"
+                    ]
                 },
                 {
                     "id": 540,
