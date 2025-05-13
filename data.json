@@ -1238,7 +1238,7 @@
     ],
     "recordedTests": {
         "zap_v2.16.0": {
-            "scanProfile": "Zap v2.16.0 Automated Scan",
+            "scanProfile": "Zap v2.16.0 Automated Scan - Default settings.",
             "tests": [
                 {
       "test": "test_1_v1",
