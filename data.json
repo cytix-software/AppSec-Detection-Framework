@@ -69,7 +69,7 @@
                 {
                     "id": 284,
                     "title": "Improper Access Control",
-                    "tests": []
+                    "tests": ["test_56_v1"]
                 },
                 {
                     "id": 285,

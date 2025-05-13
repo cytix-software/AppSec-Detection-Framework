@@ -906,3 +906,17 @@ services:
       - cwe-538
       - a01:2021
       - all
+
+  test_56_v1:
+    image: test_56_v1:latest
+    build:
+      context: ./tests/test-56/v1
+    ports:
+      - "8561:80"
+    profiles:
+      - test-56
+      - apache
+      - php
+      - cwe-284
+      - a01:2021
+      - all
