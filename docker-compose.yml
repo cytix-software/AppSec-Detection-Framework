@@ -832,3 +832,18 @@ services:
       - cwe-942
       - a05:2021
       - all
+
+  test_51_v1:
+    image: test_51_v1:latest
+    build:
+      context: tests/test-51/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8511:80"
+    profiles:
+      - test-51
+      - apache
+      - php
+      - cwe-651
+      - a01:2021
+      - all
