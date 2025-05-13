@@ -1230,7 +1230,7 @@
     ],
     "recordedTests": {
         "zap_v2.16.0": {
-            "scanProfile": "TODO - Define the scan profile",
+            "scanProfile": "Zap v2.16.0 Automated Scan",
             "tests": [
                 {
       "test": "test_1_v1",
