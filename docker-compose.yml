@@ -642,7 +642,7 @@ services:
       context: tests/test-39/v1/
       dockerfile: Dockerfile
     ports:
-      - "8391:80"
+      - "8391:443"
     profiles:
       - test-39
       - apache
