@@ -423,7 +423,6 @@
                     "id": 79,
                     "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
                     "tests": [
-                        "test_29_v1",
                         "test_44_v1",
                         "test_44_v2"
                     ]
