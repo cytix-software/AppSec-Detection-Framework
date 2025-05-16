@@ -7,7 +7,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $userInput = $_POST['input'];
         $sanitizedInput = str_replace(["....//", "../"], "", $userInput);
-        $filename = $sanitizedInput;
+        $filename = './' . $sanitizedInput;
 
         echo "  Path: " . $filename . "<br>";
 

@@ -1,7 +1,23 @@
-<?php
-// CWE-494: Download of Code Without Integrity Check
-$remote_url = "http://example.com/script.php";
-$file_content = file_get_contents($remote_url);
-eval($file_content);
-echo "File executed successfully.";
-?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vulnerable JavaScript Loading</title>
+    <!-- CWE-494: Loading External Code Without Integrity Check -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <h1>jQuery Library Test</h1>
+    <div id="output"></div>
+    <button id="testButton">Test jQuery</button>
+    <script>
+        // This code will execute whatever is in the external library
+        if (typeof jQuery !== 'undefined') {
+            $('#testButton').on('click', function() {
+                $('#output').text('jQuery loaded and executed successfully');
+            });
+        } else {
+            document.getElementById('output').textContent = 'jQuery failed to load';
+        }
+    </script>
+</body>
+</html>
