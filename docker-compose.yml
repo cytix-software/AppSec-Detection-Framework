@@ -472,9 +472,7 @@ services:
       - apache
       - cwe-830
       - cwe-829
-      - cwe-79
       - a08:2021
-      - a03:2021
       - all
 
   test_30_v1:
