@@ -2803,10 +2803,8 @@
     },
     {
       "test": "test_4_v1",
-      "detectedCWEs": [],
-      "undetectedCWEs": [
-        80
-      ],
+      "detectedCWEs": [80],
+      "undetectedCWEs": [],
       "updatedAt": 1748909142
     },
     {
