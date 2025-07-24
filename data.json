@@ -706,7 +706,9 @@
                 {
                     "id": 539,
                     "title": "Use of Persistent Cookies Containing Sensitive Information",
-                    "tests": []
+                    "tests": [
+                        "test_58_v1"
+                    ]
                 },
                 {
                     "id": 579,

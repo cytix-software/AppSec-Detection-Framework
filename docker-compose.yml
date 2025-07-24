@@ -918,3 +918,18 @@ services:
       - cwe-284
       - a01:2021
       - all
+
+  test_58_v1:
+      image: test_58_v1:latest
+      build:
+        context: ./tests/test-58/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8581:80"
+      profiles:
+        - test-58
+        - apache
+        - php
+        - cwe-539
+        - a04:2021
+        - all
