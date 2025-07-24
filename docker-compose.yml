@@ -919,6 +919,21 @@ services:
       - a01:2021
       - all
 
+  test_57_v1:
+      image: test_57_v1:latest
+      build:
+        context: ./tests/test-57/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8571:80"
+      profiles:
+        - test-57
+        - apache
+        - php
+        - cwe-59
+        - a01:2021
+        - all
+
   test_58_v1:
       image: test_58_v1:latest
       build:
