@@ -31,7 +31,7 @@
                     "id": 59,
                     "title": "Improper Link Resolution Before File Access ('Link Following')",
                     "tests": [
-                      "test_57_v1"
+                        "test_57_v1"
                     ]
                 },
                 {
@@ -131,7 +131,9 @@
                 {
                     "id": 540,
                     "title": "Inclusion of Sensitive Information in Source Code",
-                    "tests": []
+                    "tests": [
+                        "test_59_v1"
+                    ]
                 },
                 {
                     "id": 548,
@@ -871,7 +873,9 @@
                 {
                     "id": 541,
                     "title": "Inclusion of Sensitive Information in an Include File",
-                    "tests": []
+                    "tests": [
+                        "test_59_v1"
+                    ]
                 },
                 {
                     "id": 547,
