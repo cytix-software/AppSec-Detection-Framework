@@ -42,7 +42,9 @@
                 {
                     "id": 201,
                     "title": "Insertion of Sensitive Information Into Sent Data",
-                    "tests": []
+                    "tests": [
+                        "test_60_v1"
+                    ]
                 },
                 {
                     "id": 219,
@@ -253,7 +255,8 @@
                     "id": 321,
                     "title": "Use of Hard-coded Cryptographic Key",
                     "tests": [
-                        "test_17_v1"
+                        "test_17_v1",
+                        "test_61_v1"
                     ]
                 },
                 {
@@ -300,7 +303,9 @@
                 {
                     "id": 329,
                     "title": "Generation of Predictable IV with CBC Mode",
-                    "tests": []
+                    "tests": [
+                        "test_61_v1"
+                    ]
                 },
                 {
                     "id": 330,
@@ -590,7 +595,9 @@
                 {
                     "id": 209,
                     "title": "Generation of Error Message Containing Sensitive Information",
-                    "tests": []
+                    "tests": [
+                        "test_60_v1"
+                    ]
                 },
                 {
                     "id": 213,
@@ -882,7 +889,9 @@
                 {
                     "id": 547,
                     "title": "Use of Hard-coded, Security-relevant Constants",
-                    "tests": []
+                    "tests": [
+                        "test_61_v1"
+                    ]
                 },
                 {
                     "id": 611,
@@ -973,7 +982,9 @@
                 {
                     "id": 259,
                     "title": "Use of Hard-coded Password",
-                    "tests": []
+                    "tests": [
+                        "test_59_v1"
+                    ]
                 },
                 {
                     "id": 287,
@@ -1098,7 +1109,8 @@
                     "tests": [
                         "test_17_v1",
                         "test_32_v1",
-                        "test_37_v1"
+                        "test_37_v1",
+                        "test_61_v1"
                     ]
                 },
                 {
