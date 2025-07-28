@@ -1017,3 +1017,16 @@ services:
         - apache
         - php
         - cwe-497
+
+  test_63_v1:
+      image: test_63v1:latest
+      build:
+        context: ./tests/test-63/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8631:80"
+      profiles:
+        - test-63
+        - apache
+        - php
+        - cwe-548

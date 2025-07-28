@@ -1,5 +1,6 @@
 <?php
 // CWE-201: Insertion of Sensitive Information Into Sent Data (Error Message Reveals Sensitive Data)
+// CWE-209: Generation of Error Message Containing Sensitive Information
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
@@ -19,10 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CWE-201: Insertion of Sensitive Information Into Sent Data</title>
+    <title>CWE-201 & CWE-209</title>
 </head>
 <body>
-    <h1>Login</h1>
+    <h1>CWE-201: Insertion of Sensitive Information Into Sent Data & CWE-209</h1>
+    <h2>Login</h2>
     <form method="post">
         <label>Username: <input type="text" name="username" required></label><br>
         <label>Password: <input type="password" name="password" required></label><br>
