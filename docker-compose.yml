@@ -965,3 +965,18 @@ services:
         - a01:2021
         - a05:2021
         - all
+
+  test_62_v1:
+      image: test_62v1:latest
+      build:
+        context: ./tests/test-62/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8621:80"
+      profiles:
+        - test-62
+        - apache
+        - php
+        - cwe-497
+        - a01:2021
+        - all
