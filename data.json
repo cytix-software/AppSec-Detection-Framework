@@ -30,7 +30,9 @@
                 {
                     "id": 59,
                     "title": "Improper Link Resolution Before File Access ('Link Following')",
-                    "tests": []
+                    "tests": [
+                        "test_57_v1"
+                    ]
                 },
                 {
                     "id": 200,
@@ -129,7 +131,9 @@
                 {
                     "id": 540,
                     "title": "Inclusion of Sensitive Information in Source Code",
-                    "tests": []
+                    "tests": [
+                        "test_59_v1"
+                    ]
                 },
                 {
                     "id": 548,
@@ -706,7 +710,9 @@
                 {
                     "id": 539,
                     "title": "Use of Persistent Cookies Containing Sensitive Information",
-                    "tests": []
+                    "tests": [
+                        "test_58_v1"
+                    ]
                 },
                 {
                     "id": 579,
@@ -867,7 +873,9 @@
                 {
                     "id": 541,
                     "title": "Inclusion of Sensitive Information in an Include File",
-                    "tests": []
+                    "tests": [
+                        "test_59_v1"
+                    ]
                 },
                 {
                     "id": 547,
