@@ -1017,6 +1017,8 @@ services:
         - apache
         - php
         - cwe-497
+        - a01:2021
+        - all
 
   test_63_v1:
       image: test_63v1:latest
@@ -1030,3 +1032,5 @@ services:
         - apache
         - php
         - cwe-548
+        - a01:2021
+        - all
