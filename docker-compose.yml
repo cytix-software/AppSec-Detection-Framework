@@ -1005,17 +1005,15 @@ services:
         - a07:2021
         - all
 
-  test_60_v1:
-      image: test_60_v1:latest
+  test_62_v1:
+      image: test_62v1:latest
       build:
-        context: ./tests/test-60/v1
+        context: ./tests/test-62/v1
         dockerfile: Dockerfile
       ports:
-        - "8601:80"
+        - "8621:80"
       profiles:
-        - test-60
+        - test-62
         - apache
         - php
-        - cwe-201
-        - a01:2021
-        - all
+        - cwe-497

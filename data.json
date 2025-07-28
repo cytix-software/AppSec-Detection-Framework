@@ -121,7 +121,9 @@
                 {
                     "id": 497,
                     "title": "Exposure of Sensitive System Information to an Unauthorized Control Sphere",
-                    "tests": []
+                    "tests": [
+                        "test_62_v1"
+                    ]
                 },
                 {
                     "id": 538,
