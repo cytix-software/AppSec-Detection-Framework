@@ -422,7 +422,10 @@
                 {
                     "id": 77,
                     "title": "Improper Neutralization of Special Elements used in a Command ('Command Injection')",
-                    "tests": []
+                    "tests": [
+                        "test_2_v1",
+                        "test_16_v1"
+                    ]
                 },
                 {
                     "id": 78,
