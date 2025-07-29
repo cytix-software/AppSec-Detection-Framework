@@ -1034,3 +1034,18 @@ services:
         - cwe-548
         - a01:2021
         - all
+
+  test_64_v1:
+      image: test_64v1:latest
+      build:
+        context: ./tests/test-64/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8641:80"
+      profiles:
+        - test-64
+        - apache
+        - php
+        - cwe-88
+        - a03:2021
+        - all
