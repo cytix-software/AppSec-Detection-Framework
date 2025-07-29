@@ -460,7 +460,9 @@
                 {
                     "id": 87,
                     "title": "Improper Neutralization of Alternate XSS Syntax",
-                    "tests": []
+                    "tests": [
+                        "test_65_v1"
+                    ]
                 },
                 {
                     "id": 88,
