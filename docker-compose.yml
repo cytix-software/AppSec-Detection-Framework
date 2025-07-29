@@ -1066,3 +1066,19 @@ services:
         - cwe-87
         - a03:2021
         - all
+
+  test_66_v1:
+      image: test_66v1:latest
+      build:
+        context: ./tests/test-66/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8661:80"
+      profiles:
+        - test-66
+        - apache
+        - php
+        - cwe-94
+        - cwe-79
+        - a03:2021
+        - all
