@@ -1082,3 +1082,18 @@ services:
         - cwe-79
         - a03:2021
         - all
+
+  test_67_v1:
+      image: test_67v1:latest
+      build:
+        context: ./tests/test-67/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8671:80"
+      profiles:
+        - test-67
+        - apache
+        - php
+        - cwe-95
+        - a03:2021
+        - all
