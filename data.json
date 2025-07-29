@@ -441,7 +441,7 @@
                     "tests": [
                         "test_44_v1",
                         "test_44_v2",
-                        "test_65_v1"
+                        "test_66_v1"
                     ]
                 },
                 {
@@ -496,13 +496,15 @@
                     "id": 94,
                     "title": "Improper Control of Generation of Code ('Code Injection')",
                     "tests": [
-                        "test_65_v1"
+                        "test_66_v1"
                     ]
                 },
                 {
                     "id": 95,
                     "title": "Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')",
-                    "tests": []
+                    "tests": [
+                        "test_67_v1"
+                    ]
                 },
                 {
                     "id": 96,
