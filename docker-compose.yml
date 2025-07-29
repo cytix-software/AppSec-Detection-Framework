@@ -41,6 +41,7 @@ services:
       - php
       - apache
       - cwe-78
+      - cwe-77
       - a03:2021
       - all
 
@@ -266,6 +267,7 @@ services:
       - cwe-918
       - a03:2021
       - cwe-78
+      - cwe-77
       - all
 
   test_17_v1:
@@ -1047,5 +1049,20 @@ services:
         - apache
         - php
         - cwe-88
+        - a03:2021
+        - all
+
+  test_65_v1:
+      image: test_65v1:latest
+      build:
+        context: ./tests/test-65/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8651:80"
+      profiles:
+        - test-65
+        - apache
+        - php
+        - cwe-87
         - a03:2021
         - all
