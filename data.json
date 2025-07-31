@@ -78,7 +78,9 @@
                 {
                     "id": 285,
                     "title": "Improper Authorization",
-                    "tests": []
+                    "tests": [
+                        "test_69_v1"
+                    ]
                 },
                 {
                     "id": 352,
@@ -211,7 +213,9 @@
                 {
                     "id": 922,
                     "title": "Insecure Storage of Sensitive Information",
-                    "tests": []
+                    "tests": [
+                        "test_69_v1"
+                    ]
                 },
                 {
                     "id": 1275,
@@ -475,7 +479,9 @@
                 {
                     "id": 89,
                     "title": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
-                    "tests": []
+                    "tests": [
+                        "test_69_v1"
+                    ]
                 },
                 {
                     "id": 90,
