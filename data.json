@@ -509,12 +509,16 @@
                 {
                     "id": 96,
                     "title": "Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')",
-                    "tests": []
+                    "tests": [
+                        "test_66_v1"
+                    ]
                 },
                 {
                     "id": 97,
                     "title": "Improper Neutralization of Server-Side Includes (SSI) Within a Web Page",
-                    "tests": []
+                    "tests": [
+                        "test_68_v1"
+                    ]
                 },
                 {
                     "id": 98,

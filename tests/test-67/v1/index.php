@@ -1,6 +1,7 @@
 <?php
 // CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')
 // This script demonstrates code injection via eval() on direct user input.
+// and CWE-96: Static Code Injection
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input = $_POST['code'] ?? '';
