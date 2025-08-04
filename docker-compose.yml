@@ -1,0 +1,1182 @@
+services:
+  test_1_v1:
+    image: test_1_v1:latest
+    build: 
+      context: tests/test-1/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8011:80"
+    profiles:
+      - test-1
+      - a01:2021
+      - php
+      - apache
+      - cwe-23
+      - cwe-22
+      - all
+  test_1_v2:
+    image: test_1_v2:latest
+    build: 
+      context: tests/test-1/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8012:80"
+    profiles:
+      - test-1
+      - a01:2021
+      - python
+      - flask
+      - cwe-23
+      - cwe-22
+      - all
+  test_2_v1:
+    image: test_2_v1:latest
+    build: 
+      context: tests/test-2/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8021:80"
+    profiles:
+      - test-2
+      - php
+      - apache
+      - cwe-78
+      - cwe-77
+      - a03:2021
+      - all
+
+  test_3_v1:
+    image: test_3_v1:latest
+    build:
+      context: tests/test-3/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8031:80"
+    profiles:
+      - test-3
+      - php
+      - apache
+      - cwe-352
+      - a01:2021
+      - all
+
+  test_4_v1:
+    image: test_4_v1:latest
+    build:
+      context: tests/test-4/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8041:80"
+    profiles:
+      - test-4
+      - php
+      - apache
+      - cwe-80
+      - a03:2021
+      - all
+
+  test_5_v1:
+    image: test_5_v1:latest
+    build:
+      context: tests/test-5/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8051:80"
+    profiles:
+      - test-5
+      - php
+      - apache
+      - cwe-83
+      - a03:2021
+      - all
+
+  test_6_v1:
+    image: test_6_v1:latest
+    build:
+      context: tests/test-6/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8061:80"
+    profiles:
+      - test-6
+      - php 
+      - apache
+      - cwe-434
+      - a04:2021
+      - all
+
+  test_7_v1:
+    image: test_7_v1:latest
+    build:
+      context: tests/test-7/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8071:80"
+    profiles:
+      - test-7
+      - php 
+      - apache
+      - cwe-502
+      - a08:2021
+      - all
+
+  test_8_v1:
+    image: test_8_v1:latest
+    build:
+      context: tests/test-8/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8081:80"
+    profiles:
+      - test-8
+      - php 
+      - apache 
+      - cwe-1004
+      - a05:2021
+      - all
+
+  test_9_v1:
+      image: test_9_v1:latest
+      build:
+        context: tests/test-9/v1/
+        dockerfile: Dockerfile
+      ports:
+        - "8091:80"
+      profiles:
+        - test-9
+        - php 
+        - apache 
+        - cwe-35
+        - cwe-22
+        - a01:2021
+        - all
+      
+  test_10_v1:
+    image: test_10_v1:latest
+    build:
+      context: tests/test-10/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8101:80"
+    profiles:
+      - test-10
+      - php 
+      - apache 
+      - cwe-276
+      - a01:2021
+      - all
+      
+  test_11_v1:
+    image: test_11_v1:latest
+    build:
+      context: tests/test-11/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8111:80"
+    profiles:
+      - test-11
+      - php
+      - apache 
+      - cwe-219
+      - cwe-552
+      - cwe-256 
+      - a01:2021
+      - a04:2021
+      - all
+
+  test_12_v1:
+    image: test_12_v1:latest
+    build:
+      context: tests/test-12/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8121:80"
+    profiles:
+      - test-12
+      - php 
+      - apache 
+      - cwe-377
+      - a01:2021
+      - all
+
+  test_13_v1:
+    image: test_13_v1:latest
+    build:
+      context: tests/test-13/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8131:80"
+    profiles:
+      - test-13
+      - php 
+      - apache 
+      - cwe-862
+      - a01:2021
+      - all
+
+  test_14_v1:
+    image: test_14_v1:latest
+    build:
+      context: tests/test-14/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8141:80"
+    profiles:
+      - test-14
+      - php
+      - apache
+      - cwe-863
+      - cwe-287
+      - cwe-784
+      - cwe-565
+      - a01:2021
+      - a07:2021
+      - a08:2021
+      - all
+      
+  test_15_v1:
+    image: test_15_v1:latest
+    build:
+      context: tests/test-15/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8151:80"
+    profiles:
+      - test-15
+      - php 
+      - apache 
+      - cwe-328
+      - cwe-327 
+      - cwe-759 
+      - cwe-916
+      - a02:2021
+      - all
+
+  test_16_v1:
+    image: test_16_v1:latest
+    build:
+      context: tests/test-16/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8161:80"
+    profiles:
+      - test-16
+      - php
+      - apache
+      - a10:2021
+      - cwe-918
+      - a03:2021
+      - cwe-78
+      - cwe-77
+      - all
+
+  test_17_v1:
+    image: test_17_v1:latest
+    build:
+      context: tests/test-17/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8171:80"
+    profiles:
+      - test-17
+      - php
+      - apache
+      - cwe-760 
+      - cwe-327 
+      - cwe-328 
+      - cwe-916 
+      - cwe-321 
+      - cwe-798 
+      - a02:2021
+      - a07:2021
+      - all
+
+  test_18_v1:
+    image: test_18_v1:latest
+    build:
+      context: tests/test-18/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8181:80"
+    profiles:
+      - test-18
+      - php
+      - apache
+      - cwe-79
+      - cwe-80
+      - cwe-116
+      - cwe-644
+      - A03:2021
+      - A09:2021 
+      - all
+
+  test_19_v1:
+    image: test_19_v1:latest
+    build:
+      context: tests/test-19/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8191:80"
+    profiles:
+      - test-19
+      - php
+      - apache
+      - cwe-501
+      - cwe-287 
+      - A04:2021
+      - A07:2021
+      - all
+
+  test_20_v1:
+    image: test_20_v1:latest
+    build:
+      context: tests/test-20/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8201:80"
+    profiles:
+      - test-20
+      - php
+      - apache
+      - cwe-778
+      - cwe-799
+      - cwe-223
+      - cwe-307
+      - a09:2021
+      - a07:2021
+      - a04:2021
+      - all
+
+  test_21_v1:
+    image: test_21_v1:latest
+    build:
+      context: tests/test-21/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8211:80"
+    profiles:
+      - test-21
+      - php
+      - apache
+      - cwe-117
+      - A09:2021
+      - all
+
+  test_22_v1:
+    image: test_22_v1:latest
+    build:
+      context: tests/test-22/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8221:80"
+    profiles:
+      - test-22
+      - php
+      - apache
+      - cwe-613
+      - a07:2021
+      - all
+
+  test_23_v1:
+    image: test_23_v1:latest
+    build:
+      context: tests/test-23/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8231:80"
+    profiles:
+      - test-23
+      - php
+      - apache
+      - cwe-384 
+      - a07:2021  
+      - all
+
+  test_24_v1:
+    image: test_24_v1:latest
+    build:
+      context: tests/test-24/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8241:80"
+    profiles:
+      - test-24
+      - php
+      - apache
+      - cwe-359
+      - cwe-522
+      - cwe-532
+      - a01:2021
+      - a04:2021
+      - a09:2021
+      - all
+
+  test_25_v1:
+    image: test_25_v1:latest
+    build:
+      context: tests/test-25/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8251:80"
+    profiles:
+      - test-25
+      - php
+      - apache
+      - cwe-98
+      - cwe-706
+      - cwe-829
+      - cwe-426
+      - a01:2021
+      - a03:2021
+      - A08:2021
+      - all
+
+  test_26_v1:
+    image: test_26_v1:latest
+    build:
+      context: tests/test-26/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8261:80"
+    profiles:
+      - test-26
+      - php
+      - apache
+      - cwe-646
+      - cwe-345
+      - a04:2021
+      - a08:2021
+      - all
+
+  test_27_v1:
+    image: test_27_v1:latest
+    build:
+      context: tests/test-27/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8271:80"
+    profiles:
+      - test-27
+      - php 
+      - apache 
+      - cwe-353
+      - cwe-345
+      - a08:2021
+      - all
+
+  test_28_v1:
+    image: test_28_v1:latest
+    build:
+      context: tests/test-28/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8281:80"
+    profiles:
+      - test-28
+      - php
+      - apache
+      - cwe-494
+      - cwe-345
+      - a08:2021
+      - all
+
+  test_29_v1:
+    image: test_29_v1:latest
+    build:
+      context: tests/test-29/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8291:80"
+    profiles:
+      - test-29
+      - php
+      - apache
+      - cwe-830
+      - cwe-829
+      - a08:2021
+      - all
+
+  test_30_v1:
+    image: test_30_v1:latest
+    build:
+      context: tests/test-30/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8301:80"
+    profiles:
+      - test-30
+      - php
+      - apache
+      - cwe-915
+      - cwe-913
+      - a08:2021
+      - a01:2021
+      - all
+      
+  test_31_v1:
+    image: test_31_v1:latest
+    build:
+      context: tests/test-31/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8311:80"
+    profiles:
+      - test-31
+      - php
+      - apache
+      - cwe-940
+      - cwe-346
+      - cwe-352
+      - a07:2021
+      - a01:2021
+      - all
+
+  test_32_v1:
+    image: test_32_v1:latest
+    build:
+      context: tests/test-32/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8321:80"
+    profiles:
+      - test-32
+      - php
+      - apache
+      - cwe-640
+      - cwe-257
+      - cwe-256
+      - cwe-798
+      - cwe-307
+      - a07:2021
+      - a04:2021
+      - all
+
+  test_33_v1:
+    image: test_33_v1:latest
+    build:
+      context: tests/test-33/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8331:80"
+    profiles:
+      - test-33
+      - apache
+      - php
+      - cwe-620
+      - cwe-306
+      - cwe-352
+      - cwe-598 
+      - a07:2021
+      - a04:2021
+      - a01:2021
+      - all
+
+  test_34_v1:
+    image: test_34_v1:latest
+    build:
+      context: tests/test-34/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8341:80"
+    profiles:
+      - test-34
+      - apache
+      - php
+      - cwe-521
+      - a07:2021
+      - all
+
+  test_35_v1:
+    image: test_35_v1:latest
+    build:
+      context: tests/test-35/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8351:80"
+    profiles:
+      - test-35
+      - apache
+      - php
+      - cwe-302
+      - cwe-807
+      - cwe-287 
+      - cwe-784 
+      - cwe-565 
+      - a07:2021
+      - a04:2021
+      - a08:2021
+      - all
+
+  test_36_v1:
+    image: test_36_v1:latest
+    build:
+      context: tests/test-36/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8361:80"
+    profiles:
+      - test-36
+      - apache
+      - php
+      - cwe-297
+      - cwe-295
+      - a07:2021
+      - all
+
+  test_37_v1:
+    image: test_37_v1:latest
+    build:
+      context: tests/test-37/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8371:80"
+    profiles:
+      - test-37
+      - apache
+      - php
+      - cwe-294
+      - cwe-798 
+      - a07:2021
+      - all
+
+  test_38_v1:
+    image: test_38_v1:latest
+    build:
+      context: tests/test-38/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8381:80"
+    profiles:
+      - test-38
+      - apache
+      - php
+      - cwe-290
+      - cwe-287
+      - cwe-602
+      - a04:2021
+      - a07:2021
+      - all
+
+  test_39_v1:
+    image: test_39_v1:latest
+    build:
+      context: tests/test-39/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8391:443"
+    profiles:
+      - test-39
+      - apache
+      - php
+      - cwe-614
+      - a05:2021
+      - all
+
+  test_40_v1:
+    image: test_40_v1:latest
+    build:
+      context: tests/test-40/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8401:80"
+    profiles:
+      - test-40
+      - apache
+      - php
+      - cwe-776
+      - a01:2021
+      - cwe-610
+      - cwe-611
+      - a03:2021
+      - a05:2021
+      - all
+
+  test_41_v1:
+    image: test_41_v1:latest
+    build:
+      context: tests/test-41/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8411:80"
+    profiles:
+      - test-41
+      - apache
+      - php
+      - cwe-315
+      - a05:2021
+      - all
+
+  test_42_v1:
+    image: test_42_v1:latest
+    build:
+      context: tests/test-42/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8421:80"
+    profiles:
+      - test-42
+      - apache
+      - php
+      - cwe-526
+      - cwe-312
+      - a05:2021
+      - a04:2021
+      - all
+
+  test_44_v1:
+    image: test_44_v1:latest
+    build:
+      context: tests/test-44/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8441:80"
+    profiles:
+      - test-44
+      - apache
+      - php
+      - cwe-1104
+      - cwe-1035
+      - cwe-79
+      - a06:2021
+      - a03:2021      
+      - all
+
+  test_44_v2:
+    image: test_44_v2:latest
+    build:
+      context: tests/test-44/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8442:80"
+    profiles:
+      - test-44
+      - node
+      - express
+      - cwe-1104
+      - cwe-79
+      - a06:2021
+      - a03:2021
+      - all
+
+  test_45_v1:
+    image: test_45_v1:latest
+    build:
+      context: tests/test-45/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8451:80"
+    profiles:
+      - test-45
+      - php
+      - apache
+      - cwe-1275
+      - cwe-1004
+      - a01:2021
+      - a05:2021
+      - all
+
+  test_46_v1:
+    image: test_46_v1:latest
+    build:
+      context: tests/test-46/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8461:80"
+    profiles:
+      - test-46
+      - dotnet
+      - aspnet
+      - cwe-1174
+      - cwe-1173
+      - a05:2021
+      - a04:2021
+      - all
+
+  test_47_v1:
+    image: test_47_v1:latest
+    build:
+      context: tests/test-47/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8471:80"
+    profiles:
+      - test-47
+      - apache
+      - php
+      - cwe-840
+      - a04:2021
+      - all
+
+  test_48_v1:
+    image: test_48_v1:latest
+    build:
+      context: tests/test-48/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8481:80"
+    profiles:
+      - test-48
+      - apache
+      - php
+      - cwe-1021
+      - a04:2021
+      - cwe-451
+      - all
+
+  test_49_v1:
+    image: test_49_v1:latest
+    build:
+      context: tests/test-49/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8491:80"
+    profiles:
+      - test-49
+      - apache
+      - cwe-756
+      - a05:2021
+      - all
+
+  test_50_v1:
+    image: test_50_v1:latest
+    build:
+      context: tests/test-50/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8501:80"
+    profiles:
+      - test-50
+      - apache
+      - php
+      - cwe-942
+      - a05:2021
+      - all
+
+  test_51_v1:
+    image: test_51_v1:latest
+    build:
+      context: tests/test-51/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8511:80"
+    profiles:
+      - test-51
+      - apache
+      - php
+      - cwe-651
+      - a01:2021
+      - all
+
+  test_52_v1:
+    image: test_52_v1:latest
+    build:
+      context: tests/test-52/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8521:80"
+    profiles:
+      - test-52
+      - node
+      - cwe-523
+      - a02:2021
+      - all
+
+  test_53_v1:
+    image: test_53_v1:latest
+    build:
+      context: tests/test-53/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8531:80"
+    profiles:
+      - test-53
+      - apache
+      - php
+      - cwe-525
+      - a04:2021
+      - all
+
+  test_54_v1:
+    image: test_54_v1:latest
+    build:
+      context: tests/test-54/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8541:80"
+    profiles:
+      - test-54
+      - apache
+      - php
+      - cwe-601
+      - a01:2021
+      - all
+
+  test_55_v1:
+    image: test_55_v1:latest
+    build:
+      context: tests/test-55/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8551:80"
+    profiles:
+      - test-55
+      - apache
+      - php
+      - cwe-538
+      - a01:2021
+      - all
+
+  test_56_v1:
+    image: test_56_v1:latest
+    build:
+      context: ./tests/test-56/v1
+    ports:
+      - "8561:80"
+    profiles:
+      - test-56
+      - apache
+      - php
+      - cwe-284
+      - a01:2021
+      - all
+
+  test_57_v1:
+      image: test_57_v1:latest
+      build:
+        context: ./tests/test-57/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8571:80"
+      profiles:
+        - test-57
+        - apache
+        - php
+        - cwe-59
+        - a01:2021
+        - all
+
+  test_58_v1:
+      image: test_58_v1:latest
+      build:
+        context: ./tests/test-58/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8581:80"
+      profiles:
+        - test-58
+        - apache
+        - php
+        - cwe-539
+        - a04:2021
+        - all
+
+  test_59_v1:
+      image: test_59_v1:latest
+      build:
+        context: ./tests/test-59/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8591:80"
+      profiles:
+        - test-59
+        - apache
+        - php
+        - cwe-540
+        - cwe-541
+        - cwe-259
+        - a01:2021
+        - a05:2021
+        - a07:2021
+        - all
+
+  test_60_v1:
+      image: test_60_v1:latest
+      build:
+        context: ./tests/test-60/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8601:80"
+      profiles:
+        - test-60
+        - apache
+        - php
+        - cwe-201
+        - cwe-209
+        - a01:2021
+        - a04:2021
+        - all
+
+  test_61_v1:
+      image: test_61_v1:latest
+      build:
+        context: ./tests/test-61/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8611:80"
+      profiles:
+        - test-61
+        - apache
+        - php
+        - cwe-547
+        - cwe-321
+        - cwe-798
+        - cwe-329
+        - a02:2021
+        - a05:2021
+        - a07:2021
+        - all
+
+  test_62_v1:
+      image: test_62v1:latest
+      build:
+        context: ./tests/test-62/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8621:80"
+      profiles:
+        - test-62
+        - apache
+        - php
+        - cwe-497
+        - a01:2021
+        - all
+
+  test_63_v1:
+      image: test_63v1:latest
+      build:
+        context: ./tests/test-63/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8631:80"
+      profiles:
+        - test-63
+        - apache
+        - php
+        - cwe-548
+        - a01:2021
+        - all
+
+  test_64_v1:
+      image: test_64v1:latest
+      build:
+        context: ./tests/test-64/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8641:80"
+      profiles:
+        - test-64
+        - apache
+        - php
+        - cwe-88
+        - a03:2021
+        - all
+
+  test_65_v1:
+      image: test_65v1:latest
+      build:
+        context: ./tests/test-65/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8651:80"
+      profiles:
+        - test-65
+        - apache
+        - php
+        - cwe-87
+        - a03:2021
+        - all
+
+  test_66_v1:
+      image: test_66v1:latest
+      build:
+        context: ./tests/test-66/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8661:80"
+      profiles:
+        - test-66
+        - apache
+        - php
+        - cwe-94
+        - cwe-79
+        - cwe-96
+        - a03:2021
+        - all
+
+  test_67_v1:
+      image: test_67v1:latest
+      build:
+        context: ./tests/test-67/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8671:80"
+      profiles:
+        - test-67
+        - apache
+        - php
+        - cwe-95
+        - a03:2021
+        - all
+
+  test_68_v1:
+      image: test_68v1:latest
+      build:
+        context: ./tests/test-68/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8681:80"
+      profiles:
+        - test-68
+        - apache
+        - php
+        - cwe-97
+        - a03:2021
+        - all
+
+  test_69_v1:
+      image: test_69v1:latest
+      build:
+        context: ./tests/test-69/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8691:80"
+      profiles:
+        - test-69
+        - apache
+        - php
+        - cwe-89
+        - cwe-285
+        - cwe-922
+        - a03:2021
+        - a01:2021
+        - all
+
+  test_70_v1:
+      image: test_70v1:latest
+      build:
+        context: ./tests/test-70/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8701:8080"
+      profiles:
+        - test-70
+        - java
+        - hibernate
+        - cwe-564
+        - a03:2021
+        - all
+
+  test_71_v1:
+      image: test_71v1:latest
+      build:
+        context: ./tests/test-71/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8711:80"
+      profiles:
+        - test-71
+        - apache
+        - php
+        - cwe-91
+        - a03:2021
+        - all

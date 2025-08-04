@@ -1,0 +1,13 @@
+{
+  "name": "test-44-v2",
+  "version": "1.0.0",
+  "description": "Test 44 v2 - DOM XSS with AngularJS 1.2.32",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "angular": "1.2.32"
+  }
+} 

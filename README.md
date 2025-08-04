@@ -2,6 +2,96 @@
 
 A framework for understanding the capabilities of automated detection methods at identifying classes of application security vulnerabilities.
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Requirements](#requirements)
+- [Getting Started](#getting-started)
+  - [Running Tests](#running-tests)
+  - [Management Interface](#management-interface)
+  - [Recorded Tests Generator](#recorded-tests-generator)
+- [Project Structure](#project-structure)
+  - [Tests](#tests)
+  - [Data Management](#data-management)
+    - [data.json](#datajson)
+    - [Analysis Utilities](#analysis-utilities)
+  - [Docker Configuration](#docker-configuration)
+    - [docker-compose.yml](#docker-composeyml)
+    - [Dockerfile](#dockerfile)
+    - [Vulnerable Code](#vulnerable-code)
+- [Data Visualization](#data-visualization)
+  - [Setup](#setup)
+  - [Features](#features)
+  - [Linting](#linting)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Overview
+
+ASDF is designed to evaluate and compare the effectiveness of various security scanners in detecting common web application vulnerabilities. It provides a standardized set of vulnerable applications and a framework for testing security tools against them.
+
+## Requirements
+
+- [Bun](https://bun.sh) - JavaScript runtime and package manager
+- [Docker](https://www.docker.com) - Container platform
+- [Docker Compose](https://docs.docker.com/compose/) - Multi-container Docker application tool
+
+## Getting Started
+
+### Running Tests
+
+To test a new scanner or set of exploits, you'll use Pocman, which orchestrates the proof of concept applications in this repository.
+
+1. Install dependencies:
+   ```sh
+   bun install
+   ```
+
+2. Run Pocman:
+   ```sh
+   ./pocman.ts
+   ```
+
+3. Navigate through test batches:
+   - Pocman deploys proofs of concept in batches (default: 15 images) to avoid resource constraints
+   - Enter 'next' in the command prompt to navigate to the next batch
+   - The index of proof of concepts will be hosted on `localhost:3000`
+   - Point your scanner to this URL to crawl all available PoCs
+
+#### Management Interface
+
+Pocman now includes a web-based management interface that allows you to control the test batches through a browser:
+
+1. Access the management interface at `http://localhost:3001` while Pocman is running
+2. Use the control buttons to:
+   - Navigate to the next batch
+   - Return to the previous batch
+   - Stop the current batch
+   - Start the current batch
+   - Restart the current batch
+3. View the current batch status
+4. Generate recordedTests output for your scanner
+
+##### Recorded Tests Generator
+
+The management interface now includes a utility to help generate the `recordedTests` output for your scanner:
+
+1. Enter your scanner name (e.g., "zap_v2.16.0")
+2. Provide a description of your scanner's configuration in the scan profile field
+3. For each test in the current batch:
+   - Select which CWEs were detected by checking the boxes in the "Detected CWEs" column
+   - Select which CWEs were not detected by checking the boxes in the "Undetected CWEs" column
+   - A CWE can only be in one category at a time (detected or undetected)
+4. Click "Generate Recorded Tests" to create the JSON output
+5. Copy the output and add it to your `data.json` file
+
+This utility makes it easy to record your scanner's test results in the correct format for the ASDF framework.
+
+For more information, run:
+```sh
+bun install && ./pocman.ts --help
+```
+
 ## Project Structure
 
 ### Tests
@@ -10,47 +100,160 @@ The `tests` folder contains all of the definitions for each of the vulnerabiliti
 
 ```bash
 tests/
-├── test-id/                # The test ID of the vulnerability (increments)
-|   └── version             # The version of the specific test
-|       ├── Dockerfile      # The dockerfile
-|       └── index.lang      # The vulnerable code
-└── test-1
-|   └── v1
-|       ├── Dockerfile
-|       └── index.php
-Docker-Compose.yaml
+├── test-1/               # The test ID of the vulnerability (increments)
+│   └── v1/               # The version of the specific test
+│       ├── Dockerfile    # The dockerfile for building the test environment
+│       └── index.php     # The vulnerable code (can be any language)
+├── test-2/
+│   └── v1/
+│       ├── Dockerfile
+│       └── index.js
+└── test-3/
+    └── v1/
+        ├── Dockerfile
+        └── index.py
 ```
 
-### Dockerfile
+Each test folder follows the pattern `test-{id}` where `id` is a sequential number. Within each test folder, there can be multiple versions (v1, v2, etc.) of the same vulnerability test.
 
-The `Dockerfile` is responsible for deploying the vulnerable code. 
+### Data Management
 
-### index.lang
+#### data.json
 
-The `index` file is simply there as an example of where the vulnerable code should live. This can actually be multiple files if required. 
+This is the file that contains our test data and the OWASP top 10 CWEs. The file has two main sections:
 
-The vulnerable code should be brief, easily readable, and should avoid any unnecessary styling or other details that do not directly contribute to introducing the vulnerability or making it exploitable.
+1. `vulnerabilities`: An array of OWASP Top 10 2021 categories and their associated CWEs
+2. `recordedTests`: An object where each key is a scanner name and the value contains the scanner's profile and test results
 
-### Docker-Compose.yaml
+Example structure:
 
-The `Docker-Compose.yaml` file should be used to manage the deployment of groups of containers.
+```json
+{
+  "vulnerabilities": [
+    {
+      "OWASP": "A01:2021",
+      "CWEDetails": [
+        {
+          "id": 22,
+          "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+          "tests": ["test_1_v1", "test_1_v2"]
+        }
+      ],
+      "group": "Broken Access Control"
+    }
+  ],
+  "recordedTests": {
+    "scanner_name": {
+      "scanProfile": "Description of the scanner's capabilities and purpose",
+      "tests": [
+        {
+          "test": "test_1_v1",
+          "detectedCWEs": [22, 693],
+          "undetectedCWEs": [23],
+          "updatedAt": 1740999692
+        }
+      ]
+    }
+  }
+}
+```
 
-The container should port forward from a local port on the host. It should use an unreserved (above 1024) port, following the convention `8 {test ID} {version number}` (e.g. test 1 v1 would use port `8011`, test 2 v1 would use port `8021`).
+When adding new test results:
+
+1. The scanner name should include the version number (e.g., "zap_v2.16.0")
+2. The `scanProfile` should describe the scanner's configuration
+3. Each test result should include:
+   - `test`: The name of the docker container of the test
+   - `detectedCWEs`: Array of CWE IDs that were detected
+   - `undetectedCWEs`: Array of CWE IDs that were not detected
+   - `updatedAt`: Unix timestamp of when the test occurred
+
+> [!TIP]
+> You can use the Recorded Tests Generator in the management interface to easily create this output in the correct format.
+
+#### Analysis Utilities
+
+The framework includes utilities to help analyze the data.json file and identify gaps in test coverage:
+
+##### Find Missing Tests
+
+```bash
+bun run utils/findMissingTests.ts [options]
+```
+
+This utility analyzes scanner results to identify:
+- Missing tests that haven't been run by a scanner
+- Missing CWEs that should be detected but aren't
+- Incorrect CWE associations (CWEs that are reported but shouldn't be)
+
+Options:
+- `--file <path>`: Path to the data.json file (default: 'data.json')
+- `-v, --verbose`: Enable verbose output
+
+##### Find Uncovered CWEs
+
+```bash
+bun run utils/findUncoveredCwes.ts [options]
+```
+
+This utility identifies CWEs that lack test coverage in the framework:
+- CWEs with no associated tests
+- CWEs with limited coverage (only one test)
+
+Options:
+- `--file <path>`: Path to the data.json file (default: 'data.json')
+- `-v, --verbose`: Enable verbose output
+
+##### Check Profile Consistency
+
+```bash
+bun run utils/checkProfileConsistency.ts
+```
+
+This utility verifies that the profiles in docker-compose.yml match the CWEs and OWASP categories associated with tests in data.json. It performs case-insensitive matching and identifies:
+
+- Tests in docker-compose.yml that don't exist in data.json
+- CWEs in docker-compose.yml profiles that don't exist in data.json
+- OWASP categories in docker-compose.yml profiles that don't exist in data.json
+- Tests in data.json that don't exist in docker-compose.yml
+- CWEs in data.json that aren't referenced in docker-compose.yml profiles
+- OWASP categories in data.json that aren't referenced in docker-compose.yml profiles
+- Tests that are missing the "all" profile in docker-compose.yml
+
+The utility will exit with code 1 if any inconsistencies are found, making it suitable for CI/CD pipelines.
+
+> [!TIP]
+> Use these utilities regularly to identify gaps in test coverage and ensure your scanner results are accurate.
+
+### Docker Configuration
+
+#### docker-compose.yml
+
+The `docker-compose.yml` file manages the deployment of groups of containers.
+
+##### Port Configuration
+
+Each container should port forward from a local port on the host using an unreserved port (above 1024), following the convention `8 {test ID} {version number}`:
+- test 1 v1 would use port `8011`
+- test 2 v1 would use port `8021`
+
+##### Service Profiles
 
 The `profiles` should be defined for each service to include:
 
-- The language the vulnerability was written in
-- The webserver technology in use
-- CWE IDs associated with the vulnerability
-- The OWASP Top 10 2021 category code
+- The language the vulnerability was written in (e.g., php, js, python)
+- The webserver technology in use (e.g., apache, nginx)
+- CWE IDs associated with the vulnerability (e.g., cwe-23)
+- The OWASP Top 10 2021 category code (e.g., a01:2021)
+- The profile of "all" to ensure these are run by default
 
-An example entry can be seen below:
+Example entry:
 
 ```yaml
 services:
   test_1_v1:
     image: test_1_v1:latest
-    build: 
+    build:
       context: tests/test-1/v1/
       dockerfile: Dockerfile
     ports:
@@ -61,206 +264,125 @@ services:
       - apache
       - cwe-23
       - cwe-22
+      - all
 ```
 
-## Vulnerability Inventory
+#### Dockerfile
 
-| **OWASP Code** | **Group**                                  | **CWE** | **Title**                                                                                                              | Tests        |
-| -------------- | ------------------------------------------ | ------- | ---------------------------------------------------------------------------------------------------------------------- | ------------ |
-| A01:2021       | Broken Access Control                      | 22      | Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')                                         | [test-1-v1 (PHP)](tests/test-1/v1/) [test-9-v1 (PHP)](tests/test-9/v1/) |
-| A01:2021       | Broken Access Control                      | 23      | Relative Path Traversal                                                                                                | [test-1-v1 (PHP)](tests/test-1/v1/) |
-| A01:2021       | Broken Access Control                      | 35      | Path Traversal: '.../...//'                                                                                            | [test-9-v1 (PHP)](tests/test-9/v1/) |
-| A01:2021       | Broken Access Control                      | 59      | Improper Link Resolution Before File Access ('Link Following')                                                         |              |
-| A01:2021       | Broken Access Control                      | 200     | Exposure of Sensitive Information to an Unauthorized Actor                                                             | n/a          |
-| A01:2021       | Broken Access Control                      | 201     | Insertion of Sensitive Information Into Sent Data                                                                      |              |
-| A01:2021       | Broken Access Control                      | 219     | Storage of File with Sensitive Data Under Web Root                                                                     |   [test-11-v1 (PHP)](tests/test-11/v1/)           |
-| A01:2021       | Broken Access Control                      | 264     | Permissions, Privileges, and Access Controls                                                                           | n/a          |
-| A01:2021       | Broken Access Control                      | 275     | Permission Issues                                                                                                      | n/a          |
-| A01:2021       | Broken Access Control                      | 276     | Incorrect Default Permissions                                                                                          | [test-10-v1 (PHP)](tests/test-10/v1/) |
-| A01:2021       | Broken Access Control                      | 284     | Improper Access Control                                                                                                | n/a          |
-| A01:2021       | Broken Access Control                      | 285     | Improper Authorization                                                                                                 | n/a          |
-| A01:2021       | Broken Access Control                      | 352     | Cross-Site Request Forgery (CSRF)                                                                                      | [test-3-v1 (PHP)](tests/test-3/v1/) |
-| A01:2021       | Broken Access Control                      | 359     | Exposure of Private Personal Information to an Unauthorized Actor                                                      |              |
-| A01:2021       | Broken Access Control                      | 377     | Insecure Temporary File                                                                                                |    [test-12-v1 (PHP)](tests/test-12/v1/)            |
-| A01:2021       | Broken Access Control                      | 402     | Transmission of Private Resources into a New Sphere ('Resource Leak')                                                  |              |
-| A01:2021       | Broken Access Control                      | 425     | Direct Request ('Forced Browsing')                                                                                     |              |
-| A01:2021       | Broken Access Control                      | 441     | Unintended Proxy or Intermediary ('Confused Deputy')                                                                   |              |
-| A01:2021       | Broken Access Control                      | 497     | Exposure of Sensitive System Information to an Unauthorized Control Sphere                                             |              |
-| A01:2021       | Broken Access Control                      | 538     | Insertion of Sensitive Information into Externally-Accessible File or Directory                                        |              |
-| A01:2021       | Broken Access Control                      | 540     | Inclusion of Sensitive Information in Source Code                                                                      |              |
-| A01:2021       | Broken Access Control                      | 548     | Exposure of Information Through Directory Listing                                                                      |              |
-| A01:2021       | Broken Access Control                      | 552     | Files or Directories Accessible to External Parties                                                                    |    [test-11-v1 (PHP)](tests/test-11/v1/)            |
-| A01:2021       | Broken Access Control                      | 566     | Authorization Bypass Through User-Controlled SQL Primary Key                                                           |              |
-| A01:2021       | Broken Access Control                      | 601     | URL Redirection to Untrusted Site ('Open Redirect')                                                                    |              |
-| A01:2021       | Broken Access Control                      | 639     | Authorization Bypass Through User-Controlled Key                                                                       |              |
-| A01:2021       | Broken Access Control                      | 651     | Exposure of WSDL File Containing Sensitive Information                                                                 |              |
-| A01:2021       | Broken Access Control                      | 668     | Exposure of Resource to Wrong Sphere                                                                                   |              |
-| A01:2021       | Broken Access Control                      | 706     | Use of Incorrectly-Resolved Name or Reference                                                                          |              |
-| A01:2021       | Broken Access Control                      | 862     | Missing Authorization                                                                                                  |   [test-13-v1 (PHP)](tests/test-13/v1/)           |
-| A01:2021       | Broken Access Control                      | 863     | Incorrect Authorization                                                                                                |   [test-14-v1 (PHP)](tests/test-14/v1/)           |
-| A01:2021       | Broken Access Control                      | 913     | Improper Control of Dynamically-Managed Code Resources                                                                 |              |
-| A01:2021       | Broken Access Control                      | 922     | Insecure Storage of Sensitive Information                                                                              |              |
-| A01:2021       | Broken Access Control                      | 1275    | Sensitive Cookie with Improper SameSite Attribute                                                                      |              |
-| A02:2021       | Cryptographic Failures                     | 261     | Weak Encoding for Password                                                                                             |              |
-| A02:2021       | Cryptographic Failures                     | 296     | Improper Following of a Certificate's Chain of Trust                                                                   |              |
-| A02:2021       | Cryptographic Failures                     | 310     | Cryptographic Issues                                                                                                   | n/a          |
-| A02:2021       | Cryptographic Failures                     | 319     | Cleartext Transmission of Sensitive Information                                                                        |              |
-| A02:2021       | Cryptographic Failures                     | 321     | Use of Hard-coded Cryptographic Key                                                                                    |   [test-17-v1 (PHP)](tests/test-17/v1/)            |
-| A02:2021       | Cryptographic Failures                     | 322     | Key Exchange without Entity Authentication                                                                             |              |
-| A02:2021       | Cryptographic Failures                     | 323     | Reusing a Nonce, Key Pair in Encryption                                                                                |              |
-| A02:2021       | Cryptographic Failures                     | 324     | Use of a Key Past its Expiration Date                                                                                  |              |
-| A02:2021       | Cryptographic Failures                     | 325     | Missing Cryptographic Step                                                                                             |              |
-| A02:2021       | Cryptographic Failures                     | 326     | Inadequate Encryption Strength                                                                                         |              |
-| A02:2021       | Cryptographic Failures                     | 327     | Use of a Broken or Risky Cryptographic Algorithm                                                                       |     [test-15-v1 (PHP)](tests/test-15/v1/)   [test-17-v1 (PHP)](tests/test-17/v1/)      |
-| A02:2021       | Cryptographic Failures                     | 328     | Use of Weak Hash                                                                                                       |   [test-15-v1 (PHP)](tests/test-15/v1/)  [test-17-v1 (PHP)](tests/test-17/v1/)         |
-| A02:2021       | Cryptographic Failures                     | 329     | Generation of Predictable IV with CBC Mode                                                                             |              |
-| A02:2021       | Cryptographic Failures                     | 330     | Use of Insufficiently Random Values                                                                                    |              |
-| A02:2021       | Cryptographic Failures                     | 331     | Insufficient Entropy                                                                                                   |              |
-| A02:2021       | Cryptographic Failures                     | 335     | Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG)                                                      |              |
-| A02:2021       | Cryptographic Failures                     | 336     | Same Seed in Pseudo-Random Number Generator (PRNG)                                                                     |              |
-| A02:2021       | Cryptographic Failures                     | 337     | Predictable Seed in Pseudo-Random Number Generator (PRNG)                                                              |              |
-| A02:2021       | Cryptographic Failures                     | 338     | Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)                                                    |              |
-| A02:2021       | Cryptographic Failures                     | 340     | Generation of Predictable Numbers or Identifiers                                                                       |              |
-| A02:2021       | Cryptographic Failures                     | 347     | Improper Verification of Cryptographic Signature                                                                       |              |
-| A02:2021       | Cryptographic Failures                     | 523     | Unprotected Transport of Credentials                                                                                   |              |
-| A02:2021       | Cryptographic Failures                     | 720     | OWASP Top Ten 2007 Category A9 - Insecure Communications                                                               | n/a          |
-| A02:2021       | Cryptographic Failures                     | 757     | Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')                                          |              |
-| A02:2021       | Cryptographic Failures                     | 759     | Use of a One-Way Hash without a Salt                                                                                   |   [test-15-v1 (PHP)](tests/test-15/v1/)           |
-| A02:2021       | Cryptographic Failures                     | 760     | Use of a One-Way Hash with a Predictable Salt                                                                          | [test-17-v1 (PHP)](tests/test-17/v1/)             |
-| A02:2021       | Cryptographic Failures                     | 780     | Use of RSA Algorithm without OAEP                                                                                      |              |
-| A02:2021       | Cryptographic Failures                     | 818     | OWASP Top Ten 2010 Category A9 - Insufficient Transport Layer Protection                                               | n/a          |
-| A02:2021       | Cryptographic Failures                     | 916     | Use of Password Hash With Insufficient Computational Effort                                                            |     [test-15-v1 (PHP)](tests/test-15/v1/)  [test-17-v1 (PHP)](tests/test-17/v1/)          |           |
-| A03:2021       | Injection                                  | 20      | Improper Input Validation                                                                                              | n/a          |
-| A03:2021       | Injection                                  | 74      | Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')                     |              |
-| A03:2021       | Injection                                  | 75      | Failure to Sanitize Special Elements into a Different Plane (Special Element Injection)                                |              |
-| A03:2021       | Injection                                  | 77      | Improper Neutralization of Special Elements used in a Command ('Command Injection')                                    |              |
-| A03:2021       | Injection                                  | 78      | Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')                             | [test-2-v1 (PHP)](tests/test-2/v1/) [test-16-v1 (PHP)](tests/test-16/v1/)          |
-| A03:2021       | Injection                                  | 79      | Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')                                   | [test-4-v1 (PHP)](tests/test-4/v1/) [test-18-v1 (PHP)](tests/test-18/v1/) |
-| A03:2021       | Injection                                  | 80      | Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)                                          | [test-4-v1 (PHP)](tests/test-4/v1/) [test-18-v1 (PHP)](tests/test-18/v1/) |
-| A03:2021       | Injection                                  | 83      | Improper Neutralization of Script in Attributes in a Web Page                                                          | [test-5-v1 (PHP)](tests/test-5/v1/)          |
-| A03:2021       | Injection                                  | 87      | Improper Neutralization of Alternate XSS Syntax                                                                        |              |
-| A03:2021       | Injection                                  | 88      | Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')                                     |              |
-| A03:2021       | Injection                                  | 89      | Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')                                   |              |
-| A03:2021       | Injection                                  | 90      | Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')                                   |              |
-| A03:2021       | Injection                                  | 91      | XML Injection (aka Blind XPath Injection)                                                                              |              |
-| A03:2021       | Injection                                  | 93      | Improper Neutralization of CRLF Sequences ('CRLF Injection')                                                           |              |
-| A03:2021       | Injection                                  | 94      | Improper Control of Generation of Code ('Code Injection')                                                              |              |
-| A03:2021       | Injection                                  | 95      | Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')                                 |              |
-| A03:2021       | Injection                                  | 96      | Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')                               |              |
-| A03:2021       | Injection                                  | 97      | Improper Neutralization of Server-Side Includes (SSI) Within a Web Page                                                |              |
-| A03:2021       | Injection                                  | 98      | Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')                |              |
-| A03:2021       | Injection                                  | 99      | Improper Control of Resource Identifiers ('Resource Injection')                                                        |              |
-| A03:2021       | Injection                                  | 113     | Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')                          |              |
-| A03:2021       | Injection                                  | 116     | Improper Encoding or Escaping of Output                                                                                |  [test-18-v1 (PHP)](tests/test-18/v1/) [test-4-v1 (PHP)](tests/test-4/v1/) |
-| A03:2021       | Injection                                  | 138     | Improper Neutralization of Special Elements                                                                            |              |
-| A03:2021       | Injection                                  | 184     | Incomplete List of Disallowed Inputs                                                                                   |              |
-| A03:2021       | Injection                                  | 470     | Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')                                     |              |
-| A03:2021       | Injection                                  | 471     | Modification of Assumed-Immutable Data (MAID)                                                                          |              |
-| A03:2021       | Injection                                  | 564     | SQL Injection: Hibernate                                                                                               |              |
-| A03:2021       | Injection                                  | 610     | Externally Controlled Reference to a Resource in Another Sphere                                                        |              |
-| A03:2021       | Injection                                  | 643     | Improper Neutralization of Data within XPath Expressions ('XPath Injection')                                           |              |
-| A03:2021       | Injection                                  | 644     | Improper Neutralization of HTTP Headers for Scripting Syntax                                                           |  [test-18-v1 (PHP)](tests/test-18/v1/)              |
-| A03:2021       | Injection                                  | 652     | Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')                                         |              |
-| A03:2021       | Injection                                  | 917     | Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection') |              |
-| A04:2021       | Insecure Design                            | 73      | External Control of File Name or Path                                                                                  |              |
-| A04:2021       | Insecure Design                            | 183     | Permissive List of Allowed Inputs                                                                                      |              |
-| A04:2021       | Insecure Design                            | 209     | Generation of Error Message Containing Sensitive Information                                                           |              |
-| A04:2021       | Insecure Design                            | 213     | Exposure of Sensitive Information Due to Incompatible Policies                                                         |              |
-| A04:2021       | Insecure Design                            | 235     | Improper Handling of Extra Parameters                                                                                  |              |
-| A04:2021       | Insecure Design                            | 256     | Plaintext Storage of a Password                                                                                        |   [test-11-v1 (PHP)](tests/test-11/v1/)         |
-| A04:2021       | Insecure Design                            | 257     | Storing Passwords in a Recoverable Format                                                                              |              |
-| A04:2021       | Insecure Design                            | 266     | Incorrect Privilege Assignment                                                                                         |              |
-| A04:2021       | Insecure Design                            | 269     | Improper Privilege Management                                                                                          |              |
-| A04:2021       | Insecure Design                            | 280     | Improper Handling of Insufficient Permissions or Privileges                                                            |              |
-| A04:2021       | Insecure Design                            | 311     | Missing Encryption of Sensitive Data                                                                                   |              |
-| A04:2021       | Insecure Design                            | 312     | Cleartext Storage of Sensitive Information                                                                             |              |
-| A04:2021       | Insecure Design                            | 313     | Cleartext Storage in a File or on Disk                                                                                 |              |
-| A04:2021       | Insecure Design                            | 316     | Cleartext Storage of Sensitive Information in Memory                                                                   |              |
-| A04:2021       | Insecure Design                            | 419     | Unprotected Primary Channel                                                                                            |              |
-| A04:2021       | Insecure Design                            | 430     | Deployment of Wrong Handler                                                                                            |              |
-| A04:2021       | Insecure Design                            | 434     | Unrestricted Upload of File with Dangerous Type                                                                        | [test-6-v1 (PHP)](tests/test-6/v1/)          |
-| A04:2021       | Insecure Design                            | 444     | Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')                                       |              |
-| A04:2021       | Insecure Design                            | 451     | User Interface (UI) Misrepresentation of Critical Information                                                          |              |
-| A04:2021       | Insecure Design                            | 472     | External Control of Assumed-Immutable Web Parameter                                                                    |              |
-| A04:2021       | Insecure Design                            | 501     | Trust Boundary Violation                                                                                               |              |
-| A04:2021       | Insecure Design                            | 522     | Insufficiently Protected Credentials                                                                                   |              |
-| A04:2021       | Insecure Design                            | 525     | Use of Web Browser Cache Containing Sensitive Information                                                              |              |
-| A04:2021       | Insecure Design                            | 539     | Use of Persistent Cookies Containing Sensitive Information                                                             |              |
-| A04:2021       | Insecure Design                            | 579     | J2EE Bad Practices: Non-serializable Object Stored in Session                                                          |              |
-| A04:2021       | Insecure Design                            | 598     | Use of GET Request Method With Sensitive Query Strings                                                                 |              |
-| A04:2021       | Insecure Design                            | 602     | Client-Side Enforcement of Server-Side Security                                                                        |              |
-| A04:2021       | Insecure Design                            | 642     | External Control of Critical State Data                                                                                |              |
-| A04:2021       | Insecure Design                            | 646     | Reliance on File Name or Extension of Externally-Supplied File                                                         |              |
-| A04:2021       | Insecure Design                            | 650     | Trusting HTTP Permission Methods on the Server Side                                                                    |              |
-| A04:2021       | Insecure Design                            | 653     | Improper Isolation or Compartmentalization                                                                             |              |
-| A04:2021       | Insecure Design                            | 656     | Reliance on Security Through Obscurity                                                                                 |              |
-| A04:2021       | Insecure Design                            | 657     | Violation of Secure Design Principles                                                                                  | n/a          |
-| A04:2021       | Insecure Design                            | 799     | Improper Control of Interaction Frequency                                                                              |              |
-| A04:2021       | Insecure Design                            | 807     | Reliance on Untrusted Inputs in a Security Decision                                                                    |              |
-| A04:2021       | Insecure Design                            | 840     | Business Logic Errors                                                                                                  |              |
-| A04:2021       | Insecure Design                            | 841     | Improper Enforcement of Behavioral Workflow                                                                            |              |
-| A04:2021       | Insecure Design                            | 927     | Use of Implicit Intent for Sensitive Communication                                                                     |              |
-| A04:2021       | Insecure Design                            | 1021    | Improper Restriction of Rendered UI Layers or Frames                                                                   |              |
-| A04:2021       | Insecure Design                            | 1173    | Improper Use of Validation Framework                                                                                   |              |
-| A05:2021       | Security Misconfiguration                  | 2       | 7PK - Environment                                                                                                      |              |
-| A05:2021       | Security Misconfiguration                  | 11      | [ASP.NET](http://ASP.NET) Misconfiguration: Creating Debug Binary                                                      |              |
-| A05:2021       | Security Misconfiguration                  | 13      | [ASP.NET](http://ASP.NET) Misconfiguration: Password in Configuration File                                             |              |
-| A05:2021       | Security Misconfiguration                  | 15      | External Control of System or Configuration Setting                                                                    |              |
-| A05:2021       | Security Misconfiguration                  | 16      | Configuration                                                                                                          |              |
-| A05:2021       | Security Misconfiguration                  | 260     | Password in Configuration File                                                                                         | [test-11-v1 (PHP)](tests/test-11/v1/) |
-| A05:2021       | Security Misconfiguration                  | 315     | Cleartext Storage of Sensitive Information in a Cookie                                                                 |              |
-| A05:2021       | Security Misconfiguration                  | 520     | .NET Misconfiguration: Use of Impersonation                                                                            |              |
-| A05:2021       | Security Misconfiguration                  | 526     | Cleartext Storage of Sensitive Information in an Environment Variable                                                  |              |
-| A05:2021       | Security Misconfiguration                  | 537     | Java Runtime Error Message Containing Sensitive Information                                                            |              |
-| A05:2021       | Security Misconfiguration                  | 541     | Inclusion of Sensitive Information in an Include File                                                                  |              |
-| A05:2021       | Security Misconfiguration                  | 547     | Use of Hard-coded, Security-relevant Constants                                                                         |              |
-| A05:2021       | Security Misconfiguration                  | 611     | Improper Restriction of XML External Entity Reference                                                                  |              |
-| A05:2021       | Security Misconfiguration                  | 614     | Sensitive Cookie in HTTPS Session Without 'Secure' Attribute                                                           |              |
-| A05:2021       | Security Misconfiguration                  | 756     | Missing Custom Error Page                                                                                              |              |
-| A05:2021       | Security Misconfiguration                  | 776     | Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')                                   |              |
-| A05:2021       | Security Misconfiguration                  | 942     | Permissive Cross-domain Policy with Untrusted Domains                                                                  |              |
-| A05:2021       | Security Misconfiguration                  | 1004    | Sensitive Cookie Without 'HttpOnly' Flag                                                                               | [test-8-v1 (PHP)](tests/test-8/v1/) |
-| A05:2021       | Security Misconfiguration                  | 1032    | OWASP Top Ten 2017 Category A6 - Security Misconfiguration                                                             | n/a          |
-| A05:2021       | Security Misconfiguration                  | 1174    | [ASP.NET](http://ASP.NET) Misconfiguration: Improper Model Validation                                                  |              |
-| A06:2021       | Vulnerable and Outdated Components         | 937     | OWASP Top Ten 2013 Category A9 - Using Components with Known Vulnerabilities                                           | n/a          |
-| A06:2021       | Vulnerable and Outdated Components         | 1035    | OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities                                           | n/a          |
-| A06:2021       | Vulnerable and Outdated Components         | 1104    | Use of Unmaintained Third Party Components                                                                             |              |
-| A07:2021       | Identification and Authentication Failures | 255     | Credentials Management Errors                                                                                          |              |
-| A07:2021       | Identification and Authentication Failures | 259     | Use of Hard-coded Password                                                                                             | [test-15-v1 (PHP)](tests/test-15/v1/)  |
-| A07:2021       | Identification and Authentication Failures | 287     | Improper Authentication                                                                                                |              |
-| A07:2021       | Identification and Authentication Failures | 288     | Authentication Bypass Using an Alternate Path or Channel                                                               |              |
-| A07:2021       | Identification and Authentication Failures | 290     | Authentication Bypass by Spoofing                                                                                      |              |
-| A07:2021       | Identification and Authentication Failures | 294     | Authentication Bypass by Capture-replay                                                                                |              |
-| A07:2021       | Identification and Authentication Failures | 295     | Improper Certificate Validation                                                                                        |              |
-| A07:2021       | Identification and Authentication Failures | 297     | Improper Validation of Certificate with Host Mismatch                                                                  |              |
-| A07:2021       | Identification and Authentication Failures | 300     | Channel Accessible by Non-Endpoint                                                                                     |              |
-| A07:2021       | Identification and Authentication Failures | 302     | Authentication Bypass by Assumed-Immutable Data                                                                        |              |
-| A07:2021       | Identification and Authentication Failures | 304     | Missing Critical Step in Authentication                                                                                |              |
-| A07:2021       | Identification and Authentication Failures | 306     | Missing Authentication for Critical Function                                                                           |              |
-| A07:2021       | Identification and Authentication Failures | 307     | Improper Restriction of Excessive Authentication Attempts                                                              |              |
-| A07:2021       | Identification and Authentication Failures | 346     | Origin Validation Error                                                                                                |              |
-| A07:2021       | Identification and Authentication Failures | 384     | Session Fixation                                                                                                       |              |
-| A07:2021       | Identification and Authentication Failures | 521     | Weak Password Requirements                                                                                             |              |
-| A07:2021       | Identification and Authentication Failures | 613     | Insufficient Session Expiration                                                                                        |              |
-| A07:2021       | Identification and Authentication Failures | 620     | Unverified Password Change                                                                                             |              |
-| A07:2021       | Identification and Authentication Failures | 640     | Weak Password Recovery Mechanism for Forgotten Password                                                                | [test-15-v1 (PHP)](tests/test-15/v1/) |
-| A07:2021       | Identification and Authentication Failures | 798     | Use of Hard-coded Credentials                                                                                          |    [test-17-v1 (PHP)](tests/test-17/v1/)          |
-| A07:2021       | Identification and Authentication Failures | 640     | Weak Password Recovery Mechanism for Forgotten Password                                                                |              |
-| A07:2021       | Identification and Authentication Failures | 798     | Use of Hard-coded Credentials                                                                                          |    [test-17-v1 (PHP)](tests/test-17/v1/)           |
-| A07:2021       | Identification and Authentication Failures | 940     | Improper Verification of Source of a Communication Channel                                                             |              |
-| A07:2021       | Identification and Authentication Failures | 1216    | Lockout Mechanism Errors                                                                                               |              |
-| A08:2021       | Software and Data Integrity Failures       | 345     | Insufficient Verification of Data Authenticity                                                                         |              |
-| A08:2021       | Software and Data Integrity Failures       | 353     | Missing Support for Integrity Check                                                                                    |              |
-| A08:2021       | Software and Data Integrity Failures       | 426     | Untrusted Search Path                                                                                                  |              |
-| A08:2021       | Software and Data Integrity Failures       | 494     | Download of Code Without Integrity Check                                                                               |              |
-| A08:2021       | Software and Data Integrity Failures       | 502     | Deserialization of Untrusted Data                                                                                      | [test-7-v1 (PHP)](tests/test-7/v1/)          |
-| A08:2021       | Software and Data Integrity Failures       | 565     | Reliance on Cookies without Validation and Integrity Checking                                                          |              |
-| A08:2021       | Software and Data Integrity Failures       | 784     | Reliance on Cookies without Validation and Integrity Checking in a Security Decision                                   |              |
-| A08:2021       | Software and Data Integrity Failures       | 829     | Inclusion of Functionality from Untrusted Control Sphere                                                               |              |
-| A08:2021       | Software and Data Integrity Failures       | 830     | Inclusion of Web Functionality from an Untrusted Source                                                                |              |
-| A08:2021       | Software and Data Integrity Failures       | 915     | Improperly Controlled Modification of Dynamically-Determined Object Attributes                                         |              |
-| A09:2021       | Security Logging and Monitoring Failures   | 117     | Improper Output Neutralization for Logs                                                                                |            |
-| A09:2021       | Security Logging and Monitoring Failures   | 223     | Omission of Security-relevant Information                                                                              |              |
-| A09:2021       | Security Logging and Monitoring Failures   | 532     | Insertion of Sensitive Information into Log File                                                                       |              |
-| A09:2021       | Security Logging and Monitoring Failures   | 778     | Insufficient Logging                                                                                                   |              |
-| A10:2021       | Server-Side Request Forgergy (SSRF)        | 918     | Server-Side Request Forgery (SSRF)                                                                                     | [test-16-v1 (PHP)](tests/test-16/v1/) |
+The `Dockerfile` is responsible for deploying the vulnerable code. It should:
+
+1. Set up the appropriate runtime environment
+2. Install necessary dependencies
+3. Copy the vulnerable code into the container
+4. Configure the web server to serve the application
+
+#### Vulnerable Code
+
+The vulnerable code (typically named `index.php`, `index.js`, etc.) should:
+
+- Be brief and easily readable
+- Focus solely on demonstrating the vulnerability
+- Avoid unnecessary styling or details that don't contribute to the vulnerability
+- Be properly commented to explain the vulnerability
+
+## Data Visualization
+
+The `visualizer` directory contains ASDFviz, a Vue-based visualization tool for analyzing the test results.
+
+### Setup
+
+1. Navigate to the visualizer directory:
+   ```sh
+   cd visualizer
+   ```
+
+2. Install dependencies:
+```sh
+bun install -D
+```
+
+3. Start the development server:
+```sh
+bun dev
+```
+
+4. Access the visualization at `http://localhost:5173`
+
+### Features
+
+- Coverage gap analysis
+- Detection rate comparison
+- OWASP category analysis
+- CWE-specific analysis
+- Export functionality for test results
+
+### Linting
+
+To lint the code with ESLint:
+```sh
+bun lint
+```
+
+## Contributing
+
+Contributions are welcome! There are two main ways to contribute to ASDF:
+
+### Adding a New Test
+
+You can identify CWEs that we don't currently have tests for by running `bun run utils/findUncoveredCwes.ts`
+
+To add a test into the collection:
+
+1. Create a new test directory in `tests/` following the naming convention `test-{id}/v1/`
+2. Create a `Dockerfile` that:
+   - Sets up the appropriate runtime environment
+   - Installs necessary dependencies
+   - Copies the vulnerable code
+   - Configures the web server
+3. Create the vulnerable code file (e.g., `index.php`, `index.js`) that:
+   - Demonstrates a specific vulnerability
+   - Is brief and easily readable
+   - Includes clear comments explaining the vulnerability
+4. Update `docker-compose.yml` to include your test with appropriate:
+   - Port mapping (following the `8{test_id}{version}` convention)
+   - Service profiles (language, webserver, CWE IDs, OWASP category)
+5. Add your test to `data.json` under the appropriate OWASP category and CWE
+6. Validate your changes using the analysis utilities:
+   ```sh   
+   # Ensure profile consistency across data.json and docker-compose.yml
+   bun run utils/checkProfileConsistency.ts
+   ```
+
+### Adding Scan Results
+
+1. Run your security scanner against the test suite using Pocman
+2. Use the Recorded Tests Generator in the management interface (`http://localhost:3001`) to:
+   - Enter your scanner name and version
+   - Provide a detailed scan profile
+   - Record which CWEs were detected/undetected for each test
+3. Add the generated JSON to `data.json` under the `recordedTests` section
+4. Ensure your scanner name includes the version number (e.g., "zap_v2.16.0")
+5. Include a detailed `scanProfile` that describes your scanner's configuration
+6. Validate your scan results:
+   ```sh
+   # Check for missing tests in your scan results
+   bun run utils/findMissingTests.ts
+   ```
+
+> [!IMPORTANT]
+> Always run the validation utilities before submitting your contribution. They help ensure:
+> - All tests are properly documented in data.json
+> - CWEs are correctly associated with tests
+> - Docker profiles match the documented vulnerabilities
+> - No tests or CWEs are missing from your scan results
+
+For both types of contributions:
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-contribution`)
+3. Commit your changes (`git commit -m 'Add test/scan results for [description]'`)
+4. Push to the branch (`git push origin feature/your-contribution`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

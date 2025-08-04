@@ -1,0 +1,51 @@
+{
+  "name": "visualizer",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build",
+    "lint": "eslint . --fix",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "@vicons/antd": "^0.13.0",
+    "apexcharts": "^4.5.0",
+    "autoprefixer": "^10.4.20",
+    "chart.js": "^4.4.8",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "pinia": "^3.0.1",
+    "vue": "^3.5.13",
+    "vue-chartjs": "^5.3.2",
+    "vue-router": "^4.5.0",
+    "vue3-apexcharts": "^1.8.0",
+    "yaml": "^2.7.0"
+  },
+  "devDependencies": {
+    "@modyfi/vite-plugin-yaml": "^1.1.0",
+    "@types/chart.js": "^2.9.41",
+    "@types/lodash": "^4.17.15",
+    "@types/lodash-es": "^4.17.12",
+    "@types/node": "^22.13.4",
+    "@vitejs/plugin-legacy": "^5.3.2",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/eslint-config-typescript": "^14.4.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.24.1",
+    "jiti": "^2.4.2",
+    "naive-ui": "^2.31.0",
+    "prettier": "^3.5.1",
+    "typescript": "~5.0.0",
+    "unplugin-auto-import": "^0.17.3",
+    "unplugin-vue-components": "^0.26.0",
+    "vite": "^5.2.8",
+    "vue-tsc": "^2.2.2"
+  },
+  "module": "index.ts"
+}
