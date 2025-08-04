@@ -491,7 +491,9 @@
                 {
                     "id": 91,
                     "title": "XML Injection (aka Blind XPath Injection)",
-                    "tests": []
+                    "tests": [
+                        "test_71_v1"
+                    ]
                 },
                 {
                     "id": 93,
