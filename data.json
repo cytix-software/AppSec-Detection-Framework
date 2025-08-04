@@ -443,6 +443,7 @@
                     "id": 79,
                     "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
                     "tests": [
+                        "test_18_v1",
                         "test_44_v1",
                         "test_44_v2",
                         "test_66_v1"
@@ -452,7 +453,8 @@
                     "id": 80,
                     "title": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)",
                     "tests": [
-                        "test_4_v1"
+                        "test_4_v1",
+                        "test_18_v1"
                     ]
                 },
                 {
@@ -548,7 +550,9 @@
                 {
                     "id": 116,
                     "title": "Improper Encoding or Escaping of Output",
-                    "tests": []
+                    "tests": [
+                        "test_18_v1"
+                    ]
                 },
                 {
                     "id": 138,
@@ -592,7 +596,9 @@
                 {
                     "id": 644,
                     "title": "Improper Neutralization of HTTP Headers for Scripting Syntax",
-                    "tests": []
+                    "tests": [
+                        "test_18_v1"
+                    ]
                 },
                 {
                     "id": 652,

@@ -1,0 +1,41 @@
+<!--CWE-644: Improper Neutralization of HTTP Headers for Scripting Syntax
+CWE-116: Improper Encoding or Escaping of Output (parent class)
+This script demonstrates HTTP header injection that can be exploited by JavaScript.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CWE-644: Improper Neutralization of HTTP Headers for Scripting Syntax</title>
+    <script>
+    // javascript code to read the unsanitised, user inputted HTTP header
+    function readHeader() {
+        const val = document.getElementById('val').value;
+        fetch('header.php?val=' + encodeURIComponent(val))
+            .then(response => {
+                // Can read custom headers
+                const customHeader = response.headers.get('X-Custom-Header');
+                console.log(customHeader); // Malicious content processed
+                
+                // Displays the header value on the page
+                const resultDiv = document.getElementById('headerResult');
+                if (customHeader) {
+                    resultDiv.innerHTML = '<p><b>Header Value:</b> ' + customHeader + '</p>';
+                } else {
+                    resultDiv.innerHTML = '<p>No X-Custom-Header found.</p>';
+                }
+            });
+    }
+    </script>
+</head>
+<body>
+    <h1>CWE-644: Improper Neutralization of HTTP Headers for Scripting Syntax</h1>
+    <h2>Enter a Value for HTTP Header</h2>
+    <input type="text" id="val" placeholder="Enter header value" style="width: 300px;">
+    <button onclick="readHeader()">Read Custom Header</button>
+    
+    <h3>JavaScript Header Reader</h3>
+    <div id="headerResult" style="border: 1px solid #ccc; padding: 10px; margin: 10px 0; background: #f0f0f0;"></div>
+</body>
+</html>
