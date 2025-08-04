@@ -571,7 +571,9 @@
                 {
                     "id": 564,
                     "title": "SQL Injection: Hibernate",
-                    "tests": []
+                    "tests": [
+                        "test_70_v1"
+                    ]
                 },
                 {
                     "id": 610,
