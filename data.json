@@ -500,7 +500,9 @@
                 {
                     "id": 93,
                     "title": "Improper Neutralization of CRLF Sequences ('CRLF Injection')",
-                    "tests": []
+                    "tests": [
+                        "test_18_v1"
+                    ]
                 },
                 {
                     "id": 94,
@@ -540,7 +542,9 @@
                 {
                     "id": 99,
                     "title": "Improper Control of Resource Identifiers ('Resource Injection')",
-                    "tests": []
+                    "tests": [
+                        "test_72"
+                    ]
                 },
                 {
                     "id": 113,
@@ -591,7 +595,9 @@
                 {
                     "id": 643,
                     "title": "Improper Neutralization of Data within XPath Expressions ('XPath Injection')",
-                    "tests": []
+                    "tests": [
+                        "test_71_v1"
+                    ]
                 },
                 {
                     "id": 644,
@@ -603,7 +609,9 @@
                 {
                     "id": 652,
                     "title": "Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')",
-                    "tests": []
+                    "tests": [
+                        "test_71_v1"
+                    ]
                 },
                 {
                     "id": 917,
