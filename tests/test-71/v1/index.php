@@ -14,7 +14,7 @@
     </form>
     
     <?php
-    // CWE-91: XML Injection
+    // CWE-91: XML Injection & CWE-643: XPath Injection & CWE-652 XQuery Injection
     // VULNERABLE: User input directly in XML without sanitization
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['username'])) {

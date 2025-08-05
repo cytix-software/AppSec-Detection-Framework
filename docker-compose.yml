@@ -304,10 +304,10 @@ services:
       - apache
       - cwe-79
       - cwe-80
+      - cwe-93
       - cwe-116
       - cwe-644
       - A03:2021
-      - A09:2021 
       - all
 
   test_19_v1:
@@ -1178,5 +1178,22 @@ services:
         - apache
         - php
         - cwe-91
+        - cwe-643
+        - cwe-652
+        - a03:2021
+        - all
+
+  test_72_v1:
+      image: test_72v1:latest
+      build:
+        context: ./tests/test-72/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8721:80"
+      profiles:
+        - test-72
+        - apache
+        - php
+        - cwe-99
         - a03:2021
         - all
