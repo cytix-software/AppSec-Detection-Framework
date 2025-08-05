@@ -1,6 +1,8 @@
 <?php
 // CWE-88: Argument Injection or Modification
-// This script demonstrates argument injection by passing user input as an argument to a system command and not delimiting the arguments.
+// also CWE-138: Improper Neutralization of Special Elements 
+// This script demonstrates both CWE's by passing user input as an argument to a system command and not delimiting the arguments
+// A payload such as '< /etc/passwd' will be executed as 'ls -l < /etc/passwd', exposing sensitive information
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $filename = $_POST['filename'] ?? '';
