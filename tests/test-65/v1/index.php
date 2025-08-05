@@ -1,6 +1,7 @@
 <?php
 // CWE-87: Improper Neutralization of Alternate XSS Syntax
-// This script demonstrates a filter that only blocks 'script' but allows variants
+// CWE-184: Incomplete List of Disallowed Inputs
+// This script demonstrates a filter that only blocks 'script' but allows variants, an incomplete list of disallowed inputs.
 
 function preventXSS($input, $mask) {
     // VULNERABLE: Only blocks lowercase 'script', allowing variants such as 'SCRIPT' or 'Script'

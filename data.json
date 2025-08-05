@@ -543,7 +543,7 @@
                     "id": 99,
                     "title": "Improper Control of Resource Identifiers ('Resource Injection')",
                     "tests": [
-                        "test_72"
+                        "test_72_v1"
                     ]
                 },
                 {
@@ -561,17 +561,23 @@
                 {
                     "id": 138,
                     "title": "Improper Neutralization of Special Elements",
-                    "tests": []
+                    "tests": [
+                        "test_64_v1"
+                    ]
                 },
                 {
                     "id": 184,
                     "title": "Incomplete List of Disallowed Inputs",
-                    "tests": []
+                    "tests": [
+                        "test_65_v1"
+                    ]
                 },
                 {
                     "id": 470,
                     "title": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')",
-                    "tests": []
+                    "tests": [
+                        "test_73_v1"
+                    ]
                 },
                 {
                     "id": 471,
