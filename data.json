@@ -582,7 +582,9 @@
                 {
                     "id": 471,
                     "title": "Modification of Assumed-Immutable Data (MAID)",
-                    "tests": []
+                    "tests": [
+                        "test_74_v1"
+                    ]
                 },
                 {
                     "id": 564,

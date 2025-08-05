@@ -1214,3 +1214,18 @@ services:
         - cwe-470
         - a03:2021
         - all
+
+  test_74_v1:
+      image: test_74v1:latest
+      build:
+        context: ./tests/test-74/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8741:80"
+      profiles:
+        - test-74
+        - apache
+        - php
+        - cwe-471
+        - a03:2021
+        - all
