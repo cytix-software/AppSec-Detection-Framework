@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  ldap:
+    image: osixia/openldap:1.5.0
+    container_name: test-76-openldap
+    environment:
+      LDAP_ORGANISATION: "Example Org"
+      LDAP_DOMAIN: "example.org"
+      LDAP_ADMIN_PASSWORD: "admin"
+      LDAP_LOG_LEVEL: "256"
+    ports:
+      - "389:389"
+    volumes:
+      - ./ldap-seed.ldif:/tmp/ldap-seed.ldif
+
+  python:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    container_name: test-76-python
+    depends_on:
+      - ldap
+    ports:
+      - "8080:8080"
+    environment:
+      LDAP_HOST: ldap

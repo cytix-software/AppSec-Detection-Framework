@@ -1,0 +1,12 @@
+# Use an official Python runtime as a parent image
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY app.py /app/app.py
+
+RUN pip install flask ldap3
+
+EXPOSE 8080
+
+CMD ["python", "app.py"]

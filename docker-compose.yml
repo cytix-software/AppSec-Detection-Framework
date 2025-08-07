@@ -305,6 +305,7 @@ services:
       - cwe-79
       - cwe-80
       - cwe-93
+      - cwe-113
       - cwe-116
       - cwe-644
       - A03:2021

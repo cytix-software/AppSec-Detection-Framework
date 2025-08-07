@@ -549,7 +549,9 @@
                 {
                     "id": 113,
                     "title": "Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')",
-                    "tests": []
+                    "tests": [
+                        "test_18_v1"
+                    ]
                 },
                 {
                     "id": 116,
