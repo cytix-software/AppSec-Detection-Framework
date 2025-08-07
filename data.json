@@ -624,7 +624,9 @@
                 {
                     "id": 917,
                     "title": "Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')",
-                    "tests": []
+                    "tests": [
+                        "test_75_v1"
+                    ]
                 }
             ],
             "group": "Injection"

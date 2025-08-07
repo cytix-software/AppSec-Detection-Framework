@@ -1229,3 +1229,18 @@ services:
         - cwe-471
         - a03:2021
         - all
+
+  test_75_v1:
+      image: test_75v1:latest
+      build:
+        context: ./tests/test-75/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8751:80"
+      profiles:
+        - test-75
+        - apache
+        - php
+        - cwe-917
+        - a03:2021
+        - all
