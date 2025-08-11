@@ -253,7 +253,9 @@
                 {
                     "id": 296,
                     "title": "Improper Following of a Certificate's Chain of Trust",
-                    "tests": []
+                    "tests": [
+                        "test_80_v1"
+                    ]
                 },
                 {
                     "id": 310,
