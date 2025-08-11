@@ -1275,3 +1275,18 @@ services:
         - cwe-402
         - a01:2021
         - all
+
+  test_79_v1:
+      image: test_79v1:latest
+      build:
+        context: ./tests/test-79/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8791:80"
+      profiles:
+        - test-79
+        - apache
+        - php
+        - cwe-261
+        - a02:2021
+        - all
