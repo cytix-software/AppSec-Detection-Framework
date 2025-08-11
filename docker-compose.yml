@@ -1291,17 +1291,17 @@ services:
         - a02:2021
         - all
 
-test_80_v1:
-    image: test_80_v1:latest
-    build:
-      context: tests/test-80/v1/
-      dockerfile: Dockerfile
-    ports:
-      - "80801:80"
-    profiles:
-      - test-80
-      - php
-      - apache
-      - cwe-296
-      - a02:2021
-      - all
+  test_80_v1:
+      image: test_80v1:latest
+      build:
+        context: ./tests/test-80/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8801:80"
+      profiles:
+        - test-80
+        - apache
+        - php
+        - cwe-296
+        - a02:2021
+        - all
