@@ -160,7 +160,9 @@
                 {
                     "id": 566,
                     "title": "Authorization Bypass Through User-Controlled SQL Primary Key",
-                    "tests": []
+                    "tests": [
+                        "test_77_v1"
+                    ]
                 },
                 {
                     "id": 601,
@@ -172,7 +174,9 @@
                 {
                     "id": 639,
                     "title": "Authorization Bypass Through User-Controlled Key",
-                    "tests": []
+                    "tests": [
+                        "test_77_v1"
+                    ]
                 },
                 {
                     "id": 651,
