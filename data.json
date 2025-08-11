@@ -240,7 +240,9 @@
                 {
                     "id": 261,
                     "title": "Weak Encoding for Password",
-                    "tests": []
+                    "tests": [
+                        "test_79_v1"
+                    ]
                 },
                 {
                     "id": 296,
