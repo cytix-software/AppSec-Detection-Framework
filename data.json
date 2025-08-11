@@ -280,7 +280,9 @@
                 {
                     "id": 322,
                     "title": "Key Exchange without Entity Authentication",
-                    "tests": []
+                    "tests": [
+                        "test_81_v1"
+                    ]
                 },
                 {
                     "id": 323,

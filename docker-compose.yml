@@ -1309,3 +1309,18 @@ services:
         - cwe-296
         - a02:2021
         - all
+
+  test_81_v1:
+      image: test_81v1:latest
+      build:
+        context: ./tests/test-81/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8811:80"
+      profiles:
+        - test-81
+        - apache
+        - php
+        - cwe-322
+        - a02:2021
+        - all
