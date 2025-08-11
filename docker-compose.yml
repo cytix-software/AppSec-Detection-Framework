@@ -1260,3 +1260,18 @@ services:
         - cwe-639
         - a01:2021
         - all
+
+  test_78_v1:
+      image: test_78v1:latest
+      build:
+        context: ./tests/test-78/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8781:80"
+      profiles:
+        - test-78
+        - apache
+        - php
+        - cwe-402
+        - a01:2021
+        - all

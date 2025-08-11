@@ -108,7 +108,9 @@
                 {
                     "id": 402,
                     "title": "Transmission of Private Resources into a New Sphere ('Resource Leak')",
-                    "tests": []
+                    "tests": [
+                        "test_78_v1"
+                    ]
                 },
                 {
                     "id": 425,
