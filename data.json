@@ -287,7 +287,9 @@
                 {
                     "id": 323,
                     "title": "Reusing a Nonce, Key Pair in Encryption",
-                    "tests": []
+                    "tests": [
+                        "test_82_v1"
+                    ]
                 },
                 {
                     "id": 324,

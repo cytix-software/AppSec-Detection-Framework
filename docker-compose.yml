@@ -1324,3 +1324,18 @@ services:
         - cwe-322
         - a02:2021
         - all
+
+  test_82_v1:
+      image: test_82v1:latest
+      build:
+        context: ./tests/test-82/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8821:80"
+      profiles:
+        - test-82
+        - apache
+        - php
+        - cwe-322
+        - a02:2021
+        - all
