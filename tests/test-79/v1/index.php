@@ -1,4 +1,8 @@
 <?php
+// CWE-261: Weak Encoding for Password
+// CWE-319: Cleartext Transmission of Sensitive Information & its parent CWE-311
+// This example stores a password insecurely, base64 encoded within a config file and then sends a password in cleartext over HTTP 
+
 // Simulate config file with base64-encoded password
 $ini = "password = \"" . base64_encode('password123') . "\"\n";
 file_put_contents(__DIR__ . '/config.properties', $ini);

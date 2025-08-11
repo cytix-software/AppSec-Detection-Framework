@@ -1,4 +1,5 @@
 <?php
+// CWE-311 & CWE-312
 // Simulating an insecure practice: storing a sensitive key in an environment variable
 putenv("SECRET_KEY=mySuperSecretAPIKey");
 
