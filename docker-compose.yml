@@ -1245,6 +1245,37 @@ services:
         - a03:2021
         - all
 
+  test_77_v1:
+      image: test_77v1:latest
+      build:
+        context: ./tests/test-77/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8771:80"
+      profiles:
+        - test-77
+        - apache
+        - php
+        - cwe-566
+        - cwe-639
+        - a01:2021
+        - all
+
+  test_78_v1:
+      image: test_78v1:latest
+      build:
+        context: ./tests/test-78/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8781:80"
+      profiles:
+        - test-78
+        - apache
+        - php
+        - cwe-402
+        - a01:2021
+        - all
+
   test_79_v1:
       image: test_79v1:latest
       build:
