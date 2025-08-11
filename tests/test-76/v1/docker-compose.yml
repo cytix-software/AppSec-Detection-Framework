@@ -1,7 +1,9 @@
 version: '3.8'
 services:
   ldap:
-    image: osixia/openldap:1.5.0
+    build:
+      context: .
+      dockerfile: Dockerfile.ldap
     container_name: test-76-openldap
     environment:
       LDAP_ORGANISATION: "Example Org"
@@ -10,8 +12,6 @@ services:
       LDAP_LOG_LEVEL: "256"
     ports:
       - "389:389"
-    volumes:
-      - ./ldap-seed.ldif:/tmp/ldap-seed.ldif
 
   python:
     build:

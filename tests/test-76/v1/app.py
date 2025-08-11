@@ -49,7 +49,8 @@ def index():
         server = Server(ldap_host, port=ldap_port, get_info=ALL)
         debug_info.append(f"Server info: {server}")
         
-        conn = Connection(server)
+        # Authenticate as admin to perform searches
+        conn = Connection(server, user='cn=admin,dc=example,dc=org', password='admin')
         debug_info.append(f"Connection created: {conn}")
         
         if conn.bind():

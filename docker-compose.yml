@@ -1245,3 +1245,18 @@ services:
         - cwe-917
         - a03:2021
         - all
+
+  test_76_v1:
+      image: test_76v1:latest
+      build:
+        context: ./tests/test-76/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8761:80"
+      profiles:
+        - test-76
+        - apache
+        - php
+        - cwe-90
+        - a03:2021
+        - all

@@ -488,7 +488,9 @@
                 {
                     "id": 90,
                     "title": "Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')",
-                    "tests": []
+                    "tests": [
+                        "test_76_v1"
+                    ]
                 },
                 {
                     "id": 91,
