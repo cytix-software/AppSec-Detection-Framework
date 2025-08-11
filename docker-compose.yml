@@ -1336,6 +1336,21 @@ services:
         - test-82
         - apache
         - php
-        - cwe-322
+        - cwe-323
+        - a02:2021
+        - all
+
+  test_83_v1:
+      image: test_83v1:latest
+      build:
+        context: ./tests/test-83/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8831:80"
+      profiles:
+        - test-83
+        - apache
+        - php
+        - cwe-324
         - a02:2021
         - all
