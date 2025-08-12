@@ -1384,3 +1384,18 @@ services:
         - cwe-326
         - a02:2021
         - all
+
+  test_86_v1:
+      image: test_86v1:latest
+      build:
+        context: ./tests/test-86/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8861:80"
+      profiles:
+        - test-86
+        - apache
+        - php
+        - cwe-338
+        - a02:2021
+        - all

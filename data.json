@@ -363,7 +363,9 @@
                 {
                     "id": 338,
                     "title": "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)",
-                    "tests": []
+                    "tests": [
+                        "test_86_v1"
+                    ]
                 },
                 {
                     "id": 340,
