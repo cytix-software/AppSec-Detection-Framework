@@ -343,7 +343,9 @@
                 {
                     "id": 331,
                     "title": "Insufficient Entropy",
-                    "tests": []
+                    "tests": [
+                        "test_87_v1"
+                    ]
                 },
                 {
                     "id": 335,
