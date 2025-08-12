@@ -11,3 +11,36 @@ uid: admin
 sn: Admin
 cn: Admin User
 userPassword: adminpass
+
+dn: uid=john,ou=users,dc=example,dc=org
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+uid: john
+sn: Doe
+cn: John Doe
+mail: john@example.org
+userPassword: password123
+
+dn: uid=jane,ou=users,dc=example,dc=org
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+uid: jane
+sn: Smith
+cn: Jane Smith
+mail: jane@example.org
+userPassword: secret456
+
+dn: uid=guest,ou=users,dc=example,dc=org
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+uid: guest
+sn: Guest
+cn: Guest User
+mail: guest@example.org
+userPassword: guest123
