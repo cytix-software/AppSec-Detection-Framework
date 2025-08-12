@@ -350,17 +350,24 @@
                 {
                     "id": 335,
                     "title": "Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG)",
-                    "tests": []
+                    "tests": [
+                        "test_87_v1",
+                        "test_88_v1"
+                    ]
                 },
                 {
                     "id": 336,
                     "title": "Same Seed in Pseudo-Random Number Generator (PRNG)",
-                    "tests": []
+                    "tests": [
+                        "test_87_v1"
+                    ]
                 },
                 {
                     "id": 337,
                     "title": "Predictable Seed in Pseudo-Random Number Generator (PRNG)",
-                    "tests": []
+                    "tests": [
+                        "test_88_v1"
+                    ]
                 },
                 {
                     "id": 338,
