@@ -1369,3 +1369,18 @@ services:
         - cwe-325
         - a02:2021
         - all
+
+  test_85_v1:
+      image: test_85v1:latest
+      build:
+        context: ./tests/test-85/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8851:80"
+      profiles:
+        - test-85
+        - apache
+        - php
+        - cwe-326
+        - a02:2021
+        - all

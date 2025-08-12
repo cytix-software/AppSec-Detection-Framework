@@ -308,7 +308,9 @@
                 {
                     "id": 326,
                     "title": "Inadequate Encryption Strength",
-                    "tests": []
+                    "tests": [
+                        "test_85_v1"
+                    ]
                 },
                 {
                     "id": 327,
