@@ -1412,5 +1412,23 @@ services:
         - apache
         - php
         - cwe-331
+        - cwe-335
+        - cwe-336
+        - a02:2021
+        - all
+
+  test_88_v1:
+      image: test_88v1:latest
+      build:
+        context: ./tests/test-88/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8881:80"
+      profiles:
+        - test-88
+        - apache
+        - php
+        - cwe-335
+        - cwe-337
         - a02:2021
         - all
