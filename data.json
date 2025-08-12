@@ -301,7 +301,9 @@
                 {
                     "id": 325,
                     "title": "Missing Cryptographic Step",
-                    "tests": []
+                    "tests": [
+                        "test_84_v1"
+                    ]
                 },
                 {
                     "id": 326,
