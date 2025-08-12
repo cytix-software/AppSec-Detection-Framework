@@ -1354,3 +1354,18 @@ services:
         - cwe-324
         - a02:2021
         - all
+
+  test_84_v1:
+      image: test_84v1:latest
+      build:
+        context: ./tests/test-84/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8841:80"
+      profiles:
+        - test-84
+        - apache
+        - php
+        - cwe-325
+        - a02:2021
+        - all
