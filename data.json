@@ -379,7 +379,9 @@
                 {
                     "id": 340,
                     "title": "Generation of Predictable Numbers or Identifiers",
-                    "tests": []
+                    "tests": [
+                        "test_89_v1"
+                    ]
                 },
                 {
                     "id": 347,
