@@ -405,7 +405,9 @@
                 {
                     "id": 757,
                     "title": "Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')",
-                    "tests": []
+                    "tests": [
+                        "test_91_v1"
+                    ]
                 },
                 {
                     "id": 759,
