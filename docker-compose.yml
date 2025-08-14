@@ -1462,3 +1462,18 @@ services:
         - cwe-347
         - a02:2021
         - all
+
+  test_91_v1:
+      image: test_91v1:latest
+      build:
+        context: ./tests/test-91/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8911:80"
+      profiles:
+        - test-91
+        - apache
+        - php
+        - cwe-757
+        - a02:2021
+        - all
