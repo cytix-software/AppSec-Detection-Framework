@@ -426,7 +426,9 @@
                 {
                     "id": 780,
                     "title": "Use of RSA Algorithm without OAEP",
-                    "tests": []
+                    "tests": [
+                        "test_92_v1"
+                    ]
                 },
                 {
                     "id": 818,
