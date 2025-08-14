@@ -1477,3 +1477,18 @@ services:
         - cwe-757
         - a02:2021
         - all
+
+  test_92_v1:
+      image: test_92v1:latest
+      build:
+        context: ./tests/test-92/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8921:80"
+      profiles:
+        - test-92
+        - apache
+        - php
+        - cwe-780
+        - a02:2021
+        - all
