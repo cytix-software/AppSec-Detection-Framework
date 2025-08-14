@@ -386,7 +386,9 @@
                 {
                     "id": 347,
                     "title": "Improper Verification of Cryptographic Signature",
-                    "tests": []
+                    "tests": [
+                        "test_90_v1"
+                    ]
                 },
                 {
                     "id": 523,
