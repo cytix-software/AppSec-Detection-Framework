@@ -115,7 +115,9 @@
                 {
                     "id": 425,
                     "title": "Direct Request ('Forced Browsing')",
-                    "tests": []
+                    "tests": [
+                        "test_93_v1"
+                    ]
                 },
                 {
                     "id": 441,
