@@ -682,12 +682,16 @@
                 {
                     "id": 73,
                     "title": "External Control of File Name or Path",
-                    "tests": []
+                    "tests": [
+                        "test_72_v1"
+                    ]
                 },
                 {
                     "id": 183,
                     "title": "Permissive List of Allowed Inputs",
-                    "tests": []
+                    "tests": [
+                        "test_95_v1"
+                    ]
                 },
                 {
                     "id": 209,
