@@ -1492,3 +1492,18 @@ services:
         - cwe-780
         - a02:2021
         - all
+
+  test_93_v1:
+      image: test_93v1:latest
+      build:
+        context: ./tests/test-93/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8931:80"
+      profiles:
+        - test-93
+        - apache
+        - php
+        - cwe-425
+        - a01:2021
+        - all
