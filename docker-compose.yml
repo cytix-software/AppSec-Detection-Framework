@@ -1507,3 +1507,18 @@ services:
         - cwe-425
         - a01:2021
         - all
+
+  test_94_v1:
+      image: test_94v1:latest
+      build:
+        context: ./tests/test-94/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8941:80"
+      profiles:
+        - test-94
+        - apache
+        - php
+        - cwe-441
+        - a01:2021
+        - all
