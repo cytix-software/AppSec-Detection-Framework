@@ -784,7 +784,9 @@
                 {
                     "id": 430,
                     "title": "Deployment of Wrong Handler",
-                    "tests": []
+                    "tests": [
+                        "test_99_v1"
+                    ]
                 },
                 {
                     "id": 434,

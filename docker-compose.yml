@@ -1587,3 +1587,18 @@ services:
         - cwe-316
         - a04:2021
         - all
+
+  test_99_v1:
+      image: test_99v1:latest
+      build:
+        context: ./tests/test-99/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8991:80"
+      profiles:
+        - test-99
+        - apache
+        - php
+        - cwe-430
+        - a04:2021
+        - all
