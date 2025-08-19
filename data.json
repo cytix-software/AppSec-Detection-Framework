@@ -728,12 +728,16 @@
                 {
                     "id": 266,
                     "title": "Incorrect Privilege Assignment",
-                    "tests": []
+                    "tests": [
+                        "test_96_v1"
+                    ]
                 },
                 {
                     "id": 269,
                     "title": "Improper Privilege Management",
-                    "tests": []
+                    "tests": [
+                        "test_96_v1"
+                    ]
                 },
                 {
                     "id": 280,
