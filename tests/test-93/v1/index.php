@@ -1,7 +1,4 @@
 <?php
-// CWE-425 Direct Request ('Forced Browsing')
-// VULNERABLE: Access to a secret page is controlled by a authorisation check in index.php, which can be bypassed by directly accessing the secret.txt file.
-
 $username = '';
 $password = '';
 $message = '';
@@ -21,10 +18,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CWE-425: Direct Request ('Forced Browsing')</title>
+    <title>Test 93</title>
 </head>
 <body>
-    <h1>CWE-425: Direct Request ('Forced Browsing')</h1>
+    <h1>Test 93</h1>
     <h2>Enter Admin Credentials to access '/secret.txt'.</h2>
     <form action="" method="post">
         <label for="username">Username:</label><br>

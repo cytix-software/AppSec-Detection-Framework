@@ -1,7 +1,4 @@
 <?php
-// CWE-780: Use of RSA Algorithm without OAEP
-// VULNERABLE: This example uses RSA encryption without OAEP padding, which is insecure.
-
 $name = $_POST['name'] ?? '';
 $message = $_POST['message'] ?? '';
 $publicKeyString = '-----BEGIN PUBLIC KEY-----
@@ -15,8 +12,9 @@ LQIDAQAB
 -----END PUBLIC KEY-----';
 
 $publicKey = openssl_pkey_get_public($publicKeyString);
+
+// is message submitted, encrypt it
 if (isset($_POST['message']) && !empty($message)) {
-    // VULNERABLE: RSA encryption performed without OAEP padding (default is PKCS#1 v1.5)
     $encryptedMessage = '';
     if (!openssl_public_encrypt($message, $encryptedMessage, $publicKey)) {
         echo "<p style='color:red'>Error encrypting message: " . openssl_error_string() . "</p>";
@@ -25,15 +23,14 @@ if (isset($_POST['message']) && !empty($message)) {
 } else {
     $encryptedMessage = '';
 }
-
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CWE-780: Use of RSA Algorithm without OAEP</title>
+    <title>Test 92</title>
 </head>
 <body>
-    <h1>CWE-780: Use of RSA Algorithm without OAEP</h1>
+    <h1>Test 92</h1>
     <form action="" method="post">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name"><br>
@@ -43,8 +40,8 @@ if (isset($_POST['message']) && !empty($message)) {
     </form>
     <?php if ($encryptedMessage): ?>
         <div style="margin: 10px 0; padding: 10px; background-color: #f0f0f0; border: 1px solid #ccc;">
-            <p style="color: green;">Message encrypted successfully (RSA without OAEP)!</p>
+            <p style="color: green;">Message encrypted successfully!</p>
         </div>
     <?php endif; ?>
 </body>
-</html> 
+</html>

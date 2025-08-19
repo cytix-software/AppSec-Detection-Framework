@@ -6,8 +6,8 @@ $message3 = '';
 $users = ['user1', 'user2', 'user3']; // Example user list
 $user = null;
 
+// This function creates a user with the given username and password and gives them admin privileges
 function createUser() {
-    // This function creates a user with the given username and password and gives them admin privileges
     $user = [
         'username' => 'user',
         'password' => 'password',

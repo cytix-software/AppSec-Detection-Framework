@@ -1,6 +1,6 @@
 <?php
-// Allows any input containing 'ls', 'ping', 'cat', or 'whoami' to be executed
 
+// Allows any input containing 'ls', 'ping', 'cat', or 'whoami' to be executed
 $allowed_commans = ['ls', 'ping', 'cat', 'whoami'];
 $message = '';
 
