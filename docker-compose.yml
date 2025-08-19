@@ -1555,3 +1555,18 @@ services:
         - cwe-269
         - a04:2021
         - all
+
+  test_97_v1:
+      image: test_97v1:latest
+      build:
+        context: ./tests/test-97/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8971:80"
+      profiles:
+        - test-97 
+        - apache
+        - php
+        - cwe-280
+        - a04:2021
+        - all

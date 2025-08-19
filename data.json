@@ -742,7 +742,9 @@
                 {
                     "id": 280,
                     "title": "Improper Handling of Insufficient Permissions or Privileges",
-                    "tests": []
+                    "tests": [
+                        "test_97_v1"
+                    ]
                 },
                 {
                     "id": 311,
