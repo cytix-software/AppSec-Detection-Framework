@@ -1570,3 +1570,20 @@ services:
         - cwe-280
         - a04:2021
         - all
+
+  test_98_v1:
+      image: test_98v1:latest
+      build:
+        context: ./tests/test-98/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8981:80"
+      profiles:
+        - test-98
+        - apache
+        - php
+        - cwe-312
+        - cwe-313
+        - cwe-316
+        - a04:2021
+        - all
