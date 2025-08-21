@@ -880,7 +880,9 @@
                 {
                     "id": 650,
                     "title": "Trusting HTTP Permission Methods on the Server Side",
-                    "tests": []
+                    "tests": [
+                        "test_101_v1"
+                    ]
                 },
                 {
                     "id": 653,
