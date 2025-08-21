@@ -14,5 +14,8 @@ $smtp_password = $config['smtp_password'] ?? '';
 </head>
 <body>
     <h1>Test-98</h1>
+    <p>Database Password: <?= htmlspecialchars($db_password) ?></p>
+    <p>API Key: <?= htmlspecialchars($api_key) ?></p>
+    <p>SMTP Password: <?= htmlspecialchars($smtp_password) ?></p>
 </body>
 </html> 

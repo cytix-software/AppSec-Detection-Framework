@@ -779,7 +779,9 @@
                 {
                     "id": 419,
                     "title": "Unprotected Primary Channel",
-                    "tests": []
+                    "tests": [
+                        "test_98_v1"
+                    ]
                 },
                 {
                     "id": 430,
@@ -810,7 +812,9 @@
                 {
                     "id": 472,
                     "title": "External Control of Assumed-Immutable Web Parameter",
-                    "tests": []
+                    "tests": [
+                        "test_74_v1"
+                    ]
                 },
                 {
                     "id": 501,
@@ -862,7 +866,9 @@
                 {
                     "id": 642,
                     "title": "External Control of Critical State Data",
-                    "tests": []
+                    "tests": [
+                        "test_100_v1"
+                    ]
                 },
                 {
                     "id": 646,

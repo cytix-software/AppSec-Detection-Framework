@@ -1,4 +1,6 @@
 <?php
+
+// allows users to upload files
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['userfile'])) {
     $uploadDir = __DIR__ . '/uploads/';
     if (!is_dir($uploadDir)) {
