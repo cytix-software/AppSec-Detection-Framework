@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Vulnerable JavaScript Loading</title>
-    <!-- CWE-494: Loading External Code Without Integrity Check -->
+    <title>Test 28</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-    <h1>jQuery Library Test</h1>
+    <h1>Test 28</h1>
     <div id="output"></div>
     <button id="testButton">Test jQuery</button>
     <script>

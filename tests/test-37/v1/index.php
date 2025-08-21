@@ -2,12 +2,11 @@
 session_start();
 
 // Simulated user authentication 
-$validToken = "123456"; // Hardcoded token 
+$validToken = "123456";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $token = $_POST["auth_token"] ?? "";
 
-    // Vulnerability: Accepts the token without verifying uniqueness or expiration
     if ($token === $validToken) {
         $_SESSION["authenticated"] = true;
         echo "Authentication successful! You are logged in.";

@@ -1,9 +1,9 @@
 <?php
-session_start(); // cwe-384 vulnerable to session fixation.
+session_start();
 
 // Handle login submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $_SESSION["user"] = $_POST["username"]; // Does not regenerate session ID
+    $_SESSION["user"] = $_POST["username"];
     echo "<p>Logged in as: " . htmlspecialchars($_SESSION["user"]) . "</p>";
 }
 ?>
@@ -11,9 +11,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Vulnerable Login - Session Fixation</title>
+    <title>Test 23</title>
 </head>
 <body>
+    <h1>Test 23</h1>
     <h2>Login</h2>
     <form method="POST" action="">
         <label>Username: <input type="text" name="username"></label><br>

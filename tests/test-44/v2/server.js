@@ -6,10 +6,9 @@ const port = 80;
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API endpoint that returns user input (vulnerable to XSS)
+// API endpoint that returns user input 
 app.get('/api/search', (req, res) => {
   const query = req.query.q || '';
-  // Intentionally not sanitizing the input to demonstrate the vulnerability
   res.json({ results: query });
 });
 

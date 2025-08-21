@@ -14,14 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['user'], $_GET['pass'], $
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Change</title>
+    <title>Test 33</title>
 </head>
 <body>
-    <h1>Change Password Form</h1>
+    <h1>Test 33</h1>
     <form action="index.php" method="GET">
         <label for="user">Username:</label>
         <input type="text" id="user" name="user" required><br><br>
