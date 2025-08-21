@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Vulnerable PHP XML Application</title>
+    <title>Test 71</title>
 </head>
 <body>
-    <h1>Vulnerable PHP XML Application</h1>
+    <h1>Test 71</h1>
     
     <h2>Search Users</h2>
     <form method="post">
@@ -14,9 +14,6 @@
     </form>
     
     <?php
-    // CWE-91: XML Injection & CWE-643: XPath Injection & CWE-652 XQuery Injection
-    // VULNERABLE: User input directly in XML without sanitization
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['username'])) {
         $username = $_POST['username'];
         
@@ -50,15 +47,15 @@
             </user>
         </users>';
         
-        // VULNERABLE: User input directly in XPath query
+        // concatenate username into XPath query
         $xpath_query = "//user[username='" . $username . "']";
         
-        // Also vulnerable: Direct XML insertion
+        // insert username into XML data
         if (strpos($username, '<user>') !== false) {
-            // VULNERABLE: Direct XML insertion
             $xml_data = str_replace('</users>', $username . '</users>', $xml_data);
         }
         
+        // search the XML data using XPath query
         $results = searchXmlData($xml_data, $xpath_query);
         
         // print the results
@@ -78,10 +75,6 @@
         } else {
             echo '<p>No users found.</p>';
         }
-        
-        // Show current XML structure
-        // echo '<h3>Current XML Structure:</h3>';
-        // echo '<pre>' . htmlspecialchars($xml_data) . '</pre>';
     }
     
     // function to search the XML data
@@ -114,4 +107,4 @@
     }
     ?>
 </body>
-</html> 
+</html>

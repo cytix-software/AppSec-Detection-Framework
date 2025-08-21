@@ -1,6 +1,5 @@
 <?php
-// CWE-402: Transmission of Private Resources into a New Sphere ('Resource Leak')
-// This app generates a sensitive report and leaves it accessible after download
+// This app generates reports
 
 $user = isset($_GET['user']) ? preg_replace('/[^a-zA-Z0-9]/', '', $_GET['user']) : 'guest';
 $reportDir = __DIR__ . '/reports';
@@ -23,7 +22,6 @@ if (isset($_GET['download'])) {
         header('Content-Type: text/plain');
         header('Content-Disposition: attachment; filename="report.txt"');
         readfile($reportFile);
-        // Resource leak: file is NOT deleted after download
         exit;
     } else {
         echo "No report found.";
@@ -33,14 +31,17 @@ if (isset($_GET['download'])) {
 
 // Main page
 ?>
+<!DOCTYPE html>
 <html>
-<head><title>CWE-402 Demo</title></head>
+<head>
+    <title>Test 78</title>
+</head>
 <body>
-<h2>CWE-402: Resource Leak Demo</h2>
+<h2>Test 78</h2>
 <form method="get">
     <input type="hidden" name="user" value="<?= htmlspecialchars($user) ?>">
     <button type="submit" name="generate" value="1">Generate Report</button>
 </form>
-<p>After generating, the report file remains accessible to anyone who knows the path.</p>
+<p>After generating the report, it remains accessible.</p>
 </body>
 </html>

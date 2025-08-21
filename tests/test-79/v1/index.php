@@ -1,7 +1,5 @@
 <?php
-// CWE-261: Weak Encoding for Password
-// CWE-319: Cleartext Transmission of Sensitive Information & its parent CWE-311
-// This example stores a password insecurely, base64 encoded within a config file and then sends a password in cleartext over HTTP 
+// This example stores a password, base64 encoded within a config file
 
 // Simulate config file with base64-encoded password
 $ini = "password = \"" . base64_encode('password123') . "\"\n";
@@ -23,13 +21,21 @@ function db_connect($user, $pass) {
 $config = parse_ini_file(__DIR__ . '/config.properties');
 $encoded_password = isset($config['password']) ? $config['password'] : '';
 
-// Decode the password. This is easily reversible.
+// Decode the password
 $decoded_password = base64_decode($encoded_password);
 
 echo "Encoded password from config: " . htmlspecialchars($encoded_password) . "<br>";
 echo "Decoded password: " . htmlspecialchars($decoded_password) . "<br><hr>";
 
-// 3. Use the decoded password to "connect" to the database.
+// Use the decoded password to "connect" to the database.
 db_connect('admin', $decoded_password);
 
-?>
+?><!DOCTYPE html>
+<html>
+<head>
+    <title>Test 79</title>
+</head>
+<body>
+    <h1>Test 79</h1>
+</body>
+</html>

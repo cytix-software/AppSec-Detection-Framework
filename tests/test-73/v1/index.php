@@ -1,7 +1,5 @@
 <?php
-// CWE-470: Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')
-// This script demonstrates allowing user input to control which class is instantiated, without restricting access to sensitive classes.
-
+// allows user input to control which class is called
 class PublicInfo {
     public function getInfo() {
         return "This is public information.";
@@ -21,9 +19,9 @@ class SystemInfo {
 }
 
 $message = '';
+// call getInfo method of the class specified by user input
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $class = $_POST['class'] ?? '';
-    // VULNERABLE: No restriction on which class can be instantiated
     if (class_exists($class)) {
         $obj = new $class();
         $message = $obj->getInfo();
@@ -35,10 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CWE-470: Unsafe Reflection</title>
+    <title>Test 73</title>
 </head>
 <body>
-    <h1>CWE-470: Unsafe Reflection</h1>
+    <h1>Test 73</h1>
     <form method="post">
         <label for="class">Select class to get info (There are 3 classes, PublicInfo, SecretData, and SystemInfo):</label><br>
         <input type="text" id="class" name="class" placeholder="PublicInfo, SecretData, or SystemInfo">
@@ -50,4 +48,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     <?php endif; ?>
 </body>
-</html> 
+</html>

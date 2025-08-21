@@ -1,25 +1,23 @@
 <?php
-//CWE-639: Authorization Bypass Through User-Controlled Key &
-//CWE-566: Authorization Bypass Through User-Controlled SQL Primary Key
+// CWE-566 & CWE-639: Authorization Bypass Through User-Controlled Key
+// Usage: http://localhost:8080/invoice.php?id=1
 
+$host = 'localhost';
+$db   = 'testdb';
+$user = 'testuser';
+$pass = 'testpass';
+$charset = 'utf8mb4';
 
-$pdo = new PDO('sqlite:' . __DIR__ . '/invoices.db');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+];
 
-// Create table and seed data if not exists
-$pdo->exec('CREATE TABLE IF NOT EXISTS invoices (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER NOT NULL,
-    amount REAL NOT NULL,
-    description TEXT NOT NULL
-)');
-if ($pdo->query('SELECT COUNT(*) FROM invoices')->fetchColumn() == 0) {
-    $pdo->exec("INSERT INTO invoices (user_id, amount, description) VALUES
-        (1, 100.00, 'Web design services'),
-        (2, 250.00, 'Consulting'),
-        (1, 75.50, 'Hosting'),
-        (3, 500.00, 'Software license')");
+try {
+    $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
 }
 
 $invoice_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -33,11 +31,10 @@ $invoice = $stmt->fetch();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CWE-566 & 639: Authorization Bypass Through User-Controlled Key</title>
+    <title>CWE-566/639 Demo</title>
 </head>
 <body>
-    <h1>CWE-566 & 639: Authorization Bypass Through User-Controlled Key</h1>
-    <h2>Select an invoice from numbers 1 to 4</h2>
+    <h1>Invoice Lookup</h1>
     <form method="get">
         <label for="id">Invoice ID:</label>
         <input type="number" name="id" id="id" value="<?php echo htmlspecialchars($invoice_id); ?>">
