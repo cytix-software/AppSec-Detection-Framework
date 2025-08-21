@@ -1,7 +1,5 @@
 <?php
-// CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')
-// This script demonstrates code injection via eval() on direct user input.
-// and CWE-96: Static Code Injection
+// This application evaluates user input.
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input = $_POST['code'] ?? '';
@@ -13,14 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CWE-94: Code Injection (eval)</title>
+    <title>Code Injection (eval)</title>
 </head>
 <body>
-    <h1>CWE-94: Code Injection (eval)</h1>
+    <h1>Code Injection (eval)</h1>
     <form method="post">
         <label>Enter PHP code to evaluate (e.g., system('id');):</label><br>
         <input type="text" name="code" style="width:400px" required><br>
         <button type="submit">Run Code</button>
     </form>
 </body>
-</html> 
+</html>

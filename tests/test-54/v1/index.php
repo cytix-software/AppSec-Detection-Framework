@@ -1,7 +1,4 @@
 <?php
-// Vulnerable to CWE-601: URL Redirection to Untrusted Site
-// This application redirects users to any URL without validation
-
 // Get the redirect URL from the query parameter
 $redirect_url = isset($_GET['url']) ? $_GET['url'] : '';
 
@@ -11,10 +8,10 @@ if (empty($redirect_url)) {
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Open Redirect Test</title>
+        <title>Test 54</title>
     </head>
     <body>
-        <h1>Open Redirect Vulnerability Test</h1>
+        <h1>Test 54</h1>
         <p>Enter any URL to redirect to:</p>
         <form action="index.php" method="GET">
             <input type="text" name="url" placeholder="Enter URL to redirect to" required><br><br>
@@ -27,7 +24,7 @@ if (empty($redirect_url)) {
     exit;
 }
 
-// Vulnerable code: Directly redirects to any URL without validation
+// Directly redirects to any URL
 header("Location: " . $redirect_url);
 exit;
-?> 
+?>

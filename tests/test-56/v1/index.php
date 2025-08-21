@@ -1,7 +1,4 @@
 <?php
-// CWE-284: Improper Access Control
-// This application demonstrates improper access control by not checking user roles
-
 session_start();
 
 // Simulate user authentication
@@ -11,9 +8,8 @@ if (!isset($_SESSION['user'])) {
     ];
 }
 
-// Vulnerable function: No proper access control check
+// returns admin data 
 function getAdminData() {
-    // Missing proper role check
     return [
         'admin_users' => [
             ['username' => 'admin1', 'email' => 'admin1@example.com'],
@@ -37,15 +33,15 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_admin_data') {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CWE-284</title>
+    <title>Test 56</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 40px; }
-        .vulnerable { color: red; }
+        .important { color: red; }
     </style>
 </head>
 <body>
-    <h1>CWE-284: Improper Access Control</h1>
-    <p>Current role: <span class="vulnerable"><?php echo htmlspecialchars($_SESSION['user']['role']); ?></span></p>
+    <h1>Test 56</h1>
+    <p>Current role: <span class="important"><?php echo htmlspecialchars($_SESSION['user']['role']); ?></span></p>
     <button onclick="fetchAdminData()" disabled>Get Admin Data</button>
     <div id="result" style="margin-top: 20px;"></div>
 

@@ -1,6 +1,4 @@
 <?php
-// Vulnerable to CWE-651: Exposure of WSDL File Containing Sensitive Information
-// This application exposes a WSDL file that contains sensitive information about the service
 
 // Set content type to XML
 header('Content-Type: application/xml');
@@ -15,7 +13,7 @@ $wsdl = <<<XML
     xmlns:tns="http://example.com/UserService"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-    <!-- Sensitive information exposed in WSDL -->
+    <!-- Sensitive information -->
     <types>
         <xsd:schema targetNamespace="http://example.com/UserService">
             <xsd:element name="UserCredentials">
@@ -47,7 +45,7 @@ $wsdl = <<<XML
         </xsd:schema>
     </types>
 
-    <!-- Service definition exposing internal endpoints -->
+    <!-- Service definition -->
     <message name="GetUserRequest">
         <part name="parameters" element="tns:UserCredentials"/>
     </message>
@@ -58,7 +56,7 @@ $wsdl = <<<XML
         </operation>
     </portType>
 
-    <!-- Binding information exposing internal implementation details -->
+    <!-- Binding information -->
     <binding name="UserServiceBinding" type="tns:UserServicePortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="getUser">
@@ -69,7 +67,7 @@ $wsdl = <<<XML
         </operation>
     </binding>
 
-    <!-- Service endpoint exposing internal server details -->
+    <!-- Service endpoint -->
     <service name="UserService">
         <port name="UserServicePort" binding="tns:UserServiceBinding">
             <soap:address location="http://internal-server.company.com:8080/UserService"/>

@@ -1,7 +1,7 @@
 {
-  "name": "cwe-523-test",
+  "name": "test-52",
   "version": "1.0.0",
-  "description": "Test for CWE-523: Unprotected Transport of Credentials",
+  "description": "Test 52",
   "main": "server.js",
   "dependencies": {
     "express": "^4.18.2"
