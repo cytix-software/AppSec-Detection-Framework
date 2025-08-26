@@ -1,10 +1,9 @@
 <?php
-// Insecure temporary file creation
-$temp_filename = tempnam("/tmp", "vulnerable_");
+$temp_filename = tempnam("/tmp", "test12");
 
 if ($temp_filename) {
     echo "Temporary file created at: " . $temp_filename . "<br /><br />";
-    chmod($temp_filename, 0644); // Insecure Permissions.
+    chmod($temp_filename, 0644);
 
     // Write Data to file.
     $file = fopen($temp_filename, 'wb');

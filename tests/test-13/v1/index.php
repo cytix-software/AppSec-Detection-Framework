@@ -7,7 +7,6 @@ $employees = [
 
 // Function to fetch employee data
 function runEmployeeQuery($employees, $name){
-    // Vulnerability: No authorization check before returning data
     if (isset($employees[$name])) {
         return $employees[$name];
     }
