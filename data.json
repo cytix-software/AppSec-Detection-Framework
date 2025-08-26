@@ -847,7 +847,9 @@
                 {
                     "id": 579,
                     "title": "J2EE Bad Practices: Non-serializable Object Stored in Session",
-                    "tests": []
+                    "tests": [
+                        "test_104_v1"
+                    ]
                 },
                 {
                     "id": 598,
