@@ -1666,3 +1666,18 @@ services:
         - cwe-841
         - a04:2021
         - all
+
+  test_104_v1:
+      image: test_104v1:latest
+      build:
+        context: ./tests/test-104/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8104:80"
+      profiles:
+        - test-104
+        - apache tomcat
+        - java
+        - cwe-579
+        - a04:2021
+        - all
