@@ -1,6 +1,5 @@
 <?php
-// CWE-94: Improper Control of Generation of Code ('Code Injection') & CWE 79: Cross-site Scripting
-// This script demonstrates code injection via file inclusion based on user input.
+// This application takes a user inputted messaage and writes it to a file, which can then be viewed later.
 
 $MessageFile = "messages.out";
 if (isset($_GET["action"]) && $_GET["action"] == "NewMessage") {
@@ -12,17 +11,17 @@ if (isset($_GET["action"]) && $_GET["action"] == "NewMessage") {
     fclose($handle);
     echo "Message Saved!<p>\n";
 } else if (isset($_GET["action"]) && $_GET["action"] == "ViewMessages") {
-    // user messages are parsed and executed - vulnerable to code injection and also XSS
+    // user messages are parsed 
     include($MessageFile);
 }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CWE-94: Code Injection</title>
+    <title>Code Injection Demonstration</title>
 </head>
 <body>
-    <h1>CWE-94: Code Injection</h1>
+    <h1>Code Injection Demonstration</h1>
     <form method="get">
         <input type="hidden" name="action" value="NewMessage">
         Name: <input type="text" name="name" required><br>
@@ -34,4 +33,4 @@ if (isset($_GET["action"]) && $_GET["action"] == "NewMessage") {
         <button type="submit">View Messages</button>
     </form>
 </body>
-</html> 
+</html>

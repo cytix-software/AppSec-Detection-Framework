@@ -37,14 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['xmlfile'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XXE Vulnerability Example</title>
+    <title>Test 40</title>
 </head>
 <body>
-    <h1>Upload an XML file to demonstrate XXE vulnerability</h1>
+    <h1>Test 40</h1>
     <form method="POST" enctype="multipart/form-data">
         <input type="file" name="xmlfile" accept=".xml" required>
         <button type="submit">Upload</button>

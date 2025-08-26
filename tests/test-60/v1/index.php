@@ -1,29 +1,25 @@
 <?php
-// CWE-201: Insertion of Sensitive Information Into Sent Data (Error Message Reveals Sensitive Data)
-// CWE-209: Generation of Error Message Containing Sensitive Information
+// a simple login form that simulates a database connection failure
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    // Simulate a database connection failure
     $db_connected = false;
 
     if (!$db_connected) {
-        // VULNERABLE: Exposes sensitive details in error message, specifically the SQL query and the username and password inputtted.
         $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
         die("Database connection failed!<br>SQL: $sql");
     }
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>CWE-201 & CWE-209</title>
+    <title>Test 60</title>
 </head>
 <body>
-    <h1>CWE-201: Insertion of Sensitive Information Into Sent Data & CWE-209</h1>
+    <h1>Test 60</h1>
     <h2>Login</h2>
     <form method="post">
         <label>Username: <input type="text" name="username" required></label><br>
@@ -31,4 +27,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Login</button>
     </form>
 </body>
-</html> 
+</html>

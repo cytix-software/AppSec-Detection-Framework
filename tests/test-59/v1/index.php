@@ -31,12 +31,12 @@ if ($username && $password) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Test 59</title>
 </head>
 <body>
+    <h1>Test 59</h1>
     <!-- Simple login form -->
     <form method="post">
         <label>Username: <input type="text" name="username" required></label><br>
@@ -44,4 +44,4 @@ if ($username && $password) {
         <button type="submit">Login</button>
     </form>
 </body>
-</html> 
+</html>

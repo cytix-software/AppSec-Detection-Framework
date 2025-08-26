@@ -15,4 +15,7 @@ setcookie("session_id", session_id(), [
 <head>
     <title>Test 39</title>
 </head>
+<body>
+    <h1>Test 39</h1>
+</body>
 </html>

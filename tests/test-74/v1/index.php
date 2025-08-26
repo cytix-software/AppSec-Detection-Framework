@@ -1,6 +1,4 @@
 <?php
-// CWE-471: Modification of Assumed-Immutable Data (MAID)
-// This script demonstrates allowing users to modify assumed-immutable data (user_id) to access unauthorized data.
 
 // Simulate user database
 $users = [
@@ -9,7 +7,7 @@ $users = [
     3 => ['name' => 'Admin User', 'email' => 'admin@example.com', 'balance' => 9999.99, 'role' => 'admin']
 ];
 
-$user_id = $_POST['user_id'] ?? 1; // Default to John
+$user_id = $_POST['user_id'] ?? 1; // Default to user 1: John
 $action = $_POST['action'] ?? '';
 $message = '';
 
@@ -42,14 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CWE-471: Modification of Assumed-Immutable Data</title>
+    <title>Test 74</title>
 </head>
 <body>
-    <h1>CWE-471: Modification of Assumed-Immutable Data</h1>
-    <h2> The user_id is a hidden field, but it can be modified to access other users' data</h2>
+    <h1>Test 74</h1>
+    <h2>The user_id is a hidden field.</h2>
     
     <form method="post">
-        <!-- VULNERABLE: Hidden field that users can modify to access other users' data -->
         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
         
         <h3>User Actions</h3>

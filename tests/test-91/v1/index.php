@@ -5,6 +5,7 @@ $password_hash = '';
 $selected_algorithm = '';
 $message = '';
 
+// allows the user to select a hashing algorithm for password storage, and hashes the password accordingly
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $algorithm = $_POST['algorithm'] ?? '';
     $selected_algorithm = $algorithm;
@@ -30,10 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CWE-757</title>
+    <title>Test 91</title>
 </head>
 <body>
-    <h1>CWE-757</h1>
+    <h1>Test 91</h1>
     <form method="post">
         <label for="algorithm">Select a hashing algorithm to use for password storage</label><br>
         <input type="text" id="algorithm" name="algorithm" placeholder="md5, sha-1, or sha256" value="<?= htmlspecialchars($selected_algorithm) ?>">

@@ -2,8 +2,6 @@
 session_start();
 
 if (isset($_GET['username'])) {
-    // CWE-501: Trust Boundary Violation - Untrusted input stored in session
-    // CWE-287: Improper Authentication - No proof of identity required
     $_SESSION['user'] = $_GET['username'];
 }
 
@@ -13,9 +11,10 @@ if (isset($_GET['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Improper Authentication</title>
+    <title>Test 19</title>
 </head>
 <body>
+    <h1>Test 19</h1>
     <?php if (isset($_SESSION['user'])): ?>
         <p>Logged in as: <?php echo htmlspecialchars($_SESSION['user']); ?></p>
     <?php else: ?>

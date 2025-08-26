@@ -1,7 +1,6 @@
 
 <?php
-// Based on example 1 for cwe-359.
-// logs personal user data and plaintext passwords to the filesystem insecurely.
+// logs personal user data and passwords to the filesystem
 
 $logFile = "user_log.txt";
 
@@ -37,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Test 24</title>
 </head>
 <body>
-    <h1>Login</h1>
+    <h1>Test 24</h1>
     <form method="POST">
         Username: <input type="text" name="username"><br>
         Password: <input type="password" name="password"><br>

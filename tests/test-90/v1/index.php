@@ -1,15 +1,14 @@
 <?php
-// CWE-347: Improper Verification of Cryptographic Signature
-// VULNEABLE: Downloads a file from a url but fails to it's verify signature, could potentially be an untrusted source.
+echo "<h1>Test 90\n</h1>";
 
-echo "<h2>CWE-347: Improper Verification of Cryptographic Signature\n</h2>";
-
-
+// example url to download a .zip file
 $url = 'https://github.com/githubtraining/hellogitworld/archive/refs/heads/master.zip';
 $downloadedFilePath = '/tmp/example.zip';
 
+// download the file
 file_put_contents($downloadedFilePath, file_get_contents($url));
 
+// unzips the file and saves it
 $zip = new ZipArchive();
 if ($zip->open($downloadedFilePath) === TRUE) {
     echo "<p>Files downloaded:</p>";
@@ -21,6 +20,4 @@ if ($zip->open($downloadedFilePath) === TRUE) {
 } else {
     echo "Failed to open downloaded package.";
 }
-
-echo "<p style='color:red'><strong>VULNERABLE:</strong> A .zip file is downloaded and saved to '/tmp/example.zip but its signature is not verified.</p>\n";
 ?>

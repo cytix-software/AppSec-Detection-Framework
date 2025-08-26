@@ -1,8 +1,7 @@
 <?php
-// Vulnerable code demonstrating CWE-315
 // Simulate a login (user's ID in plain text is set)
 $userID = "user123"; 
-// Store the user ID in a cookie in cleartext
+// Store the user ID in a cookie
 setcookie("userID", $userID, time() + 3600, "/"); // Cookie valid for 1 hour
 
 // Check if the cookie is set and display the stored value
@@ -14,10 +13,11 @@ if (isset($_COOKIE['userID'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test 41</title>
 </head>
+<body>
+    <h1>Test 41</h1>
+</body>
 </html>

@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <title>Test 34</title>
 </head>
 <body>
-    <h1>Register New User</h1>
+    <h1>Test 34</h1>
     <form method="post" action="">
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username" required><br><br>

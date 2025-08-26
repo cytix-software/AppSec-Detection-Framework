@@ -1,6 +1,5 @@
 <?php
-// CWE-59: Improper Link Resolution Before File Access
-// This application demonstrates a vulnerability where a user can upload a tar file containing a symlink, which is then extracted and read, leading to a sensitive file being read.
+// allows users to upload a tar file, extracts it, and reads 'secret.txt' if it exists
 
 $uploads_dir = __DIR__ . '/uploads/';
 $extract_message = '';
@@ -30,14 +29,10 @@ if (isset($_FILES['tarfile'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CWE-59: Tar Symlink Extraction Vulnerability</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        .vulnerable { color: red; }
-    </style>
+    <title>Test 57</title>
 </head>
 <body>
-    <h1>CWE-59: Tar Symlink Extraction Vulnerability</h1>
+    <h1>Test 57</h1>
     <p class="vulnerable">This app is vulnerable: it extracts tar files without checking for symlinks!</p>
 
     <h2>Upload a Tar File</h2>
@@ -54,4 +49,4 @@ if (isset($_FILES['tarfile'])) {
 
     <p>Upload a tar file containing a symlink named <code>secret.txt</code> (e.g., <code>secret.txt</code> → <code>/etc/passwd</code>). The app will extract and immediately display the contents of <code>secret.txt</code>.</p>
 </body>
-</html> 
+</html>
