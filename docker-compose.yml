@@ -1635,3 +1635,18 @@ services:
         - cwe-650
         - a04:2021
         - all
+
+  test_102_v1:
+      image: test_102v1:latest
+      build:
+        context: ./tests/test-102/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8102:80"
+      profiles:
+        - test-102
+        - apache
+        - php
+        - cwe-653
+        - a04:2021
+        - all

@@ -13,10 +13,10 @@ if (isset($_GET['delete'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test 650</title>
+    <title>Test 101</title>
 </head>
 <body>
-    <h1>Test 650</h1>
+    <h1>Test 101</h1>
     <form method="get">
         <label>File name to delete: <input type="text" name="delete"></label>
         <button type="submit">Delete</button>

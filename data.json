@@ -887,7 +887,9 @@
                 {
                     "id": 653,
                     "title": "Improper Isolation or Compartmentalization",
-                    "tests": []
+                    "tests": [
+                        "test_102_v1"
+                    ]
                 },
                 {
                     "id": 656,
