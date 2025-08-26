@@ -1509,6 +1509,7 @@ services:
         - apache
         - php
         - cwe-425
+        - cwe-656
         - a01:2021
         - all
 
@@ -1648,5 +1649,20 @@ services:
         - apache
         - php
         - cwe-653
+        - a04:2021
+        - all
+
+  test_103_v1:
+      image: test_103v1:latest
+      build:
+        context: ./tests/test-103/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8103:80"
+      profiles:
+        - test-103
+        - apache
+        - php
+        - cwe-841
         - a04:2021
         - all
