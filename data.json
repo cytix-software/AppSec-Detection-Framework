@@ -894,7 +894,9 @@
                 {
                     "id": 656,
                     "title": "Reliance on Security Through Obscurity",
-                    "tests": []
+                    "tests": [
+                        "test_93_v1"
+                    ]
                 },
                 {
                     "id": 657,
@@ -925,7 +927,9 @@
                 {
                     "id": 841,
                     "title": "Improper Enforcement of Behavioral Workflow",
-                    "tests": []
+                    "tests": [
+                        "test_103_v1"
+                    ]
                 },
                 {
                     "id": 927,
