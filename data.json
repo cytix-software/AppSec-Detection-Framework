@@ -1138,7 +1138,9 @@
                 {
                     "id": 288,
                     "title": "Authentication Bypass Using an Alternate Path or Channel",
-                    "tests": []
+                    "tests": [
+                        "test_93_v1"
+                    ]
                 },
                 {
                     "id": 290,
@@ -1183,7 +1185,9 @@
                 {
                     "id": 304,
                     "title": "Missing Critical Step in Authentication",
-                    "tests": []
+                    "tests": [
+                        "test_108_v1"
+                    ]
                 },
                 {
                     "id": 306,
