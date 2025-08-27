@@ -1590,7 +1590,9 @@ services:
         - cwe-313
         - cwe-316
         - cwe-419
+        - cwe-260
         - a04:2021
+        - a05:2021
         - all
 
   test_99_v1:
@@ -1695,5 +1697,20 @@ services:
         - apache tomcat
         - java
         - cwe-537
+        - a05:2021
+        - all
+
+  test_106_v1:
+      image: test_106v1:latest
+      build:
+        context: ./tests/test-106/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8106:80"
+      profiles:
+        - test-106
+        - apache
+        - php
+        - cwe-15
         - a05:2021
         - all

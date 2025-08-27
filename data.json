@@ -976,7 +976,9 @@
                 {
                     "id": 15,
                     "title": "External Control of System or Configuration Setting",
-                    "tests": []
+                    "tests": [
+                        "test_106_v1"
+                    ]
                 },
                 {
                     "id": 16,
@@ -986,7 +988,9 @@
                 {
                     "id": 260,
                     "title": "Password in Configuration File",
-                    "tests": []
+                    "tests": [
+                        "test_98_v1"
+                    ]
                 },
                 {
                     "id": 315,
