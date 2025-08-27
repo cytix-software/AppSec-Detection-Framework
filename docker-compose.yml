@@ -1510,8 +1510,10 @@ services:
         - php
         - cwe-425
         - cwe-656
+        - cwe-288
         - a01:2021
         - a04:2021
+        - a07:2021
         - all
 
   test_94_v1:
@@ -1713,4 +1715,19 @@ services:
         - php
         - cwe-15
         - a05:2021
+        - all
+
+  test_108_v1:
+      image: test_108v1:latest
+      build:
+        context: ./tests/test-108/v1
+        dockerfile: Dockerfile
+      ports:
+        - "8108:80"
+      profiles:
+        - test-108
+        - apache
+        - php
+        - cwe-304
+        - a07:2021
         - all
