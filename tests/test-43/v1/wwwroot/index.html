@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test 43</title>
+</head>
+<body>
+    <h1>Test 43</h1>
+    <p>This is a minimal ASP.NET Core web application</p>
+    <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+        <br />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+        <br />
+        <input type="submit" value="Login" />
+    </form>
+    <script>
+    document.querySelector('form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const response = await fetch('/User/login', {
+            method: 'POST',
+            body: formData
+        });
+        const text = await response.text();
+        alert(text);
+    });
+    </script>
+    </form>
+</body>
+</html>

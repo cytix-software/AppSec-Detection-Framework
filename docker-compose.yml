@@ -724,6 +724,22 @@ services:
       - a04:2021
       - all
 
+  test_43_v1:
+    image: test_43_v1:latest
+    build:
+      context: tests/test-43/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8431:80"
+    profiles:
+      - test-43 
+      - apache
+      - php
+      - cwe-11
+      - cwe-13
+      - a05:2021
+      - all
+
   test_44_v1:
     image: test_44_v1:latest
     build:
