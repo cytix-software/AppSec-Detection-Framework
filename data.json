@@ -233,13 +233,6 @@
                     "tests": [
                         "test_45_v1"
                     ]
-                },
-                {
-                    "id": 776,
-                    "title": "XML External Entity (XXE) Processing",
-                    "tests": [
-                        "test_40_v1"
-                    ]
                 }
             ],
             "group": "Broken Access Control"
@@ -1058,7 +1051,9 @@
                 {
                     "id": 776,
                     "title": "Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')",
-                    "tests": []
+                    "tests": [
+                        "test_40_v1"
+                    ]
                 },
                 {
                     "id": 942,
