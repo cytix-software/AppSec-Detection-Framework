@@ -966,12 +966,16 @@
                 {
                     "id": 11,
                     "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Creating Debug Binary",
-                    "tests": []
+                    "tests": [
+                        "test_43_v1"
+                    ]
                 },
                 {
                     "id": 13,
                     "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Password in Configuration File",
-                    "tests": []
+                    "tests": [
+                        "test_43_v1"
+                    ]
                 },
                 {
                     "id": 15,
