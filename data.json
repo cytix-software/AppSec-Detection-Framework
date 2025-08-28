@@ -233,13 +233,6 @@
                     "tests": [
                         "test_45_v1"
                     ]
-                },
-                {
-                    "id": 776,
-                    "title": "XML External Entity (XXE) Processing",
-                    "tests": [
-                        "test_40_v1"
-                    ]
                 }
             ],
             "group": "Broken Access Control"
@@ -966,12 +959,16 @@
                 {
                     "id": 11,
                     "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Creating Debug Binary",
-                    "tests": []
+                    "tests": [
+                        "test_43_v1"
+                    ]
                 },
                 {
                     "id": 13,
                     "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Password in Configuration File",
-                    "tests": []
+                    "tests": [
+                        "test_43_v1"
+                    ]
                 },
                 {
                     "id": 15,
@@ -1054,7 +1051,9 @@
                 {
                     "id": 776,
                     "title": "Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')",
-                    "tests": []
+                    "tests": [
+                        "test_40_v1"
+                    ]
                 },
                 {
                     "id": 942,
@@ -1138,7 +1137,9 @@
                 {
                     "id": 288,
                     "title": "Authentication Bypass Using an Alternate Path or Channel",
-                    "tests": []
+                    "tests": [
+                        "test_93_v1"
+                    ]
                 },
                 {
                     "id": 290,
@@ -1183,7 +1184,9 @@
                 {
                     "id": 304,
                     "title": "Missing Critical Step in Authentication",
-                    "tests": []
+                    "tests": [
+                        "test_108_v1"
+                    ]
                 },
                 {
                     "id": 306,
