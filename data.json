@@ -1052,7 +1052,7 @@
                     "id": 776,
                     "title": "Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')",
                     "tests": [
-                        "test_40_v1"
+
                     ]
                 },
                 {
