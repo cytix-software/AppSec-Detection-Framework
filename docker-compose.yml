@@ -684,7 +684,6 @@ services:
       - apache
       - php
       - cwe-776
-      - a01:2021
       - cwe-610
       - cwe-611
       - a03:2021
