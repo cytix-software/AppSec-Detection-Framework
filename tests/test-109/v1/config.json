@@ -1,0 +1,7 @@
+{
+  "users": [
+    { "username": "alice", "passwordHash": "$2a$12$KIXQJwQhQJQJwQhQJQJwQeQJQJwQhQJQJwQhQJQJwQhQJQJwQhQJQ" },
+    { "username": "bob", "passwordHash": "$2a$12$KIXQJwQhQJQJwQhQJQJwQeQJQJwQhQJQJwQhQJQJwQhQJQJwQhQJQ" },
+    { "username": "charlie", "passwordHash": "$2a$12$KIXQJwQhQJQJwQhQJQJwQeQJQJwQhQJQJwQhQJQJwQhQJQJwQhQJQ" }
+  ]
+}

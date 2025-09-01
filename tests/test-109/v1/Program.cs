@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Test43
+namespace Test109
 {
     public class Program
     {
@@ -12,13 +12,13 @@ namespace Test43
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
             builder.Services.AddControllers()
                 .ConfigureApiBehaviorOptions(options =>
                 {
-                    // Disable automatic model validation
                     options.SuppressModelStateInvalidFilter = true;
                 });
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession();
 
             var app = builder.Build();
 
@@ -29,9 +29,10 @@ namespace Test43
             app.UseStaticFiles();
             app.UseHttpsRedirection();
             app.UseAuthorization();
+            app.UseSession();
             app.MapControllers();
 
             app.Run();
         }
     }
-} 
+}

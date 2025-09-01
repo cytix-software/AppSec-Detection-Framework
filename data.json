@@ -999,7 +999,9 @@
                 {
                     "id": 520,
                     "title": ".NET Misconfiguration: Use of Impersonation",
-                    "tests": []
+                    "tests": [
+                        "test_109_v1"
+                    ]
                 },
                 {
                     "id": 526,

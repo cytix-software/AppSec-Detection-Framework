@@ -732,8 +732,8 @@ services:
       - "8431:80"
     profiles:
       - test-43 
-      - apache
-      - php
+      - dotnet
+      - aspnet
       - cwe-11
       - cwe-13
       - a05:2021
@@ -1746,3 +1746,18 @@ services:
         - cwe-304
         - a07:2021
         - all
+
+  test_109_v1:
+    image: test_109_v1:latest
+    build:
+      context: ./tests/test-109/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8109:80"
+    profiles:
+      - test-109
+      - dotnet
+      - aspnet
+      - cwe-520
+      - a05:2021
+      - all
