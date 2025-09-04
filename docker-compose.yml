@@ -1804,6 +1804,20 @@ services:
       - a04:2021
       - all
 
+  test_112_v1:
+    image: test_112_v1:latest
+    build:
+      context: ./tests/test-112/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8112:80"
+    profiles:
+      - test-112
+      - php
+      - apache
+      - cwe-213
+      - a04:2021
+      - all
 networks:
   test-110-network:
     driver: bridge
