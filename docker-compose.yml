@@ -305,6 +305,7 @@ services:
       - cwe-79
       - cwe-80
       - cwe-93
+      - cwe-113
       - cwe-116
       - cwe-644
       - A03:2021
@@ -1264,6 +1265,36 @@ services:
         - cwe-917
         - a03:2021
         - all
+
+  test_76_ldap:
+    build:
+      context: ./tests/test-76/v1
+      dockerfile: Dockerfile.ldap
+    environment:
+      LDAP_ORGANISATION: "Example Org"
+      LDAP_DOMAIN: "example.org"
+      LDAP_ADMIN_PASSWORD: "admin"
+      LDAP_LOG_LEVEL: "256"
+
+  test_76_v1:
+    build:
+      context: ./tests/test-76/v1
+      dockerfile: Dockerfile.python
+    ports:
+      - "8761:8080"
+    depends_on:
+      - test_76_ldap
+    environment:
+      LDAP_HOST: test_76_ldap
+      LDAP_ADMIN_USER: "cn=admin,dc=example,dc=org"
+      LDAP_ADMIN_PASSWORD: "admin"
+    profiles:
+      - test-76
+      - python
+      - flask
+      - cwe-90
+      - a03:2021
+      - all
 
   test_77_v1:
       image: test_77v1:latest
