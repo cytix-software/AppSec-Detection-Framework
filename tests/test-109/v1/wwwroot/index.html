@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test 109</title>
+</head>
+<body>
+    <h1>Test 109</h1>
+    <p>This is a ASP.NET Core web application</p>
+    <button id="impersonate">Test site as admin</button>
+    <button id="deleteUserBtn">Delete User (admin only)</button>
+    <ul id="userList" style="margin-top:20px;"></ul>
+    <div id="message" style="margin-top:20px;min-height:1em;"></div>
+    <script>
+    function showMessage(msg, isError = false) {
+        const el = document.getElementById('message');
+        el.textContent = msg;
+        el.style.color = isError ? 'red' : 'green';
+    }
+
+    document.getElementById('impersonate').addEventListener('click', async function() {
+        try {
+            const response = await fetch('/User/impersonate');
+            const text = await response.text();
+            if (!response.ok) {
+                showMessage(text, true);
+            } else {
+                showMessage(text);
+            }
+        } catch (err) {
+            showMessage('Network error', true);
+        }
+    });
+
+    document.getElementById('deleteUserBtn').addEventListener('click', async function() {
+        const username = prompt("Enter username to delete:");
+        if (!username) return;
+        const formData = new FormData();
+        formData.append("username", username);
+        try {
+            const response = await fetch('/User/delete', {
+                method: 'POST',
+                body: formData
+            });
+            const text = await response.text();
+            if (!response.ok) {
+                showMessage(text, true);
+            } else {
+                showMessage(text);
+            }
+        } catch (err) {
+            showMessage('Network error', true);
+        }
+    });
+    async function loadUsers() {
+        const response = await fetch('/User/list');
+        const users = response.ok ? await response.json() : [];
+        const userList = document.getElementById('userList');
+        userList.innerHTML = '';
+        (users.length === 0 ? ['No users found.'] : users).forEach(u => {
+            const li = document.createElement('li');
+            li.textContent = u;
+            userList.appendChild(li);
+        });
+    }
+    window.addEventListener('DOMContentLoaded', loadUsers);
+    </script>
+</body>
+</html>

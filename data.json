@@ -108,17 +108,23 @@
                 {
                     "id": 402,
                     "title": "Transmission of Private Resources into a New Sphere ('Resource Leak')",
-                    "tests": []
+                    "tests": [
+                        "test_78_v1"
+                    ]
                 },
                 {
                     "id": 425,
                     "title": "Direct Request ('Forced Browsing')",
-                    "tests": []
+                    "tests": [
+                        "test_93_v1"
+                    ]
                 },
                 {
                     "id": 441,
                     "title": "Unintended Proxy or Intermediary ('Confused Deputy')",
-                    "tests": []
+                    "tests": [
+                        "test_94_v1"
+                    ]
                 },
                 {
                     "id": 497,
@@ -158,7 +164,9 @@
                 {
                     "id": 566,
                     "title": "Authorization Bypass Through User-Controlled SQL Primary Key",
-                    "tests": []
+                    "tests": [
+                        "test_77_v1"
+                    ]
                 },
                 {
                     "id": 601,
@@ -170,7 +178,9 @@
                 {
                     "id": 639,
                     "title": "Authorization Bypass Through User-Controlled Key",
-                    "tests": []
+                    "tests": [
+                        "test_77_v1"
+                    ]
                 },
                 {
                     "id": 651,
@@ -223,13 +233,6 @@
                     "tests": [
                         "test_45_v1"
                     ]
-                },
-                {
-                    "id": 776,
-                    "title": "XML External Entity (XXE) Processing",
-                    "tests": [
-                        "test_40_v1"
-                    ]
                 }
             ],
             "group": "Broken Access Control"
@@ -240,12 +243,16 @@
                 {
                     "id": 261,
                     "title": "Weak Encoding for Password",
-                    "tests": []
+                    "tests": [
+                        "test_79_v1"
+                    ]
                 },
                 {
                     "id": 296,
                     "title": "Improper Following of a Certificate's Chain of Trust",
-                    "tests": []
+                    "tests": [
+                        "test_80_v1"
+                    ]
                 },
                 {
                     "id": 310,
@@ -255,7 +262,9 @@
                 {
                     "id": 319,
                     "title": "Cleartext Transmission of Sensitive Information",
-                    "tests": []
+                    "tests": [
+                        "test_79_v1"
+                    ]
                 },
                 {
                     "id": 321,
@@ -268,27 +277,37 @@
                 {
                     "id": 322,
                     "title": "Key Exchange without Entity Authentication",
-                    "tests": []
+                    "tests": [
+                        "test_81_v1"
+                    ]
                 },
                 {
                     "id": 323,
                     "title": "Reusing a Nonce, Key Pair in Encryption",
-                    "tests": []
+                    "tests": [
+                        "test_82_v1"
+                    ]
                 },
                 {
                     "id": 324,
                     "title": "Use of a Key Past its Expiration Date",
-                    "tests": []
+                    "tests": [
+                        "test_83_v1"
+                    ]
                 },
                 {
                     "id": 325,
                     "title": "Missing Cryptographic Step",
-                    "tests": []
+                    "tests": [
+                        "test_84_v1"
+                    ]
                 },
                 {
                     "id": 326,
                     "title": "Inadequate Encryption Strength",
-                    "tests": []
+                    "tests": [
+                        "test_85_v1"
+                    ]
                 },
                 {
                     "id": 327,
@@ -321,37 +340,52 @@
                 {
                     "id": 331,
                     "title": "Insufficient Entropy",
-                    "tests": []
+                    "tests": [
+                        "test_87_v1"
+                    ]
                 },
                 {
                     "id": 335,
                     "title": "Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG)",
-                    "tests": []
+                    "tests": [
+                        "test_87_v1",
+                        "test_88_v1"
+                    ]
                 },
                 {
                     "id": 336,
                     "title": "Same Seed in Pseudo-Random Number Generator (PRNG)",
-                    "tests": []
+                    "tests": [
+                        "test_87_v1"
+                    ]
                 },
                 {
                     "id": 337,
                     "title": "Predictable Seed in Pseudo-Random Number Generator (PRNG)",
-                    "tests": []
+                    "tests": [
+                        "test_88_v1"
+                    ]
                 },
                 {
                     "id": 338,
                     "title": "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)",
-                    "tests": []
+                    "tests": [
+                        "test_86_v1"
+                    ]
                 },
                 {
                     "id": 340,
                     "title": "Generation of Predictable Numbers or Identifiers",
-                    "tests": []
+                    "tests": [
+                        "test_89_v1"
+                    ]
                 },
                 {
                     "id": 347,
                     "title": "Improper Verification of Cryptographic Signature",
-                    "tests": []
+                    "tests": [
+                        "test_90_v1"
+                    ]
                 },
                 {
                     "id": 523,
@@ -368,7 +402,9 @@
                 {
                     "id": 757,
                     "title": "Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')",
-                    "tests": []
+                    "tests": [
+                        "test_91_v1"
+                    ]
                 },
                 {
                     "id": 759,
@@ -387,7 +423,9 @@
                 {
                     "id": 780,
                     "title": "Use of RSA Algorithm without OAEP",
-                    "tests": []
+                    "tests": [
+                        "test_92_v1"
+                    ]
                 },
                 {
                     "id": 818,
@@ -641,12 +679,16 @@
                 {
                     "id": 73,
                     "title": "External Control of File Name or Path",
-                    "tests": []
+                    "tests": [
+                        "test_72_v1"
+                    ]
                 },
                 {
                     "id": 183,
                     "title": "Permissive List of Allowed Inputs",
-                    "tests": []
+                    "tests": [
+                        "test_95_v1"
+                    ]
                 },
                 {
                     "id": 209,
@@ -658,12 +700,16 @@
                 {
                     "id": 213,
                     "title": "Exposure of Sensitive Information Due to Incompatible Policies",
-                    "tests": []
+                    "tests": [
+                        "test_112_v1"
+                    ]
                 },
                 {
                     "id": 235,
                     "title": "Improper Handling of Extra Parameters",
-                    "tests": []
+                    "tests": [
+                        "test_111_v1"
+                    ]
                 },
                 {
                     "id": 256,
@@ -683,49 +729,67 @@
                 {
                     "id": 266,
                     "title": "Incorrect Privilege Assignment",
-                    "tests": []
+                    "tests": [
+                        "test_96_v1"
+                    ]
                 },
                 {
                     "id": 269,
                     "title": "Improper Privilege Management",
-                    "tests": []
+                    "tests": [
+                        "test_96_v1"
+                    ]
                 },
                 {
                     "id": 280,
                     "title": "Improper Handling of Insufficient Permissions or Privileges",
-                    "tests": []
+                    "tests": [
+                        "test_97_v1"
+                    ]
                 },
                 {
                     "id": 311,
                     "title": "Missing Encryption of Sensitive Data",
-                    "tests": []
+                    "tests": [
+                        "test_42_v1",
+                        "test_79_v1"
+                    ]
                 },
                 {
                     "id": 312,
                     "title": "Cleartext Storage of Sensitive Information",
                     "tests": [
-                        "test_42_v1"
+                        "test_42_v1",
+                        "test_98_v1"
                     ]
                 },
                 {
                     "id": 313,
                     "title": "Cleartext Storage in a File or on Disk",
-                    "tests": []
+                    "tests": [
+                        "test_98_v1"
+                    ]
                 },
                 {
                     "id": 316,
                     "title": "Cleartext Storage of Sensitive Information in Memory",
-                    "tests": []
+                    "tests": [
+                        "test_98_v1"
+                    ]
                 },
                 {
                     "id": 419,
                     "title": "Unprotected Primary Channel",
-                    "tests": []
+                    "tests": [
+                        "test_98_v1"
+                    ]
                 },
                 {
                     "id": 430,
                     "title": "Deployment of Wrong Handler",
-                    "tests": []
+                    "tests": [
+                        "test_99_v1"
+                    ]
                 },
                 {
                     "id": 434,
@@ -737,7 +801,9 @@
                 {
                     "id": 444,
                     "title": "Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')",
-                    "tests": []
+                    "tests": [
+                        "test_110_v1"
+                    ]
                 },
                 {
                     "id": 451,
@@ -749,7 +815,9 @@
                 {
                     "id": 472,
                     "title": "External Control of Assumed-Immutable Web Parameter",
-                    "tests": []
+                    "tests": [
+                        "test_74_v1"
+                    ]
                 },
                 {
                     "id": 501,
@@ -782,7 +850,9 @@
                 {
                     "id": 579,
                     "title": "J2EE Bad Practices: Non-serializable Object Stored in Session",
-                    "tests": []
+                    "tests": [
+                        "test_104_v1"
+                    ]
                 },
                 {
                     "id": 598,
@@ -801,7 +871,9 @@
                 {
                     "id": 642,
                     "title": "External Control of Critical State Data",
-                    "tests": []
+                    "tests": [
+                        "test_100_v1"
+                    ]
                 },
                 {
                     "id": 646,
@@ -813,17 +885,23 @@
                 {
                     "id": 650,
                     "title": "Trusting HTTP Permission Methods on the Server Side",
-                    "tests": []
+                    "tests": [
+                        "test_101_v1"
+                    ]
                 },
                 {
                     "id": 653,
                     "title": "Improper Isolation or Compartmentalization",
-                    "tests": []
+                    "tests": [
+                        "test_102_v1"
+                    ]
                 },
                 {
                     "id": 656,
                     "title": "Reliance on Security Through Obscurity",
-                    "tests": []
+                    "tests": [
+                        "test_93_v1"
+                    ]
                 },
                 {
                     "id": 657,
@@ -854,7 +932,9 @@
                 {
                     "id": 841,
                     "title": "Improper Enforcement of Behavioral Workflow",
-                    "tests": []
+                    "tests": [
+                        "test_103_v1"
+                    ]
                 },
                 {
                     "id": 927,
@@ -889,17 +969,23 @@
                 {
                     "id": 11,
                     "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Creating Debug Binary",
-                    "tests": []
+                    "tests": [
+                        "test_43_v1"
+                    ]
                 },
                 {
                     "id": 13,
                     "title": "[ASP.NET](http://ASP.NET) Misconfiguration: Password in Configuration File",
-                    "tests": []
+                    "tests": [
+                        "test_43_v1"
+                    ]
                 },
                 {
                     "id": 15,
                     "title": "External Control of System or Configuration Setting",
-                    "tests": []
+                    "tests": [
+                        "test_106_v1"
+                    ]
                 },
                 {
                     "id": 16,
@@ -909,7 +995,9 @@
                 {
                     "id": 260,
                     "title": "Password in Configuration File",
-                    "tests": []
+                    "tests": [
+                        "test_98_v1"
+                    ]
                 },
                 {
                     "id": 315,
@@ -921,7 +1009,9 @@
                 {
                     "id": 520,
                     "title": ".NET Misconfiguration: Use of Impersonation",
-                    "tests": []
+                    "tests": [
+                        "test_109_v1"
+                    ]
                 },
                 {
                     "id": 526,
@@ -933,7 +1023,9 @@
                 {
                     "id": 537,
                     "title": "Java Runtime Error Message Containing Sensitive Information",
-                    "tests": []
+                    "tests": [
+                        "test_105_v1"
+                    ]
                 },
                 {
                     "id": 541,
@@ -971,7 +1063,9 @@
                 {
                     "id": 776,
                     "title": "Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')",
-                    "tests": []
+                    "tests": [
+                        "test_40_v1"
+                    ]
                 },
                 {
                     "id": 942,
@@ -1055,7 +1149,9 @@
                 {
                     "id": 288,
                     "title": "Authentication Bypass Using an Alternate Path or Channel",
-                    "tests": []
+                    "tests": [
+                        "test_93_v1"
+                    ]
                 },
                 {
                     "id": 290,
@@ -1100,7 +1196,9 @@
                 {
                     "id": 304,
                     "title": "Missing Critical Step in Authentication",
-                    "tests": []
+                    "tests": [
+                        "test_108_v1"
+                    ]
                 },
                 {
                     "id": 306,

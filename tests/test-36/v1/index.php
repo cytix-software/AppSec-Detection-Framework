@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test 36</title>
+</head>
+<body>
+    <h1>Test 36</h1>
 <?php
 
 $url = "https://example.com"; // Target URL
@@ -7,7 +14,6 @@ curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Disable certificate validation
 
-// Vulnerability: Certificate validation is disabled and hostname is not checked
 $response = curl_exec($ch);
 
 if (curl_errno($ch)) {
@@ -19,3 +25,5 @@ if (curl_errno($ch)) {
 curl_close($ch);
 
 ?>
+</body>
+</html>

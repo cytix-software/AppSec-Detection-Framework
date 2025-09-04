@@ -4,6 +4,7 @@
     <title>Test 35</title>
 </head>
 <body>
+    <h1>Test 35</h1>
 <?php
 if (isset($_COOKIE['authenticated']) && $_COOKIE['authenticated'] === 'true') {
     echo "<h1>Welcome, authenticated user!</h1>";

@@ -11,14 +11,14 @@ This script demonstrates HTTP header injection that can be exploited by JavaScri
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CWE-644: Improper Neutralization of HTTP Headers for Scripting Syntax</title>
     <script>
-    // javascript code to read the unsanitised, user inputted HTTP header
+    // reads the user inputted HTTP header
     function readHeader() {
         const val = document.getElementById('val').value;
         fetch('header.php?val=' + encodeURIComponent(val))
             .then(response => {
                 // Can read custom headers
                 const customHeader = response.headers.get('X-Custom-Header');
-                console.log(customHeader); // Malicious content processed
+                console.log(customHeader);
                 
                 // Displays the header value on the page
                 const resultDiv = document.getElementById('headerResult');
@@ -32,7 +32,7 @@ This script demonstrates HTTP header injection that can be exploited by JavaScri
     </script>
 </head>
 <body>
-    <h1>CWE-644: Improper Neutralization of HTTP Headers for Scripting Syntax</h1>
+    <h1>Test 18</h1>
     <h2>Enter a Value for HTTP Header</h2>
     <input type="text" id="val" placeholder="Enter header value" style="width: 300px;">
     <button onclick="readHeader()">Read Custom Header</button>

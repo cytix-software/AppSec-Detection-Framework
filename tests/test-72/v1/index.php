@@ -1,6 +1,5 @@
 <?php
-// CWE-99: Improper Control of Resource Identifiers ('Resource Injection')
-// This script demonstrates resource injection by allowing user input to control file deletion.
+// This script demonstrates file deletion functionality.
 
 // Create some test files for demonstration
 $test_files = ['test1.txt', 'test2.txt', 'test3.txt'];
@@ -15,8 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $filename = $_POST['filename'] ?? '';
     
     if (!empty($filename)) {
-        // VULNERABLE: User input directly controls file deletion without validation
-        // This allows deletion of any file the web server has access to
+        // User input directly controls file deletion
         if (file_exists($filename)) {
             if (unlink($filename)) {
                 $message = "File '$filename' has been deleted successfully.";
@@ -28,14 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html>
 <head>
-    <title>CWE-99: Resource Injection</title>
+    <title>Test 72</title>
 </head>
 <body>
-    <h1>CWE-99: Resource Injection</h1>
+    <h1>Test 72</h1>
     
     <form method="post">
         <label for="filename">Enter filename to delete:</label><br>
@@ -48,13 +45,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <strong>Result:</strong> <?php echo htmlspecialchars($message); ?>
         </div>
     <?php endif; ?>
-    
-    <h3>Vulnerability Details:</h3>
-    <p>This application allows users to delete files by name without proper validation. 
-    An attacker could potentially delete system files by providing paths like:</p>
-    <ul>
-        <li><code>../../../etc/passwd</code></li>
-        <li><code>../../../var/www/html/index.php</code></li>
-    </ul>
 </body>
 </html>

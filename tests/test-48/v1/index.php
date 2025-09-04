@@ -1,7 +1,4 @@
 <?php
-// CWE-1021: Improper Restriction of Dynamically Loaded Code
-// This test demonstrates clickjacking vulnerability
-
 // Simulated sensitive action
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'transfer') {
     $amount = isset($_POST['amount']) ? (int)$_POST['amount'] : 0;
@@ -14,10 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Secure Banking</title>
+    <title>Test 48</title>
 </head>
 <body>
-    <h1>Secure Banking</h1>
+    <h1>Test 48</h1>
     <p>Please enter your transfer details below:</p>
     
     <form method="post">
@@ -36,4 +33,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         <button type="submit">Transfer Money</button>
     </form>
 </body>
-</html> 
+</html>

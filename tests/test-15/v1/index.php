@@ -1,5 +1,5 @@
 <?php
-// Simulated stored password hash (SHA-1 without salt)
+// Simulated stored password hash (SHA-1 with no salt)
 $stored_hash = "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8";
 
 // Function to simulate the login process
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vulnerable Login System</title>
+    <title>Login System</title>
 </head>
 <body>
     <h1>Login</h1>

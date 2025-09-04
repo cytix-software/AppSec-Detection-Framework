@@ -1,7 +1,4 @@
 <?php
-// Vulnerable to CWE-525: Use of Web Browser Cache Containing Sensitive Information
-// This application explicitly sets cache control headers to cache sensitive data
-
 // Simulate user authentication
 session_start();
 if (!isset($_SESSION['user'])) {
@@ -19,7 +16,7 @@ header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + 31536000)); // Exp
 header('Pragma: public'); // Explicitly allow caching
 header('Content-Type: application/json');
 
-// Return sensitive user data that will be cached by the browser
+// Return user data that will be cached by the browser
 echo json_encode([
     'status' => 'success',
     'user' => $_SESSION['user'],

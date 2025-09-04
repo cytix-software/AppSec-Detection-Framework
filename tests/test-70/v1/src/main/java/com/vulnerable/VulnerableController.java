@@ -23,12 +23,10 @@ public class VulnerableController {
         return "index";
     }
     
-    // CWE-564: SQL Injection: Direct SQL Query
-    // VULNERABLE: User input directly in SQL query without sanitization
+    // sql query to find user by id
     @PostMapping("/search")
     public String findUserById(@RequestParam String userId, Model model) {
         try {
-            // VULNERABLE: User input concatenated directly into SQL query
             String sql = "SELECT * FROM users WHERE id = " + userId;
             Query query = entityManager.createNativeQuery(sql, User.class);
             List<User> users = query.getResultList();

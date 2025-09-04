@@ -1,11 +1,11 @@
 <?php
-// Simulated stored password hash (SHA-1 with a weak, predictable salt)
+// Simulated stored password hash
 
 // Function to simulate the login process
 function checkPassword($inputPassword) {
-    $salt = "12345"; // Weak, predictable salt
+    $salt = "12345";
     $hashedInput = sha1($salt . $inputPassword); // Combine salt and password
-    if ($hashedInput === "126d2388a03203a8c9c83b5a6af3b85426b85720") { // "password123" with '12345' salt.
+    if ($hashedInput === "126d2388a03203a8c9c83b5a6af3b85426b85720") {
         return true; 
     } else {
         return false;
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vulnerable Login System</title>
+    <title>Login System</title>
 </head>
 <body>
     <h1>Login</h1>

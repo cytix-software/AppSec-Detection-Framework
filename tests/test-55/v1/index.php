@@ -1,7 +1,4 @@
 <?php
-// Vulnerable to CWE-538: Insertion of Sensitive Information into Externally-Accessible File or Directory
-// This application stores sensitive information in a publicly accessible file
-
 // Simulate user data
 $userData = [
     'id' => 1,
@@ -22,7 +19,7 @@ $userData['transaction'] = [
     'status' => 'completed'
 ];
 
-// Vulnerable: Store sensitive data in a publicly accessible log file
+// Store data in a log file
 $logEntry = json_encode($userData, JSON_PRETTY_PRINT) . "\n---\n";
 file_put_contents('debug.log', $logEntry, FILE_APPEND);
 
@@ -34,20 +31,15 @@ $lastEntries = array_slice($entries, -5); // Show last 5 entries
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CWE-538 Test</title>
-    <style>
-        pre { background: #f4f4f4; padding: 10px; }
-    </style>
+    <title>Test 55</title>
 </head>
 <body>
-    <h1>Sensitive Data Storage Test</h1>
+    <h1>Test 55</h1>
     <p>New transaction data has been automatically stored in the log file.</p>
     
     <h2>Recent Log Entries:</h2>
     <?php foreach ($lastEntries as $entry): ?>
         <pre><?php echo htmlspecialchars($entry); ?></pre>
     <?php endforeach; ?>
-    
-    <p>Note: This test stores sensitive data in a publicly accessible file at <a href="debug.log">debug.log</a></p>
-</body>
-</html> 
+    </body>
+</html>

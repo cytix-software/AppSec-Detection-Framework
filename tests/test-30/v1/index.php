@@ -3,11 +3,11 @@ class User {
     public $username;
     public $email;
     public $password;
-    public $isAdmin = false; // Internal attribute, should not be modifiable by users
+    public $isAdmin = false; // Internal attribute
 
     public function __construct($data) {
         foreach ($data as $key => $value) {
-            $this->$key = $value; // Mass assignment vulnerability
+            $this->$key = $value; // Mass assignment
         }
     }
 }
@@ -26,9 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Vulnerable Mass Assignment Demo</title>
+    <title>Test 30</title>
 </head>
 <body>
+    <h1>Test 30</h1>
     <h2>Create User</h2>
     <form method="POST">
         <label>Username: <input type="text" name="username" required></label><br>

@@ -2,7 +2,7 @@
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $message = $_POST['message'];
     
-    // Simulating a transmission without integrity checks
+    // Simulating a transmission
     echo "<h2>Received Message:</h2>";
     echo "<p>" . htmlspecialchars($message) . "</p>";
 }

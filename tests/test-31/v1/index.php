@@ -30,10 +30,10 @@ if (isset($_GET['userID'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Deletion</title>
+    <title>Test 31</title>
 </head>
 <body>
-    <h1>Delete User</h1>
+    <h1>Test 31</h1>
     <form method="GET">
         <label for="userID">Enter User ID to delete:</label>
         <input type="number" id="userID" name="userID" required>

@@ -2,9 +2,9 @@
 $users = [
     "Desmond" => [
         "email"           => "desmond@themoon.com",
-        "password"        => "password123", // Insecure: password stored in plain text
+        "password"        => "password123",
         "security_question" => "What is your favorite color?",
-        "security_answer" => "blue"           // Weak answer (easily guessed or socially discoverable)
+        "security_answer" => "blue"
     ]
 ];
 

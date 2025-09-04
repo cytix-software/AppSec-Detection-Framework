@@ -1,4 +1,3 @@
-
 <?php
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $val = $_POST['val']; 
@@ -8,7 +7,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         $value = (int) $val; 
     } catch (Exception $e) {
-        // CWE-117: Log Injection 
         $decoded = urldecode($val);
         $logEntry = "INFO: Failed to parse val = $decoded\n"; 
         file_put_contents("app.log", $logEntry, FILE_APPEND); 
@@ -19,13 +17,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test 21</title>
 </head>
 <body>
+    <h1>Test 21</h1>
     <h2>Enter a Value</h2>
     <form method="POST" action="">
         <label for="val">Value:</label>
