@@ -1761,3 +1761,33 @@ services:
       - cwe-520
       - a05:2021
       - all
+
+  test_110_v1:
+    build:
+      context: ./tests/test-110/v1/frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8110:80"
+    depends_on:
+      - test_110_v1_backend
+    networks:
+      - test-110-network
+    profiles:
+      - test-110
+      - cwe-444
+      - php
+      - apache
+      - all
+
+  test_110_v1_backend:
+    build:
+      context: ./tests/test-110/v1/backend
+      dockerfile: Dockerfile
+    expose:
+      - "8080"
+    networks:
+      - test-110-network
+
+networks:
+  test-110-network:
+    driver: bridge
