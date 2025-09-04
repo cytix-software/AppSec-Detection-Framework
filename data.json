@@ -793,7 +793,9 @@
                 {
                     "id": 444,
                     "title": "Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')",
-                    "tests": []
+                    "tests": [
+                        "test_110_v1"
+                    ]
                 },
                 {
                     "id": 451,
