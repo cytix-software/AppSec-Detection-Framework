@@ -701,7 +701,9 @@
                 {
                     "id": 235,
                     "title": "Improper Handling of Extra Parameters",
-                    "tests": []
+                    "tests": [
+                        "test_111_v1"
+                    ]
                 },
                 {
                     "id": 256,
