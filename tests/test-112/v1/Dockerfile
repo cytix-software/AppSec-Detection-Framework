@@ -1,4 +1,4 @@
 FROM php:8.2-apache
 WORKDIR /var/www/html
-COPY api.php ./
+COPY index.php ./
 EXPOSE 80

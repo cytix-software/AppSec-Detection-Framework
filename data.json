@@ -696,7 +696,9 @@
                 {
                     "id": 213,
                     "title": "Exposure of Sensitive Information Due to Incompatible Policies",
-                    "tests": []
+                    "tests": [
+                        "test_112_v1"
+                    ]
                 },
                 {
                     "id": 235,
