@@ -1,6 +1,6 @@
-# Test 76 - CWE-90: LDAP Injection (PHP)
+# Test 76 - CWE-90: LDAP Injection (Python)
 
-This test case demonstrates LDAP Injection (CWE-90) in a PHP application.
+This test case demonstrates LDAP Injection (CWE-90) in a Python application.
 
 ## Description
 
@@ -8,29 +8,21 @@ User input is directly interpolated into an LDAP search filter, making the appli
 
 ## Usage
 
-1. Build and run the application (see Docker instructions below).
+1. Build and run the application using Docker Compose: `docker-compose up --build`
 2. Access the app at http://localhost:8080
-3. Enter a username (e.g., `admin`) or an LDAP injection payload (e.g., `*)(uid=*)`)
+3. Enter a username (e.g., `john`) or an LDAP injection payload (e.g., `*)(uid=*)`)
 4. Observe the results and the constructed LDAP query.
 
 ## Example Payloads
 
-- `admin` (normal user)
-- `*)(uid=*)` (returns all users)
-- `admin)(|(uid=*))` (bypass)
-- `*` (wildcard)
+- **Normal Query:** `john`
+  - **Resulting Filter:** `(uid=john)`
+  - **Result:** Returns only the 'john' user record.
+- **Injection Payload (Information Disclosure):** `*`
+  - **Resulting Filter:** `(uid=*)`
+  - **Explanation:** This is a successful injection. The `*` acts as a wildcard, matching any entry that has a `uid` attribute. The query effectively becomes "find all users," bypassing the need to know a specific username and leaking all user records in the directory.
 
-## Docker
-
-This app expects an LDAP server (e.g., OpenLDAP) running and accessible as `openldap` on port 389.
-
-```sh
-docker build -t test-76-ldap-inject .
-docker run -p 8080:80 --network <your_network> test-76-ldap-inject
-```
-
-## Vulnerable Code
-
-```php
-$filter = "(uid=$ldap_user)"; // user input is not sanitized
+```python
+# A minimal, vulnerable filter. User input is directly embedded.
+ldap_filter = f'(uid={user})'
 ```

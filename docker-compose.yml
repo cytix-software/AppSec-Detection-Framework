@@ -1246,17 +1246,32 @@ services:
         - a03:2021
         - all
 
+  test_76_ldap:
+    build:
+      context: ./tests/test-76/v1
+      dockerfile: Dockerfile.ldap
+    environment:
+      LDAP_ORGANISATION: "Example Org"
+      LDAP_DOMAIN: "example.org"
+      LDAP_ADMIN_PASSWORD: "admin"
+      LDAP_LOG_LEVEL: "256"
+
   test_76_v1:
-      image: test_76v1:latest
-      build:
-        context: ./tests/test-76/v1
-        dockerfile: Dockerfile
-      ports:
-        - "8761:80"
-      profiles:
-        - test-76
-        - apache
-        - php
-        - cwe-90
-        - a03:2021
-        - all
+    build:
+      context: ./tests/test-76/v1
+      dockerfile: Dockerfile.python
+    ports:
+      - "8761:8080"
+    depends_on:
+      - test_76_ldap
+    environment:
+      LDAP_HOST: test_76_ldap
+      LDAP_ADMIN_USER: "cn=admin,dc=example,dc=org"
+      LDAP_ADMIN_PASSWORD: "admin"
+    profiles:
+      - test-76
+      - python
+      - flask
+      - cwe-90
+      - a03:2021
+      - all

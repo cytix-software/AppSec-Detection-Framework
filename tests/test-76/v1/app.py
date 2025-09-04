@@ -1,5 +1,7 @@
+import os
 from flask import Flask, request, render_template_string
 from ldap3 import Server, Connection, ALL
+from ldap3.utils.conv import escape_filter_chars
 
 app = Flask(__name__)
 
@@ -33,25 +35,31 @@ HTML = '''
 @app.route('/', methods=['GET'])
 def index():
     user = request.args.get('user', '')
-    ldap_host = 'ldap://ldap'
+    ldap_host = os.environ.get('LDAP_HOST', 'ldap')
     ldap_port = 389
     base_dn = 'ou=users,dc=example,dc=org'
-    # Vulnerable filter
+    bind_user = os.environ.get('LDAP_ADMIN_USER', 'cn=admin,dc=example,dc=org')
+    bind_password = os.environ.get('LDAP_ADMIN_PASSWORD', 'admin')
+
     ldap_filter = f'(uid={user})'
+
     results = []
+    conn = None
     
     try:
-        server = Server(ldap_host, port=ldap_port, get_info=ALL)
-        conn = Connection(server, user='cn=admin,dc=example,dc=org', password='admin')
+        server = Server(f'ldap://{ldap_host}', port=ldap_port, get_info=ALL)
+        conn = Connection(server, user=bind_user, password=bind_password)
         
         if conn.bind():
             conn.search(base_dn, ldap_filter, attributes=['*'])
-            results = [entry.entry_dn for entry in conn.entries]
-        
-        conn.unbind()
+            # Displaying more attributes makes the demo more illustrative
+            results = [str(entry.entry_attributes_as_dict) for entry in conn.entries]
         
     except Exception as e:
         results = [f'Error: {e}']
+    finally:
+        if conn and conn.bound:
+            conn.unbind()
     
     return render_template_string(HTML, user=user, filter=ldap_filter, results=results)
 
