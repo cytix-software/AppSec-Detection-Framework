@@ -1777,6 +1777,7 @@ services:
       - cwe-444
       - php
       - apache
+      - a04:2021
       - all
 
   test_110_v1_backend:
@@ -1787,6 +1788,21 @@ services:
       - "8080"
     networks:
       - test-110-network
+
+  test_111_v1:
+    image: test_111_v1:latest
+    build:
+      context: ./tests/test-111/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8111:80"
+    profiles:
+      - test-111
+      - php
+      - apache
+      - cwe-235
+      - a04:2021
+      - all
 
 networks:
   test-110-network:
