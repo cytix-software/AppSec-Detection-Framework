@@ -8,5 +8,6 @@ RUN mvn clean package -DskipTests
 
 FROM tomcat:9.0-jdk11
 COPY --from=builder /app/target/file-upload-demo-1.0.0.war /usr/local/tomcat/webapps/ROOT.war
-EXPOSE 8080
+RUN sed -i 's/port="8080"/port="80"/g' /usr/local/tomcat/conf/server.xml
+EXPOSE 80
 CMD ["catalina.sh", "run"]

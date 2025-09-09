@@ -6,6 +6,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 FROM tomcat:9.0-jdk11
-COPY --from=builder /app/target/java-cwe579-demo-1.0.0.war /usr/local/tomcat/webapps/ROOT.war
-EXPOSE 8080
+COPY --from=builder /app/target/session-demo-1.0.0.war /usr/local/tomcat/webapps/ROOT.war
+RUN sed -i 's/port="8080"/port="80"/g' /usr/local/tomcat/conf/server.xml
+EXPOSE 80
 CMD ["catalina.sh", "run"]
