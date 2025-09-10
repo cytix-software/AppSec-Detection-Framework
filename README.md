@@ -2,6 +2,8 @@
 
 A framework for understanding the capabilities of automated detection methods at identifying classes of application security vulnerabilities.
 
+> Disclaimer: As an open-source project with multiple public contributors, we provide no warranty as to the accuracy of the results within this project.
+
 ## Table of Contents
 
 - [Overview](#overview)
