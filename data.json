@@ -3775,7 +3775,8 @@
             302,
             807,
             287,
-            784
+            784,
+            565
           ],
           "updatedAt": 1757443207
         },
@@ -3906,6 +3907,14 @@
             451
           ],
           "undetectedCWEs": [],
+          "updatedAt": 1757443207
+        },
+        {
+          "test": "test_49_v1",
+          "detectedCWEs": [],
+          "undetectedCWEs": [
+            756
+          ],
           "updatedAt": 1757443207
         },
         {
@@ -6534,7 +6543,8 @@
         {
           "test": "test_9_v1",
           "detectedCWEs": [
-            22
+            22,
+            35
           ],
           "undetectedCWEs": [],
           "updatedAt": 1757195570
@@ -6622,7 +6632,8 @@
           "test": "test_18_v1",
           "detectedCWEs": [
             116,
-            644
+            644,
+            113
           ],
           "undetectedCWEs": [
             79,
