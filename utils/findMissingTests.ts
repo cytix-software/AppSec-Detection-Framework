@@ -1,5 +1,7 @@
 import { program } from 'commander';
 import { Data } from './types';
+import path from 'path';
+import { readFile, readdir } from 'fs/promises';
 
 interface CWEDetail {
     id: number;
@@ -212,23 +214,42 @@ async function main(): Promise<void> {
         .parse(process.argv);
 
     const options = program.opts();
+    const resultsPath = path.join(import.meta.dir, '..', 'results');
 
-    // Load data
-    const data = await loadData();
+    try {
+        // Load tests and CWE data
+        const data = await loadData();
+        const [allTests, testCWEs] = getAllTestsAndCWEs(data);
 
-    // Get all tests and their CWEs
-    const [allTests, testCWEs] = getAllTestsAndCWEs(data);
+        // Get all files in the results directory
+        const files = await readdir(resultsPath);
 
-    // Analyze each scanner
-    Object.entries(data.recordedTests).forEach(([scannerName, scanner]) => {
-        const [missingTests, missingCWEs, incorrectCWEs] = analyzeScannerResults(
-            scannerName,
-            scanner,
-            allTests,
-            testCWEs
-        );
-        printResults(scannerName, missingTests, missingCWEs, incorrectCWEs, options.verbose, options.simplified);
-    });
+        // Process each scanner result file
+        for (const file of files) {
+            if (file.endsWith('.json')) {
+                const filePath = path.join(resultsPath, file);
+                
+                // Load the individual scanner's results
+                const fileContent = await readFile(filePath, 'utf8');
+                const scannerResults: { [key: string]: ScannerResult } = JSON.parse(fileContent);
+
+
+                // Iterate over each key in the scannerResults object
+                Object.entries(scannerResults).forEach(([scannerName, scanner]) => {
+                    const [missingTests, missingCWEs, incorrectCWEs] = analyzeScannerResults(
+                        scannerName,
+                        scanner,
+                        allTests,
+                        testCWEs
+                    );
+                    console.log("iterated");
+                    printResults(scannerName, missingTests, missingCWEs, incorrectCWEs, options.verbose, options.simplified);
+                });
+            }
+        }
+    } catch (error) {
+        console.error('An error occurred:', error);
+    }
 }
 
 if (import.meta.main) {
