@@ -684,7 +684,6 @@ services:
       - test-40
       - apache
       - php
-      - cwe-776
       - cwe-610
       - cwe-611
       - a03:2021
