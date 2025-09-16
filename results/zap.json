@@ -383,7 +383,6 @@
                 "test": "test_40_v1",
                 "detectedCWEs": [],
                 "undetectedCWEs": [
-                    776,
                     610,
                     611
                 ],
@@ -421,7 +420,6 @@
                 "detectedCWEs": [],
                 "undetectedCWEs": [
                     1104,
-                    1035,
                     79
                 ],
                 "updatedAt": 1757416014

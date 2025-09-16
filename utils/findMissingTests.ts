@@ -242,7 +242,6 @@ async function main(): Promise<void> {
                         allTests,
                         testCWEs
                     );
-                    console.log("iterated");
                     printResults(scannerName, missingTests, missingCWEs, incorrectCWEs, options.verbose, options.simplified);
                 });
             }

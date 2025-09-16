@@ -382,7 +382,6 @@
                 "test": "test_40_v1",
                 "detectedCWEs": [],
                 "undetectedCWEs": [
-                    776,
                     610,
                     611
                 ],
@@ -419,8 +418,7 @@
             {
                 "test": "test_44_v1",
                 "detectedCWEs": [
-                    1104,
-                    1035
+                    1104
                 ],
                 "undetectedCWEs": [
                     79
@@ -1394,7 +1392,6 @@
                     610
                 ],
                 "undetectedCWEs": [
-                    776,
                     611
                 ],
                 "updatedAt": 1757508469
@@ -1429,8 +1426,7 @@
             {
                 "test": "test_44_v1",
                 "detectedCWEs": [
-                    1104,
-                    1035
+                    1104
                 ],
                 "undetectedCWEs": [
                     79
