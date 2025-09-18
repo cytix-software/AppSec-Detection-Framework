@@ -1,7 +1,13 @@
 import type { DockerCompose, VulnerabilitiesData, HydratedTest, HydratedHeatmapTest, CWEDetail } from './types'
 
 const dockerCompose: DockerCompose = (await import('../../../docker-compose.yml')).default
-const dataJson: VulnerabilitiesData = (await import('../../../data.json')).default
+const dataJsonVulns: Omit<VulnerabilitiesData, "recordedTests"> = (await import('../../../data.json')).default
+const resultsJson: { recordedTests: VulnerabilitiesData['recordedTests'] } = (await import('../../public/results.json')).default
+
+export const dataJson = {
+  ...dataJsonVulns,
+  ...resultsJson
+};
 
 export const loadData = () => {
   // Flatten the recordedTests object into an array with scanner information
