@@ -2,7 +2,7 @@ import type { DockerCompose, VulnerabilitiesData, HydratedTest, HydratedHeatmapT
 
 const dockerCompose: DockerCompose = (await import('../../../docker-compose.yml')).default
 const dataJsonVulns: Omit<VulnerabilitiesData, "recordedTests"> = (await import('../../../data.json')).default
-const resultsJson: { recordedTests: VulnerabilitiesData['recordedTests'] } = (await import('../../public/results.json')).default
+const resultsJson: { recordedTests: VulnerabilitiesData['recordedTests'] } = (await import('../assets/results.json')).default
 
 export const dataJson = {
   ...dataJsonVulns,

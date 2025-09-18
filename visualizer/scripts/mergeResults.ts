@@ -3,7 +3,7 @@ import path from 'path';
 
 async function mergeResults() {
   const resultsDir = path.resolve(__dirname, '../../results');
-  const outputDir = path.resolve(__dirname, '../public');
+  const outputDir = path.resolve(__dirname, '../src/assets');
   const recordedTests = {};
 
   try {
