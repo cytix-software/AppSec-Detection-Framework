@@ -1,7 +1,9 @@
 #!/usr/bin/env bun
-import { readFile } from 'fs/promises';
+import { readFile, writeFile, readdir } from 'fs/promises';
+import { existsSync, mkdirSync} from 'fs';
 import YAML from 'yaml';
 import Koa from 'koa';
+import bodyParser from 'koa-bodyparser'; // Add this line
 import Router from '@koa/router';
 import readline from 'readline';
 import path from 'path';
@@ -353,6 +355,7 @@ function showWelcome() {
 let batchManager: ReturnType<typeof createBatchManager>;
 
 const managementApp = new Koa();
+managementApp.use(bodyParser()); 
 const managementRouter = new Router();
 
 managementRouter.get('/api/status', async (ctx) => {
@@ -489,19 +492,137 @@ managementRouter.get('/api/recorded-tests', async (ctx) => {
 
 // Add an endpoint to get existing scanner results
 managementRouter.get('/api/existing-scanner-results', async (ctx) => {
+  // Define the path to the results folder relative to the execution directory
+  const resultsPath = path.join(process.cwd(), 'results');
+  let scannerNames: string[] = [];
+
   try {
-    const dataPath = args['data-path'];
-    const content = await readFile(dataPath, 'utf8');
-    const data = JSON.parse(content);
+    // Read all files in the results directory
+    const files = await readdir(resultsPath);
     
-    // Extract scanner names from recordedTests
-    const scannerNames = Object.keys(data.recordedTests || {});
+    // Process each file to extract the top-level scanner name(s)
+    for (const file of files) {
+      // We only care about .json files
+      if (file.endsWith('.json')) {
+        const filePath = path.join(resultsPath, file);
+        const fileContent = await readFile(filePath, 'utf8');
+        
+        try {
+          const scannerResults = JSON.parse(fileContent);
+          
+          // Scanner names are the top-level keys in the results file (e.g., "Semgrep", "Burp Suite - Deep Scan")
+          // Use Object.keys to get them and push them onto the array
+          scannerNames.push(...Object.keys(scannerResults));
+        } catch (parseError) {
+          console.error(`Error parsing JSON file ${file}:`, parseError);
+        }
+      }
+    }
     
-    ctx.body = { scannerNames };
+    // Send the combined list of scanner names back to the client
+    // Use a Set to filter out duplicates, if necessary, before sending.
+    ctx.body = { scannerNames: Array.from(new Set(scannerNames)) };
+
   } catch (error) {
-    console.error('Error reading data.json:', error);
-    ctx.body = { error: 'Failed to read data.json' };
+    // If the 'results' directory doesn't exist, return an empty array (no scanners yet)
+    if (error.code === 'ENOENT') {
+      ctx.body = { scannerNames: [] };
+    } else {
+      console.error('Error loading existing scanner list on server:', error);
+      ctx.status = 500;
+      ctx.body = { error: 'Failed to read scanner results files.' };
+    }
   }
+});
+
+managementRouter.post('/api/save-results', async (ctx) => {
+    const { scannerName, isNewScanner, data } = ctx.request.body;
+    
+    // Define the directory where results should be saved
+    const resultsDir = path.join(process.cwd(), 'results');
+
+    // Ensure the results directory exists (optional, but safer)
+    if (!existsSync(resultsDir)) {
+        mkdirSync(resultsDir, { recursive: true });
+    }
+
+    try {
+        let finalDataToWrite;
+        let fileName;
+        
+        // 1. Determine filename based on client data
+        const baseName = isNewScanner 
+            ? scannerName.replace(/\s+/g, '_').toLowerCase() 
+            : 'recorded_tests_partial';
+        
+        if (isNewScanner) {
+            // Case 1: NEW SCANNER (Save as new, unique file)
+            const baseName = scannerName.replace(/\s+/g, '_').toLowerCase();
+            fileName = `${baseName}.json`;
+
+            const filePath = path.join(resultsDir, fileName);
+
+            // SECURITY CHECK: PREVENT OVERWRITING EXISTING FILES
+            if (existsSync(filePath)) {
+                ctx.status = 409; // 409 Conflict status code
+                ctx.body = { 
+                    error: `A results file named '${fileName}' already exists. Please delete the existing file or use a different scanner name.` 
+                };
+                return;
+            }
+
+            finalDataToWrite = data; // Data is already in the correct {"ScannerName": {...}} format
+
+        } else {
+            // Case 2: EXISTING SCANNER (Append and overwrite original file)
+            fileName = `${scannerName}.json`; 
+            const filePath = path.join(resultsDir, fileName); 
+
+            if (!existsSync(filePath)) {
+                ctx.status = 404;
+                ctx.body = { error: `File for existing scanner '${scannerName}' not found.` };
+                return;
+            }
+
+            // 1. Read and parse existing file data
+            const existingContent = await readFile(filePath, 'utf8');
+            const existingData = JSON.parse(existingContent);
+            
+            // Data received from client is the new tests array (data is the 'updatedTests' array)
+            const newTests = data; 
+            
+            // 2. Locate the existing scanner's test array. The top-level key is the scannerName.
+            const scannerData = existingData[scannerName]; 
+
+            if (!scannerData || !Array.isArray(scannerData.tests)) {
+                ctx.status = 500;
+                ctx.body = { error: 'Existing file structure is invalid or missing "tests" array.' };
+                return;
+            }
+
+            // 3. Simply concatenate the new tests to the end of the existing array.
+            scannerData.tests = scannerData.tests.concat(newTests);
+
+            finalDataToWrite = existingData;
+
+        }
+
+        // Write the final, merged data back to the disk
+        const filePath = path.join(resultsDir, fileName);
+        await writeFile(filePath, JSON.stringify(finalDataToWrite, null, 2), 'utf8');
+
+        // Respond with success
+        ctx.body = { 
+            success: true, 
+            message: 'File saved successfully.',
+            fileName: fileName 
+    };
+
+    } catch (error) {
+        console.error('SERVER ERROR SAVING FILE:', error);
+        ctx.status = 500;
+        ctx.body = { error: 'Internal server error while saving file.' };
+    }
 });
 
 managementRouter.get('/', async (ctx) => {
@@ -1013,7 +1134,11 @@ function createManagementHtml(batch: ServiceBatch | null) {
                 </div>
                 
                 <div id="existingScannerFields" style="display: none;">
-                  <p>Tests should be appended to the existing scanner in data.json</p>
+                  <div class="form-group">
+                    <label for="existingScannerName">Select Scanner:</label>
+                    <select id="existingScannerName" class="scanner-select"></select>
+                    <p>Tests will be appended to this scanner's results file.</p>
+                  </div>
                 </div>
               </div>
               
@@ -1025,11 +1150,16 @@ function createManagementHtml(batch: ServiceBatch | null) {
             </div>
             
             <div id="jsonOutput" class="json-output" style="display: none;"></div>
-            <button id="copyButton" class="copy-button" onclick="copyToClipboard()" style="display: none;">Copy to Clipboard</button>
+
+            <div id="resultsActions" style="display: none; margin-top: 10px;">
+              <button id="copyButton" class="copy-button" onclick="copyToClipboard()">Copy to Clipboard</button>
+              <button class="copy-button" onclick="saveGeneratedResults()" style="background: var(--success); border-color: var(--success);">Save to File</button>
+            </div>         
           </div>
         </div>
 
         <script>
+          let generatedOutputData = null;
           // JavaScript version of humanizeServiceName
           function humanizeServiceName(serviceName) {
             return serviceName
@@ -1244,6 +1374,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
             
             checkHealth();
             loadTests();
+            loadExistingScanners();
           });
 
           async function generateRecordedTests() {
@@ -1251,21 +1382,31 @@ function createManagementHtml(batch: ServiceBatch | null) {
               const newScannerRadio = document.getElementById('newScanner');
               const scannerNameInput = document.getElementById('scannerName');
               const scanProfileInput = document.getElementById('scanProfile');
+              const existingScannerRadio = document.getElementById('existingScanner');
+              const existingScannerSelect = document.getElementById('existingScannerName');
               
-              if (!newScannerRadio || !scannerNameInput || !scanProfileInput) {
+              if (!newScannerRadio || !existingScannerRadio || !scannerNameInput || !existingScannerSelect || !scanProfileInput) {
+                // Throwing this error helps identify missing elements if you missed Step 1
                 throw new Error('Required form elements not found');
               }
               
-              const scannerName = newScannerRadio.checked 
-                ? scannerNameInput.value
-                : '';
+              let scannerName = '';
+              let scanProfile = '';
               
-              const scanProfile = newScannerRadio.checked
-                ? scanProfileInput.value
-                : '';
-              
-              if (newScannerRadio.checked && !scannerName) {
-                alert('Please enter a scanner name');
+              if (newScannerRadio.checked) {
+                // CASE 1: New Scanner - Get name/profile from text inputs
+                scannerName = scannerNameInput.value;
+                scanProfile = scanProfileInput.value;
+              } else if (existingScannerRadio.checked) {
+                // CASE 2: Existing Scanner - Get name from the selected dropdown value
+                scannerName = existingScannerSelect.value;
+                // scanProfile is not needed when appending
+                scanProfile = ''; 
+              }
+
+              // Unified validation: Check if a name was obtained in EITHER case
+              if (!scannerName) {
+                alert('Please enter or select a scanner name.');
                 return;
               }
               
@@ -1289,23 +1430,32 @@ function createManagementHtml(batch: ServiceBatch | null) {
                 }).filter(test => test.detectedCWEs.length > 0 || test.undetectedCWEs.length > 0);
                 
                 // If appending to existing scanner, only include the tests array
+                const scannerResult = {
+                    scanProfile: scanProfile,
+                    tests: updatedTests
+                };
+
+                // If new scanner, format as { "Scanner Name": { ... } }
                 const output = newScannerRadio.checked
-                  ? {
-                      ...data.recordedTests,
-                      scanner_name: scannerName,
-                      scanProfile: scanProfile,
-                      tests: updatedTests
-                    }
-                  : updatedTests;
+                    ? {
+                        [scannerName]: {
+                            scanProfile: scanProfile,
+                            tests: updatedTests
+                          }
+                      }
+                    // If existing scanner, keep the array-only output
+                    : updatedTests; 
                 
                 // Display the JSON
                 const jsonOutput = document.getElementById('jsonOutput');
-                const copyButton = document.getElementById('copyButton');
+                const resultsActions = document.getElementById('resultsActions');
+
+                generatedOutputData = output;
                 
-                if (jsonOutput && copyButton) {
+                if (jsonOutput && resultsActions) {
                   jsonOutput.textContent = JSON.stringify(output, null, 2);
                   jsonOutput.style.display = 'block';
-                  copyButton.style.display = 'inline-block';
+                  resultsActions.style.display = 'flex'; // Show both buttons
                 }
               }
             } catch (error) {
@@ -1325,11 +1475,59 @@ function createManagementHtml(batch: ServiceBatch | null) {
             }
           }
 
-          // Check health on page load
-          document.addEventListener('DOMContentLoaded', () => {
-            checkHealth();
-            loadTests();
-          });
+          async function saveGeneratedResults() {
+            const newScannerRadio = document.getElementById('newScanner');
+            const existingScannerRadio = document.getElementById('existingScanner'); // <-- Retrieve this
+            const scannerNameInput = document.getElementById('scannerName');
+            const existingScannerSelect = document.getElementById('existingScannerName'); // <-- Retrieve this
+
+            if (!generatedOutputData || !newScannerRadio || !existingScannerRadio || !scannerNameInput || !existingScannerSelect) {
+                alert("Cannot save file. Required form elements or data not found.");
+                return;
+            }
+            
+            let scannerName = '';
+            let isNewScanner = newScannerRadio.checked;
+
+            if (isNewScanner) {
+                // CASE 1: New Scanner (Get name from text input)
+                scannerName = scannerNameInput.value;
+            } else if (existingScannerRadio.checked) {
+                // CASE 2: Existing Scanner (Get name from the selected dropdown value)
+                scannerName = existingScannerSelect.value;
+            }
+
+            if (!scannerName) {
+                alert('Cannot save file. Please ensure a scanner is selected or named.');
+                return;
+            }
+                
+            const payload = {
+                scannerName: scannerName, // Used for filename
+                isNewScanner: isNewScanner,
+                data: generatedOutputData // Use the stored JSON data
+            };
+
+            try {
+                const saveResponse = await fetch('/api/save-results', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const saveResult = await saveResponse.json();
+
+                if (saveResponse.ok) {
+                    alert('Success! Results saved on the server as: ' + saveResult.fileName);
+                } else {
+                    alert('Error: Failed to save file. ' + (saveResult.error || 'Unknown error.'));
+                }
+
+            } catch (error) {
+                console.error('Error saving data to server:', error);
+                alert('A network error occurred while trying to save the file.');
+            }
+          }
 
           // Auto-refresh status every 5 seconds
           setInterval(async () => {
