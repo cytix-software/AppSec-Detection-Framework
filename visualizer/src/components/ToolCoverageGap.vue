@@ -161,12 +161,11 @@ import {
   NTag,
   NButton
 } from 'naive-ui'
-import { loadData, getDetailsByCwe } from './data'
+import { loadData, getDetailsByCwe, dataJson } from './data'
 import { groupBy, uniq, difference } from 'lodash-es'
 import type { VulnerabilitiesData } from './types'
 import { DownloadOutlined } from '@vicons/antd'
 
-const dataJson: VulnerabilitiesData = (await import('../../../data.json')).default
 const { hydratedHeatmapTests, vulnerabilities } = loadData()
 
 // Get unique DAST tools
