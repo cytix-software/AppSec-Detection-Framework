@@ -7,7 +7,8 @@
   "scripts": {
     "find-uncovered": "bun run utils/findUncoveredCwes.ts",
     "find-missing": "bun run utils/findMissingTests.ts",
-    "check-profiles": "bun run utils/checkProfileConsistency.ts"
+    "check-profiles": "bun run utils/checkProfileConsistency.ts",
+    "create-test-case": "bun run utils/createTestCase.ts"
   },
   "dependencies": {
     "@koa/router": "^13.1.0",
