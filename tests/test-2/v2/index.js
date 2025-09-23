@@ -8,17 +8,22 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
-    console.log('product ID = ' + req.query.id);
-    exec(`echo ${req.query.id}`, (error, stdout, stderr) => {
+})
+
+app.get('/products', (req, res) =>{
+    const product_id = req.query.id;
+
+    exec(`echo ${product_id}`, (error, stdout, stderr) => {
         if (error) {
-            console.log(`error: ${error.message}`);
+            res.status(500).send(`Server Error: ${error.message}`);
             return;
         }
         if (stderr) {
-            console.log(`stderr: ${stderr}`);
+            res.status(500).send(`Command Error: ${stderr}`);
             return;
         }
-        console.log(`Output: ${stdout}`);
+        console.log(`product ID = ${product_id}`);
+        res.status(200).send(`Output: ${stdout}`);
     });
 })
 
