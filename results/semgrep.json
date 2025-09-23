@@ -30,6 +30,15 @@
                 "updatedAt": 1757358217
             },
             {
+                "test": "test_2_v2",
+                "detectedCWEs": [
+                    78,
+                    77
+                ],
+                "undetectedCWEs": [],
+                "updatedAt": 1757358217
+            },
+            {
                 "test": "test_3_v1",
                 "detectedCWEs": [],
                 "undetectedCWEs": [

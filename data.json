@@ -74,6 +74,7 @@
           "title": "Cross-Site Request Forgery (CSRF)",
           "tests": [
             "test_3_v1",
+            "test_3_v2",
             "test_31_v1",
             "test_33_v1"
           ]

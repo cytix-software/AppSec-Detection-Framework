@@ -30,6 +30,15 @@
                 "updatedAt": 1757497585
             },
             {
+                "test": "test_2_v2",
+                "detectedCWEs": [],
+                "undetectedCWEs": [
+                    78,
+                    77
+                ],
+                "updatedAt": 1757497585
+            },
+            {
                 "test": "test_3_v1",
                 "detectedCWEs": [
                     352
@@ -1028,6 +1037,15 @@
             },
             {
                 "test": "test_2_v1",
+                "detectedCWEs": [],
+                "undetectedCWEs": [
+                    78,
+                    77
+                ],
+                "updatedAt": 1757507269
+            },
+            {
+                "test": "test_2_v2",
                 "detectedCWEs": [],
                 "undetectedCWEs": [
                     78,
