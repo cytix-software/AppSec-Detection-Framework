@@ -76,6 +76,21 @@ services:
       - a01:2021
       - all
 
+  test_3_v2:
+    image: test_3_v2:latest
+    build:
+      context: tests/test-3/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8032:80"
+    profiles:
+      - test-3
+      - node
+      - express
+      - cwe-352
+      - a01:2021
+      - all
+
   test_4_v1:
     image: test_4_v1:latest
     build:
