@@ -3,6 +3,15 @@ import { existsSync, mkdirSync, writeFileSync, readdirSync } from 'fs';
 import path from 'path';
 import minimist from 'minimist';
 
+interface MinimistOpts {
+  string?: string[];
+  number?: string[];
+  boolean?: string[];
+  alias?: { [key: string]: string };
+  default?: { [key: string]: any };
+}
+
+// command line arguments
 const args = minimist(process.argv.slice(2), {
   string: ['language'],
   alias: { l: 'language' },
@@ -18,7 +27,7 @@ const helpMessage = `
 
   Arguments:
     test-number: The numerical ID for the new test case (e.g., 120).
-    --language, -l: The programming language for the test (php, python, java).
+    --language, -l: The programming language for the test (php, python, java, javascript).
 `;
 
 if (args._.length !== 1 || !args.language) {
@@ -30,6 +39,7 @@ const testNumber = args._[0];
 const language = args.language.toLowerCase();
 const basePath = path.join(import.meta.dir, '..', 'tests', `test-${testNumber}`);
 
+// gets the next version by checking what current version a test case is up to 
 function getNextVersion() {
   if (!existsSync(basePath)) {
     return 'v1';
@@ -56,90 +66,124 @@ if (existsSync(testCasePath)) {
 // Create directories
 mkdirSync(testCasePath, { recursive: true });
 
-// File content templates
-const dockerfileTemplates = {
-  php: `FROM php:8.2-apache
+// configurations for each of the languages
+const languageConfig = {
+  php: {
+    sourceFile: 'index.php',
+    internalPort: 80,
+    serverProfile: 'apache',
+    sourceContent: `<?php
+echo "This is a PHP test case!";
+?>`,
+    dockerfile: `FROM php:8.2-apache
 WORKDIR /var/www/html
 COPY index.php .
 EXPOSE 80`,
-  python: `FROM python:3.9-slim
-WORKDIR /app
-COPY app.py ./
-RUN pip install requirements.txt
-EXPOSE 80
-CMD ["python", "app.py"]`,
-  java: `FROM tomcat:9-jre11-openjdk-slim
-COPY . /usr/local/tomcat/webapps/vulnerable_app
-RUN sed -i 's/port="8080"/port="80"/g' /usr/local/tomcat/conf/server.xml
-EXPOSE 80`
-};
-
-const sourceFileTemplates = {
-  php: `<?php
-echo "Hello from PHP test case!";
-?>`,
-  python: `from flask import Flask, request
+    extraFiles: [],
+  }
+  ,
+  python: {
+    sourceFile: 'app.py',
+    internalPort: 80,
+    serverProfile: 'flask',
+    sourceContent: `from flask import Flask, request
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello from Python test case!'
+    return 'This is a Python test case!'
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)`,
-  java: `<!DOCTYPE html>
+    app.run(host='0.0.0.0', port=80)`,
+    dockerfile: `FROM python:3.11-slim
+WORKDIR /app
+COPY app.py requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+EXPOSE 80
+CMD ["python", "app.py"]`,
+    extraFiles: [{ name: 'requirements.txt', content: 'flask' }],
+  },
+  java: {
+    sourceFile: 'index.html',
+    internalPort: 80,
+    serverProfile: 'tomcat',
+    sourceContent: `<!DOCTYPE html>
 <html>
 <head>
     <title>Java Test Case</title>
 </head>
 <body>
-    <h1>Hello from Java test case!</h1>
+    <h1>This is a Java test case!</h1>
 </body>
-</html>`
+</html>`,
+    dockerfile: `FROM tomcat:9-jre11-openjdk-slim
+COPY . /usr/local/tomcat/webapps/demo_app
+EXPOSE 8080`,
+    extraFiles: [{ name: 'pom.xml', content: '' }],
+  },
+  javascript: {
+    sourceFile: 'index.js',
+    internalPort: 80,
+    serverProfile: 'express',
+    sourceContent: `const express = require('express');
+const app = express();
+const port = 80;
+
+app.get('/', (req, res) => {
+    res.send('This is a Node.js test case');
+});
+
+app.listen(port, () => {
+    console.log('Test ${testNumber} V${version.substring(1)} App listening on ' + port);
+});`,
+    dockerfile: `FROM node:18-alpine
+WORKDIR /app
+COPY package.json ./
+RUN npm install
+EXPOSE 80
+COPY . .
+CMD ["node", "index.js"]`,
+    extraFiles: [{ name: 'package.json', content: JSON.stringify({
+        name: `test-${testNumber}-${version}`,
+        version: "1.0.0",
+        description: `Test ${testNumber} ${version}`,
+        main: "index.js",
+        scripts: { "start": "node index.js" },
+        dependencies: { "express": "^4.18.2" }
+    }, null, 2)}],
+  }
 };
 
-const extraFiles = {
-  python: 'requirements.txt',
-  java: 'pom.xml'
-};
+const config = languageConfig[language as keyof typeof languageConfig];
 
-const dockerfileName = 'Dockerfile';
-const sourceFileName = language === 'php' ? 'index.php' : (language === 'python' ? 'app.py' : 'index.html');
-
-// Create files
-writeFileSync(path.join(testCasePath, dockerfileName), dockerfileTemplates[language as keyof typeof dockerfileTemplates]);
-writeFileSync(path.join(testCasePath, sourceFileName), sourceFileTemplates[language as keyof typeof sourceFileTemplates]);
-
-if (extraFiles[language as keyof typeof extraFiles]) {
-  writeFileSync(path.join(testCasePath, extraFiles[language as keyof typeof extraFiles]), '');
+if (!config) {
+    console.error(`Error: Language '${language}' is not supported. Supported languages: ${Object.keys(languageConfig).join(', ')}`);
+    process.exit(1);
 }
 
-// Get the server profile based on language
-let serverProfile = '';
-switch (language) {
-  case 'php':
-    serverProfile = 'apache';
-    break;
-  case 'python':
-    serverProfile = 'flask';
-    break;
-  case 'java':
-    serverProfile = 'tomcat';
-    break;
-  default:
-    break;
-}
+// 1. Create source file
+writeFileSync(path.join(testCasePath, config.sourceFile), config.sourceContent);
 
-// Format the external port number
-const formattedTestNumber = String(testNumber).padStart(2, '0');
-const versionNumber = version.substring(1);
-const externalPort = `8${formattedTestNumber}${versionNumber}`;
+// 2. Create Dockerfile (using a standard name)
+writeFileSync(path.join(testCasePath, 'Dockerfile'), config.dockerfile);
+
+// 3. Create extra files (package.json, requirements.txt, etc.)
+config.extraFiles.forEach(file => {
+  writeFileSync(path.join(testCasePath, file.name), file.content);
+});
 
 console.log(`
 ✅ Successfully created new test case: test-${testNumber}/${version}
 `);
 
-// Generate docker-compose snippet
+// 4. Create variables for docker compose
+const formattedTestNumber = String(testNumber).padStart(2, '0');
+const versionNumber = version.substring(1);
+const externalPort = `8${formattedTestNumber}${versionNumber}`;
+const internalPort = config.internalPort;
+const serverProfile = config.serverProfile;
+
+// Generate Docker Compose Snippet
 const dockerComposeService = `
   test_${testNumber}_${version}:
     image: test_${testNumber}_${version}:latest
@@ -147,7 +191,7 @@ const dockerComposeService = `
       context: ./tests/test-${testNumber}/${version}/
       dockerfile: Dockerfile
     ports:
-      - "${externalPort}:80"
+      - "${externalPort}:${internalPort}"
     profiles:
       - test-${testNumber}
       - ${language}
