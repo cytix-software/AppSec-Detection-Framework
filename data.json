@@ -444,7 +444,9 @@
           "title": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)",
           "tests": [
             "test_4_v1",
-            "test_18_v1"
+            "test_4_v2",
+            "test_18_v1",
+            "test_113_v1"
           ]
         },
         {

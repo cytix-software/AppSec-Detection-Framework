@@ -106,6 +106,21 @@ services:
       - a03:2021
       - all
 
+  test_4_v2:
+    image: test_4_v2:latest
+    build:
+      context: ./tests/test-4/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8042:80"
+    profiles:
+      - test-4
+      - javascript
+      - express
+      - cwe-80
+      - a03:2021
+      - all
+
   test_5_v1:
     image: test_5_v1:latest
     build:
@@ -1877,6 +1892,21 @@ services:
       - apache
       - cwe-213
       - a04:2021
+      - all
+
+  test_113_v1:
+    image: test_113_v1:latest
+    build:
+      context: ./tests/test-113/v1/
+      dockerfile: Dockerfile
+    ports:
+      - "8113:80"
+    profiles:
+      - test-113
+      - javascript
+      - express
+      - cwe-80
+      - a03:2021
       - all
 networks:
   test-110-network:

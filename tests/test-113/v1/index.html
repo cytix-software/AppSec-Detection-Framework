@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search for a Product</h1>
+    
+    <form action="" method="get">
+        <label for="search">Search:</label><br>
+        <input type="text" id="search" name="q" placeholder="Enter a product name">
+        <button type="submit">Search</button>
+    </form>
+    
+    <hr>
+    
+    <div id="results"></div>
+    <script>
+        // 1. Get the query string from the URL
+        const params = new URLSearchParams(window.location.search);
+        const searchQuery = params.get('q');
+        
+        // 2. Find the div where results will be displayed
+        const resultsDiv = document.getElementById('results');
+
+        // 3. Check if a search query was provided and print result
+        if (searchQuery) {
+            resultsDiv.innerHTML = `You searched for: <strong>${searchQuery}</strong>`;
+        }
+    </script>
+</body>
+</html>
