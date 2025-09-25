@@ -22,3 +22,15 @@ export interface Data {
         }>;
     }>;
 } 
+
+export interface ScannerResults {
+      scanProfile: string
+      tests: RecordedTest[]
+}
+
+export interface RecordedTest {
+  test: string
+  detectedCWEs: number[]
+  undetectedCWEs: number[]
+  updatedAt: number
+}
