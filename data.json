@@ -1231,7 +1231,8 @@
           "id": 502,
           "title": "Deserialization of Untrusted Data",
           "tests": [
-            "test_7_v1"
+            "test_7_v1",
+            "test_7_v2"
           ]
         },
         {

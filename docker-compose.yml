@@ -196,6 +196,21 @@ services:
       - a08:2021
       - all
 
+  test_7_v2:
+    image: test_7_v2:latest
+    build:
+      context: ./tests/test-7/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8072:80"
+    profiles:
+      - test-7
+      - javascript
+      - express
+      - cwe-502
+      - a08:2021
+      - all
+
   test_8_v1:
     image: test_8_v1:latest
     build:
