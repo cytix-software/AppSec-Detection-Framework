@@ -750,7 +750,8 @@
           "id": 434,
           "title": "Unrestricted Upload of File with Dangerous Type",
           "tests": [
-            "test_6_v1"
+            "test_6_v1",
+            "test_6_v2"
           ]
         },
         {

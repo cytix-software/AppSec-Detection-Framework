@@ -166,6 +166,21 @@ services:
       - a04:2021
       - all
 
+  test_6_v2:
+    image: test_6_v2:latest
+    build:
+      context: tests/test-6/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8062:80"
+    profiles:
+      - test-6
+      - javascript 
+      - express
+      - cwe-434
+      - a04:2021
+      - all
+
   test_7_v1:
     image: test_7_v1:latest
     build:
