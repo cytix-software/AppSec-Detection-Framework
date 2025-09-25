@@ -453,7 +453,8 @@
           "id": 83,
           "title": "Improper Neutralization of Script in Attributes in a Web Page",
           "tests": [
-            "test_5_v1"
+            "test_5_v1",
+            "test_5_v2"
           ]
         },
         {
