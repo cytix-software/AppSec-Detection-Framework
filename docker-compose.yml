@@ -136,6 +136,21 @@ services:
       - a03:2021
       - all
 
+  test_5_v2:
+    image: test_5_v2:latest
+    build:
+      context: tests/test-5/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8052:80"
+    profiles:
+      - test-5
+      - javascript
+      - express
+      - cwe-83
+      - a03:2021
+      - all
+
   test_6_v1:
     image: test_6_v1:latest
     build:
