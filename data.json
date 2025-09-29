@@ -1021,6 +1021,7 @@
           "title": "Sensitive Cookie Without 'HttpOnly' Flag",
           "tests": [
             "test_8_v1",
+            "test_8_v2",
             "test_45_v1"
           ]
         },
