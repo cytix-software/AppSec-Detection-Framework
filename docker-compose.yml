@@ -287,6 +287,21 @@ services:
       - cwe-276
       - a01:2021
       - all
+
+  test_10_v2:
+    image: test_10_v2:latest
+    build:
+      context: tests/test-10/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8102:80"
+    profiles:
+      - test-10
+      - javascript 
+      - express 
+      - cwe-276
+      - a01:2021
+      - all
       
   test_11_v1:
     image: test_11_v1:latest
