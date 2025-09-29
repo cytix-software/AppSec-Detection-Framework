@@ -54,7 +54,8 @@
           "id": 276,
           "title": "Incorrect Default Permissions",
           "tests": [
-            "test_10_v1"
+            "test_10_v1",
+            "test_10_v2"
           ]
         },
         {
