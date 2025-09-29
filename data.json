@@ -9,7 +9,8 @@
           "tests": [
             "test_1_v1",
             "test_1_v2",
-            "test_9_v1"
+            "test_9_v1",
+            "test_9_v2"
           ]
         },
         {
@@ -24,7 +25,8 @@
           "id": 35,
           "title": "Path Traversal: '.../...//'",
           "tests": [
-            "test_9_v1"
+            "test_9_v1",
+            "test_9_v2"
           ]
         },
         {

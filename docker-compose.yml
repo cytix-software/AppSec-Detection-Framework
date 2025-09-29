@@ -256,7 +256,23 @@ services:
         - cwe-22
         - a01:2021
         - all
-      
+
+  test_9_v2:
+      image: test_9_v2:latest
+      build:
+        context: tests/test-9/v2/
+        dockerfile: Dockerfile
+      ports:
+        - "8092:80"
+      profiles:
+        - test-9
+        - javascript 
+        - express 
+        - cwe-35
+        - cwe-22
+        - a01:2021
+        - all
+
   test_10_v1:
     image: test_10_v1:latest
     build:

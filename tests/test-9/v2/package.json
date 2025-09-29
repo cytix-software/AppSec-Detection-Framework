@@ -1,0 +1,13 @@
+{
+  "name": "test-9-v2",
+  "version": "1.0.0",
+  "description": "Test 9 v2",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "common-tags": "^1.8.2",
+    "express": "^4.18.2"
+  }
+}
