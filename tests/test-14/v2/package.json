@@ -1,0 +1,15 @@
+{
+  "name": "test-14-v2",
+  "version": "1.0.0",
+  "description": "Cookie-based role check demo (Node.js)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.19.2"
+  }
+}
+
+

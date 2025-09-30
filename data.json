@@ -93,7 +93,8 @@
           "id": 377,
           "title": "Insecure Temporary File",
           "tests": [
-            "test_12_v1"
+            "test_12_v1",
+            "test_12_v2"
           ]
         },
         {
@@ -191,14 +192,16 @@
           "id": 862,
           "title": "Missing Authorization",
           "tests": [
-            "test_13_v1"
+            "test_13_v1",
+            "test_13_v2"
           ]
         },
         {
           "id": 863,
           "title": "Incorrect Authorization",
           "tests": [
-            "test_14_v1"
+            "test_14_v1",
+            "test_14_v2"
           ]
         },
         {
@@ -297,6 +300,7 @@
           "title": "Use of a Broken or Risky Cryptographic Algorithm",
           "tests": [
             "test_15_v1",
+            "test_15_v2",
             "test_17_v1"
           ]
         },
@@ -305,6 +309,7 @@
           "title": "Use of Weak Hash",
           "tests": [
             "test_15_v1",
+            "test_15_v2",
             "test_17_v1"
           ]
         },
@@ -383,7 +388,8 @@
           "id": 759,
           "title": "Use of a One-Way Hash without a Salt",
           "tests": [
-            "test_15_v1"
+            "test_15_v1",
+            "test_15_v2"
           ]
         },
         {
@@ -405,6 +411,7 @@
           "title": "Use of Password Hash With Insufficient Computational Effort",
           "tests": [
             "test_15_v1",
+            "test_15_v2",
             "test_17_v1"
           ]
         }
@@ -1067,6 +1074,7 @@
           "title": "Improper Authentication",
           "tests": [
             "test_14_v1",
+            "test_14_v2",
             "test_19_v1",
             "test_35_v1",
             "test_38_v1"
@@ -1244,6 +1252,7 @@
           "title": "Reliance on Cookies without Validation and Integrity Checking",
           "tests": [
             "test_14_v1",
+            "test_14_v2",
             "test_35_v1"
           ]
         },
@@ -1252,6 +1261,7 @@
           "title": "Reliance on Cookies without Validation and Integrity Checking in a Security Decision",
           "tests": [
             "test_14_v1",
+            "test_14_v2",
             "test_35_v1"
           ]
         },
