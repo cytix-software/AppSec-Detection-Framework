@@ -3,18 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test 16</title>
+    <title>Test 16v2</title>
     <script>
-    // reads the user inputted HTTP header
     function readHeader() {
         const val = document.getElementById('val').value;
-        fetch('header.php?val=' + encodeURIComponent(val))
+        fetch('/header?val=' + encodeURIComponent(val))
             .then(response => {
-                // Can read custom headers
                 const customHeader = response.headers.get('X-Custom-Header');
-                console.log(customHeader);
-                
-                // Displays the header value on the page
                 const resultDiv = document.getElementById('headerResult');
                 if (customHeader) {
                     resultDiv.innerHTML = '<p><b>Header Value:</b> ' + customHeader + '</p>';
@@ -24,6 +19,10 @@
             });
     }
     </script>
+    <style>
+        #headerResult { border: 1px solid #ccc; padding: 10px; margin: 10px 0; background: #f0f0f0; }
+    </style>
+    
 </head>
 <body>
     <h1>Test 18</h1>
@@ -32,6 +31,8 @@
     <button onclick="readHeader()">Read Custom Header</button>
     
     <h3>JavaScript Header Reader</h3>
-    <div id="headerResult" style="border: 1px solid #ccc; padding: 10px; margin: 10px 0; background: #f0f0f0;"></div>
+    <div id="headerResult"></div>
 </body>
 </html>
+
+

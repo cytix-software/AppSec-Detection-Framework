@@ -1,0 +1,14 @@
+{
+  "name": "test-18-v2",
+  "version": "1.0.0",
+  "description": "Header reflection demo (Node.js)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+
+
