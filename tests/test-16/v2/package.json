@@ -1,0 +1,14 @@
+{
+  "name": "test-16-v2",
+  "version": "1.0.0",
+  "description": "Command injection via curl with escaped output (Node.js)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+
+

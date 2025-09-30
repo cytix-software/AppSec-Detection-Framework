@@ -475,6 +475,24 @@ services:
       - cwe-77
       - all
 
+  test_16_v2:
+    image: test_16_v2:latest
+    build:
+      context: tests/test-16/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8162:80"
+    profiles:
+      - test-16
+      - javascript
+      - express
+      - a10:2021
+      - cwe-918
+      - a03:2021
+      - cwe-78
+      - cwe-77
+      - all
+
   test_17_v1:
     image: test_17_v1:latest
     build:
@@ -486,6 +504,27 @@ services:
       - test-17
       - php
       - apache
+      - cwe-760 
+      - cwe-327 
+      - cwe-328 
+      - cwe-916 
+      - cwe-321 
+      - cwe-798 
+      - a02:2021
+      - a07:2021
+      - all
+
+  test_17_v2:
+    image: test_17_v2:latest
+    build:
+      context: tests/test-17/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8172:80"
+    profiles:
+      - test-17
+      - javascript
+      - express
       - cwe-760 
       - cwe-327 
       - cwe-328 
@@ -516,6 +555,26 @@ services:
       - A03:2021
       - all
 
+  test_18_v2:
+    image: test_18_v2:latest
+    build:
+      context: tests/test-18/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8182:80"
+    profiles:
+      - test-18
+      - javascript
+      - express
+      - cwe-79
+      - cwe-80
+      - cwe-93
+      - cwe-113
+      - cwe-116
+      - cwe-644
+      - A03:2021
+      - all
+
   test_19_v1:
     image: test_19_v1:latest
     build:
@@ -533,6 +592,23 @@ services:
       - A07:2021
       - all
 
+  test_19_v2:
+    image: test_19_v2:latest
+    build:
+      context: tests/test-19/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8192:80"
+    profiles:
+      - test-19
+      - javascript
+      - express
+      - cwe-501
+      - cwe-287 
+      - A04:2021
+      - A07:2021
+      - all
+
   test_20_v1:
     image: test_20_v1:latest
     build:
@@ -544,6 +620,26 @@ services:
       - test-20
       - php
       - apache
+      - cwe-778
+      - cwe-799
+      - cwe-223
+      - cwe-307
+      - a09:2021
+      - a07:2021
+      - a04:2021
+      - all
+
+  test_20_v2:
+    image: test_20_v2:latest
+    build:
+      context: tests/test-20/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8202:80"
+    profiles:
+      - test-20
+      - javascript
+      - express
       - cwe-778
       - cwe-799
       - cwe-223

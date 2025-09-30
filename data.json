@@ -257,6 +257,7 @@
           "title": "Use of Hard-coded Cryptographic Key",
           "tests": [
             "test_17_v1",
+            "test_17_v2",
             "test_61_v1"
           ]
         },
@@ -301,7 +302,8 @@
           "tests": [
             "test_15_v1",
             "test_15_v2",
-            "test_17_v1"
+            "test_17_v1",
+            "test_17_v2"
           ]
         },
         {
@@ -310,7 +312,8 @@
           "tests": [
             "test_15_v1",
             "test_15_v2",
-            "test_17_v1"
+            "test_17_v1",
+            "test_17_v2"
           ]
         },
         {
@@ -396,7 +399,8 @@
           "id": 760,
           "title": "Use of a One-Way Hash with a Predictable Salt",
           "tests": [
-            "test_17_v1"
+            "test_17_v1",
+            "test_17_v2"
           ]
         },
         {
@@ -412,7 +416,8 @@
           "tests": [
             "test_15_v1",
             "test_15_v2",
-            "test_17_v1"
+            "test_17_v1",
+            "test_17_v2"
           ]
         }
       ],
@@ -427,7 +432,8 @@
           "tests": [
             "test_2_v1",
             "test_2_v2",
-            "test_16_v1"
+            "test_16_v1",
+            "test_16_v2"
           ]
         },
         {
@@ -436,7 +442,8 @@
           "tests": [
             "test_2_v1",
             "test_2_v2",
-            "test_16_v1"
+            "test_16_v1",
+            "test_16_v2"
           ]
         },
         {
@@ -444,6 +451,7 @@
           "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
           "tests": [
             "test_18_v1",
+            "test_18_v2",
             "test_44_v1",
             "test_44_v2",
             "test_66_v1"
@@ -456,6 +464,7 @@
             "test_4_v1",
             "test_4_v2",
             "test_18_v1",
+            "test_18_v2",
             "test_113_v1"
           ]
         },
@@ -506,7 +515,8 @@
           "id": 93,
           "title": "Improper Neutralization of CRLF Sequences ('CRLF Injection')",
           "tests": [
-            "test_18_v1"
+            "test_18_v1",
+            "test_18_v2"
           ]
         },
         {
@@ -555,14 +565,16 @@
           "id": 113,
           "title": "Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')",
           "tests": [
-            "test_18_v1"
+            "test_18_v1",
+            "test_18_v2"
           ]
         },
         {
           "id": 116,
           "title": "Improper Encoding or Escaping of Output",
           "tests": [
-            "test_18_v1"
+            "test_18_v1",
+            "test_18_v2"
           ]
         },
         {
@@ -618,7 +630,8 @@
           "id": 644,
           "title": "Improper Neutralization of HTTP Headers for Scripting Syntax",
           "tests": [
-            "test_18_v1"
+            "test_18_v1",
+            "test_18_v2"
           ]
         },
         {
@@ -789,7 +802,8 @@
           "id": 501,
           "title": "Trust Boundary Violation",
           "tests": [
-            "test_19_v1"
+            "test_19_v1",
+            "test_19_v2"
           ]
         },
         {
@@ -873,7 +887,8 @@
           "id": 799,
           "title": "Improper Control of Interaction Frequency",
           "tests": [
-            "test_20_v1"
+            "test_20_v1",
+            "test_20_v2"
           ]
         },
         {
@@ -1076,6 +1091,7 @@
             "test_14_v1",
             "test_14_v2",
             "test_19_v1",
+            "test_19_v2",
             "test_35_v1",
             "test_38_v1"
           ]
@@ -1141,6 +1157,7 @@
           "title": "Improper Restriction of Excessive Authentication Attempts",
           "tests": [
             "test_20_v1",
+            "test_20_v2",
             "test_32_v1"
           ]
         },
@@ -1191,6 +1208,7 @@
           "title": "Use of Hard-coded Credentials",
           "tests": [
             "test_17_v1",
+            "test_17_v2",
             "test_32_v1",
             "test_37_v1",
             "test_61_v1"
@@ -1304,7 +1322,8 @@
           "id": 223,
           "title": "Omission of Security-relevant Information",
           "tests": [
-            "test_20_v1"
+            "test_20_v1",
+            "test_20_v2"
           ]
         },
         {
@@ -1318,7 +1337,8 @@
           "id": 778,
           "title": "Insufficient Logging",
           "tests": [
-            "test_20_v1"
+            "test_20_v1",
+            "test_20_v2"
           ]
         }
       ],
@@ -1331,7 +1351,8 @@
           "id": 918,
           "title": "Server-Side Request Forgery (SSRF)",
           "tests": [
-            "test_16_v1"
+            "test_16_v1",
+            "test_16_v2"
           ]
         }
       ],
