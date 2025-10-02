@@ -86,7 +86,8 @@
           "id": 359,
           "title": "Exposure of Private Personal Information to an Unauthorized Actor",
           "tests": [
-            "test_24_v1"
+            "test_24_v1",
+            "test_24_v2"
           ]
         },
         {
@@ -185,7 +186,8 @@
           "id": 706,
           "title": "Use of Incorrectly-Resolved Name or Reference",
           "tests": [
-            "test_25_v1"
+            "test_25_v1",
+            "test_25_v2"
           ]
         },
         {
@@ -551,7 +553,8 @@
           "id": 98,
           "title": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')",
           "tests": [
-            "test_25_v1"
+            "test_25_v1",
+            "test_25_v2"
           ]
         },
         {
@@ -810,7 +813,8 @@
           "id": 522,
           "title": "Insufficiently Protected Credentials",
           "tests": [
-            "test_24_v1"
+            "test_24_v1",
+            "test_24_v2"
           ]
         },
         {
@@ -1172,7 +1176,8 @@
           "id": 384,
           "title": "Session Fixation",
           "tests": [
-            "test_23_v1"
+            "test_23_v1",
+            "test_23_v2"
           ]
         },
         {
@@ -1186,7 +1191,8 @@
           "id": 613,
           "title": "Insufficient Session Expiration",
           "tests": [
-            "test_22_v1"
+            "test_22_v1",
+            "test_22_v2"
           ]
         },
         {
@@ -1247,7 +1253,8 @@
           "id": 426,
           "title": "Untrusted Search Path",
           "tests": [
-            "test_25_v1"
+            "test_25_v1",
+            "test_25_v2"
           ]
         },
         {
@@ -1288,6 +1295,7 @@
           "title": "Inclusion of Functionality from Untrusted Control Sphere",
           "tests": [
             "test_25_v1",
+            "test_25_v2",
             "test_29_v1"
           ]
         },
@@ -1315,7 +1323,8 @@
           "id": 117,
           "title": "Improper Output Neutralization for Logs",
           "tests": [
-            "test_21_v1"
+            "test_21_v1",
+            "test_21_v2"
           ]
         },
         {
@@ -1330,7 +1339,8 @@
           "id": 532,
           "title": "Insertion of Sensitive Information into Log File",
           "tests": [
-            "test_24_v1"
+            "test_24_v1",
+            "test_24_v2"
           ]
         },
         {

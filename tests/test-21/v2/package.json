@@ -1,0 +1,14 @@
+{
+  "name": "test-21-v2",
+  "version": "1.0.0",
+  "description": "Numeric parse with logging (Node.js)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+
+
