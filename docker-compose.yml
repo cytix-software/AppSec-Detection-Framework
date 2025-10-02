@@ -664,6 +664,21 @@ services:
       - A09:2021
       - all
 
+  test_21_v2:
+    image: test_21_v2:latest
+    build:
+      context: tests/test-21/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8212:80"
+    profiles:
+      - test-22
+      - javascript
+      - express
+      - cwe-117
+      - A09:2021
+      - all
+
   test_22_v1:
     image: test_22_v1:latest
     build:
@@ -679,6 +694,21 @@ services:
       - a07:2021
       - all
 
+  test_22_v2:
+    image: test_22_v2:latest
+    build:
+      context: tests/test-22/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8222:80"
+    profiles:
+      - test-22
+      - javascript
+      - express
+      - cwe-613
+      - a07:2021
+      - all
+
   test_23_v1:
     image: test_23_v1:latest
     build:
@@ -690,6 +720,21 @@ services:
       - test-23
       - php
       - apache
+      - cwe-384 
+      - a07:2021  
+      - all
+
+  test_23_v2:
+    image: test_23_v2:latest
+    build:
+      context: tests/test-23/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8232:80"
+    profiles:
+      - test-23
+      - javascript
+      - express
       - cwe-384 
       - a07:2021  
       - all
@@ -713,6 +758,25 @@ services:
       - a09:2021
       - all
 
+  test_24_v2:
+    image: test_24_v2:latest
+    build:
+      context: tests/test-24/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8242:80"
+    profiles:
+      - test-24
+      - javascript
+      - express
+      - cwe-359
+      - cwe-522
+      - cwe-532
+      - a01:2021
+      - a04:2021
+      - a09:2021
+      - all
+
   test_25_v1:
     image: test_25_v1:latest
     build:
@@ -724,6 +788,26 @@ services:
       - test-25
       - php
       - apache
+      - cwe-98
+      - cwe-706
+      - cwe-829
+      - cwe-426
+      - a01:2021
+      - a03:2021
+      - A08:2021
+      - all
+
+  test_25_v2:
+    image: test_25_v2:latest
+    build:
+      context: tests/test-25/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8252:80"
+    profiles:
+      - test-25
+      - javascript
+      - express
       - cwe-98
       - cwe-706
       - cwe-829
