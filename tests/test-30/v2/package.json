@@ -1,0 +1,14 @@
+{
+  "name": "test-30-v2",
+  "version": "1.0.0",
+  "description": "Mass assignment via constructor (Node.js)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+
+
