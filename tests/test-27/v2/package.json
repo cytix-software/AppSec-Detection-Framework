@@ -1,0 +1,14 @@
+{
+  "name": "test-27-v2",
+  "version": "1.0.0",
+  "description": "Echo message with HTML escaping (Node.js)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+
+

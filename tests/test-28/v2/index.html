@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test 28</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+</head>
+<body>
+    <h1>Test 28</h1>
+    <div id="output"></div>
+    <div id="react-root" style="margin-top: 12px;"></div>
+    <script>
+      if (window.React && window.ReactDOM) {
+        const e = React.createElement('div', null, 'React loaded and rendered');
+        ReactDOM.createRoot(document.getElementById('react-root')).render(e);
+      } else {
+        document.getElementById('react-root').textContent = 'React failed to load';
+      }
+    </script>
+</body>
+</html>
+
+

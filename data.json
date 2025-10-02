@@ -210,7 +210,8 @@
           "id": 913,
           "title": "Improper Control of Dynamically-Managed Code Resources",
           "tests": [
-            "test_30_v1"
+            "test_30_v1",
+            "test_30_v2"
           ]
         },
         {
@@ -863,7 +864,8 @@
           "id": 646,
           "title": "Reliance on File Name or Extension of Externally-Supplied File",
           "tests": [
-            "test_26_v1"
+            "test_26_v1",
+            "test_26_v2"
           ]
         },
         {
@@ -1238,15 +1240,19 @@
           "title": "Insufficient Verification of Data Authenticity",
           "tests": [
             "test_26_v1",
+            "test_26_v2",
             "test_27_v1",
-            "test_28_v1"
+            "test_27_v2",
+            "test_28_v1",
+            "test_28_v2"
           ]
         },
         {
           "id": 353,
           "title": "Missing Support for Integrity Check",
           "tests": [
-            "test_27_v1"
+            "test_27_v1",
+            "test_27_v2"
           ]
         },
         {
@@ -1261,7 +1267,8 @@
           "id": 494,
           "title": "Download of Code Without Integrity Check",
           "tests": [
-            "test_28_v1"
+            "test_28_v1",
+            "test_28_v2"
           ]
         },
         {
@@ -1310,7 +1317,8 @@
           "id": 915,
           "title": "Improperly Controlled Modification of Dynamically-Determined Object Attributes",
           "tests": [
-            "test_30_v1"
+            "test_30_v1",
+            "test_30_v2"
           ]
         }
       ],
