@@ -983,6 +983,24 @@ services:
       - a01:2021
       - all
 
+  test_31_v2:
+    image: test_31_v2:latest
+    build:
+      context: tests/test-31/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8312:80"
+    profiles:
+      - test-31
+      - javascript
+      - express
+      - cwe-940
+      - cwe-346
+      - cwe-352
+      - a07:2021
+      - a01:2021
+      - all
+
   test_32_v1:
     image: test_32_v1:latest
     build:
@@ -994,6 +1012,26 @@ services:
       - test-32
       - php
       - apache
+      - cwe-640
+      - cwe-257
+      - cwe-256
+      - cwe-798
+      - cwe-307
+      - a07:2021
+      - a04:2021
+      - all
+
+  test_32_v2:
+    image: test_32_v2:latest
+    build:
+      context: tests/test-32/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8322:80"
+    profiles:
+      - test-32
+      - javascript
+      - express
       - cwe-640
       - cwe-257
       - cwe-256
@@ -1023,6 +1061,26 @@ services:
       - a01:2021
       - all
 
+  test_33_v2:
+    image: test_33_v2:latest
+    build:
+      context: tests/test-33/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8332:80"
+    profiles:
+      - test-33
+      - javascript
+      - express
+      - cwe-620
+      - cwe-306
+      - cwe-352
+      - cwe-598 
+      - a07:2021
+      - a04:2021
+      - a01:2021
+      - all
+
   test_34_v1:
     image: test_34_v1:latest
     build:
@@ -1038,6 +1096,21 @@ services:
       - a07:2021
       - all
 
+  test_34_v2:
+    image: test_34_v2:latest
+    build:
+      context: tests/test-34/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8342:80"
+    profiles:
+      - test-34
+      - javascript
+      - express
+      - cwe-521
+      - a07:2021
+      - all
+
   test_35_v1:
     image: test_35_v1:latest
     build:
@@ -1049,6 +1122,27 @@ services:
       - test-35
       - apache
       - php
+      - cwe-302
+      - cwe-807
+      - cwe-287 
+      - cwe-784 
+      - cwe-565 
+      - a07:2021
+      - a04:2021
+      - a08:2021
+      - all
+
+  test_35_v2:
+    image: test_35_v2:latest
+    build:
+      context: tests/test-35/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8352:80"
+    profiles:
+      - test-35
+      - javascript
+      - express
       - cwe-302
       - cwe-807
       - cwe-287 

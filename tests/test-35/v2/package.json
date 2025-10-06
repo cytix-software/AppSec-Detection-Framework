@@ -1,0 +1,15 @@
+{
+  "name": "test-35-v2",
+  "version": "1.0.0",
+  "description": "Cookie-gated content (Node.js)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2"
+  }
+}
+
+

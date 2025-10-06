@@ -79,7 +79,9 @@
             "test_3_v1",
             "test_3_v2",
             "test_31_v1",
-            "test_33_v1"
+            "test_31_v2",
+            "test_33_v1",
+            "test_33_v2"
           ]
         },
         {
@@ -698,14 +700,16 @@
           "title": "Plaintext Storage of a Password",
           "tests": [
             "test_11_v1",
-            "test_32_v1"
+            "test_32_v1",
+            "test_32_v2"
           ]
         },
         {
           "id": 257,
           "title": "Storing Passwords in a Recoverable Format",
           "tests": [
-            "test_32_v1"
+            "test_32_v1",
+            "test_32_v2"
           ]
         },
         {
@@ -843,7 +847,8 @@
           "id": 598,
           "title": "Use of GET Request Method With Sensitive Query Strings",
           "tests": [
-            "test_33_v1"
+            "test_33_v1",
+            "test_33_v2"
           ]
         },
         {
@@ -901,7 +906,8 @@
           "id": 807,
           "title": "Reliance on Untrusted Inputs in a Security Decision",
           "tests": [
-            "test_35_v1"
+            "test_35_v1",
+            "test_35_v2"
           ]
         },
         {
@@ -1099,6 +1105,7 @@
             "test_19_v1",
             "test_19_v2",
             "test_35_v1",
+            "test_35_v2",
             "test_38_v1"
           ]
         },
@@ -1141,7 +1148,8 @@
           "id": 302,
           "title": "Authentication Bypass by Assumed-Immutable Data",
           "tests": [
-            "test_35_v1"
+            "test_35_v1",
+            "test_35_v2"
           ]
         },
         {
@@ -1155,7 +1163,8 @@
           "id": 306,
           "title": "Missing Authentication for Critical Function",
           "tests": [
-            "test_33_v1"
+            "test_33_v1",
+            "test_33_v2"
           ]
         },
         {
@@ -1164,14 +1173,16 @@
           "tests": [
             "test_20_v1",
             "test_20_v2",
-            "test_32_v1"
+            "test_32_v1",
+            "test_32_v2"
           ]
         },
         {
           "id": 346,
           "title": "Origin Validation Error",
           "tests": [
-            "test_31_v1"
+            "test_31_v1",
+            "test_31_v2"
           ]
         },
         {
@@ -1186,7 +1197,8 @@
           "id": 521,
           "title": "Weak Password Requirements",
           "tests": [
-            "test_34_v1"
+            "test_34_v1",
+            "test_34_v2"
           ]
         },
         {
@@ -1201,14 +1213,16 @@
           "id": 620,
           "title": "Unverified Password Change",
           "tests": [
-            "test_33_v1"
+            "test_33_v1",
+            "test_33_v2"
           ]
         },
         {
           "id": 640,
           "title": "Weak Password Recovery Mechanism for Forgotten Password",
           "tests": [
-            "test_32_v1"
+            "test_32_v1",
+            "test_32_v2"
           ]
         },
         {
@@ -1218,6 +1232,7 @@
             "test_17_v1",
             "test_17_v2",
             "test_32_v1",
+            "test_32_v2",
             "test_37_v1",
             "test_61_v1"
           ]
@@ -1226,7 +1241,8 @@
           "id": 940,
           "title": "Improper Verification of Source of a Communication Channel",
           "tests": [
-            "test_31_v1"
+            "test_31_v1",
+            "test_31_v2"
           ]
         }
       ],
@@ -1285,7 +1301,8 @@
           "tests": [
             "test_14_v1",
             "test_14_v2",
-            "test_35_v1"
+            "test_35_v1",
+            "test_35_v2"
           ]
         },
         {
@@ -1294,7 +1311,8 @@
           "tests": [
             "test_14_v1",
             "test_14_v2",
-            "test_35_v1"
+            "test_35_v1",
+            "test_35_v2"
           ]
         },
         {
