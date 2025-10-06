@@ -622,7 +622,8 @@
           "id": 610,
           "title": "Externally Controlled Reference to a Resource in Another Sphere",
           "tests": [
-            "test_40_v1"
+            "test_40_v1",
+            "test_40_v2"
           ]
         },
         {
@@ -855,7 +856,8 @@
           "id": 602,
           "title": "Client-Side Enforcement of Server-Side Security",
           "tests": [
-            "test_38_v1"
+            "test_38_v1",
+            "test_38_v2"
           ]
         },
         {
@@ -1023,14 +1025,16 @@
           "id": 611,
           "title": "Improper Restriction of XML External Entity Reference",
           "tests": [
-            "test_40_v1"
+            "test_40_v1",
+            "test_40_v2"
           ]
         },
         {
           "id": 614,
           "title": "Sensitive Cookie in HTTPS Session Without 'Secure' Attribute",
           "tests": [
-            "test_39_v1"
+            "test_39_v1",
+            "test_39_v2"
           ]
         },
         {
@@ -1106,7 +1110,8 @@
             "test_19_v2",
             "test_35_v1",
             "test_35_v2",
-            "test_38_v1"
+            "test_38_v1",
+            "test_38_v2"
           ]
         },
         {
@@ -1120,28 +1125,32 @@
           "id": 290,
           "title": "Authentication Bypass by Spoofing",
           "tests": [
-            "test_38_v1"
+            "test_38_v1",
+            "test_38_v2"
           ]
         },
         {
           "id": 294,
           "title": "Authentication Bypass by Capture-replay",
           "tests": [
-            "test_37_v1"
+            "test_37_v1",
+            "test_37_v2"
           ]
         },
         {
           "id": 295,
           "title": "Improper Certificate Validation",
           "tests": [
-            "test_36_v1"
+            "test_36_v1",
+            "test_36_v2"
           ]
         },
         {
           "id": 297,
           "title": "Improper Validation of Certificate with Host Mismatch",
           "tests": [
-            "test_36_v1"
+            "test_36_v1",
+            "test_36_v2"
           ]
         },
         {
@@ -1234,6 +1243,7 @@
             "test_32_v1",
             "test_32_v2",
             "test_37_v1",
+            "test_37_v2",
             "test_61_v1"
           ]
         },
