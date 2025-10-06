@@ -1,0 +1,14 @@
+{
+  "name": "test-32-v2",
+  "version": "1.0.0",
+  "description": "Password recovery with security question (Node.js)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+
+

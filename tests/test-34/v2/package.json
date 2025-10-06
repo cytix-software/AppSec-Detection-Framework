@@ -1,0 +1,14 @@
+{
+  "name": "test-34-v2",
+  "version": "1.0.0",
+  "description": "Registration echoes success (Node.js)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+
+

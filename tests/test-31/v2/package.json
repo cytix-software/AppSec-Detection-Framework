@@ -1,0 +1,15 @@
+{
+  "name": "test-31-v2",
+  "version": "1.0.0",
+  "description": "Delete user by ID in session (Node.js)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-session": "^1.18.0"
+  }
+}
+
+
