@@ -800,7 +800,8 @@
           "id": 451,
           "title": "User Interface (UI) Misrepresentation of Critical Information",
           "tests": [
-            "test_48_v1"
+            "test_48_v1",
+            "test_48_v2"
           ]
         },
         {
@@ -919,7 +920,8 @@
           "id": 840,
           "title": "Business Logic Errors",
           "tests": [
-            "test_47_v1"
+            "test_47_v1",
+            "test_47_v2"
           ]
         },
         {
@@ -938,7 +940,8 @@
           "id": 1021,
           "title": "Improper Restriction of Rendered UI Layers or Frames",
           "tests": [
-            "test_48_v1"
+            "test_48_v1",
+            "test_48_v2"
           ]
         },
         {
@@ -1059,7 +1062,8 @@
           "id": 942,
           "title": "Permissive Cross-domain Policy with Untrusted Domains",
           "tests": [
-            "test_50_v1"
+            "test_50_v1",
+            "test_50_v2"
           ]
         },
         {
