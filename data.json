@@ -227,7 +227,8 @@
           "id": 1275,
           "title": "Sensitive Cookie with Improper SameSite Attribute",
           "tests": [
-            "test_45_v1"
+            "test_45_v1",
+            "test_45_v2"
           ]
         }
       ],
@@ -739,6 +740,7 @@
           "title": "Missing Encryption of Sensitive Data",
           "tests": [
             "test_42_v1",
+            "test_42_v2",
             "test_79_v1"
           ]
         },
@@ -747,6 +749,7 @@
           "title": "Cleartext Storage of Sensitive Information",
           "tests": [
             "test_42_v1",
+            "test_42_v2",
             "test_98_v1"
           ]
         },
@@ -983,7 +986,8 @@
           "id": 315,
           "title": "Cleartext Storage of Sensitive Information in a Cookie",
           "tests": [
-            "test_41_v1"
+            "test_41_v1",
+            "test_41_v2"
           ]
         },
         {
@@ -997,7 +1001,8 @@
           "id": 526,
           "title": "Cleartext Storage of Sensitive Information in an Environment Variable",
           "tests": [
-            "test_42_v1"
+            "test_42_v1",
+            "test_42_v2"
           ]
         },
         {
@@ -1063,7 +1068,8 @@
           "tests": [
             "test_8_v1",
             "test_8_v2",
-            "test_45_v1"
+            "test_45_v1",
+            "test_45_v2"
           ]
         },
         {
