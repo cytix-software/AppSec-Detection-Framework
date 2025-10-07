@@ -5,8 +5,6 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
-// Vulnerable to CWE-523: Unprotected Transport of Credentials
-// This server sends credentials over HTTP instead of HTTPS
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
     
@@ -15,7 +13,7 @@ app.post('/login', (req, res) => {
         res.json({
             status: 'success',
             message: 'Login successful',
-            // Sensitive data sent over HTTP
+            // Send data over HTTP
             userData: {
                 id: 1,
                 role: 'admin',
