@@ -1,0 +1,9 @@
+{
+  "name": "test-60-v2",
+  "version": "1.0.0",
+  "description": "Leaky error handling test",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

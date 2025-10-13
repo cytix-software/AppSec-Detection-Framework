@@ -1,7 +1,5 @@
 <?php
-// This script includes a file containing sensitive credentials and simulates a login process.
-// CWE 540: Inclusion of Sensitive Information in Source Code & CWE 541: Inclusion of Sensitive Information in an Include File
-// also CWE 259: Use of Hard-coded Password
+// This script simulates a login process.
 
 include('database.inc'); // Include file with database credentials
 

@@ -33,14 +33,16 @@
           "id": 59,
           "title": "Improper Link Resolution Before File Access ('Link Following')",
           "tests": [
-            "test_57_v1"
+            "test_57_v1",
+            "test_57_v2"
           ]
         },
         {
           "id": 201,
           "title": "Insertion of Sensitive Information Into Sent Data",
           "tests": [
-            "test_60_v1"
+            "test_60_v1",
+            "test_60_v2"
           ]
         },
         {
@@ -62,7 +64,8 @@
           "id": 284,
           "title": "Improper Access Control",
           "tests": [
-            "test_56_v1"
+            "test_56_v1",
+            "test_56_v2"
           ]
         },
         {
@@ -140,7 +143,8 @@
           "id": 540,
           "title": "Inclusion of Sensitive Information in Source Code",
           "tests": [
-            "test_59_v1"
+            "test_59_v1",
+            "test_59_v2"
           ]
         },
         {
@@ -684,7 +688,8 @@
           "id": 209,
           "title": "Generation of Error Message Containing Sensitive Information",
           "tests": [
-            "test_60_v1"
+            "test_60_v1",
+            "test_60_v2"
           ]
         },
         {
@@ -843,7 +848,8 @@
           "id": 539,
           "title": "Use of Persistent Cookies Containing Sensitive Information",
           "tests": [
-            "test_58_v1"
+            "test_58_v1",
+            "test_58_v2"
           ]
         },
         {
@@ -1024,7 +1030,8 @@
           "id": 541,
           "title": "Inclusion of Sensitive Information in an Include File",
           "tests": [
-            "test_59_v1"
+            "test_59_v1",
+            "test_59_v2"
           ]
         },
         {
@@ -1112,7 +1119,8 @@
           "id": 259,
           "title": "Use of Hard-coded Password",
           "tests": [
-            "test_59_v1"
+            "test_59_v1",
+            "test_59_v2"
           ]
         },
         {
