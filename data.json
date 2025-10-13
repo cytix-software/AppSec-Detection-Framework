@@ -132,7 +132,8 @@
           "id": 538,
           "title": "Insertion of Sensitive Information into Externally-Accessible File or Directory",
           "tests": [
-            "test_55_v1"
+            "test_55_v1",
+            "test_55_v2"
           ]
         },
         {
@@ -167,7 +168,8 @@
           "id": 601,
           "title": "URL Redirection to Untrusted Site ('Open Redirect')",
           "tests": [
-            "test_54_v1"
+            "test_54_v1",
+            "test_54_v2"
           ]
         },
         {
@@ -181,7 +183,8 @@
           "id": 651,
           "title": "Exposure of WSDL File Containing Sensitive Information",
           "tests": [
-            "test_51_v1"
+            "test_51_v1",
+            "test_51_v2"
           ]
         },
         {
@@ -383,7 +386,8 @@
           "id": 523,
           "title": "Unprotected Transport of Credentials",
           "tests": [
-            "test_52_v1"
+            "test_52_v1",
+            "test_52_v2"
           ]
         },
         {
@@ -831,7 +835,8 @@
           "id": 525,
           "title": "Use of Web Browser Cache Containing Sensitive Information",
           "tests": [
-            "test_53_v1"
+            "test_53_v1",
+            "test_53_v2"
           ]
         },
         {

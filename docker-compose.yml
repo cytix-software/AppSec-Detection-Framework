@@ -1605,6 +1605,21 @@ services:
       - a01:2021
       - all
 
+  test_51_v2:
+    image: test_51_v2:latest
+    build:
+      context: tests/test-51/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8512:80"
+    profiles:
+      - test-51
+      - javascript
+      - express
+      - cwe-651
+      - a01:2021
+      - all
+
   test_52_v1:
     image: test_52_v1:latest
     build:
@@ -1614,7 +1629,23 @@ services:
       - "8521:80"
     profiles:
       - test-52
-      - node
+      - javascript
+      - express
+      - cwe-523
+      - a02:2021
+      - all
+
+  test_52_v2:
+    image: test_52_v2:latest
+    build:
+      context: tests/test-52/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8522:80"
+    profiles:
+      - test-52
+      - php
+      - apache
       - cwe-523
       - a02:2021
       - all
@@ -1634,6 +1665,21 @@ services:
       - a04:2021
       - all
 
+  test_53_v2:
+    image: test_53_v2:latest
+    build:
+      context: tests/test-53/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8532:80"
+    profiles:
+      - test-53
+      - javascript
+      - express
+      - cwe-525
+      - a04:2021
+      - all
+
   test_54_v1:
     image: test_54_v1:latest
     build:
@@ -1649,6 +1695,21 @@ services:
       - a01:2021
       - all
 
+  test_54_v2:
+    image: test_54_v2:latest
+    build:
+      context: tests/test-54/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8542:80"
+    profiles:
+      - test-54
+      - javascript
+      - express
+      - cwe-601
+      - a01:2021
+      - all
+
   test_55_v1:
     image: test_55_v1:latest
     build:
@@ -1660,6 +1721,21 @@ services:
       - test-55
       - apache
       - php
+      - cwe-538
+      - a01:2021
+      - all
+
+  test_55_v2:
+    image: test_55_v2:latest
+    build:
+      context: tests/test-55/v2/
+      dockerfile: Dockerfile
+    ports:
+      - "8552:80"
+    profiles:
+      - test-55
+      - express
+      - javascript
       - cwe-538
       - a01:2021
       - all
