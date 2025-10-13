@@ -9,7 +9,7 @@ $read_message = '';
 if (isset($_FILES['tarfile'])) {
     $tar_path = $uploads_dir . basename($_FILES['tarfile']['name']);
     if (move_uploaded_file($_FILES['tarfile']['tmp_name'], $tar_path)) {
-        // VULNERABLE: No sanitization, extracts symlinks from tar using system tar
+        // extracts symlinks from tar using system tar
         $cmd = "tar -xf " . escapeshellarg($tar_path) . " -C " . escapeshellarg($uploads_dir);
         shell_exec($cmd);
         $extract_message = "<span style='color:green;'>Tar archive extracted!</span>";
@@ -33,7 +33,7 @@ if (isset($_FILES['tarfile'])) {
 </head>
 <body>
     <h1>Test 57</h1>
-    <p class="vulnerable">This app is vulnerable: it extracts tar files without checking for symlinks!</p>
+    <p>This app extracts Tar files!</p>
 
     <h2>Upload a Tar File</h2>
     <form enctype="multipart/form-data" method="post">
@@ -47,6 +47,6 @@ if (isset($_FILES['tarfile'])) {
         <?php echo $read_message; ?>
     </div>
 
-    <p>Upload a tar file containing a symlink named <code>secret.txt</code> (e.g., <code>secret.txt</code> → <code>/etc/passwd</code>). The app will extract and immediately display the contents of <code>secret.txt</code>.</p>
+    <p>Upload a tar file containing secret.txt.</p>
 </body>
 </html>

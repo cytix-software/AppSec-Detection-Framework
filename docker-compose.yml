@@ -1754,6 +1754,20 @@ services:
       - a01:2021
       - all
 
+  test_56_v2:
+    image: test_56_v2:latest
+    build:
+      context: ./tests/test-56/v2
+    ports:
+      - "8562:80"
+    profiles:
+      - test-56
+      - javascript
+      - express
+      - cwe-284
+      - a01:2021
+      - all
+
   test_57_v1:
       image: test_57_v1:latest
       build:
@@ -1769,6 +1783,21 @@ services:
         - a01:2021
         - all
 
+  test_57_v2:
+      image: test_57_v2:latest
+      build:
+        context: ./tests/test-57/v2
+        dockerfile: Dockerfile
+      ports:
+        - "8572:80"
+      profiles:
+        - test-57
+        - javascript
+        - express
+        - cwe-59
+        - a01:2021
+        - all
+
   test_58_v1:
       image: test_58_v1:latest
       build:
@@ -1780,6 +1809,21 @@ services:
         - test-58
         - apache
         - php
+        - cwe-539
+        - a04:2021
+        - all
+
+  test_58_v2:
+      image: test_58_v2:latest
+      build:
+        context: ./tests/test-58/v2
+        dockerfile: Dockerfile
+      ports:
+        - "8582:80"
+      profiles:
+        - test-58
+        - javascript
+        - express
         - cwe-539
         - a04:2021
         - all
@@ -1803,6 +1847,25 @@ services:
         - a07:2021
         - all
 
+  test_59_v2:
+      image: test_59_v2:latest
+      build:
+        context: ./tests/test-59/v2
+        dockerfile: Dockerfile
+      ports:
+        - "8592:80"
+      profiles:
+        - test-59
+        - javascript
+        - express
+        - cwe-540
+        - cwe-541
+        - cwe-259
+        - a01:2021
+        - a05:2021
+        - a07:2021
+        - all
+
   test_60_v1:
       image: test_60_v1:latest
       build:
@@ -1814,6 +1877,23 @@ services:
         - test-60
         - apache
         - php
+        - cwe-201
+        - cwe-209
+        - a01:2021
+        - a04:2021
+        - all
+
+  test_60_v2:
+      image: test_60_v2:latest
+      build:
+        context: ./tests/test-60/v2
+        dockerfile: Dockerfile
+      ports:
+        - "8602:80"
+      profiles:
+        - test-60
+        - javascript
+        - express
         - cwe-201
         - cwe-209
         - a01:2021
