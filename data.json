@@ -72,7 +72,8 @@
           "id": 285,
           "title": "Improper Authorization",
           "tests": [
-            "test_69_v1"
+            "test_69_v1",
+            "test_69_v2"
           ]
         },
         {
@@ -229,7 +230,8 @@
           "id": 922,
           "title": "Insecure Storage of Sensitive Information",
           "tests": [
-            "test_69_v1"
+            "test_69_v1",
+            "test_69_v2"
           ]
         },
         {
@@ -472,7 +474,8 @@
             "test_18_v2",
             "test_44_v1",
             "test_44_v2",
-            "test_66_v1"
+            "test_66_v1",
+            "test_66_v2"
           ]
         },
         {
@@ -514,7 +517,8 @@
           "id": 89,
           "title": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
           "tests": [
-            "test_69_v1"
+            "test_69_v1",
+            "test_69_v2"
           ]
         },
         {
@@ -543,28 +547,32 @@
           "id": 94,
           "title": "Improper Control of Generation of Code ('Code Injection')",
           "tests": [
-            "test_66_v1"
+            "test_66_v1",
+            "test_66_v2"
           ]
         },
         {
           "id": 95,
           "title": "Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')",
           "tests": [
-            "test_67_v1"
+            "test_67_v1",
+            "test_67_v2"
           ]
         },
         {
           "id": 96,
           "title": "Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')",
           "tests": [
-            "test_66_v1"
+            "test_66_v1",
+            "test_66_v2"
           ]
         },
         {
           "id": 97,
           "title": "Improper Neutralization of Server-Side Includes (SSI) Within a Web Page",
           "tests": [
-            "test_68_v1"
+            "test_68_v1",
+            "test_68_v2"
           ]
         },
         {
