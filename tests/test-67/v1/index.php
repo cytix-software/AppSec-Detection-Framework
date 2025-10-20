@@ -4,7 +4,6 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input = $_POST['code'] ?? '';
     echo "<b>Input:</b> " . htmlspecialchars($input) . "<br>";
-    // VULNERABLE: User input is evaluated as PHP code which can be used to inject code
     eval($input);
 }
 ?>
