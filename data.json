@@ -128,7 +128,8 @@
           "id": 497,
           "title": "Exposure of Sensitive System Information to an Unauthorized Control Sphere",
           "tests": [
-            "test_62_v1"
+            "test_62_v1",
+            "test_62_v2"
           ]
         },
         {
@@ -151,7 +152,8 @@
           "id": 548,
           "title": "Exposure of Information Through Directory Listing",
           "tests": [
-            "test_63_v1"
+            "test_63_v1",
+            "test_63_v2"
           ]
         },
         {
@@ -271,7 +273,8 @@
           "tests": [
             "test_17_v1",
             "test_17_v2",
-            "test_61_v1"
+            "test_61_v1",
+            "test_61_v2"
           ]
         },
         {
@@ -333,7 +336,8 @@
           "id": 329,
           "title": "Generation of Predictable IV with CBC Mode",
           "tests": [
-            "test_61_v1"
+            "test_61_v1",
+            "test_61_v2"
           ]
         },
         {
@@ -494,14 +498,16 @@
           "id": 87,
           "title": "Improper Neutralization of Alternate XSS Syntax",
           "tests": [
-            "test_65_v1"
+            "test_65_v1",
+            "test_65_v2"
           ]
         },
         {
           "id": 88,
           "title": "Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')",
           "tests": [
-            "test_64_v1"
+            "test_64_v1",
+            "test_64_v2"
           ]
         },
         {
@@ -596,14 +602,17 @@
           "id": 138,
           "title": "Improper Neutralization of Special Elements",
           "tests": [
-            "test_64_v1"
+            "test_64_v1",
+            "test_64_v2"
           ]
         },
         {
           "id": 184,
           "title": "Incomplete List of Disallowed Inputs",
           "tests": [
-            "test_65_v1"
+            "test_65_v1",
+            "test_65_v2",
+            "test_65_v2"
           ]
         },
         {
@@ -1038,7 +1047,8 @@
           "id": 547,
           "title": "Use of Hard-coded, Security-relevant Constants",
           "tests": [
-            "test_61_v1"
+            "test_61_v1",
+            "test_61_v2"
           ]
         },
         {
@@ -1267,7 +1277,8 @@
             "test_32_v2",
             "test_37_v1",
             "test_37_v2",
-            "test_61_v1"
+            "test_61_v1",
+            "test_61_v2"
           ]
         },
         {
