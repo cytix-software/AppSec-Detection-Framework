@@ -38,7 +38,6 @@ app.post('/delete', (req, res) => {
     let message = '';
 
     if (filename) {
-        // Vulnerable code: user input directly controls file deletion
         fs.unlink(filename, (err) => {
             if (err) {
                 message = `Failed to delete file '${filename}'.`;

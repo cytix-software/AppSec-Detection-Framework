@@ -7,6 +7,6 @@ COPY app.py /app/app.py
 
 RUN pip install flask ldap3
 
-EXPOSE 8080
+EXPOSE 80
 
 CMD ["python", "app.py"]

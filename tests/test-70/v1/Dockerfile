@@ -24,7 +24,7 @@ WORKDIR /app
 COPY --from=builder /app/target/test-70-web-1.0.0.jar app.jar
 
 # Expose port
-EXPOSE 8080
+EXPOSE 80
 
-# Run the Spring Boot application
-CMD ["java", "-jar", "app.jar"] 
+# Run the Spring Boot application on port 80
+CMD ["java", "-Dserver.port=80", "-jar", "app.jar"]
