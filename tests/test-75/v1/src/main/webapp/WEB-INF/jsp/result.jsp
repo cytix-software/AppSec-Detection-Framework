@@ -4,16 +4,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CWE-917: JSP EL Injection - Result</title>
+    <title>Test 75</title>
 </head>
 <body>
-    <h1>CWE-917: JSP EL Injection - Result</h1>
+    <h1>Expression language in JSP</h1>
     
     <h3>Your Input:</h3>
     <p><c:out value="${param.userInput}"/></p>
     
     <h3>Processed Result:</h3>
-    <!-- VULNERABLE: Evaluates user input as EL expression -->
+    <!-- Evaluates user input as EL expression -->
     <c:catch var="evalError">
         <spring:eval expression="${param.userInput}" />
     </c:catch>
