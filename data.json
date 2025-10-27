@@ -532,7 +532,8 @@
           "id": 91,
           "title": "XML Injection (aka Blind XPath Injection)",
           "tests": [
-            "test_71_v1"
+            "test_71_v1",
+            "test_71_v2"
           ]
         },
         {
@@ -587,7 +588,8 @@
           "id": 99,
           "title": "Improper Control of Resource Identifiers ('Resource Injection')",
           "tests": [
-            "test_72_v1"
+            "test_72_v1",
+            "test_72_v2"
           ]
         },
         {
@@ -656,7 +658,8 @@
           "id": 643,
           "title": "Improper Neutralization of Data within XPath Expressions ('XPath Injection')",
           "tests": [
-            "test_71_v1"
+            "test_71_v1",
+            "test_71_v2"
           ]
         },
         {
@@ -671,7 +674,8 @@
           "id": 652,
           "title": "Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')",
           "tests": [
-            "test_71_v1"
+            "test_71_v1",
+            "test_71_v2"
           ]
         },
         {
@@ -691,7 +695,8 @@
           "id": 73,
           "title": "External Control of File Name or Path",
           "tests": [
-            "test_72_v1"
+            "test_72_v1",
+            "test_72_v2"
           ]
         },
         {
