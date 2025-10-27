@@ -1,0 +1,17 @@
+{
+  "name": "test-71-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "xpath": "0.0.32",
+    "xmldom": "0.6.0"
+  }
+}
