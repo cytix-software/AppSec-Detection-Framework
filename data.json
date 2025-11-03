@@ -108,7 +108,8 @@
           "id": 402,
           "title": "Transmission of Private Resources into a New Sphere ('Resource Leak')",
           "tests": [
-            "test_78_v1"
+            "test_78_v1",
+            "test_78_v2"
           ]
         },
         {
@@ -168,7 +169,8 @@
           "id": 566,
           "title": "Authorization Bypass Through User-Controlled SQL Primary Key",
           "tests": [
-            "test_77_v1"
+            "test_77_v1",
+            "test_77_v2"
           ]
         },
         {
@@ -183,7 +185,8 @@
           "id": 639,
           "title": "Authorization Bypass Through User-Controlled Key",
           "tests": [
-            "test_77_v1"
+            "test_77_v1",
+            "test_77_v2"
           ]
         },
         {
@@ -629,14 +632,16 @@
           "id": 470,
           "title": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')",
           "tests": [
-            "test_73_v1"
+            "test_73_v1",
+            "test_73_v2"
           ]
         },
         {
           "id": 471,
           "title": "Modification of Assumed-Immutable Data (MAID)",
           "tests": [
-            "test_74_v1"
+            "test_74_v1",
+            "test_74_v2"
           ]
         },
         {
@@ -839,7 +844,8 @@
           "id": 472,
           "title": "External Control of Assumed-Immutable Web Parameter",
           "tests": [
-            "test_74_v1"
+            "test_74_v1",
+            "test_74_v2"
           ]
         },
         {
