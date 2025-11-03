@@ -255,21 +255,24 @@
           "id": 261,
           "title": "Weak Encoding for Password",
           "tests": [
-            "test_79_v1"
+            "test_79_v1",
+            "test_79_v2"
           ]
         },
         {
           "id": 296,
           "title": "Improper Following of a Certificate's Chain of Trust",
           "tests": [
-            "test_80_v1"
+            "test_80_v1",
+            "test_80_v2"
           ]
         },
         {
           "id": 319,
           "title": "Cleartext Transmission of Sensitive Information",
           "tests": [
-            "test_79_v1"
+            "test_79_v1",
+            "test_79_v2"
           ]
         },
         {
@@ -286,35 +289,40 @@
           "id": 322,
           "title": "Key Exchange without Entity Authentication",
           "tests": [
-            "test_81_v1"
+            "test_81_v1",
+            "test_81_v2"
           ]
         },
         {
           "id": 323,
           "title": "Reusing a Nonce, Key Pair in Encryption",
           "tests": [
-            "test_82_v1"
+            "test_82_v1",
+            "test_82_v2"
           ]
         },
         {
           "id": 324,
           "title": "Use of a Key Past its Expiration Date",
           "tests": [
-            "test_83_v1"
+            "test_83_v1",
+            "test_83_v2"
           ]
         },
         {
           "id": 325,
           "title": "Missing Cryptographic Step",
           "tests": [
-            "test_84_v1"
+            "test_84_v1",
+            "test_84_v2"
           ]
         },
         {
           "id": 326,
           "title": "Inadequate Encryption Strength",
           "tests": [
-            "test_85_v1"
+            "test_85_v1",
+            "test_85_v2"
           ]
         },
         {
@@ -777,7 +785,8 @@
           "tests": [
             "test_42_v1",
             "test_42_v2",
-            "test_79_v1"
+            "test_79_v1",
+            "test_79_v2"
           ]
         },
         {
