@@ -357,7 +357,8 @@
           "id": 331,
           "title": "Insufficient Entropy",
           "tests": [
-            "test_87_v1"
+            "test_87_v1",
+            "test_87_v2"
           ]
         },
         {
@@ -365,42 +366,49 @@
           "title": "Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG)",
           "tests": [
             "test_87_v1",
-            "test_88_v1"
+            "test_87_v2",
+            "test_88_v1",
+            "test_88_v2"
           ]
         },
         {
           "id": 336,
           "title": "Same Seed in Pseudo-Random Number Generator (PRNG)",
           "tests": [
-            "test_87_v1"
+            "test_87_v1",
+            "test_87_v2"
           ]
         },
         {
           "id": 337,
           "title": "Predictable Seed in Pseudo-Random Number Generator (PRNG)",
           "tests": [
-            "test_88_v1"
+            "test_88_v1",
+            "test_88_v2"
           ]
         },
         {
           "id": 338,
           "title": "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)",
           "tests": [
-            "test_86_v1"
+            "test_86_v1",
+            "test_86_v2"
           ]
         },
         {
           "id": 340,
           "title": "Generation of Predictable Numbers or Identifiers",
           "tests": [
-            "test_89_v1"
+            "test_89_v1",
+            "test_89_v2"
           ]
         },
         {
           "id": 347,
           "title": "Improper Verification of Cryptographic Signature",
           "tests": [
-            "test_90_v1"
+            "test_90_v1",
+            "test_90_v2"
           ]
         },
         {
@@ -1105,8 +1113,7 @@
         {
           "id": 776,
           "title": "Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')",
-          "tests": [
-          ]
+          "tests": []
         },
         {
           "id": 942,

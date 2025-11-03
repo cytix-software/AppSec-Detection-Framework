@@ -2679,6 +2679,21 @@ services:
         - a02:2021
         - all
 
+  test_86_v2:
+      image: test_86v2:latest
+      build:
+        context: ./tests/test-86/v2
+        dockerfile: Dockerfile
+      ports:
+        - "10862:80"
+      profiles:
+        - test-86
+        - javascript
+        - express
+        - cwe-338
+        - a02:2021
+        - all
+
   test_87_v1:
       image: test_87v1:latest
       build:
@@ -2690,6 +2705,23 @@ services:
         - test-87
         - apache
         - php
+        - cwe-331
+        - cwe-335
+        - cwe-336
+        - a02:2021
+        - all
+
+  test_87_v2:
+      image: test_87v2:latest
+      build:
+        context: ./tests/test-87/v2
+        dockerfile: Dockerfile
+      ports:
+        - "10872:80"
+      profiles:
+        - test-87
+        - javascript
+        - express
         - cwe-331
         - cwe-335
         - cwe-336
@@ -2712,6 +2744,22 @@ services:
         - a02:2021
         - all
 
+  test_88_v2:
+      image: test_88v2:latest
+      build:
+        context: ./tests/test-88/v2
+        dockerfile: Dockerfile
+      ports:
+        - "10882:80"
+      profiles:
+        - test-88
+        - javascript
+        - express
+        - cwe-335
+        - cwe-337
+        - a02:2021
+        - all
+
   test_89_v1:
       image: test_89v1:latest
       build:
@@ -2727,6 +2775,21 @@ services:
         - a02:2021
         - all
 
+  test_89_v2:
+      image: test_89v2:latest
+      build:
+        context: ./tests/test-89/v2
+        dockerfile: Dockerfile
+      ports:
+        - "10892:80"
+      profiles:
+        - test-89
+        - javascript
+        - express
+        - cwe-340
+        - a02:2021
+        - all
+
   test_90_v1:
       image: test_90v1:latest
       build:
@@ -2738,6 +2801,21 @@ services:
         - test-90
         - apache
         - php
+        - cwe-347
+        - a02:2021
+        - all
+
+  test_90_v2:
+      image: test_90v2:latest
+      build:
+        context: ./tests/test-90/v2
+        dockerfile: Dockerfile
+      ports:
+        - "10902:80"
+      profiles:
+        - test-90
+        - javascript
+        - express
         - cwe-347
         - a02:2021
         - all
