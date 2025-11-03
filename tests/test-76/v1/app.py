@@ -8,9 +8,9 @@ app = Flask(__name__)
 HTML = '''
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>CWE-90: LDAP Injection Demo (Python)</title></head>
+<head><meta charset="UTF-8"><title>Test 76</title></head>
 <body>
-    <h1>CWE-90: LDAP Injection (Python)</h1>
+    <h1>Test 76 - LDAP</h1>
     <form method="get">
         <label for="user">Username:</label>
         <input type="text" id="user" name="user" value="{{ user }}">

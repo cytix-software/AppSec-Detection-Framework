@@ -2292,6 +2292,21 @@ services:
         - a03:2021
         - all
 
+  test_73_v2:
+      image: test_73v2:latest
+      build:
+        context: ./tests/test-73/v2
+        dockerfile: Dockerfile
+      ports:
+        - "10732:80"
+      profiles:
+        - test-73
+        - javascript
+        - express
+        - cwe-470
+        - a03:2021
+        - all
+
   test_74_v1:
       image: test_74v1:latest
       build:
@@ -2303,6 +2318,23 @@ services:
         - test-74
         - apache
         - php
+        - cwe-471
+        - cwe-472
+        - a03:2021
+        - a04:2021
+        - all
+
+  test_74_v2:
+      image: test_74v2:latest
+      build:
+        context: ./tests/test-74/v2
+        dockerfile: Dockerfile
+      ports:
+        - "10742:80"
+      profiles:
+        - test-74
+        - javascript
+        - express
         - cwe-471
         - cwe-472
         - a03:2021
@@ -2370,6 +2402,22 @@ services:
         - a01:2021
         - all
 
+  test_77_v2:
+      image: test_77v2:latest
+      build:
+        context: ./tests/test-77/v2
+        dockerfile: Dockerfile
+      ports:
+        - "10772:80"
+      profiles:
+        - test-77
+        - javascript
+        - express
+        - cwe-566
+        - cwe-639
+        - a01:2021
+        - all
+
   test_78_v1:
       image: test_78v1:latest
       build:
@@ -2381,6 +2429,21 @@ services:
         - test-78
         - apache
         - php
+        - cwe-402
+        - a01:2021
+        - all
+
+  test_78_v2:
+      image: test_78v2:latest
+      build:
+        context: ./tests/test-78/v2
+        dockerfile: Dockerfile
+      ports:
+        - "10782:80"
+      profiles:
+        - test-78
+        - javascript
+        - express
         - cwe-402
         - a01:2021
         - all

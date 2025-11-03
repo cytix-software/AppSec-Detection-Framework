@@ -1,5 +1,4 @@
 <?php
-// CWE-566 & CWE-639: Authorization Bypass Through User-Controlled Key
 // Usage: http://localhost:8080/invoice.php?id=1
 
 $host = 'localhost';
@@ -22,7 +21,6 @@ try {
 
 $invoice_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// Vulnerable: No check if invoice belongs to the current user!
 $stmt = $pdo->prepare("SELECT * FROM invoices WHERE id = :id");
 $stmt->execute(['id' => $invoice_id]);
 $invoice = $stmt->fetch();
@@ -31,7 +29,7 @@ $invoice = $stmt->fetch();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CWE-566/639 Demo</title>
+    <title>Test 77</title>
 </head>
 <body>
     <h1>Invoice Lookup</h1>
