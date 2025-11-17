@@ -1,4 +1,5 @@
-import { Data } from './types';
+import { ProcessedData, Vulnerability, CweDetails as CWEDetail } from './types'; // Import ProcessedData
+import { loadData } from './findMissingTests'; // Import the shared loadData
 import fs from 'fs';
 import yaml from 'js-yaml';
 
@@ -8,11 +9,6 @@ interface DockerService {
 
 interface DockerCompose {
     services: Record<string, DockerService>;
-}
-
-function loadData(): Data {
-    const data = fs.readFileSync('data.json', 'utf8');
-    return JSON.parse(data);
 }
 
 function loadDockerCompose(): DockerCompose {
@@ -30,19 +26,19 @@ function extractOwaspFromProfile(profile: string): string | null {
     return match ? match[0].toLowerCase() : null;
 }
 
-function findCweInData(cweId: number, data: Data): boolean {
+function findCweInData(cweId: number, data: ProcessedData): boolean {
     return data.vulnerabilities.some(vuln => 
         vuln.CWEDetails.some(cwe => cwe.id === cweId)
     );
 }
 
-function findTestInData(testName: string, data: Data): boolean {
+function findTestInData(testName: string, data: ProcessedData): boolean {
     return data.vulnerabilities.some(vuln => 
         vuln.CWEDetails.some(cwe => cwe.tests.includes(testName))
     );
 }
 
-function getOwaspForTest(testName: string, data: Data): string[] {
+function getOwaspForTest(testName: string, data: ProcessedData): string[] {
     const owaspCategories = new Set<string>();
     
     for (const vuln of data.vulnerabilities) {
@@ -56,7 +52,7 @@ function getOwaspForTest(testName: string, data: Data): string[] {
     return Array.from(owaspCategories);
 }
 
-function getCwesForTest(testName: string, data: Data): number[] {
+function getCwesForTest(testName: string, data: ProcessedData): number[] {
     const cweIds = new Set<number>();
     
     for (const vuln of data.vulnerabilities) {
@@ -70,8 +66,8 @@ function getCwesForTest(testName: string, data: Data): number[] {
     return Array.from(cweIds);
 }
 
-function main() {
-    const data = loadData();
+async function main() {
+    const data = await loadData();
     const dockerCompose = loadDockerCompose();
     
     const inconsistencies: string[] = [];

@@ -1,18 +1,7 @@
 import { program } from 'commander';
-import { Data } from './types';
+import { Data, ProcessedData, Vulnerability, CweDetails as CWEDetail } from './types';
 import path from 'path';
 import { readFile, readdir } from 'fs/promises';
-
-interface CWEDetail {
-    id: number;
-    title: string;
-    tests: string[];
-}
-
-interface Vulnerability {
-    OWASP: string;
-    CWEDetails: CWEDetail[];
-}
 
 interface TestResult {
     test: string;
@@ -38,17 +27,31 @@ interface IncorrectCWEMap {
     [key: string]: IncorrectCWEs;
 }
 
-export async function loadData(): Promise<Data> {
-    try {
-        const file = Bun.file('data.json');
-        return await file.json();
-    } catch (error) {
-        console.error(`Error loading data file: ${error}`);
-        process.exit(1);
-    }
+export async function loadData(): Promise<ProcessedData> {
+  try {
+    const file = Bun.file('data.json');
+    // 1. Load the raw data
+    const rawData: Data = await file.json();
+
+    // 2. Create the combined ("global") list
+    const combinedVulnerabilities: Vulnerability[] = [
+      ...rawData['Top-Ten-2021'],
+      ...rawData['Top-Ten-2025']
+    ];
+
+    // 3. Return the clean, processed object
+    return {
+      vulnerabilities: combinedVulnerabilities,
+      recordedTests: rawData.recordedTests
+    };
+
+  } catch (error) {
+    console.error(`Error loading data file: ${error}`);
+    process.exit(1);
+  }
 }
 
-function getAllTestsAndCWEs(data: Data): [Set<string>, TestCWEMap] {
+function getAllTestsAndCWEs(data: ProcessedData): [Set<string>, TestCWEMap] {
     const allTests = new Set<string>();
     const testCWEs: TestCWEMap = {};
 

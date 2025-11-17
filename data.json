@@ -1,5 +1,5 @@
 {
-  "vulnerabilities": [
+  "Top-Ten-2021": [
     {
       "OWASP": "A01:2021",
       "CWEDetails": [
@@ -1474,7 +1474,7 @@
       "group": "Server-Side Request Forgergy (SSRF)"
     }
   ],
-  "Top Ten 2025": [
+  "Top-Ten-2025": [
     {
       "OWASP": "A01:2025",
       "CWEDetails": [
@@ -3003,7 +3003,7 @@
         },
         {
           "id": 427,
-          "title": "",
+          "title": "Uncontrolled Search Path Element",
           "tests": []
         },
         {

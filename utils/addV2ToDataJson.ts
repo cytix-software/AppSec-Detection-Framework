@@ -12,16 +12,22 @@ const addV2TestCaseToDataJson = (testName: string) => {
     const dataJsonContent = fs.readFileSync(dataJsonPath, 'utf8');
     const dataJson = JSON.parse(dataJsonContent);
 
-    dataJson.vulnerabilities.forEach((vulnerability: any) => {
-        vulnerability.CWEDetails.forEach((cwe: any) => {
-            if (cwe.tests.includes(v1TestName)) {
-                if (!cwe.tests.includes(v2TestName)) {
-                    const v1Index = cwe.tests.indexOf(v1TestName);
-                    cwe.tests.splice(v1Index + 1, 0, v2TestName);
+    const vulnerabilityKeys = ['Top-Ten-2021', 'Top-Ten-2025'];
+
+    vulnerabilityKeys.forEach(key => {
+    if (dataJson[key]) {
+        dataJson[key].forEach((vulnerability: any) => {
+            vulnerability.CWEDetails.forEach((cwe: any) => {
+                if (cwe.tests.includes(v1TestName)) {
+                    if (!cwe.tests.includes(v2TestName)) {
+                        const v1Index = cwe.tests.indexOf(v1TestName);
+                        cwe.tests.splice(v1Index + 1, 0, v2TestName);
+                    }
                 }
-            }
+            });
         });
-    });
+    }
+});
 
     fs.writeFileSync(dataJsonPath, JSON.stringify(dataJson, null, 2));
 

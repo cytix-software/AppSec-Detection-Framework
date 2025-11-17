@@ -14,10 +14,16 @@
         <!-- Heatmap and Radar Charts in Tabs -->
         <n-card class="chart-wrapper">
           <n-tabs type="line" animated>
-            <n-tab-pane name="heatmap" tab="OWASP Coverage (Heatmap)">
+            <n-tab-pane name="heatmap-2021" tab="OWASP 2021 (Heatmap)">
               <HeatmapChart
                 :options="heatmapOptions"
-                :series="filteredHeatmapSeries"
+                :series="filteredHeatmapSeries2021"
+              />
+            </n-tab-pane>
+            <n-tab-pane name="heatmap-2025" tab="OWASP 2025 (Heatmap)">
+              <HeatmapChart
+                :options="heatmapOptions"
+                :series="filteredHeatmapSeries2025"
               />
             </n-tab-pane>
             <n-tab-pane name="radar" tab="Tool Comparison">
@@ -56,6 +62,14 @@ import { computed, ref } from 'vue'
 
 const { hydratedTests, hydratedHeatmapTests, vulnerabilities } = loadData()
 
+// Split the combined list by year
+const vulnerabilities2021 = computed(() =>
+  vulnerabilities.filter(v => v.OWASP.includes('2021'))
+)
+const vulnerabilities2025 = computed(() =>
+  vulnerabilities.filter(v => v.OWASP.includes('2025'))
+)
+
 // Technologies used for bar chart calculations
 const technologies = ['php', 'nodejs']
 
@@ -91,16 +105,13 @@ const filteredHydratedHeatmapTests = computed(() => {
 })
 
 // -----------------------------------------------------------------------------
-// forHeatMap (Heatmap Chart Logic)
+// forHeatMap (Heatmap Chart Logic) - 2021
 // -----------------------------------------------------------------------------
-const heatmapData = computed(() =>
-  vulnerabilities.flatMap(({ OWASP, CWEDetails }) => {
-    // First, find all unique tests that match any CWE in this OWASP category
-    const uniqueTests = filter(
-      filteredHydratedHeatmapTests.value,
-      (t) => some(t.profiles, (p) => CWEDetails.some(detail => detail.id === parseInt(p.replace('cwe-', ''))))
-    )
-
+const heatmapData2021 = computed(() =>
+  // Use the 2021-specific list
+  vulnerabilities2021.value.flatMap(({ OWASP, CWEDetails }) => {
+    const uniqueTests = filteredHydratedHeatmapTests.value
+    
     const groupedByScanner = groupBy(uniqueTests, 'scanner')
     return Object.entries(groupedByScanner).map(([scanner, tests]) => {
       // For each test, count how many CWEs from this OWASP category were detected/undetected
@@ -132,22 +143,92 @@ const heatmapData = computed(() =>
   })
 )
 
-// Example snippet inside heatmapSeries computed
-const heatmapSeries = computed(() => {
+const heatmapSeries2021 = computed(() => {
   const scanners = [...new Set(hydratedHeatmapTests.map((t) => t.scanner))]
 
   return scanners.map((scanner) => {
-    const data = vulnerabilities.map(({ OWASP }) => {
-      // Suppose you've computed "heatmapData" with detectedCWEs / totalCount
-      const entry = find(heatmapData.value, { scanner, OWASP })
+    // Use the 2021-specific list
+    const data = vulnerabilities2021.value.map(({ OWASP }) => {
+      // Use the 2021-specific data
+      const entry = find(heatmapData2021.value, { scanner, OWASP })
 
       // If no test coverage at all, treat as "No Data"
       const isNoData = !entry || entry.totalCount === 0
       const percentage = isNoData ? 0 : Math.round((entry.detectedCWEs / entry.totalCount) * 100)
+      const labelColor = isNoData || percentage <= 25 ? '#000' : '#fff'
 
-      // Decide label color
-      // - "No Data" or ≤25% => black
-      // - else => white
+      return {
+        x: OWASP,
+        y: percentage,
+        isNoData,
+        dataLabels: {
+          enabled: true,
+          style: {
+            colors: [labelColor],
+          },
+        },
+      }
+    })
+
+    return { name: scanner, data }
+  })
+})
+
+const filteredHeatmapSeries2021 = computed(() => {
+  if (selectedTools.value.length === 0) return heatmapSeries2021.value
+  
+  return heatmapSeries2021.value.filter(series => 
+    selectedTools.value.includes(series.name)
+  )
+})
+
+// -----------------------------------------------------------------------------
+// forHeatMap (Heatmap Chart Logic) - 2025
+// -----------------------------------------------------------------------------
+const heatmapData2025 = computed(() =>
+  // Use the 2025-specific list
+  vulnerabilities2025.value.flatMap(({ OWASP, CWEDetails }) => {
+    const uniqueTests = filteredHydratedHeatmapTests.value
+
+    const groupedByScanner = groupBy(uniqueTests, 'scanner')
+    return Object.entries(groupedByScanner).map(([scanner, tests]) => {
+      let detectedCount = 0
+      let totalCount = 0
+
+      tests.forEach(test => {
+        const detectedInCategory = test.detectedCWEs.filter(cwe => 
+          CWEDetails.some(detail => detail.id === cwe)
+        )
+        detectedCount += detectedInCategory.length
+
+        const totalInCategory = [
+          ...test.detectedCWEs,
+          ...(test.undetectedCWEs || [])
+        ].filter(cwe => CWEDetails.some(detail => detail.id === cwe))
+        totalCount += totalInCategory.length
+      })
+
+      return {
+        scanner,
+        OWASP,
+        detectedCWEs: detectedCount,
+        totalCount
+      }
+    })
+  })
+)
+
+const heatmapSeries2025 = computed(() => {
+  const scanners = [...new Set(hydratedHeatmapTests.map((t) => t.scanner))]
+
+  return scanners.map((scanner) => {
+    // Use the 2025-specific list
+    const data = vulnerabilities2025.value.map(({ OWASP }) => {
+      // Use the 2025-specific data
+      const entry = find(heatmapData2025.value, { scanner, OWASP })
+
+      const isNoData = !entry || entry.totalCount === 0
+      const percentage = isNoData ? 0 : Math.round((entry.detectedCWEs / entry.totalCount) * 100)
       const labelColor = isNoData || percentage <= 25 ? '#000' : '#fff'
 
       return {
@@ -168,14 +249,17 @@ const heatmapSeries = computed(() => {
   })
 })
 
-// Filtered heatmap series based on selected tools
-const filteredHeatmapSeries = computed(() => {
-  if (selectedTools.value.length === 0) return heatmapSeries.value
+const filteredHeatmapSeries2025 = computed(() => {
+  if (selectedTools.value.length === 0) return heatmapSeries2025.value
   
-  return heatmapSeries.value.filter(series => 
+  return heatmapSeries2025.value.filter(series => 
     selectedTools.value.includes(series.name)
   )
 })
+
+// -----------------------------------------------------------------------------
+// Shared Heatmap Options
+// -----------------------------------------------------------------------------
 
 const heatmapOptions = computed(() => ({
   chart: { type: 'heatmap' },
@@ -211,11 +295,21 @@ const heatmapOptions = computed(() => ({
         const point = opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex]
         if (point.isNoData) return 'No Data'
         
-        // Find the entry in heatmapData to get the actual counts
-        const entry = find(heatmapData.value, { 
-          scanner: opts.w.config.series[opts.seriesIndex].name, 
-          OWASP: point.x 
+        // Find the entry in the correct heatmapData (try 2021 then 2025)
+        const scannerName = opts.w.config.series[opts.seriesIndex].name
+        const owaspCategory = point.x
+        
+        let entry = find(heatmapData2021.value, { 
+          scanner: scannerName, 
+          OWASP: owaspCategory 
         })
+        
+        if (!entry) {
+          entry = find(heatmapData2025.value, { 
+            scanner: scannerName, 
+            OWASP: owaspCategory 
+          })
+        }
         
         if (entry) {
           return `${entry.detectedCWEs}/${entry.totalCount} (${val}%)`
@@ -246,7 +340,7 @@ function calculateWeightedScores() {
     tests.forEach((test) => {
       // relevant techs for each test
       const relevantTechs = test.profiles.filter((p) => includes(technologies, p))
-      if (!relevantTechs.length) return // skip if no relevant technologies
+      if (!relevantTechs.length) return
 
       // weighting for these techs
       const weight =
@@ -329,7 +423,10 @@ const radarData = computed(() => {
   
   return scanners.map(scanner => {
     const data = vulnerabilities.map(({ OWASP }) => {
-      const entry = find(heatmapData.value, { scanner, OWASP })
+      let entry = find(heatmapData2021.value, { scanner, OWASP })
+      if (!entry) {
+        entry = find(heatmapData2025.value, { scanner, OWASP })
+      }
       if (!entry || entry.totalCount === 0) return 0
       return Math.round((entry.detectedCWEs / entry.totalCount) * 100)
     })
