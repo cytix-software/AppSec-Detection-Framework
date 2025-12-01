@@ -2994,6 +2994,22 @@ services:
         - a04:2021
         - all
 
+  test_96_v2:
+      image: test_96v2:latest
+      build:
+        context: ./tests/test-96/v2
+        dockerfile: Dockerfile
+      ports:
+        - "10962:80"
+      profiles:
+        - test-96
+        - javascript
+        - express
+        - cwe-266
+        - cwe-269
+        - a04:2021
+        - all
+
   test_97_v1:
       image: test_97v1:latest
       build:
@@ -3005,6 +3021,21 @@ services:
         - test-97 
         - apache
         - php
+        - cwe-280
+        - a04:2021
+        - all
+
+  test_97_v2:
+      image: test_97_v2:latest
+      build:
+        context: ./tests/test-97/v2
+        dockerfile: Dockerfile
+      ports:
+        - "10972:80"
+      profiles:
+        - test-97 
+        - express
+        - javascript
         - cwe-280
         - a04:2021
         - all
@@ -3029,6 +3060,26 @@ services:
         - a05:2021
         - all
 
+  test_98_v2:
+      image: test_98v2:latest
+      build:
+        context: ./tests/test-98/v2
+        dockerfile: Dockerfile
+      ports:
+        - "10982:80"
+      profiles:
+        - test-98
+        - javascript
+        - express
+        - cwe-312
+        - cwe-313
+        - cwe-316
+        - cwe-419
+        - cwe-260
+        - a04:2021
+        - a05:2021
+        - all
+
   test_99_v1:
       image: test_99v1:latest
       build:
@@ -3044,6 +3095,21 @@ services:
         - a04:2021
         - all
 
+  test_99_v2:
+      image: test_99v2:latest
+      build:
+        context: ./tests/test-99/v2
+        dockerfile: Dockerfile
+      ports:
+        - "10992:80"
+      profiles:
+        - test-99
+        - javascript
+        - express
+        - cwe-430
+        - a04:2021
+        - all
+
   test_100_v1:
       image: test_100v1:latest
       build:
@@ -3055,6 +3121,21 @@ services:
         - test-100
         - apache
         - php
+        - cwe-642
+        - a04:2021
+        - all
+
+  test_100_v2:
+      image: test_100v2:latest
+      build:
+        context: ./tests/test-100/v2
+        dockerfile: Dockerfile
+      ports:
+        - "11002:80"
+      profiles:
+        - test-100
+        - javascript
+        - express
         - cwe-642
         - a04:2021
         - all

@@ -49,7 +49,7 @@ app.post('/', (req, res) => {
             encryptedMessage = crypto.publicEncrypt(
                 {
                     key: publicKeyString,
-                    padding: crypto.constants.RSA_PKCS1_PADDING, // VULNERABLE
+                    padding: crypto.constants.RSA_PKCS1_PADDING,
                 },
                 bufferMessage
             );
