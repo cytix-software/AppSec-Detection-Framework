@@ -116,14 +116,16 @@
           "id": 425,
           "title": "Direct Request ('Forced Browsing')",
           "tests": [
-            "test_93_v1"
+            "test_93_v1",
+            "test_93_v2"
           ]
         },
         {
           "id": 441,
           "title": "Unintended Proxy or Intermediary ('Confused Deputy')",
           "tests": [
-            "test_94_v1"
+            "test_94_v1",
+            "test_94_v2"
           ]
         },
         {
@@ -423,7 +425,8 @@
           "id": 757,
           "title": "Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')",
           "tests": [
-            "test_91_v1"
+            "test_91_v1",
+            "test_91_v2"
           ]
         },
         {
@@ -446,7 +449,8 @@
           "id": 780,
           "title": "Use of RSA Algorithm without OAEP",
           "tests": [
-            "test_92_v1"
+            "test_92_v1",
+            "test_92_v2"
           ]
         },
         {
@@ -724,7 +728,8 @@
           "id": 183,
           "title": "Permissive List of Allowed Inputs",
           "tests": [
-            "test_95_v1"
+            "test_95_v1",
+            "test_95_v2"
           ]
         },
         {
@@ -953,7 +958,8 @@
           "id": 656,
           "title": "Reliance on Security Through Obscurity",
           "tests": [
-            "test_93_v1"
+            "test_93_v1",
+            "test_93_v2"
           ]
         },
         {
@@ -1186,7 +1192,8 @@
           "id": 288,
           "title": "Authentication Bypass Using an Alternate Path or Channel",
           "tests": [
-            "test_93_v1"
+            "test_93_v1",
+            "test_93_v2"
           ]
         },
         {
@@ -1628,14 +1635,16 @@
           "id": 425,
           "title": "Direct Request ('Forced Browsing')",
           "tests": [
-            "test_93_v1"
+            "test_93_v1",
+            "test_93_v2"
           ]
         },
         {
           "id": 441,
           "title": "Unintended Proxy or Intermediary ('Confused Deputy')",
           "tests": [
-            "test_94_v1"
+            "test_94_v1",
+            "test_94_v2"
           ]
         },
         {
@@ -2117,7 +2126,8 @@
           "id": 757,
           "title": "Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')",
           "tests": [
-            "test_91_v1"
+            "test_91_v1",
+            "test_91_v2"
           ]
         },
         {
@@ -2140,7 +2150,8 @@
           "id": 780,
           "title": "Use of RSA Algorithm without OAEP",
           "tests": [
-            "test_92_v1"
+            "test_92_v1",
+            "test_92_v2"
           ]
         },
         {
@@ -2452,7 +2463,8 @@
           "id": 183,
           "title": "Permissive List of Allowed Inputs",
           "tests": [
-            "test_95_v1"
+            "test_95_v1",
+            "test_95_v2"
           ]
         },
         {
@@ -2653,7 +2665,8 @@
           "id": 656,
           "title": "Reliance on Security Through Obscurity",
           "tests": [
-            "test_93_v1"
+            "test_93_v1",
+            "test_93_v2"
           ]
         },
         {
@@ -2749,7 +2762,8 @@
           "id": 288,
           "title": "Authentication Bypass Using an Alternate Path or Channel",
           "tests": [
-            "test_93_v1"
+            "test_93_v1",
+            "test_93_v2"
           ]
         },
         {

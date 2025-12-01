@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CWE-441: Unintended Proxy Example</title>
+    <title>Test 94</title>
 </head>
 <body>
-    <h1>CWE-441: Unintended Proxy or Intermediary</h1>
+    <h1>Test 94 - Proxy</h1>
     <form method="post">
         <label for="url">Enter URL to fetch:</label>
         <input type="text" id="url" name="url" size="50" placeholder="http://example.com">
