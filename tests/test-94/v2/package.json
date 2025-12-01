@@ -1,0 +1,15 @@
+{
+  "name": "test-94-v2",
+  "version": "1.0.0",
+  "description": "Test 94 v2",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.1",
+    "axios": "^0.21.4",
+    "he": "^1.2.0"
+  }
+}
