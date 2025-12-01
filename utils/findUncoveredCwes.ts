@@ -1,8 +1,8 @@
 import { program } from 'commander';
 import { loadData } from './findMissingTests';
-import { Data, CweDetails, Vulnerability } from './types';
+import { ProcessedData, CweDetails, Vulnerability } from './types';
 
-function getAllCwes(data: Data): Map<number, string> {
+function getAllCwes(data: ProcessedData): Map<number, string> {
     const cweMap = new Map<number, string>();
     
     for (const vuln of data.vulnerabilities) {
@@ -17,11 +17,12 @@ function getAllCwes(data: Data): Map<number, string> {
     return cweMap;
 }
 
-function findUncoveredCwes(data: Data, verbose = false, simplified = false): void {
+function findUncoveredCwes(data: ProcessedData, verbose = false, simplified = false): void {
     const cweMap = getAllCwes(data);
-    
+
     // Get all CWEs that have tests
     const cwesWithTests = new Set<number>();
+    
     for (const vuln of data.vulnerabilities) {
         for (const cwe of vuln.CWEDetails) {
             // Skip OWASP Top Ten categories when counting tests

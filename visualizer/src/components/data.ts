@@ -1,4 +1,4 @@
-import type { DockerCompose, VulnerabilitiesData, HydratedTest, HydratedHeatmapTest, CWEDetail } from './types'
+import type { DockerCompose, VulnerabilitiesData, HydratedTest, HydratedHeatmapTest, CWEDetail, Vulnerability } from './types'
 
 const dockerCompose: DockerCompose = (await import('../../../docker-compose.yml')).default
 const dataJsonVulns: Omit<VulnerabilitiesData, "recordedTests"> = (await import('../../../data.json')).default
@@ -8,6 +8,12 @@ export const dataJson = {
   ...dataJsonVulns,
   ...resultsJson
 };
+
+// combine both json objects into one
+const allVulnerabilities: Vulnerability[] = [
+  ...dataJson['Top-Ten-2021'], // 2021 list
+  ...dataJson['Top-Ten-2025'] // 2025 list
+]
 
 export const loadData = () => {
   // Flatten the recordedTests object into an array with scanner information
@@ -22,7 +28,7 @@ export const loadData = () => {
 
   const testMap = new Map<string, any>()
 
-  dataJson.vulnerabilities.forEach((vul) => {
+  allVulnerabilities.forEach((vul) => {
     vul.CWEDetails.forEach((cweDetail) => {
       const cwe = cweDetail.id
       flattenedTests.forEach((rt) => {
@@ -44,7 +50,7 @@ export const loadData = () => {
           testMap.get(key).detections.push({
             scanner: rt.scanner,
             detected: rt.detectedCWEs.includes(cwe),
-            profiles: dockerCompose.services[rt.test]?.profiles || [],
+            profiles: dockerCompose.services[rt.test]?.profiles || []
           })
         }
       })
@@ -53,19 +59,23 @@ export const loadData = () => {
 
   const hydratedTests = Array.from(testMap.values())
 
-  return { hydratedHeatmapTests, hydratedTests, vulnerabilities: dataJson.vulnerabilities }
+  return {
+    hydratedHeatmapTests,
+    hydratedTests,
+    vulnerabilities: allVulnerabilities
+  }
 }
 
 // Return all vulnerabilities matching a given OWASP code
 export function getDetailsByOwasp(owaspCode: string) {
-  return dataJson.vulnerabilities
-    .filter(vuln => vuln.OWASP === owaspCode)
-    .flatMap(vuln => vuln.CWEDetails)
+  return allVulnerabilities
+    .filter((vuln) => vuln.OWASP === owaspCode)
+    .flatMap((vuln) => vuln.CWEDetails)
 }
 
 // Return the single vulnerability object matching a given CWE (assuming unique)
 export function getDetailsByCwe(cweId: number): CWEDetail | undefined {
-  for (const vuln of dataJson.vulnerabilities) {
+  for (const vuln of allVulnerabilities) {
     const cweDetail = vuln.CWEDetails.find(detail => detail.id === cweId)
     if (cweDetail) {
       return cweDetail

@@ -11,7 +11,8 @@ export interface Vulnerability {
 }
 
 export interface Data {
-    vulnerabilities: Vulnerability[];
+    'Top-Ten-2021': Vulnerability[];
+    'Top-Ten-2025': Vulnerability[];
     recordedTests: Record<string, {
         scanProfile: string;
         tests: Array<{
@@ -21,7 +22,20 @@ export interface Data {
             updatedAt: number;
         }>;
     }>;
-} 
+}
+
+export interface ProcessedData {
+    vulnerabilities: Vulnerability[]; // This is the combined list
+    recordedTests: Record<string, {
+        scanProfile: string;
+        tests: Array<{
+            test: string;
+            detectedCWEs: number[];
+            undetectedCWEs: number[];
+            updatedAt: number;
+        }>;
+    }>;
+}
 
 export interface ScannerResults {
       scanProfile: string

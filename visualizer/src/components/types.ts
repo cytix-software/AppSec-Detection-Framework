@@ -49,7 +49,8 @@ export interface DockerCompose {
 }
 
 export interface VulnerabilitiesData {
-  vulnerabilities: Vulnerability[]
+  'Top-Ten-2021': Vulnerability[]
+  'Top-Ten-2025': Vulnerability[]
   recordedTests: {
     [scanner: string]: {
       scanProfile: string
