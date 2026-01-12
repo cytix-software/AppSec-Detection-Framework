@@ -1,0 +1,9 @@
+{
+    "database_host": "localhost",
+    "database_user": "admin",
+    "database_password": "SuperSecretPassword123",
+    "api_key": "sk_live_abcdef1234567890",
+    "smtp_server": "smtp.example.com",
+    "smtp_user": "mailer@example.com",
+    "smtp_password": "MailSecret!"
+}

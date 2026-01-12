@@ -775,21 +775,24 @@
           "id": 266,
           "title": "Incorrect Privilege Assignment",
           "tests": [
-            "test_96_v1"
+            "test_96_v1",
+            "test_96_v2"
           ]
         },
         {
           "id": 269,
           "title": "Improper Privilege Management",
           "tests": [
-            "test_96_v1"
+            "test_96_v1",
+            "test_96_v2"
           ]
         },
         {
           "id": 280,
           "title": "Improper Handling of Insufficient Permissions or Privileges",
           "tests": [
-            "test_97_v1"
+            "test_97_v1",
+            "test_97_v2"
           ]
         },
         {
@@ -808,35 +811,40 @@
           "tests": [
             "test_42_v1",
             "test_42_v2",
-            "test_98_v1"
+            "test_98_v1",
+            "test_98_v2"
           ]
         },
         {
           "id": 313,
           "title": "Cleartext Storage in a File or on Disk",
           "tests": [
-            "test_98_v1"
+            "test_98_v1",
+            "test_98_v2"
           ]
         },
         {
           "id": 316,
           "title": "Cleartext Storage of Sensitive Information in Memory",
           "tests": [
-            "test_98_v1"
+            "test_98_v1",
+            "test_98_v2"
           ]
         },
         {
           "id": 419,
           "title": "Unprotected Primary Channel",
           "tests": [
-            "test_98_v1"
+            "test_98_v1",
+            "test_98_v2"
           ]
         },
         {
           "id": 430,
           "title": "Deployment of Wrong Handler",
           "tests": [
-            "test_99_v1"
+            "test_99_v1",
+            "test_99_v2"
           ]
         },
         {
@@ -929,7 +937,8 @@
           "id": 642,
           "title": "External Control of Critical State Data",
           "tests": [
-            "test_100_v1"
+            "test_100_v1",
+            "test_100_v2"
           ]
         },
         {
@@ -1044,7 +1053,8 @@
           "id": 260,
           "title": "Password in Configuration File",
           "tests": [
-            "test_98_v1"
+            "test_98_v1",
+            "test_98_v2"
           ]
         },
         {
@@ -1811,7 +1821,8 @@
           "id": 260,
           "title": "Password in Configuration File",
           "tests": [
-            "test_98_v1"
+            "test_98_v1",
+            "test_98_v2"
           ]
         },
         {
@@ -2480,14 +2491,16 @@
           "id": 266,
           "title": "Incorrect Privilege Assignment",
           "tests": [
-            "test_96_v1"
+            "test_96_v1",
+            "test_96_v2"
           ]
         },
         {
           "id": 269,
           "title": "Improper Privilege Management",
           "tests": [
-            "test_96_v1"
+            "test_96_v1",
+            "test_96_v2"
           ]
         },
         {
@@ -2511,21 +2524,24 @@
           "tests": [
             "test_42_v1",
             "test_42_v2",
-            "test_98_v1"
+            "test_98_v1",
+            "test_98_v2"
           ]
         },
         {
           "id": 313,
           "title": "Cleartext Storage in a File or on Disk",
           "tests": [
-            "test_98_v1"
+            "test_98_v1",
+            "test_98_v2"
           ]
         },
         {
           "id": 316,
           "title": "Cleartext Storage of Sensitive Information in Memory",
           "tests": [
-            "test_98_v1"
+            "test_98_v1",
+            "test_98_v2"
           ]
         },
         {
@@ -2542,7 +2558,8 @@
           "id": 419,
           "title": "Unprotected Primary Channel",
           "tests": [
-            "test_98_v1"
+            "test_98_v1",
+            "test_98_v2"
           ]
         },
         {
@@ -2643,7 +2660,8 @@
           "id": 642,
           "title": "External Control of Critical State Data",
           "tests": [
-            "test_100_v1"
+            "test_100_v1",
+            "test_100_v2"
           ]
         },
         {
@@ -3189,7 +3207,8 @@
           "id": 280,
           "title": "Improper Handling of Insufficient Permissions or Privileges",
           "tests": [
-            "test_97_v1"
+            "test_97_v1",
+            "test_97_v2"
           ]
         },
         {

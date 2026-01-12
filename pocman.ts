@@ -466,10 +466,16 @@ managementRouter.get('/api/recorded-tests', async (ctx) => {
   const cweTitles: { [key: number]: string } = {};
   
   // Extract CWE titles from data.json
-  data.vulnerabilities.forEach((vuln: any) => {
-    vuln.CWEDetails.forEach((cwe: any) => {
-      cweTitles[cwe.id] = cwe.title;
-    });
+Object.values(data).forEach((categories: any) => {
+    if (Array.isArray(categories)) {
+      categories.forEach((category: any) => {
+        if (category.CWEDetails) {
+          category.CWEDetails.forEach((cwe: any) => {
+            cweTitles[cwe.id] = cwe.title;
+          });
+        }
+      });
+    }
   });
 
   // Generate recordedTests output
