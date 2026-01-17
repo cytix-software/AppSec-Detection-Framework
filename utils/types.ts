@@ -48,3 +48,29 @@ export interface RecordedTest {
   undetectedCWEs: number[]
   updatedAt: number
 }
+
+//Automatic parsing
+export type DataJson = Record<
+  string,
+  Array<{
+    OWASP?: string;
+    group?: string;
+    CWEDetails?: Array<{
+      id: number;
+      title?: string;
+      tests?: string[];
+    }>;
+  }>
+>;
+
+export type MappingOut = {
+  [scannerKey: string]: {
+    scanProfile: string;
+    tests: Array<{
+      test: string;
+      detectedCWEs: number[];
+      undetectedCWEs: number[];
+      updatedAt: number;
+    }>;
+  }
+};

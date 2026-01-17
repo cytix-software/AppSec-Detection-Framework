@@ -1,0 +1,120 @@
+import type { DataJson, MappingOut } from "../../utils/types";
+import * as fs from "node:fs";
+
+export type TestName = string; //e.g: "test_1_v1"
+export type DetectedMap = Map<TestName, Set<number>>;
+
+export interface ParseContext {
+  scanProfile?: string; //"ZAP", "ZAP v2.16.1", etc.
+  updatedAt?: number;   //epoch seconds
+}
+
+export interface ParserInput {
+  artifactPath?: string; //path to report file
+  artifactContent?: string; //content of report
+}
+
+export interface IScannerParser {
+  readonly scannerKey: string;
+  lastResult?: MappingOut;
+
+  parse(input: ParserInput, data: DataJson, ctx?: ParseContext): Promise<MappingOut>;
+}
+
+//Dynamically load a parser class
+export async function findParser(scanner: string, ext: string): Promise<any> {
+  let parser: any = null;
+  switch (scanner.toLowerCase()) {
+    case 'zap':
+      if (ext === ".json") {
+        const { ZapJsonParser } = await import("./zapJsonParser");
+        parser = new ZapJsonParser();
+      }else if (ext === ".xml") {
+        const { ZapXmlParser } = await import("./zapXmlParser");
+        parser = new ZapXmlParser();
+      }
+      else console.log(`Unknown report format: ${ext}`);
+      break;
+
+    default:
+      console.log(`Unknown scanner format: ${scanner}`);
+      break;
+  }
+
+  return parser;
+}
+
+/**
+ * Base class: stores lastResult and provides save helpers.
+ * Derived parsers must implement parse().
+ */
+export abstract class BaseScannerParser implements IScannerParser {
+  public lastResult?: MappingOut;
+
+  constructor(public readonly scannerKey: string) {}
+
+  //To be implemented by each parser with its own logic and return the mapped results
+  public abstract parse(input: ParserInput, data: DataJson, ctx?: ParseContext): Promise<MappingOut>;
+
+  public async loadText(input: ParserInput): Promise<string> {
+    if (typeof input.artifactContent === "string") return input.artifactContent;
+
+    if (input.artifactPath) {
+      return await fs.promises.readFile(input.artifactPath, "utf-8");
+    }
+
+    throw new Error("ParserInput must include either artifactContent or artifactPath.");
+  }
+
+  public nowEpoch(): number {
+    return Math.floor(Date.now() / 1000);
+  }
+
+  public parseEpochFromIsoOrFallback(iso?: string, fallbackEpoch?: number): number | undefined {
+    if (!iso) return fallbackEpoch;
+    const ms = Date.parse(iso);
+    if (!Number.isFinite(ms)) return fallbackEpoch;
+    return Math.floor(ms / 1000);
+  }
+
+  //Convert web app port to test name via schema 10000 + (testNum * 10) + variant (1 or 2)
+  public portToTestName(portRaw: unknown): string | null {
+    const port = typeof portRaw === "string" ? Number(portRaw) : (portRaw as number);
+    if (!Number.isFinite(port)) return null;
+
+    const n = port - 10000;
+    const variant = n % 10;
+    const testNum = Math.floor(n / 10);
+    if (testNum > 0 && variant > 0) return `test_${testNum}_v${variant}`;
+    else return null;
+  }
+
+  //Grab expected CWEs for each existing test app
+  public buildExpectedCWEsByTest(data: DataJson): Map<string, Set<number>> {
+    const expected = new Map<string, Set<number>>();
+
+    for (const topTenArr of Object.values(data)) {
+      if (!Array.isArray(topTenArr)) continue;
+      for (const group of topTenArr) {
+        for (const cwe of group.CWEDetails ?? []) {
+          for (const test of cwe.tests ?? []) {
+            if (!expected.has(test)) expected.set(test, new Set<number>());
+            expected.get(test)!.add(cwe.id);
+          }
+        }
+      }
+    }
+
+    return expected;
+  }
+
+  //Sort test names like: test_1_v1, test_2_v1, test_10_v2, etc.
+  public sortTestNames(a: string, b: string): number {
+    const ma = a.match(/^test_(\d+)_v(\d+)$/);
+    const mb = b.match(/^test_(\d+)_v(\d+)$/);
+    if (!ma || !mb) return a.localeCompare(b);
+    const ta = Number(ma[1]), va = Number(ma[2]);
+    const tb = Number(mb[1]), vb = Number(mb[2]);
+    return ta !== tb ? ta - tb : va - vb;
+  }
+}
