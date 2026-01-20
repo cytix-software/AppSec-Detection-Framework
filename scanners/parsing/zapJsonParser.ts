@@ -51,7 +51,7 @@ export class ZapJsonParser extends BaseScannerParser {
     const updatedAt = ctx?.updatedAt ?? inferredUpdatedAt;
     const scanProfile = ctx?.scanProfile ?? inferredScanProfile;
 
-    const testsOut = Array.from(expectedByTest.keys())
+    const testsOut = Array.from(detectedByTest.keys())
       .sort(this.sortTestNames)
       .map((test) => {
         const expected = expectedByTest.get(test) ?? new Set<number>();

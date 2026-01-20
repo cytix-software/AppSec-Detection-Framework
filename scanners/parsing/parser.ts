@@ -33,9 +33,16 @@ export async function findParser(scanner: string, ext: string): Promise<any> {
         const { ZapXmlParser } = await import("./zapXmlParser");
         parser = new ZapXmlParser();
       }
-      else console.log(`Unknown report format: ${ext}`);
+      else console.log(`Unknown ZAP report format: ${ext}`);
       break;
-
+    
+    case 'nuclei':
+      if (ext === ".json") {
+        const { NucleiJsonParser } = await import("./nucleiJsonParser");
+        parser = new NucleiJsonParser();
+      }else console.log(`Unknown Nuclei report format: ${ext}`);
+      break;
+    
     default:
       console.log(`Unknown scanner format: ${scanner}`);
       break;

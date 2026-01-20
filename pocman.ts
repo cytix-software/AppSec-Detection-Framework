@@ -1969,14 +1969,14 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
           case 'help':
             console.log(`
               Available commands:
+              append    - Append parsed results to existing scanner file
               next      - Activate next batch
+              parse     - Parse a scanner report
               previous  - Return to previous batch
               stop      - Stop current batch
               start     - Start current batch
               restart   - Restart current batch
               status    - Show current status
-              parse     - Parse a scanner report
-              append    - Append parsed results to existing scanner file
               help      - Show this help
               quit/exit - Exit application
             `);
@@ -1992,10 +1992,11 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
 
             if (!scanner || !inPath) { //if missing args
               console.log(`
-              Usage: parse <zap|OTHERS> <reportPath>
+              Usage: parse <zap|nuclei> <reportPath>
               Examples (JSON or XML):
                   parse zap ./zap-report.json
                   parse zap ./zap-report.xml
+                  parse nuclei ./nuclei-report.json
               `);
               break;
             }

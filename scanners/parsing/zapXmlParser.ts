@@ -60,7 +60,7 @@ export class ZapXmlParser extends BaseScannerParser {
       }
     }
 
-    const testsOut = Array.from(expectedByTest.keys())
+    const testsOut = Array.from(detectedByTest.keys())
       .sort(this.sortTestNames)
       .map((test) => {
         const expected = expectedByTest.get(test) ?? new Set<number>();
