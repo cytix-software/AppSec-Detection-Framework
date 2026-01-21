@@ -1,5 +1,6 @@
 import type { DataJson, MappingOut } from "../../utils/types";
 import * as fs from "node:fs";
+import { PARSER_CAPABILITIES } from './registry';
 
 export type TestName = string; //e.g: "test_1_v1"
 export type DetectedMap = Map<TestName, Set<number>>;
@@ -19,36 +20,6 @@ export interface IScannerParser {
   lastResult?: MappingOut;
 
   parse(input: ParserInput, data: DataJson, ctx?: ParseContext): Promise<MappingOut>;
-}
-
-//Dynamically load a parser class
-export async function findParser(scanner: string, ext: string): Promise<any> {
-  let parser: any = null;
-  switch (scanner.toLowerCase()) {
-    case 'zap':
-      if (ext === ".json") {
-        const { ZapJsonParser } = await import("./zapJsonParser");
-        parser = new ZapJsonParser();
-      }else if (ext === ".xml") {
-        const { ZapXmlParser } = await import("./zapXmlParser");
-        parser = new ZapXmlParser();
-      }
-      else console.log(`Unknown ZAP report format: ${ext}`);
-      break;
-    
-    case 'nuclei':
-      if (ext === ".json") {
-        const { NucleiJsonParser } = await import("./nucleiJsonParser");
-        parser = new NucleiJsonParser();
-      }else console.log(`Unknown Nuclei report format: ${ext}`);
-      break;
-    
-    default:
-      console.log(`Unknown scanner format: ${scanner}`);
-      break;
-  }
-
-  return parser;
 }
 
 /**

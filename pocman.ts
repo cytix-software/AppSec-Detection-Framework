@@ -11,7 +11,7 @@ import _, { last } from 'lodash';
 import minimist from 'minimist';
 import { html, safeHtml } from 'common-tags';
 import { PARSER_CAPABILITIES } from './scanners/parsing/registry';
-import { findParser } from './scanners/parsing/parser';
+import { findParser } from './scanners/parsing/registry';
 
 // Add type definitions for minimist
 interface MinimistOpts {
@@ -2008,9 +2008,10 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
             const appendScanner = parts[1];
             if (!appendScanner) { //if missing args
               console.log(`
-              Usage: append <zap|OTHERS>
+              Usage: append <zap|nuclei>
               Examples:
                   append zap
+                  append nuclei
               `);
             }
 
