@@ -1275,6 +1275,9 @@ function createManagementHtml(batch: ServiceBatch | null) {
             }
           }
 
+          let testNameToUiIndex = {};
+          let indexToTestName = {};
+
           async function loadTests() {
             try {
               const response = await fetch('/api/recorded-tests');
@@ -1299,6 +1302,10 @@ function createManagementHtml(batch: ServiceBatch | null) {
                         '</button>' +
                       '</div>'
                     ).join('');
+
+                    console.log(test);
+                    testNameToUiIndex[test.test] = index;
+                    indexToTestName[index] = test.name;
 
                     return '<div class="test-section">' +
                       '<h3>' + humanizeServiceName(test.test) + '</h3>' +
@@ -1751,43 +1758,32 @@ function createManagementHtml(batch: ServiceBatch | null) {
           }
           
           function autoFillFromMappingOut(mappingOut) {
-            if (!mappingOut || typeof mappingOut !== "object") {
-              console.error("Invalid mappingOut object");
-              return;
-            }
+            if (!mappingOut || typeof mappingOut !== "object") return;
 
-            //Expect exactly one scanner key (e.g. "ZAP")
-            const scannerKeys = Object.keys(mappingOut);
-            if (scannerKeys.length === 0) {
-              console.error("No scanner data found in mappingOut");
-              return;
-            }
-
-            const scannerKey = scannerKeys[0];
+            const scannerKey = Object.keys(mappingOut)[0];
             const scannerData = mappingOut[scannerKey];
+            if (!scannerData || !Array.isArray(scannerData.tests)) return;
 
-            if (!scannerData || !Array.isArray(scannerData.tests)) {
-              console.error("Invalid scanner data for", scannerKey);
-              return;
-            }
+            scannerData.tests.forEach(function (testResult) {
+              const uiIndex = testNameToUiIndex
+                ? testNameToUiIndex[testResult.test]
+                : undefined;
 
-            scannerData.tests.forEach(function (testResult, testIndex) {
-              // Detected CWEs
+              if (uiIndex === undefined) {
+                console.warn("No UI index for test:", testResult.test);
+                return;
+              }
+
               (testResult.detectedCWEs || []).forEach(function (cwe) {
-                const btnId = "detected-" + testIndex + "-" + cwe;
-                const btn = document.getElementById(btnId);
-                if (btn) {
-                  btn.classList.add("selected");
-                }
+                const btn = document.getElementById("detected-" + uiIndex + "-" + cwe);
+                if (btn) btn.classList.add("selected");
+                else console.warn("Button not found:", "detected-" + uiIndex + "-" + cwe);
               });
 
-              // Undetected CWEs
               (testResult.undetectedCWEs || []).forEach(function (cwe) {
-                const btnId = "undetected-" + testIndex + "-" + cwe;
-                const btn = document.getElementById(btnId);
-                if (btn) {
-                  btn.classList.add("selected");
-                }
+                const btn = document.getElementById("undetected-" + uiIndex + "-" + cwe);
+                if (btn) btn.classList.add("selected");
+                else console.warn("Button not found:", "undetected-" + uiIndex + "-" + cwe);
               });
             });
           }
