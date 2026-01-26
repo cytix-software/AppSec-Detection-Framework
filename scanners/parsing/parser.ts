@@ -8,6 +8,7 @@ export type DetectedMap = Map<TestName, Set<number>>;
 export interface ParseContext {
   scanProfile?: string; //"ZAP", "ZAP v2.16.1", etc.
   updatedAt?: number;   //epoch seconds
+  expectedTests?: string[]; // e.g. ["test_1_v1","test_1_v2",...]
 }
 
 export interface ParserInput {

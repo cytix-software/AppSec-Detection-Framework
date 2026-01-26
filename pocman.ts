@@ -417,7 +417,7 @@ managementRouter.post('/api/import-scan-artifact', async (ctx) => {
   }
 
   //Use the selected parser's parse() to process into mapped results
-  const result = await parser.parse({ artifactContent: content }, data);
+  const result = await parser.parse({ artifactContent: content }, data, {expectedTests: batchManager.getCurrentBatch()?.services || []});
   ctx.body = { result };
 });
 
@@ -1303,7 +1303,6 @@ function createManagementHtml(batch: ServiceBatch | null) {
                       '</div>'
                     ).join('');
 
-                    console.log(test);
                     testNameToUiIndex[test.test] = index;
                     indexToTestName[index] = test.name;
 
@@ -1865,7 +1864,8 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
   parser = await findParser(scanner, ext);
   if (!parser) return false;
 
-  lastParsed = await parser.parse({ artifactPath: resolvedReportPath }, data);
+  const currentBatch = batchManager?.getCurrentBatch();
+  lastParsed = await parser.parse({ artifactPath: resolvedReportPath }, data, {expectedTests: currentBatch?.services || []});
 
   //Print out lastParsed in console and notify user of using append.
   console.log(JSON.stringify(lastParsed, null, 2));
@@ -1925,6 +1925,7 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
         switch (command) {
           case 'next':
             const next = await batchManager.getNextBatch();
+
             console.log(next ?
               `Activated batch: ${next.profile} group ${next.chunkIndex + 1}` :
               'No more batches available'

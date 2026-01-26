@@ -512,27 +512,27 @@ export class NucleiJsonParser extends BaseScannerParser {
 
     const updatedAt = ctx?.updatedAt ?? inferredUpdatedAt ?? this.nowEpoch();
 
-    const testsOut = Array.from(detectedByTest.keys())
-      .sort(this.sortTestNames)
-      .map((test) => {
+    const testUniverse = (ctx?.expectedTests?.length
+        ? ctx.expectedTests
+        : Array.from(detectedByTest.keys())
+        ).filter((t) => expectedByTest.has(t)); // keep it aligned to framework tests
+
+    const testsOut = Array.from(new Set(testUniverse))
+    .sort(this.sortTestNames)
+    .map((test) => {
         const expected = expectedByTest.get(test) ?? new Set<number>();
-        const detectedAll = detectedByTest.get(test) ?? new Set<number>();
+        const detectedAll = detectedByTest.get(test) ?? new Set<number>(); // empty if no findings
 
         const detectedCWEs = Array.from(detectedAll)
-          .filter((c) => expected.has(c))
-          .sort((a, b) => a - b);
+        .filter((c) => expected.has(c))
+        .sort((a, b) => a - b);
 
         const undetectedCWEs = Array.from(expected)
-          .filter((c) => !detectedAll.has(c))
-          .sort((a, b) => a - b);
+        .filter((c) => !detectedAll.has(c))
+        .sort((a, b) => a - b);
 
-        return {
-          test,
-          detectedCWEs,
-          undetectedCWEs,
-          updatedAt,
-        };
-      });
+        return { test, detectedCWEs, undetectedCWEs, updatedAt };
+    });
 
     const out: MappingOut = {
       [this.scannerKey]: {
