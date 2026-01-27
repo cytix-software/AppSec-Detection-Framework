@@ -28,12 +28,7 @@ type NucleiFinding = {
   [k: string]: unknown;
 };
 
-export type CweId =
-  | 22 | 23 | 73 | 77 | 78 | 79 | 80 | 88 | 89 | 91 | 94 | 95 | 209 | 284 | 287
-  | 306 | 434 | 532 | 538 | 548 | 552 | 601 | 611 | 614 | 798 | 829 | 830 | 918
-  | 1004 | 1275;
-
-export const TEMPLATE_TO_CWES: Readonly<Record<string, readonly CweId[]>> = {
+export const TEMPLATE_TO_CWES: Readonly<Record<string, readonly number[]>> = {
   "generic-path-traversal": [22],
   "CVE-2019-25213": [22],
   "CVE-2020-29227": [22],
@@ -410,9 +405,27 @@ export const TEMPLATE_TO_CWES: Readonly<Record<string, readonly CweId[]>> = {
   "avtech-dvr-ssrf": [918],
   "cookies-without-httponly": [1004],
   "missing-cookie-samesite-strict": [1275],
+  "codeigniter-env": [200, 219, 552, 256],
+  "generic-env": [200, 522, 552, 256, 219],
+  "sendgrid-env": [200, 522, 552, 219],
+  "hikvision-env": [200, 219, 306],
+  "javascript-env": [200, 219, 552, 256],
+  "javascript-env-config": [200, 219, 552, 256],
+  "laravel-env": [200, 219, 552, 522, 256],
+  "node-express-dev-env" : [538, 200],
+  "wordpress-wp-env-exposure" : [200, 219, 552],
+  "springboot-env" : [200, 219, 552],
+  "aspnetcore-dev-env" : [200, 219, 552],
+  "info-cgi-env-leak" : [200, 538, 219, 552],
+  "nextjs-vite-public-env" : [200, 219, 552],
+  "reactapp-env-js" : [200, 219, 552],
+  "apache-spark-env": [200, 219, 552],
+  "missing-sri": [494, 345, 353],
+  "rockmongo-xss": [79, 80],
+  "rockmongo-default-login": [798, 522, 259],
 } as const;
 
-export function templateIdToCwes(templateId: string): readonly CweId[] {
+export function templateIdToCwes(templateId: string): readonly number[] {
   return TEMPLATE_TO_CWES[templateId] ?? [];
 }
 
