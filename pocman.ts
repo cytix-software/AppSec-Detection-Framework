@@ -1609,6 +1609,11 @@ function createManagementHtml(batch: ServiceBatch | null) {
             const fileInput = document.getElementById("importFile");
             const file = fileInput?.files?.[0];
 
+            //Warning for nuclei template mappings
+            if (scannerKey.toLowerCase() === "nuclei") {
+              alert("Nuclei results are best-effort mappings with CWEs derived from template metadata and local mappings.\\nAs Nuclei templates evolve, additional mappings may be required.");
+            }
+
             const content = await file.text();
 
             const res = await fetch("/api/import-scan-artifact", {
@@ -1869,6 +1874,9 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
 
   //Print out lastParsed in console and notify user of using append.
   console.log(JSON.stringify(lastParsed, null, 2));
+  if (scanner.toLowerCase() === "nuclei") {
+    console.log(`Nuclei results are best-effort mappings with CWEs derived from template metadata and local mappings.\nAs Nuclei templates evolve, additional mappings may be required.`);
+  }
   console.log(`To append test results to an existing scanner file, use the "append" command.`);
   return true;
 }
