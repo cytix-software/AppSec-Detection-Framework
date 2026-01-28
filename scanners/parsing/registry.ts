@@ -33,6 +33,16 @@ export const PARSER_REGISTRY: RegistryEntry[] = [
       },
     },
   },
+  {
+    scannerKey: "Semgrep",
+    label: "Semgrep",
+    parsers: {
+      ".json": async () => {
+        const mod = await import("./semgrepJsonParser");
+        return new mod.SemgrepJsonParser();
+      },
+    },
+  },
 ];
 
 // build capabilities for frontend

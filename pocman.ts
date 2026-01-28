@@ -1611,7 +1611,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
 
             //Warning for nuclei template mappings
             if (scannerKey.toLowerCase() === "nuclei") {
-              alert("Nuclei results are best-effort mappings with CWEs derived from template metadata and local mappings.\\nAs Nuclei templates evolve, additional mappings may be required.");
+              alert("Nuclei imports are best-effort mappings with CWEs derived from template metadata and local mappings.\\nPlease double-check the results after import.");
             }
 
             const content = await file.text();
@@ -1875,7 +1875,7 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
   //Print out lastParsed in console and notify user of using append.
   console.log(JSON.stringify(lastParsed, null, 2));
   if (scanner.toLowerCase() === "nuclei") {
-    console.log(`Nuclei results are best-effort mappings with CWEs derived from template metadata and local mappings.\nAs Nuclei templates evolve, additional mappings may be required.`);
+    console.log(`Nuclei imports are best-effort mappings with CWEs derived from template metadata and local mappings.\nPlease double-check the results after import.`);
   }
   console.log(`To append test results to an existing scanner file, use the "append" command.`);
   return true;
@@ -1997,11 +1997,12 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
 
             if (!scanner || !inPath) { //if missing args
               console.log(`
-              Usage: parse <zap|nuclei> <reportPath>
+              Usage: parse <zap|nuclei|semgrep> <reportPath>
               Examples (JSON or XML):
                   parse zap ./zap-report.json
                   parse zap ./zap-report.xml
                   parse nuclei ./nuclei-report.json
+                  parse semgrep ./semgrep-report.json
               `);
               break;
             }
