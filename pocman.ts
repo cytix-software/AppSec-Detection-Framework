@@ -357,7 +357,8 @@ function showWelcome() {
 let batchManager: ReturnType<typeof createBatchManager>;
 
 const managementApp = new Koa();
-managementApp.use(bodyParser()); 
+managementApp.use(bodyParser({jsonLimit: "5mb", xmlLimit: "5mb", textLimit: "5mb", formLimit: "5mb"})); //Increased default limit to allow large scan artifacts
+
 const managementRouter = new Router();
 
 managementRouter.get('/api/status', async (ctx) => {
@@ -1615,14 +1616,21 @@ function createManagementHtml(batch: ServiceBatch | null) {
             }
 
             const content = await file.text();
-
+            
             const res = await fetch("/api/import-scan-artifact", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ scannerKey, fileName: file.name, content }),
             });
 
-            const body = await res.json();
+            const raw = await res.text();
+            let body = null;
+            try {
+              body = raw ? JSON.parse(raw) : raw;
+            } catch {
+              body = raw;
+            }
+
             if (!res.ok) return alert(body.error || "Import failed.");
 
             //Now autofill based on mapping.
