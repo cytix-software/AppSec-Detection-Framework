@@ -1,4 +1,5 @@
 import type { DataJson, MappingOut } from "../../utils/types";
+import { ScannerParsingError } from "../errors/ScannerParsingError";
 import { BaseScannerParser, type ParserInput, type ParseContext } from "./parser";
 
 type SemgrepJsonReport = {
@@ -49,7 +50,12 @@ export class SemgrepJsonParser extends BaseScannerParser {
     ctx?: ParseContext
   ): Promise<MappingOut> {
     const raw = await this.loadText(input);
-    const report = JSON.parse(raw) as SemgrepJsonReport;
+    let report;
+    try {
+        report = JSON.parse(raw) as SemgrepJsonReport;
+    } catch (e) { //throw our general parse error if JSON parse failed
+        throw new ScannerParsingError("Failed to parse Semgrep JSON report. Invalid JSON.");
+    }
 
     const expectedByTest = this.buildExpectedCWEsByTest(data);
     const detectedByTest = new Map<string, Set<number>>();
@@ -67,6 +73,11 @@ export class SemgrepJsonParser extends BaseScannerParser {
         if (!cweId) continue;
         detectedByTest.get(testName)!.add(cweId);
       }
+    }
+
+    //If no findings, throw error
+    if (detectedByTest.size === 0) {
+      throw new ScannerParsingError("Failed to parse Semgrep JSON report. Missing findings.");
     }
 
     const inferredUpdatedAt = this.nowEpoch(); //semgrep json doesn't include a generated/created timestamp by default

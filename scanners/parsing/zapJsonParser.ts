@@ -1,4 +1,5 @@
 import type { DataJson, MappingOut } from "../../utils/types";
+import { ScannerParsingError } from "../errors/ScannerParsingError";
 import { BaseScannerParser, type ParserInput, type ParseContext } from "./parser";
 
 type ZapJsonReport = {
@@ -25,7 +26,12 @@ export class ZapJsonParser extends BaseScannerParser {
     ctx?: ParseContext
   ): Promise<MappingOut> {
     const raw = await this.loadText(input);
-    const report = JSON.parse(raw) as ZapJsonReport;
+    let report;
+    try {
+      report = JSON.parse(raw) as ZapJsonReport;
+    } catch (e) { //throw our general parse error if JSON parse failed
+      throw new ScannerParsingError("Failed to parse ZAP JSON report. Invalid JSON.");
+    }
 
     const expectedByTest = this.buildExpectedCWEsByTest(data);
 
@@ -44,6 +50,11 @@ export class ZapJsonParser extends BaseScannerParser {
         if (!Number.isFinite(cweId) || cweId <= 0) continue; // ZAP uses 0 when unmapped
         detectedByTest.get(testName)!.add(cweId);
       }
+    }
+
+    //If no findings, throw error
+    if (detectedByTest.size === 0) {
+      throw new ScannerParsingError("Failed to parse ZAP JSON report. Missing findings.");
     }
 
     const inferredUpdatedAt = this.parseEpochFromIsoOrFallback(report.created) ?? this.nowEpoch();

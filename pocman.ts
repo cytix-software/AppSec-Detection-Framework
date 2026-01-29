@@ -12,6 +12,7 @@ import minimist from 'minimist';
 import { html, safeHtml } from 'common-tags';
 import { PARSER_CAPABILITIES } from './scanners/parsing/registry';
 import { findParser } from './scanners/parsing/registry';
+import { ScannerParsingError } from './scanners/errors/ScannerParsingError';
 
 // Add type definitions for minimist
 interface MinimistOpts {
@@ -357,7 +358,7 @@ function showWelcome() {
 let batchManager: ReturnType<typeof createBatchManager>;
 
 const managementApp = new Koa();
-managementApp.use(bodyParser({jsonLimit: "5mb", xmlLimit: "5mb", textLimit: "5mb", formLimit: "5mb"})); //Increased default limit to allow large scan artifacts
+managementApp.use(bodyParser({jsonLimit: "10mb", xmlLimit: "10mb", textLimit: "10mb", formLimit: "10mb"})); //Increased default limit to allow large scan artifacts
 
 const managementRouter = new Router();
 
@@ -417,9 +418,18 @@ managementRouter.post('/api/import-scan-artifact', async (ctx) => {
     return;
   }
 
-  //Use the selected parser's parse() to process into mapped results
-  const result = await parser.parse({ artifactContent: content }, data, {expectedTests: batchManager.getCurrentBatch()?.services || []});
-  ctx.body = { result };
+  //Use the selected parser's parse() to process into mapped results, throwing error if parse fails
+  try {
+    const result = await parser.parse({ artifactContent: content }, data, {expectedTests: batchManager.getCurrentBatch()?.services || []});
+    ctx.body = { result };
+  }catch (err: unknown) {
+    if (err instanceof ScannerParsingError) {
+      ctx.status = 400;
+      ctx.body = {
+        error: err.message
+      };
+    }
+  }
 });
 
 managementRouter.get("/api/parser-capabilities", async (ctx) => {
@@ -1631,7 +1641,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
               body = raw;
             }
 
-            if (!res.ok) return alert(body.error || "Import failed.");
+            if (!res.ok) return alert(body.error || "Import failed. Invalid syntax or file type.");
 
             //Now autofill based on mapping.
             autoFillFromMappingOut(body.result);
@@ -1878,7 +1888,16 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
   if (!parser) return false;
 
   const currentBatch = batchManager?.getCurrentBatch();
-  lastParsed = await parser.parse({ artifactPath: resolvedReportPath }, data, {expectedTests: currentBatch?.services || []});
+  //Parse and print error in event of failure.
+  try {
+    lastParsed = await parser.parse({ artifactPath: resolvedReportPath }, data, {expectedTests: currentBatch?.services || []});
+  } catch (err) {
+    if (err instanceof ScannerParsingError) {
+      console.log(`Error parsing ${scanner} report: ${err.message}`);
+      return false;
+    }
+    throw err;
+  }
 
   //Print out lastParsed in console and notify user of using append.
   console.log(JSON.stringify(lastParsed, null, 2));

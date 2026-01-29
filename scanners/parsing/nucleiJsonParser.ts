@@ -1,4 +1,5 @@
 import type { DataJson, MappingOut } from "../../utils/types";
+import { ScannerParsingError } from "../errors/ScannerParsingError";
 import { BaseScannerParser, type ParserInput, type ParseContext } from "./parser";
 
 type NucleiClassification = {
@@ -512,9 +513,19 @@ export class NucleiJsonParser extends BaseScannerParser {
     const scanProfile = ctx?.scanProfile ?? this.scannerKey;
 
     if (trimmed.startsWith("[")) {
-      findings = JSON.parse(trimmed) as NucleiFinding[];
+      try {
+        findings = JSON.parse(trimmed) as NucleiFinding[];
+      } catch (e) {
+        //If no findings, throw error
+        throw new ScannerParsingError("Failed to parse Nuclei JSON report. Invalid JSON.");
+      }
     } else {
       findings = []; //if not expected format, can't parse findings
+    }
+
+    //If no findings, throw parsing error
+    if (findings.length === 0) {
+      throw new ScannerParsingError("No findings found in Nuclei JSON report.");
     }
 
     const expectedByTest = this.buildExpectedCWEsByTest(data);

@@ -1,5 +1,6 @@
 import type { DataJson, MappingOut } from "../../utils/types";
 import { BaseScannerParser, type ParserInput, type ParseContext } from "./parser";
+import { ScannerParsingError } from "../errors/ScannerParsingError";
 
 function extractAttr(xml: string, tagName: string, attr: string): string | undefined {
   // e.g. <OWASPZAPReport version="2.17.0" ...>
@@ -58,6 +59,11 @@ export class ZapXmlParser extends BaseScannerParser {
         if (!Number.isFinite(cweId) || cweId <= 0) continue;
         detectedByTest.get(testName)!.add(cweId);
       }
+    }
+
+    //Error handling
+    if (!version || !createdIso || detectedByTest.size === 0) {
+      throw new ScannerParsingError("Failed to parse ZAP XML report. Missing key attributes or findings.");
     }
 
     const testUniverse = (ctx?.expectedTests?.length
