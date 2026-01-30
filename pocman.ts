@@ -421,7 +421,7 @@ managementRouter.post('/api/import-scan-artifact', async (ctx) => {
   //Use the selected parser's parse() to process into mapped results, throwing error if parse fails
   try {
     const result = await parser.parse({ artifactContent: content }, data, {expectedTests: batchManager.getCurrentBatch()?.services || []});
-    ctx.body = { result };
+    ctx.body = { result, hint: parser.getParserHint() };
   }catch (err: unknown) {
     if (err instanceof ScannerParsingError) {
       ctx.status = 400;
@@ -1620,11 +1620,6 @@ function createManagementHtml(batch: ServiceBatch | null) {
             const fileInput = document.getElementById("importFile");
             const file = fileInput?.files?.[0];
 
-            //Warning for nuclei template mappings
-            if (scannerKey.toLowerCase() === "nuclei") {
-              alert("Nuclei imports are best-effort mappings with CWEs derived from template metadata and local mappings.\\nPlease double-check the results after import.");
-            }
-
             const content = await file.text();
             
             const res = await fetch("/api/import-scan-artifact", {
@@ -1648,6 +1643,8 @@ function createManagementHtml(batch: ServiceBatch | null) {
 
             const importHelp = document.getElementById("importHelp");
             if (importHelp) importHelp.textContent = "Imported!";
+
+            if (body.hint) alert(body.hint);
           }
 
           function normExt(ext) {
@@ -1901,9 +1898,7 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
 
   //Print out lastParsed in console and notify user of using append.
   console.log(JSON.stringify(lastParsed, null, 2));
-  if (scanner.toLowerCase() === "nuclei") {
-    console.log(`Nuclei imports are best-effort mappings with CWEs derived from template metadata and local mappings.\nPlease double-check the results after import.`);
-  }
+  console.log(parser.getParserHint());
   console.log(`To append test results to an existing scanner file, use the "append" command.`);
   return true;
 }

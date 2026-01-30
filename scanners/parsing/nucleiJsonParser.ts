@@ -499,7 +499,7 @@ function normalizeCweId(raw: unknown): number | null {
 
 export class NucleiJsonParser extends BaseScannerParser {
   constructor() {
-    super("Nuclei");
+    super("Nuclei", "Nuclei imports are best-effort mappings with CWEs derived from template metadata and local mappings, review results carefully.");
   }
 
   public async parse(

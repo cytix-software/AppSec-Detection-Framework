@@ -29,8 +29,15 @@ export interface IScannerParser {
  */
 export abstract class BaseScannerParser implements IScannerParser {
   public lastResult?: MappingOut;
+  private parserHint: string = "Automated parsing is best effort as there is no exact 1-1 mapping, review results carefully.";
 
-  constructor(public readonly scannerKey: string) {}
+  constructor(public readonly scannerKey: string, public readonly parserHintOverride?: string) {
+    if (parserHintOverride) this.parserHint = parserHintOverride;
+  }
+
+  public getParserHint(): string {
+    return this.parserHint;
+  }
 
   //To be implemented by each parser with its own logic and return the mapped results
   public abstract parse(input: ParserInput, data: DataJson, ctx?: ParseContext): Promise<MappingOut>;
