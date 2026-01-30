@@ -1877,6 +1877,13 @@ async function handleAppendCmd(scanner: string): Promise<boolean> {
 
 async function handleParseCmd(scanner: string, inPath: string): Promise<boolean> {
   const resolvedReportPath = path.resolve(process.cwd(), inPath);
+  
+  //Check if file exists
+  if (!existsSync(resolvedReportPath)) {
+    console.log(`Report file not found: ${resolvedReportPath}`);
+    return false;
+  }
+
   const data = JSON.parse(await readFile("data.json", "utf8"));
 
   let parser: any = null;
@@ -2041,6 +2048,7 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
                   append zap
                   append nuclei
               `);
+              break;
             }
 
             await handleAppendCmd(appendScanner);
