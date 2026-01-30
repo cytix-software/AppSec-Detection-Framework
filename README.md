@@ -12,7 +12,7 @@ A framework for understanding the capabilities of automated detection methods at
   - [Running Tests](#running-tests)
   - [Management Interface](#management-interface)
   - [Recorded Tests Generator](#recorded-tests-generator)
-  - [Automated Scanner Parsing](#automated-scanner-output-parsing)
+- [Automated Scanner Parsing](#automated-scanner-output-parsing)
 - [Project Structure](#project-structure)
   - [Tests](#tests)
   - [Data Management](#data-management)
@@ -95,7 +95,7 @@ For more information, run:
 bun install && ./pocman.ts --help
 ```
 
-##### Automated Scanner Output Parsing
+#### Automated Scanner Output Parsing
 
 ASDF also supports the **automated parsing of scanner output files** to generate the `recordedTests`.
 Automated parsing produces the same `recordedTests` format as the manual generator, by either:
