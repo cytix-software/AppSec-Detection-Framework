@@ -2043,10 +2043,11 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
             const appendScanner = parts[1];
             if (!appendScanner) { //if missing args
               console.log(`
-              Usage: append <zap|nuclei>
+              Usage: append <zap|nuclei|semgrep>
               Examples:
                   append zap
                   append nuclei
+                  append semgrep
               `);
               break;
             }
