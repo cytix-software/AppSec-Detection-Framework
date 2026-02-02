@@ -7,9 +7,12 @@ import bodyParser from 'koa-bodyparser'; // Add this line
 import Router from '@koa/router';
 import readline from 'readline';
 import path from 'path';
-import _ from 'lodash';
+import _, { last } from 'lodash';
 import minimist from 'minimist';
 import { html, safeHtml } from 'common-tags';
+import { PARSER_CAPABILITIES } from './scanners/parsing/registry';
+import { findParser } from './scanners/parsing/registry';
+import { ScannerParsingError } from './scanners/errors/ScannerParsingError';
 
 // Add type definitions for minimist
 interface MinimistOpts {
@@ -355,7 +358,8 @@ function showWelcome() {
 let batchManager: ReturnType<typeof createBatchManager>;
 
 const managementApp = new Koa();
-managementApp.use(bodyParser()); 
+managementApp.use(bodyParser({jsonLimit: "10mb", xmlLimit: "10mb", textLimit: "10mb", formLimit: "10mb"})); //Increased default limit to allow large scan artifacts
+
 const managementRouter = new Router();
 
 managementRouter.get('/api/status', async (ctx) => {
@@ -389,6 +393,48 @@ managementRouter.post('/api/start', async (ctx) => {
 managementRouter.post('/api/restart', async (ctx) => {
   await batchManager.restartCurrentBatch();
   ctx.body = { success: true };
+});
+
+managementRouter.post('/api/import-scan-artifact', async (ctx) => {
+  const { scannerKey, fileName, content } = ctx.request.body ?? {};
+
+  //Scanner key and filename are needed to determine parser type
+  if (!scannerKey || !fileName || !content) {
+    ctx.status = 400;
+    ctx.body = { error: "Missing required fields: scannerKey, fileName, content" };
+    return;
+  }
+
+  const ext = path.extname(fileName).toLowerCase();
+  const dataContent = await readFile("data.json", "utf8");
+  const data = JSON.parse(dataContent);
+
+  //Pick parser acording to scanner's key and output file extension
+  let parser: any;
+  parser = await findParser(scannerKey, ext);
+  if (!parser) {
+    ctx.status = 400;
+    ctx.body = { error: `Unknown file extension: ${ext}` };
+    return;
+  }
+
+  //Use the selected parser's parse() to process into mapped results, throwing error if parse fails
+  try {
+    const result = await parser.parse({ artifactContent: content }, data, {expectedTests: batchManager.getCurrentBatch()?.services || []});
+    ctx.body = { result, hint: parser.getParserHint() };
+  }catch (err: unknown) {
+    if (err instanceof ScannerParsingError) {
+      ctx.status = 400;
+      ctx.body = {
+        error: err.message
+      };
+    }
+  }
+});
+
+managementRouter.get("/api/parser-capabilities", async (ctx) => {
+  //Simply return latest static capabilities list (what scanner types and formats are supported)
+  ctx.body = { parsers: PARSER_CAPABILITIES };
 });
 
 // Add a function to get service profiles
@@ -466,16 +512,12 @@ managementRouter.get('/api/recorded-tests', async (ctx) => {
   const cweTitles: { [key: number]: string } = {};
   
   // Extract CWE titles from data.json
-Object.values(data).forEach((categories: any) => {
-    if (Array.isArray(categories)) {
-      categories.forEach((category: any) => {
-        if (category.CWEDetails) {
-          category.CWEDetails.forEach((cwe: any) => {
-            cweTitles[cwe.id] = cwe.title;
-          });
-        }
+  Object.values(data).forEach((group: any) => { //changed as doesn't work with current data.json structure
+    group.forEach((vuln: any) => {
+      vuln.CWEDetails.forEach((cwe: any) => {
+        cweTitles[cwe.id] = cwe.title;
       });
-    }
+    });
   });
 
   // Generate recordedTests output
@@ -556,11 +598,6 @@ managementRouter.post('/api/save-results', async (ctx) => {
         let finalDataToWrite;
         let fileName;
         
-        // 1. Determine filename based on client data
-        const baseName = isNewScanner 
-            ? scannerName.replace(/\s+/g, '_').toLowerCase() 
-            : 'recorded_tests_partial';
-        
         if (isNewScanner) {
             // Case 1: NEW SCANNER (Save as new, unique file)
             const baseName = scannerName.replace(/\s+/g, '_').toLowerCase();
@@ -578,7 +615,6 @@ managementRouter.post('/api/save-results', async (ctx) => {
             }
 
             finalDataToWrite = data; // Data is already in the correct {"ScannerName": {...}} format
-
         } else {
             // Case 2: EXISTING SCANNER (Append and overwrite original file)
             fileName = `${scannerName}.json`; 
@@ -1142,9 +1178,17 @@ function createManagementHtml(batch: ServiceBatch | null) {
                 <div id="existingScannerFields" style="display: none;">
                   <div class="form-group">
                     <label for="existingScannerName">Select Scanner:</label>
-                    <select id="existingScannerName" class="scanner-select"></select>
+                    <select id="existingScannerName" class="scanner-select" onchange="updateImportUIState()"></select>
                     <p>Tests will be appended to this scanner's results file.</p>
                   </div>
+                </div>
+                <div class="form-group">
+                  <label for="importFile">Import Scanner Output:</label>
+                  <input type="file" id="importFile" onchange="updateImportUIState()" disabled/>
+                  <button type="button" id="importBtn" onclick="importScannerOutput()" onchange="updateImportUIState()" disabled>
+                    Import Scanner Output
+                  </button>
+                  <p id="importHelp" style="margin: 6px 0 0;"></p>
                 </div>
               </div>
               
@@ -1242,6 +1286,9 @@ function createManagementHtml(batch: ServiceBatch | null) {
             }
           }
 
+          let testNameToUiIndex = {};
+          let indexToTestName = {};
+
           async function loadTests() {
             try {
               const response = await fetch('/api/recorded-tests');
@@ -1266,6 +1313,9 @@ function createManagementHtml(batch: ServiceBatch | null) {
                         '</button>' +
                       '</div>'
                     ).join('');
+
+                    testNameToUiIndex[test.test] = index;
+                    indexToTestName[index] = test.name;
 
                     return '<div class="test-section">' +
                       '<h3>' + humanizeServiceName(test.test) + '</h3>' +
@@ -1369,7 +1419,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
           }
 
           // Add event listeners for scanner type selection
-          document.addEventListener('DOMContentLoaded', () => {
+          document.addEventListener('DOMContentLoaded', async () => {
             const newScannerRadio = document.getElementById('newScanner');
             const existingScannerRadio = document.getElementById('existingScanner');
             
@@ -1381,6 +1431,8 @@ function createManagementHtml(batch: ServiceBatch | null) {
             checkHealth();
             loadTests();
             loadExistingScanners();
+            await loadParserCapabilities();
+            updateImportUIState();
           });
 
           async function generateRecordedTests() {
@@ -1546,10 +1598,316 @@ function createManagementHtml(batch: ServiceBatch | null) {
               console.error('Error fetching status:', error);
             }
           }, 5000);
+
+          let parserCapabilities = null;
+          async function loadParserCapabilities() {
+            try {
+              const res = await fetch("/api/parser-capabilities");
+              if (!res.ok) {
+                console.warn("parser-capabilities failed:", res.status);
+                parserCapabilities = null;
+                return;
+              }
+              parserCapabilities = await res.json();
+            } catch (e) {
+              console.error("Failed to load parser capabilities:", e);
+              parserCapabilities = null;
+            }
+          }
+          
+          async function importScannerOutput() {
+            const scannerKey = document.getElementById("existingScannerName")?.value;
+            const fileInput = document.getElementById("importFile");
+            const file = fileInput?.files?.[0];
+
+            const content = await file.text();
+            
+            const res = await fetch("/api/import-scan-artifact", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ scannerKey, fileName: file.name, content }),
+            });
+
+            const raw = await res.text();
+            let body = null;
+            try {
+              body = raw ? JSON.parse(raw) : raw;
+            } catch {
+              body = raw;
+            }
+
+            if (!res.ok) return alert(body.error || "Import failed. Invalid syntax or file type.");
+
+            //Now autofill based on mapping.
+            autoFillFromMappingOut(body.result);
+
+            const importHelp = document.getElementById("importHelp");
+            if (importHelp) importHelp.textContent = "Imported!";
+
+            if (body.hint) alert(body.hint);
+          }
+
+          function normExt(ext) {
+            if (!ext) return "";
+            ext = ext.trim().toLowerCase();
+            return ext.startsWith(".") ? ext : "." + ext;
+          }
+
+          function getFileExtLower(fileName) {
+            const m = (fileName || "").toLowerCase().match(/(\.[a-z0-9]+)$/);
+            return m ? m[1] : "";
+          }
+
+          function updateImportUIState() {
+            const scannerSelect = document.getElementById("existingScannerName");
+            const fileInput = document.getElementById("importFile");
+            const importBtn = document.getElementById("importBtn");
+            const importHelp = document.getElementById("importHelp");
+
+            if (!scannerSelect || !fileInput || !importBtn) return;
+
+            const selectedScanner = (scannerSelect.value || "").trim();
+
+            // Reset defaults
+            fileInput.disabled = true;
+            importBtn.disabled = true;
+            fileInput.accept = "";
+
+            if (!parserCapabilities || !Array.isArray(parserCapabilities.parsers)) {
+              if (importHelp) {
+                importHelp.textContent = "Loading parser capabilities…";
+              }
+              return;
+            }
+
+            if (!selectedScanner) {
+              if (importHelp) {
+                importHelp.textContent = "Select a scanner to enable import.";
+              }
+              return;
+            }
+
+            const cap = parserCapabilities.parsers.find(function (p) {
+              return p.scannerKey === selectedScanner;
+            });
+
+            if (!cap) {
+              if (importHelp) {
+                importHelp.textContent =
+                  "No parser available for \" + selectedScanner + \".";
+              }
+              return;
+            }
+
+            const allowedExts = (cap.extensions || [])
+              .map(normExt)
+              .filter(Boolean);
+
+            const allowedSet = new Set(allowedExts);
+
+            // Enable file input and restrict extensions
+            fileInput.disabled = false;
+            fileInput.accept = allowedExts.join(",");
+
+            const file = fileInput.files && fileInput.files[0];
+            if (!file) {
+              if (importHelp) {
+                importHelp.textContent =
+                  "Supported formats for " +
+                  cap.label +
+                  ": " +
+                  allowedExts.join(", ") +
+                  ". Choose a file to enable import.";
+              }
+              return;
+            }
+
+            const ext = getFileExtLower(file.name);
+
+            if (!allowedSet.has(ext)) {
+              importBtn.disabled = true;
+              if (importHelp) {
+                importHelp.textContent =
+                  "Unsupported file type \" +
+                  (ext || "(none)") +
+                  \". Allowed: " +
+                  allowedExts.join(", ");
+              }
+              return;
+            }
+
+            //All checks passed
+            importBtn.disabled = false;
+            if (importHelp) {
+              importHelp.textContent =
+                "Ready to import " + file.name + " (" + ext + ").";
+            }
+          }
+
+          function isFileSupportedByScanner(scannerKey, fileName) {
+            if (!parserCapabilities || !Array.isArray(parserCapabilities.parsers)) {
+              return false;
+            }
+
+            if (!scannerKey || !fileName) {
+              return false;
+            }
+
+            const scanner = parserCapabilities.parsers.find(function (p) {
+              return p.scannerKey === scannerKey;
+            });
+
+            if (!scanner || !Array.isArray(scanner.extensions)) {
+              return false;
+            }
+
+            const lowerName = fileName.toLowerCase();
+            const allowedExts = scanner.extensions.map(function (ext) {
+              ext = ext.toLowerCase();
+              return ext.startsWith(".") ? ext : "." + ext;
+            });
+
+            for (let i = 0; i < allowedExts.length; i++) {
+              if (lowerName.endsWith(allowedExts[i])) {
+                return true;
+              }
+            }
+
+            return false;
+          }
+          
+          function autoFillFromMappingOut(mappingOut) {
+            if (!mappingOut || typeof mappingOut !== "object") return;
+
+            const scannerKey = Object.keys(mappingOut)[0];
+            const scannerData = mappingOut[scannerKey];
+            if (!scannerData || !Array.isArray(scannerData.tests)) return;
+
+            scannerData.tests.forEach(function (testResult) {
+              const uiIndex = testNameToUiIndex
+                ? testNameToUiIndex[testResult.test]
+                : undefined;
+
+              if (uiIndex === undefined) {
+                console.warn("No UI index for test:", testResult.test);
+                return;
+              }
+
+              (testResult.detectedCWEs || []).forEach(function (cwe) {
+                const btn = document.getElementById("detected-" + uiIndex + "-" + cwe);
+                if (btn) btn.classList.add("selected");
+                else console.warn("Button not found:", "detected-" + uiIndex + "-" + cwe);
+              });
+
+              (testResult.undetectedCWEs || []).forEach(function (cwe) {
+                const btn = document.getElementById("undetected-" + uiIndex + "-" + cwe);
+                if (btn) btn.classList.add("selected");
+                else console.warn("Button not found:", "undetected-" + uiIndex + "-" + cwe);
+              });
+            });
+          }
         </script>
       </body>
     </html>
   `;
+}
+
+function splitCmdLine(input: string): string[] {
+  //Splits by spaces, keeping quoted substrings intact
+  const re = /"([^"]*)"|'([^']*)'|(\S+)/g;
+  const out: string[] = [];
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(input)) !== null) {
+    out.push(m[1] ?? m[2] ?? m[3]);
+  }
+  return out;
+}
+
+function getKeyCaseInsensitive<T extends Record<string, any>>(
+  obj: T,
+  wantedKey: string
+): string | undefined {
+  const lower = wantedKey.toLowerCase();
+  return Object.keys(obj).find(k => k.toLowerCase() === lower);
+}
+
+let lastParsed: any = null;
+
+async function handleAppendCmd(scanner: string): Promise<boolean> {
+  const resultsDir = path.join(process.cwd(), 'results');
+  if (!lastParsed) {
+    console.log("No parsed data available to append.");
+    return false;
+  }
+
+  const existingFilePath = path.join(resultsDir, scanner + `.json`);
+  if (!existsSync(existingFilePath)) {
+      console.log(`File for existing scanner '${scanner}' not found.`);
+      return false;
+  }
+
+  // 1. Read and parse existing file data
+  const existingContent = await readFile(existingFilePath, 'utf8');
+  const existingData = JSON.parse(existingContent);
+  
+  // Data received from client is the new tests array (data is the 'updatedTests' array)
+  const newData = lastParsed[getKeyCaseInsensitive(lastParsed, scanner) || ""];
+  if (!newData || !Array.isArray(newData.tests)) {
+      console.log('Existing file structure is invalid or missing "tests" array.');
+      return false;
+  }
+  const newTests = newData.tests;
+  
+  // 2. Locate the existing scanner's test array. The top-level key is the scannerName.
+  const scannerData = existingData[getKeyCaseInsensitive(existingData, scanner) || ""];
+
+  if (!scannerData || !Array.isArray(scannerData.tests)) {
+      console.log('Existing file structure is invalid or missing "tests" array.');
+      return false;
+  }
+
+  // 3. Simply concatenate the new tests to the end of the existing array.
+  scannerData.tests = scannerData.tests.concat(newTests);
+
+  // Write the final, merged data back to the disk
+  await writeFile(existingFilePath, JSON.stringify(existingData, null, 2), 'utf8');
+  console.log(`Saved ${scanner} report to: ${existingFilePath}`);
+  return true;
+}
+
+async function handleParseCmd(scanner: string, inPath: string): Promise<boolean> {
+  const resolvedReportPath = path.resolve(process.cwd(), inPath);
+  
+  //Check if file exists
+  if (!existsSync(resolvedReportPath)) {
+    console.log(`Report file not found: ${resolvedReportPath}`);
+    return false;
+  }
+
+  const data = JSON.parse(await readFile("data.json", "utf8"));
+
+  let parser: any = null;
+  const ext = path.extname(resolvedReportPath).toLowerCase();
+  parser = await findParser(scanner, ext);
+  if (!parser) return false;
+
+  const currentBatch = batchManager?.getCurrentBatch();
+  //Parse and print error in event of failure.
+  try {
+    lastParsed = await parser.parse({ artifactPath: resolvedReportPath }, data, {expectedTests: currentBatch?.services || []});
+  } catch (err) {
+    if (err instanceof ScannerParsingError) {
+      console.log(`Error parsing ${scanner} report: ${err.message}`);
+      return false;
+    }
+    throw err;
+  }
+
+  //Print out lastParsed in console and notify user of using append.
+  console.log(JSON.stringify(lastParsed, null, 2));
+  console.log(parser.getParserHint());
+  console.log(`To append test results to an existing scanner file, use the "append" command.`);
+  return true;
 }
 
 (async function main() {
@@ -1597,11 +1955,14 @@ function createManagementHtml(batch: ServiceBatch | null) {
 
     console.log('Type "help" for available commands\n');
 
-    repl.on('line', async cmd => {
+    repl.on('line', async line => {
       try {
-        switch (cmd.trim().toLowerCase()) {
+        const parts = splitCmdLine(line.trim());
+        const command = (parts[0] ?? "").toLowerCase();
+        switch (command) {
           case 'next':
             const next = await batchManager.getNextBatch();
+
             console.log(next ?
               `Activated batch: ${next.profile} group ${next.chunkIndex + 1}` :
               'No more batches available'
@@ -1642,7 +2003,9 @@ function createManagementHtml(batch: ServiceBatch | null) {
           case 'help':
             console.log(`
               Available commands:
+              append    - Append parsed results to existing scanner file
               next      - Activate next batch
+              parse     - Parse a scanner report
               previous  - Return to previous batch
               stop      - Stop current batch
               start     - Start current batch
@@ -1656,7 +2019,42 @@ function createManagementHtml(batch: ServiceBatch | null) {
           case 'exit': case 'quit':
             await beforeExit();
             process.exit();
+          
+          case 'parse':
+            const scanner = parts[1];
+            const inPath = parts[2];
 
+            if (!scanner || !inPath) { //if missing args
+              console.log(`
+              Usage: parse <zap|nuclei|semgrep> <reportPath>
+              Examples (JSON or XML):
+                  parse zap ./zap-report.json
+                  parse zap ./zap-report.xml
+                  parse nuclei ./nuclei-report.json
+                  parse semgrep ./semgrep-report.json
+              `);
+              break;
+            }
+
+            await handleParseCmd(scanner, inPath);
+            break;
+
+          case 'append':
+            const appendScanner = parts[1];
+            if (!appendScanner) { //if missing args
+              console.log(`
+              Usage: append <zap|nuclei|semgrep>
+              Examples:
+                  append zap
+                  append nuclei
+                  append semgrep
+              `);
+              break;
+            }
+
+            await handleAppendCmd(appendScanner);
+            break;
+          
           default:
             console.log('Invalid command - type "help" for available commands');
         }

@@ -12,6 +12,7 @@ A framework for understanding the capabilities of automated detection methods at
   - [Running Tests](#running-tests)
   - [Management Interface](#management-interface)
   - [Recorded Tests Generator](#recorded-tests-generator)
+- [Automated Scanner Parsing](#automated-scanner-output-parsing)
 - [Project Structure](#project-structure)
   - [Tests](#tests)
   - [Data Management](#data-management)
@@ -93,6 +94,31 @@ For more information, run:
 ```sh
 bun install && ./pocman.ts --help
 ```
+
+#### Automated Scanner Output Parsing
+
+ASDF also supports the **automated parsing of scanner output files** to generate the `recordedTests`.
+Automated parsing produces the same `recordedTests` format as the manual generator, by either:
+- Pre-filling "Detected CWEs" and "Undetected CWEs" in the management interface
+- Using the Pocman CLI's `parse` and `append` commands.
+
+> Note: automated parsing uses a best-effort mapping to CWEs, so human review is encouraged.
+
+###### Using the Management Interface
+
+When importing scanner output via the Recorded Tests Generator:
+1. Select 'Existing Scanner' and pick a scanner type (e.g., "ZAP")
+2. If the scanner supports automated parsing, select the 'Choose File' button.
+3. The dialog will filter for the supported file formats of the parser, so select a supported file.
+4. Select the 'Import Scanner Output' button to pre-fill "Detected CWEs" and "Undetected CWEs".
+
+###### Using the CLI
+
+The same functionality is available in the CLI via the following command:
+- `parse <scanner-type> <path-to-report>`
+
+Then, if desired the results can be appended to the existing scanner file with:
+- `append <scanner-type>`
 
 ## Project Structure
 
