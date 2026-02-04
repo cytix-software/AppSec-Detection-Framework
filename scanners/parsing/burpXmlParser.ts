@@ -10,8 +10,8 @@ function extractAttr(xml: string, tagName: string, attr: string): string | undef
 }
 
 export class BurpXmlParser extends BaseScannerParser {
-  constructor() {
-    super("Burp Suite - Light Scan");
+  constructor(scannerKey: string) {
+    super(scannerKey);
   }
 
   public async parse(
@@ -99,7 +99,7 @@ export class BurpXmlParser extends BaseScannerParser {
       });
 
     const out: MappingOut = {
-      ["Burp Suite - Light Scan"]: {
+      [this.scannerKey]: {
         scanProfile,
         tests: testsOut,
       },
@@ -107,5 +107,18 @@ export class BurpXmlParser extends BaseScannerParser {
 
     this.lastResult = out;
     return out;
+  }
+}
+
+// Specific Burp scan variants (same logic apart from names)
+export class BurpLightXmlParser extends BurpXmlParser {
+  constructor() {
+    super("Burp Suite - Light Scan");
+  }
+}
+
+export class BurpDeepXmlParser extends BurpXmlParser {
+  constructor() {
+    super("Burp Suite - Deep Scan");
   }
 }

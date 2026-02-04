@@ -2071,13 +2071,14 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
 
             if (!scanner || !inPath) { //if missing args
               console.log(`
-              Usage: parse <zap|nuclei|semgrep|burpLight> <reportPath>
+              Usage: parse <zap|nuclei|semgrep|burpLight|burpDeep> <reportPath>
               Examples (JSON or XML):
                   parse zap ./zap-report.json
                   parse zap ./zap-report.xml
                   parse nuclei ./nuclei-report.json
                   parse semgrep ./semgrep-report.json
                   parse burpLight ./burp-report.xml
+                  parse burpDeep ./burp-report.xml
               `);
               break;
             }
@@ -2094,6 +2095,7 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
                   append zap
                   append nuclei
                   append semgrep
+                  append burp
               `);
               break;
             }
