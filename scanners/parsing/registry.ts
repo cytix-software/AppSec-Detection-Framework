@@ -50,6 +50,10 @@ export const PARSER_REGISTRY: RegistryEntry[] = [
         const mod = await import("./burpXmlParser");
         return new mod.BurpLightXmlParser();
       },
+      ".html": async () => {
+        const mod = await import("./burpHtmlParser");
+        return new mod.BurpLightHtmlParser();
+      },
     },
   },
   {
@@ -59,6 +63,10 @@ export const PARSER_REGISTRY: RegistryEntry[] = [
       ".xml": async () => {
         const mod = await import("./burpXmlParser");
         return new mod.BurpDeepXmlParser();
+      },
+      ".html": async () => {
+        const mod = await import("./burpHtmlParser");
+        return new mod.BurpDeepHtmlParser();
       },
     },
   },
