@@ -43,6 +43,16 @@ export const PARSER_REGISTRY: RegistryEntry[] = [
       },
     },
   },
+  {
+    scannerKey: "burpLight",
+    label: "Burp Suite - Light Scan",
+    parsers: {
+      ".xml": async () => {
+        const mod = await import("./burpXmlParser");
+        return new mod.BurpXmlParser();
+      },
+    },
+  }
 ];
 
 // build capabilities for frontend
@@ -56,7 +66,10 @@ export const PARSER_CAPABILITIES: ParserCapability[] = PARSER_REGISTRY.map((e) =
 
 export async function findParser(scannerKey: string, ext: string) {
   const keyLower = scannerKey.toLowerCase();
-  const entry = PARSER_REGISTRY.find((e) => e.scannerKey.toLowerCase() === keyLower);
+  let entry = PARSER_REGISTRY.find((e) => e.scannerKey.toLowerCase() === keyLower);
+  
+  //As backup try matching by label
+  if (!entry) entry = PARSER_REGISTRY.find((e) => e.label === scannerKey);
   if (!entry) return null;
 
   const factory = entry.parsers[ext.toLowerCase()];

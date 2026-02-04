@@ -634,7 +634,7 @@ managementRouter.post('/api/save-results', async (ctx) => {
             const newTests = data; 
             
             // 2. Locate the existing scanner's test array. The top-level key is the scannerName.
-            const scannerData = existingData[scannerName]; 
+            const scannerData = existingData[scannerName];
 
             if (!scannerData || !Array.isArray(scannerData.tests)) {
                 ctx.status = 500;
@@ -1688,7 +1688,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
             }
 
             const cap = parserCapabilities.parsers.find(function (p) {
-              return p.scannerKey === selectedScanner;
+              return p.scannerKey.toLowerCase() === selectedScanner.toLowerCase() || p.label === selectedScanner;
             });
 
             if (!cap) {
@@ -1833,45 +1833,90 @@ function getKeyCaseInsensitive<T extends Record<string, any>>(
 
 let lastParsed: any = null;
 
-async function handleAppendCmd(scanner: string): Promise<boolean> {
-  const resultsDir = path.join(process.cwd(), 'results');
+async function promptYesNo(question: string): Promise<boolean> {
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  return new Promise((resolve) => {
+    rl.question(question, (ans) => {
+      rl.close();
+      resolve(/^y(es)?$/i.test(ans.trim()));
+    });
+  });
+}
+
+async function handleAppendCmd(targetFileStem: string): Promise<boolean> {
+  const resultsDir = path.join(process.cwd(), "results");
+
   if (!lastParsed) {
     console.log("No parsed data available to append.");
     return false;
   }
 
-  const existingFilePath = path.join(resultsDir, scanner + `.json`);
+  // lastParsed should only ever contain a single top-level key
+  const parsedKeys = Object.keys(lastParsed);
+  if (parsedKeys.length !== 1) {
+    console.log(
+      `Expected lastParsed to contain exactly 1 scanner key, found ${parsedKeys.length}: ${parsedKeys.join(", ")}`
+    );
+    return false;
+  }
+
+  const parsedKey = parsedKeys[0];
+  const parsedData = lastParsed[parsedKeys[0]];
+  if (!parsedData || !Array.isArray(parsedData.tests)) {
+    console.log(`Parsed data is invalid or missing "tests" array.`);
+    return false;
+  }
+
+  const existingFilePath = path.join(resultsDir, `${targetFileStem}.json`);
   if (!existsSync(existingFilePath)) {
-      console.log(`File for existing scanner '${scanner}' not found.`);
-      return false;
+    console.log(`Target results file '${existingFilePath}' not found.`);
+    return false;
   }
 
-  // 1. Read and parse existing file data
-  const existingContent = await readFile(existingFilePath, 'utf8');
-  const existingData = JSON.parse(existingContent);
-  
-  // Data received from client is the new tests array (data is the 'updatedTests' array)
-  const newData = lastParsed[getKeyCaseInsensitive(lastParsed, scanner) || ""];
-  if (!newData || !Array.isArray(newData.tests)) {
-      console.log('Existing file structure is invalid or missing "tests" array.');
-      return false;
-  }
-  const newTests = newData.tests;
-  
-  // 2. Locate the existing scanner's test array. The top-level key is the scannerName.
-  const scannerData = existingData[getKeyCaseInsensitive(existingData, scanner) || ""];
-
-  if (!scannerData || !Array.isArray(scannerData.tests)) {
-      console.log('Existing file structure is invalid or missing "tests" array.');
-      return false;
+  // Read target file
+  const existingContent = await readFile(existingFilePath, "utf8");
+  let existingData: any;
+  try {
+    existingData = JSON.parse(existingContent);
+  } catch (e) {
+    console.log(`Target results file '${existingFilePath}' is not valid JSON.`);
+    return false;
   }
 
-  // 3. Simply concatenate the new tests to the end of the existing array.
-  scannerData.tests = scannerData.tests.concat(newTests);
+  // If the parsed key already exists in the file, append to it.
+  // If not, warn and ask whether to create it.
+  let scannerData = existingData[parsedKey];
 
-  // Write the final, merged data back to the disk
-  await writeFile(existingFilePath, JSON.stringify(existingData, null, 2), 'utf8');
-  console.log(`Saved ${scanner} report to: ${existingFilePath}`);
+  if (!scannerData) {
+    console.log(
+      `Warning: target file does not contain a '${parsedKey}' section.\n` +
+      `Existing keys: ${Object.keys(existingData).join(", ") || "(none)"}`
+    );
+
+    const ok = await promptYesNo(`Create '${parsedKey}' in ${path.basename(existingFilePath)} and append? (y/N): `);
+    if (!ok) {
+      console.log("Append cancelled.");
+      return false;
+    }
+
+    // create new section using the parsed object's structure
+    existingData[parsedKey] = {
+      scanProfile: parsedData.scanProfile,
+      tests: [],
+    };
+    scannerData = existingData[parsedKey];
+  }
+
+  if (!Array.isArray(scannerData.tests)) {
+    console.log(`Existing '${parsedKey}' section is invalid or missing "tests" array.`);
+    return false;
+  }
+
+  // Append
+  scannerData.tests = scannerData.tests.concat(parsedData.tests);
+
+  await writeFile(existingFilePath, JSON.stringify(existingData, null, 2), "utf8");
+  console.log(`Appended ${parsedData.tests.length} tests to '${parsedKey}' in: ${existingFilePath}`);
   return true;
 }
 
@@ -2026,12 +2071,13 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
 
             if (!scanner || !inPath) { //if missing args
               console.log(`
-              Usage: parse <zap|nuclei|semgrep> <reportPath>
+              Usage: parse <zap|nuclei|semgrep|burpLight> <reportPath>
               Examples (JSON or XML):
                   parse zap ./zap-report.json
                   parse zap ./zap-report.xml
                   parse nuclei ./nuclei-report.json
                   parse semgrep ./semgrep-report.json
+                  parse burpLight ./burp-report.xml
               `);
               break;
             }
@@ -2043,8 +2089,8 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
             const appendScanner = parts[1];
             if (!appendScanner) { //if missing args
               console.log(`
-              Usage: append <zap|nuclei|semgrep>
-              Examples:
+              Usage: append <zap|nuclei|semgrep|burp>
+              Examples: (any existing results json)
                   append zap
                   append nuclei
                   append semgrep
