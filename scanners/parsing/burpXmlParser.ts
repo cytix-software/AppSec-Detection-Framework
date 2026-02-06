@@ -72,7 +72,7 @@ export class BurpXmlParser extends BaseScannerParser {
     //Error handling
     if (detectedByTest.size === 0) {
       throw new ScannerParsingError(
-        "Failed to parse Burp XML report. Missing key attributes or findings."
+        "Failed to parse Burp XML report. Missing findings."
       );
     }
 

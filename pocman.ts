@@ -1185,7 +1185,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
                 <div class="form-group">
                   <label for="importFile">Import Scanner Output:</label>
                   <input type="file" id="importFile" onchange="updateImportUIState()" disabled/>
-                  <button type="button" id="importBtn" onclick="importScannerOutput()" onchange="updateImportUIState()" disabled>
+                  <button type="button" id="importBtn" onclick="importScannerOutput()" disabled>
                     Import Scanner Output
                   </button>
                   <p id="importHelp" style="margin: 6px 0 0;"></p>
@@ -1621,6 +1621,8 @@ function createManagementHtml(batch: ServiceBatch | null) {
             const file = fileInput?.files?.[0];
 
             const content = await file.text();
+            if (!scannerKey) { alert("Select a scanner first."); return; }
+            if (!file) { alert("Choose a file first."); return; }
             
             const res = await fetch("/api/import-scan-artifact", {
               method: "POST",
@@ -1635,8 +1637,11 @@ function createManagementHtml(batch: ServiceBatch | null) {
             } catch {
               body = raw;
             }
-
-            if (!res.ok) return alert(body.error || "Import failed. Invalid syntax or file type.");
+            
+            if (!res.ok) {
+              alert(body.error || "Import failed. Invalid syntax or file type.");
+              return;
+            }
 
             //Now autofill based on mapping.
             autoFillFromMappingOut(body.result);
