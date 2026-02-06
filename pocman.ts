@@ -618,12 +618,32 @@ managementRouter.post('/api/save-results', async (ctx) => {
         } else {
             // Case 2: EXISTING SCANNER (Append and overwrite original file)
             fileName = `${scannerName}.json`; 
-            const filePath = path.join(resultsDir, fileName); 
+            let filePath = path.join(resultsDir, fileName); 
 
             if (!existsSync(filePath)) {
-                ctx.status = 404;
-                ctx.body = { error: `File for existing scanner '${scannerName}' not found.` };
-                return;
+                //In case of failure, fallback to searching for scannerName in contents of resultsDir files:
+                const allFiles = await readdir(resultsDir);
+                let foundFile = null;
+                for (const file of allFiles) {
+                  if (file.endsWith('.json')) {
+                    const content = await readFile(path.join(resultsDir, file), 'utf8');
+                    const jsonData = JSON.parse(content);
+                    if (jsonData[scannerName]) {
+                        foundFile = file;
+                        break;
+                    }
+                  }
+                }
+
+                if (!foundFile) {
+                  ctx.status = 404;
+                  ctx.body = { error: `File for existing scanner '${scannerName}' not found.` };
+                  return;
+                }
+
+                // If we found the file, proceed with processing it
+                fileName = foundFile;
+                filePath = path.join(resultsDir, fileName);
             }
 
             // 1. Read and parse existing file data
