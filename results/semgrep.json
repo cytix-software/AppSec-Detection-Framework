@@ -1012,6 +1012,17 @@
                     213
                 ],
                 "updatedAt": 1757366982
+            },
+            {
+                "test": "test_114_v1",
+                "detectedCWEs": [
+                    611,
+                    776
+                ],
+                "undetectedCWEs": [
+                    918
+                ],
+                "updatedAt": 1770662782
             }
         ]
     }
