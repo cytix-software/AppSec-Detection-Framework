@@ -1487,7 +1487,8 @@
           "title": "Server-Side Request Forgery (SSRF)",
           "tests": [
             "test_16_v1",
-            "test_16_v2"
+            "test_16_v2",
+            "test_114_v1"
           ]
         }
       ],
@@ -2175,8 +2176,7 @@
             "test_15_v1",
             "test_15_v2",
             "test_17_v1",
-            "test_17_v2",
-            "test_114_v1"
+            "test_17_v2"
           ]
         },
         {
