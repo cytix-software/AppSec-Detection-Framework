@@ -62,8 +62,8 @@ export class ZapXmlParser extends BaseScannerParser {
     }
 
     //Error handling
-    if (!version || !createdIso || detectedByTest.size === 0) {
-      throw new ScannerParsingError("Failed to parse ZAP XML report. Missing key attributes or findings.");
+    if (detectedByTest.size === 0) {
+      throw new ScannerParsingError("Failed to parse ZAP XML report. Missing findings.");
     }
 
     const testUniverse = (ctx?.expectedTests?.length

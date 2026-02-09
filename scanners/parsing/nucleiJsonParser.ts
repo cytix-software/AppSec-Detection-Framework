@@ -525,7 +525,7 @@ export class NucleiJsonParser extends BaseScannerParser {
 
     //If no findings, throw parsing error
     if (findings.length === 0) {
-      throw new ScannerParsingError("No findings found in Nuclei JSON report.");
+      throw new ScannerParsingError("Failed to parse Nuclei JSON report. Missing findings.");
     }
 
     const expectedByTest = this.buildExpectedCWEsByTest(data);

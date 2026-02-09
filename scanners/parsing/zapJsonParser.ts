@@ -62,10 +62,13 @@ export class ZapJsonParser extends BaseScannerParser {
     const updatedAt = ctx?.updatedAt ?? inferredUpdatedAt;
     const scanProfile = ctx?.scanProfile ?? inferredScanProfile;
 
+    //If possible align to expected tests so we only output tests for current batch.
     const testUniverse = (ctx?.expectedTests?.length
         ? ctx.expectedTests
-        : Array.from(detectedByTest.keys())
-        ).filter((t) => expectedByTest.has(t)); // keep it aligned to framework tests
+        : null);
+    if (!testUniverse) {
+      throw new ScannerParsingError("Failed to parse ZAP JSON report. Internal parsing error: no expected tests provided in context.");
+    }
 
     const testsOut = Array.from(new Set(testUniverse))
     .sort(this.sortTestNames)
