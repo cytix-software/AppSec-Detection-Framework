@@ -1108,8 +1108,7 @@
           "title": "Improper Restriction of XML External Entity Reference",
           "tests": [
             "test_40_v1",
-            "test_40_v2",
-            "test_114_v1"
+            "test_40_v2"
           ]
         },
         {
@@ -1487,8 +1486,7 @@
           "title": "Server-Side Request Forgery (SSRF)",
           "tests": [
             "test_16_v1",
-            "test_16_v2",
-            "test_114_v1"
+            "test_16_v2"
           ]
         }
       ],
@@ -1877,7 +1875,9 @@
         {
           "id": 776,
           "title": "Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')",
-          "tests": []
+          "tests": [
+            "test_114_v1"
+          ]
         },
         {
           "id": 942,

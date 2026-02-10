@@ -48,9 +48,8 @@ public class VulnerableController {
     // Intentionally unsafe for test case, allows unrestricted entity expansion and external entity processing
     dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, false);
     dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", false);
-    dbf.setFeature("http://xml.org/sax/features/external-general-entities", true);
-    dbf.setFeature("http://xml.org/sax/features/external-parameter-entities", true);
-
+    dbf.setFeature("http://xml.org/sax/features/external-general-entities", false); //now disallows external general entities to keep test case specific
+    dbf.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
     dbf.setExpandEntityReferences(true);
     dbf.setXIncludeAware(false);
     dbf.setNamespaceAware(false);

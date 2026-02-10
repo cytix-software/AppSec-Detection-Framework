@@ -3341,12 +3341,9 @@ services:
       profiles:
         - test-114
         - java
-        - cwe-611
         - cwe-776
-        - cwe-918
+        - a05:2021
         - a02:2025
-        - a10:2021
-        - a01:2025
         - all
 networks:
   test-110-network:
