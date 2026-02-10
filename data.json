@@ -1129,7 +1129,9 @@
         {
           "id": 776,
           "title": "Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')",
-          "tests": []
+          "tests": [
+            "test_114_v1"
+          ]
         },
         {
           "id": 942,
@@ -1873,7 +1875,9 @@
         {
           "id": 776,
           "title": "Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')",
-          "tests": []
+          "tests": [
+            "test_114_v1"
+          ]
         },
         {
           "id": 942,
