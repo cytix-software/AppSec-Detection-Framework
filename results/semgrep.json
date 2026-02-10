@@ -1015,12 +1015,9 @@
             },
             {
                 "test": "test_114_v1",
-                "detectedCWEs": [
-                    611,
-                    776
-                ],
+                "detectedCWEs": [],
                 "undetectedCWEs": [
-                    918
+                    776
                 ],
                 "updatedAt": 1770662782
             }
