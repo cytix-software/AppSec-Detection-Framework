@@ -38,7 +38,6 @@ public class VulnerableController {
       return "expandedLen=" + expandedText.length() + "\n\n" + expandedText;
 
     } catch (Exception e) {
-      // Return something useful while debugging your test
       return "ERROR: " + e.getClass().getSimpleName() + ": " + e.getMessage();
     }
   }
@@ -46,7 +45,7 @@ public class VulnerableController {
   private String parseXmlUnsafelyAndGetText(String xml) throws Exception {
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
-    // Intentionally unsafe for test case:
+    // Intentionally unsafe for test case, allows unrestricted entity expansion and external entity processing
     dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, false);
     dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", false);
     dbf.setFeature("http://xml.org/sax/features/external-general-entities", true);
