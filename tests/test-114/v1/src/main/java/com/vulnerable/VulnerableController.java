@@ -35,7 +35,7 @@ public class VulnerableController {
       String expandedText = parseXmlUnsafelyAndGetText(xml);
       if (expandedText == null) expandedText = "";
 
-      return "expandedLen=" + expandedText.length() + "\n\n" + expandedText;
+      return expandedText;
 
     } catch (Exception e) {
       return "ERROR: " + e.getClass().getSimpleName() + ": " + e.getMessage();
