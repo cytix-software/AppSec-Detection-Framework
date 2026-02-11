@@ -588,7 +588,7 @@ managementRouter.get('/api/existing-scanner-results', async (ctx) => {
 });
 
 managementRouter.post('/api/save-results', async (ctx) => {
-    const { scannerName, isNewScanner, data } = ctx.request.body;
+    const { scannerName, isNewScanner, author, data } = ctx.request.body;
     
     // Define the directory where results should be saved
     const resultsDir = path.join(process.cwd(), 'results');
@@ -597,6 +597,9 @@ managementRouter.post('/api/save-results', async (ctx) => {
     if (!existsSync(resultsDir)) {
         mkdirSync(resultsDir, { recursive: true });
     }
+
+    const authorTrimmed = typeof author === "string" ? author.trim() : "";
+    const hasAuthor = authorTrimmed.length > 0;
 
     try {
         let finalDataToWrite;
@@ -619,6 +622,12 @@ managementRouter.post('/api/save-results', async (ctx) => {
             }
 
             finalDataToWrite = data; // Data is already in the correct {"ScannerName": {...}} format
+
+            // Add author only if provided
+            const scannerData = finalDataToWrite?.[scannerName];
+            if (scannerData && hasAuthor) {
+              scannerData.author = authorTrimmed;
+            }
         } else {
             // Case 2: EXISTING SCANNER (Append and overwrite original file)
             fileName = `${scannerName}.json`; 
@@ -668,6 +677,13 @@ managementRouter.post('/api/save-results', async (ctx) => {
 
             // 3. Simply concatenate the new tests to the end of the existing array.
             scannerData.tests = scannerData.tests.concat(newTests);
+
+            // Append author logic:
+            // - if user provided one: overwrite/set
+            // - if blank: do nothing (keeps existing, or stays missing)
+            if (hasAuthor) {
+              scannerData.author = authorTrimmed;
+            }
 
             finalDataToWrite = existingData;
 
@@ -1220,6 +1236,13 @@ function createManagementHtml(batch: ServiceBatch | null) {
                 Loading tests...
               </div>
               
+              <div class="form-group">
+                <label for="author">Author (optional):</label>
+                <input type="text" id="author" placeholder="e.g., Alice" />
+                <p style="margin: 6px 0 0; color: var(--text-secondary);">
+                  If blank: omitted for new scanners; for appends, existing author (if any) is kept.
+                </p>
+              </div>
               <button onclick="generateRecordedTests()">Generate Recorded Tests</button>
             </div>
             
@@ -1466,6 +1489,9 @@ function createManagementHtml(batch: ServiceBatch | null) {
               const scanProfileInput = document.getElementById('scanProfile');
               const existingScannerRadio = document.getElementById('existingScanner');
               const existingScannerSelect = document.getElementById('existingScannerName');
+              const authorInput = document.getElementById('author');
+              
+              const author = (authorInput?.value || '').trim();
               
               if (!newScannerRadio || !existingScannerRadio || !scannerNameInput || !existingScannerSelect || !scanProfileInput) {
                 // Throwing this error helps identify missing elements if you missed Step 1
@@ -1519,14 +1545,14 @@ function createManagementHtml(batch: ServiceBatch | null) {
 
                 // If new scanner, format as { "Scanner Name": { ... } }
                 const output = newScannerRadio.checked
-                    ? {
-                        [scannerName]: {
-                            scanProfile: scanProfile,
-                            tests: updatedTests
-                          }
+                  ? {
+                      [scannerName]: {
+                        scanProfile: scanProfile,
+                        ...(author ? { author } : {}),
+                        tests: updatedTests
                       }
-                    // If existing scanner, keep the array-only output
-                    : updatedTests; 
+                    }
+                  : updatedTests;
                 
                 // Display the JSON
                 const jsonOutput = document.getElementById('jsonOutput');
@@ -1562,6 +1588,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
             const existingScannerRadio = document.getElementById('existingScanner'); // <-- Retrieve this
             const scannerNameInput = document.getElementById('scannerName');
             const existingScannerSelect = document.getElementById('existingScannerName'); // <-- Retrieve this
+            const author = (document.getElementById('author')?.value || '').trim();
 
             if (!generatedOutputData || !newScannerRadio || !existingScannerRadio || !scannerNameInput || !existingScannerSelect) {
                 alert("Cannot save file. Required form elements or data not found.");
@@ -1587,6 +1614,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
             const payload = {
                 scannerName: scannerName, // Used for filename
                 isNewScanner: isNewScanner,
+                author: author, // (may be "")
                 data: generatedOutputData // Use the stored JSON data
             };
 
