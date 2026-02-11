@@ -588,7 +588,7 @@ managementRouter.get('/api/existing-scanner-results', async (ctx) => {
 });
 
 managementRouter.post('/api/save-results', async (ctx) => {
-    const { scannerName, isNewScanner, author, data } = ctx.request.body;
+    const { scannerName, isNewScanner, author, archivesUsed, data } = ctx.request.body;
     
     // Define the directory where results should be saved
     const resultsDir = path.join(process.cwd(), 'results');
@@ -627,6 +627,9 @@ managementRouter.post('/api/save-results', async (ctx) => {
             const scannerData = finalDataToWrite?.[scannerName];
             if (scannerData && hasAuthor) {
               scannerData.author = authorTrimmed;
+            }
+            if (scannerData && Array.isArray(archivesUsed) && archivesUsed.length > 0) {
+              scannerData.archivesUsed = archivesUsed;
             }
         } else {
             // Case 2: EXISTING SCANNER (Append and overwrite original file)
@@ -685,8 +688,18 @@ managementRouter.post('/api/save-results', async (ctx) => {
               scannerData.author = authorTrimmed;
             }
 
-            finalDataToWrite = existingData;
+            //Append archivesUsed if provided and is an array with items:
+            if (Array.isArray(archivesUsed) && archivesUsed.length > 0) {
+              if (scannerData.archivesUsed) {
+                // If archivesUsed already exists, concat new ones and remove duplicates:
+                scannerData.archivesUsed = Array.from(new Set(scannerData.archivesUsed.concat(archivesUsed)));
+              } else {
+                // Else just set it:
+                scannerData.archivesUsed = archivesUsed;
+              }
+            }
 
+            finalDataToWrite = existingData;
         }
 
         // Write the final, merged data back to the disk
@@ -1335,6 +1348,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
 
           let testNameToUiIndex = {};
           let indexToTestName = {};
+          let archivesUsed = [];
 
           async function loadTests() {
             try {
@@ -1614,7 +1628,8 @@ function createManagementHtml(batch: ServiceBatch | null) {
             const payload = {
                 scannerName: scannerName, // Used for filename
                 isNewScanner: isNewScanner,
-                author: author, // (may be "")
+                author: author, // (may be ""),
+                archivesUsed: archivesUsed, // (may be [])
                 data: generatedOutputData // Use the stored JSON data
             };
 
@@ -1839,6 +1854,9 @@ function createManagementHtml(batch: ServiceBatch | null) {
             const scannerKey = Object.keys(mappingOut)[0];
             const scannerData = mappingOut[scannerKey];
             if (!scannerData || !Array.isArray(scannerData.tests)) return;
+            if (Array.isArray(scannerData.archivesUsed)) {
+              archivesUsed = scannerData.archivesUsed;
+            }
 
             scannerData.tests.forEach(function (testResult) {
               const uiIndex = testNameToUiIndex

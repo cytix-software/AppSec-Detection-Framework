@@ -72,8 +72,6 @@ export abstract class BaseScannerParser implements IScannerParser {
     const relative = path.relative(process.cwd(), archivePath);
     const normalized = relative.replace(/\\/g, "/"); //normalize in case of Windows
     this.archivesUsed.push(normalized);
-
-    console.log(`Archived scanner file to ${archivePath}`);
   }
 
   //To be implemented by each parser with its own logic and return the mapped results
@@ -85,13 +83,16 @@ export abstract class BaseScannerParser implements IScannerParser {
     const scannerKey = Object.keys(res)[0]; //select first inner key for main object
     //Add reference to archived file(s) used for this parse under the key 'archivesUsed':
     if (this.archivesUsed.length > 0) {
-      //Place 'archivesUsed' inside the scanner object alongside 'scanProfile' etc.:
-      res[scannerKey].archivesUsed = this.archivesUsed;
+      //Concat archivesUsed, if res[scannerKey].archivesUsed already exists, else just set it:
+      if (res[scannerKey].archivesUsed) {
+        res[scannerKey].archivesUsed = res[scannerKey].archivesUsed.concat(this.archivesUsed);
+      } else {
+        res[scannerKey].archivesUsed = this.archivesUsed;
+      }
     }
 
     //Then add a key 'author' with value of ctx.author if provided, else "unknown":
     if (ctx?.author) { //if author isn't null (null represents default/blank)
-      console.log("Setting author to:", ctx.author);
       res[scannerKey].author = ctx.author;
     }
 
