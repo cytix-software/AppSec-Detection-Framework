@@ -20,7 +20,7 @@ export class ZapJsonParser extends BaseScannerParser {
     super("ZAP");
   }
 
-  public async parse(
+  public async _parse(
     input: ParserInput,
     data: DataJson,
     ctx?: ParseContext
@@ -94,7 +94,6 @@ export class ZapJsonParser extends BaseScannerParser {
       },
     };
 
-    this.lastResult = out;
     return out;
   }
 }

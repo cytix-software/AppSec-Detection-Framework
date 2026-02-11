@@ -502,7 +502,7 @@ export class NucleiJsonParser extends BaseScannerParser {
     super("Nuclei", "Nuclei imports are best-effort mappings with CWEs derived from template metadata and local mappings, review results carefully.");
   }
 
-  public async parse(
+  public async _parse(
     input: ParserInput,
     data: DataJson,
     ctx?: ParseContext
@@ -616,7 +616,6 @@ export class NucleiJsonParser extends BaseScannerParser {
       },
     };
 
-    this.lastResult = out;
     return out;
   }
 }

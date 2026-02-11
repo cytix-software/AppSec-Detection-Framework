@@ -44,7 +44,7 @@ export class SemgrepJsonParser extends BaseScannerParser {
     super("Semgrep");
   }
 
-  public async parse(
+  public async _parse(
     input: ParserInput,
     data: DataJson,
     ctx?: ParseContext
@@ -115,7 +115,6 @@ export class SemgrepJsonParser extends BaseScannerParser {
       },
     };
 
-    this.lastResult = out;
     return out;
   }
 }

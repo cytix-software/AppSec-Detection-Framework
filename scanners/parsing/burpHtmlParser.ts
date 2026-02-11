@@ -15,7 +15,7 @@ export class BurpHtmlParser extends BaseScannerParser {
     super(scannerKey);
   }
 
-  public async parse(
+  public async _parse(
     input: ParserInput,
     data: DataJson,
     ctx?: ParseContext
@@ -148,7 +148,6 @@ export class BurpHtmlParser extends BaseScannerParser {
       },
     };
 
-    this.lastResult = out;
     return out;
   }
 }

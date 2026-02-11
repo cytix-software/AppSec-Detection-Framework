@@ -357,6 +357,9 @@ function showWelcome() {
 // Add management server setup
 let batchManager: ReturnType<typeof createBatchManager>;
 
+// Author for parse results:
+let author: string | null = "";
+
 const managementApp = new Koa();
 managementApp.use(bodyParser({jsonLimit: "10mb", xmlLimit: "10mb", textLimit: "10mb", formLimit: "10mb"})); //Increased default limit to allow large scan artifacts
 
@@ -420,7 +423,8 @@ managementRouter.post('/api/import-scan-artifact', async (ctx) => {
 
   //Use the selected parser's parse() to process into mapped results, throwing error if parse fails
   try {
-    const result = await parser.parse({ artifactContent: content }, data, {expectedTests: batchManager.getCurrentBatch()?.services || []});
+    await parser.archiveScannerFile({ artifactContent: content, artifactPath: fileName }); //archive original file for reference
+    const result = await parser.parse({ artifactContent: content }, data, { expectedTests: batchManager.getCurrentBatch()?.services || [] , author: author });
     ctx.body = { result, hint: parser.getParserHint() };
   }catch (err: unknown) {
     if (err instanceof ScannerParsingError) {
@@ -1858,16 +1862,6 @@ function getKeyCaseInsensitive<T extends Record<string, any>>(
 
 let lastParsed: any = null;
 
-async function promptYesNo(question: string): Promise<boolean> {
-  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-  return new Promise((resolve) => {
-    rl.question(question, (ans) => {
-      rl.close();
-      resolve(/^y(es)?$/i.test(ans.trim()));
-    });
-  });
-}
-
 async function handleAppendCmd(targetFileStem: string): Promise<boolean> {
   const resultsDir = path.join(process.cwd(), "results");
 
@@ -1918,11 +1912,8 @@ async function handleAppendCmd(targetFileStem: string): Promise<boolean> {
       `Existing keys: ${Object.keys(existingData).join(", ") || "(none)"}`
     );
 
-    const ok = await promptYesNo(`Create '${parsedKey}' in ${path.basename(existingFilePath)} and append? (y/N): `);
-    if (!ok) {
-      console.log("Append cancelled.");
-      return false;
-    }
+    //Tell user creating parsedKey in file:
+    console.log(`Creating new section '${parsedKey}' in target file ${existingFilePath} with parsed data.`);
 
     // create new section using the parsed object's structure
     existingData[parsedKey] = {
@@ -1939,6 +1930,12 @@ async function handleAppendCmd(targetFileStem: string): Promise<boolean> {
 
   // Append
   scannerData.tests = scannerData.tests.concat(parsedData.tests);
+  if (!scannerData.archivesUsed) {
+    scannerData.archivesUsed = [];
+  }
+  scannerData.archivesUsed = scannerData.archivesUsed.concat(parsedData.archivesUsed || []);
+  console.log("AUTHOR: ", author);
+  if (author !== "unknown") scannerData.author = author || scannerData.author;
 
   await writeFile(existingFilePath, JSON.stringify(existingData, null, 2), "utf8");
   console.log(`Appended ${parsedData.tests.length} tests to '${parsedKey}' in: ${existingFilePath}`);
@@ -1946,6 +1943,11 @@ async function handleAppendCmd(targetFileStem: string): Promise<boolean> {
 }
 
 async function handleParseCmd(scanner: string, inPath: string): Promise<boolean> {
+  if (author === "") {
+    console.log("Author name not set. Use author command to set name or set to default.");
+    return false;
+  }
+
   const resolvedReportPath = path.resolve(process.cwd(), inPath);
   
   //Check if file exists
@@ -1964,7 +1966,8 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
   const currentBatch = batchManager?.getCurrentBatch();
   //Parse and print error in event of failure.
   try {
-    lastParsed = await parser.parse({ artifactPath: resolvedReportPath }, data, {expectedTests: currentBatch?.services || []});
+    await parser.archiveScannerFile({ artifactPath: resolvedReportPath }); //archive original file for reference
+    lastParsed = await parser.parse({ artifactPath: resolvedReportPath }, data, { expectedTests: currentBatch?.services || [] , author: author });
   } catch (err) {
     if (err instanceof ScannerParsingError) {
       console.log(`Error parsing ${scanner} report: ${err.message}`);
@@ -2073,6 +2076,7 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
           case 'help':
             console.log(`
               Available commands:
+              author    - Set author name for parsed results (or set to default)
               append    - Append parsed results to existing scanner file
               next      - Activate next batch
               parse     - Parse a scanner report
@@ -2127,7 +2131,32 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
 
             await handleAppendCmd(appendScanner);
             break;
-          
+
+          case 'author':
+            const authorName = parts[1];
+            if (!authorName) {
+              console.log(`
+              Usage: author <name|default>
+              Setting default will leave author blank.
+              Examples:
+                  author Alice
+                  author default
+              `);
+              break;
+            }
+
+            if (authorName.toLowerCase() === "default") {
+              author = null;
+              console.log("Author field will be left blank in results.");
+              break;
+            }
+
+            author = authorName;
+            console.log(`Author set to: ${author}`);
+            console.log("Note: If you have already ran parse, you will need to rerun to include the author field.");
+
+            break;
+
           default:
             console.log('Invalid command - type "help" for available commands');
         }
