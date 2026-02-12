@@ -357,6 +357,9 @@ function showWelcome() {
 // Add management server setup
 let batchManager: ReturnType<typeof createBatchManager>;
 
+// Author for parse results:
+let author: string | null = "";
+
 const managementApp = new Koa();
 managementApp.use(bodyParser({jsonLimit: "10mb", xmlLimit: "10mb", textLimit: "10mb", formLimit: "10mb"})); //Increased default limit to allow large scan artifacts
 
@@ -420,7 +423,8 @@ managementRouter.post('/api/import-scan-artifact', async (ctx) => {
 
   //Use the selected parser's parse() to process into mapped results, throwing error if parse fails
   try {
-    const result = await parser.parse({ artifactContent: content }, data, {expectedTests: batchManager.getCurrentBatch()?.services || []});
+    await parser.archiveScannerFile({ artifactContent: content, artifactPath: fileName }); //archive original file for reference
+    const result = await parser.parse({ artifactContent: content }, data, { expectedTests: batchManager.getCurrentBatch()?.services || [] , author: author });
     ctx.body = { result, hint: parser.getParserHint() };
   }catch (err: unknown) {
     if (err instanceof ScannerParsingError) {
@@ -584,7 +588,7 @@ managementRouter.get('/api/existing-scanner-results', async (ctx) => {
 });
 
 managementRouter.post('/api/save-results', async (ctx) => {
-    const { scannerName, isNewScanner, data } = ctx.request.body;
+    const { scannerName, isNewScanner, author, archivesUsed, data } = ctx.request.body;
     
     // Define the directory where results should be saved
     const resultsDir = path.join(process.cwd(), 'results');
@@ -593,6 +597,9 @@ managementRouter.post('/api/save-results', async (ctx) => {
     if (!existsSync(resultsDir)) {
         mkdirSync(resultsDir, { recursive: true });
     }
+
+    const authorTrimmed = typeof author === "string" ? author.trim() : "";
+    const hasAuthor = authorTrimmed.length > 0;
 
     try {
         let finalDataToWrite;
@@ -615,6 +622,15 @@ managementRouter.post('/api/save-results', async (ctx) => {
             }
 
             finalDataToWrite = data; // Data is already in the correct {"ScannerName": {...}} format
+
+            // Add author only if provided
+            const scannerData = finalDataToWrite?.[scannerName];
+            if (scannerData && hasAuthor) {
+              scannerData.author = authorTrimmed;
+            }
+            if (scannerData && Array.isArray(archivesUsed) && archivesUsed.length > 0) {
+              scannerData.archivesUsed = archivesUsed;
+            }
         } else {
             // Case 2: EXISTING SCANNER (Append and overwrite original file)
             fileName = `${scannerName}.json`; 
@@ -665,8 +681,25 @@ managementRouter.post('/api/save-results', async (ctx) => {
             // 3. Simply concatenate the new tests to the end of the existing array.
             scannerData.tests = scannerData.tests.concat(newTests);
 
-            finalDataToWrite = existingData;
+            // Append author logic:
+            // - if user provided one: overwrite/set
+            // - if blank: do nothing (keeps existing, or stays missing)
+            if (hasAuthor) {
+              scannerData.author = authorTrimmed;
+            }
 
+            //Append archivesUsed if provided and is an array with items:
+            if (Array.isArray(archivesUsed) && archivesUsed.length > 0) {
+              if (scannerData.archivesUsed) {
+                // If archivesUsed already exists, concat new ones and remove duplicates:
+                scannerData.archivesUsed = Array.from(new Set(scannerData.archivesUsed.concat(archivesUsed)));
+              } else {
+                // Else just set it:
+                scannerData.archivesUsed = archivesUsed;
+              }
+            }
+
+            finalDataToWrite = existingData;
         }
 
         // Write the final, merged data back to the disk
@@ -1216,6 +1249,13 @@ function createManagementHtml(batch: ServiceBatch | null) {
                 Loading tests...
               </div>
               
+              <div class="form-group">
+                <label for="author">Author (optional):</label>
+                <input type="text" id="author" placeholder="e.g., Alice" />
+                <p style="margin: 6px 0 0; color: var(--text-secondary);">
+                  If blank: omitted for new scanners; for appends, existing author (if any) is kept.
+                </p>
+              </div>
               <button onclick="generateRecordedTests()">Generate Recorded Tests</button>
             </div>
             
@@ -1308,6 +1348,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
 
           let testNameToUiIndex = {};
           let indexToTestName = {};
+          let archivesUsed = [];
 
           async function loadTests() {
             try {
@@ -1462,6 +1503,9 @@ function createManagementHtml(batch: ServiceBatch | null) {
               const scanProfileInput = document.getElementById('scanProfile');
               const existingScannerRadio = document.getElementById('existingScanner');
               const existingScannerSelect = document.getElementById('existingScannerName');
+              const authorInput = document.getElementById('author');
+              
+              const author = (authorInput?.value || '').trim();
               
               if (!newScannerRadio || !existingScannerRadio || !scannerNameInput || !existingScannerSelect || !scanProfileInput) {
                 // Throwing this error helps identify missing elements if you missed Step 1
@@ -1515,14 +1559,14 @@ function createManagementHtml(batch: ServiceBatch | null) {
 
                 // If new scanner, format as { "Scanner Name": { ... } }
                 const output = newScannerRadio.checked
-                    ? {
-                        [scannerName]: {
-                            scanProfile: scanProfile,
-                            tests: updatedTests
-                          }
+                  ? {
+                      [scannerName]: {
+                        scanProfile: scanProfile,
+                        ...(author ? { author } : {}),
+                        tests: updatedTests
                       }
-                    // If existing scanner, keep the array-only output
-                    : updatedTests; 
+                    }
+                  : updatedTests;
                 
                 // Display the JSON
                 const jsonOutput = document.getElementById('jsonOutput');
@@ -1558,6 +1602,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
             const existingScannerRadio = document.getElementById('existingScanner'); // <-- Retrieve this
             const scannerNameInput = document.getElementById('scannerName');
             const existingScannerSelect = document.getElementById('existingScannerName'); // <-- Retrieve this
+            const author = (document.getElementById('author')?.value || '').trim();
 
             if (!generatedOutputData || !newScannerRadio || !existingScannerRadio || !scannerNameInput || !existingScannerSelect) {
                 alert("Cannot save file. Required form elements or data not found.");
@@ -1583,6 +1628,8 @@ function createManagementHtml(batch: ServiceBatch | null) {
             const payload = {
                 scannerName: scannerName, // Used for filename
                 isNewScanner: isNewScanner,
+                author: author, // (may be ""),
+                archivesUsed: archivesUsed, // (may be [])
                 data: generatedOutputData // Use the stored JSON data
             };
 
@@ -1807,6 +1854,9 @@ function createManagementHtml(batch: ServiceBatch | null) {
             const scannerKey = Object.keys(mappingOut)[0];
             const scannerData = mappingOut[scannerKey];
             if (!scannerData || !Array.isArray(scannerData.tests)) return;
+            if (Array.isArray(scannerData.archivesUsed)) {
+              archivesUsed = scannerData.archivesUsed;
+            }
 
             scannerData.tests.forEach(function (testResult) {
               const uiIndex = testNameToUiIndex
@@ -1858,16 +1908,6 @@ function getKeyCaseInsensitive<T extends Record<string, any>>(
 
 let lastParsed: any = null;
 
-async function promptYesNo(question: string): Promise<boolean> {
-  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-  return new Promise((resolve) => {
-    rl.question(question, (ans) => {
-      rl.close();
-      resolve(/^y(es)?$/i.test(ans.trim()));
-    });
-  });
-}
-
 async function handleAppendCmd(targetFileStem: string): Promise<boolean> {
   const resultsDir = path.join(process.cwd(), "results");
 
@@ -1918,11 +1958,8 @@ async function handleAppendCmd(targetFileStem: string): Promise<boolean> {
       `Existing keys: ${Object.keys(existingData).join(", ") || "(none)"}`
     );
 
-    const ok = await promptYesNo(`Create '${parsedKey}' in ${path.basename(existingFilePath)} and append? (y/N): `);
-    if (!ok) {
-      console.log("Append cancelled.");
-      return false;
-    }
+    //Tell user creating parsedKey in file:
+    console.log(`Creating new section '${parsedKey}' in target file ${existingFilePath} with parsed data.`);
 
     // create new section using the parsed object's structure
     existingData[parsedKey] = {
@@ -1939,6 +1976,12 @@ async function handleAppendCmd(targetFileStem: string): Promise<boolean> {
 
   // Append
   scannerData.tests = scannerData.tests.concat(parsedData.tests);
+  if (!scannerData.archivesUsed) {
+    scannerData.archivesUsed = [];
+  }
+  scannerData.archivesUsed = scannerData.archivesUsed.concat(parsedData.archivesUsed || []);
+  console.log("AUTHOR: ", author);
+  if (author !== "unknown") scannerData.author = author || scannerData.author;
 
   await writeFile(existingFilePath, JSON.stringify(existingData, null, 2), "utf8");
   console.log(`Appended ${parsedData.tests.length} tests to '${parsedKey}' in: ${existingFilePath}`);
@@ -1946,6 +1989,11 @@ async function handleAppendCmd(targetFileStem: string): Promise<boolean> {
 }
 
 async function handleParseCmd(scanner: string, inPath: string): Promise<boolean> {
+  if (author === "") {
+    console.log("Author name not set. Use author command to set name or set to default.");
+    return false;
+  }
+
   const resolvedReportPath = path.resolve(process.cwd(), inPath);
   
   //Check if file exists
@@ -1964,7 +2012,8 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
   const currentBatch = batchManager?.getCurrentBatch();
   //Parse and print error in event of failure.
   try {
-    lastParsed = await parser.parse({ artifactPath: resolvedReportPath }, data, {expectedTests: currentBatch?.services || []});
+    await parser.archiveScannerFile({ artifactPath: resolvedReportPath }); //archive original file for reference
+    lastParsed = await parser.parse({ artifactPath: resolvedReportPath }, data, { expectedTests: currentBatch?.services || [] , author: author });
   } catch (err) {
     if (err instanceof ScannerParsingError) {
       console.log(`Error parsing ${scanner} report: ${err.message}`);
@@ -2073,6 +2122,7 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
           case 'help':
             console.log(`
               Available commands:
+              author    - Set author name for parsed results (or set to default)
               append    - Append parsed results to existing scanner file
               next      - Activate next batch
               parse     - Parse a scanner report
@@ -2127,7 +2177,32 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
 
             await handleAppendCmd(appendScanner);
             break;
-          
+
+          case 'author':
+            const authorName = parts[1];
+            if (!authorName) {
+              console.log(`
+              Usage: author <name|default>
+              Setting default will leave author blank.
+              Examples:
+                  author Alice
+                  author default
+              `);
+              break;
+            }
+
+            if (authorName.toLowerCase() === "default") {
+              author = null;
+              console.log("Author field will be left blank in results.");
+              break;
+            }
+
+            author = authorName;
+            console.log(`Author set to: ${author}`);
+            console.log("Note: If you have already ran parse, you will need to rerun to include the author field.");
+
+            break;
+
           default:
             console.log('Invalid command - type "help" for available commands');
         }

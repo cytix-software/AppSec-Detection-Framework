@@ -66,6 +66,8 @@ export type DataJson = Record<
 export type MappingOut = {
   [scannerKey: string]: {
     scanProfile: string;
+    archivesUsed?: string[]; //relative paths of archived files used for this scanner result
+    author?: string; //name of person initiating the parse
     tests: Array<{
       test: string;
       detectedCWEs: number[];
