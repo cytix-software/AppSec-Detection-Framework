@@ -1714,7 +1714,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
             autoFillFromMappingOut(body.result);
 
             const importHelp = document.getElementById("importHelp");
-            if (importHelp) importHelp.textContent = "Imported!";
+            if (importHelp) importHelp.textContent = "Imported! Note: missing results for a test imply no detected vulnerabilities for that test.";
 
             if (body.hint) alert(body.hint);
           }
