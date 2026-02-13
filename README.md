@@ -120,6 +120,9 @@ The same functionality is available in the CLI via the following command:
 Then, if desired the results can be appended to the existing scanner file with:
 - `append <scanner-type>`
 
+Optionally, a scanner file that contains results for several batches (e.g., 1 to 4) can be parsed like:
+- `parse <scanner-type> <path-to-report> --batches 1:4`
+
 ## Project Structure
 
 ### Tests
