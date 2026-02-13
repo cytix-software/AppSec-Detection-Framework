@@ -1988,7 +1988,17 @@ async function handleAppendCmd(targetFileStem: string): Promise<boolean> {
   return true;
 }
 
-async function handleParseCmd(scanner: string, inPath: string): Promise<boolean> {
+async function handleParseCmd(scanner: string, inPath: string, expectedTestsOverride?: string[]): Promise<boolean> {
+  const currentBatch = batchManager?.getCurrentBatch();
+  if (!currentBatch) {
+    console.log("No active batch. Start or select a batch before parsing.");
+    return false;
+  }
+
+  const expectedTests = expectedTestsOverride && expectedTestsOverride.length > 0
+    ? expectedTestsOverride //alternative range can be provided via the batch range argument
+    : currentBatch.services; //default to tests of current batch if an alternative range hasn't been provided
+
   if (author === "") {
     console.log("Author name not set. Use author command to set name or set to default.");
     return false;
@@ -2009,11 +2019,10 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
   parser = await findParser(scanner, ext);
   if (!parser) return false;
 
-  const currentBatch = batchManager?.getCurrentBatch();
   //Parse and print error in event of failure.
   try {
     await parser.archiveScannerFile({ artifactPath: resolvedReportPath }); //archive original file for reference
-    lastParsed = await parser.parse({ artifactPath: resolvedReportPath }, data, { expectedTests: currentBatch?.services || [] , author: author });
+    lastParsed = await parser.parse({ artifactPath: resolvedReportPath }, data, { expectedTests: expectedTests || [] , author: author });
   } catch (err) {
     if (err instanceof ScannerParsingError) {
       console.log(`Error parsing ${scanner} report: ${err.message}`);
@@ -2027,6 +2036,69 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
   console.log(parser.getParserHint());
   console.log(`To append test results to an existing scanner file, use the "append" command.`);
   return true;
+}
+
+//For parse command, read the optional batch list provided (if are importing a multi-batch scan output)
+function parseBatchRangeSpec(spec: string): { start: number; end: number } | null {
+  // Accept: "1:4", "1-4", "3"
+  const s = (spec || "").trim();
+  if (!s) return null;
+
+  const single = /^\d+$/.test(s);
+  if (single) {
+    const n = Number(s);
+    if (!Number.isFinite(n) || n <= 0) return null;
+    return { start: n, end: n };
+  }
+
+  const m = s.match(/^(\d+)\s*[:\-]\s*(\d+)$/);
+  if (!m) return null;
+
+  const a = Number(m[1]);
+  const b = Number(m[2]);
+  if (!Number.isFinite(a) || !Number.isFinite(b) || a <= 0 || b <= 0) return null;
+
+  return { start: Math.min(a, b), end: Math.max(a, b) };
+}
+
+//For the batch range provided get the expected tests
+async function buildExpectedTestsForBatches(
+  batchManager: any,
+  profile: string,
+  rangeSpec: string
+): Promise<string[] | null> {
+  const range = parseBatchRangeSpec(rangeSpec);
+  if (!range) return null;
+
+  // Convert from 1-based user input to 0-based chunkIndex
+  const startIdx = range.start - 1;
+  const endIdx = range.end - 1;
+
+  const services = await batchManager.parseDockerCompose();
+  const allBatches = batchManager.createProfileBatches(services);
+
+  // Only batches for the current profile, and only in the requested chunkIndex range
+  const selected = allBatches.filter((b: any) =>
+    b.profile === profile && b.chunkIndex >= startIdx && b.chunkIndex <= endIdx
+  );
+
+  if (selected.length === 0) return [];
+
+  const expected = new Set<string>();
+  for (const b of selected) {
+    for (const s of b.services || []) {
+      // s is an object like { "0": "test_1_v1", ... }
+      let name = "";
+      for (const n of Object.values(s)) {
+        if (typeof n === "string" && s.trim()) {
+          name += n;
+        }
+      }
+      expected.add(name);
+    }
+  }
+
+  return Array.from(expected);
 }
 
 (async function main() {
@@ -2146,19 +2218,57 @@ async function handleParseCmd(scanner: string, inPath: string): Promise<boolean>
 
             if (!scanner || !inPath) { //if missing args
               console.log(`
-              Usage: parse <zap|nuclei|semgrep|burpLight|burpDeep> <reportPath>
+              Usage: parse <zap|nuclei|semgrep|burpLight|burpDeep> <reportPath> [--batches first:last]
               Examples (JSON or XML):
                   parse zap ./zap-report.json
                   parse zap ./zap-report.xml
                   parse nuclei ./nuclei-report.json
-                  parse semgrep ./semgrep-report.json
-                  parse burpLight ./burp-report.xml
-                  parse burpDeep ./burp-report.xml
+                  parse semgrep ./semgrep-report.json --batches 1:4
+                  parse burpLight ./burp-report.xml --batches 1:4
+                  parse burpDeep ./burp-report.xml --batches 1:4
               `);
               break;
             }
 
-            await handleParseCmd(scanner, inPath);
+            // Optional flags after <reportPath>
+            const rest = parts.slice(3);
+            let batchesSpec: string | undefined;
+
+            for (let i = 0; i < rest.length; i++) {
+              const a = rest[i];
+              if (a === "--batches" || a === "-b") {
+                batchesSpec = rest[i + 1];
+                i++;
+              }
+            }
+
+            let expectedOverride: string[] | undefined;
+            if (batchesSpec) {
+              const currentBatch = batchManager.getCurrentBatch();
+              if (!currentBatch) {
+                console.log("No active batch. Start/select a batch before using --batches.");
+                break;
+              }
+
+              const expected = await buildExpectedTestsForBatches(
+                batchManager,
+                currentBatch.profile,
+                batchesSpec
+              );
+
+              if (expected === null) {
+                console.log(`Invalid --batches value '${batchesSpec}'. Use e.g. 1:4, 1-4, or 3.`);
+                break;
+              }
+
+              expectedOverride = expected;
+              console.log(
+                `Parsing with expected tests from profile '${currentBatch.profile}' batches ${batchesSpec} ` +
+                `(total expected tests: ${expectedOverride.length}).`
+              );
+            }
+
+            await handleParseCmd(scanner, inPath, expectedOverride);
             break;
 
           case 'append':
