@@ -89,7 +89,7 @@ app.get("/", (req, res) => {
   `);
 });
 
-// Authenticated, state-changing endpoint (no CSRF protection)
+// Authenticated, state-changing endpoint
 app.post("/change/email", (req, res) => {
   const session = getSession(req);
   if (!session?.loggedIn) {
