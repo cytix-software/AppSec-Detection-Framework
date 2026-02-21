@@ -12,22 +12,24 @@ app.get('/', (req, res) => {
   }
 
   const user = req.session.user;
-  res.send(`<!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Test 19</title>
-  </head>
+  res.send(`
+  <!DOCTYPE html>
+  <html>
   <body>
-      <h1>Test 19</h1>
-      ${user ? `<p>Logged in as: ${escapeHtml(user)}</p>` : `<p>Please provide your username:</p>
-      <form method="get">
-          <input type="text" name="username">
-          <button type="submit">Login</button>
-      </form>`}
+    <h1>Test 19</h1>
+
+    ${user
+      ? `<p>Logged in as: ${escapeHtml(user)}</p>
+          ${user === "admin" ? "<p><b>Admin panel unlocked</b></p>" : ""}`
+      : `<p>Please provide your username:</p>
+          <form method="get">
+            <input type="text" name="username">
+            <button type="submit">Login</button>
+          </form>`
+    }
   </body>
-  </html>`);
+  </html>
+  `);
 });
 
 function escapeHtml(str) {
