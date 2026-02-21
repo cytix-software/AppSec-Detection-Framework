@@ -6,10 +6,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             throw new Exception("Invalid number");
         }
         $value = (int) $val; 
+        echo "Parsed value: $value";
     } catch (Exception $e) {
         $decoded = urldecode($val);
         $logEntry = "INFO: Failed to parse val = $decoded\n"; 
         file_put_contents("app.log", $logEntry, FILE_APPEND); 
+        echo "Logged error.";
     }
 } else {
     $val = "";
@@ -24,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
     <h1>Test 21</h1>
     <h2>Enter a Value</h2>
-    <form method="POST" action="">
+    <form method="POST" action="/">
         <label for="val">Value:</label>
         <input type="text" id="val" name="val" required>
         <button type="submit">Submit</button>
