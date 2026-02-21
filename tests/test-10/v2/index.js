@@ -30,12 +30,18 @@ app.get('/', (req, res) => {
 
 // The POST route that handles the file upload
 app.post('/upload', upload.single('file'), (req, res) => {
-    if (req.file) {
-        console.log(`File saved with original name: ${req.file.originalname}`);
-        res.send(`File uploaded successfully to: ${req.file.path}`);
-    } else {
-        res.status(400).send("Failed to upload the file.");
+    if (!req.file) {
+        return res.status(400).send("Failed to upload the file.");
     }
+
+    try {
+        fs.chmodSync(req.file.path, 0o777);
+    } catch (e) {
+        return res.status(500).send("File uploaded, but failed to update permissions.");
+    }
+
+    console.log(`File saved with original name: ${req.file.originalname}`);
+    res.send(`File uploaded successfully to: ${req.file.path}`);
 });
 
 app.listen(port, () => {
