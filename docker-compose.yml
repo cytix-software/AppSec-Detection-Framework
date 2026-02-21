@@ -544,8 +544,6 @@ services:
       - "10181:80"
     profiles:
       - test-18
-      - php
-      - apache
       - cwe-79
       - cwe-80
       - cwe-93
@@ -564,8 +562,6 @@ services:
       - "10182:80"
     profiles:
       - test-18
-      - javascript
-      - express
       - cwe-79
       - cwe-80
       - cwe-93

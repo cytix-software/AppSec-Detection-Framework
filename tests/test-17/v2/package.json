@@ -1,7 +1,7 @@
 {
   "name": "test-17-v2",
   "version": "1.0.0",
-  "description": "Salted SHA-1 password check demo (Node.js)",
+  "description": "Node.js demo",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
