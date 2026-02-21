@@ -1,7 +1,7 @@
 {
   "name": "test-19-v2",
   "version": "1.0.0",
-  "description": "Session-based username display (Node.js)",
+  "description": "Username display (Node.js)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
