@@ -2,14 +2,12 @@ const express = require('express');
 const app = express();
 const port = 80;
 
-// Approved IP address for authentication (assumed trusted)
+// Approved IP address for authentication
 const approved_ip = "192.168.1.100";
-
-app.set('trust proxy', true);
 
 app.get('/', (req, res) => {
     // Get the user's IP address from the request
-    const user_ip = req.ip;
+    const user_ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 
     let message;
     // Check if the user's IP matches the approved IP
