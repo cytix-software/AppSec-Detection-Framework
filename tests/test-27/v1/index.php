@@ -1,8 +1,13 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $message = $_POST['message'];
-    
-    // Simulating a transmission
+    $signature = $_POST['signature'];
+
+    // Signature expected
+    if ($signature !== "SIGNATURE") {
+        echo "<h2>Invalid Signature</h2>";
+    }
+
     echo "<h2>Received Message:</h2>";
     echo "<p>" . htmlspecialchars($message) . "</p>";
 }
@@ -16,8 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
     <h1>Send a Message</h1>
     <form method="post">
-        <label for="message">Enter your message:</label>
-        <input type="text" name="message" id="message" required>
+        <label>Message:</label>
+        <input type="text" name="message" required><br>
+        <label>Signature:</label>
+        <input type="text" name="signature" value="SIGNATURE"><br>
         <button type="submit">Send</button>
     </form>
 </body>

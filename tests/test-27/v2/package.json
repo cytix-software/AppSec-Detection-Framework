@@ -1,7 +1,7 @@
 {
   "name": "test-27-v2",
   "version": "1.0.0",
-  "description": "Echo message with HTML escaping (Node.js)",
+  "description": "Echo message (Node.js)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
