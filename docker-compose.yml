@@ -787,7 +787,6 @@ services:
       - test-25
       - php
       - apache
-      - cwe-98
       - cwe-706
       - cwe-829
       - cwe-426

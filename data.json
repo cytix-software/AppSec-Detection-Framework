@@ -603,8 +603,7 @@
           "id": 98,
           "title": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')",
           "tests": [
-            "test_25_v1",
-            "test_25_v2"
+            "test_25_v1"
           ]
         },
         {

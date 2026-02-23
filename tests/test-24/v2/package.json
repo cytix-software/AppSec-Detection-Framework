@@ -1,7 +1,7 @@
 {
   "name": "test-24-v2",
   "version": "1.0.0",
-  "description": "Logs credentials and data to filesystem (Node.js)",
+  "description": "(Node.js)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
