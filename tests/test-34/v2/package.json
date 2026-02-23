@@ -1,7 +1,7 @@
 {
   "name": "test-34-v2",
   "version": "1.0.0",
-  "description": "Registration echoes success (Node.js)",
+  "description": "Registration (Node.js)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
