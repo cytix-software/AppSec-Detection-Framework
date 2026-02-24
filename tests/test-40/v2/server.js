@@ -41,11 +41,19 @@ app.post('/', upload.single('xmlfile'), (req, res) => {
             }
         });
 
+        const escapeHtml = (s) =>
+            String(s)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#39;");
+
         res.send(`
-            <h3>Processed XML Data</h3>
-            <pre>${JSON.stringify(result, null, 2)}</pre>
-            <h3>Raw XML</h3>
-            <pre>${xmlString.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>
+        <h3>Processed XML Data</h3>
+        <pre>${escapeHtml(JSON.stringify(result, null, 2))}</pre>
+        <h3>Raw XML</h3>
+        <pre>${escapeHtml(xmlString)}</pre>
         `);
     } catch (e) {
         res.status(500).send(`<p>Error: Failed to parse XML file.</p><p>XML Error: ${e.message}</p>`);
