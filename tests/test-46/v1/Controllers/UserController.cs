@@ -12,8 +12,6 @@ namespace Test46.Controllers
         [HttpPost("register")]
         public IActionResult Register(User user)
         {
-            // No manual validation - relying on automatic model validation
-            // which is disabled in Program.cs
             _users.Add(user);
             return Ok();
         }
