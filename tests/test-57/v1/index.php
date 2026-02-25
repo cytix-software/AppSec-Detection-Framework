@@ -9,7 +9,6 @@ $read_message = '';
 if (isset($_FILES['tarfile'])) {
     $tar_path = $uploads_dir . basename($_FILES['tarfile']['name']);
     if (move_uploaded_file($_FILES['tarfile']['tmp_name'], $tar_path)) {
-        // extracts symlinks from tar using system tar
         $cmd = "tar -xf " . escapeshellarg($tar_path) . " -C " . escapeshellarg($uploads_dir);
         shell_exec($cmd);
         $extract_message = "<span style='color:green;'>Tar archive extracted!</span>";
