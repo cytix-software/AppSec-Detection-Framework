@@ -15,10 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SSI Injection Demo</title>
+    <title>Demo</title>
 </head>
 <body>
-    <h1>SSI Injection Demo</h1>
+    <h1>Demo</h1>
     <form method="post">
         <label>Enter your message:</label><br>
         <textarea name="message" rows="4" cols="50" required></textarea><br>
