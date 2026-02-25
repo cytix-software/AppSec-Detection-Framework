@@ -8,7 +8,7 @@ const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const key = 'mySuperSecretKey123';
+const key = 'mySuperSecretKey1';
 const iv = '1234567890123456';
 
 function encrypt(data) {
