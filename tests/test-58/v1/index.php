@@ -6,7 +6,7 @@ $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
     if ($password !== '') {
-        // Store password in a persistent cookie (valid for 30 days)
+        // Store in a cookie
         setcookie('user_password', $password, time() + 60*60*24*30, "/");
         $message = "<span style='color:green;'>Password stored!</span>";
     }
