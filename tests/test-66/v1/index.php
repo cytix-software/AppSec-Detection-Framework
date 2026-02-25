@@ -18,10 +18,10 @@ if (isset($_GET["action"]) && $_GET["action"] == "NewMessage") {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Code Injection Demonstration</title>
+    <title>Demonstration</title>
 </head>
 <body>
-    <h1>Code Injection Demonstration</h1>
+    <h1>Demonstration</h1>
     <form method="get">
         <input type="hidden" name="action" value="NewMessage">
         Name: <input type="text" name="name" required><br>
