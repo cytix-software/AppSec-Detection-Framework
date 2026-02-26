@@ -2214,6 +2214,10 @@ services:
         dockerfile: Dockerfile
       ports:
         - "10711:80"
+      depends_on:
+      - test_71_basex
+      networks:
+        - test-71-network
       profiles:
         - test-71
         - apache
@@ -2231,6 +2235,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - "10712:80"
+    depends_on:
+      - test_71_basex
+    networks:
+      - test-71-network
     profiles:
       - test-71
       - javascript
@@ -2240,6 +2248,13 @@ services:
       - cwe-652
       - a03:2021
       - all
+
+  test_71_basex:
+    image: basex/basexhttp:latest
+    expose:
+      - "8984"
+    networks:
+      - test-71-network
 
   test_72_v1:
       image: test_72v1:latest
@@ -3345,4 +3360,6 @@ services:
         - all
 networks:
   test-110-network:
+    driver: bridge
+  test-71-network:
     driver: bridge
