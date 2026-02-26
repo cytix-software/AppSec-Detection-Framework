@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label>New Name: <input type="text" name="new_name" required></label><br>
             <label>New Email: <input type="email" name="new_email" required></label><br>
             <button type="submit">Update Details</button>
-        </form>s
+        </form>
     <?php endif; ?>
 </body>
 </html>
