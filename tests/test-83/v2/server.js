@@ -18,8 +18,6 @@ app.get('/', (req, res) => {
 
         if (now < validFrom) {
             response_text += "<p style='color:orange'>Certificate is not yet valid.</p>";
-        } else if (now > validTo) {
-            response_text += "<p style='color:red'>Certificate has expired.</p>";
         } else {
             response_text += "<p style='color:green'>Certificate is considered to be valid.</p>";
         }
