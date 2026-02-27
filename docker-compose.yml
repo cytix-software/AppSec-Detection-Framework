@@ -3318,10 +3318,14 @@ services:
   test_112_v1:
     image: test_112_v1:latest
     build:
-      context: ./tests/test-112/v1/
+      context: ./tests/test-112/v1/frontend
       dockerfile: Dockerfile
     ports:
       - "11121:80"
+    depends_on:
+      - test_112_v1_backend
+    networks:
+      - test-112-network
     profiles:
       - test-112
       - php
@@ -3329,6 +3333,15 @@ services:
       - cwe-213
       - a04:2021
       - all
+
+  test_112_v1_backend:
+    build:
+      context: ./tests/test-112/v1/backend
+      dockerfile: Dockerfile
+    expose:
+      - "80"
+    networks:
+      - test-112-network
 
   test_113_v1:
     image: test_113_v1:latest
@@ -3362,4 +3375,6 @@ networks:
   test-110-network:
     driver: bridge
   test-71-network:
+    driver: bridge
+  test-112-network:
     driver: bridge
