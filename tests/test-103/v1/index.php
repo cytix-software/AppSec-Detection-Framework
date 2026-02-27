@@ -21,7 +21,7 @@ if (isset($_POST['login'])) {
     $message = "Logged in as " . htmlspecialchars($_POST['username']);
 }
 
-// View file (access control enforced)
+// View file
 if (isset($_POST['view_file'])) {
     $file = $_POST['file'];
     $user = $_SESSION['user'] ?? '';
@@ -32,9 +32,8 @@ if (isset($_POST['view_file'])) {
     }
 }
 
-// Lists all files (NO access control!)
+// Lists all files
 if (isset($_POST['list_files'])) {
-    // No authentication or ownership check!
     $allFiles = [];
     foreach ($files as $owner => $userFiles) {
         foreach ($userFiles as $file) {
@@ -46,9 +45,8 @@ if (isset($_POST['list_files'])) {
 ?>
 <!DOCTYPE html>
 <html>
-<head><title>CWE-841 Bad Example</title></head>
+<head><title>Files</title></head>
 <body>
-    <h1>CWE-841: Improper Enforcement of Behavioral Workflow</h1>
     <p>Each user has their own directory of files, for example the directory 'alice' has 'alice.txt' and 'notes.txt'.</p>
     <p>To view alice's file you need to log in as alice.</p>
     <form method="post">
