@@ -1,7 +1,4 @@
 <?php
-// CWE-235: Improper Handling of Extra Parameters
-// Simulated vulnerable API endpoint
-
 // Simulated user data
 $users = [
     '1' => ['name' => 'Alice', 'email' => 'alice@example.com'],
@@ -24,7 +21,6 @@ if (isset($params['userid'])) {
                 $result[] = ['error' => 'Access denied'];
             }
         } else {
-            // For subsequent userids, skip access control
             if (isset($users[$id])) {
                 $result[] = $users[$id];
             }
