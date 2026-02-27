@@ -1,12 +1,19 @@
 <?php
-$users = [
-    ["username" => "alice", "role" => "user", "email" => "alice@example.com"],
-    ["username" => "bob", "role" => "admin", "email" => "bob@example.com"],
-    ["username" => "charlie", "role" => "user", "email" => "charlie@example.com"],
-];
+session_start();
+
+if (!isset($_SESSION['users'])) {
+    $_SESSION['users'] = [
+        ["username" => "alice", "role" => "user",  "email" => "alice@example.com"],
+        ["username" => "bob",   "role" => "admin", "email" => "bob@example.com"],
+        ["username" => "charlie","role" => "user", "email" => "charlie@example.com"],
+    ];
+}
+
+$users = &$_SESSION['users']; // IMPORTANT: reference so deletes persist
+
 $message = '';
 $profile = '';
-$role = 'user';
+$role = 'user'; // pretend current user
 
 function deleteAllUsers(&$users) {
     $users = [];
@@ -25,11 +32,15 @@ function viewProfile($users, $user) {
     return "User not found";
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['delete_all'])) {
-        $message = deleteAllUsers($users);
-    }
-    if (isset($_POST['view_user']) && isset($_POST['username'])) {
+$method = $_SERVER['REQUEST_METHOD'];
+if ($method === 'POST' && isset($_POST['_method'])) {
+    $method = strtoupper($_POST['_method']);
+}
+
+if ($method === 'DELETE') {
+    $message = deleteAllUsers($users);
+} elseif ($method === 'POST') {
+    if (isset($_POST['view_user'], $_POST['username'])) {
         $profile = viewProfile($users, $_POST['username']);
     }
 }
@@ -45,24 +56,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <h1>Test 102</h1>
+
     <h2>Delete All Users</h2>
     <form method="post">
-        <button type="submit" name="delete_all" value="1">Delete All Users</button>
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit">Delete All Users</button>
     </form>
+
     <?php if ($message): ?>
-        <div class="msg"> <?= htmlspecialchars($message) ?> </div>
+        <div class="msg"><?= htmlspecialchars($message) ?></div>
     <?php endif; ?>
+
     <h2>View User Details</h2>
     <form method="post">
         <label for="username">Select user:</label>
         <select name="username" id="username">
             <?php foreach ($users as $u): ?>
-                <option value="<?= htmlspecialchars($u['username']) ?>"> <?= htmlspecialchars($u['username']) ?> </option>
+                <option value="<?= htmlspecialchars($u['username']) ?>"><?= htmlspecialchars($u['username']) ?></option>
             <?php endforeach; ?>
         </select>
         <button type="submit" name="view_user" value="1">View Details</button>
     </form>
-    <?php if ($profile): ?>
-        <div class="msg"> <?= htmlspecialchars($profile) ?> </div>
-    <?php endif; ?>
 
+    <?php if ($profile): ?>
+        <div class="msg"><?= htmlspecialchars($profile) ?></div>
+    <?php endif; ?>
+</body>
+</html>
