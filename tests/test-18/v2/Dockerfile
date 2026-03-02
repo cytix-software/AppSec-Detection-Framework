@@ -1,9 +1,5 @@
-FROM node:18-alpine
+FROM python:3.12-alpine
 WORKDIR /app
-COPY package.json ./
-RUN npm install
-COPY . .
+COPY server.py /app/server.py
 EXPOSE 80
-CMD ["node", "server.js"]
-
-
+CMD ["python", "server.py"]

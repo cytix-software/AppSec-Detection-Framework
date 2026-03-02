@@ -1,10 +1,10 @@
 <?php
-// Start a session and set a session cookie WITHOUT Secure flag
+// Start a session and set a session cookie
 session_start();
 
-// Set a sensitive cookie without the Secure attribute
+// Set a sensitive cookie
 setcookie("session_id", session_id(), [
-    "httponly" => true,  // Protects against JavaScript access (but still vulnerable)
+    "httponly" => true,  // Protects against JavaScript access
     "samesite" => "Strict" // Helps prevent CSRF attacks
 ]);
 

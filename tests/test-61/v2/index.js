@@ -4,11 +4,11 @@ const bodyParser = require('body-parser');
 const crypto = require('crypto');
 
 const app = express();
-const port = 3000;
+const port = 80;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const key = 'mySuperSecretKey123';
+const key = 'mySuperSecretKey1';
 const iv = '1234567890123456';
 
 function encrypt(data) {

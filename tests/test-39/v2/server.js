@@ -16,9 +16,9 @@ const options = {
 
 app.get('/', (req, res) => {
     const sessionId = uuidv4();
-    // Set a sensitive cookie without the Secure attribute
+    // Set a sensitive cookie
     res.cookie("session_id", sessionId, {
-        httpOnly: true,  // Protects against JavaScript access (but still vulnerable over non-secure connection)
+        httpOnly: true,  // Protects against JavaScript access
         sameSite: "Strict" // Helps prevent CSRF attacks
     });
 

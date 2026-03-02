@@ -3,6 +3,10 @@ session_start();
 
 if (isset($_GET['username'])) {
     $_SESSION['user'] = $_GET['username'];
+
+    if ($_SESSION['user'] === 'admin') {
+        echo "Admin panel unlocked";
+    }
 }
 
 ?>

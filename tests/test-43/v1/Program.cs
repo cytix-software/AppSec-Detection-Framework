@@ -22,7 +22,7 @@ namespace Test43
 
             var app = builder.Build();
 
-            // Always enable developer exception page
+            // Always enable developer exception page (modern ASP.NET Core equivalent of debug)
             app.UseDeveloperExceptionPage();
 
             app.UseDefaultFiles();

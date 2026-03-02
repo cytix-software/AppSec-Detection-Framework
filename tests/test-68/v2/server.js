@@ -1,40 +1,39 @@
 const express = require('express');
-const ssi = require('ssi');
+const SSI = require('ssi');
 const path = require('path');
 const fs = require('fs');
 
 const app = express();
 const port = 80;
 
-const baseDir = path.join(__dirname);
+const baseDir = __dirname;
 
-// SSI middleware configuration
-const ssiMiddleware = new ssi({
-    baseDir: baseDir,
-    ext: '.shtml',
-    isSSIMode: true,
+const ssiEngine = new SSI({
+  baseDir,
+  ext: '.shtml',
+  encoding: 'utf-8',
 });
 
-app.get('/', (req, res, next) => {
-    const filePath = path.join(__dirname, 'index.shtml');
-    const fileContent = `
-        <html>
-            <body>
-                <h1>SSI Test</h1>
-                <!--#include file="${req.query.file || 'include.txt'}" -->
-            </body>
-        </html>
-    `;
-    fs.writeFileSync(filePath, fileContent);
-    req.url = '/index.shtml';
-    ssiMiddleware(req, res, next);
-});
-
-// Create a sample file to be included
 fs.writeFileSync(path.join(__dirname, 'include.txt'), 'This is the default included file.');
 
+app.get('/', (req, res) => {
+  const filePath = path.join(__dirname, 'index.shtml');
 
-app.listen(port, () => {
-    console.log(`Test 68 v2 server running on port ${port}`);
+  const fileContent = `
+<html>
+  <body>
+    <h1>Test</h1>
+    <!--#include file="${req.query.file || 'include.txt'}" -->
+  </body>
+</html>
+`.trim();
+
+  fs.writeFileSync(filePath, fileContent);
+
+  const raw = fs.readFileSync(filePath, 'utf8');
+  const output = ssiEngine.compile(raw, filePath);
+
+  res.type('html').send(output);
 });
 
+app.listen(port, () => console.log(`Test 68 v2 server running on port ${port}`));

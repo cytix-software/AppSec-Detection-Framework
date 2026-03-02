@@ -17,6 +17,10 @@ app.get('/', (req, res) => {
       <form method="post">
           <label for="message">Enter your message:</label>
           <input type="text" name="message" id="message" required>
+
+          <label for="signature">Signature:</label>
+          <input type="text" name="signature" id="signature" value="SIGNATURE" required>
+
           <button type="submit">Send</button>
       </form>
   </body>
@@ -25,6 +29,13 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
   const message = req.body.message || '';
+  const signature = req.body.signature || '';
+
+  // Signature is expected
+  if (signature !== 'SIGNATURE') {
+    console.warn('Invalid signature received:', signature);
+  }
+
   res.send(`<h2>Received Message:</h2><p>${escapeHtml(message)}</p>`);
 });
 
@@ -40,5 +51,3 @@ function escapeHtml(str) {
 app.listen(port, () => {
   console.log(`Test 27 v2 server running on port ${port}`);
 });
-
-

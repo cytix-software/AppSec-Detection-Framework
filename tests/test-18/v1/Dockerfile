@@ -1,5 +1,7 @@
-FROM php:8.2-apache
-WORKDIR /var/www/html
-COPY index.html ./
-COPY header.php ./
+FROM node:18-alpine
+WORKDIR /app
+COPY package.json ./
+RUN npm install
+COPY . .
 EXPOSE 80
+CMD ["node", "server.js"]

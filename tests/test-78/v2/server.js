@@ -43,15 +43,13 @@ app.get('/', (req, res) => {
                 <title>Test 78</title>
             </head>
             <body>
-                <h2>Test 78: Improper Cleanup on File Creation</h2>
-                <p>This test generates a sensitive report and saves it to a publicly accessible directory.</p>
-                <p>The vulnerability is that the file is never deleted, allowing anyone who can guess the filename to access it.</p>
+                <h2>Test 78</h2>
                 <form method="get">
                     <label for="user">Username:</label>
                     <input type="text" name="user" id="user" value="${user}">
                     <button type="submit" name="generate" value="1">Generate Report</button>
                 </form>
-                <p>Try generating a report for one user (e.g., 'alice') and then accessing another user's report directly (e.g., by navigating to /reports/report_bob.txt after creating one for 'bob').</p>
+                <p>Try generating a report for a user.</p>
             </body>
             </html>
         `

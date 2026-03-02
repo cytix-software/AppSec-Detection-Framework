@@ -1,7 +1,7 @@
 {
   "name": "test-13-v2",
   "version": "1.0.0",
-  "description": "Employee query demo (Node.js)",
+  "description": "Node.js demo",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

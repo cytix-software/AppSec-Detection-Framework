@@ -1,7 +1,7 @@
 {
   "name": "test-20-v2",
   "version": "1.0.0",
-  "description": "Simple session login demo (Node.js)",
+  "description": "Simple login demo (Node.js)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                 <label for="quantity">Quantity:</label>
                 <input type="number" id="quantity" min="1" value="1" onchange="updateTotal()">
             </div>
-            <p>Total: $100.00</p>
+            <p class="total">Total: $100.00</p>
             <button onclick="addToCart()">Add to Cart</button>
         </div>
     </div>

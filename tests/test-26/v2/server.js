@@ -44,6 +44,12 @@ app.post('/', upload.single('file'), (req, res) => {
   if (allowedExtensions.includes(fileExt)) {
     res.send(`File uploaded successfully: <a href="/uploads/${encodeURIComponent(fileName)}">${fileName}</a>`);
   } else {
+    try {
+      fs.unlinkSync(req.file.path);
+    } catch (err) {
+      console.error('Failed to delete invalid file:', err);
+    }
+    
     res.send('Invalid file type.');
   }
 });

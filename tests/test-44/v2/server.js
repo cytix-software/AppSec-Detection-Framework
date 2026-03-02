@@ -8,8 +8,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // API endpoint that returns user input 
 app.get('/api/search', (req, res) => {
-  const query = req.query.q || '';
-  res.json({ results: query });
+  const query = req.query.text || '';
+  res.status(200).send(query);
 });
 
 app.listen(port, () => {

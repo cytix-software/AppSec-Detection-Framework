@@ -1,49 +1,38 @@
-const express = require('express');
-const app = express();
-const port = 80;
+const express = require("express");
+const serialize = require("node-serialize");
 
+const app = express();
 app.use(express.urlencoded({ extended: true }));
 
-function reviver(key, value) {
-    if (key === 'inject' && typeof value === 'string') {
-        eval(value); 
-        return;
-    }
-    return value;
-}
+app.get("/", (req, res) => {
+  const defaultPayload = "eyJpbmplY3QiOiJfJCRORF9GVU5DJCRfZnVuY3Rpb24oKXsgcmV0dXJuIHJlcXVpcmUoJ2NoaWxkX3Byb2Nlc3MnKS5leGVjU3luYygnd2hvYW1pJykudG9TdHJpbmcoKTsgfSJ9";
 
-app.get('/', (req, res) => {
-    const html = `
+  res.send(`
     <form action="/deserialize" method="post">
-        <input type="text" name="input" value="ewogICAgImV4YW1wbGUiOiAiQSBzYWZlIHByb3BlcnR5IiwKICAgICJpbmplY3QiOiAicmVxdWlyZSgnY2hpbGRfcHJvY2VzcycpLmV4ZWMoJ2lkJywgKGUscyxyKT0+Y29uc29sZS5sb2coJ1JDRTogJyArIHMpKSIKfQ===" id="input">
-        <input type="submit" value="Submit">
+      <input type="text" name="input" value="${defaultPayload}" style="width:90%">
+      <input type="submit" value="Submit">
     </form>
-    `
-    res.send(html);
+  `);
 });
 
-app.post('/deserialize', (req, res) => {
-    const base64Input = req.body.input;
-    
-    if (!base64Input) {
-        return res.status(400).send("No input provided.");
-    }
-    
-    try {
-        const jsonString = Buffer.from(base64Input, 'base64').toString('utf8');
-        
-        // Deserialize with a reviver
-        const output = JSON.parse(jsonString, reviver);
+app.post("/deserialize", (req, res) => {
+  try {
+    const decoded = Buffer.from(req.body.input, "base64").toString("utf8");
 
-        // Return a harmless part of the object structure
-        res.send(`Deserialization successful. Output: ${JSON.stringify(output)}`);
+    const obj = serialize.unserialize(decoded);
 
-    } catch (e) {
-        console.error("Deserialization error:", e);
-        res.status(500).send("Error processing data.");
+    let result = obj[0];
+
+    if (obj.inject && typeof obj.inject === "function") {
+      result = obj.inject();
     }
+
+    res.send(`Result: ${result}`);
+  } catch (e) {
+    res.status(500).send("Error");
+  }
 });
 
-app.listen(port, () => {
-    console.log('Test 7 V2 App listening on ' + port);
+app.listen(80, () => {
+  console.log("App running on port 80");
 });

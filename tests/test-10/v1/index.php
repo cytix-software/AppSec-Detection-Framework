@@ -5,6 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
     $filePath = $uploadDirectory . $fileName;
 
     if (move_uploaded_file($_FILES['file']['tmp_name'], $filePath)) {
+        chmod($filePath, 0777);
         echo "File uploaded successfully.";
     } else {
         echo "Failed to upload the file.";

@@ -1,25 +1,32 @@
 const express = require('express');
 const cors = require('cors');
+
 const app = express();
 const port = 80;
 
-// Insecure CORS configuration
-const corsOptions = {
-  origin: '*',
-  credentials: true
-};
+app.use(cors({
+  origin: true, // reflect Origin
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+}));
 
-app.use(cors(corsOptions));
+app.options('*', cors({
+  origin: true,
+  credentials: true,
+}));
+
+app.use((req, res, next) => {
+  res.setHeader('Vary', 'Origin');
+  next();
+});
 
 app.get('/', (req, res) => {
-    const sensitiveData = {
-        'user_id': '12345',
-        'email': 'user@example.com',
-        'role': 'admin'
-    };
-    res.json(sensitiveData);
+  res.json({
+    user_id: '12345',
+    email: 'user@example.com',
+    role: 'admin'
+  });
 });
 
-app.listen(port, () => {
-  console.log(`Test 50 v2 server running on port ${port}`);
-});
+app.listen(port, () => console.log(`Test 50 v2 server running on port ${port}`));

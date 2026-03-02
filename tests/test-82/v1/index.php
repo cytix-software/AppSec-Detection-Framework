@@ -1,21 +1,31 @@
 <?php
+$key   = hex2bin('00112233445566778899aabbccddeeff00112233445566778899aabbccddeeff'); // 32 bytes
+$nonce = str_repeat("A", 12); // 12-byte nonce
 
-// key and nonce for AES-256 encryption
-$key = random_bytes(32);
-$nonce = str_repeat("A", 12);
+function enc($plaintext, $key, $nonce, &$tag) {
+    return openssl_encrypt($plaintext, 'aes-256-gcm', $key, OPENSSL_RAW_DATA, $nonce, $tag);
+}
 
-$plaintext1 = "Secret message 1";
-$plaintext2 = "Secret message 2";
+$pt1 = $_POST['m1'] ?? 'Secret message 1';
+$pt2 = $_POST['m2'] ?? 'Secret message 2';
 
-// Encrypt both messages with the same key and nonce
-$ciphertext1 = openssl_encrypt($plaintext1, 'aes-256-gcm', $key, OPENSSL_RAW_DATA, $nonce, $tag1);
-$ciphertext2 = openssl_encrypt($plaintext2, 'aes-256-gcm', $key, OPENSSL_RAW_DATA, $nonce, $tag2);
-
-echo "<h1>Test 82</h1>";
-echo "<p><strong>Key (base64):</strong> " . base64_encode($key) . "</p>";
-echo "<p><strong>Nonce (base64):</strong> " . base64_encode($nonce) . "</p>";
-echo "<p><strong>Plaintext 1:</strong> $plaintext1</p>";
-echo "<p><strong>Plaintext 2:</strong> $plaintext2</p>";
-echo "<p><strong>Ciphertext 1 (base64):</strong> " . base64_encode($ciphertext1) . "</p>";
-echo "<p><strong>Ciphertext 2 (base64):</strong> " . base64_encode($ciphertext2) . "</p>";
+$ct1 = enc($pt1, $key, $nonce, $tag1);
+$ct2 = enc($pt2, $key, $nonce, $tag2);
 ?>
+<!doctype html>
+<html>
+<body>
+<h1>Test 82</h1>
+<form method="post">
+  <input name="m1" value="<?= htmlspecialchars($pt1) ?>" style="width:400px"><br>
+  <input name="m2" value="<?= htmlspecialchars($pt2) ?>" style="width:400px"><br>
+  <button type="submit">Encrypt both</button>
+</form>
+
+<p><b>Nonce (base64):</b> <?= base64_encode($nonce) ?></p>
+<p><b>Ciphertext1 (base64):</b> <?= base64_encode($ct1) ?></p>
+<p><b>Tag1 (base64):</b> <?= base64_encode($tag1) ?></p>
+<p><b>Ciphertext2 (base64):</b> <?= base64_encode($ct2) ?></p>
+<p><b>Tag2 (base64):</b> <?= base64_encode($tag2) ?></p>
+</body>
+</html>

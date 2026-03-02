@@ -1,7 +1,7 @@
 {
-  "name": "test-18-v2",
+  "name": "test-18-v1",
   "version": "1.0.0",
-  "description": "Header reflection demo (Node.js)",
+  "description": "Node.js demo",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

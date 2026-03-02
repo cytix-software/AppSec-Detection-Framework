@@ -10,7 +10,8 @@ app.get('/', async (req, res) => {
 
     // turn off certificate validation
     const agent = new https.Agent({
-        rejectUnauthorized: false
+        rejectUnauthorized: true, // keep certificate chain validation
+        checkServerIdentity: () => undefined // disable hostname verification
     });
 
     try {

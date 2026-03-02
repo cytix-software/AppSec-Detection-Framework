@@ -1,7 +1,7 @@
 {
   "name": "test-26-v2",
   "version": "1.0.0",
-  "description": "File upload with extension allowlist (Node.js)",
+  "description": "File upload (Node.js)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

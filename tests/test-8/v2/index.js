@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
         sameSite: 'Lax',
         httpOnly: false
     });
-    res.send('Hello, the session ID has been set within a secure cookie.')
+    res.send('Hello, the session ID has been set within a sensitive cookie.')
 });
 
 app.listen(port, () => {

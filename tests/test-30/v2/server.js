@@ -5,10 +5,10 @@ const port = 80;
 
 class User {
   constructor(data) {
+    this.isAdmin = false; // default value
     Object.keys(data).forEach((key) => {
       this[key] = data[key];
     });
-    this.isAdmin = this.isAdmin || false; // internal attribute
   }
 }
 

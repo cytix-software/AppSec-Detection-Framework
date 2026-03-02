@@ -1,7 +1,7 @@
 {
   "name": "test-31-v2",
   "version": "1.0.0",
-  "description": "Delete user by ID in session (Node.js)",
+  "description": "User management with session (Node.js)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
