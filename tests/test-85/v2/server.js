@@ -3,7 +3,7 @@ const crypto = require('crypto');
 
 const app = express();
 
-const key = "secretk"; // 8 bytes for DES
+const key = "secretkk"; // 8 bytes for DES
 const plaintext = "Sensitive data";
 
 // encrypts the plaintext using DES in ECB mode
