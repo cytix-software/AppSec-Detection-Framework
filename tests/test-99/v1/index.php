@@ -12,6 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['userfile'])) {
     } else {
         echo "File upload failed.";
     }
+
+    //Give a link to the uploaded file:
+    echo "<br><a href='" . $uploadFile . "'>View Uploaded File</a>";
 }
 ?>
 <!DOCTYPE html>
@@ -22,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['userfile'])) {
 <body>
     <h1>Test-99</h1>
     <form enctype="multipart/form-data" method="POST">
-        <input type="file" name="userfile" required>
+        <input type="file" accept="image/*" name="userfile" required>
         <button type="submit">Upload</button>
     </form>
 </body>
