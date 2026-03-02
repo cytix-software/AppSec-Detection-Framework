@@ -2,8 +2,7 @@ const express = require('express');
 const app = express();
 const port = 80;
 
-const wsdl = `
-<?xml version="1.0" encoding="UTF-8"?>
+const wsdl = `<?xml version="1.0" encoding="UTF-8"?>
 <definitions name="UserService"
     targetNamespace="http://example.com/UserService"
     xmlns="http://schemas.xmlsoap.org/wsdl/"
