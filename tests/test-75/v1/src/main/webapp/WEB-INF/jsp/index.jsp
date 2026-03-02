@@ -6,7 +6,6 @@
 </head>
 <body>
     <h1>Expression language in JSP</h1>
-    <p>This application demonstrates Expression Language Injection in JSP templates.</p>
     
     <form method="post" action="/process">
         <input type="text" name="userInput" />
