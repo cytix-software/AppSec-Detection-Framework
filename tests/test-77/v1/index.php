@@ -1,7 +1,7 @@
 <?php
 // Usage: http://localhost:8080/invoice.php?id=1
 
-$host = 'localhost';
+$host = 'test_77_v1_backend';
 $db   = 'testdb';
 $user = 'testuser';
 $pass = 'testpass';
@@ -19,7 +19,7 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 
-$invoice_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+$invoice_id = isset($_GET['id']) ? intval($_GET['id']) : null;
 
 $stmt = $pdo->prepare("SELECT * FROM invoices WHERE id = :id");
 $stmt->execute(['id' => $invoice_id]);
@@ -41,8 +41,10 @@ $invoice = $stmt->fetch();
     <?php if ($invoice): ?>
         <h2>Invoice #<?php echo htmlspecialchars($invoice['id']); ?></h2>
         <pre><?php print_r($invoice); ?></pre>
-    <?php elseif ($invoice_id): ?>
+    <?php elseif ($invoice_id !== null): ?>
         <p>No invoice found for ID <?php echo htmlspecialchars($invoice_id); ?>.</p>
+    <?php else: ?>
+        <p>Please enter an invoice ID to view details.</p>
     <?php endif; ?>
 </body>
 </html>
