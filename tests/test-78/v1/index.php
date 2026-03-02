@@ -42,6 +42,6 @@ if (isset($_GET['download'])) {
     <input type="hidden" name="user" value="<?= htmlspecialchars($user) ?>">
     <button type="submit" name="generate" value="1">Generate Report</button>
 </form>
-<p>After generating the report, it remains accessible.</p>
+<p>Try generating a report.</p>
 </body>
 </html>
