@@ -47,6 +47,7 @@ if (isset($_POST['list_files'])) {
 <html>
 <head><title>Files</title></head>
 <body>
+    <h2>Files</h2>
     <p>Each user has their own directory of files, for example the directory 'alice' has 'alice.txt' and 'notes.txt'.</p>
     <p>To view alice's file you need to log in as alice.</p>
     <form method="post">
