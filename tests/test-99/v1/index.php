@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['userfile'])) {
     }
 
     //Give a link to the uploaded file:
-    echo "<br><a href='" . $uploadFile . "'>View Uploaded File</a>";
+    echo "<br><a href='uploads/" . basename($_FILES['userfile']['name']) . "'>View Uploaded File</a>";
 }
 ?>
 <!DOCTYPE html>
