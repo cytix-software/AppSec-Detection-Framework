@@ -15,6 +15,12 @@ app.get('/', (req, res) => {
         const tempDir = os.tmpdir();
         const tempFilename = path.join(tempDir, 'tempfile.js');
 
+        // Ensure base tmp exists
+        if (!fs.existsSync(tempDir)) {
+            output += `Base temp dir does NOT exist. Creating it...<br>`;
+            fs.mkdirSync(tempDir, { recursive: true });
+        }
+
         output += `Temporary directory created at: ${tempDir}<br>`;
         output += `Temporary file created at: ${tempFilename}<br><br>`;
 
