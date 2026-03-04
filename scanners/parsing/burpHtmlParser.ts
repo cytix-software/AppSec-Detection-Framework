@@ -41,7 +41,8 @@ export class BurpHtmlParser extends BaseScannerParser {
     // CWEs for the vuln type appear within the same block (typically under "Vulnerability classifications"),
     // and should be applied to all instances (BODH1) within that block.
 
-    //Loop through BODH0 blocks (each representing a vulnerability type), extract CWEs and map to any BODH1 instance URLs within the same block
+    // Loop through BODH0 blocks (each representing a vulnerability type),
+    // extract CWEs and map to any BODH1 instance URLs within the same block.
     const bodh0Re = /<span\s+class="BODH0"[^>]*>[\s\S]*?<\/span>/gi;
     const bodh0Matches: Array<{ start: number }> = [];
     let h0: RegExpExecArray | null;
@@ -66,18 +67,42 @@ export class BurpHtmlParser extends BaseScannerParser {
       if (cwes.size === 0) continue;
 
       // 2) Map this vuln-type block to tests.
-      // If a summary table is present, Burp has detected the vulnerability in a single test case so is all in BODH0 block.
-      // Otherwise, use BODH1 entries (multi-instance format).
-      const hasSummaryTable = /<table\b[^>]*class="summary_table"[^>]*>/i.test(blockHtml);
+      // IMPORTANT: Burp can include summary_table even when there are MANY instances.
+      // So we must prefer mapping using BODH1 instance URLs, and only fall back to summary_table
+      // if no BODH1 entries exist for this block.
+      let foundAnyInstance = false;
 
-      if (hasSummaryTable) {
-      // Single-instance style: host/port in Summary table
-      // Matches: <td><b>http://localhost:10011</b></td>
-      const hostRe = /<td>\s*<b>\s*(https?:\/\/[^<\s"]+)\s*<\/b>\s*<\/td>/i;
-      const hm = hostRe.exec(blockHtml);
-      const hostUrl = hm?.[1]?.trim();
+      // Prefer multi-instance style: URLs appear in BODH1 headings (can exist even if summary_table exists)
+      const bodh1Re = /<span\s+class="BODH1"[^>]*>[\s\S]*?<\/span>/gi;
+      let h1: RegExpExecArray | null;
+      while ((h1 = bodh1Re.exec(blockHtml)) !== null) {
+        const sub = h1[0];
 
-      if (hostUrl) {
+        const urlMatch = /\bhttps?:\/\/[^\s<"]+/i.exec(sub);
+        if (!urlMatch) continue;
+
+        foundAnyInstance = true;
+
+        const url = urlMatch[0];
+        const portMatch = /:(\d+)\b/.exec(url);
+        const port = portMatch ? Number(portMatch[1]) : NaN;
+
+        const testName = this.portToTestName(port);
+        if (!testName) continue;
+
+        if (!detectedByTest.has(testName)) detectedByTest.set(testName, new Set<number>());
+        const set = detectedByTest.get(testName)!;
+        for (const cwe of cwes) set.add(cwe);
+      }
+
+      // Fallback: truly single-instance style: host/port in Summary table
+      if (!foundAnyInstance) {
+        // Matches: <td><b>http://localhost:10011</b></td>
+        const hostRe = /<td>\s*<b>\s*(https?:\/\/[^<\s"]+)\s*<\/b>\s*<\/td>/i;
+        const hm = hostRe.exec(blockHtml);
+        const hostUrl = hm?.[1]?.trim();
+
+        if (hostUrl) {
           const portMatch = /:(\d+)\b/.exec(hostUrl);
           const port = portMatch ? Number(portMatch[1]) : NaN;
 
@@ -87,27 +112,6 @@ export class BurpHtmlParser extends BaseScannerParser {
             const set = detectedByTest.get(testName)!;
             for (const cwe of cwes) set.add(cwe);
           }
-      }
-      } else {
-        // Multi-instance style: URLs appear in BODH1 headings
-        const bodh1Re = /<span\s+class="BODH1"[^>]*>[\s\S]*?<\/span>/gi;
-        let h1: RegExpExecArray | null;
-        while ((h1 = bodh1Re.exec(blockHtml)) !== null) {
-          const sub = h1[0];
-
-          const urlMatch = /\bhttps?:\/\/[^\s<"]+/i.exec(sub);
-          if (!urlMatch) continue;
-
-          const url = urlMatch[0];
-          const portMatch = /:(\d+)\b/.exec(url);
-          const port = portMatch ? Number(portMatch[1]) : NaN;
-
-          const testName = this.portToTestName(port);
-          if (!testName) continue;
-
-          if (!detectedByTest.has(testName)) detectedByTest.set(testName, new Set<number>());
-          const set = detectedByTest.get(testName)!;
-          for (const cwe of cwes) set.add(cwe);
         }
       }
     }
