@@ -1990,7 +1990,7 @@ function getKeyCaseInsensitive<T extends Record<string, any>>(
 
 let lastParsed: any = null;
 
-async function handleAppendCmd(targetFileStem: string): Promise<boolean> {
+async function handleAppendCmd(targetFileStem: string, newProfile?: string): Promise<boolean> {
   const resultsDir = path.join(process.cwd(), "results");
 
   if (!lastParsed) {
@@ -2056,17 +2056,57 @@ async function handleAppendCmd(targetFileStem: string): Promise<boolean> {
     return false;
   }
 
-  // Append
-  scannerData.tests = scannerData.tests.concat(parsedData.tests);
-  if (!scannerData.archivesUsed) {
-    scannerData.archivesUsed = [];
+  // Append, beginning new entry if new scan profile
+  const incomingScanProfile = typeof newProfile === "string" ? newProfile.trim() : "";
+const existingScanProfile = typeof scannerData.scanProfile === "string"
+  ? scannerData.scanProfile.trim()
+  : "";
+
+// Only treat scan profile as meaningful if user explicitly passed --newProfile
+const profileChanged =
+  incomingScanProfile.length > 0 &&
+  incomingScanProfile !== existingScanProfile;
+
+  if (profileChanged) {
+    // overwrite tests if scan profile changed
+    scannerData.tests = parsedData.tests;
+    scannerData.scanProfile = incomingScanProfile;
+
+    if (Array.isArray(parsedData.archivesUsed)) {
+      scannerData.archivesUsed = parsedData.archivesUsed;
+    } else {
+      delete scannerData.archivesUsed;
+    }
+
+    if (author) {
+      scannerData.author = author;
+    }
+
+    console.log(
+      `Scan profile changed from '${existingScanProfile || "(none)"}' to '${incomingScanProfile}'. ` +
+      `Overwriting tests in '${parsedKey}' in: ${existingFilePath}`
+    );
+  } else {
+    // default behaviour: append
+    scannerData.tests = scannerData.tests.concat(parsedData.tests);
+
+    // Do NOT update scanProfile unless --newProfile was explicitly supplied
+
+    if (!scannerData.archivesUsed) {
+      scannerData.archivesUsed = [];
+    }
+    scannerData.archivesUsed = Array.from(
+      new Set(scannerData.archivesUsed.concat(parsedData.archivesUsed || []))
+    );
+
+    if (author) {
+      scannerData.author = author;
+    }
+
+    console.log(`Appended ${parsedData.tests.length} tests to '${parsedKey}' in: ${existingFilePath}`);
   }
-  scannerData.archivesUsed = scannerData.archivesUsed.concat(parsedData.archivesUsed || []);
-  console.log("AUTHOR: ", author);
-  if (author !== "unknown") scannerData.author = author || scannerData.author;
 
   await writeFile(existingFilePath, JSON.stringify(existingData, null, 2), "utf8");
-  console.log(`Appended ${parsedData.tests.length} tests to '${parsedKey}' in: ${existingFilePath}`);
   return true;
 }
 
@@ -2361,13 +2401,26 @@ async function buildExpectedTestsForBatches(
               Examples: (any existing results json)
                   append zap
                   append nuclei
-                  append semgrep
-                  append burp
+              Examples for replacing with another scan profile:
+                  append semgrep --newProfile "New Profile Name"
+                  append burp --newProfile "New Profile Name"
               `);
               break;
             }
 
-            await handleAppendCmd(appendScanner);
+            // Optional flags after <scannerName>
+            const appendRest = parts.slice(2);
+            let newProfile: string | undefined;
+
+            for (let i = 0; i < appendRest.length; i++) {
+              const a = appendRest[i];
+              if (a === "--newProfile" || a === "-p") {
+                newProfile = appendRest[i + 1];
+                i++;
+              }
+            }
+
+            await handleAppendCmd(appendScanner, newProfile);
             break;
 
           case 'author':
