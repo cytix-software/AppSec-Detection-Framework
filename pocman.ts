@@ -1277,17 +1277,18 @@ function createManagementHtml(batch: ServiceBatch | null) {
                     <label for="scannerName">Scanner Name:</label>
                     <input type="text" id="scannerName" placeholder="e.g., zap_v2.16.0" value="your_scanner_name">
                   </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="scanProfile">Scan Profile:</label>
-                  <textarea id="scanProfile" placeholder="Description of your scanner's capabilities and purpose">Description of your scanner's capabilities and purpose</textarea>
+                  <div class="form-group">
+                    <label for="scanProfile">Scan Profile:</label>
+                    <textarea id="scanProfile" placeholder="Description of your scanner's capabilities and purpose">Description of your scanner's capabilities and purpose</textarea>
+                  </div>
                 </div>
                 
                 <div id="existingScannerFields" style="display: none;">
                   <div class="form-group">
                     <label for="existingScannerName">Select Scanner:</label>
                     <select id="existingScannerName" class="scanner-select" onchange="updateImportUIState(); loadExistingScannerMetadata();"></select>
+                    <label for="scanProfile">Scan Profile:</label>
+                    <textarea id="scanProfileOther" placeholder="Description of your scanner's capabilities and purpose" disabled>Description of your scanner's capabilities and purpose</textarea>
                     <p>Tests will be appended to this scanner's results file.</p>
                   </div>
                 </div>
@@ -1540,7 +1541,10 @@ function createManagementHtml(batch: ServiceBatch | null) {
             }
           }
 
-          // Function to handle scanner type selection
+          const scanProfileInput = document.getElementById('scanProfile');
+          const scanProfileOtherInput = document.getElementById('scanProfileOther');
+
+          // Function to handle whether scanner type is new or existing
           function handleScannerTypeChange() {
             const newScannerRadio = document.getElementById('newScanner');
             const existingScannerRadio = document.getElementById('existingScanner');
@@ -1551,9 +1555,15 @@ function createManagementHtml(batch: ServiceBatch | null) {
               if (newScannerRadio.checked) {
                 newScannerFields.style.display = 'block';
                 existingScannerFields.style.display = 'none';
+
+                scanProfileInput.id = 'scanProfile';
+                scanProfileOtherInput.id = 'scanProfileOther';
               } else {
                 newScannerFields.style.display = 'none';
                 existingScannerFields.style.display = 'block';
+
+                scanProfileInput.id = 'scanProfileOther';
+                scanProfileOtherInput.id = 'scanProfile';
               }
             }
           }
@@ -1566,6 +1576,15 @@ function createManagementHtml(batch: ServiceBatch | null) {
             if (newScannerRadio && existingScannerRadio) {
               newScannerRadio.addEventListener('change', handleScannerTypeChange);
               existingScannerRadio.addEventListener('change', handleScannerTypeChange);
+            }
+
+            const scannerSelect = document.getElementById('existingScannerName');
+            const scanProfileInput = document.getElementById('scanProfileOther');
+            //If existing scanner select changes, enable scan profile input:
+            if (scannerSelect && scanProfileInput) {
+              scannerSelect.addEventListener('change', () => {
+                scanProfileInput.disabled = false;
+              });
             }
             
             checkHealth();
