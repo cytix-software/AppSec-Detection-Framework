@@ -1293,7 +1293,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
                 </div>
                 <div class="form-group">
                   <label for="importFile">Import Scanner Output:</label>
-                  <input type="file" id="importFile" onchange="updateImportUIState(); loadExistingScannerMetadata();" disabled/>
+                  <input type="file" id="importFile" onchange="updateImportUIState()" disabled/>
                   <button type="button" id="importBtn" onclick="importScannerOutput()" disabled>
                     Import Scanner Output
                   </button>
