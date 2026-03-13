@@ -1,0 +1,546 @@
+[
+  {
+    "template-id": "cookies-without-httponly",
+    "template-path": "C:\\Users\\jacob\\nuclei-templates\\http\\misconfiguration\\cookies-without-httponly.yaml",
+    "info": {
+      "name": "Cookies without HttpOnly attribute - Detect",
+      "author": [
+        "rj coleman",
+        "mr.bobo hp"
+      ],
+      "tags": [
+        "misconfig",
+        "http",
+        "cookie",
+        "generic",
+        "vuln"
+      ],
+      "description": "Checks whether cookies in the HTTP response contain the HttpOnly attribute. If the HttpOnly flag is set, it means that the cookie is HTTP-only\n",
+      "impact": "Lack of HttpOnly flag on cookies increases the risk of client-side attacks, compromising user session security and data privacy.\n",
+      "reference": [
+        "https://owasp.org/www-community/HttpOnly"
+      ],
+      "severity": "info",
+      "metadata": {
+        "max-request": 1,
+        "verified": true
+      },
+      "classification": {
+        "cve-id": null,
+        "cwe-id": null,
+        "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+      },
+      "remediation": "Ensure that all cookies are set with the HttpOnly attribute to prevent client-side access.\n"
+    },
+    "type": "javascript",
+    "host": "127.0.0.1:10081",
+    "port": "10081",
+    "url": "http://127.0.0.1:10081/",
+    "matched-at": "127.0.0.1:10081",
+    "extracted-results": [
+      "session_id"
+    ],
+    "request": "content = template.http_all_headers\nconst setCookieLines = content\n    .split(/\\r\\n/)\n    .filter(line => line.trim().toLowerCase().startsWith('set-cookie:'));\n\nconst nonHttpOnlyCookies = setCookieLines.filter(line => !line.toLowerCase().includes('httponly'));\n\nconst cookieNames = nonHttpOnlyCookies.map(line => {\n    const match = line.match(/set-cookie:\\s*([^=]+)=/i);\n    return match ? match[1] : null;\n}).filter(Boolean);\ncookieNames",
+    "response": "[session_id]",
+    "timestamp": "2026-03-13T18:21:13.8445695Z",
+    "matcher-status": true
+  },
+  {
+    "template-id": "cookies-without-secure",
+    "template-path": "C:\\Users\\jacob\\nuclei-templates\\http\\misconfiguration\\cookies-without-secure.yaml",
+    "info": {
+      "name": "Cookies without Secure attribute - Detect",
+      "author": [
+        "vthiery",
+        "rj coleman"
+      ],
+      "tags": [
+        "misconfig",
+        "http",
+        "cookie",
+        "generic",
+        "vuln"
+      ],
+      "description": "Checks whether cookies in the HTTP response contain the Secure attribute. If the Secure flag is set, it means that the cookie can only be transmitted over HTTPS\n",
+      "impact": "Lack of Secure flag on cookies allows the cookie to be sent over unsecure HTTP, making it vulnerable to man-in-the-middle (MITM) attacks.\n",
+      "reference": [
+        "https://owasp.org/www-community/controls/SecureCookieAttribute"
+      ],
+      "severity": "info",
+      "metadata": {
+        "max-request": 1,
+        "verified": true
+      },
+      "classification": {
+        "cve-id": null,
+        "cwe-id": null,
+        "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+      },
+      "remediation": "Ensure that all cookies are set with the Secure attribute to prevent MITM attacks.\n"
+    },
+    "type": "javascript",
+    "host": "127.0.0.1:10031",
+    "port": "10031",
+    "url": "http://127.0.0.1:10031/",
+    "matched-at": "127.0.0.1:10031",
+    "extracted-results": [
+      "PHPSESSID"
+    ],
+    "request": "content = template.http_all_headers\nconst setCookieLines = content\n    .split(/\\r\\n/)\n    .filter(line => line.trim().toLowerCase().startsWith('set-cookie:'));\nconst nonSecureCookies = setCookieLines.filter(line => !line.toLowerCase().includes('secure'));\nconst cookieNames = nonSecureCookies.map(line => {\n    const match = line.match(/set-cookie:\\s*([^=]+)=/i);\n    return match ? match[1] : null;\n}).filter(Boolean);\ncookieNames",
+    "response": "[PHPSESSID]",
+    "timestamp": "2026-03-13T18:21:13.8455812Z",
+    "matcher-status": true
+  },
+  {
+    "template-id": "cookies-without-secure",
+    "template-path": "C:\\Users\\jacob\\nuclei-templates\\http\\misconfiguration\\cookies-without-secure.yaml",
+    "info": {
+      "name": "Cookies without Secure attribute - Detect",
+      "author": [
+        "vthiery",
+        "rj coleman"
+      ],
+      "tags": [
+        "misconfig",
+        "http",
+        "cookie",
+        "generic",
+        "vuln"
+      ],
+      "description": "Checks whether cookies in the HTTP response contain the Secure attribute. If the Secure flag is set, it means that the cookie can only be transmitted over HTTPS\n",
+      "impact": "Lack of Secure flag on cookies allows the cookie to be sent over unsecure HTTP, making it vulnerable to man-in-the-middle (MITM) attacks.\n",
+      "reference": [
+        "https://owasp.org/www-community/controls/SecureCookieAttribute"
+      ],
+      "severity": "info",
+      "metadata": {
+        "max-request": 1,
+        "verified": true
+      },
+      "classification": {
+        "cve-id": null,
+        "cwe-id": null,
+        "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+      },
+      "remediation": "Ensure that all cookies are set with the Secure attribute to prevent MITM attacks.\n"
+    },
+    "type": "javascript",
+    "host": "127.0.0.1:10081",
+    "port": "10081",
+    "url": "http://127.0.0.1:10081/",
+    "matched-at": "127.0.0.1:10081",
+    "extracted-results": [
+      "session_id"
+    ],
+    "request": "content = template.http_all_headers\nconst setCookieLines = content\n    .split(/\\r\\n/)\n    .filter(line => line.trim().toLowerCase().startsWith('set-cookie:'));\nconst nonSecureCookies = setCookieLines.filter(line => !line.toLowerCase().includes('secure'));\nconst cookieNames = nonSecureCookies.map(line => {\n    const match = line.match(/set-cookie:\\s*([^=]+)=/i);\n    return match ? match[1] : null;\n}).filter(Boolean);\ncookieNames",
+    "response": "[session_id]",
+    "timestamp": "2026-03-13T18:21:13.8572997Z",
+    "matcher-status": true
+  },
+  {
+    "template-id": "cookies-without-httponly",
+    "template-path": "C:\\Users\\jacob\\nuclei-templates\\http\\misconfiguration\\cookies-without-httponly.yaml",
+    "info": {
+      "name": "Cookies without HttpOnly attribute - Detect",
+      "author": [
+        "rj coleman",
+        "mr.bobo hp"
+      ],
+      "tags": [
+        "misconfig",
+        "http",
+        "cookie",
+        "generic",
+        "vuln"
+      ],
+      "description": "Checks whether cookies in the HTTP response contain the HttpOnly attribute. If the HttpOnly flag is set, it means that the cookie is HTTP-only\n",
+      "impact": "Lack of HttpOnly flag on cookies increases the risk of client-side attacks, compromising user session security and data privacy.\n",
+      "reference": [
+        "https://owasp.org/www-community/HttpOnly"
+      ],
+      "severity": "info",
+      "metadata": {
+        "max-request": 1,
+        "verified": true
+      },
+      "classification": {
+        "cve-id": null,
+        "cwe-id": null,
+        "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+      },
+      "remediation": "Ensure that all cookies are set with the HttpOnly attribute to prevent client-side access.\n"
+    },
+    "type": "javascript",
+    "host": "127.0.0.1:10031",
+    "port": "10031",
+    "url": "http://127.0.0.1:10031/",
+    "matched-at": "127.0.0.1:10031",
+    "extracted-results": [
+      "PHPSESSID"
+    ],
+    "request": "content = template.http_all_headers\nconst setCookieLines = content\n    .split(/\\r\\n/)\n    .filter(line => line.trim().toLowerCase().startsWith('set-cookie:'));\n\nconst nonHttpOnlyCookies = setCookieLines.filter(line => !line.toLowerCase().includes('httponly'));\n\nconst cookieNames = nonHttpOnlyCookies.map(line => {\n    const match = line.match(/set-cookie:\\s*([^=]+)=/i);\n    return match ? match[1] : null;\n}).filter(Boolean);\ncookieNames",
+    "response": "[PHPSESSID]",
+    "timestamp": "2026-03-13T18:21:13.8613236Z",
+    "matcher-status": true
+  },
+  {
+    "template-id": "waf-detect",
+    "template-path": "C:\\Users\\jacob\\nuclei-templates\\http\\technologies\\waf-detect.yaml",
+    "info": {
+      "name": "WAF Detection",
+      "author": [
+        "dwisiswant0",
+        "lu4nx"
+      ],
+      "tags": [
+        "waf",
+        "tech",
+        "misc",
+        "discovery"
+      ],
+      "description": "A web application firewall was detected.",
+      "reference": [
+        "https://github.com/Ekultek/WhatWaf"
+      ],
+      "severity": "info",
+      "metadata": {
+        "max-request": 1
+      },
+      "classification": {
+        "cve-id": null,
+        "cwe-id": [
+          "cwe-200"
+        ]
+      }
+    },
+    "matcher-name": "apachegeneric",
+    "type": "http",
+    "host": "127.0.0.1:10031",
+    "port": "10031",
+    "scheme": "http",
+    "url": "http://127.0.0.1:10031/",
+    "path": "/",
+    "matched-at": "http://127.0.0.1:10031/",
+    "request": "POST / HTTP/1.1\r\nHost: 127.0.0.1:10031\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nCache-Control: no-store, no-cache, must-revalidate\r\nContent-Type: text/html; charset=UTF-8\r\nDate: Fri, 13 Mar 2026 18:22:59 GMT\r\nExpires: Thu, 19 Nov 1981 08:52:00 GMT\r\nPragma: no-cache\r\nServer: Apache/2.4.66 (Debian)\r\nSet-Cookie: PHPSESSID=8e14953a5df2f77bb94c33872329a80c; path=/\r\nVary: Accept-Encoding\r\nX-Powered-By: PHP/8.2.30\r\n\r\n    <!doctype html>\r\n    <html><head><meta charset=\"utf-8\"><title>Account</title></head>\r\n    <body>\r\n      <h2>Account</h2>\r\n      <p><b>Not logged in.</b> <a href=\"/?login=1\">Login</a></p>\r\n    </body></html>\r\n    ",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-03-13T18:22:59.6177384Z",
+    "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: 127.0.0.1:10031' -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123' 'http://127.0.0.1:10031/'",
+    "matcher-status": true
+  },
+  {
+    "template-id": "waf-detect",
+    "template-path": "C:\\Users\\jacob\\nuclei-templates\\http\\technologies\\waf-detect.yaml",
+    "info": {
+      "name": "WAF Detection",
+      "author": [
+        "dwisiswant0",
+        "lu4nx"
+      ],
+      "tags": [
+        "waf",
+        "tech",
+        "misc",
+        "discovery"
+      ],
+      "description": "A web application firewall was detected.",
+      "reference": [
+        "https://github.com/Ekultek/WhatWaf"
+      ],
+      "severity": "info",
+      "metadata": {
+        "max-request": 1
+      },
+      "classification": {
+        "cve-id": null,
+        "cwe-id": [
+          "cwe-200"
+        ]
+      }
+    },
+    "matcher-name": "apachegeneric",
+    "type": "http",
+    "host": "127.0.0.1:10011",
+    "port": "10011",
+    "scheme": "http",
+    "url": "http://127.0.0.1:10011/",
+    "path": "/",
+    "matched-at": "http://127.0.0.1:10011/",
+    "request": "POST / HTTP/1.1\r\nHost: 127.0.0.1:10011\r\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:1.9.6.20) Gecko/ Firefox/3.6.11\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html; charset=UTF-8\r\nDate: Fri, 13 Mar 2026 18:22:59 GMT\r\nServer: Apache/2.4.65 (Debian)\r\nVary: Accept-Encoding\r\nX-Powered-By: PHP/8.2.30\r\n\r\n<form action=\"\" method=\"post\">\r\n    <input type=\"text\" name=\"input\" id=\"input\" value=\"readme.txt\">\r\n    <input type=\"submit\" value=\"Submit\">\r\n</form>\r\n\r\n<br />\n<b>Warning</b>:  Undefined array key \"input\" in <b>/var/www/html/index.php</b> on line <b>9</b><br />\n<br />\n<b>Notice</b>:  fread(): Read of 8192 bytes failed with errno=21 Is a directory in <b>/var/www/html/index.php</b> on line <b>11</b><br />\n",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-03-13T18:22:59.6208466Z",
+    "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: 127.0.0.1:10011' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:1.9.6.20) Gecko/ Firefox/3.6.11' 'http://127.0.0.1:10011/'",
+    "matcher-status": true
+  },
+  {
+    "template-id": "waf-detect",
+    "template-path": "C:\\Users\\jacob\\nuclei-templates\\http\\technologies\\waf-detect.yaml",
+    "info": {
+      "name": "WAF Detection",
+      "author": [
+        "dwisiswant0",
+        "lu4nx"
+      ],
+      "tags": [
+        "waf",
+        "tech",
+        "misc",
+        "discovery"
+      ],
+      "description": "A web application firewall was detected.",
+      "reference": [
+        "https://github.com/Ekultek/WhatWaf"
+      ],
+      "severity": "info",
+      "metadata": {
+        "max-request": 1
+      },
+      "classification": {
+        "cve-id": null,
+        "cwe-id": [
+          "cwe-200"
+        ]
+      }
+    },
+    "matcher-name": "apachegeneric",
+    "type": "http",
+    "host": "127.0.0.1:10081",
+    "port": "10081",
+    "scheme": "http",
+    "url": "http://127.0.0.1:10081/",
+    "path": "/",
+    "matched-at": "http://127.0.0.1:10081/",
+    "request": "POST / HTTP/1.1\r\nHost: 127.0.0.1:10081\r\nUser-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; es-es) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 64\r\nContent-Type: text/html; charset=UTF-8\r\nDate: Fri, 13 Mar 2026 18:22:59 GMT\r\nServer: Apache/2.4.65 (Debian)\r\nSet-Cookie: session_id=d39ba9e5f55810e06d78f1677d50c6bc; expires=Fri, 13 Mar 2026 19:22:59 GMT; Max-Age=3600; path=/\r\nX-Powered-By: PHP/8.2.30\r\n\r\nCookie set. Your session ID is: d39ba9e5f55810e06d78f1677d50c6bc",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-03-13T18:22:59.6208466Z",
+    "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: 127.0.0.1:10081' -H 'User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; es-es) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1' 'http://127.0.0.1:10081/'",
+    "matcher-status": true
+  },
+  {
+    "template-id": "waf-detect",
+    "template-path": "C:\\Users\\jacob\\nuclei-templates\\http\\technologies\\waf-detect.yaml",
+    "info": {
+      "name": "WAF Detection",
+      "author": [
+        "dwisiswant0",
+        "lu4nx"
+      ],
+      "tags": [
+        "waf",
+        "tech",
+        "misc",
+        "discovery"
+      ],
+      "description": "A web application firewall was detected.",
+      "reference": [
+        "https://github.com/Ekultek/WhatWaf"
+      ],
+      "severity": "info",
+      "metadata": {
+        "max-request": 1
+      },
+      "classification": {
+        "cve-id": null,
+        "cwe-id": [
+          "cwe-200"
+        ]
+      }
+    },
+    "matcher-name": "apachegeneric",
+    "type": "http",
+    "host": "127.0.0.1:10051",
+    "port": "10051",
+    "scheme": "http",
+    "url": "http://127.0.0.1:10051/",
+    "path": "/",
+    "matched-at": "http://127.0.0.1:10051/",
+    "request": "POST / HTTP/1.1\r\nHost: 127.0.0.1:10051\r\nUser-Agent: Mozilla/5.0 (Knoppix; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 30\r\nContent-Type: text/html; charset=UTF-8\r\nDate: Fri, 13 Mar 2026 18:22:59 GMT\r\nServer: Apache/2.4.65 (Debian)\r\nX-Powered-By: PHP/8.2.30\r\n\r\n<a href=?image=1.png>1</a>\r\n\r\n",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-03-13T18:22:59.6332059Z",
+    "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: 127.0.0.1:10051' -H 'User-Agent: Mozilla/5.0 (Knoppix; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' 'http://127.0.0.1:10051/'",
+    "matcher-status": true
+  },
+  {
+    "template-id": "waf-detect",
+    "template-path": "C:\\Users\\jacob\\nuclei-templates\\http\\technologies\\waf-detect.yaml",
+    "info": {
+      "name": "WAF Detection",
+      "author": [
+        "dwisiswant0",
+        "lu4nx"
+      ],
+      "tags": [
+        "waf",
+        "tech",
+        "misc",
+        "discovery"
+      ],
+      "description": "A web application firewall was detected.",
+      "reference": [
+        "https://github.com/Ekultek/WhatWaf"
+      ],
+      "severity": "info",
+      "metadata": {
+        "max-request": 1
+      },
+      "classification": {
+        "cve-id": null,
+        "cwe-id": [
+          "cwe-200"
+        ]
+      }
+    },
+    "matcher-name": "apachegeneric",
+    "type": "http",
+    "host": "127.0.0.1:10071",
+    "port": "10071",
+    "scheme": "http",
+    "url": "http://127.0.0.1:10071/",
+    "path": "/",
+    "matched-at": "http://127.0.0.1:10071/",
+    "request": "POST / HTTP/1.1\r\nHost: 127.0.0.1:10071\r\nUser-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:109.0) Gecko/20100101 Firefox/116.0\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html; charset=UTF-8\r\nDate: Fri, 13 Mar 2026 18:22:59 GMT\r\nServer: Apache/2.4.65 (Debian)\r\nVary: Accept-Encoding\r\nX-Powered-By: PHP/8.2.30\r\n\r\n<form action=\"\" method=\"post\">\r\n    <input type=\"text\" name=\"input\" value=\"YToyOntpOjA7czo4OiJKb2huIERvZSI7aToxO3M6NToiQ3l0aXgiO30=\" id=\"input\">\r\n    <input type=\"submit\" value=\"Submit\">\r\n</form>\r\n\r\n<br />\n<b>Warning</b>:  Undefined array key \"input\" in <b>/var/www/html/index.php</b> on line <b>8</b><br />\n<br />\n<b>Deprecated</b>:  base64_decode(): Passing null to parameter #1 ($string) of type string is deprecated in <b>/var/www/html/index.php</b> on line <b>8</b><br />\n<br />\n<b>Warning</b>:  Trying to access array offset on value of type bool in <b>/var/www/html/index.php</b> on line <b>20</b><br />\n",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-03-13T18:22:59.6376128Z",
+    "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: 127.0.0.1:10071' -H 'User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:109.0) Gecko/20100101 Firefox/116.0' 'http://127.0.0.1:10071/'",
+    "matcher-status": true
+  },
+  {
+    "template-id": "waf-detect",
+    "template-path": "C:\\Users\\jacob\\nuclei-templates\\http\\technologies\\waf-detect.yaml",
+    "info": {
+      "name": "WAF Detection",
+      "author": [
+        "dwisiswant0",
+        "lu4nx"
+      ],
+      "tags": [
+        "waf",
+        "tech",
+        "misc",
+        "discovery"
+      ],
+      "description": "A web application firewall was detected.",
+      "reference": [
+        "https://github.com/Ekultek/WhatWaf"
+      ],
+      "severity": "info",
+      "metadata": {
+        "max-request": 1
+      },
+      "classification": {
+        "cve-id": null,
+        "cwe-id": [
+          "cwe-200"
+        ]
+      }
+    },
+    "matcher-name": "apachegeneric",
+    "type": "http",
+    "host": "127.0.0.1:10041",
+    "port": "10041",
+    "scheme": "http",
+    "url": "http://127.0.0.1:10041/",
+    "path": "/",
+    "matched-at": "http://127.0.0.1:10041/",
+    "request": "POST / HTTP/1.1\r\nHost: 127.0.0.1:10041\r\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/608.2.11 (KHTML, like Gecko) Version/13 Safari/608.2.11\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html; charset=UTF-8\r\nDate: Fri, 13 Mar 2026 18:22:59 GMT\r\nServer: Apache/2.4.65 (Debian)\r\nVary: Accept-Encoding\r\nX-Powered-By: PHP/8.2.30\r\n\r\n<form action=\"\" method=\"post\">\r\n    <input type=\"text\" name=\"input\" id=\"input\">\r\n    <input type=\"submit\" value=\"Submit\">\r\n</form>\r\n\r\n<br />\n<b>Warning</b>:  Undefined array key \"input\" in <b>/var/www/html/index.php</b> on line <b>8</b><br />\n",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-03-13T18:22:59.6527459Z",
+    "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: 127.0.0.1:10041' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/608.2.11 (KHTML, like Gecko) Version/13 Safari/608.2.11' 'http://127.0.0.1:10041/'",
+    "matcher-status": true
+  },
+  {
+    "template-id": "waf-detect",
+    "template-path": "C:\\Users\\jacob\\nuclei-templates\\http\\technologies\\waf-detect.yaml",
+    "info": {
+      "name": "WAF Detection",
+      "author": [
+        "dwisiswant0",
+        "lu4nx"
+      ],
+      "tags": [
+        "waf",
+        "tech",
+        "misc",
+        "discovery"
+      ],
+      "description": "A web application firewall was detected.",
+      "reference": [
+        "https://github.com/Ekultek/WhatWaf"
+      ],
+      "severity": "info",
+      "metadata": {
+        "max-request": 1
+      },
+      "classification": {
+        "cve-id": null,
+        "cwe-id": [
+          "cwe-200"
+        ]
+      }
+    },
+    "matcher-name": "apachegeneric",
+    "type": "http",
+    "host": "127.0.0.1:10021",
+    "port": "10021",
+    "scheme": "http",
+    "url": "http://127.0.0.1:10021/",
+    "path": "/",
+    "matched-at": "http://127.0.0.1:10021/",
+    "request": "POST / HTTP/1.1\r\nHost: 127.0.0.1:10021\r\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:1.9.7.20) Gecko/ Firefox/4.0\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html; charset=UTF-8\r\nDate: Fri, 13 Mar 2026 18:22:59 GMT\r\nServer: Apache/2.4.65 (Debian)\r\nVary: Accept-Encoding\r\nX-Powered-By: PHP/8.2.30\r\n\r\n<form action=\"\" method=\"post\">\r\n    <input type=\"text\" name=\"input\" id=\"input\">\r\n    <input type=\"submit\" value=\"Submit\">\r\n</form>\r\n\r\n<br />\n<b>Warning</b>:  Undefined array key \"input\" in <b>/var/www/html/index.php</b> on line <b>8</b><br />\n",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-03-13T18:22:59.657667Z",
+    "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: 127.0.0.1:10021' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:1.9.7.20) Gecko/ Firefox/4.0' 'http://127.0.0.1:10021/'",
+    "matcher-status": true
+  },
+  {
+    "template-id": "waf-detect",
+    "template-path": "C:\\Users\\jacob\\nuclei-templates\\http\\technologies\\waf-detect.yaml",
+    "info": {
+      "name": "WAF Detection",
+      "author": [
+        "dwisiswant0",
+        "lu4nx"
+      ],
+      "tags": [
+        "waf",
+        "tech",
+        "misc",
+        "discovery"
+      ],
+      "description": "A web application firewall was detected.",
+      "reference": [
+        "https://github.com/Ekultek/WhatWaf"
+      ],
+      "severity": "info",
+      "metadata": {
+        "max-request": 1
+      },
+      "classification": {
+        "cve-id": null,
+        "cwe-id": [
+          "cwe-200"
+        ]
+      }
+    },
+    "matcher-name": "apachegeneric",
+    "type": "http",
+    "host": "127.0.0.1:10061",
+    "port": "10061",
+    "scheme": "http",
+    "url": "http://127.0.0.1:10061/",
+    "path": "/",
+    "matched-at": "http://127.0.0.1:10061/",
+    "request": "POST / HTTP/1.1\r\nHost: 127.0.0.1:10061\r\nUser-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; it-it) AppleWebKit/533.20.25 (KHTML, like Gecko) Version/5.0.4 Safari/533.20.27\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html; charset=UTF-8\r\nDate: Fri, 13 Mar 2026 18:22:59 GMT\r\nServer: Apache/2.4.65 (Debian)\r\nVary: Accept-Encoding\r\nX-Powered-By: PHP/8.2.30\r\n\r\n<form action=\"\" method=\"post\" enctype=\"multipart/form-data\">\r\n    <input type=\"file\" name=\"input\" id=\"input\">\r\n    <input type=\"submit\" value=\"Upload File\" name=\"submit\">\r\n</form>\r\n\r\n<br />\n<b>Warning</b>:  Undefined array key \"input\" in <b>/var/www/html/index.php</b> on line <b>9</b><br />\n<br />\n<b>Warning</b>:  Trying to access array offset on value of type null in <b>/var/www/html/index.php</b> on line <b>9</b><br />\n<br />\n<b>Deprecated</b>:  move_uploaded_file(): Passing null to parameter #1 ($from) of type string is deprecated in <b>/var/www/html/index.php</b> on line <b>9</b><br />\n",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-03-13T18:22:59.6610602Z",
+    "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: 127.0.0.1:10061' -H 'User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; it-it) AppleWebKit/533.20.25 (KHTML, like Gecko) Version/5.0.4 Safari/533.20.27' 'http://127.0.0.1:10061/'",
+    "matcher-status": true
+  }
+]

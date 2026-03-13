@@ -1,4 +1,5 @@
-FROM httpd:2.4.55
-
-COPY httpd.conf /tmp/httpd.conf
-RUN cat /tmp/httpd.conf >> /usr/local/apache2/conf/httpd.conf
+FROM node:18
+WORKDIR /app
+COPY src/proxy.js .
+EXPOSE 80
+CMD ["node", "proxy.js"]

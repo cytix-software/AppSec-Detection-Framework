@@ -441,6 +441,40 @@ managementRouter.get("/api/parser-capabilities", async (ctx) => {
   ctx.body = { parsers: PARSER_CAPABILITIES };
 });
 
+//Scanner metadata so can read current scanProfile from frontend
+managementRouter.get('/api/scanner-metadata/:scannerName', async (ctx) => {
+  const scannerName = ctx.params.scannerName;
+  const resultsDir = path.join(process.cwd(), 'results');
+
+  try {
+    const files = await readdir(resultsDir);
+
+    for (const file of files) {
+      if (!file.endsWith('.json')) continue;
+
+      const filePath = path.join(resultsDir, file);
+      const content = await readFile(filePath, 'utf8');
+      const jsonData = JSON.parse(content);
+
+      if (jsonData[scannerName]) {
+        const scannerData = jsonData[scannerName];
+        ctx.body = {
+          scannerName,
+          scanProfile: scannerData.scanProfile || '',
+          author: scannerData.author || ''
+        };
+        return;
+      }
+    }
+
+    ctx.status = 404;
+    ctx.body = { error: `Scanner '${scannerName}' not found.` };
+  } catch (error) {
+    ctx.status = 500;
+    ctx.body = { error: 'Failed to load scanner metadata.' };
+  }
+});
+
 // Add a function to get service profiles
 async function getServiceProfiles(serviceName: string): Promise<string[]> {
   try {
@@ -588,136 +622,158 @@ managementRouter.get('/api/existing-scanner-results', async (ctx) => {
 });
 
 managementRouter.post('/api/save-results', async (ctx) => {
-    const { scannerName, isNewScanner, author, archivesUsed, data } = ctx.request.body;
+  const { scannerName, isNewScanner, scanProfile, author, archivesUsed, data } = ctx.request.body;
+  
+  // Define the directory where results should be saved
+  const resultsDir = path.join(process.cwd(), 'results');
+
+  // Ensure the results directory exists (optional, but safer)
+  if (!existsSync(resultsDir)) {
+      mkdirSync(resultsDir, { recursive: true });
+  }
+
+  const authorTrimmed = typeof author === "string" ? author.trim() : "";
+  const hasAuthor = authorTrimmed.length > 0;
+
+  try {
+    let finalDataToWrite;
+    let fileName;
     
-    // Define the directory where results should be saved
-    const resultsDir = path.join(process.cwd(), 'results');
+    if (isNewScanner) {
+      // Case 1: NEW SCANNER (Save as new, unique file)
+      const baseName = scannerName.replace(/\s+/g, '_').toLowerCase();
+      fileName = `${baseName}.json`;
 
-    // Ensure the results directory exists (optional, but safer)
-    if (!existsSync(resultsDir)) {
-        mkdirSync(resultsDir, { recursive: true });
-    }
+      const filePath = path.join(resultsDir, fileName);
 
-    const authorTrimmed = typeof author === "string" ? author.trim() : "";
-    const hasAuthor = authorTrimmed.length > 0;
+      // SECURITY CHECK: PREVENT OVERWRITING EXISTING FILES
+      if (existsSync(filePath)) {
+        ctx.status = 409; // 409 Conflict status code
+        ctx.body = { 
+          error: `A results file named '${fileName}' already exists. Please delete the existing file or use a different scanner name.` 
+        };
+        return;
+      }
 
-    try {
-        let finalDataToWrite;
-        let fileName;
-        
-        if (isNewScanner) {
-            // Case 1: NEW SCANNER (Save as new, unique file)
-            const baseName = scannerName.replace(/\s+/g, '_').toLowerCase();
-            fileName = `${baseName}.json`;
+      finalDataToWrite = data; // Data is already in the correct {"ScannerName": {...}} format
 
-            const filePath = path.join(resultsDir, fileName);
+      // Add author only if provided
+      const scannerData = finalDataToWrite?.[scannerName];
+      if (scannerData && hasAuthor) {
+        scannerData.author = authorTrimmed;
+      }
+      if (scannerData && Array.isArray(archivesUsed) && archivesUsed.length > 0) {
+        scannerData.archivesUsed = archivesUsed;
+      }
+    } else {
+      // Case 2: EXISTING SCANNER (Append and overwrite original file)
+      fileName = `${scannerName}.json`; 
+      let filePath = path.join(resultsDir, fileName); 
 
-            // SECURITY CHECK: PREVENT OVERWRITING EXISTING FILES
-            if (existsSync(filePath)) {
-                ctx.status = 409; // 409 Conflict status code
-                ctx.body = { 
-                    error: `A results file named '${fileName}' already exists. Please delete the existing file or use a different scanner name.` 
-                };
-                return;
-            }
-
-            finalDataToWrite = data; // Data is already in the correct {"ScannerName": {...}} format
-
-            // Add author only if provided
-            const scannerData = finalDataToWrite?.[scannerName];
-            if (scannerData && hasAuthor) {
-              scannerData.author = authorTrimmed;
-            }
-            if (scannerData && Array.isArray(archivesUsed) && archivesUsed.length > 0) {
-              scannerData.archivesUsed = archivesUsed;
-            }
-        } else {
-            // Case 2: EXISTING SCANNER (Append and overwrite original file)
-            fileName = `${scannerName}.json`; 
-            let filePath = path.join(resultsDir, fileName); 
-
-            if (!existsSync(filePath)) {
-                //In case of failure, fallback to searching for scannerName in contents of resultsDir files:
-                const allFiles = await readdir(resultsDir);
-                let foundFile = null;
-                for (const file of allFiles) {
-                  if (file.endsWith('.json')) {
-                    const content = await readFile(path.join(resultsDir, file), 'utf8');
-                    const jsonData = JSON.parse(content);
-                    if (jsonData[scannerName]) {
-                        foundFile = file;
-                        break;
-                    }
-                  }
-                }
-
-                if (!foundFile) {
-                  ctx.status = 404;
-                  ctx.body = { error: `File for existing scanner '${scannerName}' not found.` };
-                  return;
-                }
-
-                // If we found the file, proceed with processing it
-                fileName = foundFile;
-                filePath = path.join(resultsDir, fileName);
-            }
-
-            // 1. Read and parse existing file data
-            const existingContent = await readFile(filePath, 'utf8');
-            const existingData = JSON.parse(existingContent);
-            
-            // Data received from client is the new tests array (data is the 'updatedTests' array)
-            const newTests = data; 
-            
-            // 2. Locate the existing scanner's test array. The top-level key is the scannerName.
-            const scannerData = existingData[scannerName];
-
-            if (!scannerData || !Array.isArray(scannerData.tests)) {
-                ctx.status = 500;
-                ctx.body = { error: 'Existing file structure is invalid or missing "tests" array.' };
-                return;
-            }
-
-            // 3. Simply concatenate the new tests to the end of the existing array.
-            scannerData.tests = scannerData.tests.concat(newTests);
-
-            // Append author logic:
-            // - if user provided one: overwrite/set
-            // - if blank: do nothing (keeps existing, or stays missing)
-            if (hasAuthor) {
-              scannerData.author = authorTrimmed;
-            }
-
-            //Append archivesUsed if provided and is an array with items:
-            if (Array.isArray(archivesUsed) && archivesUsed.length > 0) {
-              if (scannerData.archivesUsed) {
-                // If archivesUsed already exists, concat new ones and remove duplicates:
-                scannerData.archivesUsed = Array.from(new Set(scannerData.archivesUsed.concat(archivesUsed)));
-              } else {
-                // Else just set it:
-                scannerData.archivesUsed = archivesUsed;
+      if (!existsSync(filePath)) {
+          //In case of failure, fallback to searching for scannerName in contents of resultsDir files:
+          const allFiles = await readdir(resultsDir);
+          let foundFile = null;
+          for (const file of allFiles) {
+            if (file.endsWith('.json')) {
+              const content = await readFile(path.join(resultsDir, file), 'utf8');
+              const jsonData = JSON.parse(content);
+              if (jsonData[scannerName]) {
+                  foundFile = file;
+                  break;
               }
             }
+          }
 
-            finalDataToWrite = existingData;
+          if (!foundFile) {
+            ctx.status = 404;
+            ctx.body = { error: `File for existing scanner '${scannerName}' not found.` };
+            return;
+          }
+
+          // If we found the file, proceed with processing it
+          fileName = foundFile;
+          filePath = path.join(resultsDir, fileName);
+      }
+
+      // 1. Read and parse existing file data
+      const existingContent = await readFile(filePath, 'utf8');
+      const existingData = JSON.parse(existingContent);
+      
+      // Data received from client is the new tests array (data is the 'updatedTests' array)
+      const newTests = data; 
+      
+      // 2. Locate the existing scanner's test array. The top-level key is the scannerName.
+      const scannerData = existingData[scannerName];
+
+      if (!scannerData || !Array.isArray(scannerData.tests)) {
+          ctx.status = 500;
+          ctx.body = { error: 'Existing file structure is invalid or missing "tests" array.' };
+          return;
+      }
+
+      // 3. Decide whether to append or overwrite based on scanProfile
+      const incomingScanProfile = typeof scanProfile === "string" ? scanProfile.trim() : "";
+      const existingScanProfile = typeof scannerData.scanProfile === "string"
+        ? scannerData.scanProfile.trim()
+        : "";
+
+      const profileChanged =
+        incomingScanProfile.length > 0 &&
+        incomingScanProfile !== existingScanProfile;
+
+      if (hasAuthor) {
+        scannerData.author = authorTrimmed;
+      }
+
+      if (profileChanged) {
+        // overwrite tests if scan profile changed
+        scannerData.tests = newTests;
+        scannerData.scanProfile = incomingScanProfile;
+
+        if (Array.isArray(archivesUsed)) {
+          scannerData.archivesUsed = archivesUsed;
+        } else {
+          delete scannerData.archivesUsed;
+        }
+    } else {
+        // default behaviour: append tests
+        scannerData.tests = scannerData.tests.concat(newTests);
+
+        if (incomingScanProfile.length > 0) {
+          scannerData.scanProfile = incomingScanProfile;
         }
 
-        // Write the final, merged data back to the disk
-        const filePath = path.join(resultsDir, fileName);
-        await writeFile(filePath, JSON.stringify(finalDataToWrite, null, 2), 'utf8');
+        if (Array.isArray(archivesUsed) && archivesUsed.length > 0) {
+          if (scannerData.archivesUsed) {
+            scannerData.archivesUsed = Array.from(
+              new Set(scannerData.archivesUsed.concat(archivesUsed))
+            );
+          } else {
+            scannerData.archivesUsed = archivesUsed;
+          }
+        }
+      }
 
-        // Respond with success
-        ctx.body = { 
-            success: true, 
-            message: 'File saved successfully.',
-            fileName: fileName 
-    };
-
-    } catch (error) {
-        console.error('SERVER ERROR SAVING FILE:', error);
-        ctx.status = 500;
-        ctx.body = { error: 'Internal server error while saving file.' };
+      finalDataToWrite = existingData;
     }
+
+    // Write the final, merged data back to the disk
+    const filePath = path.join(resultsDir, fileName);
+    await writeFile(filePath, JSON.stringify(finalDataToWrite, null, 2), 'utf8');
+
+    // Respond with success
+    ctx.body = { 
+        success: true, 
+        message: 'File saved successfully.',
+        fileName: fileName 
+  };
+
+  } catch (error) {
+    console.error('SERVER ERROR SAVING FILE:', error);
+    ctx.status = 500;
+    ctx.body = { error: 'Internal server error while saving file.' };
+  }
 });
 
 managementRouter.get('/', async (ctx) => {
@@ -1221,7 +1277,6 @@ function createManagementHtml(batch: ServiceBatch | null) {
                     <label for="scannerName">Scanner Name:</label>
                     <input type="text" id="scannerName" placeholder="e.g., zap_v2.16.0" value="your_scanner_name">
                   </div>
-                  
                   <div class="form-group">
                     <label for="scanProfile">Scan Profile:</label>
                     <textarea id="scanProfile" placeholder="Description of your scanner's capabilities and purpose">Description of your scanner's capabilities and purpose</textarea>
@@ -1231,7 +1286,9 @@ function createManagementHtml(batch: ServiceBatch | null) {
                 <div id="existingScannerFields" style="display: none;">
                   <div class="form-group">
                     <label for="existingScannerName">Select Scanner:</label>
-                    <select id="existingScannerName" class="scanner-select" onchange="updateImportUIState()"></select>
+                    <select id="existingScannerName" class="scanner-select" onchange="updateImportUIState(); loadExistingScannerMetadata();"></select>
+                    <label for="scanProfile">Scan Profile:</label>
+                    <textarea id="scanProfileOther" placeholder="Description of your scanner's capabilities and purpose" disabled>Description of your scanner's capabilities and purpose</textarea>
                     <p>Tests will be appended to this scanner's results file.</p>
                   </div>
                 </div>
@@ -1461,7 +1518,33 @@ function createManagementHtml(batch: ServiceBatch | null) {
             }
           }
 
-          // Function to handle scanner type selection
+          //Load metadata of scanners
+          async function loadExistingScannerMetadata() {
+            const existingScannerSelect = document.getElementById('existingScannerName');
+            const scanProfileInput = document.getElementById('scanProfile');
+            const authorInput = document.getElementById('author');
+
+            const scannerName = existingScannerSelect?.value;
+            if (!scannerName || !scanProfileInput) return;
+
+            try {
+              const res = await fetch('/api/scanner-metadata/' + encodeURIComponent(scannerName));
+              if (!res.ok) return;
+
+              const data = await res.json();
+              scanProfileInput.value = data.scanProfile || '';
+              if (authorInput && !authorInput.value) {
+                authorInput.value = data.author || '';
+              }
+            } catch (e) {
+              console.error('Failed to load scanner metadata:', e);
+            }
+          }
+
+          const scanProfileInput = document.getElementById('scanProfile');
+          const scanProfileOtherInput = document.getElementById('scanProfileOther');
+
+          // Function to handle whether scanner type is new or existing
           function handleScannerTypeChange() {
             const newScannerRadio = document.getElementById('newScanner');
             const existingScannerRadio = document.getElementById('existingScanner');
@@ -1472,9 +1555,15 @@ function createManagementHtml(batch: ServiceBatch | null) {
               if (newScannerRadio.checked) {
                 newScannerFields.style.display = 'block';
                 existingScannerFields.style.display = 'none';
+
+                scanProfileInput.id = 'scanProfile';
+                scanProfileOtherInput.id = 'scanProfileOther';
               } else {
                 newScannerFields.style.display = 'none';
                 existingScannerFields.style.display = 'block';
+
+                scanProfileInput.id = 'scanProfileOther';
+                scanProfileOtherInput.id = 'scanProfile';
               }
             }
           }
@@ -1488,10 +1577,20 @@ function createManagementHtml(batch: ServiceBatch | null) {
               newScannerRadio.addEventListener('change', handleScannerTypeChange);
               existingScannerRadio.addEventListener('change', handleScannerTypeChange);
             }
+
+            const scannerSelect = document.getElementById('existingScannerName');
+            const scanProfileInput = document.getElementById('scanProfileOther');
+            //If existing scanner select changes, enable scan profile input:
+            if (scannerSelect && scanProfileInput) {
+              scannerSelect.addEventListener('change', () => {
+                scanProfileInput.disabled = false;
+              });
+            }
             
             checkHealth();
             loadTests();
             loadExistingScanners();
+            await loadExistingScannerMetadata();
             await loadParserCapabilities();
             updateImportUIState();
           });
@@ -1603,6 +1702,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
             const scannerNameInput = document.getElementById('scannerName');
             const existingScannerSelect = document.getElementById('existingScannerName'); // <-- Retrieve this
             const author = (document.getElementById('author')?.value || '').trim();
+            const scanProfile = (document.getElementById('scanProfile')?.value || '').trim();
 
             if (!generatedOutputData || !newScannerRadio || !existingScannerRadio || !scannerNameInput || !existingScannerSelect) {
                 alert("Cannot save file. Required form elements or data not found.");
@@ -1628,6 +1728,7 @@ function createManagementHtml(batch: ServiceBatch | null) {
             const payload = {
                 scannerName: scannerName, // Used for filename
                 isNewScanner: isNewScanner,
+                scanProfile: scanProfile,
                 author: author, // (may be ""),
                 archivesUsed: archivesUsed, // (may be [])
                 data: generatedOutputData // Use the stored JSON data
@@ -1908,7 +2009,7 @@ function getKeyCaseInsensitive<T extends Record<string, any>>(
 
 let lastParsed: any = null;
 
-async function handleAppendCmd(targetFileStem: string): Promise<boolean> {
+async function handleAppendCmd(targetFileStem: string, newProfile?: string): Promise<boolean> {
   const resultsDir = path.join(process.cwd(), "results");
 
   if (!lastParsed) {
@@ -1974,17 +2075,57 @@ async function handleAppendCmd(targetFileStem: string): Promise<boolean> {
     return false;
   }
 
-  // Append
-  scannerData.tests = scannerData.tests.concat(parsedData.tests);
-  if (!scannerData.archivesUsed) {
-    scannerData.archivesUsed = [];
+  // Append, beginning new entry if new scan profile
+  const incomingScanProfile = typeof newProfile === "string" ? newProfile.trim() : "";
+const existingScanProfile = typeof scannerData.scanProfile === "string"
+  ? scannerData.scanProfile.trim()
+  : "";
+
+// Only treat scan profile as meaningful if user explicitly passed --newProfile
+const profileChanged =
+  incomingScanProfile.length > 0 &&
+  incomingScanProfile !== existingScanProfile;
+
+  if (profileChanged) {
+    // overwrite tests if scan profile changed
+    scannerData.tests = parsedData.tests;
+    scannerData.scanProfile = incomingScanProfile;
+
+    if (Array.isArray(parsedData.archivesUsed)) {
+      scannerData.archivesUsed = parsedData.archivesUsed;
+    } else {
+      delete scannerData.archivesUsed;
+    }
+
+    if (author) {
+      scannerData.author = author;
+    }
+
+    console.log(
+      `Scan profile changed from '${existingScanProfile || "(none)"}' to '${incomingScanProfile}'. ` +
+      `Overwriting tests in '${parsedKey}' in: ${existingFilePath}`
+    );
+  } else {
+    // default behaviour: append
+    scannerData.tests = scannerData.tests.concat(parsedData.tests);
+
+    // Do NOT update scanProfile unless --newProfile was explicitly supplied
+
+    if (!scannerData.archivesUsed) {
+      scannerData.archivesUsed = [];
+    }
+    scannerData.archivesUsed = Array.from(
+      new Set(scannerData.archivesUsed.concat(parsedData.archivesUsed || []))
+    );
+
+    if (author) {
+      scannerData.author = author;
+    }
+
+    console.log(`Appended ${parsedData.tests.length} tests to '${parsedKey}' in: ${existingFilePath}`);
   }
-  scannerData.archivesUsed = scannerData.archivesUsed.concat(parsedData.archivesUsed || []);
-  console.log("AUTHOR: ", author);
-  if (author !== "unknown") scannerData.author = author || scannerData.author;
 
   await writeFile(existingFilePath, JSON.stringify(existingData, null, 2), "utf8");
-  console.log(`Appended ${parsedData.tests.length} tests to '${parsedKey}' in: ${existingFilePath}`);
   return true;
 }
 
@@ -2279,13 +2420,26 @@ async function buildExpectedTestsForBatches(
               Examples: (any existing results json)
                   append zap
                   append nuclei
-                  append semgrep
-                  append burp
+              Examples for replacing with another scan profile:
+                  append semgrep --newProfile "New Profile Name"
+                  append burp --newProfile "New Profile Name"
               `);
               break;
             }
 
-            await handleAppendCmd(appendScanner);
+            // Optional flags after <scannerName>
+            const appendRest = parts.slice(2);
+            let newProfile: string | undefined;
+
+            for (let i = 0; i < appendRest.length; i++) {
+              const a = appendRest[i];
+              if (a === "--newProfile" || a === "-p") {
+                newProfile = appendRest[i + 1];
+                i++;
+              }
+            }
+
+            await handleAppendCmd(appendScanner, newProfile);
             break;
 
           case 'author':
