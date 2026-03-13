@@ -553,18 +553,51 @@ export class NucleiJsonParser extends BaseScannerParser {
       if (Array.isArray(cweField)) {
         for (const rawCwe of cweField) {
           const n = normalizeCweId(rawCwe);
-          if (n != null) cwesSet.add(n);
+          if (n != null) {
+            cwesSet.add(n);
+
+            //Now try looking at hierarchy to also add parent CWEs, if any:
+            const parentCwes = this.getParentCwes(`CWE-${n}`);
+            for (const parentCwe of parentCwes) {
+              const parentId = Number(parentCwe.replace("CWE-", ""));
+              if (Number.isFinite(parentId) && parentId > 0) {
+                detectedByTest.get(testName)!.add(parentId);
+              }
+            }
+          }
         }
       } else {
         const n = normalizeCweId(cweField);
-        if (n != null) cwesSet.add(n);
+        if (n != null) {
+          cwesSet.add(n);
+
+          //Now try looking at hierarchy to also add parent CWEs, if any:
+          const parentCwes = this.getParentCwes(`CWE-${n}`);
+          for (const parentCwe of parentCwes) {
+            const parentId = Number(parentCwe.replace("CWE-", ""));
+            if (Number.isFinite(parentId) && parentId > 0) {
+              detectedByTest.get(testName)!.add(parentId);
+            }
+          }
+        }
       }
 
       // 2) Also use local mapping in case nuclei didn't provide CWE IDs
       const templateId = f["template-id"] ?? "";
       const local = templateId ? templateIdToCwes(templateId) : [];
       for (const x of local ?? []) {
-        if (Number.isFinite(x) && x > 0) cwesSet.add(x);
+        if (Number.isFinite(x) && x > 0) {
+          cwesSet.add(x);
+
+          //Now try looking at hierarchy to also add parent CWEs, if any:
+          const parentCwes = this.getParentCwes(`CWE-${x}`);
+          for (const parentCwe of parentCwes) {
+            const parentId = Number(parentCwe.replace("CWE-", ""));
+            if (Number.isFinite(parentId) && parentId > 0) {
+              detectedByTest.get(testName)!.add(parentId);
+            }
+          }
+        }
       }
 
       //Check for cases of 'default-login' or 'credentials' present

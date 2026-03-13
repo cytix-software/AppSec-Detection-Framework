@@ -49,6 +49,15 @@ export class ZapJsonParser extends BaseScannerParser {
         const cweId = Number(alert.cweid);
         if (!Number.isFinite(cweId) || cweId <= 0) continue; // ZAP uses 0 when unmapped
         detectedByTest.get(testName)!.add(cweId);
+
+        //Now try looking at hierarchy to also add parent CWEs, if any:
+        const parentCwes = this.getParentCwes(`CWE-${cweId}`);
+        for (const parentCwe of parentCwes) {
+          const parentId = Number(parentCwe.replace("CWE-", ""));
+          if (Number.isFinite(parentId) && parentId > 0) {
+            detectedByTest.get(testName)!.add(parentId);
+          }
+        }
       }
     }
 

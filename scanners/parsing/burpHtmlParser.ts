@@ -92,7 +92,18 @@ export class BurpHtmlParser extends BaseScannerParser {
 
         if (!detectedByTest.has(testName)) detectedByTest.set(testName, new Set<number>());
         const set = detectedByTest.get(testName)!;
-        for (const cwe of cwes) set.add(cwe);
+        for (const cwe of cwes) {
+          set.add(cwe);
+
+          //Now try looking at hierarchy to also add parent CWEs, if any:
+          const parentCwes = this.getParentCwes(`CWE-${cwe}`);
+          for (const parentCwe of parentCwes) {
+            const parentId = Number(parentCwe.replace("CWE-", ""));
+            if (Number.isFinite(parentId) && parentId > 0) {
+              detectedByTest.get(testName)!.add(parentId);
+            }
+          }
+        }
       }
 
       // Fallback: truly single-instance style: host/port in Summary table
