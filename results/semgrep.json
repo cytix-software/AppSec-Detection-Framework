@@ -1834,20 +1834,7 @@
     ],
     "author": "Cytix",
     "archivesUsed": [
-      "artifacts/import-archives/Semgrep_2026-03-12T18-43-31-393Z.json",
-      "artifacts/import-archives/Semgrep_2026-03-12T18-44-25-754Z.json",
-      "artifacts/import-archives/Semgrep_2026-03-12T18-45-12-003Z.json",
-      "artifacts/import-archives/Semgrep_2026-03-12T18-45-50-057Z.json",
-      "artifacts/import-archives/Semgrep_2026-03-12T18-46-40-795Z.json",
-      "artifacts/import-archives/Semgrep_2026-03-12T18-47-54-847Z.json",
-      "artifacts/import-archives/Semgrep_2026-03-12T18-48-28-108Z.json",
-      "artifacts/import-archives/Semgrep_2026-03-12T18-50-23-823Z.json",
-      "artifacts/import-archives/Semgrep_2026-03-12T18-54-29-444Z.json",
-      "artifacts/import-archives/Semgrep_2026-03-12T18-58-32-409Z.json",
-      "artifacts/import-archives/Semgrep_2026-03-12T19-03-49-525Z.json",
-      "artifacts/import-archives/Semgrep_2026-03-12T19-04-37-606Z.json",
-      "artifacts/import-archives/Semgrep_2026-03-12T19-05-45-327Z.json",
-      "artifacts/import-archives/Semgrep_2026-03-12T19-09-02-292Z.json"
+      "artifacts/import-archives/Semgrep_2026-03-12T18-43-31-393Z.json"
     ]
   }
 }
