@@ -1,0 +1,9796 @@
+{
+  "CWE-1004": {
+    "parents": [
+      "CWE-732"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-664",
+      "CWE-668",
+      "CWE-732"
+    ]
+  },
+  "CWE-732": {
+    "parents": [
+      "CWE-285",
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-1007": {
+    "parents": [
+      "CWE-451"
+    ],
+    "ancestors": [
+      "CWE-221",
+      "CWE-451",
+      "CWE-664",
+      "CWE-684",
+      "CWE-710"
+    ]
+  },
+  "CWE-451": {
+    "parents": [
+      "CWE-221",
+      "CWE-684"
+    ],
+    "ancestors": [
+      "CWE-221",
+      "CWE-664",
+      "CWE-684",
+      "CWE-710"
+    ]
+  },
+  "CWE-102": {
+    "parents": [
+      "CWE-694",
+      "CWE-1173"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-74",
+      "CWE-99",
+      "CWE-573",
+      "CWE-694",
+      "CWE-707",
+      "CWE-710",
+      "CWE-1173"
+    ]
+  },
+  "CWE-694": {
+    "parents": [
+      "CWE-99",
+      "CWE-573"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-99",
+      "CWE-573",
+      "CWE-707",
+      "CWE-710"
+    ]
+  },
+  "CWE-1173": {
+    "parents": [
+      "CWE-20"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707"
+    ]
+  },
+  "CWE-1021": {
+    "parents": [
+      "CWE-441",
+      "CWE-451",
+      "CWE-610"
+    ],
+    "ancestors": [
+      "CWE-221",
+      "CWE-441",
+      "CWE-451",
+      "CWE-610",
+      "CWE-664",
+      "CWE-684",
+      "CWE-710"
+    ]
+  },
+  "CWE-441": {
+    "parents": [
+      "CWE-610"
+    ],
+    "ancestors": [
+      "CWE-610",
+      "CWE-664"
+    ]
+  },
+  "CWE-610": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-1022": {
+    "parents": [
+      "CWE-266"
+    ],
+    "ancestors": [
+      "CWE-266",
+      "CWE-269",
+      "CWE-284"
+    ]
+  },
+  "CWE-266": {
+    "parents": [
+      "CWE-269"
+    ],
+    "ancestors": [
+      "CWE-269",
+      "CWE-284"
+    ]
+  },
+  "CWE-1023": {
+    "parents": [
+      "CWE-697"
+    ],
+    "ancestors": [
+      "CWE-697"
+    ]
+  },
+  "CWE-697": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-1024": {
+    "parents": [
+      "CWE-697"
+    ],
+    "ancestors": [
+      "CWE-697"
+    ]
+  },
+  "CWE-1025": {
+    "parents": [
+      "CWE-697"
+    ],
+    "ancestors": [
+      "CWE-697"
+    ]
+  },
+  "CWE-103": {
+    "parents": [
+      "CWE-573"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-710"
+    ]
+  },
+  "CWE-573": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1037": {
+    "parents": [
+      "CWE-1038"
+    ],
+    "ancestors": [
+      "CWE-435",
+      "CWE-710",
+      "CWE-758",
+      "CWE-1038"
+    ]
+  },
+  "CWE-1038": {
+    "parents": [
+      "CWE-435",
+      "CWE-758"
+    ],
+    "ancestors": [
+      "CWE-435",
+      "CWE-710",
+      "CWE-758"
+    ]
+  },
+  "CWE-435": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-758": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1039": {
+    "parents": [
+      "CWE-693",
+      "CWE-697"
+    ],
+    "ancestors": [
+      "CWE-693",
+      "CWE-697"
+    ]
+  },
+  "CWE-693": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-104": {
+    "parents": [
+      "CWE-573"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-710"
+    ]
+  },
+  "CWE-1041": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-710": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-1042": {
+    "parents": [
+      "CWE-1176"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664",
+      "CWE-1176"
+    ]
+  },
+  "CWE-1176": {
+    "parents": [
+      "CWE-405"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664"
+    ]
+  },
+  "CWE-1043": {
+    "parents": [
+      "CWE-1093"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1093"
+    ]
+  },
+  "CWE-1093": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1044": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1045": {
+    "parents": [
+      "CWE-1076"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076"
+    ]
+  },
+  "CWE-1076": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1046": {
+    "parents": [
+      "CWE-1176"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664",
+      "CWE-1176"
+    ]
+  },
+  "CWE-1047": {
+    "parents": [
+      "CWE-1120"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1120"
+    ]
+  },
+  "CWE-1120": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1048": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1049": {
+    "parents": [
+      "CWE-1176"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664",
+      "CWE-1176"
+    ]
+  },
+  "CWE-105": {
+    "parents": [
+      "CWE-1173"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707",
+      "CWE-1173"
+    ]
+  },
+  "CWE-1050": {
+    "parents": [
+      "CWE-405"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664"
+    ]
+  },
+  "CWE-405": {
+    "parents": [
+      "CWE-400"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-664"
+    ]
+  },
+  "CWE-1051": {
+    "parents": [
+      "CWE-1419"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-665",
+      "CWE-1419"
+    ]
+  },
+  "CWE-1419": {
+    "parents": [
+      "CWE-665"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-665"
+    ]
+  },
+  "CWE-1052": {
+    "parents": [
+      "CWE-1419"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-665",
+      "CWE-1419"
+    ]
+  },
+  "CWE-1053": {
+    "parents": [
+      "CWE-1059"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1059"
+    ]
+  },
+  "CWE-1059": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1054": {
+    "parents": [
+      "CWE-1061"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1061"
+    ]
+  },
+  "CWE-1061": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1055": {
+    "parents": [
+      "CWE-1093"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1093"
+    ]
+  },
+  "CWE-1056": {
+    "parents": [
+      "CWE-1120"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1120"
+    ]
+  },
+  "CWE-1057": {
+    "parents": [
+      "CWE-1061"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1061"
+    ]
+  },
+  "CWE-1058": {
+    "parents": [
+      "CWE-662"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-662": {
+    "parents": [
+      "CWE-664",
+      "CWE-691"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-106": {
+    "parents": [
+      "CWE-1173"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707",
+      "CWE-1173"
+    ]
+  },
+  "CWE-1060": {
+    "parents": [
+      "CWE-1120"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1120"
+    ]
+  },
+  "CWE-1062": {
+    "parents": [
+      "CWE-1061"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1061"
+    ]
+  },
+  "CWE-1063": {
+    "parents": [
+      "CWE-1176"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664",
+      "CWE-1176"
+    ]
+  },
+  "CWE-1064": {
+    "parents": [
+      "CWE-1120"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1120"
+    ]
+  },
+  "CWE-1065": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1066": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1067": {
+    "parents": [
+      "CWE-1176"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664",
+      "CWE-1176"
+    ]
+  },
+  "CWE-1068": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1069": {
+    "parents": [
+      "CWE-1071"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1071",
+      "CWE-1164"
+    ]
+  },
+  "CWE-1071": {
+    "parents": [
+      "CWE-1164"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1164"
+    ]
+  },
+  "CWE-107": {
+    "parents": [
+      "CWE-1164"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1164"
+    ]
+  },
+  "CWE-1164": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1070": {
+    "parents": [
+      "CWE-1076"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076"
+    ]
+  },
+  "CWE-1072": {
+    "parents": [
+      "CWE-405"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664"
+    ]
+  },
+  "CWE-1073": {
+    "parents": [
+      "CWE-405"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664"
+    ]
+  },
+  "CWE-1074": {
+    "parents": [
+      "CWE-1093"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1093"
+    ]
+  },
+  "CWE-1075": {
+    "parents": [
+      "CWE-1120"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1120"
+    ]
+  },
+  "CWE-1077": {
+    "parents": [
+      "CWE-697"
+    ],
+    "ancestors": [
+      "CWE-697"
+    ]
+  },
+  "CWE-1078": {
+    "parents": [
+      "CWE-1076"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076"
+    ]
+  },
+  "CWE-1079": {
+    "parents": [
+      "CWE-1076"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076"
+    ]
+  },
+  "CWE-108": {
+    "parents": [
+      "CWE-1173"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707",
+      "CWE-1173"
+    ]
+  },
+  "CWE-1080": {
+    "parents": [
+      "CWE-1120"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1120"
+    ]
+  },
+  "CWE-1082": {
+    "parents": [
+      "CWE-1076"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076"
+    ]
+  },
+  "CWE-1083": {
+    "parents": [
+      "CWE-1061"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1061"
+    ]
+  },
+  "CWE-1084": {
+    "parents": [
+      "CWE-405"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664"
+    ]
+  },
+  "CWE-1085": {
+    "parents": [
+      "CWE-1078"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076",
+      "CWE-1078"
+    ]
+  },
+  "CWE-1086": {
+    "parents": [
+      "CWE-1093"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1093"
+    ]
+  },
+  "CWE-1087": {
+    "parents": [
+      "CWE-1076"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076"
+    ]
+  },
+  "CWE-1088": {
+    "parents": [
+      "CWE-821"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-691",
+      "CWE-821"
+    ]
+  },
+  "CWE-821": {
+    "parents": [
+      "CWE-662"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-1089": {
+    "parents": [
+      "CWE-405"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664"
+    ]
+  },
+  "CWE-109": {
+    "parents": [
+      "CWE-1173"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707",
+      "CWE-1173"
+    ]
+  },
+  "CWE-1090": {
+    "parents": [
+      "CWE-1061"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1061"
+    ]
+  },
+  "CWE-1091": {
+    "parents": [
+      "CWE-772",
+      "CWE-1076"
+    ],
+    "ancestors": [
+      "CWE-404",
+      "CWE-664",
+      "CWE-710",
+      "CWE-772",
+      "CWE-1076"
+    ]
+  },
+  "CWE-772": {
+    "parents": [
+      "CWE-404"
+    ],
+    "ancestors": [
+      "CWE-404",
+      "CWE-664"
+    ]
+  },
+  "CWE-1092": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1094": {
+    "parents": [
+      "CWE-405"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664"
+    ]
+  },
+  "CWE-1095": {
+    "parents": [
+      "CWE-1120"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1120"
+    ]
+  },
+  "CWE-1096": {
+    "parents": [
+      "CWE-820"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-691",
+      "CWE-820"
+    ]
+  },
+  "CWE-820": {
+    "parents": [
+      "CWE-662"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-1097": {
+    "parents": [
+      "CWE-1076"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076"
+    ]
+  },
+  "CWE-1098": {
+    "parents": [
+      "CWE-1076"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076"
+    ]
+  },
+  "CWE-1099": {
+    "parents": [
+      "CWE-1078"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076",
+      "CWE-1078"
+    ]
+  },
+  "CWE-11": {
+    "parents": [
+      "CWE-489"
+    ],
+    "ancestors": [
+      "CWE-489",
+      "CWE-710"
+    ]
+  },
+  "CWE-489": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-110": {
+    "parents": [
+      "CWE-1164"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1164"
+    ]
+  },
+  "CWE-1100": {
+    "parents": [
+      "CWE-1061"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1061"
+    ]
+  },
+  "CWE-1101": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1102": {
+    "parents": [
+      "CWE-758"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-758"
+    ]
+  },
+  "CWE-1103": {
+    "parents": [
+      "CWE-758"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-758"
+    ]
+  },
+  "CWE-1104": {
+    "parents": [
+      "CWE-1357"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1357"
+    ]
+  },
+  "CWE-1357": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1105": {
+    "parents": [
+      "CWE-758",
+      "CWE-1061"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-758",
+      "CWE-1061"
+    ]
+  },
+  "CWE-1106": {
+    "parents": [
+      "CWE-1078"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076",
+      "CWE-1078"
+    ]
+  },
+  "CWE-1107": {
+    "parents": [
+      "CWE-1078"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076",
+      "CWE-1078"
+    ]
+  },
+  "CWE-1108": {
+    "parents": [
+      "CWE-1076"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076"
+    ]
+  },
+  "CWE-1109": {
+    "parents": [
+      "CWE-1078"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076",
+      "CWE-1078"
+    ]
+  },
+  "CWE-111": {
+    "parents": [
+      "CWE-695"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-695",
+      "CWE-710"
+    ]
+  },
+  "CWE-695": {
+    "parents": [
+      "CWE-573"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-710"
+    ]
+  },
+  "CWE-1110": {
+    "parents": [
+      "CWE-1059"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1059"
+    ]
+  },
+  "CWE-1111": {
+    "parents": [
+      "CWE-1059"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1059"
+    ]
+  },
+  "CWE-1112": {
+    "parents": [
+      "CWE-1059"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1059"
+    ]
+  },
+  "CWE-1113": {
+    "parents": [
+      "CWE-1078"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076",
+      "CWE-1078"
+    ]
+  },
+  "CWE-1114": {
+    "parents": [
+      "CWE-1078"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076",
+      "CWE-1078"
+    ]
+  },
+  "CWE-1115": {
+    "parents": [
+      "CWE-1078"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076",
+      "CWE-1078"
+    ]
+  },
+  "CWE-1116": {
+    "parents": [
+      "CWE-1078"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076",
+      "CWE-1078"
+    ]
+  },
+  "CWE-1117": {
+    "parents": [
+      "CWE-1078"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076",
+      "CWE-1078"
+    ]
+  },
+  "CWE-1118": {
+    "parents": [
+      "CWE-1059"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1059"
+    ]
+  },
+  "CWE-1119": {
+    "parents": [
+      "CWE-1120"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1120"
+    ]
+  },
+  "CWE-112": {
+    "parents": [
+      "CWE-1286"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707",
+      "CWE-1286"
+    ]
+  },
+  "CWE-1286": {
+    "parents": [
+      "CWE-20"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707"
+    ]
+  },
+  "CWE-1121": {
+    "parents": [
+      "CWE-1120"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1120"
+    ]
+  },
+  "CWE-1122": {
+    "parents": [
+      "CWE-1120"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1120"
+    ]
+  },
+  "CWE-1123": {
+    "parents": [
+      "CWE-1120"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1120"
+    ]
+  },
+  "CWE-1124": {
+    "parents": [
+      "CWE-1120"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1120"
+    ]
+  },
+  "CWE-1125": {
+    "parents": [
+      "CWE-1120"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1120"
+    ]
+  },
+  "CWE-1126": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1127": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-113": {
+    "parents": [
+      "CWE-93",
+      "CWE-436"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-93",
+      "CWE-435",
+      "CWE-436",
+      "CWE-707"
+    ]
+  },
+  "CWE-93": {
+    "parents": [
+      "CWE-74"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-707"
+    ]
+  },
+  "CWE-436": {
+    "parents": [
+      "CWE-435"
+    ],
+    "ancestors": [
+      "CWE-435"
+    ]
+  },
+  "CWE-114": {
+    "parents": [
+      "CWE-73"
+    ],
+    "ancestors": [
+      "CWE-73",
+      "CWE-610",
+      "CWE-642",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-73": {
+    "parents": [
+      "CWE-610",
+      "CWE-642"
+    ],
+    "ancestors": [
+      "CWE-610",
+      "CWE-642",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-115": {
+    "parents": [
+      "CWE-436"
+    ],
+    "ancestors": [
+      "CWE-435",
+      "CWE-436"
+    ]
+  },
+  "CWE-116": {
+    "parents": [
+      "CWE-707"
+    ],
+    "ancestors": [
+      "CWE-707"
+    ]
+  },
+  "CWE-707": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-117": {
+    "parents": [
+      "CWE-116"
+    ],
+    "ancestors": [
+      "CWE-116",
+      "CWE-707"
+    ]
+  },
+  "CWE-20": {
+    "parents": [
+      "CWE-707"
+    ],
+    "ancestors": [
+      "CWE-707"
+    ]
+  },
+  "CWE-1174": {
+    "parents": [
+      "CWE-1173"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707",
+      "CWE-1173"
+    ]
+  },
+  "CWE-1177": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-118": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-664": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-1187": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-1188": {
+    "parents": [
+      "CWE-344",
+      "CWE-665",
+      "CWE-1419"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-344",
+      "CWE-664",
+      "CWE-665",
+      "CWE-693",
+      "CWE-1419"
+    ]
+  },
+  "CWE-344": {
+    "parents": [
+      "CWE-330"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-693"
+    ]
+  },
+  "CWE-665": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-1189": {
+    "parents": [
+      "CWE-653",
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-653",
+      "CWE-657",
+      "CWE-664",
+      "CWE-668",
+      "CWE-693",
+      "CWE-710"
+    ]
+  },
+  "CWE-653": {
+    "parents": [
+      "CWE-657",
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-657",
+      "CWE-693",
+      "CWE-710"
+    ]
+  },
+  "CWE-668": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-119": {
+    "parents": [
+      "CWE-118"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-664"
+    ]
+  },
+  "CWE-1190": {
+    "parents": [
+      "CWE-696"
+    ],
+    "ancestors": [
+      "CWE-691",
+      "CWE-696"
+    ]
+  },
+  "CWE-696": {
+    "parents": [
+      "CWE-691"
+    ],
+    "ancestors": [
+      "CWE-691"
+    ]
+  },
+  "CWE-1191": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-284": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-1192": {
+    "parents": [
+      "CWE-657"
+    ],
+    "ancestors": [
+      "CWE-657",
+      "CWE-710"
+    ]
+  },
+  "CWE-657": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1193": {
+    "parents": [
+      "CWE-696"
+    ],
+    "ancestors": [
+      "CWE-691",
+      "CWE-696"
+    ]
+  },
+  "CWE-12": {
+    "parents": [
+      "CWE-756"
+    ],
+    "ancestors": [
+      "CWE-703",
+      "CWE-755",
+      "CWE-756"
+    ]
+  },
+  "CWE-756": {
+    "parents": [
+      "CWE-755"
+    ],
+    "ancestors": [
+      "CWE-703",
+      "CWE-755"
+    ]
+  },
+  "CWE-120": {
+    "parents": [
+      "CWE-119",
+      "CWE-787"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664",
+      "CWE-787"
+    ]
+  },
+  "CWE-787": {
+    "parents": [
+      "CWE-119"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664"
+    ]
+  },
+  "CWE-1204": {
+    "parents": [
+      "CWE-330"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-693"
+    ]
+  },
+  "CWE-330": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-1209": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-121": {
+    "parents": [
+      "CWE-787",
+      "CWE-788"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664",
+      "CWE-787",
+      "CWE-788"
+    ]
+  },
+  "CWE-788": {
+    "parents": [
+      "CWE-119"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664"
+    ]
+  },
+  "CWE-122": {
+    "parents": [
+      "CWE-787",
+      "CWE-788"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664",
+      "CWE-787",
+      "CWE-788"
+    ]
+  },
+  "CWE-1220": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1221": {
+    "parents": [
+      "CWE-1419"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-665",
+      "CWE-1419"
+    ]
+  },
+  "CWE-1222": {
+    "parents": [
+      "CWE-1220"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-1220"
+    ]
+  },
+  "CWE-1223": {
+    "parents": [
+      "CWE-362"
+    ],
+    "ancestors": [
+      "CWE-362",
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-362": {
+    "parents": [
+      "CWE-662"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-1224": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1229": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-123": {
+    "parents": [
+      "CWE-787"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664",
+      "CWE-787"
+    ]
+  },
+  "CWE-1230": {
+    "parents": [
+      "CWE-285"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285"
+    ]
+  },
+  "CWE-285": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1231": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1232": {
+    "parents": [
+      "CWE-667"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-667",
+      "CWE-691"
+    ]
+  },
+  "CWE-667": {
+    "parents": [
+      "CWE-662"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-1233": {
+    "parents": [
+      "CWE-284",
+      "CWE-667"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-662",
+      "CWE-664",
+      "CWE-667",
+      "CWE-691"
+    ]
+  },
+  "CWE-1234": {
+    "parents": [
+      "CWE-667"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-667",
+      "CWE-691"
+    ]
+  },
+  "CWE-1235": {
+    "parents": [
+      "CWE-400"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-664"
+    ]
+  },
+  "CWE-400": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-1236": {
+    "parents": [
+      "CWE-74"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-707"
+    ]
+  },
+  "CWE-74": {
+    "parents": [
+      "CWE-707"
+    ],
+    "ancestors": [
+      "CWE-707"
+    ]
+  },
+  "CWE-1239": {
+    "parents": [
+      "CWE-226"
+    ],
+    "ancestors": [
+      "CWE-212",
+      "CWE-226",
+      "CWE-404",
+      "CWE-459",
+      "CWE-664",
+      "CWE-669"
+    ]
+  },
+  "CWE-226": {
+    "parents": [
+      "CWE-212",
+      "CWE-459"
+    ],
+    "ancestors": [
+      "CWE-212",
+      "CWE-404",
+      "CWE-459",
+      "CWE-664",
+      "CWE-669"
+    ]
+  },
+  "CWE-124": {
+    "parents": [
+      "CWE-786",
+      "CWE-787"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664",
+      "CWE-786",
+      "CWE-787"
+    ]
+  },
+  "CWE-786": {
+    "parents": [
+      "CWE-119"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664"
+    ]
+  },
+  "CWE-1240": {
+    "parents": [
+      "CWE-327"
+    ],
+    "ancestors": [
+      "CWE-327",
+      "CWE-693"
+    ]
+  },
+  "CWE-327": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-1241": {
+    "parents": [
+      "CWE-330"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-693"
+    ]
+  },
+  "CWE-1242": {
+    "parents": [
+      "CWE-912"
+    ],
+    "ancestors": [
+      "CWE-684",
+      "CWE-710",
+      "CWE-912"
+    ]
+  },
+  "CWE-912": {
+    "parents": [
+      "CWE-684"
+    ],
+    "ancestors": [
+      "CWE-684",
+      "CWE-710"
+    ]
+  },
+  "CWE-1243": {
+    "parents": [
+      "CWE-1263"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-1263"
+    ]
+  },
+  "CWE-1263": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1244": {
+    "parents": [
+      "CWE-863"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-863"
+    ]
+  },
+  "CWE-863": {
+    "parents": [
+      "CWE-285"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285"
+    ]
+  },
+  "CWE-1245": {
+    "parents": [
+      "CWE-684"
+    ],
+    "ancestors": [
+      "CWE-684",
+      "CWE-710"
+    ]
+  },
+  "CWE-684": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-1246": {
+    "parents": [
+      "CWE-400"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-664"
+    ]
+  },
+  "CWE-1247": {
+    "parents": [
+      "CWE-1384"
+    ],
+    "ancestors": [
+      "CWE-703",
+      "CWE-1384"
+    ]
+  },
+  "CWE-1384": {
+    "parents": [
+      "CWE-703"
+    ],
+    "ancestors": [
+      "CWE-703"
+    ]
+  },
+  "CWE-1248": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-1249": {
+    "parents": [
+      "CWE-1250"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-1250"
+    ]
+  },
+  "CWE-1250": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-125": {
+    "parents": [
+      "CWE-119"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664"
+    ]
+  },
+  "CWE-1251": {
+    "parents": [
+      "CWE-1250"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-1250"
+    ]
+  },
+  "CWE-1252": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1253": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-1254": {
+    "parents": [
+      "CWE-208",
+      "CWE-697"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-203",
+      "CWE-208",
+      "CWE-664",
+      "CWE-668",
+      "CWE-697"
+    ]
+  },
+  "CWE-208": {
+    "parents": [
+      "CWE-203"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-203",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-1255": {
+    "parents": [
+      "CWE-1300"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-203",
+      "CWE-664",
+      "CWE-668",
+      "CWE-1300"
+    ]
+  },
+  "CWE-1300": {
+    "parents": [
+      "CWE-203"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-203",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-1256": {
+    "parents": [
+      "CWE-285"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285"
+    ]
+  },
+  "CWE-1257": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1258": {
+    "parents": [
+      "CWE-212"
+    ],
+    "ancestors": [
+      "CWE-212",
+      "CWE-664",
+      "CWE-669"
+    ]
+  },
+  "CWE-212": {
+    "parents": [
+      "CWE-669"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-669"
+    ]
+  },
+  "CWE-1259": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-126": {
+    "parents": [
+      "CWE-125",
+      "CWE-788"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-125",
+      "CWE-664",
+      "CWE-788"
+    ]
+  },
+  "CWE-1260": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1261": {
+    "parents": [
+      "CWE-1384"
+    ],
+    "ancestors": [
+      "CWE-703",
+      "CWE-1384"
+    ]
+  },
+  "CWE-1262": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1264": {
+    "parents": [
+      "CWE-821"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-691",
+      "CWE-821"
+    ]
+  },
+  "CWE-1265": {
+    "parents": [
+      "CWE-662"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-1266": {
+    "parents": [
+      "CWE-404"
+    ],
+    "ancestors": [
+      "CWE-404",
+      "CWE-664"
+    ]
+  },
+  "CWE-404": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-1267": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1268": {
+    "parents": [
+      "CWE-266"
+    ],
+    "ancestors": [
+      "CWE-266",
+      "CWE-269",
+      "CWE-284"
+    ]
+  },
+  "CWE-1269": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-127": {
+    "parents": [
+      "CWE-125",
+      "CWE-786"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-125",
+      "CWE-664",
+      "CWE-786"
+    ]
+  },
+  "CWE-1270": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1271": {
+    "parents": [
+      "CWE-909"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-665",
+      "CWE-909"
+    ]
+  },
+  "CWE-909": {
+    "parents": [
+      "CWE-665"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-665"
+    ]
+  },
+  "CWE-1272": {
+    "parents": [
+      "CWE-226"
+    ],
+    "ancestors": [
+      "CWE-212",
+      "CWE-226",
+      "CWE-404",
+      "CWE-459",
+      "CWE-664",
+      "CWE-669"
+    ]
+  },
+  "CWE-1273": {
+    "parents": [
+      "CWE-200"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-200": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-1274": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1275": {
+    "parents": [
+      "CWE-923"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-923"
+    ]
+  },
+  "CWE-923": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1276": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1277": {
+    "parents": [
+      "CWE-1329"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-710",
+      "CWE-1329",
+      "CWE-1357"
+    ]
+  },
+  "CWE-1329": {
+    "parents": [
+      "CWE-664",
+      "CWE-1357"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-710",
+      "CWE-1357"
+    ]
+  },
+  "CWE-1278": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-1279": {
+    "parents": [
+      "CWE-665",
+      "CWE-696"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-665",
+      "CWE-691",
+      "CWE-696"
+    ]
+  },
+  "CWE-128": {
+    "parents": [
+      "CWE-682"
+    ],
+    "ancestors": [
+      "CWE-682"
+    ]
+  },
+  "CWE-682": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-1280": {
+    "parents": [
+      "CWE-284",
+      "CWE-696"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-691",
+      "CWE-696"
+    ]
+  },
+  "CWE-1281": {
+    "parents": [
+      "CWE-691"
+    ],
+    "ancestors": [
+      "CWE-691"
+    ]
+  },
+  "CWE-691": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-1282": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-1283": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1284": {
+    "parents": [
+      "CWE-20"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707"
+    ]
+  },
+  "CWE-1285": {
+    "parents": [
+      "CWE-20"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707"
+    ]
+  },
+  "CWE-1287": {
+    "parents": [
+      "CWE-20"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707"
+    ]
+  },
+  "CWE-1288": {
+    "parents": [
+      "CWE-20"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707"
+    ]
+  },
+  "CWE-1289": {
+    "parents": [
+      "CWE-20"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707"
+    ]
+  },
+  "CWE-129": {
+    "parents": [
+      "CWE-20",
+      "CWE-1285"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707",
+      "CWE-1285"
+    ]
+  },
+  "CWE-1290": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1291": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-1292": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1293": {
+    "parents": [
+      "CWE-345"
+    ],
+    "ancestors": [
+      "CWE-345",
+      "CWE-693"
+    ]
+  },
+  "CWE-345": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-1294": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1295": {
+    "parents": [
+      "CWE-200"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-1296": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1297": {
+    "parents": [
+      "CWE-285"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285"
+    ]
+  },
+  "CWE-1298": {
+    "parents": [
+      "CWE-362"
+    ],
+    "ancestors": [
+      "CWE-362",
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-1299": {
+    "parents": [
+      "CWE-288",
+      "CWE-420"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-288",
+      "CWE-306",
+      "CWE-420",
+      "CWE-923"
+    ]
+  },
+  "CWE-420": {
+    "parents": [
+      "CWE-923"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-923"
+    ]
+  },
+  "CWE-288": {
+    "parents": [
+      "CWE-306"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-306"
+    ]
+  },
+  "CWE-13": {
+    "parents": [
+      "CWE-260"
+    ],
+    "ancestors": [
+      "CWE-260",
+      "CWE-284",
+      "CWE-287",
+      "CWE-522",
+      "CWE-664",
+      "CWE-668",
+      "CWE-1390"
+    ]
+  },
+  "CWE-260": {
+    "parents": [
+      "CWE-522"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-522",
+      "CWE-664",
+      "CWE-668",
+      "CWE-1390"
+    ]
+  },
+  "CWE-130": {
+    "parents": [
+      "CWE-240"
+    ],
+    "ancestors": [
+      "CWE-228",
+      "CWE-237",
+      "CWE-240",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-240": {
+    "parents": [
+      "CWE-237",
+      "CWE-707"
+    ],
+    "ancestors": [
+      "CWE-228",
+      "CWE-237",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-203": {
+    "parents": [
+      "CWE-200"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-1301": {
+    "parents": [
+      "CWE-226"
+    ],
+    "ancestors": [
+      "CWE-212",
+      "CWE-226",
+      "CWE-404",
+      "CWE-459",
+      "CWE-664",
+      "CWE-669"
+    ]
+  },
+  "CWE-1302": {
+    "parents": [
+      "CWE-1294"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-1294"
+    ]
+  },
+  "CWE-1303": {
+    "parents": [
+      "CWE-203",
+      "CWE-1189"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-203",
+      "CWE-653",
+      "CWE-657",
+      "CWE-664",
+      "CWE-668",
+      "CWE-693",
+      "CWE-710",
+      "CWE-1189"
+    ]
+  },
+  "CWE-1304": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-131": {
+    "parents": [
+      "CWE-682"
+    ],
+    "ancestors": [
+      "CWE-682"
+    ]
+  },
+  "CWE-1310": {
+    "parents": [
+      "CWE-1329"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-710",
+      "CWE-1329",
+      "CWE-1357"
+    ]
+  },
+  "CWE-1311": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1312": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1313": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1314": {
+    "parents": [
+      "CWE-862"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-862"
+    ]
+  },
+  "CWE-862": {
+    "parents": [
+      "CWE-285"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285"
+    ]
+  },
+  "CWE-1315": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1316": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1317": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1318": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-1319": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-132": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-1320": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1321": {
+    "parents": [
+      "CWE-913",
+      "CWE-915"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-913",
+      "CWE-915"
+    ]
+  },
+  "CWE-915": {
+    "parents": [
+      "CWE-913"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-913"
+    ]
+  },
+  "CWE-913": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-1322": {
+    "parents": [
+      "CWE-834"
+    ],
+    "ancestors": [
+      "CWE-691",
+      "CWE-834"
+    ]
+  },
+  "CWE-834": {
+    "parents": [
+      "CWE-691"
+    ],
+    "ancestors": [
+      "CWE-691"
+    ]
+  },
+  "CWE-1323": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1324": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-1325": {
+    "parents": [
+      "CWE-770"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-664",
+      "CWE-665",
+      "CWE-770"
+    ]
+  },
+  "CWE-770": {
+    "parents": [
+      "CWE-400",
+      "CWE-665"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-664",
+      "CWE-665"
+    ]
+  },
+  "CWE-1326": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-1327": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-1328": {
+    "parents": [
+      "CWE-285"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285"
+    ]
+  },
+  "CWE-1330": {
+    "parents": [
+      "CWE-1301"
+    ],
+    "ancestors": [
+      "CWE-212",
+      "CWE-226",
+      "CWE-404",
+      "CWE-459",
+      "CWE-664",
+      "CWE-669",
+      "CWE-1301"
+    ]
+  },
+  "CWE-1331": {
+    "parents": [
+      "CWE-653",
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-653",
+      "CWE-657",
+      "CWE-664",
+      "CWE-668",
+      "CWE-693",
+      "CWE-710"
+    ]
+  },
+  "CWE-1332": {
+    "parents": [
+      "CWE-1384"
+    ],
+    "ancestors": [
+      "CWE-703",
+      "CWE-1384"
+    ]
+  },
+  "CWE-1333": {
+    "parents": [
+      "CWE-407"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-407",
+      "CWE-664"
+    ]
+  },
+  "CWE-407": {
+    "parents": [
+      "CWE-405"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664"
+    ]
+  },
+  "CWE-1334": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1335": {
+    "parents": [
+      "CWE-682"
+    ],
+    "ancestors": [
+      "CWE-682"
+    ]
+  },
+  "CWE-1336": {
+    "parents": [
+      "CWE-94"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-94",
+      "CWE-664",
+      "CWE-707",
+      "CWE-913"
+    ]
+  },
+  "CWE-94": {
+    "parents": [
+      "CWE-74",
+      "CWE-913"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-664",
+      "CWE-707",
+      "CWE-913"
+    ]
+  },
+  "CWE-1338": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-1339": {
+    "parents": [
+      "CWE-682"
+    ],
+    "ancestors": [
+      "CWE-682"
+    ]
+  },
+  "CWE-134": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-1341": {
+    "parents": [
+      "CWE-675"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-675",
+      "CWE-710"
+    ]
+  },
+  "CWE-675": {
+    "parents": [
+      "CWE-573"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-710"
+    ]
+  },
+  "CWE-1342": {
+    "parents": [
+      "CWE-226"
+    ],
+    "ancestors": [
+      "CWE-212",
+      "CWE-226",
+      "CWE-404",
+      "CWE-459",
+      "CWE-664",
+      "CWE-669"
+    ]
+  },
+  "CWE-135": {
+    "parents": [
+      "CWE-682"
+    ],
+    "ancestors": [
+      "CWE-682"
+    ]
+  },
+  "CWE-1351": {
+    "parents": [
+      "CWE-1384"
+    ],
+    "ancestors": [
+      "CWE-703",
+      "CWE-1384"
+    ]
+  },
+  "CWE-138": {
+    "parents": [
+      "CWE-707"
+    ],
+    "ancestors": [
+      "CWE-707"
+    ]
+  },
+  "CWE-703": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-1385": {
+    "parents": [
+      "CWE-346"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-345",
+      "CWE-346",
+      "CWE-693"
+    ]
+  },
+  "CWE-346": {
+    "parents": [
+      "CWE-284",
+      "CWE-345"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-345",
+      "CWE-693"
+    ]
+  },
+  "CWE-1386": {
+    "parents": [
+      "CWE-59"
+    ],
+    "ancestors": [
+      "CWE-59",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-59": {
+    "parents": [
+      "CWE-706"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-1389": {
+    "parents": [
+      "CWE-704"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-704"
+    ]
+  },
+  "CWE-704": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-1390": {
+    "parents": [
+      "CWE-287"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287"
+    ]
+  },
+  "CWE-287": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-1391": {
+    "parents": [
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-1390"
+    ]
+  },
+  "CWE-1392": {
+    "parents": [
+      "CWE-1391"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-1390",
+      "CWE-1391"
+    ]
+  },
+  "CWE-1393": {
+    "parents": [
+      "CWE-1392"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-1390",
+      "CWE-1391",
+      "CWE-1392"
+    ]
+  },
+  "CWE-1394": {
+    "parents": [
+      "CWE-1392"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-1390",
+      "CWE-1391",
+      "CWE-1392"
+    ]
+  },
+  "CWE-1395": {
+    "parents": [
+      "CWE-657"
+    ],
+    "ancestors": [
+      "CWE-657",
+      "CWE-710"
+    ]
+  },
+  "CWE-14": {
+    "parents": [
+      "CWE-733"
+    ],
+    "ancestors": [
+      "CWE-435",
+      "CWE-710",
+      "CWE-733",
+      "CWE-758",
+      "CWE-1038"
+    ]
+  },
+  "CWE-733": {
+    "parents": [
+      "CWE-1038"
+    ],
+    "ancestors": [
+      "CWE-435",
+      "CWE-710",
+      "CWE-758",
+      "CWE-1038"
+    ]
+  },
+  "CWE-140": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-141": {
+    "parents": [
+      "CWE-140"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-140",
+      "CWE-707"
+    ]
+  },
+  "CWE-142": {
+    "parents": [
+      "CWE-140"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-140",
+      "CWE-707"
+    ]
+  },
+  "CWE-1420": {
+    "parents": [
+      "CWE-669"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-669"
+    ]
+  },
+  "CWE-669": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-1421": {
+    "parents": [
+      "CWE-1420"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-669",
+      "CWE-1420"
+    ]
+  },
+  "CWE-1422": {
+    "parents": [
+      "CWE-1420"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-669",
+      "CWE-1420"
+    ]
+  },
+  "CWE-1423": {
+    "parents": [
+      "CWE-1420"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-669",
+      "CWE-1420"
+    ]
+  },
+  "CWE-1426": {
+    "parents": [
+      "CWE-707"
+    ],
+    "ancestors": [
+      "CWE-707"
+    ]
+  },
+  "CWE-1427": {
+    "parents": [
+      "CWE-77"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-77",
+      "CWE-707"
+    ]
+  },
+  "CWE-77": {
+    "parents": [
+      "CWE-74"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-707"
+    ]
+  },
+  "CWE-1428": {
+    "parents": [
+      "CWE-319"
+    ],
+    "ancestors": [
+      "CWE-311",
+      "CWE-319",
+      "CWE-693"
+    ]
+  },
+  "CWE-319": {
+    "parents": [
+      "CWE-311"
+    ],
+    "ancestors": [
+      "CWE-311",
+      "CWE-693"
+    ]
+  },
+  "CWE-1429": {
+    "parents": [
+      "CWE-223"
+    ],
+    "ancestors": [
+      "CWE-221",
+      "CWE-223",
+      "CWE-664"
+    ]
+  },
+  "CWE-223": {
+    "parents": [
+      "CWE-221"
+    ],
+    "ancestors": [
+      "CWE-221",
+      "CWE-664"
+    ]
+  },
+  "CWE-143": {
+    "parents": [
+      "CWE-140"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-140",
+      "CWE-707"
+    ]
+  },
+  "CWE-1431": {
+    "parents": [
+      "CWE-200"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-1434": {
+    "parents": [
+      "CWE-440",
+      "CWE-665"
+    ],
+    "ancestors": [
+      "CWE-440",
+      "CWE-664",
+      "CWE-665",
+      "CWE-684",
+      "CWE-710"
+    ]
+  },
+  "CWE-440": {
+    "parents": [
+      "CWE-684"
+    ],
+    "ancestors": [
+      "CWE-684",
+      "CWE-710"
+    ]
+  },
+  "CWE-144": {
+    "parents": [
+      "CWE-140"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-140",
+      "CWE-707"
+    ]
+  },
+  "CWE-145": {
+    "parents": [
+      "CWE-140"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-140",
+      "CWE-707"
+    ]
+  },
+  "CWE-146": {
+    "parents": [
+      "CWE-140"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-140",
+      "CWE-707"
+    ]
+  },
+  "CWE-147": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-148": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-149": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-15": {
+    "parents": [
+      "CWE-610",
+      "CWE-642"
+    ],
+    "ancestors": [
+      "CWE-610",
+      "CWE-642",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-642": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-150": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-151": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-152": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-153": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-154": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-155": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-156": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-157": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-158": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-159": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-160": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-161": {
+    "parents": [
+      "CWE-160"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-160",
+      "CWE-707"
+    ]
+  },
+  "CWE-162": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-163": {
+    "parents": [
+      "CWE-162"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-162",
+      "CWE-707"
+    ]
+  },
+  "CWE-164": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-165": {
+    "parents": [
+      "CWE-164"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-164",
+      "CWE-707"
+    ]
+  },
+  "CWE-166": {
+    "parents": [
+      "CWE-159",
+      "CWE-228"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-159",
+      "CWE-228",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-228": {
+    "parents": [
+      "CWE-703",
+      "CWE-707"
+    ],
+    "ancestors": [
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-167": {
+    "parents": [
+      "CWE-159",
+      "CWE-228"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-159",
+      "CWE-228",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-168": {
+    "parents": [
+      "CWE-159",
+      "CWE-228"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-159",
+      "CWE-228",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-170": {
+    "parents": [
+      "CWE-707"
+    ],
+    "ancestors": [
+      "CWE-707"
+    ]
+  },
+  "CWE-172": {
+    "parents": [
+      "CWE-707"
+    ],
+    "ancestors": [
+      "CWE-707"
+    ]
+  },
+  "CWE-173": {
+    "parents": [
+      "CWE-172"
+    ],
+    "ancestors": [
+      "CWE-172",
+      "CWE-707"
+    ]
+  },
+  "CWE-174": {
+    "parents": [
+      "CWE-172",
+      "CWE-675"
+    ],
+    "ancestors": [
+      "CWE-172",
+      "CWE-573",
+      "CWE-675",
+      "CWE-707",
+      "CWE-710"
+    ]
+  },
+  "CWE-175": {
+    "parents": [
+      "CWE-172"
+    ],
+    "ancestors": [
+      "CWE-172",
+      "CWE-707"
+    ]
+  },
+  "CWE-176": {
+    "parents": [
+      "CWE-172"
+    ],
+    "ancestors": [
+      "CWE-172",
+      "CWE-707"
+    ]
+  },
+  "CWE-177": {
+    "parents": [
+      "CWE-172"
+    ],
+    "ancestors": [
+      "CWE-172",
+      "CWE-707"
+    ]
+  },
+  "CWE-178": {
+    "parents": [
+      "CWE-706"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-706": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-179": {
+    "parents": [
+      "CWE-20",
+      "CWE-696"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-691",
+      "CWE-696",
+      "CWE-707"
+    ]
+  },
+  "CWE-180": {
+    "parents": [
+      "CWE-179"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-179",
+      "CWE-691",
+      "CWE-696",
+      "CWE-707"
+    ]
+  },
+  "CWE-181": {
+    "parents": [
+      "CWE-179"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-179",
+      "CWE-691",
+      "CWE-696",
+      "CWE-707"
+    ]
+  },
+  "CWE-182": {
+    "parents": [
+      "CWE-707"
+    ],
+    "ancestors": [
+      "CWE-707"
+    ]
+  },
+  "CWE-183": {
+    "parents": [
+      "CWE-697"
+    ],
+    "ancestors": [
+      "CWE-697"
+    ]
+  },
+  "CWE-184": {
+    "parents": [
+      "CWE-693",
+      "CWE-1023"
+    ],
+    "ancestors": [
+      "CWE-693",
+      "CWE-697",
+      "CWE-1023"
+    ]
+  },
+  "CWE-185": {
+    "parents": [
+      "CWE-697"
+    ],
+    "ancestors": [
+      "CWE-697"
+    ]
+  },
+  "CWE-186": {
+    "parents": [
+      "CWE-185"
+    ],
+    "ancestors": [
+      "CWE-185",
+      "CWE-697"
+    ]
+  },
+  "CWE-187": {
+    "parents": [
+      "CWE-1023"
+    ],
+    "ancestors": [
+      "CWE-697",
+      "CWE-1023"
+    ]
+  },
+  "CWE-188": {
+    "parents": [
+      "CWE-435",
+      "CWE-1105"
+    ],
+    "ancestors": [
+      "CWE-435",
+      "CWE-710",
+      "CWE-758",
+      "CWE-1061",
+      "CWE-1105"
+    ]
+  },
+  "CWE-190": {
+    "parents": [
+      "CWE-682"
+    ],
+    "ancestors": [
+      "CWE-682"
+    ]
+  },
+  "CWE-191": {
+    "parents": [
+      "CWE-682"
+    ],
+    "ancestors": [
+      "CWE-682"
+    ]
+  },
+  "CWE-192": {
+    "parents": [
+      "CWE-681"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-681",
+      "CWE-704"
+    ]
+  },
+  "CWE-681": {
+    "parents": [
+      "CWE-704"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-704"
+    ]
+  },
+  "CWE-193": {
+    "parents": [
+      "CWE-682"
+    ],
+    "ancestors": [
+      "CWE-682"
+    ]
+  },
+  "CWE-194": {
+    "parents": [
+      "CWE-681"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-681",
+      "CWE-704"
+    ]
+  },
+  "CWE-195": {
+    "parents": [
+      "CWE-681"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-681",
+      "CWE-704"
+    ]
+  },
+  "CWE-196": {
+    "parents": [
+      "CWE-681"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-681",
+      "CWE-704"
+    ]
+  },
+  "CWE-197": {
+    "parents": [
+      "CWE-681"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-681",
+      "CWE-704"
+    ]
+  },
+  "CWE-198": {
+    "parents": [
+      "CWE-188"
+    ],
+    "ancestors": [
+      "CWE-188",
+      "CWE-435",
+      "CWE-710",
+      "CWE-758",
+      "CWE-1061",
+      "CWE-1105"
+    ]
+  },
+  "CWE-201": {
+    "parents": [
+      "CWE-200"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-202": {
+    "parents": [
+      "CWE-1230"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-1230"
+    ]
+  },
+  "CWE-204": {
+    "parents": [
+      "CWE-203"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-203",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-205": {
+    "parents": [
+      "CWE-203"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-203",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-206": {
+    "parents": [
+      "CWE-205"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-203",
+      "CWE-205",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-207": {
+    "parents": [
+      "CWE-205"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-203",
+      "CWE-205",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-209": {
+    "parents": [
+      "CWE-200",
+      "CWE-755"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-664",
+      "CWE-668",
+      "CWE-703",
+      "CWE-755"
+    ]
+  },
+  "CWE-755": {
+    "parents": [
+      "CWE-703"
+    ],
+    "ancestors": [
+      "CWE-703"
+    ]
+  },
+  "CWE-210": {
+    "parents": [
+      "CWE-209"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-209",
+      "CWE-664",
+      "CWE-668",
+      "CWE-703",
+      "CWE-755"
+    ]
+  },
+  "CWE-211": {
+    "parents": [
+      "CWE-209"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-209",
+      "CWE-664",
+      "CWE-668",
+      "CWE-703",
+      "CWE-755"
+    ]
+  },
+  "CWE-213": {
+    "parents": [
+      "CWE-200"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-214": {
+    "parents": [
+      "CWE-497"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-497",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-497": {
+    "parents": [
+      "CWE-200"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-215": {
+    "parents": [
+      "CWE-200"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-216": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-217": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-218": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-219": {
+    "parents": [
+      "CWE-552"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-552",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-552": {
+    "parents": [
+      "CWE-285",
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-22": {
+    "parents": [
+      "CWE-706"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-220": {
+    "parents": [
+      "CWE-552"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-552",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-221": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-222": {
+    "parents": [
+      "CWE-221"
+    ],
+    "ancestors": [
+      "CWE-221",
+      "CWE-664"
+    ]
+  },
+  "CWE-224": {
+    "parents": [
+      "CWE-221"
+    ],
+    "ancestors": [
+      "CWE-221",
+      "CWE-664"
+    ]
+  },
+  "CWE-225": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-459": {
+    "parents": [
+      "CWE-404"
+    ],
+    "ancestors": [
+      "CWE-404",
+      "CWE-664"
+    ]
+  },
+  "CWE-229": {
+    "parents": [
+      "CWE-228"
+    ],
+    "ancestors": [
+      "CWE-228",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-23": {
+    "parents": [
+      "CWE-22"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-230": {
+    "parents": [
+      "CWE-229"
+    ],
+    "ancestors": [
+      "CWE-228",
+      "CWE-229",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-231": {
+    "parents": [
+      "CWE-229"
+    ],
+    "ancestors": [
+      "CWE-228",
+      "CWE-229",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-232": {
+    "parents": [
+      "CWE-229"
+    ],
+    "ancestors": [
+      "CWE-228",
+      "CWE-229",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-233": {
+    "parents": [
+      "CWE-228"
+    ],
+    "ancestors": [
+      "CWE-228",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-234": {
+    "parents": [
+      "CWE-233"
+    ],
+    "ancestors": [
+      "CWE-228",
+      "CWE-233",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-235": {
+    "parents": [
+      "CWE-233"
+    ],
+    "ancestors": [
+      "CWE-228",
+      "CWE-233",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-236": {
+    "parents": [
+      "CWE-233"
+    ],
+    "ancestors": [
+      "CWE-228",
+      "CWE-233",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-237": {
+    "parents": [
+      "CWE-228"
+    ],
+    "ancestors": [
+      "CWE-228",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-238": {
+    "parents": [
+      "CWE-237"
+    ],
+    "ancestors": [
+      "CWE-228",
+      "CWE-237",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-239": {
+    "parents": [
+      "CWE-237"
+    ],
+    "ancestors": [
+      "CWE-228",
+      "CWE-237",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-24": {
+    "parents": [
+      "CWE-23"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-23",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-241": {
+    "parents": [
+      "CWE-228"
+    ],
+    "ancestors": [
+      "CWE-228",
+      "CWE-703",
+      "CWE-707"
+    ]
+  },
+  "CWE-242": {
+    "parents": [
+      "CWE-1177"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1177"
+    ]
+  },
+  "CWE-243": {
+    "parents": [
+      "CWE-573",
+      "CWE-669"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-664",
+      "CWE-669",
+      "CWE-710"
+    ]
+  },
+  "CWE-244": {
+    "parents": [
+      "CWE-226"
+    ],
+    "ancestors": [
+      "CWE-212",
+      "CWE-226",
+      "CWE-404",
+      "CWE-459",
+      "CWE-664",
+      "CWE-669"
+    ]
+  },
+  "CWE-245": {
+    "parents": [
+      "CWE-695"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-695",
+      "CWE-710"
+    ]
+  },
+  "CWE-246": {
+    "parents": [
+      "CWE-695"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-695",
+      "CWE-710"
+    ]
+  },
+  "CWE-247": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-248": {
+    "parents": [
+      "CWE-705",
+      "CWE-755"
+    ],
+    "ancestors": [
+      "CWE-691",
+      "CWE-703",
+      "CWE-705",
+      "CWE-755"
+    ]
+  },
+  "CWE-705": {
+    "parents": [
+      "CWE-691"
+    ],
+    "ancestors": [
+      "CWE-691"
+    ]
+  },
+  "CWE-249": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-25": {
+    "parents": [
+      "CWE-23"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-23",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-250": {
+    "parents": [
+      "CWE-269",
+      "CWE-657"
+    ],
+    "ancestors": [
+      "CWE-269",
+      "CWE-284",
+      "CWE-657",
+      "CWE-710"
+    ]
+  },
+  "CWE-269": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-252": {
+    "parents": [
+      "CWE-754"
+    ],
+    "ancestors": [
+      "CWE-703",
+      "CWE-754"
+    ]
+  },
+  "CWE-754": {
+    "parents": [
+      "CWE-703"
+    ],
+    "ancestors": [
+      "CWE-703"
+    ]
+  },
+  "CWE-253": {
+    "parents": [
+      "CWE-573",
+      "CWE-754"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-703",
+      "CWE-710",
+      "CWE-754"
+    ]
+  },
+  "CWE-256": {
+    "parents": [
+      "CWE-522"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-522",
+      "CWE-664",
+      "CWE-668",
+      "CWE-1390"
+    ]
+  },
+  "CWE-522": {
+    "parents": [
+      "CWE-287",
+      "CWE-668",
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-664",
+      "CWE-668",
+      "CWE-1390"
+    ]
+  },
+  "CWE-257": {
+    "parents": [
+      "CWE-522"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-522",
+      "CWE-664",
+      "CWE-668",
+      "CWE-1390"
+    ]
+  },
+  "CWE-258": {
+    "parents": [
+      "CWE-260",
+      "CWE-521"
+    ],
+    "ancestors": [
+      "CWE-260",
+      "CWE-284",
+      "CWE-287",
+      "CWE-521",
+      "CWE-522",
+      "CWE-664",
+      "CWE-668",
+      "CWE-1390",
+      "CWE-1391"
+    ]
+  },
+  "CWE-521": {
+    "parents": [
+      "CWE-287",
+      "CWE-1391"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-1390",
+      "CWE-1391"
+    ]
+  },
+  "CWE-259": {
+    "parents": [
+      "CWE-798"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-330",
+      "CWE-344",
+      "CWE-657",
+      "CWE-671",
+      "CWE-693",
+      "CWE-710",
+      "CWE-798",
+      "CWE-1390",
+      "CWE-1391"
+    ]
+  },
+  "CWE-798": {
+    "parents": [
+      "CWE-287",
+      "CWE-344",
+      "CWE-671",
+      "CWE-1391"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-330",
+      "CWE-344",
+      "CWE-657",
+      "CWE-671",
+      "CWE-693",
+      "CWE-710",
+      "CWE-1390",
+      "CWE-1391"
+    ]
+  },
+  "CWE-26": {
+    "parents": [
+      "CWE-23"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-23",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-261": {
+    "parents": [
+      "CWE-522"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-522",
+      "CWE-664",
+      "CWE-668",
+      "CWE-1390"
+    ]
+  },
+  "CWE-262": {
+    "parents": [
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-1390"
+    ]
+  },
+  "CWE-263": {
+    "parents": [
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-1390"
+    ]
+  },
+  "CWE-267": {
+    "parents": [
+      "CWE-269"
+    ],
+    "ancestors": [
+      "CWE-269",
+      "CWE-284"
+    ]
+  },
+  "CWE-268": {
+    "parents": [
+      "CWE-269"
+    ],
+    "ancestors": [
+      "CWE-269",
+      "CWE-284"
+    ]
+  },
+  "CWE-27": {
+    "parents": [
+      "CWE-23"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-23",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-270": {
+    "parents": [
+      "CWE-269"
+    ],
+    "ancestors": [
+      "CWE-269",
+      "CWE-284"
+    ]
+  },
+  "CWE-271": {
+    "parents": [
+      "CWE-269"
+    ],
+    "ancestors": [
+      "CWE-269",
+      "CWE-284"
+    ]
+  },
+  "CWE-272": {
+    "parents": [
+      "CWE-271"
+    ],
+    "ancestors": [
+      "CWE-269",
+      "CWE-271",
+      "CWE-284"
+    ]
+  },
+  "CWE-273": {
+    "parents": [
+      "CWE-271",
+      "CWE-754"
+    ],
+    "ancestors": [
+      "CWE-269",
+      "CWE-271",
+      "CWE-284",
+      "CWE-703",
+      "CWE-754"
+    ]
+  },
+  "CWE-274": {
+    "parents": [
+      "CWE-269",
+      "CWE-755"
+    ],
+    "ancestors": [
+      "CWE-269",
+      "CWE-284",
+      "CWE-703",
+      "CWE-755"
+    ]
+  },
+  "CWE-276": {
+    "parents": [
+      "CWE-732"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-664",
+      "CWE-668",
+      "CWE-732"
+    ]
+  },
+  "CWE-277": {
+    "parents": [
+      "CWE-732"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-664",
+      "CWE-668",
+      "CWE-732"
+    ]
+  },
+  "CWE-278": {
+    "parents": [
+      "CWE-732"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-664",
+      "CWE-668",
+      "CWE-732"
+    ]
+  },
+  "CWE-279": {
+    "parents": [
+      "CWE-732"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-664",
+      "CWE-668",
+      "CWE-732"
+    ]
+  },
+  "CWE-28": {
+    "parents": [
+      "CWE-23"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-23",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-280": {
+    "parents": [
+      "CWE-755"
+    ],
+    "ancestors": [
+      "CWE-703",
+      "CWE-755"
+    ]
+  },
+  "CWE-281": {
+    "parents": [
+      "CWE-732"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-664",
+      "CWE-668",
+      "CWE-732"
+    ]
+  },
+  "CWE-282": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-283": {
+    "parents": [
+      "CWE-282"
+    ],
+    "ancestors": [
+      "CWE-282",
+      "CWE-284"
+    ]
+  },
+  "CWE-286": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-306": {
+    "parents": [
+      "CWE-287"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287"
+    ]
+  },
+  "CWE-289": {
+    "parents": [
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-1390"
+    ]
+  },
+  "CWE-29": {
+    "parents": [
+      "CWE-23"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-23",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-290": {
+    "parents": [
+      "CWE-287",
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-1390"
+    ]
+  },
+  "CWE-291": {
+    "parents": [
+      "CWE-290",
+      "CWE-923"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-290",
+      "CWE-923",
+      "CWE-1390"
+    ]
+  },
+  "CWE-292": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-293": {
+    "parents": [
+      "CWE-290"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-290",
+      "CWE-1390"
+    ]
+  },
+  "CWE-294": {
+    "parents": [
+      "CWE-287",
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-1390"
+    ]
+  },
+  "CWE-295": {
+    "parents": [
+      "CWE-287"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287"
+    ]
+  },
+  "CWE-296": {
+    "parents": [
+      "CWE-295",
+      "CWE-573"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-295",
+      "CWE-573",
+      "CWE-710"
+    ]
+  },
+  "CWE-297": {
+    "parents": [
+      "CWE-295",
+      "CWE-923"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-295",
+      "CWE-923"
+    ]
+  },
+  "CWE-298": {
+    "parents": [
+      "CWE-295",
+      "CWE-672"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-295",
+      "CWE-664",
+      "CWE-666",
+      "CWE-672"
+    ]
+  },
+  "CWE-672": {
+    "parents": [
+      "CWE-666"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-666"
+    ]
+  },
+  "CWE-299": {
+    "parents": [
+      "CWE-295",
+      "CWE-404"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-295",
+      "CWE-404",
+      "CWE-664"
+    ]
+  },
+  "CWE-30": {
+    "parents": [
+      "CWE-23"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-23",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-300": {
+    "parents": [
+      "CWE-923"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-923"
+    ]
+  },
+  "CWE-301": {
+    "parents": [
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-1390"
+    ]
+  },
+  "CWE-302": {
+    "parents": [
+      "CWE-807",
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-693",
+      "CWE-807",
+      "CWE-1390"
+    ]
+  },
+  "CWE-807": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-303": {
+    "parents": [
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-1390"
+    ]
+  },
+  "CWE-304": {
+    "parents": [
+      "CWE-303",
+      "CWE-573"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-303",
+      "CWE-573",
+      "CWE-710",
+      "CWE-1390"
+    ]
+  },
+  "CWE-305": {
+    "parents": [
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-1390"
+    ]
+  },
+  "CWE-307": {
+    "parents": [
+      "CWE-287",
+      "CWE-799",
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-691",
+      "CWE-799",
+      "CWE-1390"
+    ]
+  },
+  "CWE-799": {
+    "parents": [
+      "CWE-691"
+    ],
+    "ancestors": [
+      "CWE-691"
+    ]
+  },
+  "CWE-308": {
+    "parents": [
+      "CWE-654",
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-654",
+      "CWE-657",
+      "CWE-693",
+      "CWE-710",
+      "CWE-1390"
+    ]
+  },
+  "CWE-654": {
+    "parents": [
+      "CWE-657",
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-657",
+      "CWE-693",
+      "CWE-710"
+    ]
+  },
+  "CWE-309": {
+    "parents": [
+      "CWE-654",
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-654",
+      "CWE-657",
+      "CWE-693",
+      "CWE-710",
+      "CWE-1390"
+    ]
+  },
+  "CWE-31": {
+    "parents": [
+      "CWE-23"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-23",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-311": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-312": {
+    "parents": [
+      "CWE-311",
+      "CWE-922"
+    ],
+    "ancestors": [
+      "CWE-311",
+      "CWE-664",
+      "CWE-693",
+      "CWE-922"
+    ]
+  },
+  "CWE-922": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-313": {
+    "parents": [
+      "CWE-312"
+    ],
+    "ancestors": [
+      "CWE-311",
+      "CWE-312",
+      "CWE-664",
+      "CWE-693",
+      "CWE-922"
+    ]
+  },
+  "CWE-314": {
+    "parents": [
+      "CWE-312"
+    ],
+    "ancestors": [
+      "CWE-311",
+      "CWE-312",
+      "CWE-664",
+      "CWE-693",
+      "CWE-922"
+    ]
+  },
+  "CWE-315": {
+    "parents": [
+      "CWE-312"
+    ],
+    "ancestors": [
+      "CWE-311",
+      "CWE-312",
+      "CWE-664",
+      "CWE-693",
+      "CWE-922"
+    ]
+  },
+  "CWE-316": {
+    "parents": [
+      "CWE-312"
+    ],
+    "ancestors": [
+      "CWE-311",
+      "CWE-312",
+      "CWE-664",
+      "CWE-693",
+      "CWE-922"
+    ]
+  },
+  "CWE-317": {
+    "parents": [
+      "CWE-312"
+    ],
+    "ancestors": [
+      "CWE-311",
+      "CWE-312",
+      "CWE-664",
+      "CWE-693",
+      "CWE-922"
+    ]
+  },
+  "CWE-318": {
+    "parents": [
+      "CWE-312"
+    ],
+    "ancestors": [
+      "CWE-311",
+      "CWE-312",
+      "CWE-664",
+      "CWE-693",
+      "CWE-922"
+    ]
+  },
+  "CWE-32": {
+    "parents": [
+      "CWE-23"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-23",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-321": {
+    "parents": [
+      "CWE-798"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-330",
+      "CWE-344",
+      "CWE-657",
+      "CWE-671",
+      "CWE-693",
+      "CWE-710",
+      "CWE-798",
+      "CWE-1390",
+      "CWE-1391"
+    ]
+  },
+  "CWE-322": {
+    "parents": [
+      "CWE-306"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-306"
+    ]
+  },
+  "CWE-323": {
+    "parents": [
+      "CWE-344"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-344",
+      "CWE-693"
+    ]
+  },
+  "CWE-324": {
+    "parents": [
+      "CWE-672"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-666",
+      "CWE-672"
+    ]
+  },
+  "CWE-325": {
+    "parents": [
+      "CWE-573",
+      "CWE-1240"
+    ],
+    "ancestors": [
+      "CWE-327",
+      "CWE-573",
+      "CWE-693",
+      "CWE-710",
+      "CWE-1240"
+    ]
+  },
+  "CWE-326": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-328": {
+    "parents": [
+      "CWE-326",
+      "CWE-327"
+    ],
+    "ancestors": [
+      "CWE-326",
+      "CWE-327",
+      "CWE-693"
+    ]
+  },
+  "CWE-329": {
+    "parents": [
+      "CWE-573",
+      "CWE-1204"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-573",
+      "CWE-693",
+      "CWE-710",
+      "CWE-1204"
+    ]
+  },
+  "CWE-33": {
+    "parents": [
+      "CWE-23"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-23",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-331": {
+    "parents": [
+      "CWE-330"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-693"
+    ]
+  },
+  "CWE-332": {
+    "parents": [
+      "CWE-331"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-331",
+      "CWE-693"
+    ]
+  },
+  "CWE-333": {
+    "parents": [
+      "CWE-331",
+      "CWE-755"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-331",
+      "CWE-693",
+      "CWE-703",
+      "CWE-755"
+    ]
+  },
+  "CWE-334": {
+    "parents": [
+      "CWE-330"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-693"
+    ]
+  },
+  "CWE-335": {
+    "parents": [
+      "CWE-330"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-693"
+    ]
+  },
+  "CWE-336": {
+    "parents": [
+      "CWE-335"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-335",
+      "CWE-693"
+    ]
+  },
+  "CWE-337": {
+    "parents": [
+      "CWE-335"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-335",
+      "CWE-693"
+    ]
+  },
+  "CWE-338": {
+    "parents": [
+      "CWE-330"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-693"
+    ]
+  },
+  "CWE-339": {
+    "parents": [
+      "CWE-335"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-335",
+      "CWE-693"
+    ]
+  },
+  "CWE-34": {
+    "parents": [
+      "CWE-23"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-23",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-340": {
+    "parents": [
+      "CWE-330"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-693"
+    ]
+  },
+  "CWE-341": {
+    "parents": [
+      "CWE-340"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-340",
+      "CWE-693"
+    ]
+  },
+  "CWE-342": {
+    "parents": [
+      "CWE-340"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-340",
+      "CWE-693"
+    ]
+  },
+  "CWE-343": {
+    "parents": [
+      "CWE-340"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-340",
+      "CWE-693"
+    ]
+  },
+  "CWE-347": {
+    "parents": [
+      "CWE-345"
+    ],
+    "ancestors": [
+      "CWE-345",
+      "CWE-693"
+    ]
+  },
+  "CWE-348": {
+    "parents": [
+      "CWE-345"
+    ],
+    "ancestors": [
+      "CWE-345",
+      "CWE-693"
+    ]
+  },
+  "CWE-349": {
+    "parents": [
+      "CWE-345"
+    ],
+    "ancestors": [
+      "CWE-345",
+      "CWE-693"
+    ]
+  },
+  "CWE-35": {
+    "parents": [
+      "CWE-23"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-23",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-350": {
+    "parents": [
+      "CWE-290",
+      "CWE-807"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-290",
+      "CWE-693",
+      "CWE-807",
+      "CWE-1390"
+    ]
+  },
+  "CWE-351": {
+    "parents": [
+      "CWE-345"
+    ],
+    "ancestors": [
+      "CWE-345",
+      "CWE-693"
+    ]
+  },
+  "CWE-352": {
+    "parents": [
+      "CWE-345"
+    ],
+    "ancestors": [
+      "CWE-345",
+      "CWE-693"
+    ]
+  },
+  "CWE-353": {
+    "parents": [
+      "CWE-345"
+    ],
+    "ancestors": [
+      "CWE-345",
+      "CWE-693"
+    ]
+  },
+  "CWE-354": {
+    "parents": [
+      "CWE-345",
+      "CWE-754"
+    ],
+    "ancestors": [
+      "CWE-345",
+      "CWE-693",
+      "CWE-703",
+      "CWE-754"
+    ]
+  },
+  "CWE-356": {
+    "parents": [
+      "CWE-221"
+    ],
+    "ancestors": [
+      "CWE-221",
+      "CWE-664"
+    ]
+  },
+  "CWE-357": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-358": {
+    "parents": [
+      "CWE-573",
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-693",
+      "CWE-710"
+    ]
+  },
+  "CWE-359": {
+    "parents": [
+      "CWE-200"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-36": {
+    "parents": [
+      "CWE-22"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-360": {
+    "parents": [
+      "CWE-345"
+    ],
+    "ancestors": [
+      "CWE-345",
+      "CWE-693"
+    ]
+  },
+  "CWE-363": {
+    "parents": [
+      "CWE-367"
+    ],
+    "ancestors": [
+      "CWE-362",
+      "CWE-367",
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-367": {
+    "parents": [
+      "CWE-362"
+    ],
+    "ancestors": [
+      "CWE-362",
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-364": {
+    "parents": [
+      "CWE-362"
+    ],
+    "ancestors": [
+      "CWE-362",
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-365": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-366": {
+    "parents": [
+      "CWE-362"
+    ],
+    "ancestors": [
+      "CWE-362",
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-368": {
+    "parents": [
+      "CWE-362"
+    ],
+    "ancestors": [
+      "CWE-362",
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-369": {
+    "parents": [
+      "CWE-682"
+    ],
+    "ancestors": [
+      "CWE-682"
+    ]
+  },
+  "CWE-37": {
+    "parents": [
+      "CWE-36",
+      "CWE-160"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-36",
+      "CWE-138",
+      "CWE-160",
+      "CWE-664",
+      "CWE-706",
+      "CWE-707"
+    ]
+  },
+  "CWE-370": {
+    "parents": [
+      "CWE-299"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-295",
+      "CWE-299",
+      "CWE-404",
+      "CWE-664"
+    ]
+  },
+  "CWE-372": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-373": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-374": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-375": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-377": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-378": {
+    "parents": [
+      "CWE-377"
+    ],
+    "ancestors": [
+      "CWE-377",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-379": {
+    "parents": [
+      "CWE-377"
+    ],
+    "ancestors": [
+      "CWE-377",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-38": {
+    "parents": [
+      "CWE-36"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-36",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-382": {
+    "parents": [
+      "CWE-705"
+    ],
+    "ancestors": [
+      "CWE-691",
+      "CWE-705"
+    ]
+  },
+  "CWE-383": {
+    "parents": [
+      "CWE-695"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-695",
+      "CWE-710"
+    ]
+  },
+  "CWE-384": {
+    "parents": [
+      "CWE-610"
+    ],
+    "ancestors": [
+      "CWE-610",
+      "CWE-664"
+    ]
+  },
+  "CWE-385": {
+    "parents": [
+      "CWE-514"
+    ],
+    "ancestors": [
+      "CWE-514",
+      "CWE-664",
+      "CWE-1229"
+    ]
+  },
+  "CWE-514": {
+    "parents": [
+      "CWE-1229"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-1229"
+    ]
+  },
+  "CWE-386": {
+    "parents": [
+      "CWE-706"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-39": {
+    "parents": [
+      "CWE-36"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-36",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-390": {
+    "parents": [
+      "CWE-755"
+    ],
+    "ancestors": [
+      "CWE-703",
+      "CWE-755"
+    ]
+  },
+  "CWE-391": {
+    "parents": [
+      "CWE-754"
+    ],
+    "ancestors": [
+      "CWE-703",
+      "CWE-754"
+    ]
+  },
+  "CWE-392": {
+    "parents": [
+      "CWE-684",
+      "CWE-755"
+    ],
+    "ancestors": [
+      "CWE-684",
+      "CWE-703",
+      "CWE-710",
+      "CWE-755"
+    ]
+  },
+  "CWE-393": {
+    "parents": [
+      "CWE-684",
+      "CWE-703"
+    ],
+    "ancestors": [
+      "CWE-684",
+      "CWE-703",
+      "CWE-710"
+    ]
+  },
+  "CWE-394": {
+    "parents": [
+      "CWE-754"
+    ],
+    "ancestors": [
+      "CWE-703",
+      "CWE-754"
+    ]
+  },
+  "CWE-395": {
+    "parents": [
+      "CWE-705",
+      "CWE-755"
+    ],
+    "ancestors": [
+      "CWE-691",
+      "CWE-703",
+      "CWE-705",
+      "CWE-755"
+    ]
+  },
+  "CWE-396": {
+    "parents": [
+      "CWE-221",
+      "CWE-705",
+      "CWE-755"
+    ],
+    "ancestors": [
+      "CWE-221",
+      "CWE-664",
+      "CWE-691",
+      "CWE-703",
+      "CWE-705",
+      "CWE-755"
+    ]
+  },
+  "CWE-397": {
+    "parents": [
+      "CWE-221",
+      "CWE-703",
+      "CWE-705"
+    ],
+    "ancestors": [
+      "CWE-221",
+      "CWE-664",
+      "CWE-691",
+      "CWE-703",
+      "CWE-705"
+    ]
+  },
+  "CWE-40": {
+    "parents": [
+      "CWE-36"
+    ],
+    "ancestors": [
+      "CWE-22",
+      "CWE-36",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-401": {
+    "parents": [
+      "CWE-404",
+      "CWE-772"
+    ],
+    "ancestors": [
+      "CWE-404",
+      "CWE-664",
+      "CWE-772"
+    ]
+  },
+  "CWE-402": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-403": {
+    "parents": [
+      "CWE-402"
+    ],
+    "ancestors": [
+      "CWE-402",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-406": {
+    "parents": [
+      "CWE-405"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664"
+    ]
+  },
+  "CWE-408": {
+    "parents": [
+      "CWE-405",
+      "CWE-696"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664",
+      "CWE-691",
+      "CWE-696"
+    ]
+  },
+  "CWE-409": {
+    "parents": [
+      "CWE-405"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664"
+    ]
+  },
+  "CWE-41": {
+    "parents": [
+      "CWE-706",
+      "CWE-863",
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-410": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-412": {
+    "parents": [
+      "CWE-667"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-667",
+      "CWE-691"
+    ]
+  },
+  "CWE-413": {
+    "parents": [
+      "CWE-667"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-667",
+      "CWE-691"
+    ]
+  },
+  "CWE-414": {
+    "parents": [
+      "CWE-667"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-667",
+      "CWE-691"
+    ]
+  },
+  "CWE-415": {
+    "parents": [
+      "CWE-666",
+      "CWE-672",
+      "CWE-825",
+      "CWE-1341"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-573",
+      "CWE-664",
+      "CWE-666",
+      "CWE-672",
+      "CWE-675",
+      "CWE-710",
+      "CWE-825",
+      "CWE-1341"
+    ]
+  },
+  "CWE-825": {
+    "parents": [
+      "CWE-119",
+      "CWE-672"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664",
+      "CWE-666",
+      "CWE-672"
+    ]
+  },
+  "CWE-666": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-416": {
+    "parents": [
+      "CWE-672",
+      "CWE-825"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664",
+      "CWE-666",
+      "CWE-672",
+      "CWE-825"
+    ]
+  },
+  "CWE-419": {
+    "parents": [
+      "CWE-923"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-923"
+    ]
+  },
+  "CWE-42": {
+    "parents": [
+      "CWE-41",
+      "CWE-162"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-138",
+      "CWE-162",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-707",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-421": {
+    "parents": [
+      "CWE-362",
+      "CWE-420"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-362",
+      "CWE-420",
+      "CWE-662",
+      "CWE-664",
+      "CWE-691",
+      "CWE-923"
+    ]
+  },
+  "CWE-422": {
+    "parents": [
+      "CWE-360",
+      "CWE-420"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-345",
+      "CWE-360",
+      "CWE-420",
+      "CWE-693",
+      "CWE-923"
+    ]
+  },
+  "CWE-423": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-424": {
+    "parents": [
+      "CWE-638",
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-638",
+      "CWE-657",
+      "CWE-693",
+      "CWE-710",
+      "CWE-862"
+    ]
+  },
+  "CWE-638": {
+    "parents": [
+      "CWE-657",
+      "CWE-862"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-657",
+      "CWE-710",
+      "CWE-862"
+    ]
+  },
+  "CWE-425": {
+    "parents": [
+      "CWE-288",
+      "CWE-424",
+      "CWE-862"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-288",
+      "CWE-306",
+      "CWE-424",
+      "CWE-638",
+      "CWE-657",
+      "CWE-693",
+      "CWE-710",
+      "CWE-862"
+    ]
+  },
+  "CWE-426": {
+    "parents": [
+      "CWE-642",
+      "CWE-668",
+      "CWE-673"
+    ],
+    "ancestors": [
+      "CWE-642",
+      "CWE-664",
+      "CWE-668",
+      "CWE-673"
+    ]
+  },
+  "CWE-673": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-427": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-428": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-43": {
+    "parents": [
+      "CWE-42",
+      "CWE-163"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-42",
+      "CWE-138",
+      "CWE-162",
+      "CWE-163",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-707",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-430": {
+    "parents": [
+      "CWE-691"
+    ],
+    "ancestors": [
+      "CWE-691"
+    ]
+  },
+  "CWE-431": {
+    "parents": [
+      "CWE-691"
+    ],
+    "ancestors": [
+      "CWE-691"
+    ]
+  },
+  "CWE-432": {
+    "parents": [
+      "CWE-364"
+    ],
+    "ancestors": [
+      "CWE-362",
+      "CWE-364",
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-433": {
+    "parents": [
+      "CWE-219"
+    ],
+    "ancestors": [
+      "CWE-219",
+      "CWE-284",
+      "CWE-285",
+      "CWE-552",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-434": {
+    "parents": [
+      "CWE-669"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-669"
+    ]
+  },
+  "CWE-437": {
+    "parents": [
+      "CWE-436"
+    ],
+    "ancestors": [
+      "CWE-435",
+      "CWE-436"
+    ]
+  },
+  "CWE-439": {
+    "parents": [
+      "CWE-435"
+    ],
+    "ancestors": [
+      "CWE-435"
+    ]
+  },
+  "CWE-44": {
+    "parents": [
+      "CWE-41"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-443": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-444": {
+    "parents": [
+      "CWE-436"
+    ],
+    "ancestors": [
+      "CWE-435",
+      "CWE-436"
+    ]
+  },
+  "CWE-446": {
+    "parents": [
+      "CWE-684"
+    ],
+    "ancestors": [
+      "CWE-684",
+      "CWE-710"
+    ]
+  },
+  "CWE-447": {
+    "parents": [
+      "CWE-446",
+      "CWE-671"
+    ],
+    "ancestors": [
+      "CWE-446",
+      "CWE-657",
+      "CWE-671",
+      "CWE-684",
+      "CWE-710"
+    ]
+  },
+  "CWE-671": {
+    "parents": [
+      "CWE-657"
+    ],
+    "ancestors": [
+      "CWE-657",
+      "CWE-710"
+    ]
+  },
+  "CWE-448": {
+    "parents": [
+      "CWE-446"
+    ],
+    "ancestors": [
+      "CWE-446",
+      "CWE-684",
+      "CWE-710"
+    ]
+  },
+  "CWE-449": {
+    "parents": [
+      "CWE-446"
+    ],
+    "ancestors": [
+      "CWE-446",
+      "CWE-684",
+      "CWE-710"
+    ]
+  },
+  "CWE-45": {
+    "parents": [
+      "CWE-44",
+      "CWE-165"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-44",
+      "CWE-138",
+      "CWE-164",
+      "CWE-165",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-707",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-450": {
+    "parents": [
+      "CWE-357"
+    ],
+    "ancestors": [
+      "CWE-357",
+      "CWE-693"
+    ]
+  },
+  "CWE-453": {
+    "parents": [
+      "CWE-1188"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-344",
+      "CWE-664",
+      "CWE-665",
+      "CWE-693",
+      "CWE-1188",
+      "CWE-1419"
+    ]
+  },
+  "CWE-454": {
+    "parents": [
+      "CWE-1419"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-665",
+      "CWE-1419"
+    ]
+  },
+  "CWE-455": {
+    "parents": [
+      "CWE-636",
+      "CWE-665",
+      "CWE-705"
+    ],
+    "ancestors": [
+      "CWE-636",
+      "CWE-657",
+      "CWE-664",
+      "CWE-665",
+      "CWE-691",
+      "CWE-703",
+      "CWE-705",
+      "CWE-710",
+      "CWE-755"
+    ]
+  },
+  "CWE-636": {
+    "parents": [
+      "CWE-657",
+      "CWE-755"
+    ],
+    "ancestors": [
+      "CWE-657",
+      "CWE-703",
+      "CWE-710",
+      "CWE-755"
+    ]
+  },
+  "CWE-456": {
+    "parents": [
+      "CWE-909"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-665",
+      "CWE-909"
+    ]
+  },
+  "CWE-457": {
+    "parents": [
+      "CWE-908"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-665",
+      "CWE-908"
+    ]
+  },
+  "CWE-908": {
+    "parents": [
+      "CWE-665"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-665"
+    ]
+  },
+  "CWE-458": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-46": {
+    "parents": [
+      "CWE-41",
+      "CWE-162"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-138",
+      "CWE-162",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-707",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-460": {
+    "parents": [
+      "CWE-459",
+      "CWE-755"
+    ],
+    "ancestors": [
+      "CWE-404",
+      "CWE-459",
+      "CWE-664",
+      "CWE-703",
+      "CWE-755"
+    ]
+  },
+  "CWE-462": {
+    "parents": [
+      "CWE-694"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-99",
+      "CWE-573",
+      "CWE-694",
+      "CWE-707",
+      "CWE-710"
+    ]
+  },
+  "CWE-463": {
+    "parents": [
+      "CWE-707"
+    ],
+    "ancestors": [
+      "CWE-707"
+    ]
+  },
+  "CWE-464": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-466": {
+    "parents": [
+      "CWE-119"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664"
+    ]
+  },
+  "CWE-467": {
+    "parents": [
+      "CWE-131"
+    ],
+    "ancestors": [
+      "CWE-131",
+      "CWE-682"
+    ]
+  },
+  "CWE-468": {
+    "parents": [
+      "CWE-682"
+    ],
+    "ancestors": [
+      "CWE-682"
+    ]
+  },
+  "CWE-469": {
+    "parents": [
+      "CWE-682"
+    ],
+    "ancestors": [
+      "CWE-682"
+    ]
+  },
+  "CWE-47": {
+    "parents": [
+      "CWE-41"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-470": {
+    "parents": [
+      "CWE-610",
+      "CWE-913"
+    ],
+    "ancestors": [
+      "CWE-610",
+      "CWE-664",
+      "CWE-913"
+    ]
+  },
+  "CWE-471": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-472": {
+    "parents": [
+      "CWE-471",
+      "CWE-642"
+    ],
+    "ancestors": [
+      "CWE-471",
+      "CWE-642",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-473": {
+    "parents": [
+      "CWE-471"
+    ],
+    "ancestors": [
+      "CWE-471",
+      "CWE-664"
+    ]
+  },
+  "CWE-474": {
+    "parents": [
+      "CWE-758"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-758"
+    ]
+  },
+  "CWE-475": {
+    "parents": [
+      "CWE-573"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-710"
+    ]
+  },
+  "CWE-476": {
+    "parents": [
+      "CWE-710",
+      "CWE-754"
+    ],
+    "ancestors": [
+      "CWE-703",
+      "CWE-710",
+      "CWE-754"
+    ]
+  },
+  "CWE-477": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-478": {
+    "parents": [
+      "CWE-1023"
+    ],
+    "ancestors": [
+      "CWE-697",
+      "CWE-1023"
+    ]
+  },
+  "CWE-479": {
+    "parents": [
+      "CWE-663",
+      "CWE-828"
+    ],
+    "ancestors": [
+      "CWE-362",
+      "CWE-364",
+      "CWE-662",
+      "CWE-663",
+      "CWE-664",
+      "CWE-691",
+      "CWE-828"
+    ]
+  },
+  "CWE-828": {
+    "parents": [
+      "CWE-364"
+    ],
+    "ancestors": [
+      "CWE-362",
+      "CWE-364",
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-663": {
+    "parents": [
+      "CWE-662"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-48": {
+    "parents": [
+      "CWE-41"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-480": {
+    "parents": [
+      "CWE-670"
+    ],
+    "ancestors": [
+      "CWE-670",
+      "CWE-691"
+    ]
+  },
+  "CWE-670": {
+    "parents": [
+      "CWE-691"
+    ],
+    "ancestors": [
+      "CWE-691"
+    ]
+  },
+  "CWE-481": {
+    "parents": [
+      "CWE-480"
+    ],
+    "ancestors": [
+      "CWE-480",
+      "CWE-670",
+      "CWE-691"
+    ]
+  },
+  "CWE-482": {
+    "parents": [
+      "CWE-480"
+    ],
+    "ancestors": [
+      "CWE-480",
+      "CWE-670",
+      "CWE-691"
+    ]
+  },
+  "CWE-483": {
+    "parents": [
+      "CWE-670"
+    ],
+    "ancestors": [
+      "CWE-670",
+      "CWE-691"
+    ]
+  },
+  "CWE-484": {
+    "parents": [
+      "CWE-670",
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-670",
+      "CWE-691",
+      "CWE-710"
+    ]
+  },
+  "CWE-486": {
+    "parents": [
+      "CWE-1025"
+    ],
+    "ancestors": [
+      "CWE-697",
+      "CWE-1025"
+    ]
+  },
+  "CWE-487": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-488": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-49": {
+    "parents": [
+      "CWE-41",
+      "CWE-162"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-138",
+      "CWE-162",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-707",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-491": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-492": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-493": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-494": {
+    "parents": [
+      "CWE-345",
+      "CWE-669"
+    ],
+    "ancestors": [
+      "CWE-345",
+      "CWE-664",
+      "CWE-669",
+      "CWE-693"
+    ]
+  },
+  "CWE-495": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-496": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-498": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-499": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-5": {
+    "parents": [
+      "CWE-319"
+    ],
+    "ancestors": [
+      "CWE-311",
+      "CWE-319",
+      "CWE-693"
+    ]
+  },
+  "CWE-50": {
+    "parents": [
+      "CWE-41",
+      "CWE-161"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-138",
+      "CWE-160",
+      "CWE-161",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-707",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-500": {
+    "parents": [
+      "CWE-493"
+    ],
+    "ancestors": [
+      "CWE-493",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-501": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-502": {
+    "parents": [
+      "CWE-913"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-913"
+    ]
+  },
+  "CWE-506": {
+    "parents": [
+      "CWE-912"
+    ],
+    "ancestors": [
+      "CWE-684",
+      "CWE-710",
+      "CWE-912"
+    ]
+  },
+  "CWE-507": {
+    "parents": [
+      "CWE-506"
+    ],
+    "ancestors": [
+      "CWE-506",
+      "CWE-684",
+      "CWE-710",
+      "CWE-912"
+    ]
+  },
+  "CWE-508": {
+    "parents": [
+      "CWE-507"
+    ],
+    "ancestors": [
+      "CWE-506",
+      "CWE-507",
+      "CWE-684",
+      "CWE-710",
+      "CWE-912"
+    ]
+  },
+  "CWE-509": {
+    "parents": [
+      "CWE-507"
+    ],
+    "ancestors": [
+      "CWE-506",
+      "CWE-507",
+      "CWE-684",
+      "CWE-710",
+      "CWE-912"
+    ]
+  },
+  "CWE-51": {
+    "parents": [
+      "CWE-41"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-510": {
+    "parents": [
+      "CWE-506"
+    ],
+    "ancestors": [
+      "CWE-506",
+      "CWE-684",
+      "CWE-710",
+      "CWE-912"
+    ]
+  },
+  "CWE-511": {
+    "parents": [
+      "CWE-506"
+    ],
+    "ancestors": [
+      "CWE-506",
+      "CWE-684",
+      "CWE-710",
+      "CWE-912"
+    ]
+  },
+  "CWE-512": {
+    "parents": [
+      "CWE-506"
+    ],
+    "ancestors": [
+      "CWE-506",
+      "CWE-684",
+      "CWE-710",
+      "CWE-912"
+    ]
+  },
+  "CWE-515": {
+    "parents": [
+      "CWE-514"
+    ],
+    "ancestors": [
+      "CWE-514",
+      "CWE-664",
+      "CWE-1229"
+    ]
+  },
+  "CWE-516": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-52": {
+    "parents": [
+      "CWE-41",
+      "CWE-163"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-138",
+      "CWE-162",
+      "CWE-163",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-707",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-520": {
+    "parents": [
+      "CWE-266"
+    ],
+    "ancestors": [
+      "CWE-266",
+      "CWE-269",
+      "CWE-284"
+    ]
+  },
+  "CWE-523": {
+    "parents": [
+      "CWE-522"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-522",
+      "CWE-664",
+      "CWE-668",
+      "CWE-1390"
+    ]
+  },
+  "CWE-524": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-525": {
+    "parents": [
+      "CWE-524"
+    ],
+    "ancestors": [
+      "CWE-524",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-526": {
+    "parents": [
+      "CWE-312"
+    ],
+    "ancestors": [
+      "CWE-311",
+      "CWE-312",
+      "CWE-664",
+      "CWE-693",
+      "CWE-922"
+    ]
+  },
+  "CWE-527": {
+    "parents": [
+      "CWE-552"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-552",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-528": {
+    "parents": [
+      "CWE-552"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-552",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-529": {
+    "parents": [
+      "CWE-552"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-552",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-53": {
+    "parents": [
+      "CWE-41",
+      "CWE-165"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-138",
+      "CWE-164",
+      "CWE-165",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-707",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-530": {
+    "parents": [
+      "CWE-552"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-552",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-531": {
+    "parents": [
+      "CWE-540"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-538",
+      "CWE-540",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-540": {
+    "parents": [
+      "CWE-538"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-538",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-532": {
+    "parents": [
+      "CWE-200",
+      "CWE-538"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-538",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-538": {
+    "parents": [
+      "CWE-200"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-533": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-534": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-535": {
+    "parents": [
+      "CWE-211"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-209",
+      "CWE-211",
+      "CWE-664",
+      "CWE-668",
+      "CWE-703",
+      "CWE-755"
+    ]
+  },
+  "CWE-536": {
+    "parents": [
+      "CWE-211"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-209",
+      "CWE-211",
+      "CWE-664",
+      "CWE-668",
+      "CWE-703",
+      "CWE-755"
+    ]
+  },
+  "CWE-537": {
+    "parents": [
+      "CWE-211"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-209",
+      "CWE-211",
+      "CWE-664",
+      "CWE-668",
+      "CWE-703",
+      "CWE-755"
+    ]
+  },
+  "CWE-539": {
+    "parents": [
+      "CWE-552"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-552",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-54": {
+    "parents": [
+      "CWE-41",
+      "CWE-162"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-138",
+      "CWE-162",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-707",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-541": {
+    "parents": [
+      "CWE-540"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-538",
+      "CWE-540",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-542": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-543": {
+    "parents": [
+      "CWE-820"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-691",
+      "CWE-820"
+    ]
+  },
+  "CWE-544": {
+    "parents": [
+      "CWE-755"
+    ],
+    "ancestors": [
+      "CWE-703",
+      "CWE-755"
+    ]
+  },
+  "CWE-545": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-546": {
+    "parents": [
+      "CWE-1078"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076",
+      "CWE-1078"
+    ]
+  },
+  "CWE-547": {
+    "parents": [
+      "CWE-1078"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076",
+      "CWE-1078"
+    ]
+  },
+  "CWE-548": {
+    "parents": [
+      "CWE-497"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-497",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-549": {
+    "parents": [
+      "CWE-522"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-522",
+      "CWE-664",
+      "CWE-668",
+      "CWE-1390"
+    ]
+  },
+  "CWE-55": {
+    "parents": [
+      "CWE-41"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-550": {
+    "parents": [
+      "CWE-209"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-209",
+      "CWE-664",
+      "CWE-668",
+      "CWE-703",
+      "CWE-755"
+    ]
+  },
+  "CWE-551": {
+    "parents": [
+      "CWE-696",
+      "CWE-863"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-691",
+      "CWE-696",
+      "CWE-863"
+    ]
+  },
+  "CWE-553": {
+    "parents": [
+      "CWE-552"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-552",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-554": {
+    "parents": [
+      "CWE-1173"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707",
+      "CWE-1173"
+    ]
+  },
+  "CWE-555": {
+    "parents": [
+      "CWE-260"
+    ],
+    "ancestors": [
+      "CWE-260",
+      "CWE-284",
+      "CWE-287",
+      "CWE-522",
+      "CWE-664",
+      "CWE-668",
+      "CWE-1390"
+    ]
+  },
+  "CWE-556": {
+    "parents": [
+      "CWE-266"
+    ],
+    "ancestors": [
+      "CWE-266",
+      "CWE-269",
+      "CWE-284"
+    ]
+  },
+  "CWE-558": {
+    "parents": [
+      "CWE-663"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-663",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-56": {
+    "parents": [
+      "CWE-41",
+      "CWE-155"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-138",
+      "CWE-155",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-707",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-560": {
+    "parents": [
+      "CWE-687"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-628",
+      "CWE-687",
+      "CWE-710"
+    ]
+  },
+  "CWE-687": {
+    "parents": [
+      "CWE-628"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-628",
+      "CWE-710"
+    ]
+  },
+  "CWE-561": {
+    "parents": [
+      "CWE-1164"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1164"
+    ]
+  },
+  "CWE-562": {
+    "parents": [
+      "CWE-758"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-758"
+    ]
+  },
+  "CWE-563": {
+    "parents": [
+      "CWE-1164"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1164"
+    ]
+  },
+  "CWE-564": {
+    "parents": [
+      "CWE-89"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-89",
+      "CWE-707",
+      "CWE-943"
+    ]
+  },
+  "CWE-89": {
+    "parents": [
+      "CWE-74",
+      "CWE-943"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-707",
+      "CWE-943"
+    ]
+  },
+  "CWE-565": {
+    "parents": [
+      "CWE-602",
+      "CWE-642",
+      "CWE-669"
+    ],
+    "ancestors": [
+      "CWE-602",
+      "CWE-642",
+      "CWE-664",
+      "CWE-668",
+      "CWE-669",
+      "CWE-693"
+    ]
+  },
+  "CWE-602": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-566": {
+    "parents": [
+      "CWE-639"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-639",
+      "CWE-863"
+    ]
+  },
+  "CWE-639": {
+    "parents": [
+      "CWE-863"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-863"
+    ]
+  },
+  "CWE-567": {
+    "parents": [
+      "CWE-820"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-691",
+      "CWE-820"
+    ]
+  },
+  "CWE-568": {
+    "parents": [
+      "CWE-459",
+      "CWE-573"
+    ],
+    "ancestors": [
+      "CWE-404",
+      "CWE-459",
+      "CWE-573",
+      "CWE-664",
+      "CWE-710"
+    ]
+  },
+  "CWE-57": {
+    "parents": [
+      "CWE-41"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-570": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-571": {
+    "parents": [
+      "CWE-710"
+    ],
+    "ancestors": [
+      "CWE-710"
+    ]
+  },
+  "CWE-572": {
+    "parents": [
+      "CWE-821"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-691",
+      "CWE-821"
+    ]
+  },
+  "CWE-574": {
+    "parents": [
+      "CWE-695",
+      "CWE-821"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-662",
+      "CWE-664",
+      "CWE-691",
+      "CWE-695",
+      "CWE-710",
+      "CWE-821"
+    ]
+  },
+  "CWE-575": {
+    "parents": [
+      "CWE-695"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-695",
+      "CWE-710"
+    ]
+  },
+  "CWE-576": {
+    "parents": [
+      "CWE-695"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-695",
+      "CWE-710"
+    ]
+  },
+  "CWE-577": {
+    "parents": [
+      "CWE-573"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-710"
+    ]
+  },
+  "CWE-578": {
+    "parents": [
+      "CWE-573"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-710"
+    ]
+  },
+  "CWE-579": {
+    "parents": [
+      "CWE-573"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-710"
+    ]
+  },
+  "CWE-58": {
+    "parents": [
+      "CWE-41"
+    ],
+    "ancestors": [
+      "CWE-41",
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-664",
+      "CWE-706",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-580": {
+    "parents": [
+      "CWE-573",
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-664",
+      "CWE-710"
+    ]
+  },
+  "CWE-581": {
+    "parents": [
+      "CWE-573",
+      "CWE-697"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-697",
+      "CWE-710"
+    ]
+  },
+  "CWE-582": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-583": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-584": {
+    "parents": [
+      "CWE-705"
+    ],
+    "ancestors": [
+      "CWE-691",
+      "CWE-705"
+    ]
+  },
+  "CWE-585": {
+    "parents": [
+      "CWE-1071"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1071",
+      "CWE-1164"
+    ]
+  },
+  "CWE-586": {
+    "parents": [
+      "CWE-1076"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076"
+    ]
+  },
+  "CWE-587": {
+    "parents": [
+      "CWE-344",
+      "CWE-758"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-344",
+      "CWE-693",
+      "CWE-710",
+      "CWE-758"
+    ]
+  },
+  "CWE-588": {
+    "parents": [
+      "CWE-704",
+      "CWE-758"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-704",
+      "CWE-710",
+      "CWE-758"
+    ]
+  },
+  "CWE-589": {
+    "parents": [
+      "CWE-474"
+    ],
+    "ancestors": [
+      "CWE-474",
+      "CWE-710",
+      "CWE-758"
+    ]
+  },
+  "CWE-590": {
+    "parents": [
+      "CWE-762"
+    ],
+    "ancestors": [
+      "CWE-404",
+      "CWE-664",
+      "CWE-762",
+      "CWE-763"
+    ]
+  },
+  "CWE-762": {
+    "parents": [
+      "CWE-763"
+    ],
+    "ancestors": [
+      "CWE-404",
+      "CWE-664",
+      "CWE-763"
+    ]
+  },
+  "CWE-591": {
+    "parents": [
+      "CWE-413"
+    ],
+    "ancestors": [
+      "CWE-413",
+      "CWE-662",
+      "CWE-664",
+      "CWE-667",
+      "CWE-691"
+    ]
+  },
+  "CWE-592": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-593": {
+    "parents": [
+      "CWE-666",
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-664",
+      "CWE-666",
+      "CWE-1390"
+    ]
+  },
+  "CWE-594": {
+    "parents": [
+      "CWE-1076"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1076"
+    ]
+  },
+  "CWE-595": {
+    "parents": [
+      "CWE-1025"
+    ],
+    "ancestors": [
+      "CWE-697",
+      "CWE-1025"
+    ]
+  },
+  "CWE-596": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-597": {
+    "parents": [
+      "CWE-480",
+      "CWE-595"
+    ],
+    "ancestors": [
+      "CWE-480",
+      "CWE-595",
+      "CWE-670",
+      "CWE-691",
+      "CWE-697",
+      "CWE-1025"
+    ]
+  },
+  "CWE-598": {
+    "parents": [
+      "CWE-201"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-201",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-599": {
+    "parents": [
+      "CWE-295"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-295"
+    ]
+  },
+  "CWE-6": {
+    "parents": [
+      "CWE-334"
+    ],
+    "ancestors": [
+      "CWE-330",
+      "CWE-334",
+      "CWE-693"
+    ]
+  },
+  "CWE-600": {
+    "parents": [
+      "CWE-248"
+    ],
+    "ancestors": [
+      "CWE-248",
+      "CWE-691",
+      "CWE-703",
+      "CWE-705",
+      "CWE-755"
+    ]
+  },
+  "CWE-601": {
+    "parents": [
+      "CWE-610"
+    ],
+    "ancestors": [
+      "CWE-610",
+      "CWE-664"
+    ]
+  },
+  "CWE-603": {
+    "parents": [
+      "CWE-602",
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-602",
+      "CWE-693",
+      "CWE-1390"
+    ]
+  },
+  "CWE-605": {
+    "parents": [
+      "CWE-666",
+      "CWE-675"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-664",
+      "CWE-666",
+      "CWE-675",
+      "CWE-710"
+    ]
+  },
+  "CWE-606": {
+    "parents": [
+      "CWE-1284"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707",
+      "CWE-1284"
+    ]
+  },
+  "CWE-607": {
+    "parents": [
+      "CWE-471"
+    ],
+    "ancestors": [
+      "CWE-471",
+      "CWE-664"
+    ]
+  },
+  "CWE-608": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-609": {
+    "parents": [
+      "CWE-667"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-667",
+      "CWE-691"
+    ]
+  },
+  "CWE-61": {
+    "parents": [
+      "CWE-59"
+    ],
+    "ancestors": [
+      "CWE-59",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-611": {
+    "parents": [
+      "CWE-610"
+    ],
+    "ancestors": [
+      "CWE-610",
+      "CWE-664"
+    ]
+  },
+  "CWE-612": {
+    "parents": [
+      "CWE-1230"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-1230"
+    ]
+  },
+  "CWE-613": {
+    "parents": [
+      "CWE-672"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-666",
+      "CWE-672"
+    ]
+  },
+  "CWE-614": {
+    "parents": [
+      "CWE-319"
+    ],
+    "ancestors": [
+      "CWE-311",
+      "CWE-319",
+      "CWE-693"
+    ]
+  },
+  "CWE-615": {
+    "parents": [
+      "CWE-540"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-538",
+      "CWE-540",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-616": {
+    "parents": [
+      "CWE-345"
+    ],
+    "ancestors": [
+      "CWE-345",
+      "CWE-693"
+    ]
+  },
+  "CWE-617": {
+    "parents": [
+      "CWE-670",
+      "CWE-705"
+    ],
+    "ancestors": [
+      "CWE-670",
+      "CWE-691",
+      "CWE-705"
+    ]
+  },
+  "CWE-618": {
+    "parents": [
+      "CWE-749"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-749"
+    ]
+  },
+  "CWE-749": {
+    "parents": [
+      "CWE-284"
+    ],
+    "ancestors": [
+      "CWE-284"
+    ]
+  },
+  "CWE-619": {
+    "parents": [
+      "CWE-402"
+    ],
+    "ancestors": [
+      "CWE-402",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-62": {
+    "parents": [
+      "CWE-59"
+    ],
+    "ancestors": [
+      "CWE-59",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-620": {
+    "parents": [
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-1390"
+    ]
+  },
+  "CWE-621": {
+    "parents": [
+      "CWE-914"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-99",
+      "CWE-664",
+      "CWE-707",
+      "CWE-913",
+      "CWE-914"
+    ]
+  },
+  "CWE-914": {
+    "parents": [
+      "CWE-99",
+      "CWE-913"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-99",
+      "CWE-664",
+      "CWE-707",
+      "CWE-913"
+    ]
+  },
+  "CWE-622": {
+    "parents": [
+      "CWE-20"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707"
+    ]
+  },
+  "CWE-623": {
+    "parents": [
+      "CWE-267"
+    ],
+    "ancestors": [
+      "CWE-267",
+      "CWE-269",
+      "CWE-284"
+    ]
+  },
+  "CWE-624": {
+    "parents": [
+      "CWE-77"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-77",
+      "CWE-707"
+    ]
+  },
+  "CWE-625": {
+    "parents": [
+      "CWE-185"
+    ],
+    "ancestors": [
+      "CWE-185",
+      "CWE-697"
+    ]
+  },
+  "CWE-626": {
+    "parents": [
+      "CWE-147",
+      "CWE-436"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-147",
+      "CWE-435",
+      "CWE-436",
+      "CWE-707"
+    ]
+  },
+  "CWE-627": {
+    "parents": [
+      "CWE-914"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-99",
+      "CWE-664",
+      "CWE-707",
+      "CWE-913",
+      "CWE-914"
+    ]
+  },
+  "CWE-628": {
+    "parents": [
+      "CWE-573"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-710"
+    ]
+  },
+  "CWE-637": {
+    "parents": [
+      "CWE-657"
+    ],
+    "ancestors": [
+      "CWE-657",
+      "CWE-710"
+    ]
+  },
+  "CWE-64": {
+    "parents": [
+      "CWE-59"
+    ],
+    "ancestors": [
+      "CWE-59",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-640": {
+    "parents": [
+      "CWE-287",
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-1390"
+    ]
+  },
+  "CWE-641": {
+    "parents": [
+      "CWE-99"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-99",
+      "CWE-707"
+    ]
+  },
+  "CWE-99": {
+    "parents": [
+      "CWE-74"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-707"
+    ]
+  },
+  "CWE-643": {
+    "parents": [
+      "CWE-91",
+      "CWE-943"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-91",
+      "CWE-707",
+      "CWE-943"
+    ]
+  },
+  "CWE-943": {
+    "parents": [
+      "CWE-74"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-707"
+    ]
+  },
+  "CWE-91": {
+    "parents": [
+      "CWE-74"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-707"
+    ]
+  },
+  "CWE-644": {
+    "parents": [
+      "CWE-116"
+    ],
+    "ancestors": [
+      "CWE-116",
+      "CWE-707"
+    ]
+  },
+  "CWE-645": {
+    "parents": [
+      "CWE-287"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287"
+    ]
+  },
+  "CWE-646": {
+    "parents": [
+      "CWE-345"
+    ],
+    "ancestors": [
+      "CWE-345",
+      "CWE-693"
+    ]
+  },
+  "CWE-647": {
+    "parents": [
+      "CWE-180",
+      "CWE-863"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-179",
+      "CWE-180",
+      "CWE-284",
+      "CWE-285",
+      "CWE-691",
+      "CWE-696",
+      "CWE-707",
+      "CWE-863"
+    ]
+  },
+  "CWE-648": {
+    "parents": [
+      "CWE-269"
+    ],
+    "ancestors": [
+      "CWE-269",
+      "CWE-284"
+    ]
+  },
+  "CWE-649": {
+    "parents": [
+      "CWE-345"
+    ],
+    "ancestors": [
+      "CWE-345",
+      "CWE-693"
+    ]
+  },
+  "CWE-65": {
+    "parents": [
+      "CWE-59"
+    ],
+    "ancestors": [
+      "CWE-59",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-650": {
+    "parents": [
+      "CWE-436"
+    ],
+    "ancestors": [
+      "CWE-435",
+      "CWE-436"
+    ]
+  },
+  "CWE-651": {
+    "parents": [
+      "CWE-538"
+    ],
+    "ancestors": [
+      "CWE-200",
+      "CWE-538",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-652": {
+    "parents": [
+      "CWE-91",
+      "CWE-943"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-91",
+      "CWE-707",
+      "CWE-943"
+    ]
+  },
+  "CWE-655": {
+    "parents": [
+      "CWE-657",
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-657",
+      "CWE-693",
+      "CWE-710"
+    ]
+  },
+  "CWE-656": {
+    "parents": [
+      "CWE-657",
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-657",
+      "CWE-693",
+      "CWE-710"
+    ]
+  },
+  "CWE-66": {
+    "parents": [
+      "CWE-706"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-67": {
+    "parents": [
+      "CWE-66"
+    ],
+    "ancestors": [
+      "CWE-66",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-674": {
+    "parents": [
+      "CWE-834"
+    ],
+    "ancestors": [
+      "CWE-691",
+      "CWE-834"
+    ]
+  },
+  "CWE-676": {
+    "parents": [
+      "CWE-1177"
+    ],
+    "ancestors": [
+      "CWE-710",
+      "CWE-1177"
+    ]
+  },
+  "CWE-680": {
+    "parents": [
+      "CWE-190"
+    ],
+    "ancestors": [
+      "CWE-190",
+      "CWE-682"
+    ]
+  },
+  "CWE-683": {
+    "parents": [
+      "CWE-628"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-628",
+      "CWE-710"
+    ]
+  },
+  "CWE-685": {
+    "parents": [
+      "CWE-628"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-628",
+      "CWE-710"
+    ]
+  },
+  "CWE-686": {
+    "parents": [
+      "CWE-628"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-628",
+      "CWE-710"
+    ]
+  },
+  "CWE-688": {
+    "parents": [
+      "CWE-628"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-628",
+      "CWE-710"
+    ]
+  },
+  "CWE-689": {
+    "parents": [
+      "CWE-362"
+    ],
+    "ancestors": [
+      "CWE-362",
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-69": {
+    "parents": [
+      "CWE-66"
+    ],
+    "ancestors": [
+      "CWE-66",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-690": {
+    "parents": [
+      "CWE-252"
+    ],
+    "ancestors": [
+      "CWE-252",
+      "CWE-703",
+      "CWE-754"
+    ]
+  },
+  "CWE-692": {
+    "parents": [
+      "CWE-184"
+    ],
+    "ancestors": [
+      "CWE-184",
+      "CWE-693",
+      "CWE-697",
+      "CWE-1023"
+    ]
+  },
+  "CWE-698": {
+    "parents": [
+      "CWE-670",
+      "CWE-705"
+    ],
+    "ancestors": [
+      "CWE-670",
+      "CWE-691",
+      "CWE-705"
+    ]
+  },
+  "CWE-7": {
+    "parents": [
+      "CWE-756"
+    ],
+    "ancestors": [
+      "CWE-703",
+      "CWE-755",
+      "CWE-756"
+    ]
+  },
+  "CWE-708": {
+    "parents": [
+      "CWE-282"
+    ],
+    "ancestors": [
+      "CWE-282",
+      "CWE-284"
+    ]
+  },
+  "CWE-71": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-72": {
+    "parents": [
+      "CWE-66"
+    ],
+    "ancestors": [
+      "CWE-66",
+      "CWE-664",
+      "CWE-706"
+    ]
+  },
+  "CWE-75": {
+    "parents": [
+      "CWE-74"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-707"
+    ]
+  },
+  "CWE-757": {
+    "parents": [
+      "CWE-693"
+    ],
+    "ancestors": [
+      "CWE-693"
+    ]
+  },
+  "CWE-759": {
+    "parents": [
+      "CWE-916"
+    ],
+    "ancestors": [
+      "CWE-326",
+      "CWE-327",
+      "CWE-328",
+      "CWE-693",
+      "CWE-916"
+    ]
+  },
+  "CWE-916": {
+    "parents": [
+      "CWE-327",
+      "CWE-328"
+    ],
+    "ancestors": [
+      "CWE-326",
+      "CWE-327",
+      "CWE-328",
+      "CWE-693"
+    ]
+  },
+  "CWE-76": {
+    "parents": [
+      "CWE-75"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-75",
+      "CWE-707"
+    ]
+  },
+  "CWE-760": {
+    "parents": [
+      "CWE-916"
+    ],
+    "ancestors": [
+      "CWE-326",
+      "CWE-327",
+      "CWE-328",
+      "CWE-693",
+      "CWE-916"
+    ]
+  },
+  "CWE-761": {
+    "parents": [
+      "CWE-763"
+    ],
+    "ancestors": [
+      "CWE-404",
+      "CWE-664",
+      "CWE-763"
+    ]
+  },
+  "CWE-763": {
+    "parents": [
+      "CWE-404"
+    ],
+    "ancestors": [
+      "CWE-404",
+      "CWE-664"
+    ]
+  },
+  "CWE-764": {
+    "parents": [
+      "CWE-667",
+      "CWE-675"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-662",
+      "CWE-664",
+      "CWE-667",
+      "CWE-675",
+      "CWE-691",
+      "CWE-710"
+    ]
+  },
+  "CWE-765": {
+    "parents": [
+      "CWE-667",
+      "CWE-675"
+    ],
+    "ancestors": [
+      "CWE-573",
+      "CWE-662",
+      "CWE-664",
+      "CWE-667",
+      "CWE-675",
+      "CWE-691",
+      "CWE-710"
+    ]
+  },
+  "CWE-766": {
+    "parents": [
+      "CWE-732",
+      "CWE-1061"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-664",
+      "CWE-668",
+      "CWE-710",
+      "CWE-732",
+      "CWE-1061"
+    ]
+  },
+  "CWE-767": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-768": {
+    "parents": [
+      "CWE-691"
+    ],
+    "ancestors": [
+      "CWE-691"
+    ]
+  },
+  "CWE-769": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-771": {
+    "parents": [
+      "CWE-400"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-664"
+    ]
+  },
+  "CWE-773": {
+    "parents": [
+      "CWE-771"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-664",
+      "CWE-771"
+    ]
+  },
+  "CWE-774": {
+    "parents": [
+      "CWE-770"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-664",
+      "CWE-665",
+      "CWE-770"
+    ]
+  },
+  "CWE-775": {
+    "parents": [
+      "CWE-772"
+    ],
+    "ancestors": [
+      "CWE-404",
+      "CWE-664",
+      "CWE-772"
+    ]
+  },
+  "CWE-776": {
+    "parents": [
+      "CWE-405",
+      "CWE-674"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-405",
+      "CWE-664",
+      "CWE-674",
+      "CWE-691",
+      "CWE-834"
+    ]
+  },
+  "CWE-777": {
+    "parents": [
+      "CWE-625"
+    ],
+    "ancestors": [
+      "CWE-185",
+      "CWE-625",
+      "CWE-697"
+    ]
+  },
+  "CWE-778": {
+    "parents": [
+      "CWE-223"
+    ],
+    "ancestors": [
+      "CWE-221",
+      "CWE-223",
+      "CWE-664"
+    ]
+  },
+  "CWE-779": {
+    "parents": [
+      "CWE-400"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-664"
+    ]
+  },
+  "CWE-78": {
+    "parents": [
+      "CWE-74",
+      "CWE-77"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-77",
+      "CWE-707"
+    ]
+  },
+  "CWE-780": {
+    "parents": [
+      "CWE-327"
+    ],
+    "ancestors": [
+      "CWE-327",
+      "CWE-693"
+    ]
+  },
+  "CWE-781": {
+    "parents": [
+      "CWE-1285"
+    ],
+    "ancestors": [
+      "CWE-20",
+      "CWE-707",
+      "CWE-1285"
+    ]
+  },
+  "CWE-782": {
+    "parents": [
+      "CWE-749"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-749"
+    ]
+  },
+  "CWE-783": {
+    "parents": [
+      "CWE-670"
+    ],
+    "ancestors": [
+      "CWE-670",
+      "CWE-691"
+    ]
+  },
+  "CWE-784": {
+    "parents": [
+      "CWE-565",
+      "CWE-807"
+    ],
+    "ancestors": [
+      "CWE-565",
+      "CWE-602",
+      "CWE-642",
+      "CWE-664",
+      "CWE-668",
+      "CWE-669",
+      "CWE-693",
+      "CWE-807"
+    ]
+  },
+  "CWE-785": {
+    "parents": [
+      "CWE-120",
+      "CWE-676"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-120",
+      "CWE-664",
+      "CWE-676",
+      "CWE-710",
+      "CWE-787",
+      "CWE-1177"
+    ]
+  },
+  "CWE-789": {
+    "parents": [
+      "CWE-770"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-664",
+      "CWE-665",
+      "CWE-770"
+    ]
+  },
+  "CWE-79": {
+    "parents": [
+      "CWE-74"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-707"
+    ]
+  },
+  "CWE-790": {
+    "parents": [
+      "CWE-138"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707"
+    ]
+  },
+  "CWE-791": {
+    "parents": [
+      "CWE-790"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707",
+      "CWE-790"
+    ]
+  },
+  "CWE-792": {
+    "parents": [
+      "CWE-791"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707",
+      "CWE-790",
+      "CWE-791"
+    ]
+  },
+  "CWE-793": {
+    "parents": [
+      "CWE-792"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707",
+      "CWE-790",
+      "CWE-791",
+      "CWE-792"
+    ]
+  },
+  "CWE-794": {
+    "parents": [
+      "CWE-792"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707",
+      "CWE-790",
+      "CWE-791",
+      "CWE-792"
+    ]
+  },
+  "CWE-795": {
+    "parents": [
+      "CWE-791"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707",
+      "CWE-790",
+      "CWE-791"
+    ]
+  },
+  "CWE-796": {
+    "parents": [
+      "CWE-795"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707",
+      "CWE-790",
+      "CWE-791",
+      "CWE-795"
+    ]
+  },
+  "CWE-797": {
+    "parents": [
+      "CWE-795"
+    ],
+    "ancestors": [
+      "CWE-138",
+      "CWE-707",
+      "CWE-790",
+      "CWE-791",
+      "CWE-795"
+    ]
+  },
+  "CWE-8": {
+    "parents": [
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-80": {
+    "parents": [
+      "CWE-79"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-79",
+      "CWE-707"
+    ]
+  },
+  "CWE-804": {
+    "parents": [
+      "CWE-863",
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-287",
+      "CWE-863",
+      "CWE-1390"
+    ]
+  },
+  "CWE-805": {
+    "parents": [
+      "CWE-119"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664"
+    ]
+  },
+  "CWE-806": {
+    "parents": [
+      "CWE-805"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664",
+      "CWE-805"
+    ]
+  },
+  "CWE-81": {
+    "parents": [
+      "CWE-79"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-79",
+      "CWE-707"
+    ]
+  },
+  "CWE-82": {
+    "parents": [
+      "CWE-83"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-79",
+      "CWE-83",
+      "CWE-707"
+    ]
+  },
+  "CWE-83": {
+    "parents": [
+      "CWE-79"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-79",
+      "CWE-707"
+    ]
+  },
+  "CWE-822": {
+    "parents": [
+      "CWE-119"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664"
+    ]
+  },
+  "CWE-823": {
+    "parents": [
+      "CWE-119"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664"
+    ]
+  },
+  "CWE-824": {
+    "parents": [
+      "CWE-119"
+    ],
+    "ancestors": [
+      "CWE-118",
+      "CWE-119",
+      "CWE-664"
+    ]
+  },
+  "CWE-826": {
+    "parents": [
+      "CWE-666"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-666"
+    ]
+  },
+  "CWE-827": {
+    "parents": [
+      "CWE-706",
+      "CWE-829"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-669",
+      "CWE-706",
+      "CWE-829"
+    ]
+  },
+  "CWE-829": {
+    "parents": [
+      "CWE-669"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-669"
+    ]
+  },
+  "CWE-830": {
+    "parents": [
+      "CWE-829"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-669",
+      "CWE-829"
+    ]
+  },
+  "CWE-831": {
+    "parents": [
+      "CWE-364"
+    ],
+    "ancestors": [
+      "CWE-362",
+      "CWE-364",
+      "CWE-662",
+      "CWE-664",
+      "CWE-691"
+    ]
+  },
+  "CWE-832": {
+    "parents": [
+      "CWE-667"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-667",
+      "CWE-691"
+    ]
+  },
+  "CWE-833": {
+    "parents": [
+      "CWE-667"
+    ],
+    "ancestors": [
+      "CWE-662",
+      "CWE-664",
+      "CWE-667",
+      "CWE-691"
+    ]
+  },
+  "CWE-835": {
+    "parents": [
+      "CWE-834"
+    ],
+    "ancestors": [
+      "CWE-691",
+      "CWE-834"
+    ]
+  },
+  "CWE-836": {
+    "parents": [
+      "CWE-1390"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-287",
+      "CWE-1390"
+    ]
+  },
+  "CWE-837": {
+    "parents": [
+      "CWE-799"
+    ],
+    "ancestors": [
+      "CWE-691",
+      "CWE-799"
+    ]
+  },
+  "CWE-838": {
+    "parents": [
+      "CWE-116"
+    ],
+    "ancestors": [
+      "CWE-116",
+      "CWE-707"
+    ]
+  },
+  "CWE-839": {
+    "parents": [
+      "CWE-1023"
+    ],
+    "ancestors": [
+      "CWE-697",
+      "CWE-1023"
+    ]
+  },
+  "CWE-84": {
+    "parents": [
+      "CWE-79"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-79",
+      "CWE-707"
+    ]
+  },
+  "CWE-841": {
+    "parents": [
+      "CWE-691"
+    ],
+    "ancestors": [
+      "CWE-691"
+    ]
+  },
+  "CWE-842": {
+    "parents": [
+      "CWE-286"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-286"
+    ]
+  },
+  "CWE-843": {
+    "parents": [
+      "CWE-704"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-704"
+    ]
+  },
+  "CWE-85": {
+    "parents": [
+      "CWE-79"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-79",
+      "CWE-707"
+    ]
+  },
+  "CWE-86": {
+    "parents": [
+      "CWE-79",
+      "CWE-436"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-79",
+      "CWE-435",
+      "CWE-436",
+      "CWE-707"
+    ]
+  },
+  "CWE-87": {
+    "parents": [
+      "CWE-79"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-79",
+      "CWE-707"
+    ]
+  },
+  "CWE-88": {
+    "parents": [
+      "CWE-74",
+      "CWE-77"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-77",
+      "CWE-707"
+    ]
+  },
+  "CWE-9": {
+    "parents": [
+      "CWE-266"
+    ],
+    "ancestors": [
+      "CWE-266",
+      "CWE-269",
+      "CWE-284"
+    ]
+  },
+  "CWE-90": {
+    "parents": [
+      "CWE-943"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-707",
+      "CWE-943"
+    ]
+  },
+  "CWE-910": {
+    "parents": [
+      "CWE-672"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-666",
+      "CWE-672"
+    ]
+  },
+  "CWE-911": {
+    "parents": [
+      "CWE-664"
+    ],
+    "ancestors": [
+      "CWE-664"
+    ]
+  },
+  "CWE-917": {
+    "parents": [
+      "CWE-74",
+      "CWE-77"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-77",
+      "CWE-707"
+    ]
+  },
+  "CWE-918": {
+    "parents": [
+      "CWE-441",
+      "CWE-610"
+    ],
+    "ancestors": [
+      "CWE-441",
+      "CWE-610",
+      "CWE-664"
+    ]
+  },
+  "CWE-92": {
+    "parents": [],
+    "ancestors": []
+  },
+  "CWE-920": {
+    "parents": [
+      "CWE-400"
+    ],
+    "ancestors": [
+      "CWE-400",
+      "CWE-664"
+    ]
+  },
+  "CWE-921": {
+    "parents": [
+      "CWE-922"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-922"
+    ]
+  },
+  "CWE-924": {
+    "parents": [
+      "CWE-345"
+    ],
+    "ancestors": [
+      "CWE-345",
+      "CWE-693"
+    ]
+  },
+  "CWE-925": {
+    "parents": [
+      "CWE-940"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-345",
+      "CWE-346",
+      "CWE-693",
+      "CWE-923",
+      "CWE-940"
+    ]
+  },
+  "CWE-940": {
+    "parents": [
+      "CWE-346",
+      "CWE-923"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-345",
+      "CWE-346",
+      "CWE-693",
+      "CWE-923"
+    ]
+  },
+  "CWE-926": {
+    "parents": [
+      "CWE-285"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285"
+    ]
+  },
+  "CWE-927": {
+    "parents": [
+      "CWE-285",
+      "CWE-668"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-664",
+      "CWE-668"
+    ]
+  },
+  "CWE-939": {
+    "parents": [
+      "CWE-862",
+      "CWE-940"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-285",
+      "CWE-345",
+      "CWE-346",
+      "CWE-693",
+      "CWE-862",
+      "CWE-923",
+      "CWE-940"
+    ]
+  },
+  "CWE-941": {
+    "parents": [
+      "CWE-923"
+    ],
+    "ancestors": [
+      "CWE-284",
+      "CWE-923"
+    ]
+  },
+  "CWE-942": {
+    "parents": [
+      "CWE-183",
+      "CWE-863",
+      "CWE-923"
+    ],
+    "ancestors": [
+      "CWE-183",
+      "CWE-284",
+      "CWE-285",
+      "CWE-697",
+      "CWE-863",
+      "CWE-923"
+    ]
+  },
+  "CWE-95": {
+    "parents": [
+      "CWE-94"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-94",
+      "CWE-664",
+      "CWE-707",
+      "CWE-913"
+    ]
+  },
+  "CWE-96": {
+    "parents": [
+      "CWE-94"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-94",
+      "CWE-664",
+      "CWE-707",
+      "CWE-913"
+    ]
+  },
+  "CWE-97": {
+    "parents": [
+      "CWE-96"
+    ],
+    "ancestors": [
+      "CWE-74",
+      "CWE-94",
+      "CWE-96",
+      "CWE-664",
+      "CWE-707",
+      "CWE-913"
+    ]
+  },
+  "CWE-98": {
+    "parents": [
+      "CWE-706",
+      "CWE-829"
+    ],
+    "ancestors": [
+      "CWE-664",
+      "CWE-669",
+      "CWE-706",
+      "CWE-829"
+    ]
+  }
+}
