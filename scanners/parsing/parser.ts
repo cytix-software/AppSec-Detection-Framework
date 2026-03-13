@@ -1,30 +1,10 @@
-import type { DataJson, MappingOut } from "../../utils/types";
+import type { DataJson, MappingOut, IScannerParser, ParserInput, ParseContext } from "../../utils/types";
 import * as fs from "node:fs";
 import path from 'path';
+import { CweHierarchy } from "../cweHierarchy";
 
-export type TestName = string; //e.g: "test_1_v1"
-export type DetectedMap = Map<TestName, Set<number>>;
-
-export interface ParseContext {
-  scanProfile?: string; //"ZAP", "ZAP v2.16.1", etc.
-  author?: string; //name of person initiating the parse
-  updatedAt?: number;   //epoch seconds
-  expectedTests?: string[]; // e.g. ["test_1_v1","test_1_v2",...]
-}
-
-export interface ParserInput {
-  artifactPath?: string; //path to report file
-  artifactContent?: string; //content of report
-}
-
-export interface IScannerParser {
-  readonly scannerKey: string;
-  lastResult?: MappingOut;
-
-  parse(input: ParserInput, data: DataJson, ctx?: ParseContext): Promise<MappingOut>;
-}
-
-const DEFAULT_ARCHIVE_PATH = "./artifacts/import-archives";
+const DEFAULT_ARCHIVE_PATH = "./artifacts/import-archives"; //for tracing parsed results back to source files
+const hierarchy = CweHierarchy.fromJsonFile("./cwe-hierarchy.json"); //load CWE hierarchy for parsers to reference when mapping CWEs
 
 /**
  * Base class: stores lastResult and provides save helpers.
@@ -160,5 +140,15 @@ export abstract class BaseScannerParser implements IScannerParser {
     const ta = Number(ma[1]), va = Number(ma[2]);
     const tb = Number(mb[1]), vb = Number(mb[2]);
     return ta !== tb ? ta - tb : va - vb;
+  }
+
+  //Return parent CWEs for a given CWE ID using the loaded hierarchy, or empty array if not found or no parents:
+  public getParentCwes(cweId: string): string[] {
+    try {
+      return hierarchy.getParentCwes(cweId);
+    } catch (e) {
+      console.warn(`Could not get parents for CWE ID ${cweId}: ${(e as Error).message}`);
+      return [];
+    }
   }
 }
