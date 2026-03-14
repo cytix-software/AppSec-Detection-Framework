@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<!DOCTYPE issues [
+<!ELEMENT issues (issue*)>
+<!ATTLIST issues burpVersion CDATA "">
+<!ATTLIST issues exportTime CDATA "">
+<!ELEMENT issue (serialNumber, type, name, host, path, location, severity, confidence, issueBackground?, remediationBackground?, references?, vulnerabilityClassifications?, issueDetail?, issueDetailItems?, remediationDetail?, requestresponse*, collaboratorEvent*, infiltratorEvent*, staticAnalysis*, dynamicAnalysis*, prototypePollution*)>
+<!ELEMENT serialNumber (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT host (#PCDATA)>
+<!ATTLIST host ip CDATA "">
+<!ELEMENT path (#PCDATA)>
+<!ELEMENT location (#PCDATA)>
+<!ELEMENT severity (#PCDATA)>
+<!ELEMENT confidence (#PCDATA)>
+<!ELEMENT issueBackground (#PCDATA)>
+<!ELEMENT remediationBackground (#PCDATA)>
+<!ELEMENT references (#PCDATA)>
+<!ELEMENT vulnerabilityClassifications (#PCDATA)>
+<!ELEMENT issueDetail (#PCDATA)>
+<!ELEMENT issueDetailItems (issueDetailItem*)>
+<!ELEMENT issueDetailItem (#PCDATA)>
+<!ELEMENT remediationDetail (#PCDATA)>
+<!ELEMENT requestresponse (request?, response?, responseRedirected?)>
+<!ELEMENT request (#PCDATA)>
+<!ATTLIST request method CDATA "">
+<!ATTLIST request base64 (true|false) "false">
+<!ELEMENT response (#PCDATA)>
+<!ATTLIST response base64 (true|false) "false">
+<!ELEMENT responseRedirected (#PCDATA)>
+<!ELEMENT sender (#PCDATA)>
+<!ELEMENT message (#PCDATA)>
+<!ELEMENT conversation (#PCDATA)>
+<!ELEMENT recipient (#PCDATA)>
+<!ELEMENT recipients (recipient*)>
+<!ELEMENT smtp (sender, recipients, message, conversation)>
+<!ELEMENT collaboratorEvent (interactionType, originIp, time, lookupType?, lookupHost?, requestresponse?, smtp?)>
+<!ELEMENT interactionType (#PCDATA)>
+<!ELEMENT originIp (#PCDATA)>
+<!ELEMENT time (#PCDATA)>
+<!ELEMENT lookupType (#PCDATA)>
+<!ELEMENT lookupHost (#PCDATA)>
+<!ELEMENT infiltratorEvent (parameterName, platform, signature, stackTrace?, parameterValue?, collaboratorEvent)>
+<!ELEMENT parameterName (#PCDATA)>
+<!ELEMENT platform (#PCDATA)>
+<!ELEMENT signature (#PCDATA)>
+<!ELEMENT stackTrace (#PCDATA)>
+<!ELEMENT parameterValue (#PCDATA)>
+<!ELEMENT dynamicAnalysis (source, sink, sourceStackTrace, sinkStackTrace, eventListenerStackTrace, sourceValue, sinkValue, eventHandlerData, eventHandlerDataType, eventHandlerManipulatedData, poc, origin, isOriginChecked, sourceElementId, sourceElementName, eventFiredEventName, eventFiredElementId, eventFiredElementName, eventFiredOuterHtml)>
+<!ELEMENT prototypePollution (poc, pollutionTechnique, pollutionType)>
+<!ELEMENT staticAnalysis (source, sink, codeSnippets)>
+<!ELEMENT source (#PCDATA)>
+<!ELEMENT sink (#PCDATA)>
+<!ELEMENT sourceStackTrace (#PCDATA)>
+<!ELEMENT sinkStackTrace (#PCDATA)>
+<!ELEMENT eventListenerStackTrace (#PCDATA)>
+<!ELEMENT sourceValue (#PCDATA)>
+<!ELEMENT sinkValue (#PCDATA)>
+<!ELEMENT eventHandlerData (#PCDATA)>
+<!ELEMENT eventHandlerDataType (#PCDATA)>
+<!ELEMENT sourceElementId (#PCDATA)>
+<!ELEMENT sourceElementName (#PCDATA)>
+<!ELEMENT eventFiredEventName (#PCDATA)>
+<!ELEMENT eventFiredElementId (#PCDATA)>
+<!ELEMENT eventFiredElementName (#PCDATA)>
+<!ELEMENT eventFiredOuterHtml (#PCDATA)>
+<!ELEMENT eventHandlerManipulatedData (#PCDATA)>
+<!ELEMENT poc (#PCDATA)>
+<!ELEMENT origin (#PCDATA)>
+<!ELEMENT isOriginChecked (#PCDATA)>
+<!ELEMENT codeSnippets (codeSnippet*)>
+<!ELEMENT codeSnippet (#PCDATA)>
+<!ELEMENT pollutionTechnique (#PCDATA)>
+<!ELEMENT pollutionType (#PCDATA)>
+]>
+<issues burpVersion="2026.2.3" exportTime="Sat Mar 07 18:53:16 GMT 2026">
+  <issue>
+    <serialNumber>2090116364248547328</serialNumber>
+    <type>16777728</type>
+    <name><![CDATA[Unencrypted communications]]></name>
+    <host ip="127.0.0.1">http://localhost:10801</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/]]></location>
+    <severity>Low</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p>The application allows users to connect to it over unencrypted connections. An attacker suitably positioned to view a legitimate user's network traffic could record and monitor their interactions with the application and obtain any information the user supplies. Furthermore, an attacker able to modify traffic could use the application as a platform for attacks against its users and third-party websites. Unencrypted connections have been exploited by ISPs and governments to track users, and to inject adverts and malicious JavaScript. Due to these concerns, web browser vendors are planning to visually flag unencrypted connections as hazardous.</p><p>To exploit this vulnerability, an attacker must be suitably positioned to eavesdrop on the victim's network traffic. This scenario typically occurs when a client communicates with the server over an insecure connection such as public Wi-Fi, or a corporate or home network that is shared with a compromised computer. Common defenses such as switched networks are not sufficient to prevent this. An attacker situated in the user's ISP or the application's hosting infrastructure could also perform this attack. Note that an advanced adversary could potentially target any connection made over the Internet's core infrastructure.</p><p>Please note that using a mixture of encrypted and unencrypted communications is an ineffective defense against active attackers, because they can easily remove references to encrypted resources when these references are transmitted over an unencrypted connection.</p>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>Applications should use transport-level encryption (SSL/TLS) to protect all communications passing between the client and the server. The Strict-Transport-Security HTTP header should be used to ensure that clients refuse to access the server over an insecure connection.</p>]]></remediationBackground>
+    <references><![CDATA[<ul><li><a href="https://www.chromium.org/Home/chromium-security/marking-http-as-non-secure">Marking HTTP as non-secure</a></li><li><a href="https://wiki.mozilla.org/Security/Server_Side_TLS">Configuring Server-Side SSL/TLS</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security">HTTP Strict Transport Security</a></li></ul>]]></references>
+    <vulnerabilityClassifications><![CDATA[<ul><li><a href="https://cwe.mitre.org/data/definitions/326.html">CWE-326: Inadequate Encryption Strength</a></li><li><a href="https://capec.mitre.org/data/definitions/94.html">CAPEC-94: Man in the Middle Attack</a></li><li><a href="https://capec.mitre.org/data/definitions/157.html">CAPEC-157: Sniffing Attacks</a></li></ul>]]></vulnerabilityClassifications>
+  </issue>
+  <issue>
+    <serialNumber>3043586778397861888</serialNumber>
+    <type>16777728</type>
+    <name><![CDATA[Unencrypted communications]]></name>
+    <host ip="127.0.0.1">http://localhost:10821</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/]]></location>
+    <severity>Low</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p>The application allows users to connect to it over unencrypted connections. An attacker suitably positioned to view a legitimate user's network traffic could record and monitor their interactions with the application and obtain any information the user supplies. Furthermore, an attacker able to modify traffic could use the application as a platform for attacks against its users and third-party websites. Unencrypted connections have been exploited by ISPs and governments to track users, and to inject adverts and malicious JavaScript. Due to these concerns, web browser vendors are planning to visually flag unencrypted connections as hazardous.</p><p>To exploit this vulnerability, an attacker must be suitably positioned to eavesdrop on the victim's network traffic. This scenario typically occurs when a client communicates with the server over an insecure connection such as public Wi-Fi, or a corporate or home network that is shared with a compromised computer. Common defenses such as switched networks are not sufficient to prevent this. An attacker situated in the user's ISP or the application's hosting infrastructure could also perform this attack. Note that an advanced adversary could potentially target any connection made over the Internet's core infrastructure.</p><p>Please note that using a mixture of encrypted and unencrypted communications is an ineffective defense against active attackers, because they can easily remove references to encrypted resources when these references are transmitted over an unencrypted connection.</p>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>Applications should use transport-level encryption (SSL/TLS) to protect all communications passing between the client and the server. The Strict-Transport-Security HTTP header should be used to ensure that clients refuse to access the server over an insecure connection.</p>]]></remediationBackground>
+    <references><![CDATA[<ul><li><a href="https://www.chromium.org/Home/chromium-security/marking-http-as-non-secure">Marking HTTP as non-secure</a></li><li><a href="https://wiki.mozilla.org/Security/Server_Side_TLS">Configuring Server-Side SSL/TLS</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security">HTTP Strict Transport Security</a></li></ul>]]></references>
+    <vulnerabilityClassifications><![CDATA[<ul><li><a href="https://cwe.mitre.org/data/definitions/326.html">CWE-326: Inadequate Encryption Strength</a></li><li><a href="https://capec.mitre.org/data/definitions/94.html">CAPEC-94: Man in the Middle Attack</a></li><li><a href="https://capec.mitre.org/data/definitions/157.html">CAPEC-157: Sniffing Attacks</a></li></ul>]]></vulnerabilityClassifications>
+  </issue>
+  <issue>
+    <serialNumber>7879060276839191552</serialNumber>
+    <type>4197376</type>
+    <name><![CDATA[Input returned in response (reflected)]]></name>
+    <host ip="127.0.0.1">http://localhost:10821</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/ [m1 parameter]]]></location>
+    <severity>Information</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p>Reflection of input arises when data is copied from a request and echoed into the application's immediate response.</p><p>Input being returned in application responses is not a vulnerability in its own right. However, it is a prerequisite for many client-side vulnerabilities, including cross-site scripting, open redirection, content spoofing, and response header injection. Additionally, some server-side vulnerabilities such as SQL injection are often easier to identify and exploit when input is returned in responses. In applications where input retrieval is rare and the environment is resistant to automated testing (for example, due to a web application firewall), it might be worth subjecting instances of it to focused manual testing. </p>]]></issueBackground>
+    <vulnerabilityClassifications><![CDATA[<ul><li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20: Improper Input Validation</a></li><li><a href="https://cwe.mitre.org/data/definitions/116.html">CWE-116: Improper Encoding or Escaping of Output</a></li></ul>]]></vulnerabilityClassifications>
+    <issueDetail><![CDATA[The value of the <b>m1</b> request parameter is copied into the application's response.]]></issueDetail>
+    <requestresponse>
+      <request method="POST" base64="true"><![CDATA[UE9TVCAvIEhUVFAvMS4xDQpIb3N0OiBsb2NhbGhvc3Q6MTA4MjENCkNhY2hlLUNvbnRyb2w6IG1heC1hZ2U9MA0KU2VjLUNoLVVhOiAiR29vZ2xlIENocm9tZSI7dj0iMTQ1IiwgIk5vdD1BP0JyYW5kIjt2PSI4IiwgIkNocm9taXVtIjt2PSIxNDUiDQpTZWMtQ2gtVWEtTW9iaWxlOiA/MA0KU2VjLUNoLVVhLVBsYXRmb3JtOiAiTGludXgiDQpBY2NlcHQtTGFuZ3VhZ2U6IGVuLVVTO3E9MC45LGVuO3E9MC44DQpVc2VyLUFnZW50OiBNb3ppbGxhLzUuMCAoWDExOyBMaW51eCB4ODZfNjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8xNDUuMC4wLjAgU2FmYXJpLzUzNy4zNg0KQWNjZXB0OiB0ZXh0L2h0bWwsYXBwbGljYXRpb24veGh0bWwreG1sLGFwcGxpY2F0aW9uL3htbDtxPTAuOSxpbWFnZS9hdmlmLGltYWdlL3dlYnAsaW1hZ2UvYXBuZywqLyo7cT0wLjgsYXBwbGljYXRpb24vc2lnbmVkLWV4Y2hhbmdlO3Y9YjM7cT0wLjcNClNlYy1GZXRjaC1TaXRlOiBub25lDQpTZWMtRmV0Y2gtTW9kZTogbmF2aWdhdGUNClNlYy1GZXRjaC1Vc2VyOiA/MQ0KU2VjLUZldGNoLURlc3Q6IGRvY3VtZW50DQpBY2NlcHQtRW5jb2Rpbmc6IGd6aXAsIGRlZmxhdGUsIGJyDQpDb25uZWN0aW9uOiBjbG9zZQ0KUmVmZXJlcjogaHR0cDovL2xvY2FsaG9zdDoxMDgyMS8NCkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24veC13d3ctZm9ybS11cmxlbmNvZGVkDQpDb250ZW50LUxlbmd0aDogMzkNCg0KbTE9U2VjcmV0JTIwbWVzc2FnZSUyMDFjb2h3Zm9ucnV1Jm0yPVNlY3JldCttZXNzYWdlKzI=]]></request>
+      <response base64="true"><![CDATA[SFRUUC8xLjEgMjAwIE9LDQpEYXRlOiBTYXQsIDA3IE1hciAyMDI2IDE4OjQ5OjUzIEdNVA0KU2VydmVyOiBBcGFjaGUvMi40LjY2IChEZWJpYW4pDQpYLVBvd2VyZWQtQnk6IFBIUC84LjIuMzANClZhcnk6IEFjY2VwdC1FbmNvZGluZw0KQ29udGVudC1MZW5ndGg6IDU3NQ0KQ29ubmVjdGlvbjogY2xvc2UNCkNvbnRlbnQtVHlwZTogdGV4dC9odG1sOyBjaGFyc2V0PVVURi04DQoNCjwhZG9jdHlwZSBodG1sPgo8aHRtbD4KPGJvZHk+CjxoMT5UZXN0IDgyPC9oMT4KPGZvcm0gbWV0aG9kPSJwb3N0Ij4KICA8aW5wdXQgbmFtZT0ibTEiIHZhbHVlPSJTZWNyZXQgbWVzc2FnZSAxY29od2ZvbnJ1dSIgc3R5bGU9IndpZHRoOjQwMHB4Ij48YnI+CiAgPGlucHV0IG5hbWU9Im0yIiB2YWx1ZT0iU2VjcmV0IG1lc3NhZ2UgMiIgc3R5bGU9IndpZHRoOjQwMHB4Ij48YnI+CiAgPGJ1dHRvbiB0eXBlPSJzdWJtaXQiPkVuY3J5cHQgYm90aDwvYnV0dG9uPgo8L2Zvcm0+Cgo8cD48Yj5Ob25jZSAoYmFzZTY0KTo8L2I+IFFVRkJRVUZCUVVGQlFVRkI8L3A+CjxwPjxiPkNpcGhlcnRleHQxIChiYXNlNjQpOjwvYj4gUEk0NVRyYnByQkJLZGQ5OUcyNkpudlZTT2pERVdOSVZhdFE9PC9wPgo8cD48Yj5UYWcxIChiYXNlNjQpOjwvYj4gamFCL0FLMGNhWTFlR2xjWVZEWktydz09PC9wPgo8cD48Yj5DaXBoZXJ0ZXh0MiAoYmFzZTY0KTo8L2I+IFBJNDVUcmJwckJCS2RkOTlHMjZKblE9PTwvcD4KPHA+PGI+VGFnMiAoYmFzZTY0KTo8L2I+IHpBNWZkYndxSk1RUnlURVpxS1ZXbmc9PTwvcD4KPC9ib2R5Pgo8L2h0bWw+]]></response>
+      <responseRedirected>false</responseRedirected>
+    </requestresponse>
+  </issue>
+  <issue>
+    <serialNumber>6145048606945870848</serialNumber>
+    <type>4197376</type>
+    <name><![CDATA[Input returned in response (reflected)]]></name>
+    <host ip="127.0.0.1">http://localhost:10821</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/ [m2 parameter]]]></location>
+    <severity>Information</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p>Reflection of input arises when data is copied from a request and echoed into the application's immediate response.</p><p>Input being returned in application responses is not a vulnerability in its own right. However, it is a prerequisite for many client-side vulnerabilities, including cross-site scripting, open redirection, content spoofing, and response header injection. Additionally, some server-side vulnerabilities such as SQL injection are often easier to identify and exploit when input is returned in responses. In applications where input retrieval is rare and the environment is resistant to automated testing (for example, due to a web application firewall), it might be worth subjecting instances of it to focused manual testing. </p>]]></issueBackground>
+    <vulnerabilityClassifications><![CDATA[<ul><li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20: Improper Input Validation</a></li><li><a href="https://cwe.mitre.org/data/definitions/116.html">CWE-116: Improper Encoding or Escaping of Output</a></li></ul>]]></vulnerabilityClassifications>
+    <issueDetail><![CDATA[The value of the <b>m2</b> request parameter is copied into the application's response.]]></issueDetail>
+    <requestresponse>
+      <request method="POST" base64="true"><![CDATA[UE9TVCAvIEhUVFAvMS4xDQpIb3N0OiBsb2NhbGhvc3Q6MTA4MjENCkNhY2hlLUNvbnRyb2w6IG1heC1hZ2U9MA0KU2VjLUNoLVVhOiAiR29vZ2xlIENocm9tZSI7dj0iMTQ1IiwgIk5vdD1BP0JyYW5kIjt2PSI4IiwgIkNocm9taXVtIjt2PSIxNDUiDQpTZWMtQ2gtVWEtTW9iaWxlOiA/MA0KU2VjLUNoLVVhLVBsYXRmb3JtOiAiTGludXgiDQpBY2NlcHQtTGFuZ3VhZ2U6IGVuLVVTO3E9MC45LGVuO3E9MC44DQpVc2VyLUFnZW50OiBNb3ppbGxhLzUuMCAoWDExOyBMaW51eCB4ODZfNjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8xNDUuMC4wLjAgU2FmYXJpLzUzNy4zNg0KQWNjZXB0OiB0ZXh0L2h0bWwsYXBwbGljYXRpb24veGh0bWwreG1sLGFwcGxpY2F0aW9uL3htbDtxPTAuOSxpbWFnZS9hdmlmLGltYWdlL3dlYnAsaW1hZ2UvYXBuZywqLyo7cT0wLjgsYXBwbGljYXRpb24vc2lnbmVkLWV4Y2hhbmdlO3Y9YjM7cT0wLjcNClNlYy1GZXRjaC1TaXRlOiBub25lDQpTZWMtRmV0Y2gtTW9kZTogbmF2aWdhdGUNClNlYy1GZXRjaC1Vc2VyOiA/MQ0KU2VjLUZldGNoLURlc3Q6IGRvY3VtZW50DQpBY2NlcHQtRW5jb2Rpbmc6IGd6aXAsIGRlZmxhdGUsIGJyDQpDb25uZWN0aW9uOiBjbG9zZQ0KUmVmZXJlcjogaHR0cDovL2xvY2FsaG9zdDoxMDgyMS8NCkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24veC13d3ctZm9ybS11cmxlbmNvZGVkDQpDb250ZW50LUxlbmd0aDogMzkNCg0KbTE9U2VjcmV0K21lc3NhZ2UrMSZtMj1TZWNyZXQlMjBtZXNzYWdlJTIwMm5yNjRiaDlpcXg=]]></request>
+      <response base64="true"><![CDATA[SFRUUC8xLjEgMjAwIE9LDQpEYXRlOiBTYXQsIDA3IE1hciAyMDI2IDE4OjQ5OjU1IEdNVA0KU2VydmVyOiBBcGFjaGUvMi40LjY2IChEZWJpYW4pDQpYLVBvd2VyZWQtQnk6IFBIUC84LjIuMzANClZhcnk6IEFjY2VwdC1FbmNvZGluZw0KQ29udGVudC1MZW5ndGg6IDU3NQ0KQ29ubmVjdGlvbjogY2xvc2UNCkNvbnRlbnQtVHlwZTogdGV4dC9odG1sOyBjaGFyc2V0PVVURi04DQoNCjwhZG9jdHlwZSBodG1sPgo8aHRtbD4KPGJvZHk+CjxoMT5UZXN0IDgyPC9oMT4KPGZvcm0gbWV0aG9kPSJwb3N0Ij4KICA8aW5wdXQgbmFtZT0ibTEiIHZhbHVlPSJTZWNyZXQgbWVzc2FnZSAxIiBzdHlsZT0id2lkdGg6NDAwcHgiPjxicj4KICA8aW5wdXQgbmFtZT0ibTIiIHZhbHVlPSJTZWNyZXQgbWVzc2FnZSAybnI2NGJoOWlxeCIgc3R5bGU9IndpZHRoOjQwMHB4Ij48YnI+CiAgPGJ1dHRvbiB0eXBlPSJzdWJtaXQiPkVuY3J5cHQgYm90aDwvYnV0dG9uPgo8L2Zvcm0+Cgo8cD48Yj5Ob25jZSAoYmFzZTY0KTo8L2I+IFFVRkJRVUZCUVVGQlFVRkI8L3A+CjxwPjxiPkNpcGhlcnRleHQxIChiYXNlNjQpOjwvYj4gUEk0NVRyYnByQkJLZGQ5OUcyNkpuZz09PC9wPgo8cD48Yj5UYWcxIChiYXNlNjQpOjwvYj4gSXRHZTNpLytQUEljVnE0N09BUVFtZz09PC9wPgo8cD48Yj5DaXBoZXJ0ZXh0MiAoYmFzZTY0KTo8L2I+IFBJNDVUcmJwckJCS2RkOTlHMjZKbmZoUFpIUEFYNFVPYnRrPTwvcD4KPHA+PGI+VGFnMiAoYmFzZTY0KTo8L2I+IEdXaDJXcFJaVUwyRmZXcEZIWi9rT0E9PTwvcD4KPC9ib2R5Pgo8L2h0bWw+]]></response>
+      <responseRedirected>false</responseRedirected>
+    </requestresponse>
+  </issue>
+  <issue>
+    <serialNumber>8187121316095107072</serialNumber>
+    <type>2098944</type>
+    <name><![CDATA[Cross-site request forgery]]></name>
+    <host ip="127.0.0.1">http://localhost:10821</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/]]></location>
+    <severity>Information</severity>
+    <confidence>Tentative</confidence>
+    <issueBackground><![CDATA[<p>Cross-site request forgery (CSRF) vulnerabilities may arise when applications rely solely on HTTP cookies to identify the user that has issued a particular request. Because browsers automatically add cookies to requests regardless of their origin, it may be possible for an attacker to create a malicious web site that forges a cross-domain request to the vulnerable application. For a request to be vulnerable to CSRF, the following conditions must hold:</p>
+<ul>
+<li>The request can be issued cross-domain, for example using an HTML form. If the request contains non-standard headers or body content, then it may only be issuable from a page that originated on the same domain.</li>
+<li>The application relies solely on HTTP cookies or Basic Authentication to identify the user that issued the request. If the application places session-related tokens elsewhere within the request, then it may not be vulnerable.</li>
+<li>The request performs some privileged action within the application, which modifies the application's state based on the identity of the issuing user.</li><li>The attacker can determine all the parameters required to construct a request that performs the action. If the request contains any values that the attacker cannot determine or predict, then it is not vulnerable.</li></ul>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>The most effective way to protect against CSRF vulnerabilities is to include within relevant requests an additional token that is not transmitted in a cookie: for example, a parameter in a hidden form field. This additional token should contain sufficient entropy, and be generated using a cryptographic random number generator, such that it is not feasible for an attacker to determine or predict the value of any token that was issued to another user. The token should be associated with the user's session, and the application should validate that the correct token is received before performing any action resulting from the request.</p>
+<p>An alternative approach, which may be easier to implement, is to validate that Host and Referer headers in relevant requests are both present and contain the same domain name. However, this approach is somewhat less robust: historically, quirks in browsers and plugins have often enabled attackers to forge cross-domain requests that manipulate these headers to bypass such defenses. </p>]]></remediationBackground>
+    <references><![CDATA[<ul><li><a href="https://portswigger.net/web-security/csrf">Web Security Academy: Cross-site request forgery</a></li><li><a href="https://support.portswigger.net/customer/portal/articles/1965674-using-burp-to-test-for-cross-site-request-forgery-csrf-">Using Burp to Test for Cross-Site Request Forgery</a></li><li><a href="https://media.blackhat.com/eu-13/briefings/Lundeen/bh-eu-13-deputies-still-confused-lundeen-wp.pdf">The Deputies Are Still Confused</a></li></ul>]]></references>
+    <vulnerabilityClassifications><![CDATA[<ul><li><a href="https://cwe.mitre.org/data/definitions/352.html">CWE-352: Cross-Site Request Forgery (CSRF)</a></li><li><a href="https://capec.mitre.org/data/definitions/62.html">CAPEC-62: Cross Site Request Forgery</a></li></ul>]]></vulnerabilityClassifications>
+    <issueDetail><![CDATA[The request appears to be vulnerable to cross-site request forgery (CSRF) attacks against unauthenticated functionality. This is unlikely to constitute a security vulnerability in its own right, however it may facilitate exploitation of other vulnerabilities affecting application users.]]></issueDetail>
+    <requestresponse>
+      <request method="POST" base64="true"><![CDATA[UE9TVCAvIEhUVFAvMS4xDQpIb3N0OiBsb2NhbGhvc3Q6MTA4MjENCkNhY2hlLUNvbnRyb2w6IG1heC1hZ2U9MA0KU2VjLUNoLVVhOiAiR29vZ2xlIENocm9tZSI7dj0iMTQ1IiwgIk5vdD1BP0JyYW5kIjt2PSI4IiwgIkNocm9taXVtIjt2PSIxNDUiDQpTZWMtQ2gtVWEtTW9iaWxlOiA/MA0KU2VjLUNoLVVhLVBsYXRmb3JtOiAiTGludXgiDQpBY2NlcHQtTGFuZ3VhZ2U6IGVuLVVTO3E9MC45LGVuO3E9MC44DQpVc2VyLUFnZW50OiBNb3ppbGxhLzUuMCAoWDExOyBMaW51eCB4ODZfNjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8xNDUuMC4wLjAgU2FmYXJpLzUzNy4zNg0KQWNjZXB0OiB0ZXh0L2h0bWwsYXBwbGljYXRpb24veGh0bWwreG1sLGFwcGxpY2F0aW9uL3htbDtxPTAuOSxpbWFnZS9hdmlmLGltYWdlL3dlYnAsaW1hZ2UvYXBuZywqLyo7cT0wLjgsYXBwbGljYXRpb24vc2lnbmVkLWV4Y2hhbmdlO3Y9YjM7cT0wLjcNClNlYy1GZXRjaC1TaXRlOiBub25lDQpTZWMtRmV0Y2gtTW9kZTogbmF2aWdhdGUNClNlYy1GZXRjaC1Vc2VyOiA/MQ0KU2VjLUZldGNoLURlc3Q6IGRvY3VtZW50DQpBY2NlcHQtRW5jb2Rpbmc6IGd6aXAsIGRlZmxhdGUsIGJyDQpDb25uZWN0aW9uOiBjbG9zZQ0KUmVmZXJlcjogaHR0cDovL2xvY2FsaG9zdDoxMDgyMS8NCkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24veC13d3ctZm9ybS11cmxlbmNvZGVkDQpDb250ZW50LUxlbmd0aDogMzkNCg0KbTE9U2VjcmV0K21lc3NhZ2UrMSZtMj1TZWNyZXQrbWVzc2FnZSsy]]></request>
+      <response base64="true"><![CDATA[SFRUUC8xLjEgMjAwIE9LDQpEYXRlOiBTYXQsIDA3IE1hciAyMDI2IDE4OjQ5OjUyIEdNVA0KU2VydmVyOiBBcGFjaGUvMi40LjY2IChEZWJpYW4pDQpYLVBvd2VyZWQtQnk6IFBIUC84LjIuMzANClZhcnk6IEFjY2VwdC1FbmNvZGluZw0KQ29udGVudC1MZW5ndGg6IDU1Mw0KQ29ubmVjdGlvbjogY2xvc2UNCkNvbnRlbnQtVHlwZTogdGV4dC9odG1sOyBjaGFyc2V0PVVURi04DQoNCjwhZG9jdHlwZSBodG1sPgo8aHRtbD4KPGJvZHk+CjxoMT5UZXN0IDgyPC9oMT4KPGZvcm0gbWV0aG9kPSJwb3N0Ij4KICA8aW5wdXQgbmFtZT0ibTEiIHZhbHVlPSJTZWNyZXQgbWVzc2FnZSAxIiBzdHlsZT0id2lkdGg6NDAwcHgiPjxicj4KICA8aW5wdXQgbmFtZT0ibTIiIHZhbHVlPSJTZWNyZXQgbWVzc2FnZSAyIiBzdHlsZT0id2lkdGg6NDAwcHgiPjxicj4KICA8YnV0dG9uIHR5cGU9InN1Ym1pdCI+RW5jcnlwdCBib3RoPC9idXR0b24+CjwvZm9ybT4KCjxwPjxiPk5vbmNlIChiYXNlNjQpOjwvYj4gUVVGQlFVRkJRVUZCUVVGQjwvcD4KPHA+PGI+Q2lwaGVydGV4dDEgKGJhc2U2NCk6PC9iPiBQSTQ1VHJicHJCQktkZDk5RzI2Sm5nPT08L3A+CjxwPjxiPlRhZzEgKGJhc2U2NCk6PC9iPiBJdEdlM2kvK1BQSWNWcTQ3T0FRUW1nPT08L3A+CjxwPjxiPkNpcGhlcnRleHQyIChiYXNlNjQpOjwvYj4gUEk0NVRyYnByQkJLZGQ5OUcyNkpuUT09PC9wPgo8cD48Yj5UYWcyIChiYXNlNjQpOjwvYj4gekE1ZmRid3FKTVFSeVRFWnFLVlduZz09PC9wPgo8L2JvZHk+CjwvaHRtbD4=]]></response>
+      <responseRedirected>false</responseRedirected>
+    </requestresponse>
+    <requestresponse>
+      <request method="POST" base64="true"><![CDATA[UE9TVCAvIEhUVFAvMS4xDQpIb3N0OiBsb2NhbGhvc3Q6MTA4MjENCkNhY2hlLUNvbnRyb2w6IG1heC1hZ2U9MA0KU2VjLUNoLVVhOiAiR29vZ2xlIENocm9tZSI7dj0iMTQ1IiwgIk5vdD1BP0JyYW5kIjt2PSI4IiwgIkNocm9taXVtIjt2PSIxNDUiDQpTZWMtQ2gtVWEtTW9iaWxlOiA/MA0KU2VjLUNoLVVhLVBsYXRmb3JtOiAiTGludXgiDQpBY2NlcHQtTGFuZ3VhZ2U6IGVuLVVTO3E9MC45LGVuO3E9MC44DQpVc2VyLUFnZW50OiBNb3ppbGxhLzUuMCAoWDExOyBMaW51eCB4ODZfNjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8xNDUuMC4wLjAgU2FmYXJpLzUzNy4zNg0KQWNjZXB0OiB0ZXh0L2h0bWwsYXBwbGljYXRpb24veGh0bWwreG1sLGFwcGxpY2F0aW9uL3htbDtxPTAuOSxpbWFnZS9hdmlmLGltYWdlL3dlYnAsaW1hZ2UvYXBuZywqLyo7cT0wLjgsYXBwbGljYXRpb24vc2lnbmVkLWV4Y2hhbmdlO3Y9YjM7cT0wLjcNClNlYy1GZXRjaC1TaXRlOiBub25lDQpTZWMtRmV0Y2gtTW9kZTogbmF2aWdhdGUNClNlYy1GZXRjaC1Vc2VyOiA/MQ0KU2VjLUZldGNoLURlc3Q6IGRvY3VtZW50DQpBY2NlcHQtRW5jb2Rpbmc6IGd6aXAsIGRlZmxhdGUsIGJyDQpDb25uZWN0aW9uOiBjbG9zZQ0KUmVmZXJlcjogaHR0cDovL3plYWN2LmNvbToxMDgyMS8NCkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24veC13d3ctZm9ybS11cmxlbmNvZGVkDQpDb250ZW50LUxlbmd0aDogMzkNCg0KbTE9U2VjcmV0K21lc3NhZ2UrMSZtMj1TZWNyZXQrbWVzc2FnZSsy]]></request>
+      <response base64="true"><![CDATA[SFRUUC8xLjEgMjAwIE9LDQpEYXRlOiBTYXQsIDA3IE1hciAyMDI2IDE4OjQ5OjU3IEdNVA0KU2VydmVyOiBBcGFjaGUvMi40LjY2IChEZWJpYW4pDQpYLVBvd2VyZWQtQnk6IFBIUC84LjIuMzANClZhcnk6IEFjY2VwdC1FbmNvZGluZw0KQ29udGVudC1MZW5ndGg6IDU1Mw0KQ29ubmVjdGlvbjogY2xvc2UNCkNvbnRlbnQtVHlwZTogdGV4dC9odG1sOyBjaGFyc2V0PVVURi04DQoNCjwhZG9jdHlwZSBodG1sPgo8aHRtbD4KPGJvZHk+CjxoMT5UZXN0IDgyPC9oMT4KPGZvcm0gbWV0aG9kPSJwb3N0Ij4KICA8aW5wdXQgbmFtZT0ibTEiIHZhbHVlPSJTZWNyZXQgbWVzc2FnZSAxIiBzdHlsZT0id2lkdGg6NDAwcHgiPjxicj4KICA8aW5wdXQgbmFtZT0ibTIiIHZhbHVlPSJTZWNyZXQgbWVzc2FnZSAyIiBzdHlsZT0id2lkdGg6NDAwcHgiPjxicj4KICA8YnV0dG9uIHR5cGU9InN1Ym1pdCI+RW5jcnlwdCBib3RoPC9idXR0b24+CjwvZm9ybT4KCjxwPjxiPk5vbmNlIChiYXNlNjQpOjwvYj4gUVVGQlFVRkJRVUZCUVVGQjwvcD4KPHA+PGI+Q2lwaGVydGV4dDEgKGJhc2U2NCk6PC9iPiBQSTQ1VHJicHJCQktkZDk5RzI2Sm5nPT08L3A+CjxwPjxiPlRhZzEgKGJhc2U2NCk6PC9iPiBJdEdlM2kvK1BQSWNWcTQ3T0FRUW1nPT08L3A+CjxwPjxiPkNpcGhlcnRleHQyIChiYXNlNjQpOjwvYj4gUEk0NVRyYnByQkJLZGQ5OUcyNkpuUT09PC9wPgo8cD48Yj5UYWcyIChiYXNlNjQpOjwvYj4gekE1ZmRid3FKTVFSeVRFWnFLVlduZz09PC9wPgo8L2JvZHk+CjwvaHRtbD4=]]></response>
+      <responseRedirected>false</responseRedirected>
+    </requestresponse>
+  </issue>
+  <issue>
+    <serialNumber>9106102527592927232</serialNumber>
+    <type>16777728</type>
+    <name><![CDATA[Unencrypted communications]]></name>
+    <host ip="127.0.0.1">http://localhost:10822</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/]]></location>
+    <severity>Low</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p>The application allows users to connect to it over unencrypted connections. An attacker suitably positioned to view a legitimate user's network traffic could record and monitor their interactions with the application and obtain any information the user supplies. Furthermore, an attacker able to modify traffic could use the application as a platform for attacks against its users and third-party websites. Unencrypted connections have been exploited by ISPs and governments to track users, and to inject adverts and malicious JavaScript. Due to these concerns, web browser vendors are planning to visually flag unencrypted connections as hazardous.</p><p>To exploit this vulnerability, an attacker must be suitably positioned to eavesdrop on the victim's network traffic. This scenario typically occurs when a client communicates with the server over an insecure connection such as public Wi-Fi, or a corporate or home network that is shared with a compromised computer. Common defenses such as switched networks are not sufficient to prevent this. An attacker situated in the user's ISP or the application's hosting infrastructure could also perform this attack. Note that an advanced adversary could potentially target any connection made over the Internet's core infrastructure.</p><p>Please note that using a mixture of encrypted and unencrypted communications is an ineffective defense against active attackers, because they can easily remove references to encrypted resources when these references are transmitted over an unencrypted connection.</p>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>Applications should use transport-level encryption (SSL/TLS) to protect all communications passing between the client and the server. The Strict-Transport-Security HTTP header should be used to ensure that clients refuse to access the server over an insecure connection.</p>]]></remediationBackground>
+    <references><![CDATA[<ul><li><a href="https://www.chromium.org/Home/chromium-security/marking-http-as-non-secure">Marking HTTP as non-secure</a></li><li><a href="https://wiki.mozilla.org/Security/Server_Side_TLS">Configuring Server-Side SSL/TLS</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security">HTTP Strict Transport Security</a></li></ul>]]></references>
+    <vulnerabilityClassifications><![CDATA[<ul><li><a href="https://cwe.mitre.org/data/definitions/326.html">CWE-326: Inadequate Encryption Strength</a></li><li><a href="https://capec.mitre.org/data/definitions/94.html">CAPEC-94: Man in the Middle Attack</a></li><li><a href="https://capec.mitre.org/data/definitions/157.html">CAPEC-157: Sniffing Attacks</a></li></ul>]]></vulnerabilityClassifications>
+  </issue>
+  <issue>
+    <serialNumber>6216502343086581760</serialNumber>
+    <type>16777728</type>
+    <name><![CDATA[Unencrypted communications]]></name>
+    <host ip="127.0.0.1">http://localhost:10862</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/]]></location>
+    <severity>Low</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p>The application allows users to connect to it over unencrypted connections. An attacker suitably positioned to view a legitimate user's network traffic could record and monitor their interactions with the application and obtain any information the user supplies. Furthermore, an attacker able to modify traffic could use the application as a platform for attacks against its users and third-party websites. Unencrypted connections have been exploited by ISPs and governments to track users, and to inject adverts and malicious JavaScript. Due to these concerns, web browser vendors are planning to visually flag unencrypted connections as hazardous.</p><p>To exploit this vulnerability, an attacker must be suitably positioned to eavesdrop on the victim's network traffic. This scenario typically occurs when a client communicates with the server over an insecure connection such as public Wi-Fi, or a corporate or home network that is shared with a compromised computer. Common defenses such as switched networks are not sufficient to prevent this. An attacker situated in the user's ISP or the application's hosting infrastructure could also perform this attack. Note that an advanced adversary could potentially target any connection made over the Internet's core infrastructure.</p><p>Please note that using a mixture of encrypted and unencrypted communications is an ineffective defense against active attackers, because they can easily remove references to encrypted resources when these references are transmitted over an unencrypted connection.</p>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>Applications should use transport-level encryption (SSL/TLS) to protect all communications passing between the client and the server. The Strict-Transport-Security HTTP header should be used to ensure that clients refuse to access the server over an insecure connection.</p>]]></remediationBackground>
+    <references><![CDATA[<ul><li><a href="https://www.chromium.org/Home/chromium-security/marking-http-as-non-secure">Marking HTTP as non-secure</a></li><li><a href="https://wiki.mozilla.org/Security/Server_Side_TLS">Configuring Server-Side SSL/TLS</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security">HTTP Strict Transport Security</a></li></ul>]]></references>
+    <vulnerabilityClassifications><![CDATA[<ul><li><a href="https://cwe.mitre.org/data/definitions/326.html">CWE-326: Inadequate Encryption Strength</a></li><li><a href="https://capec.mitre.org/data/definitions/94.html">CAPEC-94: Man in the Middle Attack</a></li><li><a href="https://capec.mitre.org/data/definitions/157.html">CAPEC-157: Sniffing Attacks</a></li></ul>]]></vulnerabilityClassifications>
+  </issue>
+</issues>
