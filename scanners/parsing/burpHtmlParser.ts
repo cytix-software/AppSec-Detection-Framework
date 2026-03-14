@@ -92,7 +92,18 @@ export class BurpHtmlParser extends BaseScannerParser {
 
         if (!detectedByTest.has(testName)) detectedByTest.set(testName, new Set<number>());
         const set = detectedByTest.get(testName)!;
-        for (const cwe of cwes) set.add(cwe);
+        for (const cwe of cwes) {
+          set.add(cwe);
+
+          //Now try looking at hierarchy to also add parent CWEs, if any:
+          const parentCwes = this.getAncestorCwes(`CWE-${cwe}`);
+          for (const parentCwe of parentCwes) {
+            const parentId = Number(parentCwe.replace("CWE-", ""));
+            if (Number.isFinite(parentId) && parentId > 0) {
+              detectedByTest.get(testName)!.add(parentId);
+            }
+          }
+        }
       }
 
       // Fallback: truly single-instance style: host/port in Summary table
@@ -110,7 +121,18 @@ export class BurpHtmlParser extends BaseScannerParser {
           if (testName) {
             if (!detectedByTest.has(testName)) detectedByTest.set(testName, new Set<number>());
             const set = detectedByTest.get(testName)!;
-            for (const cwe of cwes) set.add(cwe);
+
+            for (const cwe of cwes) {
+              set.add(cwe);
+
+              const parentCwes = this.getAncestorCwes(`CWE-${cwe}`);
+              for (const parentCwe of parentCwes) {
+                const parentId = Number(parentCwe.replace("CWE-", ""));
+                if (Number.isFinite(parentId) && parentId > 0) {
+                  set.add(parentId);
+                }
+              }
+            }
           }
         }
       }

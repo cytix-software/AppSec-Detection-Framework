@@ -530,6 +530,30 @@ export class NucleiJsonParser extends BaseScannerParser {
 
     const expectedByTest = this.buildExpectedCWEsByTest(data);
     const detectedByTest = new Map<string, Set<number>>();
+
+    //CWE hierarchy helper (is used in lots of areas in Nuclei)
+    const addCweWithParents = (testName: string, cweId: number, cwesSet?: Set<number>) => {
+      if (!Number.isFinite(cweId) || cweId <= 0) return;
+
+      if (cwesSet) {
+        cwesSet.add(cweId);
+      }
+
+      const detectedSet = detectedByTest.get(testName)!;
+      detectedSet.add(cweId);
+
+      const parentCwes = this.getAncestorCwes(`CWE-${cweId}`);
+      for (const parentCwe of parentCwes) {
+        const parentId = Number(parentCwe.replace("CWE-", ""));
+        if (Number.isFinite(parentId) && parentId > 0) {
+          detectedSet.add(parentId);
+          if (cwesSet) {
+            cwesSet.add(parentId);
+          }
+        }
+      }
+    };
+
     // infer updatedAt from the artifact (latest timestamp)
     let inferredUpdatedAt: number | undefined = undefined;
     let cwes: number[] = [];
@@ -553,28 +577,34 @@ export class NucleiJsonParser extends BaseScannerParser {
       if (Array.isArray(cweField)) {
         for (const rawCwe of cweField) {
           const n = normalizeCweId(rawCwe);
-          if (n != null) cwesSet.add(n);
+          if (n != null) {
+            addCweWithParents(testName, n, cwesSet);
+          }
         }
       } else {
         const n = normalizeCweId(cweField);
-        if (n != null) cwesSet.add(n);
+        if (n != null) {
+          addCweWithParents(testName, n, cwesSet);
+        }
       }
 
       // 2) Also use local mapping in case nuclei didn't provide CWE IDs
       const templateId = f["template-id"] ?? "";
       const local = templateId ? templateIdToCwes(templateId) : [];
       for (const x of local ?? []) {
-        if (Number.isFinite(x) && x > 0) cwesSet.add(x);
+        if (Number.isFinite(x) && x > 0) {
+          addCweWithParents(testName, x, cwesSet);
+        }
       }
 
       //Check for cases of 'default-login' or 'credentials' present
       if (templateId.includes("default-login")) {
-        cwesSet.add(798); //CWE-798: Use of Hard-coded Credentials
-        cwesSet.add(522); //CWE-522: Insufficiently Protected Credentials
-        cwesSet.add(259); //CWE-259: Use of Weak Password Recovery Mechanism
-      }else if (templateId.includes("credentials")) {
-        cwesSet.add(200); //CWE-200: Information Exposure
-        cwesSet.add(522); //CWE-522: Insufficiently Protected Credentials
+        addCweWithParents(testName, 798, cwesSet); // CWE-798
+        addCweWithParents(testName, 522, cwesSet); // CWE-522
+        addCweWithParents(testName, 259, cwesSet); // CWE-259
+      } else if (templateId.includes("credentials")) {
+        addCweWithParents(testName, 200, cwesSet); // CWE-200
+        addCweWithParents(testName, 522, cwesSet); // CWE-522
       }
 
       //Add to detected

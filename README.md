@@ -204,7 +204,24 @@ When adding new test results:
 
 #### Analysis Utilities
 
-The framework includes utilities to help analyze the data.json file and identify gaps in test coverage:
+The framework includes utilities to help maintain test data and identify gaps in test coverage:
+
+##### Update CWE Hierarchy
+
+```bash
+bun run utils/updateCweHierarchy.ts
+```
+
+This utility updates the CWE hierarchy data used by the automated parsing system.
+
+Some scanners report very specific CWEs that belong to broader weakness categories. The hierarchy allows ASDF to associate detected CWEs with their potential parent CWEs, improving the accuracy of automated mappings between scanner findings and the CWEs defined in data.json.
+
+The script:
+- Retrieves and processes the official CWE hierarchy data
+- Extracts parent-child relationships between CWEs
+- Updates the local hierarchy dataset used during automated parsing
+
+Note: This utility is only required when refreshing the CWE hierarchy data (e.g., after a new CWE release). It is not needed for normal framework usage.
 
 ##### Find Missing Tests
 
