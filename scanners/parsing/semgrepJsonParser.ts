@@ -74,7 +74,7 @@ export class SemgrepJsonParser extends BaseScannerParser {
         detectedByTest.get(testName)!.add(cweId);
 
         //Now try looking at hierarchy to also add parent CWEs, if any:
-        const parentCwes = this.getParentCwes(`CWE-${cweId}`);
+        const parentCwes = this.getAncestorCwes(`CWE-${cweId}`);
         for (const parentCwe of parentCwes) {
           const parentId = Number(parentCwe.replace("CWE-", ""));
           if (Number.isFinite(parentId) && parentId > 0) {

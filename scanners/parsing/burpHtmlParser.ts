@@ -96,7 +96,7 @@ export class BurpHtmlParser extends BaseScannerParser {
           set.add(cwe);
 
           //Now try looking at hierarchy to also add parent CWEs, if any:
-          const parentCwes = this.getParentCwes(`CWE-${cwe}`);
+          const parentCwes = this.getAncestorCwes(`CWE-${cwe}`);
           for (const parentCwe of parentCwes) {
             const parentId = Number(parentCwe.replace("CWE-", ""));
             if (Number.isFinite(parentId) && parentId > 0) {
@@ -125,7 +125,7 @@ export class BurpHtmlParser extends BaseScannerParser {
             for (const cwe of cwes) {
               set.add(cwe);
 
-              const parentCwes = this.getParentCwes(`CWE-${cwe}`);
+              const parentCwes = this.getAncestorCwes(`CWE-${cwe}`);
               for (const parentCwe of parentCwes) {
                 const parentId = Number(parentCwe.replace("CWE-", ""));
                 if (Number.isFinite(parentId) && parentId > 0) {

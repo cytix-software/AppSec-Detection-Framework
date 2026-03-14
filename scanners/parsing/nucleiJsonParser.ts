@@ -542,7 +542,7 @@ export class NucleiJsonParser extends BaseScannerParser {
       const detectedSet = detectedByTest.get(testName)!;
       detectedSet.add(cweId);
 
-      const parentCwes = this.getParentCwes(`CWE-${cweId}`);
+      const parentCwes = this.getAncestorCwes(`CWE-${cweId}`);
       for (const parentCwe of parentCwes) {
         const parentId = Number(parentCwe.replace("CWE-", ""));
         if (Number.isFinite(parentId) && parentId > 0) {

@@ -143,11 +143,11 @@ export abstract class BaseScannerParser implements IScannerParser {
   }
 
   //Return parent CWEs for a given CWE ID using the loaded hierarchy, or empty array if not found or no parents:
-  public getParentCwes(cweId: string): string[] {
+  public getAncestorCwes(cweId: string): string[] {
     try {
-      return hierarchy.getParentCwes(cweId);
+      return hierarchy.getAncestorCwes(cweId);
     } catch (e) {
-      console.warn(`Could not get parents for CWE ID ${cweId}: ${(e as Error).message}`);
+      console.warn(`Could not get ancestors for CWE ID ${cweId}: ${(e as Error).message}`);
       return [];
     }
   }
