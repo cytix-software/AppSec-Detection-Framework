@@ -464,7 +464,8 @@ export const TEMPLATE_TO_CWES: Readonly<Record<string, readonly number[]>> = {
   "nginx-api-traversal": [22, 23],
   "api-travisci": [200],
   "travisci-access-token": [200, 522],
-  "travis-ci-disclosure": [200]
+  "travis-ci-disclosure": [200],
+  "cors-misconfig": [942]
 } as const;
 
 export function templateIdToCwes(templateId: string): readonly number[] {
