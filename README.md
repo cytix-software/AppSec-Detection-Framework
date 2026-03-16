@@ -104,6 +104,10 @@ Automated parsing produces the same `recordedTests` format as the manual generat
 
 > Note: automated parsing uses a best-effort mapping to CWEs, so human review is encouraged.
 
+> For example, given a test X:
+> - A parser will jump through ancestors of a mapped CWE in case of X's expected CWE being broader than the one detected.
+> - However if the expected CWE is more specific than that detected, it cannot be selected automatically, so these cases should be looked out for.
+
 ###### Using the Management Interface
 
 When importing scanner output via the Recorded Tests Generator:
