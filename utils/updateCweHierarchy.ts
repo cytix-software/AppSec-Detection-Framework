@@ -226,7 +226,7 @@ async function main(): Promise<void> {
 
   console.log("Building simplified hierarchy...");
   const hierarchy = buildSimplifiedHierarchy(xml, {
-    allowedViewIds: ["1000", "1003"],
+    allowedViewIds: ["1000", "1003", "699", "700", "2000", "677"], // Views relevant to software developers and pen-testers
     includeRelationshipsWithoutView: true,
   });
 
