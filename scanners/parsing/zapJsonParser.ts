@@ -1,6 +1,6 @@
-import type { DataJson, MappingOut } from "../../utils/types";
+import type { DataJson, MappingOut, ParserInput, ParseContext } from "../../utils/types";
 import { ScannerParsingError } from "../errors/ScannerParsingError";
-import { BaseScannerParser, type ParserInput, type ParseContext } from "./parser";
+import { BaseScannerParser } from "./parser";
 
 type ZapJsonReport = {
   "@programName"?: string; //"ZAP"
