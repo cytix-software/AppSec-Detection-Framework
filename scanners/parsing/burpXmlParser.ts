@@ -1,5 +1,5 @@
-import type { DataJson, MappingOut } from "../../utils/types";
-import { BaseScannerParser, type ParserInput, type ParseContext } from "./parser";
+import type { DataJson, MappingOut, ParserInput, ParseContext } from "../../utils/types";
+import { BaseScannerParser } from "./parser";
 import { ScannerParsingError } from "../errors/ScannerParsingError";
 
 function extractAttr(xml: string, tagName: string, attr: string): string | undefined {
