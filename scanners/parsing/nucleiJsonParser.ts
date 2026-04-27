@@ -29,7 +29,8 @@ type NucleiFinding = {
   [k: string]: unknown;
 };
 
-//Upgraded mapping to cover main templates associated with the test suite, using new NLP-based results
+//Upgraded mapping to cover main templates associated with the test suite.
+//Now has further normalization and removes unnecessary ancestor CWEs (now inferred by parsing logic globally).
 export const TEMPLATE_TO_CWES: Readonly<Record<string, readonly number[]>> = {
   "3cx-config": [219, 552],
   "3cx-management-console": [23],
