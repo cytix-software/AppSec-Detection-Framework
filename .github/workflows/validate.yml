@@ -1,0 +1,50 @@
+name: Validate test data
+
+on:
+  pull_request:
+    paths:
+      - 'data.json'
+      - 'docker-compose.yml'
+      - 'results/**'
+      - 'utils/**'
+      - 'scanners/**'
+      - '.github/workflows/validate.yml'
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Pinned rather than `latest` so a Bun release can't change what CI
+      # runs underneath us. Verified against this version locally.
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # Gate: data.json and docker-compose.yml must agree on every test's
+      # CWE and OWASP profiles. Exits non-zero when they drift.
+      - name: Check profile consistency
+        run: bun run check-profiles
+
+      # docker-compose.yml is hand-edited by contributors adding tests, so
+      # catch malformed YAML before anyone tries to run a batch.
+      - name: Validate docker-compose.yml
+        run: docker compose --profile all config --quiet
+
+      # Informational: reports tests and CWEs missing from each scanner's
+      # results. Always exits 0, so this reads as a summary, not a gate.
+      - name: Report missing tests in scanner results
+        run: bun run find-missing --simplified
+
+      # Informational: CWEs in data.json with no test case behind them.
+      - name: Report uncovered CWEs
+        run: bun run find-uncovered --simplified

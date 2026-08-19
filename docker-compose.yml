@@ -13,6 +13,7 @@ services:
       - apache
       - cwe-23
       - cwe-22
+      - a01:2025
       - all
   test_1_v2:
     image: test_1_v2:latest
@@ -28,6 +29,7 @@ services:
       - flask
       - cwe-23
       - cwe-22
+      - a01:2025
       - all
   test_2_v1:
     image: test_2_v1:latest
@@ -43,6 +45,7 @@ services:
       - cwe-78
       - cwe-77
       - a03:2021
+      - a05:2025
       - all
 
   test_2_v2:
@@ -59,6 +62,7 @@ services:
       - cwe-77
       - cwe-78
       - a03:2021
+      - a05:2025
       - all
 
   test_3_v1:
@@ -74,6 +78,7 @@ services:
       - apache
       - cwe-352
       - a01:2021
+      - a01:2025
       - all
 
   test_3_v2:
@@ -89,6 +94,7 @@ services:
       - express
       - cwe-352
       - a01:2021
+      - a01:2025
       - all
 
   test_4_v1:
@@ -104,6 +110,7 @@ services:
       - apache
       - cwe-80
       - a03:2021
+      - a05:2025
       - all
 
   test_4_v2:
@@ -119,6 +126,7 @@ services:
       - express
       - cwe-80
       - a03:2021
+      - a05:2025
       - all
 
   test_5_v1:
@@ -134,6 +142,7 @@ services:
       - apache
       - cwe-83
       - a03:2021
+      - a05:2025
       - all
 
   test_5_v2:
@@ -149,6 +158,7 @@ services:
       - express
       - cwe-83
       - a03:2021
+      - a05:2025
       - all
 
   test_6_v1:
@@ -164,6 +174,7 @@ services:
       - apache
       - cwe-434
       - a04:2021
+      - a06:2025
       - all
 
   test_6_v2:
@@ -179,6 +190,7 @@ services:
       - express
       - cwe-434
       - a04:2021
+      - a06:2025
       - all
 
   test_7_v1:
@@ -194,6 +206,7 @@ services:
       - apache
       - cwe-502
       - a08:2021
+      - a08:2025
       - all
 
   test_7_v2:
@@ -209,6 +222,7 @@ services:
       - express
       - cwe-502
       - a08:2021
+      - a08:2025
       - all
 
   test_8_v1:
@@ -224,6 +238,7 @@ services:
       - apache 
       - cwe-1004
       - a05:2021
+      - a02:2025
       - all
 
   test_8_v2:
@@ -239,6 +254,7 @@ services:
       - express
       - cwe-1004
       - a05:2021
+      - a02:2025
       - all
 
   test_9_v1:
@@ -255,6 +271,7 @@ services:
       - cwe-35
       - cwe-22
       - a01:2021
+      - a01:2025
       - all
 
   test_9_v2:
@@ -271,6 +288,7 @@ services:
       - cwe-35
       - cwe-22
       - a01:2021
+      - a01:2025
       - all
 
   test_10_v1:
@@ -286,6 +304,7 @@ services:
       - apache 
       - cwe-276
       - a01:2021
+      - a01:2025
       - all
 
   test_10_v2:
@@ -301,6 +320,7 @@ services:
       - express 
       - cwe-276
       - a01:2021
+      - a01:2025
       - all
       
   test_11_v1:
@@ -319,6 +339,8 @@ services:
       - cwe-256 
       - a01:2021
       - a04:2021
+      - a01:2025
+      - a06:2025
       - all
 
   test_12_v1:
@@ -334,6 +356,7 @@ services:
       - apache 
       - cwe-377
       - a01:2021
+      - a01:2025
       - all
 
   test_12_v2:
@@ -349,6 +372,7 @@ services:
       - express 
       - cwe-377
       - a01:2021
+      - a01:2025
       - all
 
   test_13_v1:
@@ -364,6 +388,7 @@ services:
       - apache 
       - cwe-862
       - a01:2021
+      - a01:2025
       - all
 
   test_13_v2:
@@ -379,6 +404,7 @@ services:
       - express 
       - cwe-862
       - a01:2021
+      - a01:2025
       - all
 
   test_14_v1:
@@ -399,6 +425,9 @@ services:
       - a01:2021
       - a07:2021
       - a08:2021
+      - a01:2025
+      - a07:2025
+      - a08:2025
       - all
 
   test_14_v2:
@@ -419,6 +448,9 @@ services:
       - a01:2021
       - a07:2021
       - a08:2021
+      - a01:2025
+      - a07:2025
+      - a08:2025
       - all
       
   test_15_v1:
@@ -437,6 +469,7 @@ services:
       - cwe-759 
       - cwe-916
       - a02:2021
+      - a04:2025
       - all
 
   test_15_v2:
@@ -455,6 +488,7 @@ services:
       - cwe-759 
       - cwe-916
       - a02:2021
+      - a04:2025
       - all
 
   test_16_v1:
@@ -473,6 +507,8 @@ services:
       - a03:2021
       - cwe-78
       - cwe-77
+      - a01:2025
+      - a05:2025
       - all
 
   test_16_v2:
@@ -491,6 +527,8 @@ services:
       - a03:2021
       - cwe-78
       - cwe-77
+      - a01:2025
+      - a05:2025
       - all
 
   test_17_v1:
@@ -512,6 +550,8 @@ services:
       - cwe-798 
       - a02:2021
       - a07:2021
+      - a04:2025
+      - a07:2025
       - all
 
   test_17_v2:
@@ -533,6 +573,8 @@ services:
       - cwe-798 
       - a02:2021
       - a07:2021
+      - a04:2025
+      - a07:2025
       - all
 
   test_18_v1:
@@ -553,6 +595,7 @@ services:
       - cwe-116
       - cwe-644
       - A03:2021
+      - a05:2025
       - all
 
   test_18_v2:
@@ -572,6 +615,7 @@ services:
       - cwe-116
       - cwe-644
       - A03:2021
+      - a05:2025
       - all
 
   test_19_v1:
@@ -589,6 +633,8 @@ services:
       - cwe-287 
       - A04:2021
       - A07:2021
+      - a06:2025
+      - a07:2025
       - all
 
   test_19_v2:
@@ -606,6 +652,8 @@ services:
       - cwe-287 
       - A04:2021
       - A07:2021
+      - a06:2025
+      - a07:2025
       - all
 
   test_20_v1:
@@ -626,6 +674,9 @@ services:
       - a09:2021
       - a07:2021
       - a04:2021
+      - a06:2025
+      - a07:2025
+      - a09:2025
       - all
 
   test_20_v2:
@@ -646,6 +697,9 @@ services:
       - a09:2021
       - a07:2021
       - a04:2021
+      - a06:2025
+      - a07:2025
+      - a09:2025
       - all
 
   test_21_v1:
@@ -661,6 +715,7 @@ services:
       - apache
       - cwe-117
       - A09:2021
+      - a09:2025
       - all
 
   test_21_v2:
@@ -676,6 +731,7 @@ services:
       - express
       - cwe-117
       - A09:2021
+      - a09:2025
       - all
 
   test_22_v1:
@@ -691,6 +747,7 @@ services:
       - apache
       - cwe-613
       - a07:2021
+      - a07:2025
       - all
 
   test_22_v2:
@@ -706,6 +763,7 @@ services:
       - express
       - cwe-613
       - a07:2021
+      - a07:2025
       - all
 
   test_23_v1:
@@ -721,6 +779,7 @@ services:
       - apache
       - cwe-384 
       - a07:2021  
+      - a07:2025
       - all
 
   test_23_v2:
@@ -736,6 +795,7 @@ services:
       - express
       - cwe-384 
       - a07:2021  
+      - a07:2025
       - all
 
   test_24_v1:
@@ -755,6 +815,9 @@ services:
       - a01:2021
       - a04:2021
       - a09:2021
+      - a01:2025
+      - a06:2025
+      - a09:2025
       - all
 
   test_24_v2:
@@ -774,6 +837,9 @@ services:
       - a01:2021
       - a04:2021
       - a09:2021
+      - a01:2025
+      - a06:2025
+      - a09:2025
       - all
 
   test_25_v1:
@@ -787,12 +853,15 @@ services:
       - test-25
       - php
       - apache
+      - cwe-98
       - cwe-706
       - cwe-829
       - cwe-426
       - a01:2021
       - a03:2021
       - A08:2021
+      - a05:2025
+      - a08:2025
       - all
 
   test_25_v2:
@@ -811,8 +880,9 @@ services:
       - cwe-829
       - cwe-426
       - a01:2021
-      - a03:2021
       - A08:2021
+      - a05:2025
+      - a08:2025
       - all
 
   test_26_v1:
@@ -830,6 +900,8 @@ services:
       - cwe-345
       - a04:2021
       - a08:2021
+      - a06:2025
+      - a08:2025
       - all
 
   test_26_v2:
@@ -847,6 +919,8 @@ services:
       - cwe-345
       - a04:2021
       - a08:2021
+      - a06:2025
+      - a08:2025
       - all
 
   test_27_v1:
@@ -863,6 +937,7 @@ services:
       - cwe-353
       - cwe-345
       - a08:2021
+      - a08:2025
       - all
 
   test_27_v2:
@@ -879,6 +954,7 @@ services:
       - cwe-353
       - cwe-345
       - a08:2021
+      - a08:2025
       - all
 
   test_28_v1:
@@ -895,6 +971,7 @@ services:
       - cwe-494
       - cwe-345
       - a08:2021
+      - a08:2025
       - all
 
   test_28_v2:
@@ -911,6 +988,7 @@ services:
       - cwe-494
       - cwe-345
       - a08:2021
+      - a08:2025
       - all
 
   test_29_v1:
@@ -927,6 +1005,7 @@ services:
       - cwe-830
       - cwe-829
       - a08:2021
+      - a08:2025
       - all
 
   test_30_v1:
@@ -944,6 +1023,7 @@ services:
       - cwe-913
       - a08:2021
       - a01:2021
+      - a08:2025
       - all
 
   test_30_v2:
@@ -961,6 +1041,7 @@ services:
       - cwe-913
       - a08:2021
       - a01:2021
+      - a08:2025
       - all
       
   test_31_v1:
@@ -979,6 +1060,8 @@ services:
       - cwe-352
       - a07:2021
       - a01:2021
+      - a01:2025
+      - a07:2025
       - all
 
   test_31_v2:
@@ -997,6 +1080,8 @@ services:
       - cwe-352
       - a07:2021
       - a01:2021
+      - a01:2025
+      - a07:2025
       - all
 
   test_32_v1:
@@ -1017,6 +1102,8 @@ services:
       - cwe-307
       - a07:2021
       - a04:2021
+      - a06:2025
+      - a07:2025
       - all
 
   test_32_v2:
@@ -1037,6 +1124,8 @@ services:
       - cwe-307
       - a07:2021
       - a04:2021
+      - a06:2025
+      - a07:2025
       - all
 
   test_33_v1:
@@ -1057,6 +1146,9 @@ services:
       - a07:2021
       - a04:2021
       - a01:2021
+      - a01:2025
+      - a06:2025
+      - a07:2025
       - all
 
   test_33_v2:
@@ -1077,6 +1169,9 @@ services:
       - a07:2021
       - a04:2021
       - a01:2021
+      - a01:2025
+      - a06:2025
+      - a07:2025
       - all
 
   test_34_v1:
@@ -1092,6 +1187,7 @@ services:
       - php
       - cwe-521
       - a07:2021
+      - a07:2025
       - all
 
   test_34_v2:
@@ -1107,6 +1203,7 @@ services:
       - express
       - cwe-521
       - a07:2021
+      - a07:2025
       - all
 
   test_35_v1:
@@ -1128,6 +1225,9 @@ services:
       - a07:2021
       - a04:2021
       - a08:2021
+      - a06:2025
+      - a07:2025
+      - a08:2025
       - all
 
   test_35_v2:
@@ -1149,6 +1249,9 @@ services:
       - a07:2021
       - a04:2021
       - a08:2021
+      - a06:2025
+      - a07:2025
+      - a08:2025
       - all
 
   test_36_v1:
@@ -1165,6 +1268,7 @@ services:
       - cwe-297
       - cwe-295
       - a07:2021
+      - a07:2025
       - all
 
   test_36_v2:
@@ -1181,6 +1285,7 @@ services:
       - cwe-297
       - cwe-295
       - a07:2021
+      - a07:2025
       - all
 
   test_37_v1:
@@ -1197,6 +1302,7 @@ services:
       - cwe-294
       - cwe-798 
       - a07:2021
+      - a07:2025
       - all
 
   test_37_v2:
@@ -1213,6 +1319,7 @@ services:
       - cwe-294
       - cwe-798 
       - a07:2021
+      - a07:2025
       - all
 
   test_38_v1:
@@ -1231,6 +1338,8 @@ services:
       - cwe-602
       - a04:2021
       - a07:2021
+      - a06:2025
+      - a07:2025
       - all
 
   test_38_v2:
@@ -1249,6 +1358,8 @@ services:
       - cwe-602
       - a04:2021
       - a07:2021
+      - a06:2025
+      - a07:2025
       - all
 
   test_39_v1:
@@ -1264,6 +1375,7 @@ services:
       - php
       - cwe-614
       - a05:2021
+      - a02:2025
       - all
 
   test_39_v2:
@@ -1279,6 +1391,7 @@ services:
       - express
       - cwe-614
       - a05:2021
+      - a02:2025
       - all
 
   test_40_v1:
@@ -1296,6 +1409,8 @@ services:
       - cwe-611
       - a03:2021
       - a05:2021
+      - a02:2025
+      - a05:2025
       - all
 
   test_40_v2:
@@ -1313,6 +1428,8 @@ services:
       - cwe-611
       - a03:2021
       - a05:2021
+      - a02:2025
+      - a05:2025
       - all
 
   test_41_v1:
@@ -1328,6 +1445,7 @@ services:
       - php
       - cwe-315
       - a05:2021
+      - a02:2025
       - all
 
   test_41_v2:
@@ -1343,6 +1461,7 @@ services:
       - express
       - cwe-315
       - a05:2021
+      - a02:2025
       - all
 
   test_42_v1:
@@ -1361,6 +1480,8 @@ services:
       - cwe-311
       - a05:2021
       - a04:2021
+      - a02:2025
+      - a06:2025
       - all
 
   test_42_v2:
@@ -1379,6 +1500,8 @@ services:
       - cwe-311
       - a05:2021
       - a04:2021
+      - a02:2025
+      - a06:2025
       - all
 
   test_43_v1:
@@ -1395,6 +1518,7 @@ services:
       - cwe-11
       - cwe-13
       - a05:2021
+      - a02:2025
       - all
 
   test_44_v1:
@@ -1412,6 +1536,8 @@ services:
       - cwe-79
       - a06:2021
       - a03:2021      
+      - a03:2025
+      - a05:2025
       - all
 
   test_44_v2:
@@ -1429,6 +1555,8 @@ services:
       - cwe-79
       - a06:2021
       - a03:2021
+      - a03:2025
+      - a05:2025
       - all
 
   test_45_v1:
@@ -1446,6 +1574,8 @@ services:
       - cwe-1004
       - a01:2021
       - a05:2021
+      - a01:2025
+      - a02:2025
       - all
 
   test_45_v2:
@@ -1463,6 +1593,8 @@ services:
       - cwe-1004
       - a01:2021
       - a05:2021
+      - a01:2025
+      - a02:2025
       - all
 
   test_46_v1:
@@ -1480,6 +1612,7 @@ services:
       - cwe-1173
       - a05:2021
       - a04:2021
+      - a02:2025
       - all
 
   test_47_v1:
@@ -1526,6 +1659,7 @@ services:
       - cwe-1021
       - a04:2021
       - cwe-451
+      - a06:2025
       - all
 
   test_48_v2:
@@ -1542,6 +1676,7 @@ services:
       - cwe-1021
       - a04:2021
       - cwe-451
+      - a06:2025
       - all
 
   test_49_v1:
@@ -1556,6 +1691,7 @@ services:
       - apache
       - cwe-756
       - a05:2021
+      - a10:2025
       - all
 
   test_50_v1:
@@ -1571,6 +1707,7 @@ services:
       - php
       - cwe-942
       - a05:2021
+      - a02:2025
       - all
 
   test_50_v2:
@@ -1586,6 +1723,7 @@ services:
       - express
       - cwe-942
       - a05:2021
+      - a02:2025
       - all
 
   test_51_v1:
@@ -1631,6 +1769,7 @@ services:
       - express
       - cwe-523
       - a02:2021
+      - a04:2025
       - all
 
   test_52_v2:
@@ -1646,6 +1785,7 @@ services:
       - apache
       - cwe-523
       - a02:2021
+      - a04:2025
       - all
 
   test_53_v1:
@@ -1661,6 +1801,7 @@ services:
       - php
       - cwe-525
       - a04:2021
+      - a06:2025
       - all
 
   test_53_v2:
@@ -1676,6 +1817,7 @@ services:
       - express
       - cwe-525
       - a04:2021
+      - a06:2025
       - all
 
   test_54_v1:
@@ -1691,6 +1833,7 @@ services:
       - php
       - cwe-601
       - a01:2021
+      - a01:2025
       - all
 
   test_54_v2:
@@ -1706,6 +1849,7 @@ services:
       - express
       - cwe-601
       - a01:2021
+      - a01:2025
       - all
 
   test_55_v1:
@@ -1721,6 +1865,7 @@ services:
       - php
       - cwe-538
       - a01:2021
+      - a01:2025
       - all
 
   test_55_v2:
@@ -1736,6 +1881,7 @@ services:
       - javascript
       - cwe-538
       - a01:2021
+      - a01:2025
       - all
 
   test_56_v1:
@@ -1750,6 +1896,7 @@ services:
       - php
       - cwe-284
       - a01:2021
+      - a01:2025
       - all
 
   test_56_v2:
@@ -1764,6 +1911,7 @@ services:
       - express
       - cwe-284
       - a01:2021
+      - a01:2025
       - all
 
   test_57_v1:
@@ -1779,6 +1927,7 @@ services:
         - php
         - cwe-59
         - a01:2021
+        - a01:2025
         - all
 
   test_57_v2:
@@ -1794,6 +1943,7 @@ services:
         - express
         - cwe-59
         - a01:2021
+        - a01:2025
         - all
 
   test_58_v1:
@@ -1809,6 +1959,7 @@ services:
         - php
         - cwe-539
         - a04:2021
+        - a06:2025
         - all
 
   test_58_v2:
@@ -1824,6 +1975,7 @@ services:
         - express
         - cwe-539
         - a04:2021
+        - a06:2025
         - all
 
   test_59_v1:
@@ -1843,6 +1995,8 @@ services:
         - a01:2021
         - a05:2021
         - a07:2021
+        - a01:2025
+        - a07:2025
         - all
 
   test_59_v2:
@@ -1862,6 +2016,8 @@ services:
         - a01:2021
         - a05:2021
         - a07:2021
+        - a01:2025
+        - a07:2025
         - all
 
   test_60_v1:
@@ -1879,6 +2035,8 @@ services:
         - cwe-209
         - a01:2021
         - a04:2021
+        - a01:2025
+        - a10:2025
         - all
 
   test_60_v2:
@@ -1896,6 +2054,8 @@ services:
         - cwe-209
         - a01:2021
         - a04:2021
+        - a01:2025
+        - a10:2025
         - all
 
   test_61_v1:
@@ -1916,6 +2076,9 @@ services:
         - a02:2021
         - a05:2021
         - a07:2021
+        - a02:2025
+        - a04:2025
+        - a07:2025
         - all
 
   test_61_v2:
@@ -1936,6 +2099,9 @@ services:
         - a02:2021
         - a05:2021
         - a07:2021
+        - a02:2025
+        - a04:2025
+        - a07:2025
         - all
 
   test_62_v1:
@@ -1951,6 +2117,7 @@ services:
         - php
         - cwe-497
         - a01:2021
+        - a01:2025
         - all
 
   test_62_v2:
@@ -1966,6 +2133,7 @@ services:
         - express
         - cwe-497
         - a01:2021
+        - a01:2025
         - all
 
   test_63_v1:
@@ -1981,6 +2149,7 @@ services:
         - php
         - cwe-548
         - a01:2021
+        - a01:2025
         - all
 
   test_63_v2:
@@ -1996,6 +2165,7 @@ services:
         - javascript
         - cwe-548
         - a01:2021
+        - a01:2025
         - all
 
   test_64_v1:
@@ -2012,6 +2182,7 @@ services:
         - cwe-88
         - cwe-138
         - a03:2021
+        - a05:2025
         - all
 
   test_64_v2:
@@ -2028,6 +2199,7 @@ services:
         - cwe-88
         - cwe-138
         - a03:2021
+        - a05:2025
         - all
 
   test_65_v1:
@@ -2077,6 +2249,7 @@ services:
         - cwe-79
         - cwe-96
         - a03:2021
+        - a05:2025
         - all
 
   test_66_v2:
@@ -2094,6 +2267,7 @@ services:
         - cwe-79
         - cwe-96
         - a03:2021
+        - a05:2025
         - all
 
   test_67_v1:
@@ -2109,6 +2283,7 @@ services:
         - php
         - cwe-95
         - a03:2021
+        - a05:2025
         - all
 
   test_67_v2:
@@ -2124,6 +2299,7 @@ services:
         - express
         - cwe-95
         - a03:2021
+        - a05:2025
         - all
 
   test_68_v1:
@@ -2139,6 +2315,7 @@ services:
         - php
         - cwe-97
         - a03:2021
+        - a05:2025
         - all
 
   test_68_v2:
@@ -2154,6 +2331,7 @@ services:
         - express
         - cwe-97
         - a03:2021
+        - a05:2025
         - all
 
   test_69_v1:
@@ -2172,6 +2350,8 @@ services:
         - cwe-922
         - a03:2021
         - a01:2021
+        - a01:2025
+        - a05:2025
         - all
 
   test_69_v2:
@@ -2190,6 +2370,8 @@ services:
         - cwe-922
         - a03:2021
         - a01:2021
+        - a01:2025
+        - a05:2025
         - all
 
   test_70_v1:
@@ -2205,6 +2387,7 @@ services:
         - hibernate
         - cwe-564
         - a03:2021
+        - a05:2025
         - all
 
   test_71_v1:
@@ -2226,6 +2409,7 @@ services:
         - cwe-643
         - cwe-652
         - a03:2021
+        - a05:2025
         - all
 
   test_71_v2:
@@ -2247,6 +2431,7 @@ services:
       - cwe-643
       - cwe-652
       - a03:2021
+      - a05:2025
       - all
 
   test_71_basex:
@@ -2271,6 +2456,8 @@ services:
         - cwe-73
         - a03:2021
         - a04:2021
+        - a05:2025
+        - a06:2025
         - all
 
   test_72_v2:
@@ -2288,6 +2475,8 @@ services:
         - cwe-73
         - a03:2021
         - a04:2021
+        - a05:2025
+        - a06:2025
         - all
 
   test_73_v1:
@@ -2303,6 +2492,7 @@ services:
         - php
         - cwe-470
         - a03:2021
+        - a05:2025
         - all
 
   test_73_v2:
@@ -2318,6 +2508,7 @@ services:
         - express
         - cwe-470
         - a03:2021
+        - a05:2025
         - all
 
   test_74_v1:
@@ -2335,6 +2526,7 @@ services:
         - cwe-472
         - a03:2021
         - a04:2021
+        - a06:2025
         - all
 
   test_74_v2:
@@ -2352,6 +2544,7 @@ services:
         - cwe-472
         - a03:2021
         - a04:2021
+        - a06:2025
         - all
 
   test_75_v1:
@@ -2367,6 +2560,7 @@ services:
         - php
         - cwe-917
         - a03:2021
+        - a05:2025
         - all
 
   test_76_ldap:
@@ -2397,6 +2591,7 @@ services:
       - flask
       - cwe-90
       - a03:2021
+      - a05:2025
       - all
 
   test_77_v1:
@@ -2417,6 +2612,7 @@ services:
         - cwe-566
         - cwe-639
         - a01:2021
+        - a01:2025
         - all
   
   test_77_v1_backend:
@@ -2447,6 +2643,7 @@ services:
         - cwe-566
         - cwe-639
         - a01:2021
+        - a01:2025
         - all
 
   test_78_v1:
@@ -2462,6 +2659,7 @@ services:
         - php
         - cwe-402
         - a01:2021
+        - a01:2025
         - all
 
   test_78_v2:
@@ -2477,6 +2675,7 @@ services:
         - express
         - cwe-402
         - a01:2021
+        - a01:2025
         - all
 
   test_79_v1:
@@ -2495,6 +2694,8 @@ services:
         - cwe-311
         - a02:2021
         - a04:2021
+        - a04:2025
+        - a06:2025
         - all
 
   test_79_v2:
@@ -2513,6 +2714,8 @@ services:
         - cwe-311
         - a02:2021
         - a04:2021
+        - a04:2025
+        - a06:2025
         - all
 
   test_80_v1:
@@ -2528,6 +2731,7 @@ services:
         - php
         - cwe-296
         - a02:2021
+        - a04:2025
         - all
 
   test_80_v2:
@@ -2543,6 +2747,7 @@ services:
         - express
         - cwe-296
         - a02:2021
+        - a04:2025
         - all
 
   test_81_v1:
@@ -2558,6 +2763,7 @@ services:
         - php
         - cwe-322
         - a02:2021
+        - a04:2025
         - all
 
   test_81_v2:
@@ -2573,6 +2779,7 @@ services:
         - express
         - cwe-322
         - a02:2021
+        - a04:2025
         - all
 
   test_82_v1:
@@ -2588,6 +2795,7 @@ services:
         - php
         - cwe-323
         - a02:2021
+        - a04:2025
         - all
 
   test_82_v2:
@@ -2603,6 +2811,7 @@ services:
         - express
         - cwe-323
         - a02:2021
+        - a04:2025
         - all
 
   test_83_v1:
@@ -2618,6 +2827,7 @@ services:
         - php
         - cwe-324
         - a02:2021
+        - a04:2025
         - all
 
   test_83_v2:
@@ -2633,6 +2843,7 @@ services:
         - express
         - cwe-324
         - a02:2021
+        - a04:2025
         - all
 
   test_84_v1:
@@ -2648,6 +2859,7 @@ services:
         - php
         - cwe-325
         - a02:2021
+        - a04:2025
         - all
 
   test_84_v2:
@@ -2663,6 +2875,7 @@ services:
         - express
         - cwe-325
         - a02:2021
+        - a04:2025
         - all
 
   test_85_v1:
@@ -2678,6 +2891,7 @@ services:
         - php
         - cwe-326
         - a02:2021
+        - a04:2025
         - all
 
   test_85_v2:
@@ -2693,6 +2907,7 @@ services:
         - express
         - cwe-326
         - a02:2021
+        - a04:2025
         - all
 
   test_86_v1:
@@ -2708,6 +2923,7 @@ services:
         - php
         - cwe-338
         - a02:2021
+        - a04:2025
         - all
 
   test_86_v2:
@@ -2723,6 +2939,7 @@ services:
         - express
         - cwe-338
         - a02:2021
+        - a04:2025
         - all
 
   test_87_v1:
@@ -2740,6 +2957,7 @@ services:
         - cwe-335
         - cwe-336
         - a02:2021
+        - a04:2025
         - all
 
   test_87_v2:
@@ -2757,6 +2975,7 @@ services:
         - cwe-335
         - cwe-336
         - a02:2021
+        - a04:2025
         - all
 
   test_88_v1:
@@ -2773,6 +2992,7 @@ services:
         - cwe-335
         - cwe-337
         - a02:2021
+        - a04:2025
         - all
 
   test_88_v2:
@@ -2789,6 +3009,7 @@ services:
         - cwe-335
         - cwe-337
         - a02:2021
+        - a04:2025
         - all
 
   test_89_v1:
@@ -2804,6 +3025,7 @@ services:
         - php
         - cwe-340
         - a02:2021
+        - a04:2025
         - all
 
   test_89_v2:
@@ -2819,6 +3041,7 @@ services:
         - express
         - cwe-340
         - a02:2021
+        - a04:2025
         - all
 
   test_90_v1:
@@ -2834,6 +3057,7 @@ services:
         - php
         - cwe-347
         - a02:2021
+        - a04:2025
         - all
 
   test_90_v2:
@@ -2849,6 +3073,7 @@ services:
         - express
         - cwe-347
         - a02:2021
+        - a04:2025
         - all
 
   test_91_v1:
@@ -2864,6 +3089,7 @@ services:
         - php
         - cwe-757
         - a02:2021
+        - a04:2025
         - all
 
   test_91_v2:
@@ -2879,6 +3105,7 @@ services:
         - express
         - cwe-757
         - a02:2021
+        - a04:2025
         - all
 
   test_92_v1:
@@ -2894,6 +3121,7 @@ services:
         - php
         - cwe-780
         - a02:2021
+        - a04:2025
         - all
 
   test_92_v2:
@@ -2909,6 +3137,7 @@ services:
         - express
         - cwe-780
         - a02:2021
+        - a04:2025
         - all
 
   test_93_v1:
@@ -2928,6 +3157,9 @@ services:
         - a01:2021
         - a04:2021
         - a07:2021
+        - a01:2025
+        - a06:2025
+        - a07:2025
         - all
 
   test_93_v2:
@@ -2947,6 +3179,9 @@ services:
         - a01:2021
         - a04:2021
         - a07:2021
+        - a01:2025
+        - a06:2025
+        - a07:2025
         - all
 
   test_94_v1:
@@ -2962,6 +3197,7 @@ services:
         - php
         - cwe-441
         - a01:2021
+        - a01:2025
         - all
 
   test_94_v2:
@@ -2977,6 +3213,7 @@ services:
         - express
         - cwe-441
         - a01:2021
+        - a01:2025
         - all
 
   test_95_v1:
@@ -2992,6 +3229,7 @@ services:
         - php
         - cwe-183
         - a04:2021
+        - a06:2025
         - all
 
   test_95_v2:
@@ -3007,6 +3245,7 @@ services:
         - express
         - cwe-183
         - a04:2021
+        - a06:2025
         - all
 
   test_96_v1:
@@ -3023,6 +3262,7 @@ services:
         - cwe-266
         - cwe-269
         - a04:2021
+        - a06:2025
         - all
 
   test_96_v2:
@@ -3039,6 +3279,7 @@ services:
         - cwe-266
         - cwe-269
         - a04:2021
+        - a06:2025
         - all
 
   test_97_v1:
@@ -3054,6 +3295,7 @@ services:
         - php
         - cwe-280
         - a04:2021
+        - a10:2025
         - all
 
   test_97_v2:
@@ -3069,6 +3311,7 @@ services:
         - javascript
         - cwe-280
         - a04:2021
+        - a10:2025
         - all
 
   test_98_v1:
@@ -3089,6 +3332,8 @@ services:
         - cwe-260
         - a04:2021
         - a05:2021
+        - a02:2025
+        - a06:2025
         - all
 
   test_98_v2:
@@ -3109,6 +3354,8 @@ services:
         - cwe-260
         - a04:2021
         - a05:2021
+        - a02:2025
+        - a06:2025
         - all
 
   test_99_v1:
@@ -3154,6 +3401,7 @@ services:
         - php
         - cwe-642
         - a04:2021
+        - a06:2025
         - all
 
   test_100_v2:
@@ -3169,6 +3417,7 @@ services:
         - express
         - cwe-642
         - a04:2021
+        - a06:2025
         - all
 
   test_101_v1:
@@ -3199,6 +3448,7 @@ services:
         - php
         - cwe-653
         - a04:2021
+        - a06:2025
         - all
 
   test_103_v1:
@@ -3214,6 +3464,7 @@ services:
         - php
         - cwe-841
         - a04:2021
+        - a06:2025
         - all
 
   test_104_v1:
@@ -3259,6 +3510,7 @@ services:
         - php
         - cwe-15
         - a05:2021
+        - a02:2025
         - all
 
   test_108_v1:
@@ -3274,6 +3526,7 @@ services:
         - php
         - cwe-304
         - a07:2021
+        - a07:2025
         - all
 
   test_109_v1:
@@ -3307,6 +3560,7 @@ services:
       - php
       - apache
       - a04:2021
+      - a06:2025
       - all
 
   test_110_v1_backend:
@@ -3331,6 +3585,7 @@ services:
       - apache
       - cwe-235
       - a04:2021
+      - a10:2025
       - all
 
   test_112_v1:
@@ -3374,6 +3629,7 @@ services:
       - express
       - cwe-80
       - a03:2021
+      - a05:2025
       - all
   test_114_v1:
       image: test_114_v1:latest
