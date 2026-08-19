@@ -169,28 +169,28 @@ Example structure:
 {
   "Top-Ten-2021": [
     {
-      "OWASP": "A01:2021",
+      "OWASP": "A04:2021",
       "CWEDetails": [
         {
-          "id": 22,
-          "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
-          "tests": ["test_1_v1", "test_1_v2"]
+          "id": 209,
+          "title": "Generation of Error Message Containing Sensitive Information",
+          "tests": ["test_60_v1", "test_60_v2"]
         }
       ],
-      "group": "Broken Access Control"
+      "group": "Insecure Design"
     }
   ],
   "Top-Ten-2025": [
     {
-      "OWASP": "A05:2025",
+      "OWASP": "A10:2025",
       "CWEDetails": [
         {
-          "id": 22,
-          "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
-          "tests": ["test_1_v1", "test_1_v2"]
+          "id": 209,
+          "title": "Generation of Error Message Containing Sensitive Information",
+          "tests": ["test_60_v1", "test_60_v2"]
         }
       ],
-      "group": "Injection"
+      "group": "Mishandling of Exceptional Conditions"
     }
   ]
 }
