@@ -86,7 +86,7 @@ The management interface now includes a utility to help generate the `recordedTe
    - Select which CWEs were not detected by checking the boxes in the "Undetected CWEs" column
    - A CWE can only be in one category at a time (detected or undetected)
 4. Click "Generate Recorded Tests" to create the JSON output
-5. Copy the output and add it to your `data.json` file
+5. Save the output, which writes it to `results/{scanner_name}.json`
 
 This utility makes it easy to record your scanner's test results in the correct format for the ASDF framework.
 
@@ -155,40 +155,66 @@ Each test folder follows the pattern `test-{id}` where `id` is a sequential numb
 
 #### data.json
 
-This is the file that contains our test data and the OWASP top 10 CWEs. The file has two main sections:
+This is the file that contains our test data and the OWASP top 10 CWEs. It has one section
+per OWASP Top Ten edition, each an array of categories and their associated CWEs:
 
-1. `vulnerabilities`: An array of OWASP Top 10 2021 categories and their associated CWEs
-2. `recordedTests`: An object where each key is a scanner name and the value contains the scanner's profile and test results
+1. `Top-Ten-2021`: OWASP Top 10 2021 categories and their associated CWEs
+2. `Top-Ten-2025`: OWASP Top 10 2025 categories and their associated CWEs
+
+A test may appear under both editions, mapped to whichever category applies in each.
 
 Example structure:
 
 ```json
 {
-  "vulnerabilities": [
+  "Top-Ten-2021": [
     {
-      "OWASP": "A01:2021",
+      "OWASP": "A04:2021",
       "CWEDetails": [
         {
-          "id": 22,
-          "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
-          "tests": ["test_1_v1", "test_1_v2"]
+          "id": 209,
+          "title": "Generation of Error Message Containing Sensitive Information",
+          "tests": ["test_60_v1", "test_60_v2"]
         }
       ],
-      "group": "Broken Access Control"
+      "group": "Insecure Design"
     }
   ],
-  "recordedTests": {
-    "scanner_name": {
-      "scanProfile": "Description of the scanner's capabilities and purpose",
-      "tests": [
+  "Top-Ten-2025": [
+    {
+      "OWASP": "A10:2025",
+      "CWEDetails": [
         {
-          "test": "test_1_v1",
-          "detectedCWEs": [22, 693],
-          "undetectedCWEs": [23],
-          "updatedAt": 1740999692
+          "id": 209,
+          "title": "Generation of Error Message Containing Sensitive Information",
+          "tests": ["test_60_v1", "test_60_v2"]
         }
-      ]
+      ],
+      "group": "Mishandling of Exceptional Conditions"
     }
+  ]
+}
+```
+
+#### Scanner results (`results/`)
+
+Scan results do **not** live in `data.json`. Each scanner gets its own file under `results/`
+(for example `results/semgrep.json`), keyed by scanner name:
+
+```json
+{
+  "Semgrep": {
+    "scanProfile": "v1.155.0, Default ruleset, 1748 rules",
+    "author": "your-github-handle",
+    "archivesUsed": ["artifacts/import-archives/semgrep_2026-01-01T00-00-00-000Z.json"],
+    "tests": [
+      {
+        "test": "test_1_v1",
+        "detectedCWEs": [22, 693],
+        "undetectedCWEs": [23],
+        "updatedAt": 1740999692
+      }
+    ]
   }
 }
 ```
@@ -202,6 +228,8 @@ When adding new test results:
    - `detectedCWEs`: Array of CWE IDs that were detected
    - `undetectedCWEs`: Array of CWE IDs that were not detected
    - `updatedAt`: Unix timestamp of when the test occurred
+4. The Recorded Tests Generator writes the file for you via `POST /api/save-results`, so
+   in most cases you should not need to hand-edit anything under `results/`
 
 > [!TIP]
 > You can use the Recorded Tests Generator in the management interface to easily create this output in the correct format.
@@ -412,7 +440,7 @@ To add a test into the collection:
    - Enter your scanner name and version
    - Provide a detailed scan profile
    - Record which CWEs were detected/undetected for each test
-3. Add the generated JSON to `data.json` under the `recordedTests` section
+3. Save the generated JSON, which writes it to `results/{scanner_name}.json`
 4. Ensure your scanner name includes the version number (e.g., "zap_v2.16.0")
 5. Include a detailed `scanProfile` that describes your scanner's configuration
 6. Validate your scan results:
@@ -437,4 +465,4 @@ For both types of contributions:
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
